@@ -26,6 +26,6 @@ set "command=TempoCLI.exe %game_name% %preset_name% %script_arg%"
 
 %command%
 
-rem pause
+pause
 
 exit /b

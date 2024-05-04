@@ -1,0 +1,121 @@
+{
+  "paths": {
+	"output_dir": "C:/Users/Mythical/Downloads/Output",
+    "fmodel_exe": "C:/modding/unreal_engine/fmodel/FModel.exe",
+    "ide_exe": "C:/Program Files/Notepad++/notepad++.exe",
+    "game_exe": "C:/Program Files (x86)/Steam/steamapps/common/The Baby In Yellow/BabyInYellow/Binaries/Win64/Game-Win64-Shipping.exe",
+    "blender_exe": "C:/Program Files/Blender Foundation/Blender 3.5/blender-launcher.exe",
+    "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.27",
+    "unreal_project_file": "C:/Users/Mythical/Documents/GitHub/InterposeDennome/BabyInYellow.uproject",
+	"repak_exe": "C:/modding/unreal_engine/repak/repak.exe"
+  },
+    "auto_move_windows": {
+    "wait_to_move_delay": 0,
+    "windows": []
+  },
+  "alt_uproject_name_in_game_dir": {
+    "use_alt_method": "False",
+    "name": ""
+  },
+  "alt_pak_creation_method": {
+	"use_alt_method": "False",
+    "alt_exe_path": "",
+	"variable_args": []
+  },
+  "is_gamepass_game": true,
+  "use_engine_unrealpak_over_repak": "False",
+  "iostore": "False",
+  "unreal_engine_version": "4.27",
+  "repak_pak_ver": "V11",
+  "steam_game_app_id": "2291340",
+  "window_title": "Tempo Automation Script",
+  "extra_launch_params": [
+    "-fileopenlog",
+	"-NOSPLASH"
+	],
+  "process_kill_list": [
+      "Fmodel.exe",
+      "Game-Win64-Shipping.exe"
+    ],
+  "launch_method": "win64_exe",
+  "mod_pak_list": [
+    {
+      "pak_type": "interpose_mods",
+      "name": "Z_ModLoader_P",
+      "pak_chunk_num": 1,
+      "status": "on",
+	  "self_made_pak": "True",
+	  "manually_specified_files": [
+	    "Content/Meshes/Baby/_Base/Baby_Body",
+		"Content/Meshes/StaticProps/Letter_01",
+		"Content/Meshes/StaticProps/Letter_02",
+		"Content/Meshes/StaticProps/Letter_03",
+		"Content/Meshes/Props/FireEx_Letters_01"
+	  ]
+    },
+    {
+      "pak_type": "interpose_mods",
+      "name": "Z_DebugLog_P",
+      "pak_chunk_num": 2,
+      "status": "off",
+	  "self_made_pak": "True",
+	  "manually_specified_files": []
+    },
+    {
+      "pak_type": "interpose_mods",
+      "name": "Z_ModButtons_P",
+      "pak_chunk_num": 3,
+      "status": "on",
+	  "self_made_pak": "True",
+	  "manually_specified_files": []
+    },
+    {
+      "pak_type": "interpose_mods",
+      "name": "Z_ModListMenu_P",
+      "pak_chunk_num": 4,
+      "status": "off",
+	  "self_made_pak": "True",
+	  "manually_specified_files": []
+    },
+    {
+      "pak_type": "interpose_mods",
+      "name": "Z_Dennome_P",
+      "pak_chunk_num": 5,
+      "status": "on",
+	  "self_made_pak": "True",
+	  "manually_specified_files": []
+    },
+    {
+      "pak_type": "interpose_mods",
+      "name": "Z_Items_P",
+      "pak_chunk_num": 6,
+      "status": "on",
+	  "self_made_pak": "True",
+	  "manually_specified_files": []
+    },
+    {
+      "pak_type": "interpose_mods",
+      "name": "Z_Backrooms_P",
+      "pak_chunk_num": 7,
+      "status": "off",
+	  "self_made_pak": "True",
+	  "manually_specified_files": []
+    },
+    {
+      "pak_type": "interpose_mods",
+      "name": "Z_ConveyorBelt_P",
+      "pak_chunk_num": 8,
+      "status": "off",
+	  "self_made_pak": "True",
+	  "manually_specified_files": []
+    },
+    {
+      "pak_type": "interpose_mods",
+      "name": "Z_Pets_P",
+      "pak_chunk_num": 9,
+      "status": "on",
+	  "self_made_pak": "True",
+	  "manually_specified_files": []
+    }
+  ]
+}

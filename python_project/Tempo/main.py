@@ -104,7 +104,7 @@ game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.pa
 uproject_dir = os.path.dirname(os.path.abspath(json_data["paths"]["unreal_project_file"]))
 repak_pak_ver = json_data["repak_pak_ver"]
 repak_exe = json_data["paths"]["repak_exe"]
-packing_dir = f"{SCRIPT_DIR}/../data/{game_name}/{preset_name}/mod_packaging/temp"
+packing_dir = f"{SCRIPT_DIR}/presets/{game_name}/{preset_name}/mod_packaging/temp"
 uproject_name = os.path.basename(uproject)[:-9]
 
 alt_uproject_name_in_game_dir = json_data["alt_uproject_name_in_game_dir"]["use_alt_method"]
@@ -118,7 +118,7 @@ else:
     game_paks_dir = f"{game_dir}/{uproject_name}/Content/Paks"
 
 game_win64_exe = json_data["paths"]["game_exe"]
-persistent_file_dir = f"{SCRIPT_DIR}/../data/{game_name}/{preset_name}/mod_packaging/persistent_files"
+persistent_file_dir = f"{SCRIPT_DIR}/presets/{game_name}/{preset_name}/mod_packaging/persistent_files"
 launch_method = json_data["launch_method"]
 process_list = json_data["process_kill_list"]
 mod_list_max = (len(json_data["mod_pak_list"]))
@@ -496,5 +496,7 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
+
     sys.exit()

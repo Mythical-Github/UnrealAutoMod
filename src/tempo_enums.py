@@ -33,6 +33,7 @@ class ScriptState(Enum):
     All = 'all'
     NONE = 'none'
     INIT = 'init'
+    POST_INIT = 'post_init'
     CONSTANT = 'constant'
     PRE_PACKAGING = 'pre_packaging'
     POST_PACKAGING = 'post_packaging'
@@ -42,7 +43,7 @@ class ScriptState(Enum):
     POST_PAK_MOVING = 'post_pak_moving'
     PRE_GAME_LAUNCH = 'pre_game_launch'
     POST_GAME_LAUNCH = 'post_game_lanch'
-    
+    POST_GAME_CLOSE = 'post_game_close'
     
 
 class ExecutionMode(Enum):
@@ -81,3 +82,13 @@ class RepakVersionType(Enum):
     v9 = '9' # 4.25
     v10 = None
     v11 = '11' # 4.26-5.3
+
+
+class UnrealModTreeType(Enum):
+    CUSTOM_CONTENT = 'custom_content' # "Content/CustomContent/ModName"
+    MODS = 'mods' # "Content/Mods/ModName"
+
+
+class FileInclusionType(Enum):
+    ASSET_PATH = 'asset_path' # Takes the path and gets all files regardless of extension and includes them
+    TREE = 'tree' # Takes supplied dir, and traverses it all, including every file

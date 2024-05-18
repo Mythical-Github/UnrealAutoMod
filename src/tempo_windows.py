@@ -21,6 +21,7 @@ def does_window_exist(window_title, use_substring_check):
         else:
             return True
 
+
 def get_windows_by_title(window_title, use_substring_check):
     if use_substring_check:
         all_windows = pygetwindow.getAllWindows()

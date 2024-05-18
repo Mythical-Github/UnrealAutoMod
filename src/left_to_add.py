@@ -1,6 +1,5 @@
 
 
-
 def routine_checks():
     process_kill_check()
     alt_exe_check()
@@ -9,23 +8,19 @@ def routine_checks():
     change_window_name()
 
 
-
-
-
+Later:
+Some games don't allow engine and game open at once
+logging
 
 functions to make
-run app takes in sync or async enum thing
-expose certin things to the exe thing
-logging/dwebugginmg/error handling
-some games won't launch eith the editor open, code something for this
-dlls to inject
-constant chec?
+expose certin things to the exe thing\
+ScriptState Logic
 repak packing
 loose file klogic
 unreal pak logic
 
-
-
+manually speicied has enum, all buit this all here etc,.,.. enuim
+allow multipel?
 
 ue_version_to_repak_version = {
     "4.0": "2",
@@ -146,11 +141,6 @@ def copy_tree(src, dst, merge=True):
             shutil.copy2(s, d)
 
 
-def cleanup_files():
-    if os.path.isdir(packing_dir):
-        shutil.rmtree(packing_dir)
-
-
 def make_and_move_paks():
     subfolders = [ f.path for f in os.scandir(packing_dir) if f.is_dir() ]
     for dir_to_pack in subfolders:
@@ -212,12 +202,6 @@ def make_and_move_paks():
             print(f"Error: {e}")     
 
 
-
-            
-
-
-
-
 def copy_pak_files_paks():
     if not os.path.isdir(packing_dir):
         os.mkdir(packing_dir)       
@@ -262,12 +246,9 @@ def copy_pak_files_paks():
 
 
 def test_mods_both():
-    cleanup_files()
-    package_uproject_cooked()
-    package_uproject_paks()
     copy_main_files_cooked()
     copy_persistent_files()
     copy_manually_specified_files()
     make_and_move_paks()
     copy_pak_files_paks()
-    cleanup_files()
+

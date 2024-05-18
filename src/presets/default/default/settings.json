@@ -31,10 +31,24 @@
       "window_name": "UE4SS Debugging Tools", 
       "use_substring_check": true,
       "window_behaviour": "move",
+      "script_state": "post_game_launch",
+      "timeout": 15,
       "monitor": 1,
       "resolution": {
         "x": 1525,
         "y": 850
+      }
+    },
+    {
+      "window_name": "Test Window One", 
+      "use_substring_check": true,
+      "window_behaviour": "minimize",
+      "script_state": "constant",
+      "timeout": null,
+      "monitor": null,
+      "resolution": {
+        "x": null,
+        "y": null
       }
     }
   ],
@@ -55,28 +69,42 @@
   },
   "mod_pak_info": [
     {
-      "pak_name": "ExampleModName",
+      "mod_name": "EnginePakExample_P",
       "pak_dir_structure": "LogicMods",
       "pak_chunk_num": 1,
       "packing_type": "engine_pak",
-      "is_pak_enabled": true,
-      "manually_specified_files": []
+      "is_enabled": true,
+      "manually_specified_assets": []
     },
     {
-      "pak_name": "ExampleModNameTwo_P",
+      "mod_name": "UnrealPakExample_P",
       "pak_dir_structure": "~mods",
       "pak_chunk_num": 2,
       "packing_type": "unreal_pak",
-      "is_pak_enabled": true,
-      "manually_specified_files": []
+      "is_enabled": true,
+      "manually_specified_assets": [
+        "asset_path", "Content/Meshes/Box"
+      ]
     },
     {
-      "pak_name": "ExampleModNameThree",
+      "mod_name": "RepakExample_P",
       "pak_dir_structure": "interpose_mods/main",
       "pak_chunk_num": 3,
       "packing_type": "repak",
-      "is_pak_enabled": false,
-      "manually_specified_files": []
+      "is_enabled": false,
+      "manually_specified_assets": [
+        "tree", "Content/Mods/ModName"
+      ]
+    },
+    {
+      "mod_name": "LooseFileExample",
+      "pak_dir_structure": null,
+      "pak_chunk_num": null,
+      "packing_type": "loose",
+      "is_enabled": false,
+      "manually_specified_assets": [
+        "tree", "Content/Mods/ModName"
+      ]
     }
   ]
 }

@@ -13,6 +13,7 @@
   "game_info": {
     "game_exe_path": "D:/SteamLibrary/steamapps/common/Zedfest/KevinSpel/Binaries/Win64/Zedfest.exe",
     "launch_type": "steam",
+    "game_launcher_exe": "C:/Program Files (x86)/Steam/steam.exe",
     "game_id": 1037080,
     "launch_params": [
       "-fileopenlog",

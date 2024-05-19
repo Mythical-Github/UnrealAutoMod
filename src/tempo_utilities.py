@@ -54,9 +54,11 @@ def kill_processes():
             kill_process(proc_name)
 
 
-def run_app(exe_path, exec_mode, args=None, working_dir=None):
+def run_app(exe_path, exec_mode, args={}, working_dir=None):
     exec_type = enum.ExecutionMode
-    command = [exe_path] + args
+    command = exe_path
+    for arg in args:
+        command = f'{command} {arg}'
     if exec_mode == exec_type.SYNC:
         subprocess.run(command, cwd=working_dir)
     elif exec_mode == exec_type.ASYNC:

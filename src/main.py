@@ -25,7 +25,11 @@ def routine_checks():
 
 def main():
     game_runner.run_game()
-
+    # packing.set_packing_type_true(enum.PackingType.REPAK)
+    # test = packing.queue_type_check_dict
+    # for i in test:
+    #     print(i)
+    #     print(test[i])
 
 if __name__ == '__main__':
     main()

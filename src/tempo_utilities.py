@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import psutil
+import hashlib
 import subprocess
 from msvcrt import getch
 import tempo_enums as enum
@@ -144,6 +145,15 @@ def get_win_dir_type():
         return win_dir_type.WINDOWS_NO_EDITOR
 
 
+def get_file_hash(file_path):
+    hasher = hashlib.sha256()
+    with open(file_path, 'rb') as f:
+        for chunk in iter(lambda: f.read(4096), b''):
+            hasher.update(chunk)
+    return hasher.hexdigest()
+
+
 def get_do_files_have_same_hash(file_path_one, file_path_two):
-    do_files_have_same_hash = ''
-    return do_files_have_same_hash
+    hash_one = get_file_hash(file_path_one)
+    hash_two = get_file_hash(file_path_two)
+    return hash_one == hash_two

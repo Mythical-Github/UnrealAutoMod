@@ -3,6 +3,23 @@ from tempo_enums import PackingType
 from tempo_settings import settings
 
 
+class populate_queue_type_check_dict():
+    global queue_type_check_dict
+    queue_type_check_dict = {}
+    packing_types = list(PackingType)
+
+    for packing_type in packing_types:
+        should_include = settings.get('packing_types', {}).get(packing_type.name.lower(), False)
+        queue_type_check_dict[packing_type] = should_include
+
+
+def set_packing_type_true(packing_type_enum):
+    if packing_type_enum in queue_type_check_dict:
+        queue_type_check_dict[packing_type_enum] = True
+    else:
+        raise ValueError(f'{packing_type_enum} is not a valid packing type')
+    
+
 def get_base_command():
     output_dir = settings['general_info']['output_dir']
     uproject = settings['engine_info']['unreal_project_file']
@@ -46,7 +63,7 @@ def test_mods(mod_names):
     pass
 
 
-def make_mod(packing_type_enum):
+def make_mods(packing_type_enum):
     if packing_type_enum == PackingType.ENGINE:
         handle_engine_logic()
     elif packing_type_enum == PackingType.UNREAL_PAK:
@@ -86,14 +103,6 @@ def make_pak_repak():
 
 
 def make_pak_unreal_pak():
-    pass
-
-
-def move_paks_repak():
-    pass
-
-
-def move_paks_unreal_pak():
     pass
 
 

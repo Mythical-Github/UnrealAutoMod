@@ -107,5 +107,17 @@
         "tree", "Content/Mods/ModName"
       ]
     }
+  ],
+  "alt_exe_methods": [
+    {
+      "use_alt_method": false,
+      "alt_exe_path": "",
+      "variable_args": []
+    },
+    {
+      "use_alt_method": false,
+      "alt_exe_path": "",
+      "variable_args": []
+    }
   ]
 }

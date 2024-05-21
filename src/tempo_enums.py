@@ -17,6 +17,7 @@ class PackingType(Enum):
     REPAK = 'repak'
     LOOSE = 'loose'
     ALT_EXE = 'alt_exe'
+    NONE = 'none'
 
 
 class GameLaunchType(Enum):

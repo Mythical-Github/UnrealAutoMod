@@ -1,6 +1,7 @@
 import tempo_enums as enum
 from tempo_settings import settings
 import tempo_utilities as utilities
+from tempo_script_states import ScriptState
 
 
 def run_game_exe():
@@ -9,7 +10,7 @@ def run_game_exe():
     for launch_param in launch_params:
         run_game_command = f'{run_game_command} {launch_param}'
     utilities.run_app(run_game_command, enum.ExecutionMode.ASYNC)
-
+    ScriptState.set_script_state(enum.ScriptState.POST_GAME_LAUNCH)
 
 def run_game_steam():
     steam_exe = settings['game_info']['game_launcher_exe']
@@ -19,6 +20,7 @@ def run_game_steam():
     for launch_param in launch_params:
         run_game_command = f'{run_game_command} {launch_param}'
     utilities.run_app(run_game_command, enum.ExecutionMode.ASYNC)
+    ScriptState.set_script_state(enum.ScriptState.POST_GAME_LAUNCH)
 
 
 def run_game():

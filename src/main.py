@@ -1,35 +1,25 @@
-import os
 import sys
-import tempo_enums as enum
-import tempo_windows as windows
+import tempo_threads as threads
 import tempo_packing as packing
-import tempo_utilities as utilities
-from tempo_settings import settings
-import tempo_game_runner as game_runner
-
-
-class ScriptState():
-    global SCRIPT_STATE_TYPE
-    global script_state
-    SCRIPT_STATE_TYPE = enum.ScriptState
-    script_state = SCRIPT_STATE_TYPE.INIT
-    
-    
-    def set_script_state(new_state):
-        script_state = new_state 
-
-
-def routine_checks():
-    pass
+from tempo_game_runner import run_game
+from tempo_script_states import ScriptState
+from tempo_enums import ScriptState as script_state
 
 
 def main():
-    game_runner.run_game()
-    # packing.set_packing_type_true(enum.PackingType.REPAK)
-    # test = packing.queue_type_check_dict
-    # for i in test:
-    #     print(i)
-    #     print(test[i])
+    threads.start_constant_thread()
+    ScriptState.set_script_state(script_state.POST_INIT)
+    packing.pre_packaging()
+    packing.post_packaging()
+    packing.pre_pak_creation()
+    packing.post_pack_creation()
+    ScriptState.set_script_state(script_state.PRE_GAME_LAUNCH)
+    run_game()
+    ScriptState.set_script_state(script_state.POST_GAME_LAUNCH)
+    if threads.is_post_game_closed_enum_used_in_config:
+        threads.start_game_monitor_thread()
+        threads.game_monitor_thread.join()
+
 
 if __name__ == '__main__':
     main()

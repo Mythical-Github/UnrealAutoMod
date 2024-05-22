@@ -27,13 +27,13 @@
         "process_name": "Fmodel.exe",
         "use_substring_check": false,
         "check_length": true,
-        "script_state": "pre_packaging"
+        "script_state": "constant"
       },
       {
         "process_name": "Umodel",
         "use_substring_check": true,
         "check_length": true,
-        "script_state": "pre_packaging"
+        "script_state": "constant"
       }
     ]
   },
@@ -42,7 +42,7 @@
       "window_name": "UE4SS Debugging Tools", 
       "use_substring_check": true,
       "window_behaviour": "move",
-      "script_state": "post_game_close",
+      "script_state": "all",
       "timeout": 15,
       "monitor": 1,
       "resolution": {
@@ -54,7 +54,7 @@
       "window_name": "Test Window One", 
       "use_substring_check": true,
       "window_behaviour": "minimize",
-      "script_state": "constant",
+      "script_state": "post_game_close",
       "timeout": null,
       "monitor": null,
       "resolution": {

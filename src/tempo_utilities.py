@@ -6,7 +6,7 @@ import hashlib
 import subprocess
 from msvcrt import getch
 import tempo_utilities as utilities
-from tempo_enums import PackagingDirType, ExecutionMode
+from tempo_enums import PackagingDirType, ExecutionMode, ScriptStateType
 
 
 def check_file_exists(file_path):
@@ -47,19 +47,23 @@ def get_processes_by_substring(substring):
     return matching_processes
 
 
-def kill_processes():
-    import tempo_settings as settings
+def kill_processes(state):
+    from tempo_settings import settings
     process_to_kill_info = settings['process_kill_info']['processes']
+    current_state = state.value if isinstance(state, ScriptStateType) else state
+
     for process_info in process_to_kill_info:
-        if process_info['use_substring_check']:
-            proc_name_substring = process_info['process_name']
-            matching_processes = get_processes_by_substring(proc_name_substring)
-            for proc_info in matching_processes:
-                proc_name = proc_info['name']
-                kill_process(proc_name)
-        else:
-            proc_name = process_info['process_name']
-            kill_process(proc_name)
+        target_state = process_info.get('script_state')
+        if target_state == current_state:
+            if process_info['use_substring_check']:
+                proc_name_substring = process_info['process_name']
+                matching_processes = utilities.get_processes_by_substring(proc_name_substring)
+                for proc_info in matching_processes:
+                    proc_name = proc_info['name']
+                    utilities.kill_process(proc_name)
+            else:
+                proc_name = process_info['process_name']
+                utilities.kill_process(proc_name)
 
 
 def run_app(exe_path, exec_mode, args={}, working_dir=None):

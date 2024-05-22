@@ -43,7 +43,7 @@ class ScriptStateType(Enum):
     PRE_PAK_MOVING = 'pre_pak_moving'
     POST_PAK_MOVING = 'post_pak_moving'
     PRE_GAME_LAUNCH = 'pre_game_launch'
-    POST_GAME_LAUNCH = 'post_game_lanch'
+    POST_GAME_LAUNCH = 'post_game_launch'
     POST_GAME_CLOSE = 'post_game_close'
     
 

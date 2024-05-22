@@ -1,29 +1,9 @@
 import time
 import threading
 import tempo_windows as windows
-import tempo_settings as settings
 import tempo_utilities as utilities
 from tempo_enums import ScriptStateType
-from tempo_script_states import ScriptState
-from tempo_script_states import routine_checks
-
-
-
-def is_constant_enum_used_in_config():
-    if "auto_move_windows" in settings.settings and isinstance(settings.settings["auto_move_windows"], list):
-        for window in settings.settings["auto_move_windows"]:
-            if isinstance(window, dict) and "script_state" in window and window["script_state"] == "constant":
-                return True
-    return False
-
-
-def is_post_game_closed_enum_used_in_config():
-    if "auto_move_windows" in settings.settings and isinstance(settings.settings["auto_move_windows"], list):
-        for window in settings.settings["auto_move_windows"]:
-            if isinstance(window, dict) and "script_state" in window and window["script_state"] == "post_game_close":
-                return True
-    return False
-
+from tempo_script_states import ScriptState, routine_checks, is_script_state_used_in_config
 
 
 def constant_thread_runner(tick_rate=0.1):
@@ -44,7 +24,7 @@ def start_constant_thread():
 
 
 def constant_thread():
-    if is_constant_enum_used_in_config():
+    if is_script_state_used_in_config(ScriptStateType.CONSTANT):
         start_constant_thread()
     else:
         print('constant thread not used in config, so not activated')        
@@ -107,11 +87,10 @@ def stop_game_monitor_thread():
 
 
 def game_moniter_thread():
-    if is_post_game_closed_enum_used_in_config():
+    if is_script_state_used_in_config(ScriptStateType.POST_GAME_CLOSE):
         start_game_monitor_thread()
         print('game monitering thread started')
         game_monitor_thread.join()
         print('game monitering thread ended')
     else:
         print('game monitering thread not used in config, so not activated')    
-    

@@ -1,11 +1,8 @@
 
 
 def routine_checks():
-    process_kill_check()
     alt_exe_check()
     window_check()
-    cleanup_files_check()
-    change_window_name()
 
 
 Later:

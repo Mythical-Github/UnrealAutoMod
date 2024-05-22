@@ -8,6 +8,7 @@ class ScriptState():
     def set_script_state(new_state):
         global script_state
         script_state = new_state
+        print(f'Script State changed to {new_state}')
 
 
 def routine_checks(script_state):

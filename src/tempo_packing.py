@@ -137,5 +137,5 @@ def pre_pak_creation():
     ScriptState.set_script_state(ScriptStateType.PRE_PAK_CREATION)
 
 
-def post_pack_creation():
+def post_pak_creation():
     ScriptState.set_script_state(ScriptStateType.POST_PAK_CREATION)

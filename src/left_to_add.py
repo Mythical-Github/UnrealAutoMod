@@ -12,11 +12,6 @@ Later:
 Some games don't allow engine and game open at once
 logging
 
-functions to make
-expose certin things to the exe thing\
-
-
-
 
 use_alt_pak_creation_method = json_data["alt_pak_creation_method"]["use_alt_method"]
 output_dir = json_data["paths"]["output_dir"]

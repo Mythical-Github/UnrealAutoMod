@@ -5,7 +5,7 @@ import psutil
 import hashlib
 import subprocess
 from msvcrt import getch
-import tempo_settings as settings
+import tempo_utilities as utilities
 from tempo_enums import PackagingDirType, ExecutionMode
 
 
@@ -20,6 +20,7 @@ def get_process_name(exe_path):
 
 
 def get_game_process_name():
+    import tempo_settings as settings
     # why does this need settings.settings instead of just settings?
     process = settings.settings['game_info']['game_exe_path']
     return get_process_name(process)
@@ -47,6 +48,7 @@ def get_processes_by_substring(substring):
 
 
 def kill_processes():
+    import tempo_settings as settings
     process_to_kill_info = settings['process_kill_info']['processes']
     for process_info in process_to_kill_info:
         if process_info['use_substring_check']:
@@ -101,6 +103,7 @@ Available SCRIPT_ARGs:
 
 
 def get_unreal_engine_version(engine_path):
+    import tempo_settings as settings
     override_automatic_version_finding = settings['engine_info']['override_automatic_version_finding']
     if override_automatic_version_finding:
         unreal_engine_major_version = settings['engine_info']['unreal_engine_major_version']
@@ -128,6 +131,7 @@ def get_is_game_iostore():
 
 
 def get_game_paks_dir():
+    import tempo_settings as settings
     game_exe_path = settings['game_info']['game_exe_path']
     game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(game_exe_path)))))
     uproject = settings['engine_info']['unreal_project_file']
@@ -159,3 +163,7 @@ def get_do_files_have_same_hash(file_path_one, file_path_two):
     hash_one = get_file_hash(file_path_one)
     hash_two = get_file_hash(file_path_two)
     return hash_one == hash_two
+
+
+def get_game_window_title():
+    return os.path.splitext(get_game_process_name())[0]

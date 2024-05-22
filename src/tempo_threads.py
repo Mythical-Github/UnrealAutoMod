@@ -4,24 +4,26 @@ import tempo_windows as windows
 import tempo_settings as settings
 import tempo_utilities as utilities
 from tempo_enums import ScriptStateType
+from tempo_script_states import ScriptState
 from tempo_script_states import routine_checks
 
 
 
 def is_constant_enum_used_in_config():
-    auto_move_windows = settings.get("auto_move_windows", [])
-    for window in auto_move_windows:
-        if window.get("script_state") == "constant":
-            return True
+    if "auto_move_windows" in settings.settings and isinstance(settings.settings["auto_move_windows"], list):
+        for window in settings.settings["auto_move_windows"]:
+            if isinstance(window, dict) and "script_state" in window and window["script_state"] == "constant":
+                return True
     return False
 
 
 def is_post_game_closed_enum_used_in_config():
-    auto_move_windows = settings.get("auto_move_windows", [])
-    for window in auto_move_windows:
-        if window.get("script_state") == "post_game_closed":
-            return True
+    if "auto_move_windows" in settings.settings and isinstance(settings.settings["auto_move_windows"], list):
+        for window in settings.settings["auto_move_windows"]:
+            if isinstance(window, dict) and "script_state" in window and window["script_state"] == "post_game_close":
+                return True
     return False
+
 
 
 def constant_thread_runner(tick_rate=0.1):
@@ -35,12 +37,17 @@ def constant_thread_logic():
 
 
 def start_constant_thread():
-    if is_constant_enum_used_in_config:
-        global constant_thread
-        constant_thread = threading.Thread(target=constant_thread_runner, daemon=True)
-        constant_thread.start()
+    global constant_thread
+    constant_thread = threading.Thread(target=constant_thread_runner, daemon=True)
+    constant_thread.start()
+    print('constant thread started')
+
+
+def constant_thread():
+    if is_constant_enum_used_in_config():
+        start_constant_thread()
     else:
-        print('The constant thread was not used in the config, so it was never started')
+        print('constant thread not used in config, so not activated')        
 
 
 def game_monitor_thread_runner(tick_rate=0.1):
@@ -50,21 +57,40 @@ def game_monitor_thread_runner(tick_rate=0.1):
 
 
 def game_monitor_thread_logic():
-    game_window_name = utilities.get_game_process_name()
-    
-    print(f"Monitoring game window: {game_window_name}")
-    
-    while True:
-        try:
-            game_window = windows.get_game_window()
-            print(f"Game window '{game_window_name}' is still open.")
+    global found_process
+    global found_window
+    global window_closed
+    global init_done
 
-        except ValueError:
+    try:
+        if not init_done:
+            found_process = False
+            found_window = False
+            window_closed = False
+            init_done = True
+    except NameError:
+            found_process = False
+            found_window = False
+            window_closed = False
+            init_done = True
 
-            print(f"Game window '{game_window_name}' has closed.")
-            break
-
-        time.sleep(1)
+    game_window_name = utilities.get_game_window_title()
+    if not found_process:
+        game_process_name = utilities.get_game_process_name()
+        if utilities.is_process_running(game_process_name):
+            print('Found game process running')
+            found_process = True
+    elif not found_window:
+        if windows.does_window_exist(game_window_name):
+            print('Found game window running')
+            found_window = True
+            ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
+    elif not window_closed:
+        if not windows.does_window_exist(game_window_name):
+            print('Game window closed')
+            window_closed = True
+            ScriptState.set_script_state(ScriptStateType.POST_GAME_CLOSE)
+            stop_game_monitor_thread()
 
 
 def start_game_monitor_thread():
@@ -78,5 +104,14 @@ def start_game_monitor_thread():
 def stop_game_monitor_thread():
     global run_monitoring_thread
     run_monitoring_thread = False
-    if game_monitor_thread.is_alive():
+
+
+def game_moniter_thread():
+    if is_post_game_closed_enum_used_in_config():
+        start_game_monitor_thread()
+        print('game monitering thread started')
         game_monitor_thread.join()
+        print('game monitering thread ended')
+    else:
+        print('game monitering thread not used in config, so not activated')    
+    

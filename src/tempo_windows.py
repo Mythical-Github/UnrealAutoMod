@@ -6,21 +6,12 @@ from tempo_utilities import get_game_process_name
 
 def does_window_exist(window_title, use_substring_check=False):
     if use_substring_check:
-        all_windows_titles = pygetwindow.getAllTitles()
-        matched_windows = []
-        for window in all_windows_titles:
-            if window_title in window:
-                matched_windows.append(window_title)
-        if len(matched_windows) <= 0:
-            return False
-        else:
-            return True
+        all_window_titles = pygetwindow.getAllTitles()
+        matched_windows = [window for window in all_window_titles if window_title in window]
+        return len(matched_windows) > 0
     else:
-        all_windows_titles = pygetwindow.getWindowsWithTitle(window_title)
-        if len(all_windows_titles) <= 0:
-            return False
-        else:
-            return True
+        all_window_titles = pygetwindow.getWindowsWithTitle(window_title)
+        return len(all_window_titles) > 0
 
 
 def get_windows_by_title(window_title, use_substring_check=False):
@@ -70,4 +61,4 @@ def change_window_name(window_name):
 
 
 def get_game_window():
-    return get_window_by_title(get_game_process_name)
+    return get_window_by_title(get_game_process_name())

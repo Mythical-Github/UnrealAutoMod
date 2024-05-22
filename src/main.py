@@ -7,17 +7,14 @@ from tempo_script_states import ScriptState
 
 
 def main():
-    threads.start_constant_thread()
+    threads.constant_thread()
     ScriptState.set_script_state(ScriptStateType.POST_INIT)
     packing.pre_packaging()
     packing.post_packaging()
     packing.pre_pak_creation()
-    packing.post_pack_creation()
+    packing.post_pak_creation()
     run_game()
-    ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
-    if threads.is_post_game_closed_enum_used_in_config:
-        threads.start_game_monitor_thread()
-        threads.game_monitor_thread.join()
+    threads.game_moniter_thread()
 
 
 if __name__ == '__main__':

@@ -46,10 +46,24 @@ class Settings():
     process_input_args()
     process_script_args()
     PRESET_SETTINGS_JSON = f'{SCRIPT_DIR}/presets/{GAME_NAME}/{PRESET_NAME}/settings.json'
-    utilities.check_file_exists(PRESET_SETTINGS_JSON)
+    if not os.path.exists(PRESET_SETTINGS_JSON):
+        raise FileNotFoundError(f'Settings file "{PRESET_SETTINGS_JSON}" not found.')
     with open(PRESET_SETTINGS_JSON) as preset_settings_file:
         settings = json.load(preset_settings_file)
-    windows.change_window_name(settings['general_info']['window_title'])
+    window_name = settings['general_info']['window_title']
+    os.system(f'title {window_name}')
     auto_close_game = settings['process_kill_info']['auto_close_game']
     if auto_close_game:
-        utilities.kill_process(utilities.get_game_process_name())
+        def is_process_running(process_name):
+            import psutil
+            for proc in psutil.process_iter():
+                try:
+                    if process_name.lower() in proc.name().lower():
+                        return True
+                except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                    pass
+            return False
+        process_name = settings['game_info']['game_exe_path']
+        process_name = os.path.basename(process_name)
+        if is_process_running(process_name):
+            os.system(f'taskkill /f /im {process_name}')

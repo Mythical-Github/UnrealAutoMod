@@ -5,9 +5,9 @@ import psutil
 import hashlib
 import subprocess
 from msvcrt import getch
-import tempo_enums as enum
 import tempo_settings as settings
 import tempo_utilities as utilities
+from tempo_enums import PackagingDirType, ExecutionMode
 
 
 def check_file_exists(file_path):
@@ -18,6 +18,12 @@ def check_file_exists(file_path):
 def get_process_name(exe_path):
     filename = os.path.basename(exe_path)
     return filename
+
+
+def get_game_process_name():
+    # why does this need settings.settings instead of just settings?
+    process = settings.settings['game_info']['game_exe_path']
+    return get_process_name(process)
 
 
 def kill_process(process_name):
@@ -56,13 +62,12 @@ def kill_processes():
 
 
 def run_app(exe_path, exec_mode, args={}, working_dir=None):
-    exec_type = enum.ExecutionMode
     command = exe_path
     for arg in args:
         command = f'{command} {arg}'
-    if exec_mode == exec_type.SYNC:
+    if exec_mode == ExecutionMode.SYNC:
         subprocess.run(command, cwd=working_dir)
-    elif exec_mode == exec_type.ASYNC:
+    elif exec_mode == ExecutionMode.ASYNC:
         subprocess.run(command, cwd=working_dir)
 
 
@@ -138,11 +143,10 @@ def get_game_paks_dir():
 
 
 def get_win_dir_type():
-    win_dir_type = enum.PackagingDirType
     if utilities.get_unreal_engine_version.startswith("5"):
-        return win_dir_type.WINDOWS
+        return PackagingDirType.WINDOWS
     else:
-        return win_dir_type.WINDOWS_NO_EDITOR
+        return PackagingDirType.WINDOWS_NO_EDITOR
 
 
 def get_file_hash(file_path):

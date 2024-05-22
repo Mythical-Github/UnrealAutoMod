@@ -2,7 +2,8 @@ import os
 from tempo_enums import PackingType
 from tempo_settings import settings
 from tempo_script_states import ScriptState
-from tempo_enums import ScriptState as script_state
+from tempo_enums import ScriptStateType
+
 
 class populate_queue_type_check_dict():
     global queue_type_check_dict
@@ -15,6 +16,7 @@ class populate_queue_type_check_dict():
 
 
 def set_packing_type_true(packing_type_enum):
+    global queue_type_check_dict
     if packing_type_enum in queue_type_check_dict:
         queue_type_check_dict[packing_type_enum] = True
     else:
@@ -124,16 +126,16 @@ def cleanup_output_dir():
 
 
 def pre_packaging():
-    ScriptState.set_script_state(script_state.PRE_PACKAGING)
+    ScriptState.set_script_state(ScriptStateType.PRE_PACKAGING)
 
 
 def post_packaging():
-    ScriptState.set_script_state(script_state.POST_PACKAGING)
+    ScriptState.set_script_state(ScriptStateType.POST_PACKAGING)
 
 
 def pre_pak_creation():
-    ScriptState.set_script_state(script_state.PRE_PAK_CREATION)
+    ScriptState.set_script_state(ScriptStateType.PRE_PAK_CREATION)
 
 
 def post_pack_creation():
-    ScriptState.set_script_state(script_state.POST_PAK_CREATION)
+    ScriptState.set_script_state(ScriptStateType.POST_PAK_CREATION)

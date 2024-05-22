@@ -30,7 +30,7 @@ class GameLaunchType(Enum):
     UBISOFT = 'ubisoft'
     
     
-class ScriptState(Enum):
+class ScriptStateType(Enum):
     All = 'all'
     NONE = 'none'
     INIT = 'init'

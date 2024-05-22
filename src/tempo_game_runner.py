@@ -2,6 +2,7 @@ import tempo_enums as enum
 from tempo_settings import settings
 import tempo_utilities as utilities
 from tempo_script_states import ScriptState
+from tempo_enums import ScriptStateType, GameLaunchType, ExecutionMode
 
 
 def run_game_exe():
@@ -9,8 +10,9 @@ def run_game_exe():
     launch_params = settings['game_info']['launch_params']
     for launch_param in launch_params:
         run_game_command = f'{run_game_command} {launch_param}'
-    utilities.run_app(run_game_command, enum.ExecutionMode.ASYNC)
-    ScriptState.set_script_state(enum.ScriptState.POST_GAME_LAUNCH)
+    utilities.run_app(run_game_command, ExecutionMode.ASYNC)
+    ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
+
 
 def run_game_steam():
     steam_exe = settings['game_info']['game_launcher_exe']
@@ -19,16 +21,16 @@ def run_game_steam():
     run_game_command = f'{steam_exe} -applaunch {steam_app_id}'
     for launch_param in launch_params:
         run_game_command = f'{run_game_command} {launch_param}'
-    utilities.run_app(run_game_command, enum.ExecutionMode.ASYNC)
-    ScriptState.set_script_state(enum.ScriptState.POST_GAME_LAUNCH)
+    utilities.run_app(run_game_command, ExecutionMode.ASYNC)
+    ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
 
 
 def run_game():
-    game_launch_type = enum.GameLaunchType
-    launch_type = game_launch_type(settings['game_info']['launch_type'])
-    if launch_type ==   game_launch_type.EXE:
+    ScriptState.set_script_state(ScriptStateType.PRE_GAME_LAUNCH)
+    launch_type = GameLaunchType(settings['game_info']['launch_type'])
+    if launch_type == GameLaunchType.EXE:
         run_game_exe()
-    elif launch_type == game_launch_type.STEAM:
+    elif launch_type == GameLaunchType.STEAM:
         run_game_steam()
     # elif launch_type == game_launch_type.EPIC:
     #     pass

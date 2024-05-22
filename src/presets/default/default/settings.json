@@ -23,8 +23,18 @@
   "process_kill_info": {
     "auto_close_game": true,
     "processes": [
-      {"process_name": "Fmodel.exe", "use_substring_check": false},
-      {"process_name": "Umodel", "use_substring_check": true}
+      {
+        "process_name": "Fmodel.exe",
+        "use_substring_check": false,
+        "check_length": true,
+        "script_state": "pre_packaging"
+      },
+      {
+        "process_name": "Umodel",
+        "use_substring_check": true,
+        "check_length": true,
+        "script_state": "pre_packaging"
+      }
     ]
   },
   "auto_move_windows": [
@@ -110,12 +120,12 @@
   ],
   "alt_exe_methods": [
     {
-      "use_alt_method": false,
+      "script_state": "post_game_launch",
       "alt_exe_path": "",
       "variable_args": []
     },
     {
-      "use_alt_method": false,
+      "script_state": "pre_packaging",
       "alt_exe_path": "",
       "variable_args": []
     }

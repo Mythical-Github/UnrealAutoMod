@@ -52,5 +52,4 @@ class Settings():
     windows.change_window_name(settings['general_info']['window_title'])
     auto_close_game = settings['process_kill_info']['auto_close_game']
     if auto_close_game:
-        game_process_name = utilities.get_process_name(settings['game_info']['game_exe_path'])
-        utilities.kill_process(game_process_name)
+        utilities.kill_process(utilities.get_game_process_name())

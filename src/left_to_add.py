@@ -14,48 +14,8 @@ logging
 
 functions to make
 expose certin things to the exe thing\
-ScriptState Logic
-repak packing
-loose file klogic
-unreal pak logic
 
-manually speicied has enum, all buit this all here etc,.,.. enuim
-allow multipel?
 
-ue_version_to_repak_version = {
-    "4.0": "2",
-    "4.1": "2",
-    "4.2": "2",
-    "4.3": "3",
-    "4.4": "3",
-    "4.5": "3",
-    "4.6": "3",
-    "4.7": "3",
-    "4.8": "3",
-    "4.9": "3",
-    "4.10": "3",
-    "4.11": "3",
-    "4.12": "3",
-    "4.13": "3",
-    "4.14": "3",
-    "4.15": "3",
-    "4.16": "4",
-    "4.17": "4",
-    "4.18": "4",
-    "4.19": "4",
-    "4.20": "5",
-    "4.21": "7",
-    "4.22": "8A",
-    "4.23": "8B",
-    "4.24": "8B",
-    "4.25": "9",
-    "4.26": "11",
-    "4.27": "11",
-    "5.0": "11",
-    "5.1": "11",
-    "5.2": "11",
-    "5.3": "11"
-}
 
 
 use_alt_pak_creation_method = json_data["alt_pak_creation_method"]["use_alt_method"]

@@ -1,7 +1,11 @@
 import time
 import threading
+import tempo_windows as windows
 import tempo_settings as settings
+import tempo_utilities as utilities
+from tempo_enums import ScriptStateType
 from tempo_script_states import routine_checks
+
 
 
 def is_constant_enum_used_in_config():
@@ -27,7 +31,7 @@ def constant_thread_runner(tick_rate=0.1):
         
 
 def constant_thread_logic():
-    routine_checks()
+    routine_checks(ScriptStateType.CONSTANT)
 
 
 def start_constant_thread():
@@ -35,6 +39,8 @@ def start_constant_thread():
         global constant_thread
         constant_thread = threading.Thread(target=constant_thread_runner, daemon=True)
         constant_thread.start()
+    else:
+        print('The constant thread was not used in the config, so it was never started')
 
 
 def game_monitor_thread_runner(tick_rate=0.1):
@@ -44,7 +50,20 @@ def game_monitor_thread_runner(tick_rate=0.1):
 
 
 def game_monitor_thread_logic():
-    pass
+    game_window_name = utilities.get_game_process_name()
+    print(f"Monitoring game window: {game_window_name}")
+    
+    while True:
+        try:
+            game_window = windows.get_window_by_title(game_window_name)
+            print(f"Game window '{game_window_name}' is still open.")
+
+        except ValueError:
+
+            print(f"Game window '{game_window_name}' has closed.")
+            break
+
+        time.sleep(1)
 
 
 def start_game_monitor_thread():

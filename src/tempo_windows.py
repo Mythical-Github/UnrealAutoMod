@@ -1,6 +1,7 @@
-import os
-import screeninfo
 import pygetwindow
+from os import system
+from screeninfo import get_monitors
+from tempo_utilities import get_game_process_name
 
 
 def does_window_exist(window_title, use_substring_check=False):
@@ -35,7 +36,7 @@ def get_windows_by_title(window_title, use_substring_check=False):
 def get_window_by_title(window_title, use_substring_check=False):
     windows = get_windows_by_title(window_title, use_substring_check)
     if not windows:
-        raise ValueError(f"No windows found with title '{window_title}'")
+        raise ValueError(f'No windows found with title "{window_title}"')
     return windows[0]
 
 
@@ -52,12 +53,12 @@ def close_window(window):
 
 
 def move_window_to_moniter(window, monitor_index=0):
-    screen_info = screeninfo.get_monitors()
+    screen_info = get_monitors()
     if monitor_index < len(screen_info):
         monitor = screen_info[monitor_index]
         window.moveTo(monitor.x, monitor.y)
     else:
-        print("Invalid monitor index.")
+        print('Invalid monitor index.')
 
 
 def set_window_size(window, width, height):
@@ -65,8 +66,8 @@ def set_window_size(window, width, height):
 
 
 def change_window_name(window_name):
-    os.system(f'title {window_name}')
+    system(f'title {window_name}')
 
 
 def get_game_window():
-    pass
+    return get_window_by_title(get_game_process_name)

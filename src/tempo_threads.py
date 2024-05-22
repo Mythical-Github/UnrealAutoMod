@@ -51,11 +51,12 @@ def game_monitor_thread_runner(tick_rate=0.1):
 
 def game_monitor_thread_logic():
     game_window_name = utilities.get_game_process_name()
+    
     print(f"Monitoring game window: {game_window_name}")
     
     while True:
         try:
-            game_window = windows.get_window_by_title(game_window_name)
+            game_window = windows.get_game_window()
             print(f"Game window '{game_window_name}' is still open.")
 
         except ValueError:

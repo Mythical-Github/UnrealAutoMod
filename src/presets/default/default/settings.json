@@ -26,13 +26,13 @@
       {
         "process_name": "Fmodel.exe",
         "use_substring_check": false,
-        "check_length": true,
+        "timeout": 30,
         "script_state": "constant"
       },
       {
         "process_name": "Umodel",
         "use_substring_check": true,
-        "check_length": true,
+        "timeout": 30,
         "script_state": "constant"
       }
     ]

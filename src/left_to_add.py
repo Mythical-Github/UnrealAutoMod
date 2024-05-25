@@ -1,9 +1,5 @@
 
 
-def routine_checks():
-    alt_exe_check()
-    window_check()
-
 
 Later:
 Some games don't allow engine and game open at once

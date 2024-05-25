@@ -6,8 +6,6 @@ class WindowAction(Enum):
     MIN = 'min'
     MAX = 'max'
     MOVE = 'move'
-    MOVE_MIN = 'move_min'
-    MOVE_MAX = 'move_max'
     CLOSE = 'close'
 
 

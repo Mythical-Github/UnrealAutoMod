@@ -1,6 +1,7 @@
 import pygetwindow
 from os import system
 from screeninfo import get_monitors
+from tempo_enums import WindowAction
 from tempo_utilities import get_game_process_name
 
 
@@ -62,3 +63,11 @@ def change_window_name(window_name):
 
 def get_game_window():
     return get_window_by_title(get_game_process_name())
+
+
+def window_checks(state):
+    pass
+
+
+def get_is_window_enum_used_in_config(window_action):
+    pass

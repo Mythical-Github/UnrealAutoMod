@@ -1,10 +1,8 @@
 from tempo_settings import settings
-from tempo_windows import window_checks
 from tempo_enums import ScriptStateType
-from tempo_utilities import kill_processes
 
 
-def is_script_state_used_in_config(state):
+def is_script_state_used(state):
     if isinstance(settings, dict):
         if "process_kill_info" in settings:
             process_kill_info = settings.get("process_kill_info", {})
@@ -33,8 +31,11 @@ def is_script_state_used_in_config(state):
 
 
 def routine_checks(state):
-    if is_script_state_used_in_config(state):
+    f'routine checks for the {state} are running'
+    if is_script_state_used(state):
+        from tempo_utilities import kill_processes
         kill_processes(state)
+        from tempo_windows import window_checks
         window_checks(state)
 
 
@@ -46,5 +47,7 @@ class ScriptState():
         script_state = new_state
         print(f'Script State changed to {new_state}')
         routine_checks(new_state)
+        routine_checks(ScriptStateType.All)
+
     
-    set_script_state(ScriptStateType.INIT)
+    set_script_state(ScriptStateType.PRE_INIT)

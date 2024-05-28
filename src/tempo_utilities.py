@@ -7,6 +7,7 @@ import subprocess
 from msvcrt import getch
 import tempo_utilities as utilities
 from tempo_settings import settings
+from tempo_script_states import ScriptState
 from tempo_enums import PackagingDirType, ExecutionMode, ScriptStateType
 
 
@@ -62,16 +63,6 @@ def kill_processes(state):
             else:
                 proc_name = process_info['process_name']
                 utilities.kill_process(proc_name)
-
-
-def run_app(exe_path, exec_mode, args={}, working_dir=None):
-    command = exe_path
-    for arg in args:
-        command = f'{command} {arg}'
-    if exec_mode == ExecutionMode.SYNC:
-        subprocess.run(command, cwd=working_dir)
-    elif exec_mode == ExecutionMode.ASYNC:
-        subprocess.run(command, cwd=working_dir)
 
 
 def get_file_extensions(file_path):
@@ -145,7 +136,10 @@ def get_game_paks_dir():
 
 
 def get_win_dir_type():
-    if utilities.get_unreal_engine_version.startswith('5'):
+    engine_dir = settings['engine_info']['unreal_engine_dir']
+    ue_version = get_unreal_engine_version(engine_dir)
+    if ue_version.startswith('5'):
+        print('starts with 5')
         return PackagingDirType.WINDOWS
     else:
         return PackagingDirType.WINDOWS_NO_EDITOR
@@ -167,3 +161,58 @@ def get_do_files_have_same_hash(file_path_one, file_path_two):
 
 def get_game_window_title():
     return os.path.splitext(get_game_process_name())[0]
+
+
+def get_game_engine_path():
+    engine_dir = settings['engine_info']['unreal_engine_dir']
+    test = get_win_dir_type()
+    if test == PackagingDirType.WINDOWS_NO_EDITOR:
+        engine_path_suffix = '/Engine/Binaries/Win64/UE4Editor.exe'
+    else:
+        engine_path_suffix = '/Engine/Binaries/Win64/UnrealEditor.exe'
+    engine_exe = f'{engine_dir}{engine_path_suffix}'
+    return engine_exe
+
+
+def open_game_engine():
+    ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
+    run_app(get_game_engine_path(), ExecutionMode.ASYNC)
+    ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
+
+
+def close_game_engine():
+    ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_CLOSE)
+    if get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
+        game_engine_processes = get_processes_by_substring('UE4Editor')
+    else:
+        game_engine_processes = get_processes_by_substring('UnrealEditor')
+    for process_info in game_engine_processes:
+        kill_process(process_info['name'])
+    ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
+
+def is_toggle_engine_during_testing_in_use():
+    return settings['engine_info']['toggle_engine_during_testing']
+
+
+def run_app(exe_path, exec_mode, args={}, working_dir=None):
+    command = exe_path
+    for arg in args:
+        command = f'{command} {arg}'
+    print(command)
+    if exec_mode == ExecutionMode.SYNC:
+        subprocess.run(command, cwd=working_dir)
+    elif exec_mode == ExecutionMode.ASYNC:
+        subprocess.Popen(command, cwd=working_dir, start_new_session=True)
+
+
+def get_engine_window_title():
+    uproject_path = settings['engine_info']['unreal_project_file']
+    proc_name_prefix = get_process_name(uproject_path)[:-9]
+    proc_name_suffix = 'Unreal Editor'
+    engine_proc_name = f'{proc_name_prefix} - {proc_name_suffix}'
+    return engine_proc_name
+
+
+def get_engine_process_name():
+    exe_path = get_game_engine_path()
+    return get_process_name(exe_path)

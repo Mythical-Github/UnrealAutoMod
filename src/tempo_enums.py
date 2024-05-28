@@ -26,11 +26,13 @@ class GameLaunchType(Enum):
     BATTLE_NET = 'battle_net'
     ORIGIN = 'origin'
     UBISOFT = 'ubisoft'
+    OTHER = 'other'
     
     
 class ScriptStateType(Enum):
     All = 'all'
     NONE = 'none'
+    PRE_INIT = 'pre_init'
     INIT = 'init'
     POST_INIT = 'post_init'
     CONSTANT = 'constant'
@@ -42,7 +44,12 @@ class ScriptStateType(Enum):
     POST_PAK_MOVING = 'post_pak_moving'
     PRE_GAME_LAUNCH = 'pre_game_launch'
     POST_GAME_LAUNCH = 'post_game_launch'
+    PRE_GAME_CLOSE = 'pre_game_close'
     POST_GAME_CLOSE = 'post_game_close'
+    PRE_ENGINE_CLOSE = 'pre_engine_close'
+    POST_ENGINE_CLOSE = 'post_engine_close'
+    PRE_ENGINE_OPEN = 'pre_engine_open'
+    POST_ENGINE_OPEN = 'post_engine_open'
     
 
 class ExecutionMode(Enum):

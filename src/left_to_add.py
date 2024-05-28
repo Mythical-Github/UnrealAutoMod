@@ -1,24 +1,25 @@
+check window logic title is same for ue5 games
+
+logic for settings['engine_info']['fix_up_redirectors_on_proj_open']
+logic for settings['engine_info']['engine_launch_args']
+logic for PackingType enums
+logic for alt exe running
 
 
-
-Later:
-Some games don't allow engine and game open at once
-logging
-
-
-use_alt_pak_creation_method = json_data["alt_pak_creation_method"]["use_alt_method"]
-output_dir = json_data["paths"]["output_dir"]
-uproject = json_data["paths"]["unreal_project_file"]
-engine_dir = json_data["paths"]["unreal_engine_dir"]
-game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(json_data["paths"]["game_exe"])))))
-uproject_dir = os.path.dirname(os.path.abspath(json_data["paths"]["unreal_project_file"]))
-repak_pak_ver = json_data["repak_pak_ver"]
-repak_exe = json_data["paths"]["repak_exe"]
-packing_dir = f"{SCRIPT_DIR}/../data/{game_name}/{preset_name}/mod_packaging/temp"
-uproject_name = os.path.basename(uproject)[:-9]
-persistent_file_dir = f"{SCRIPT_DIR}/../data/{game_name}/{preset_name}/mod_packaging/persistent_files"
-mod_list_max = (len(json_data["mod_pak_list"]))
-output_content_dir = f"{output_dir}/{win_dir_type}/{uproject_name}/Content"
+def stuff():
+    use_alt_pak_creation_method = json_data["alt_pak_creation_method"]["use_alt_method"]
+    output_dir = json_data["paths"]["output_dir"]
+    uproject = json_data["paths"]["unreal_project_file"]
+    engine_dir = json_data["paths"]["unreal_engine_dir"]
+    game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(json_data["paths"]["game_exe"])))))
+    uproject_dir = os.path.dirname(os.path.abspath(json_data["paths"]["unreal_project_file"]))
+    repak_pak_ver = json_data["repak_pak_ver"]
+    repak_exe = json_data["paths"]["repak_exe"]
+    packing_dir = f"{SCRIPT_DIR}/../data/{game_name}/{preset_name}/mod_packaging/temp"
+    uproject_name = os.path.basename(uproject)[:-9]
+    persistent_file_dir = f"{SCRIPT_DIR}/../data/{game_name}/{preset_name}/mod_packaging/persistent_files"
+    mod_list_max = (len(json_data["mod_pak_list"]))
+    output_content_dir = f"{output_dir}/{win_dir_type}/{uproject_name}/Content"
 
 
 def copy_main_files_cooked():
@@ -198,5 +199,4 @@ def test_mods_both():
     copy_persistent_files()
     copy_manually_specified_files()
     make_and_move_paks()
-    copy_pak_files_paks()
-
+    copy_pak_files_paks()   

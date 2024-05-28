@@ -11,7 +11,6 @@ def run_game_exe():
     for launch_param in launch_params:
         run_game_command = f'{run_game_command} {launch_param}'
     utilities.run_app(run_game_command, ExecutionMode.ASYNC)
-    ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
 
 
 def run_game_steam():
@@ -22,7 +21,6 @@ def run_game_steam():
     for launch_param in launch_params:
         run_game_command = f'{run_game_command} {launch_param}'
     utilities.run_app(run_game_command, ExecutionMode.ASYNC)
-    ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
 
 
 def run_game():

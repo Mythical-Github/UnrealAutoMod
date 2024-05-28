@@ -6,13 +6,17 @@ from tempo_utilities import get_game_process_name
 
 
 def does_window_exist(window_title, use_substring_check=False):
-    if use_substring_check:
-        all_window_titles = pygetwindow.getAllTitles()
-        matched_windows = [window for window in all_window_titles if window_title in window]
-        return len(matched_windows) > 0
-    else:
-        all_window_titles = pygetwindow.getWindowsWithTitle(window_title)
-        return len(all_window_titles) > 0
+    try:
+        if use_substring_check:
+            all_window_titles = pygetwindow.getAllTitles()
+            matched_windows = [window for window in all_window_titles if window_title in window]
+            return len(matched_windows) > 0
+        else:
+            all_window_titles = pygetwindow.getWindowsWithTitle(window_title)
+            return len(all_window_titles) > 0
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return False
 
 
 def get_windows_by_title(window_title, use_substring_check=False):

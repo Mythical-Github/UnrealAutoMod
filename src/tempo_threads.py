@@ -3,14 +3,14 @@ import threading
 import tempo_windows as windows
 import tempo_utilities as utilities
 from tempo_enums import ScriptStateType
-from tempo_script_states import ScriptState, routine_checks, is_script_state_used_in_config
+from tempo_script_states import ScriptState, routine_checks, is_script_state_used
 
 
 def constant_thread_runner(tick_rate=0.1):
-    while True:
+    while run_constant_thread:
         time.sleep(tick_rate)
         constant_thread_logic()
-        
+
 
 def constant_thread_logic():
     routine_checks(ScriptStateType.CONSTANT)
@@ -18,16 +18,23 @@ def constant_thread_logic():
 
 def start_constant_thread():
     global constant_thread
+    global run_constant_thread
+    run_constant_thread = True
     constant_thread = threading.Thread(target=constant_thread_runner, daemon=True)
     constant_thread.start()
-    print('constant thread started')
 
 
 def constant_thread():
-    if is_script_state_used_in_config(ScriptStateType.CONSTANT):
+    if is_script_state_used(ScriptStateType.CONSTANT):
         start_constant_thread()
+        print('constant thread started')
     else:
-        print('constant thread not used in config, so not activated')        
+        print('constant thread not used in config, so not activated')         
+
+
+def stop_constant_thread():
+    global run_constant_thread
+    run_constant_thread = False
 
 
 def game_monitor_thread_runner(tick_rate=0.1):
@@ -87,10 +94,7 @@ def stop_game_monitor_thread():
 
 
 def game_moniter_thread():
-    if is_script_state_used_in_config(ScriptStateType.POST_GAME_CLOSE):
-        start_game_monitor_thread()
-        print('game monitering thread started')
-        game_monitor_thread.join()
-        print('game monitering thread ended')
-    else:
-        print('game monitering thread not used in config, so not activated')    
+    start_game_monitor_thread()
+    print('game monitering thread started')
+    game_monitor_thread.join()
+    print('game monitering thread ended')  

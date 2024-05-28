@@ -6,6 +6,9 @@
   "engine_info": {
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/InterposePrivate/unreal_project/Interpose/KevinSpel.uproject",
+    "toggle_engine_during_testing": true,
+    "fix_up_redirectors_on_engine_open": false,
+    "engine_launch_args": [],
     "override_automatic_version_finding": false,
     "unreal_engine_major_version": "4",
     "unreal_engine_minor_version": "22"
@@ -20,49 +23,6 @@
       "-NOSPLASH"
     ]
   },
-  "process_kill_info": {
-    "auto_close_game": true,
-    "processes": [
-      {
-        "process_name": "Fmodel.exe",
-        "use_substring_check": false,
-        "timeout": 30,
-        "script_state": "constant"
-      },
-      {
-        "process_name": "Umodel",
-        "use_substring_check": true,
-        "timeout": 30,
-        "script_state": "constant"
-      }
-    ]
-  },
-  "auto_move_windows": [
-    {
-      "window_name": "UE4SS Debugging Tools", 
-      "use_substring_check": true,
-      "window_behaviour": "move",
-      "script_state": "all",
-      "timeout": 15,
-      "monitor": 1,
-      "resolution": {
-        "x": 1525,
-        "y": 850
-      }
-    },
-    {
-      "window_name": "Test Window One", 
-      "use_substring_check": true,
-      "window_behaviour": "minimize",
-      "script_state": "post_game_close",
-      "timeout": null,
-      "monitor": null,
-      "resolution": {
-        "x": null,
-        "y": null
-      }
-    }
-  ],
   "alt_uproject_name_in_game_dir": {
     "use_alt_method": false,
     "name": "Game"
@@ -120,14 +80,57 @@
   ],
   "alt_exe_methods": [
     {
-      "script_state": "post_game_launch",
+      "script_state": "",
       "alt_exe_path": "",
       "variable_args": []
     },
     {
-      "script_state": "pre_packaging",
+      "script_state": "",
       "alt_exe_path": "",
       "variable_args": []
+    }
+  ],
+  "process_kill_info": {
+    "auto_close_game": true,
+    "processes": [
+      {
+        "process_name": "Fmodel.exe",
+        "use_substring_check": false,
+        "timeout": 30,
+        "script_state": "constant"
+      },
+      {
+        "process_name": "Umodel",
+        "use_substring_check": true,
+        "timeout": 30,
+        "script_state": "post_game_close"
+      }
+    ]
+  },
+  "auto_move_windows": [
+    {
+      "window_name": "UE4SS Debugging Tools", 
+      "use_substring_check": true,
+      "window_behaviour": "move",
+      "script_state": "",
+      "timeout": 15,
+      "monitor": 1,
+      "resolution": {
+        "x": 1525,
+        "y": 850
+      }
+    },
+    {
+      "window_name": "Test Window One", 
+      "use_substring_check": true,
+      "window_behaviour": "minimize",
+      "script_state": "",
+      "timeout": null,
+      "monitor": null,
+      "resolution": {
+        "x": null,
+        "y": null
+      }
     }
   ]
 }

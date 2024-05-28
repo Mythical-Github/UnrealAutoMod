@@ -1,8 +1,8 @@
 import os
 import sys
 import json
-import tempo_windows as windows
-import tempo_utilities as utilities
+import windows as windows
+import utilities as utilities
 
 
 def set_script_dir():

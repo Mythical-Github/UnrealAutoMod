@@ -1,9 +1,9 @@
 import time
 import threading
-import tempo_windows as windows
-import tempo_utilities as utilities
-from tempo_enums import ScriptStateType
-from tempo_script_states import ScriptState
+import windows as windows
+import utilities as utilities
+from enums import ScriptStateType
+from script_states import ScriptState
 
 
 def engine_moniter_thread():

@@ -1,10 +1,10 @@
-check window logic title is same for ue5 games
 
-logic for settings['engine_info']['fix_up_redirectors_on_proj_open']
 logic for settings['engine_info']['engine_launch_args']
-logic for PackingType enums
+logic for the routine checks window checks
 logic for alt exe running
-
+logic for PackingType enums
+logic for pak making, moving, and cleanup functions
+    
 
 def stuff():
     use_alt_pak_creation_method = json_data["alt_pak_creation_method"]["use_alt_method"]
@@ -200,3 +200,11 @@ def test_mods_both():
     copy_manually_specified_files()
     make_and_move_paks()
     copy_pak_files_paks()   
+
+
+LATER:
+settings configurator
+log file creation
+in editor gui editor utility widget
+C++ editor widget
+logic for settings['engine_info']['fix_up_redirectors_on_proj_open']

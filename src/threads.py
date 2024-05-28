@@ -1,9 +1,9 @@
 import time
 import threading
-import tempo_windows as windows
-import tempo_utilities as utilities
-from tempo_enums import ScriptStateType
-from tempo_script_states import ScriptState, routine_checks, is_script_state_used
+import windows as windows
+import utilities as utilities
+from enums import ScriptStateType
+from script_states import ScriptState, routine_checks, is_script_state_used
 
 
 def constant_thread_runner(tick_rate=0.1):

@@ -5,10 +5,10 @@ import psutil
 import hashlib
 import subprocess
 from msvcrt import getch
-import tempo_utilities as utilities
-from tempo_settings import settings
-from tempo_script_states import ScriptState
-from tempo_enums import PackagingDirType, ExecutionMode, ScriptStateType
+import utilities as utilities
+from settings import settings
+from script_states import ScriptState
+from enums import PackagingDirType, ExecutionMode, ScriptStateType
 
 
 def check_file_exists(file_path):
@@ -189,6 +189,7 @@ def close_game_engine():
     for process_info in game_engine_processes:
         kill_process(process_info['name'])
     ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
+
 
 def is_toggle_engine_during_testing_in_use():
     return settings['engine_info']['toggle_engine_during_testing']

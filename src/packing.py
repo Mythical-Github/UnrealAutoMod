@@ -1,8 +1,8 @@
 import os
-from tempo_enums import PackingType
-from tempo_settings import settings
-from tempo_enums import ScriptStateType
-from tempo_script_states import ScriptState
+from enums import PackingType
+from settings import settings
+from enums import ScriptStateType
+from script_states import ScriptState
 
 
 class populate_queue_type_check_dict():

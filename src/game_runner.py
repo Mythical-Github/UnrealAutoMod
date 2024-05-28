@@ -1,8 +1,8 @@
-import tempo_enums as enum
-from tempo_settings import settings
-import tempo_utilities as utilities
-from tempo_script_states import ScriptState
-from tempo_enums import ScriptStateType, GameLaunchType, ExecutionMode
+import enums as enum
+from settings import settings
+import utilities as utilities
+from script_states import ScriptState
+from enums import ScriptStateType, GameLaunchType, ExecutionMode
 
 
 def run_game_exe():

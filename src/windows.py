@@ -1,8 +1,8 @@
 import pygetwindow
 from os import system
 from screeninfo import get_monitors
-from tempo_enums import WindowAction
-from tempo_utilities import get_game_process_name
+from enums import WindowAction
+from utilities import get_game_process_name
 
 
 def does_window_exist(window_title, use_substring_check=False):

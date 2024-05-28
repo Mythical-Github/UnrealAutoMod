@@ -1,5 +1,5 @@
-from tempo_settings import settings
-from tempo_enums import ScriptStateType
+from settings import settings
+from enums import ScriptStateType
 
 
 def is_script_state_used(state):
@@ -33,9 +33,9 @@ def is_script_state_used(state):
 def routine_checks(state):
     f'routine checks for the {state} are running'
     if is_script_state_used(state):
-        from tempo_utilities import kill_processes
+        from utilities import kill_processes
         kill_processes(state)
-        from tempo_windows import window_checks
+        from windows import window_checks
         window_checks(state)
 
 

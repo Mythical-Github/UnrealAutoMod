@@ -1,7 +1,15 @@
 
-logic for the routine checks alt exe running
+make sure packaging steps aren't ran unless they're used in the config
+use the queue for the above thing
 logic for PackingType enums
 logic for pak making, moving, and cleanup functions
+
+loose file
+unreal pak
+engine pak
+repak
+
+
 
 
 def stuff():

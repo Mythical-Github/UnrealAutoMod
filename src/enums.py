@@ -30,12 +30,13 @@ class GameLaunchType(Enum):
     
     
 class ScriptStateType(Enum):
-    All = 'all'
     NONE = 'none'
+    PRE_All = 'pre_all'
+    POST_All = 'post_all'
+    CONSTANT = 'constant'
     PRE_INIT = 'pre_init'
     INIT = 'init'
     POST_INIT = 'post_init'
-    CONSTANT = 'constant'
     PRE_PACKAGING = 'pre_packaging'
     POST_PACKAGING = 'post_packaging'
     PRE_PAK_CREATION = 'pre_pak_creation'

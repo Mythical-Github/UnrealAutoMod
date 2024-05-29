@@ -54,7 +54,8 @@ class ScriptState():
         routine_checks(new_state)
         # calling this on preinit causes problems so will avoid for now
         if not new_state == ScriptStateType.PRE_INIT:
-            routine_checks(ScriptStateType.All)
+            routine_checks(ScriptStateType.PRE_All)
+            routine_checks(ScriptStateType.POST_All)
 
     
     set_script_state(ScriptStateType.PRE_INIT)

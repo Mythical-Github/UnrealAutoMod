@@ -209,12 +209,12 @@ def run_app(exe_path, exec_mode, args={}, working_dir=None):
     command = exe_path
     for arg in args:
         command = f'{command} {arg}'
-    print(command)
+    print(f'{command} was ran with {exec_mode} enum')
     if exec_mode == ExecutionMode.SYNC:
         subprocess.run(command, cwd=working_dir)
     elif exec_mode == ExecutionMode.ASYNC:
         subprocess.Popen(command, cwd=working_dir, start_new_session=True)
-
+    
 
 def get_engine_window_title():
     uproject_path = settings['engine_info']['unreal_project_file']

@@ -6,7 +6,7 @@
   "engine_info": {
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/InterposePrivate/unreal_project/Interpose/KevinSpel.uproject",
-    "toggle_engine_during_testing": true,
+    "toggle_engine_during_testing": false,
     "engine_launch_args": [],
     "fix_up_redirectors_on_engine_open": false,
     "override_automatic_version_finding": false,
@@ -43,7 +43,8 @@
       "mod_name": "EnginePakExample_P",
       "pak_dir_structure": "LogicMods",
       "pak_chunk_num": 1,
-      "packing_type": "engine_pak",
+      "packing_type": "engine",
+      "compression_type": "none",
       "is_enabled": true,
       "manually_specified_assets": []
     },
@@ -52,6 +53,7 @@
       "pak_dir_structure": "~mods",
       "pak_chunk_num": 2,
       "packing_type": "unreal_pak",
+      "compression_type": "none",
       "is_enabled": true,
       "manually_specified_assets": [
         "asset_path", "Content/Meshes/Box"
@@ -62,6 +64,7 @@
       "pak_dir_structure": "interpose_mods/main",
       "pak_chunk_num": 3,
       "packing_type": "repak",
+      "compression_type": "none",
       "is_enabled": false,
       "manually_specified_assets": [
         "tree", "Content/Mods/ModName"
@@ -72,7 +75,8 @@
       "pak_dir_structure": null,
       "pak_chunk_num": null,
       "packing_type": "loose",
-      "is_enabled": false,
+      "compression_type": null,
+      "is_enabled": true,
       "manually_specified_assets": [
         "tree", "Content/Mods/ModName"
       ]

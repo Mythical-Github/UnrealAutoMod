@@ -1,6 +1,8 @@
 
-function to check what packing types are used
-queue to run logic based on packing types used
+
+def move_window(window: Win32Window):
+    pass
+
 
 packing logic for the following:
     loose file
@@ -214,3 +216,4 @@ logic for settings['engine_info']['fix_up_redirectors_on_proj_open']
 engine close enums fire even when engine waszn't actually closed
 timeouts to various functions that use them in the settings json
 make sure packaging steps aren't ran unless they're used in the config
+cleanup base command logic for packing

@@ -1,18 +1,18 @@
 import os
-from enums import PackingType
 from settings import settings
-from enums import ScriptStateType
 from script_states import ScriptState
+from enums import PackingType, ScriptStateType, get_enum_from_val
 
 
 class PopulateQueueTypeCheckDict():
-    global queue_type_check_dict
-    queue_type_check_dict = {}
-    packing_types = list(PackingType)
+    global queue_types
+    queue_types = []
 
-    for packing_type in packing_types:
-        should_include = settings.get('packing_types', {}).get(packing_type.name.lower(), False)
-        queue_type_check_dict[packing_type] = should_include
+    for packing_type in list(PackingType):
+        for mod_pak_info in settings['mod_pak_info']: 
+            queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
+            if not queue_type in queue_types:
+                queue_types.append(queue_type)
 
 
 def set_packing_type_true(packing_type_enum: PackingType):
@@ -66,19 +66,21 @@ def test_mods(mod_names):
     pass
 
 
-def make_mods(packing_type_enum: PackingType):
-    if packing_type_enum == PackingType.ENGINE:
+def make_mods():
+    global queue_types
+    if PackingType.ENGINE in queue_types:
         handle_engine_logic()
-    elif packing_type_enum == PackingType.UNREAL_PAK:
+    elif PackingType.UNREAL_PAK in queue_types:
         handle_unreal_pak_logic()
-    elif packing_type_enum == PackingType.REPAK:
+    elif PackingType.REPAK in queue_types:
         handle_repak_logic()
-    elif packing_type_enum == PackingType.LOOSE:
+    elif PackingType.LOOSE in queue_types:
         handle_loose_logic()
-    elif packing_type_enum == PackingType.ALT_EXE:
-        handle_alt_exe_logic()
-    else:
-        raise ValueError('Unsupported packing_type specified in the settings.json')
+
+    pre_packaging()
+    post_packaging()
+    pre_pak_creation()
+    post_pak_creation()
 
 
 def handle_engine_logic():

@@ -1,6 +1,6 @@
 import os
 from enums import PackingType
-from settings import settings
+from tempo_settings import settings
 from enums import ScriptStateType
 from script_states import ScriptState
 

@@ -1,8 +1,8 @@
 import pygetwindow
 from os import system
 from screeninfo import get_monitors
-from enums import WindowAction
 from utilities import get_game_process_name
+from enums import WindowAction, ScriptStateType, get_enum_member_from_value
 
 
 def does_window_exist(window_title, use_substring_check=False):
@@ -69,9 +69,30 @@ def get_game_window():
     return get_window_by_title(get_game_process_name())
 
 
-def window_checks(state):
+def move_window(window):
     pass
 
 
-def get_is_window_enum_used_in_config(window_action):
-    pass
+# unfinished
+def window_checks(current_state: WindowAction):
+    from tempo_settings import settings
+    window_settings = settings['auto_move_windows']
+    for window in window_settings:
+        settings_state = get_enum_member_from_value(ScriptStateType, window['script_state'])
+        if settings_state == current_state:
+            title = window['window_name']
+            windows_to_change = get_windows_by_title(title)
+            for window_to_change in windows_to_change:
+                way_to_change_window = get_enum_member_from_value(WindowAction, window['window_behaviour'])
+                if way_to_change_window == WindowAction.MAX:
+                    maximize_window(window_to_change)
+                elif way_to_change_window == WindowAction.MIN:
+                    minimize_window(window_to_change)
+                elif way_to_change_window == WindowAction.CLOSE:
+                    close_window(window_to_change)
+                elif way_to_change_window == WindowAction.MOVE:
+                    move_window(window_to_change)
+                elif way_to_change_window == WindowAction.NONE:
+                    pass
+                else:
+                    print('invalid window behaviour specified in settings')

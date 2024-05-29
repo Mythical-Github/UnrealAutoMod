@@ -7,8 +7,8 @@
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/InterposePrivate/unreal_project/Interpose/KevinSpel.uproject",
     "toggle_engine_during_testing": true,
-    "fix_up_redirectors_on_engine_open": false,
     "engine_launch_args": [],
+    "fix_up_redirectors_on_engine_open": false,
     "override_automatic_version_finding": false,
     "unreal_engine_major_version": "4",
     "unreal_engine_minor_version": "22"
@@ -80,13 +80,15 @@
   ],
   "alt_exe_methods": [
     {
-      "script_state": "",
-      "alt_exe_path": "",
+      "script_state": "pre_game_launch",
+      "alt_exe_path": "C:/modding/unreal_engine/Umodel/umodel.exe",
+      "execution_mode": "async",
       "variable_args": []
     },
     {
-      "script_state": "",
-      "alt_exe_path": "",
+      "script_state": "post_game_launch",
+      "alt_exe_path": "C:/modding/unreal_engine/Umodel/umodel.exe",
+      "execution_mode": "async",
       "variable_args": []
     }
   ],
@@ -103,16 +105,16 @@
         "process_name": "Umodel",
         "use_substring_check": true,
         "timeout": 30,
-        "script_state": "post_game_close"
+        "script_state": "all"
       }
     ]
   },
   "auto_move_windows": [
     {
-      "window_name": "UE4SS Debugging Tools", 
+      "window_name": "move_test_window", 
       "use_substring_check": true,
       "window_behaviour": "move",
-      "script_state": "",
+      "script_state": "all",
       "timeout": 15,
       "monitor": 1,
       "resolution": {
@@ -121,10 +123,22 @@
       }
     },
     {
-      "window_name": "Test Window One", 
+      "window_name": "min_test_window", 
       "use_substring_check": true,
-      "window_behaviour": "minimize",
-      "script_state": "",
+      "window_behaviour": "min",
+      "script_state": "constant",
+      "timeout": null,
+      "monitor": null,
+      "resolution": {
+        "x": null,
+        "y": null
+      }
+    },
+    {
+      "window_name": "max_test_window", 
+      "use_substring_check": true,
+      "window_behaviour": "max",
+      "script_state": "post_game_launch",
       "timeout": null,
       "monitor": null,
       "resolution": {

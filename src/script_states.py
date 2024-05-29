@@ -1,5 +1,5 @@
-from settings import settings
 from enums import ScriptStateType
+from tempo_settings import settings
 
 
 def is_script_state_used(state):
@@ -31,12 +31,17 @@ def is_script_state_used(state):
 
 
 def routine_checks(state):
-    f'routine checks for the {state} are running'
+    if not state == ScriptStateType.CONSTANT:
+        print(f'routine checks for the {state} are running')
     if is_script_state_used(state):
         from utilities import kill_processes
         kill_processes(state)
         from windows import window_checks
         window_checks(state)
+        from alt_exe_runner import alt_exe_checks
+        alt_exe_checks(state)
+    if not state == ScriptStateType.CONSTANT:
+        print(f'routine checks for the {state} finished')
 
 
 class ScriptState():
@@ -47,7 +52,9 @@ class ScriptState():
         script_state = new_state
         print(f'Script State changed to {new_state}')
         routine_checks(new_state)
-        routine_checks(ScriptStateType.All)
+        # calling this on preinit causes problems so will avoid for now
+        if not new_state == ScriptStateType.PRE_INIT:
+            routine_checks(ScriptStateType.All)
 
     
     set_script_state(ScriptStateType.PRE_INIT)

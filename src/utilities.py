@@ -3,10 +3,10 @@ import sys
 import json
 import psutil
 import hashlib
+import utilities
 import subprocess
 from msvcrt import getch
-import utilities as utilities
-from settings import settings
+from tempo_settings import settings
 from script_states import ScriptState
 from enums import PackagingDirType, ExecutionMode, ScriptStateType
 
@@ -145,6 +145,14 @@ def get_win_dir_type():
         return PackagingDirType.WINDOWS_NO_EDITOR
 
 
+def is_game_ue5():
+    return get_win_dir_type() == PackagingDirType.WINDOWS
+
+
+def is_game_ue4():
+    return get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR
+
+
 def get_file_hash(file_path):
     hasher = hashlib.sha256()
     with open(file_path, 'rb') as f:
@@ -176,7 +184,9 @@ def get_game_engine_path():
 
 def open_game_engine():
     ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
-    run_app(get_game_engine_path(), ExecutionMode.ASYNC)
+    command = get_game_engine_path()
+    args = settings['engine_info']['engine_launch_args']
+    run_app(command, ExecutionMode.ASYNC, args)
     ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
 
 

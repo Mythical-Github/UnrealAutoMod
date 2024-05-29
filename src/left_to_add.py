@@ -1,10 +1,8 @@
 
-logic for settings['engine_info']['engine_launch_args']
-logic for the routine checks window checks
-logic for alt exe running
+logic for the routine checks alt exe running
 logic for PackingType enums
 logic for pak making, moving, and cleanup functions
-    
+
 
 def stuff():
     use_alt_pak_creation_method = json_data["alt_pak_creation_method"]["use_alt_method"]
@@ -208,3 +206,5 @@ log file creation
 in editor gui editor utility widget
 C++ editor widget
 logic for settings['engine_info']['fix_up_redirectors_on_proj_open']
+engine close enums fire even when engine waszn't actually closed
+timeouts to various functions that use them in the settings json

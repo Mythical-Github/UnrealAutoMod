@@ -98,3 +98,10 @@ class UnrealModTreeType(Enum):
 class FileInclusionType(Enum):
     ASSET_PATH = 'asset_path' # Takes the path and gets all files regardless of extension and includes them
     TREE = 'tree' # Takes supplied dir, and traverses it all, including every file
+
+
+def get_enum_member_from_value(enum, value):
+    for member in enum:
+        if member.value == value:
+            return member
+    return None

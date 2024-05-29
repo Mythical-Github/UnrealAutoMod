@@ -1,15 +1,12 @@
 
-make sure packaging steps aren't ran unless they're used in the config
-use the queue for the above thing
-logic for PackingType enums
-logic for pak making, moving, and cleanup functions
+function to check what packing types are used
+queue to run logic based on packing types used
 
-loose file
-unreal pak
-engine pak
-repak
-
-
+packing logic for the following:
+    loose file
+    unreal pak
+    engine pak
+    repak
 
 
 def stuff():
@@ -216,3 +213,4 @@ C++ editor widget
 logic for settings['engine_info']['fix_up_redirectors_on_proj_open']
 engine close enums fire even when engine waszn't actually closed
 timeouts to various functions that use them in the settings json
+make sure packaging steps aren't ran unless they're used in the config

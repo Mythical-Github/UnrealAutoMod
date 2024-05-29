@@ -6,7 +6,7 @@ from enums import ScriptStateType
 from script_states import ScriptState, routine_checks, is_script_state_used
 
 
-def constant_thread_runner(tick_rate=0.1):
+def constant_thread_runner(tick_rate: float = 0.1):
     while run_constant_thread:
         time.sleep(tick_rate)
         constant_thread_logic()
@@ -37,7 +37,7 @@ def stop_constant_thread():
     run_constant_thread = False
 
 
-def game_monitor_thread_runner(tick_rate=0.1):
+def game_monitor_thread_runner(tick_rate: float = 0.1):
     while run_monitoring_thread:
         time.sleep(tick_rate)
         game_monitor_thread_logic()

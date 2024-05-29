@@ -5,7 +5,7 @@ from utilities import get_game_process_name
 from enums import WindowAction, ScriptStateType, get_enum_member_from_value
 
 
-def does_window_exist(window_title, use_substring_check=False):
+def does_window_exist(window_title: str, use_substring_check: bool = False) -> bool:
     try:
         if use_substring_check:
             all_window_titles = pygetwindow.getAllTitles()
@@ -19,7 +19,7 @@ def does_window_exist(window_title, use_substring_check=False):
         return False
 
 
-def get_windows_by_title(window_title, use_substring_check=False):
+def get_windows_by_title(window_title: str, use_substring_check: bool = False) -> list:
     if use_substring_check:
         all_windows = pygetwindow.getAllWindows()
         matched_windows = [window for window in all_windows if window_title in window.title]
@@ -29,26 +29,26 @@ def get_windows_by_title(window_title, use_substring_check=False):
         return matched_windows
 
 
-def get_window_by_title(window_title, use_substring_check=False):
+def get_window_by_title(window_title: str, use_substring_check: bool = False) -> pygetwindow.Win32Window:
     windows = get_windows_by_title(window_title, use_substring_check)
     if not windows:
         raise ValueError(f'No windows found with title "{window_title}"')
     return windows[0]
 
 
-def minimize_window(window):
+def minimize_window(window: pygetwindow.Win32Window):
     pygetwindow.Window.minimize(window)
 
 
-def maximize_window(window):
+def maximize_window(window: pygetwindow.Win32Window):
     pygetwindow.Window.maximize(window)
 
 
-def close_window(window):
+def close_window(window: pygetwindow.Win32Window):
     pygetwindow.Window.close(window)
 
 
-def move_window_to_moniter(window, monitor_index=0):
+def move_window_to_moniter(window: pygetwindow.Win32Window, monitor_index: int = 0):
     screen_info = get_monitors()
     if monitor_index < len(screen_info):
         monitor = screen_info[monitor_index]
@@ -57,25 +57,24 @@ def move_window_to_moniter(window, monitor_index=0):
         print('Invalid monitor index.')
 
 
-def set_window_size(window, width, height):
+def set_window_size(window: pygetwindow.Win32Window, width: int, height: int):
     window.size = (width, height)
 
 
-def change_window_name(window_name):
+def change_window_name(window_name: str):
     system(f'title {window_name}')
 
 
-def get_game_window():
+def get_game_window() -> pygetwindow.Win32Window:
     return get_window_by_title(get_game_process_name())
 
 
-def move_window(window):
+def move_window(window: pygetwindow.Win32Window):
     pass
 
 
-# unfinished
 def window_checks(current_state: WindowAction):
-    from tempo_settings import settings
+    from settings import settings
     window_settings = settings['auto_move_windows']
     for window in window_settings:
         settings_state = get_enum_member_from_value(ScriptStateType, window['script_state'])

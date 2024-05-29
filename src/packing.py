@@ -1,11 +1,11 @@
 import os
 from enums import PackingType
-from tempo_settings import settings
+from settings import settings
 from enums import ScriptStateType
 from script_states import ScriptState
 
 
-class populate_queue_type_check_dict():
+class PopulateQueueTypeCheckDict():
     global queue_type_check_dict
     queue_type_check_dict = {}
     packing_types = list(PackingType)
@@ -15,7 +15,7 @@ class populate_queue_type_check_dict():
         queue_type_check_dict[packing_type] = should_include
 
 
-def set_packing_type_true(packing_type_enum):
+def set_packing_type_true(packing_type_enum: PackingType):
     global queue_type_check_dict
     if packing_type_enum in queue_type_check_dict:
         queue_type_check_dict[packing_type_enum] = True
@@ -23,7 +23,7 @@ def set_packing_type_true(packing_type_enum):
         raise ValueError(f'{packing_type_enum} is not a valid packing type')
     
 
-def get_base_command():
+def get_base_command() -> str:
     output_dir = settings['general_info']['output_dir']
     uproject = settings['engine_info']['unreal_project_file']
     command_str = (
@@ -52,13 +52,13 @@ def package_uproject():
     run_proj_command(command)   
 
 
-def run_proj_command(command):
+def run_proj_command(command: str):
     engine_dir = settings['engine_info']['unreal_engine_dir']
     os.chdir(engine_dir)
     os.system(command)
 
 
-def test_mods_all(mod_names):
+def test_mods_all(mod_names: str):
     test_mods(mod_names)
 
 
@@ -66,7 +66,7 @@ def test_mods(mod_names):
     pass
 
 
-def make_mods(packing_type_enum):
+def make_mods(packing_type_enum: PackingType):
     if packing_type_enum == PackingType.ENGINE:
         handle_engine_logic()
     elif packing_type_enum == PackingType.UNREAL_PAK:

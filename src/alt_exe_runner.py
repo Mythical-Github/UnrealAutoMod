@@ -1,9 +1,9 @@
 from utilities import run_app
-from tempo_settings import settings
+from settings import settings
 from enums import ExecutionMode, ScriptStateType, get_enum_member_from_value
 
 
-def alt_exe_checks(script_state_type):
+def alt_exe_checks(script_state_type: ScriptStateType):
     alt_exe_methods = settings['alt_exe_methods']
     for alt_exe_method in alt_exe_methods:
         value = alt_exe_method['script_state']

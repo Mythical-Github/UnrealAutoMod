@@ -1,5 +1,5 @@
 import enums as enum
-from tempo_settings import settings
+from settings import settings
 import utilities as utilities
 from script_states import ScriptState
 from enums import ScriptStateType, GameLaunchType, ExecutionMode

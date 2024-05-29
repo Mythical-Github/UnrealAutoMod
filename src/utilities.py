@@ -6,32 +6,32 @@ import hashlib
 import utilities
 import subprocess
 from msvcrt import getch
-from tempo_settings import settings
+from settings import settings
 from script_states import ScriptState
 from enums import PackagingDirType, ExecutionMode, ScriptStateType
 
 
-def check_file_exists(file_path):
+def check_file_exists(file_path: str) -> bool:
     if not os.path.exists(file_path):
         raise FileNotFoundError(f'Settings file "{file_path}" not found.')
 
 
-def get_process_name(exe_path):
+def get_process_name(exe_path: str) -> str:
     filename = os.path.basename(exe_path)
     return filename
 
 
-def get_game_process_name():
+def get_game_process_name() -> str:
     process = settings['game_info']['game_exe_path']
     return get_process_name(process)
 
 
-def kill_process(process_name):
+def kill_process(process_name: str):
     if is_process_running(process_name):
         os.system(f'taskkill /f /im {process_name}')
 
 
-def is_process_running(process_name):
+def is_process_running(process_name: str) -> bool:
     for proc in psutil.process_iter():
         try:
             if process_name.lower() in proc.name().lower():
@@ -41,13 +41,13 @@ def is_process_running(process_name):
     return False
 
 
-def get_processes_by_substring(substring):
+def get_processes_by_substring(substring: str) -> list:
     all_processes = psutil.process_iter(['pid', 'name'])
     matching_processes = [proc.info for proc in all_processes if substring.lower() in proc.info['name'].lower()]
     return matching_processes
 
 
-def kill_processes(state):
+def kill_processes(state: ScriptStateType):
     process_to_kill_info = settings['process_kill_info']['processes']
     current_state = state.value if isinstance(state, ScriptStateType) else state
 
@@ -65,7 +65,7 @@ def kill_processes(state):
                 utilities.kill_process(proc_name)
 
 
-def get_file_extensions(file_path):
+def get_file_extensions(file_path: str) -> list:
     directory, file_name = os.path.split(file_path)
     if not os.path.exists(directory):
         print(f'Error: Directory "{directory}" does not exist.')
@@ -95,7 +95,7 @@ Available SCRIPT_ARGs:
     sys.exit(1)
 
 
-def get_unreal_engine_version(engine_path):
+def get_unreal_engine_version(engine_path: str) -> str:
     override_automatic_version_finding = settings['engine_info']['override_automatic_version_finding']
     if override_automatic_version_finding:
         unreal_engine_major_version = settings['engine_info']['unreal_engine_major_version']
@@ -111,7 +111,7 @@ def get_unreal_engine_version(engine_path):
             return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'
 
 
-def get_is_game_iostore():
+def get_is_game_iostore() -> bool:
     is_game_iostore = False
     file_extensions = utilities.get_file_extensions(get_game_paks_dir())
     for file_extension in file_extensions:
@@ -122,7 +122,7 @@ def get_is_game_iostore():
     return is_game_iostore
 
 
-def get_game_paks_dir():
+def get_game_paks_dir() -> str:
     game_exe_path = settings['game_info']['game_exe_path']
     game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(game_exe_path)))))
     uproject = settings['engine_info']['unreal_project_file']
@@ -135,7 +135,7 @@ def get_game_paks_dir():
     return dir
 
 
-def get_win_dir_type():
+def get_win_dir_type() -> PackagingDirType:
     engine_dir = settings['engine_info']['unreal_engine_dir']
     ue_version = get_unreal_engine_version(engine_dir)
     if ue_version.startswith('5'):
@@ -145,15 +145,15 @@ def get_win_dir_type():
         return PackagingDirType.WINDOWS_NO_EDITOR
 
 
-def is_game_ue5():
+def is_game_ue5() -> bool:
     return get_win_dir_type() == PackagingDirType.WINDOWS
 
 
-def is_game_ue4():
+def is_game_ue4() -> bool:
     return get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR
 
 
-def get_file_hash(file_path):
+def get_file_hash(file_path: str) -> str:
     hasher = hashlib.sha256()
     with open(file_path, 'rb') as f:
         for chunk in iter(lambda: f.read(4096), b''):
@@ -161,17 +161,17 @@ def get_file_hash(file_path):
     return hasher.hexdigest()
 
 
-def get_do_files_have_same_hash(file_path_one, file_path_two):
+def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
     hash_one = get_file_hash(file_path_one)
     hash_two = get_file_hash(file_path_two)
     return hash_one == hash_two
 
 
-def get_game_window_title():
+def get_game_window_title() -> str:
     return os.path.splitext(get_game_process_name())[0]
 
 
-def get_game_engine_path():
+def get_game_engine_path() -> str:
     engine_dir = settings['engine_info']['unreal_engine_dir']
     test = get_win_dir_type()
     if test == PackagingDirType.WINDOWS_NO_EDITOR:
@@ -201,11 +201,11 @@ def close_game_engine():
     ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
 
 
-def is_toggle_engine_during_testing_in_use():
+def is_toggle_engine_during_testing_in_use() -> bool:
     return settings['engine_info']['toggle_engine_during_testing']
 
 
-def run_app(exe_path, exec_mode, args={}, working_dir=None):
+def run_app(exe_path: str, exec_mode: ExecutionMode, args: str = {}, working_dir: str = None):
     command = exe_path
     for arg in args:
         command = f'{command} {arg}'
@@ -216,7 +216,7 @@ def run_app(exe_path, exec_mode, args={}, working_dir=None):
         subprocess.Popen(command, cwd=working_dir, start_new_session=True)
     
 
-def get_engine_window_title():
+def get_engine_window_title() -> str:
     uproject_path = settings['engine_info']['unreal_project_file']
     proc_name_prefix = get_process_name(uproject_path)[:-9]
     proc_name_suffix = 'Unreal Editor'
@@ -224,6 +224,6 @@ def get_engine_window_title():
     return engine_proc_name
 
 
-def get_engine_process_name():
+def get_engine_process_name() -> str:
     exe_path = get_game_engine_path()
     return get_process_name(exe_path)

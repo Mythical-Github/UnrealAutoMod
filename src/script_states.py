@@ -1,8 +1,8 @@
 from enums import ScriptStateType
-from tempo_settings import settings
+from settings import settings
 
 
-def is_script_state_used(state):
+def is_script_state_used(state: ScriptStateType) -> bool:
     if isinstance(settings, dict):
         if "process_kill_info" in settings:
             process_kill_info = settings.get("process_kill_info", {})
@@ -30,7 +30,7 @@ def is_script_state_used(state):
     return False
 
 
-def routine_checks(state):
+def routine_checks(state: ScriptStateType):
     if not state == ScriptStateType.CONSTANT:
         print(f'routine checks for the {state} are running')
     if is_script_state_used(state):
@@ -47,7 +47,7 @@ def routine_checks(state):
 class ScriptState():
     global script_state
 
-    def set_script_state(new_state):
+    def set_script_state(new_state: ScriptStateType):
         global script_state
         script_state = new_state
         print(f'Script State changed to {new_state}')

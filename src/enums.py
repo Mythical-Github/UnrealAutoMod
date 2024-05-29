@@ -101,7 +101,7 @@ class FileInclusionType(Enum):
     TREE = 'tree' # Takes supplied dir, and traverses it all, including every file
 
 
-def get_enum_member_from_value(enum, value):
+def get_enum_member_from_value(enum: Enum, value: str) -> Enum:
     for member in enum:
         if member.value == value:
             return member

@@ -21,35 +21,44 @@ def set_packing_type_true(packing_type_enum: PackingType):
         queue_type_check_dict[packing_type_enum] = True
     else:
         raise ValueError(f'{packing_type_enum} is not a valid packing type')
-    
 
-def get_base_command() -> str:
-    output_dir = settings['general_info']['output_dir']
+
+def get_engine_pak_command() -> str:
     uproject = settings['engine_info']['unreal_project_file']
     command_str = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{uproject}" '
         f'-noP4 '
-        f'-platform=Win64 '
-        f'-clientconfig=Development '
-        f'-serverconfig=Development '
         f'-cook '
-        f'-allmaps '
         f'-stage '
         f'-archive '
-        f'-archivedirectory="{output_dir}"'
+        f'-pak '
+    )
+    return command_str
+
+
+def get_cook_project_command() -> str:
+    uproject = settings['engine_info']['unreal_project_file']
+    command_str = (
+        f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
+        f'-project="{uproject}" '
+        f'-noP4 '
+        f'-cook '
+        f'-iterate '
+        f'-skipstage '
+        f'-nocompileeditor '
+        f'-nodebuginfo'
     )
     return command_str
 
 
 def cook_uproject():
-    command = get_base_command()
+    command = get_cook_project_command()
     run_proj_command(command)
  
 
 def package_uproject():
-    command = f'{get_base_command()} -pak'
-    run_proj_command(command)   
+    run_proj_command(get_engine_pak_command())   
 
 
 def run_proj_command(command: str):
@@ -129,6 +138,7 @@ def cleanup_output_dir():
 
 def pre_packaging():
     ScriptState.set_script_state(ScriptStateType.PRE_PACKAGING)
+    cook_uproject()
 
 
 def post_packaging():
@@ -137,6 +147,7 @@ def post_packaging():
 
 def pre_pak_creation():
     ScriptState.set_script_state(ScriptStateType.PRE_PAK_CREATION)
+    # package_uproject()
 
 
 def post_pak_creation():

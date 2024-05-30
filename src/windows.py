@@ -48,7 +48,7 @@ def close_window(window: Win32Window):
     Window.close(window)
 
 
-def move_window_to_moniter(window: Win32Window, monitor_index: int = 0):
+def move_window_to_monitor(window: Win32Window, monitor_index: int = 0):
     screen_info = get_monitors()
     if monitor_index < len(screen_info):
         monitor = screen_info[monitor_index]
@@ -69,20 +69,26 @@ def get_game_window() -> Win32Window:
     return get_window_by_title(get_game_process_name())
 
 
-def move_window(window: Win32Window):
-    pass
-
+def move_window(window: Win32Window, window_settings: list):
+    monitor_index = window_settings['monitor']
+    if not monitor_index == None:
+        move_window_to_monitor(window, monitor_index)
+    width = window_settings['resolution']['x']
+    height = window_settings['resolution']['y']
+    if not width == None:
+        set_window_size(window, width, height)
+    
 
 def window_checks(current_state: WindowAction):
     from settings import settings
-    window_settings = settings['auto_move_windows']
-    for window in window_settings:
-        settings_state = get_enum_from_val(ScriptStateType, window['script_state'])
+    window_settings_list = settings['auto_move_windows']
+    for window_settings in window_settings_list:
+        settings_state = get_enum_from_val(ScriptStateType, window_settings['script_state'])
         if settings_state == current_state:
-            title = window['window_name']
+            title = window_settings['window_name']
             windows_to_change = get_windows_by_title(title)
             for window_to_change in windows_to_change:
-                way_to_change_window = get_enum_from_val(WindowAction, window['window_behaviour'])
+                way_to_change_window = get_enum_from_val(WindowAction, window_settings['window_behaviour'])
                 if way_to_change_window == WindowAction.MAX:
                     maximize_window(window_to_change)
                 elif way_to_change_window == WindowAction.MIN:
@@ -90,8 +96,8 @@ def window_checks(current_state: WindowAction):
                 elif way_to_change_window == WindowAction.CLOSE:
                     close_window(window_to_change)
                 elif way_to_change_window == WindowAction.MOVE:
-                    move_window(window_to_change)
-                elif way_to_change_window == WindowAction.NONE:
-                    pass
+                    move_window(window_to_change, window_settings)
+                # elif way_to_change_window == WindowAction.NONE:
+                #     pass
                 else:
                     print('invalid window behaviour specified in settings')

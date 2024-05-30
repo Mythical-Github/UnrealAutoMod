@@ -101,19 +101,21 @@ def handle_repak_logic():
 
 def handle_loose_logic():
     from utilities import is_game_ue4
+    win_dir_type = 'Windows'
     if is_game_ue4():
-        win_dir_type = 'WindowsNoEditor'
-    else:
-        win_dir_type = 'Windows'
+        win_dir_type = f'{win_dir_type}NoEditor'
     uproject_file = settings['engine_info']['unreal_project_file']
     uproject_name = os.path.splitext(os.path.basename(uproject_file))[0]
     uproject_file_dir = os.path.dirname(uproject_file)
-    info_list = settings['mod_pak_info']
-    for info in info_list:
-        manually_specified_assets = info['manually_specified_assets']
-        for asset in manually_specified_assets[1::2]:
-            print(f'{uproject_file_dir}/Saved/Cooked/{win_dir_type}/{uproject_name}/{asset}')
 
+    for mod_pak_info in settings['mod_pak_info']:
+        manually_specified_asset_paths = mod_pak_info['manually_specified_assets']['asset_paths']
+        for asset in manually_specified_asset_paths:
+            print(f'{uproject_file_dir}/Saved/Cooked/{win_dir_type}/{uproject_name}/{asset}')
+        
+        manually_specified_tree_paths = mod_pak_info['manually_specified_assets']['tree_paths']
+        for tree in manually_specified_tree_paths:
+            print(f'{uproject_file_dir}/Saved/Cooked/{win_dir_type}/{uproject_name}/{tree}')
 
 
 def handle_alt_exe_logic():

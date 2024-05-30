@@ -123,7 +123,10 @@
       "packing_type": "engine",
       "compression_type": "none",
       "is_enabled": true,
-      "manually_specified_assets": []
+      "manually_specified_assets": {
+        "asset_paths": [],
+        "tree_paths": []
+      }
     },
     {
       "mod_name": "UnrealPakExample_P",
@@ -132,9 +135,10 @@
       "packing_type": "unreal_pak",
       "compression_type": "none",
       "is_enabled": true,
-      "manually_specified_assets": [
-        "asset_path", "Content/Meshes/Box"
-      ]
+      "manually_specified_assets": {
+        "asset_paths": [],
+        "tree_paths": []
+      }
     },
     {
       "mod_name": "RepakExample_P",
@@ -142,10 +146,11 @@
       "pak_chunk_num": 3,
       "packing_type": "repak",
       "compression_type": "none",
-      "is_enabled": false,
-      "manually_specified_assets": [
-        "tree", "Content/Mods/ModName"
-      ]
+      "is_enabled": true,
+      "manually_specified_assets": {
+        "asset_paths": [],
+        "tree_paths": []
+      }
     },
     {
       "mod_name": "LooseFileExample",
@@ -154,9 +159,12 @@
       "packing_type": "loose",
       "compression_type": null,
       "is_enabled": true,
-      "manually_specified_assets": [
-        "tree", "Content/Mods/Z_VillageLevel_P"
-      ]
+      "manually_specified_assets": {
+        "asset_paths": [],
+        "tree_paths": [
+          "Content/Mods/Z_VillageLevel_P"
+        ]
+      }
     }
   ]
 }

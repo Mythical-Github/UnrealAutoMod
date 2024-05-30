@@ -97,8 +97,8 @@ class UnrealModTreeType(Enum):
 
 
 class FileFilterType(Enum):
-    ASSET_PATH = 'asset_path' # Takes the path and gets all files regardless of extension and includes them
-    TREE = 'tree' # Takes supplied dir, and traverses it all, including every file
+    ASSET_PATHS = 'asset_paths' # Takes the paths and gets all files regardless of extension and includes them
+    TREE_PATHS = 'tree_paths' # Takes supplied dirs, and traverses it all, including every file
 
 
 def get_enum_from_val(enum: Enum, value: str) -> Enum:

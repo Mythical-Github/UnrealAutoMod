@@ -96,7 +96,7 @@ class UnrealModTreeType(Enum):
     MODS = 'mods' # "Content/Mods/ModName"
 
 
-class FileInclusionType(Enum):
+class FileFilterType(Enum):
     ASSET_PATH = 'asset_path' # Takes the path and gets all files regardless of extension and includes them
     TREE = 'tree' # Takes supplied dir, and traverses it all, including every file
 

@@ -39,6 +39,82 @@
     "repak_version": "V11",
     "compression_type": "Zlib"
   },
+
+  "alt_exe_methods": [
+    {
+      "script_state": "pre_game_launch",
+      "alt_exe_path": "C:/modding/unreal_engine/Umodel/umodel.exe",
+      "execution_mode": "async",
+      "variable_args": []
+    },
+    {
+      "script_state": "post_game_launch",
+      "alt_exe_path": "C:/modding/unreal_engine/Umodel/umodel.exe",
+      "execution_mode": "async",
+      "variable_args": []
+    }
+  ],
+  "process_kill_info": {
+    "auto_close_game": true,
+    "processes": [
+      {
+        "process_name": "Fmodel.exe",
+        "use_substring_check": false,
+        "timeout": 30,
+        "script_state": "all"
+      },
+      {
+        "process_name": "Umodel",
+        "use_substring_check": true,
+        "timeout": null,
+        "script_state": "constant"
+      },
+      {
+        "process_name": "Zedfest",
+        "use_substring_check": true,
+        "timeout": null,
+        "script_state": "constant"
+      }
+    ]
+  },
+  "auto_move_windows": [
+    {
+      "window_name": "move_test_window", 
+      "use_substring_check": true,
+      "window_behaviour": "move",
+      "script_state": "all",
+      "timeout": 15,
+      "monitor": 1,
+      "resolution": {
+        "x": 1525,
+        "y": 850
+      }
+    },
+    {
+      "window_name": "min_test_window", 
+      "use_substring_check": true,
+      "window_behaviour": "min",
+      "script_state": "constant",
+      "timeout": null,
+      "monitor": null,
+      "resolution": {
+        "x": null,
+        "y": null
+      }
+    },
+    {
+      "window_name": "max_test_window", 
+      "use_substring_check": true,
+      "window_behaviour": "max",
+      "script_state": "post_game_launch",
+      "timeout": null,
+      "monitor": null,
+      "resolution": {
+        "x": null,
+        "y": null
+      }
+    }
+  ],  
   "mod_pak_info": [
     {
       "mod_name": "EnginePakExample_P",
@@ -79,77 +155,8 @@
       "compression_type": null,
       "is_enabled": true,
       "manually_specified_assets": [
-        "tree", "Content/Mods/ModName"
+        "tree", "Content/Mods/Z_VillageLevel_P"
       ]
-    }
-  ],
-  "alt_exe_methods": [
-    {
-      "script_state": "pre_game_launch",
-      "alt_exe_path": "C:/modding/unreal_engine/Umodel/umodel.exe",
-      "execution_mode": "async",
-      "variable_args": []
-    },
-    {
-      "script_state": "post_game_launch",
-      "alt_exe_path": "C:/modding/unreal_engine/Umodel/umodel.exe",
-      "execution_mode": "async",
-      "variable_args": []
-    }
-  ],
-  "process_kill_info": {
-    "auto_close_game": true,
-    "processes": [
-      {
-        "process_name": "Fmodel.exe",
-        "use_substring_check": false,
-        "timeout": 30,
-        "script_state": "constant"
-      },
-      {
-        "process_name": "Umodel",
-        "use_substring_check": true,
-        "timeout": 30,
-        "script_state": "all"
-      }
-    ]
-  },
-  "auto_move_windows": [
-    {
-      "window_name": "move_test_window", 
-      "use_substring_check": true,
-      "window_behaviour": "move",
-      "script_state": "all",
-      "timeout": 15,
-      "monitor": 1,
-      "resolution": {
-        "x": 1525,
-        "y": 850
-      }
-    },
-    {
-      "window_name": "min_test_window", 
-      "use_substring_check": true,
-      "window_behaviour": "min",
-      "script_state": "constant",
-      "timeout": null,
-      "monitor": null,
-      "resolution": {
-        "x": null,
-        "y": null
-      }
-    },
-    {
-      "window_name": "max_test_window", 
-      "use_substring_check": true,
-      "window_behaviour": "max",
-      "script_state": "post_game_launch",
-      "timeout": null,
-      "monitor": null,
-      "resolution": {
-        "x": null,
-        "y": null
-      }
     }
   ]
 }

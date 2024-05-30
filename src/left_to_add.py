@@ -4,6 +4,9 @@
 # Saved\Cooked\WindowsNoEditor\KevinSpel\AssetRegistry.bin"
 # Saved\StagedBuilds\WindowsNoEditor\KevinSpel\Content\Paks\pakchunk1-WindowsNoEditor.pak"
 
+compressed and not  compressed for repak, engine, and unrealpak
+
+don't forget to pack the plugin folders
 
 packing logic for the following:
     loose file
@@ -222,3 +225,4 @@ make sure packaging steps aren't ran unless they're used in the config
 cleanup base command logic for packing
 dll injection
 check out other params, and such
+symlink loose content to be in a diff folder?

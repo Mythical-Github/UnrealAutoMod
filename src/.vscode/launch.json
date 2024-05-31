@@ -5,7 +5,7 @@
             "name": "test_mods_all",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/main.py",
+            "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
             "args": ["default", "default", "test_mods_all"]
         },
@@ -13,7 +13,7 @@
             "name": "test_mods",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/main.py",
+            "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
             "args": ["default", "default", "test_mods", "example_one", "example_two"]
         }

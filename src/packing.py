@@ -90,7 +90,7 @@ def handle_logic(packing_type: PackingType):
                 uninstall_mod(packing_type, mod_pak_info['mod_name'])
     for mod_pak_info in settings['mod_pak_info']: 
         if mod_pak_info['is_enabled']:
-            install_mod(packing_type.ENGINE, mod_pak_info['mod_name'])
+            install_mod(packing_type, mod_pak_info['mod_name'], get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
 
 
 def make_mods():
@@ -161,7 +161,7 @@ def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
 
 def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
     if packing_type == PackingType.LOOSE:
-        install_loose_mod(mod_name, compression_type)
+        install_loose_mod(mod_name)
     if packing_type == PackingType.ENGINE:
         install_engine_mod(mod_name, compression_type)
     if packing_type == PackingType.REPAK:

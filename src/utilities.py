@@ -3,7 +3,6 @@ import sys
 import glob
 import json
 import psutil
-import hashlib
 import utilities
 import subprocess
 from msvcrt import getch
@@ -12,15 +11,15 @@ from script_states import ScriptState
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
 
-# def check_file_exists(file_path: str) -> bool:
-#     return os.path.exists(file_path)
-
-
 def check_file_exists(file_path: str) -> bool:
     if os.path.exists(file_path):
         return True
     else:
         raise FileNotFoundError(f'Settings file "{file_path}" not found.')
+
+
+# def check_file_exists(file_path: str) -> bool:
+#     return os.path.exists(file_path)
 
 
 def get_process_name(exe_path: str) -> str:
@@ -146,6 +145,7 @@ def is_game_ue4() -> bool:
 
 
 def get_file_hash(file_path: str) -> str:
+    import hashlib
     hasher = hashlib.sha256()
     with open(file_path, 'rb') as f:
         for chunk in iter(lambda: f.read(4096), b''):
@@ -292,7 +292,7 @@ def get_mod_files(mod_name: str) -> dict:
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)  # Get the relative path
                     after_path = f'{utilities.get_game_dir()}/{relative_path}{extension}'
                     file_dict[before_path] = after_path
-
+    persistant_mod_dir = get_persistant_mod_dir(mod_name)
     return file_dict
 
 
@@ -350,10 +350,14 @@ def get_mod_name_dir_files(mod_name: str) -> list:
     return get_files_in_tree(get_mod_name_dir(mod_name))
 
 
-def get_persistant_mod_files(mod_name: str) -> list:
+def get_persistant_mod_dir(mod_name: str) -> str:
     dir = get_uproject_file_dir()
     from settings import GAME_NAME, PRESET_NAME
     prefix = f'{dir}/Plugins/Tempo/Tools/Tempo/presets/{GAME_NAME}'
-    suffix = f'/{PRESET_NAME}/mod_packaging/persistent_files/{mod_name}'
-    dir = f'{prefix}/{suffix}'
-    return get_files_in_tree(dir)    
+    suffix = f'{PRESET_NAME}/mod_packaging/persistent_files/{mod_name}'
+    return f'{prefix}/{suffix}'
+
+
+def get_persistant_mod_files(mod_name: str) -> list:
+    return get_files_in_tree(get_persistant_mod_dir(mod_name))
+ 

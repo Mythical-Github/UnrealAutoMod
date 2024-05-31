@@ -269,28 +269,6 @@ def get_cooked_uproject_dir() -> str:
     return f'{get_uproject_file_dir()}/Saved/Cooked/{get_win_dir_str()}/{get_uproject_name()}'
 
 
-# def get_mod_files(mod_name: str) -> dict:
-#     cooked_uproject_dir = utilities.get_cooked_uproject_dir()
-#     from packing import get_mod_pak_entry
-#     mod_pak_info = get_mod_pak_entry(mod_name)
-#     file_dict = {}
-    
-#     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
-#         for extension in utilities.get_file_extensions(f'{cooked_uproject_dir}/{asset}'):
-#             before_path = f'{cooked_uproject_dir}/{asset}{extension}'
-#             after_path = f'{utilities.get_game_dir()}/{asset}{extension}'
-#             file_dict.update({before_path: after_path})
-
-#     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
-#         for entry in utilities.get_files_in_tree(f'{cooked_uproject_dir}/{tree}'):
-#             for extension in utilities.get_file_extensions(before_path):
-#                 before_path = f'{entry}{extension}'
-#                 after_path = f'{utilities.get_game_dir()}/{tree}{extension}'
-#                 file_dict.update({before_path: after_path})
-
-#     return dict(file_dict)
-
-
 def get_mod_files(mod_name: str) -> dict:
     cooked_uproject_dir = utilities.get_cooked_uproject_dir()
     from packing import get_mod_pak_entry
@@ -347,3 +325,35 @@ def get_mod_compression_type(mod_name: str) -> CompressionType:
             compresion_str = info['compression_type']
             return get_enum_from_val(CompressionType, compresion_str)
     return None
+
+
+def get_mod_pak_info(mod_name:str) -> dict:
+    for info in get_mod_pak_info_list:
+        if info['mod_name'] == mod_name:
+            return dict(info)
+    return None
+
+
+def is_mod_name_in_list(mod_name: str) -> bool:
+    for info in get_mod_pak_info_list():
+        if info['mod_name'] == 'mod_name':
+            return True
+    return False
+
+
+def get_mod_name_dir(mod_name: str) -> dir:
+    if is_mod_name_in_list(mod_name):
+        return f'{get_uproject_file_dir}/Saved/Cooked/Mods/{mod_name}'
+
+
+def get_mod_name_dir_files(mod_name: str) -> list:
+    return get_files_in_tree(get_mod_name_dir(mod_name))
+
+
+def get_persistant_mod_files(mod_name: str) -> list:
+    dir = get_uproject_file_dir()
+    from settings import GAME_NAME, PRESET_NAME
+    prefix = f'{dir}/Plugins/Tempo/Tools/Tempo/presets/{GAME_NAME}'
+    suffix = f'/{PRESET_NAME}/mod_packaging/persistent_files/{mod_name}'
+    dir = f'{prefix}/{suffix}'
+    return get_files_in_tree(dir)    

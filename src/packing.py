@@ -128,12 +128,9 @@ def uninstall_pak_mod(mod_name: str):
 def uninstall_mod(packing_type: PackingType, mod_name: str):
     if packing_type == PackingType.LOOSE:
         uninstall_loose_mod(mod_name)
-    if packing_type == PackingType.ENGINE:
-        uninstall_pak_mod(mod_name)
-    if packing_type == PackingType.REPAK:
-        uninstall_pak_mod(mod_name)
-    if packing_type == PackingType.UNREAL_PAK:
-        uninstall_pak_mod(mod_name)
+    else:
+        if packing_type in list(PackingType):
+            uninstall_pak_mod(mod_name)
 
 
 def install_loose_mod(mod_name: str):

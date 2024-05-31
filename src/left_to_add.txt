@@ -2,7 +2,7 @@
 compressed and not  compressed for repak, engine, and unrealpak
 
 packing logic for the following:
-    loose file DONE
+    loose file almost done, add mod name folder, and persistent folder files left to do
     engine pak
     unreal pak
     repak

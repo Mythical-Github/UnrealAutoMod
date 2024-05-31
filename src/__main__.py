@@ -1,4 +1,3 @@
-from sys import exit
 import threads as threads
 from packing import make_mods
 from game_runner import run_game
@@ -26,5 +25,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    exit()
-    

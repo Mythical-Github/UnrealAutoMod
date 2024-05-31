@@ -17,7 +17,9 @@ from enums import PackagingDirType, ExecutionMode, ScriptStateType
 
 
 def check_file_exists(file_path: str) -> bool:
-    if not os.path.exists(file_path):
+    if os.path.exists(file_path):
+        return True
+    else:
         raise FileNotFoundError(f'Settings file "{file_path}" not found.')
 
 
@@ -267,16 +269,69 @@ def get_cooked_uproject_dir() -> str:
     return f'{get_uproject_file_dir()}/Saved/Cooked/{get_win_dir_str()}/{get_uproject_name()}'
 
 
-def get_cooked_mod_files(mod_name: str) -> list:
+# def get_mod_files(mod_name: str) -> dict:
+#     cooked_uproject_dir = utilities.get_cooked_uproject_dir()
+#     from packing import get_mod_pak_entry
+#     mod_pak_info = get_mod_pak_entry(mod_name)
+#     file_dict = {}
+    
+#     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
+#         for extension in utilities.get_file_extensions(f'{cooked_uproject_dir}/{asset}'):
+#             before_path = f'{cooked_uproject_dir}/{asset}{extension}'
+#             after_path = f'{utilities.get_game_dir()}/{asset}{extension}'
+#             file_dict.update({before_path: after_path})
+
+#     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
+#         for entry in utilities.get_files_in_tree(f'{cooked_uproject_dir}/{tree}'):
+#             for extension in utilities.get_file_extensions(before_path):
+#                 before_path = f'{entry}{extension}'
+#                 after_path = f'{utilities.get_game_dir()}/{tree}{extension}'
+#                 file_dict.update({before_path: after_path})
+
+#     return dict(file_dict)
+
+
+def get_mod_files(mod_name: str) -> dict:
     cooked_uproject_dir = utilities.get_cooked_uproject_dir()
-    from packing import get_mod_pak_list_entry
-    mod_pak_info = get_mod_pak_list_entry(mod_name)
-    file_list = []
+    from packing import get_mod_pak_entry
+    mod_pak_info = get_mod_pak_entry(mod_name)
+    file_dict = {}
+
+    # Process manually specified asset paths
     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
-        for extension in utilities.get_file_extensions(f'{cooked_uproject_dir}/{asset}'):
-            path = f'{utilities.get_game_dir()}/{asset}{extension}'
-            file_list.append(path)
+        base_path = f'{cooked_uproject_dir}/{asset}'
+        for extension in utilities.get_file_extensions(base_path):
+            before_path = f'{base_path}{extension}'
+            after_path = f'{utilities.get_game_dir()}/{asset}{extension}'
+            file_dict[before_path] = after_path
+
+    # Process tree paths
     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
-        for path in utilities.get_files_in_tree(f'{cooked_uproject_dir}/{tree}'):
-            file_list.append(path)
-    return file_list
+        tree_path = f'{cooked_uproject_dir}/{tree}'
+        for entry in utilities.get_files_in_tree(tree_path):
+            if os.path.isfile(entry):  # Ensure it's a file, not a directory
+                base_entry = os.path.splitext(entry)[0]  # Get the base name without extension
+                for extension in utilities.get_file_extensions(entry):
+                    before_path = f'{base_entry}{extension}'
+                    relative_path = os.path.relpath(base_entry, cooked_uproject_dir)  # Get the relative path
+                    after_path = f'{utilities.get_game_dir()}/{relative_path}{extension}'
+                    file_dict[before_path] = after_path
+
+    return file_dict
+
+
+
+def get_cooked_mod_file_paths(mod_name: str) -> list:
+    return list((get_mod_files(mod_name)).keys())
+
+
+def get_game_mod_file_paths(mod_name: str) -> list:
+    return list((get_mod_files(mod_name)).values())
+
+
+def get_unreal_engine_dir() -> str:
+    return settings['engine_info']['unreal_engine_dir']
+
+
+def get_mod_pak_info_list() -> list:
+    return settings['mod_pak_info']

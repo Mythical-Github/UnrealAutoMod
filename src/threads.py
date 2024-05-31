@@ -49,6 +49,7 @@ def game_monitor_thread_logic():
     global window_closed
     global init_done
 
+    
     try:
         if not init_done:
             found_process = False

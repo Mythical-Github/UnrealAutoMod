@@ -1,0 +1,26 @@
+
+compressed and not  compressed for repak, engine, and unrealpak
+
+packing logic for the following:
+    loose file DONE
+    engine pak
+    unreal pak
+    repak
+
+
+LATER:
+settings configurator
+log file creation
+in editor gui editor utility widget
+C++ editor widget
+logic for settings['engine_info']['fix_up_redirectors_on_proj_open']
+engine close enums fire even when engine waszn't actually closed
+timeouts to various functions that use them in the settings json
+make sure packaging steps aren't ran unless they're used in the config
+cleanup base command logic for packing
+dll injection
+check out other params, and such
+symlink loose content to be in a diff folder?
+polish script states
+polish args parsing
+switch to pathlib and glob when possible over string paths and other file manipulation

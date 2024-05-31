@@ -39,7 +39,6 @@
     "repak_version": "V11",
     "compression_type": "Zlib"
   },
-
   "alt_exe_methods": [
     {
       "script_state": "pre_game_launch",
@@ -73,7 +72,7 @@
         "process_name": "Zedfest",
         "use_substring_check": true,
         "timeout": null,
-        "script_state": "constant"
+        "script_state": "pre_game_launch"
       }
     ]
   },

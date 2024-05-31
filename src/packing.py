@@ -1,4 +1,5 @@
 import os
+import psutil
 import shutil
 import utilities
 from settings import settings
@@ -15,33 +16,30 @@ class PopulateQueueTypeCheckDict():
             queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
             if not queue_type in queue_types:
                 queue_types.append(queue_type)
+
+
 def get_mod_packing_type(mod_name: str) -> PackingType:
-    mod_pak_info_list = settings['mod_pak_info']
-    for mod_pak_info in mod_pak_info_list:
+    for mod_pak_info in utilities.get_mod_pak_info_list():
         if mod_name == mod_pak_info['mod_name']:
-            str_packing_type = mod_pak_info['packing_type']
-            return get_enum_from_val(PackingType, str_packing_type)
+            return get_enum_from_val(PackingType, mod_pak_info['packing_type'])
 
 
-def get_is_mod_name_in_list(mod_name: str) -> bool:
-    mod_pak_info_list = settings['mod_pak_info']
-    for mod_pak_info in mod_pak_info_list:
+def get_is_mod_name_in_use(mod_name: str) -> bool:
+    for mod_pak_info in utilities.get_mod_pak_info_list():
         if mod_name == mod_pak_info['mod_name']:
             return True
     return False
 
 
-def get_mod_pak_list_entry(mod_name: str) -> dict:
-    mod_pak_info_list = settings['mod_pak_info']
-    for info in mod_pak_info_list:
+def get_mod_pak_entry(mod_name: str) -> dict:
+    for info in utilities.get_mod_pak_info_list():
         if info['mod_name'] == mod_name:
             return dict(info)
     return None
 
 
 def get_is_mod_enabled(mod_name: str) -> bool:
-    mod_pak_info_list = settings['mod_pak_info']
-    for info in mod_pak_info_list:
+    for info in utilities.get_mod_pak_info_list():
         if info['mod_name'] == mod_name:
             return True
     return False
@@ -50,7 +48,7 @@ def get_is_mod_enabled(mod_name: str) -> bool:
 def get_engine_pak_command() -> str:
     command_str = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
-        f'-project="{settings['engine_info']['unreal_project_file']}" '
+        f'-project="{utilities.get_uproject_file()}" '
         f'-noP4 '
         f'-cook '
         f'-iterate '
@@ -63,7 +61,7 @@ def get_engine_pak_command() -> str:
 def get_cook_project_command() -> str:
     command_str = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
-        f'-project="{settings['engine_info']['unreal_project_file']}" '
+        f'-project="{utilities.get_uproject_file()}" '
         f'-noP4 '
         f'-cook '
         f'-iterate '
@@ -83,16 +81,8 @@ def package_uproject():
 
 
 def run_proj_command(command: str):
-    os.chdir(settings['engine_info']['unreal_engine_dir'])
+    os.chdir(utilities.get_unreal_engine_dir())
     os.system(command)
-
-
-def test_mods_all(mod_names: str):
-    test_mods(mod_names)
-
-
-def test_mods(mod_names):
-    pass
 
 
 def make_mods():
@@ -124,7 +114,7 @@ def handle_repak_logic():
 
 
 def handle_loose_logic():
-    for mod_pak_info in settings['mod_pak_info']:
+    for mod_pak_info in utilities.get_mod_pak_info_list():
         if not mod_pak_info['is_enabled']:
             disable_mod(PackingType.LOOSE, mod_pak_info['mod_name'])
     for mod_pak_info in settings['mod_pak_info']: 
@@ -133,7 +123,16 @@ def handle_loose_logic():
 
 
 def disable_loose_mod(mod_name: str):
-    pass
+    mod_files = utilities.get_mod_files(mod_name)
+    dict_keys = mod_files.keys()
+    for key in dict_keys:
+        file_to_remove = mod_files[key]
+        if os.path.isfile(file_to_remove):
+            os.remove(file_to_remove)
+
+    for folder in set(os.path.dirname(file) for file in mod_files.values()):
+         if os.path.exists(folder) and not os.listdir(folder):
+             os.removedirs(folder)
 
 
 def disable_engine_mod(mod_name: str):
@@ -160,9 +159,17 @@ def disable_mod(packing_type: PackingType, mod_name: str):
 
 
 def enable_loose_mod(mod_name: str):
-    mod_files = utilities.get_cooked_mod_files(mod_name)
-    for mod_file in mod_files:
-        print(mod_file)
+    mod_files = utilities.get_mod_files(mod_name)
+    dict_keys = mod_files.keys()
+    for key in dict_keys:
+        before_file = key
+        after_file = mod_files[key]
+        dir = os.path.dirname(after_file)
+        if not os.path.isdir(dir):
+            os.makedirs(dir)
+        print(f'before file: {before_file}')
+        print(f'after file: {after_file}')
+        shutil.copyfile(before_file, after_file)
 
 
 def enable_engine_mod(mod_name: str):
@@ -206,3 +213,11 @@ def pre_pak_creation():
 
 def post_pak_creation():
     ScriptState.set_script_state(ScriptStateType.POST_PAK_CREATION)
+
+
+def test_mods_all(mod_names: str):
+    test_mods(mod_names)
+
+
+def test_mods(mod_names):
+    pass

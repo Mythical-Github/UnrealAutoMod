@@ -292,7 +292,20 @@ def get_mod_files(mod_name: str) -> dict:
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)  # Get the relative path
                     after_path = f'{utilities.get_game_dir()}/{relative_path}{extension}'
                     file_dict[before_path] = after_path
+    
     persistant_mod_dir = get_persistant_mod_dir(mod_name)
+
+    for root, _, files in os.walk(persistant_mod_dir):
+        for file in files:
+            file_path = os.path.join(root, file)
+            relative_path = os.path.relpath(file_path, persistant_mod_dir)
+            game_dir = utilities.get_game_dir()
+            game_dir = os.path.dirname(game_dir)
+            game_dir_path = os.path.join(game_dir, relative_path)
+            print(f'before path: {file_path}')
+            print(f'after path: {game_dir_path}')
+            file_dict[file_path] = game_dir_path
+
     return file_dict
 
 

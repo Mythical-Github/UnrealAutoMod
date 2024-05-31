@@ -6,7 +6,7 @@
   "engine_info": {
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/InterposePrivate/unreal_project/Interpose/KevinSpel.uproject",
-    "toggle_engine_during_testing": true,
+    "toggle_engine_during_testing": false,
     "clean_working_dir_after_testing": false,
     "engine_launch_args": [],
     "override_automatic_version_finding": false,

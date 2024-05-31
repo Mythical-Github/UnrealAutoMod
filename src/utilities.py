@@ -9,7 +9,7 @@ import subprocess
 from msvcrt import getch
 from settings import settings
 from script_states import ScriptState
-from enums import PackagingDirType, ExecutionMode, ScriptStateType
+from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
 
 # def check_file_exists(file_path: str) -> bool:
@@ -297,7 +297,6 @@ def get_mod_files(mod_name: str) -> dict:
     mod_pak_info = get_mod_pak_entry(mod_name)
     file_dict = {}
 
-    # Process manually specified asset paths
     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
         base_path = f'{cooked_uproject_dir}/{asset}'
         for extension in utilities.get_file_extensions(base_path):
@@ -305,12 +304,11 @@ def get_mod_files(mod_name: str) -> dict:
             after_path = f'{utilities.get_game_dir()}/{asset}{extension}'
             file_dict[before_path] = after_path
 
-    # Process tree paths
     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
         tree_path = f'{cooked_uproject_dir}/{tree}'
         for entry in utilities.get_files_in_tree(tree_path):
-            if os.path.isfile(entry):  # Ensure it's a file, not a directory
-                base_entry = os.path.splitext(entry)[0]  # Get the base name without extension
+            if os.path.isfile(entry):
+                base_entry = os.path.splitext(entry)[0]
                 for extension in utilities.get_file_extensions(entry):
                     before_path = f'{base_entry}{extension}'
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)  # Get the relative path
@@ -318,7 +316,6 @@ def get_mod_files(mod_name: str) -> dict:
                     file_dict[before_path] = after_path
 
     return file_dict
-
 
 
 def get_cooked_mod_file_paths(mod_name: str) -> list:
@@ -335,3 +332,18 @@ def get_unreal_engine_dir() -> str:
 
 def get_mod_pak_info_list() -> list:
     return settings['mod_pak_info']
+
+
+def get_pak_dir_structure(mod_name: str) -> str:
+    for info in get_mod_pak_info_list():
+        if info['mod_name'] == mod_name:
+            return info['pak_dir_structure']
+    return None
+
+
+def get_mod_compression_type(mod_name: str) -> CompressionType:
+    for info in get_mod_pak_info_list():
+        if info['mod_name'] == mod_name:
+            compresion_str = info['compression_type']
+            return get_enum_from_val(CompressionType, compresion_str)
+    return None

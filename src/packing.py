@@ -3,7 +3,7 @@ import shutil
 import utilities
 from settings import settings
 from script_states import ScriptState
-from enums import PackingType, ScriptStateType, get_enum_from_val
+from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
 
 
 class PopulateQueueTypeCheckDict():
@@ -37,7 +37,7 @@ def get_mod_pak_entry(mod_name: str) -> dict:
     return None
 
 
-def get_is_mod_enabled(mod_name: str) -> bool:
+def get_is_mod_installed(mod_name: str) -> bool:
     for info in utilities.get_mod_pak_info_list():
         if info['mod_name'] == mod_name:
             return True
@@ -84,44 +84,25 @@ def run_proj_command(command: str):
     os.system(command)
 
 
+def handle_logic(packing_type: PackingType):
+    for mod_pak_info in utilities.get_mod_pak_info_list():
+            if not mod_pak_info['is_enabled']:
+                uninstall_mod(packing_type, mod_pak_info['mod_name'])
+    for mod_pak_info in settings['mod_pak_info']: 
+        if mod_pak_info['is_enabled']:
+            install_mod(packing_type.ENGINE, mod_pak_info['mod_name'])
+
+
 def make_mods():
     pre_packaging()
     pre_pak_creation()
     
     global queue_types
-
-    if PackingType.ENGINE in queue_types:
-        handle_engine_logic()
-    if PackingType.UNREAL_PAK in queue_types:
-        handle_unreal_pak_logic()
-    if PackingType.REPAK in queue_types:
-        handle_repak_logic()
-    if PackingType.LOOSE in queue_types:
-        handle_loose_logic()
+    for queue_type in queue_types:
+        handle_logic(queue_type)
 
 
-def handle_engine_logic():
-    pass
-
-
-def handle_unreal_pak_logic():
-    pass
-
-
-def handle_repak_logic():
-    pass
-
-
-def handle_loose_logic():
-    for mod_pak_info in utilities.get_mod_pak_info_list():
-        if not mod_pak_info['is_enabled']:
-            disable_mod(PackingType.LOOSE, mod_pak_info['mod_name'])
-    for mod_pak_info in settings['mod_pak_info']: 
-        if mod_pak_info['is_enabled']:
-            enable_mod(PackingType.LOOSE, mod_pak_info['mod_name'])
-
-
-def disable_loose_mod(mod_name: str):
+def uninstall_loose_mod(mod_name: str):
     mod_files = utilities.get_mod_files(mod_name)
     dict_keys = mod_files.keys()
     for key in dict_keys:
@@ -134,30 +115,28 @@ def disable_loose_mod(mod_name: str):
              os.removedirs(folder)
 
 
-def disable_engine_mod(mod_name: str):
-    pass
+def uninstall_pak_mod(mod_name: str):
+    extensions = ['pak']
+    if utilities.is_game_ue5():
+        extensions.extend(['ucas', 'utoc'])
+    for extension in extensions:
+        file_path = f'{utilities.get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.{extension}'
+        if os.path.isfile(file_path):
+            os.remove(file_path) 
 
 
-def disable_repak_mod(mod_name: str):
-    pass
-
-
-def disable_unreal_pak_mod(mod_name: str):
-    pass
-
-
-def disable_mod(packing_type: PackingType, mod_name: str):
+def uninstall_mod(packing_type: PackingType, mod_name: str):
     if packing_type == PackingType.LOOSE:
-        disable_loose_mod(mod_name)
+        uninstall_loose_mod(mod_name)
     if packing_type == PackingType.ENGINE:
-        disable_engine_mod(mod_name)
+        uninstall_pak_mod(mod_name)
     if packing_type == PackingType.REPAK:
-        disable_repak_mod(mod_name)
+        uninstall_pak_mod(mod_name)
     if packing_type == PackingType.UNREAL_PAK:
-        disable_unreal_pak_mod(mod_name)
+        uninstall_pak_mod(mod_name)
 
 
-def enable_loose_mod(mod_name: str):
+def install_loose_mod(mod_name: str):
     mod_files = utilities.get_mod_files(mod_name)
     dict_keys = mod_files.keys()
     for key in dict_keys:
@@ -171,27 +150,27 @@ def enable_loose_mod(mod_name: str):
         shutil.copyfile(before_file, after_file)
 
 
-def enable_engine_mod(mod_name: str, use_compression: bool):
+def install_engine_mod(mod_name: str, compression_type: CompressionType):
     pass
 
 
-def enable_repak_mod(mod_name: str):
+def install_repak_mod(mod_name: str, compression_type: CompressionType):
     pass
 
 
-def enable_unreal_pak_mod(mod_name: str):
+def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
     pass
 
 
-def enable_mod(packing_type: PackingType, mod_name: str):
+def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
     if packing_type == PackingType.LOOSE:
-        enable_loose_mod(mod_name)
+        install_loose_mod(mod_name, compression_type)
     if packing_type == PackingType.ENGINE:
-        enable_engine_mod(mod_name)
+        install_engine_mod(mod_name, compression_type)
     if packing_type == PackingType.REPAK:
-        enable_repak_mod(mod_name)
+        install_repak_mod(mod_name, compression_type)
     if packing_type == PackingType.UNREAL_PAK:
-        enable_unreal_pak_mod(mod_name)
+        install_unreal_pak_mod(mod_name, compression_type)
 
 
 def pre_packaging():

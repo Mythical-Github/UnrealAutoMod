@@ -14,7 +14,6 @@ class PackingType(Enum):
     UNREAL_PAK = 'unreal_pak'
     REPAK = 'repak'
     LOOSE = 'loose'
-    ALT_EXE = 'alt_exe'
     NONE = 'none'
 
 
@@ -68,12 +67,13 @@ class ScriptArg(Enum):
     TEST_MODS = 'test_mods'
 
 
-class RepakCompressionType(Enum):
+class CompressionType(Enum):
     NONE =  'None'
     ZLIB =  'Zlib'
     GZIP = 'Gzip'
     OODLE = 'Oodle'
     ZSTD = 'Zstd'
+    DEFAULT = 'default'
 
 
 class RepakVersionType(Enum):

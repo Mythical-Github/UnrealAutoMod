@@ -1,5 +1,4 @@
 import os
-import psutil
 import shutil
 import utilities
 from settings import settings
@@ -172,11 +171,13 @@ def enable_loose_mod(mod_name: str):
         shutil.copyfile(before_file, after_file)
 
 
-def enable_engine_mod(mod_name: str):
+def enable_engine_mod(mod_name: str, use_compression: bool):
     pass
+
 
 def enable_repak_mod(mod_name: str):
     pass
+
 
 def enable_unreal_pak_mod(mod_name: str):
     pass

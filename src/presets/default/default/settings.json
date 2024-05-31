@@ -9,7 +9,6 @@
     "toggle_engine_during_testing": false,
     "clean_working_dir_after_testing": false,
     "engine_launch_args": [],
-    "fix_up_redirectors_on_engine_open": false,
     "override_automatic_version_finding": false,
     "unreal_engine_major_version": "4",
     "unreal_engine_minor_version": "22"

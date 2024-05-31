@@ -1,5 +1,6 @@
 import os
 import sys
+import glob
 import json
 import psutil
 import hashlib
@@ -9,6 +10,10 @@ from msvcrt import getch
 from settings import settings
 from script_states import ScriptState
 from enums import PackagingDirType, ExecutionMode, ScriptStateType
+
+
+# def check_file_exists(file_path: str) -> bool:
+#     return os.path.exists(file_path)
 
 
 def check_file_exists(file_path: str) -> bool:
@@ -63,21 +68,6 @@ def kill_processes(state: ScriptStateType):
             else:
                 proc_name = process_info['process_name']
                 utilities.kill_process(proc_name)
-
-
-def get_file_extensions(file_path: str) -> list:
-    directory, file_name = os.path.split(file_path)
-    if not os.path.exists(directory):
-        print(f'Error: Directory "{directory}" does not exist.')
-        return set()
-    file_name_no_ext, _ = os.path.splitext(file_name)
-    try:
-        matching_files = [f for f in os.listdir(directory) if f.startswith(file_name_no_ext)]
-    except FileNotFoundError:
-        print(f'Error: Directory "{directory}" not found.')
-        return set()
-    extensions = set(os.path.splitext(f)[1].lower() for f in matching_files)
-    return extensions
 
 
 def print_possible_commands():
@@ -227,3 +217,66 @@ def get_engine_window_title() -> str:
 def get_engine_process_name() -> str:
     exe_path = get_game_engine_path()
     return get_process_name(exe_path)
+
+
+def get_files_in_tree(tree_path: str) -> list:
+    return glob.glob(tree_path + '/**/*', recursive=True)
+
+
+def get_file_extensions(file_path: str) -> list:
+    directory, file_name = os.path.split(file_path)
+    if not os.path.exists(directory):
+        print(f'Error: Directory "{directory}" does not exist.')
+        return []
+
+    file_name_no_ext, _ = os.path.splitext(file_name)
+    pattern = os.path.join(directory, file_name_no_ext + '*')
+    matching_files = glob.glob(pattern)
+    extensions = set(os.path.splitext(f)[1].lower() for f in matching_files)
+    return list(extensions)
+
+
+def get_game_content_dir():
+    return os.path.dirname(get_game_paks_dir())
+
+
+def get_game_dir():
+    return os.path.dirname(get_game_content_dir())
+
+
+def get_uproject_file() -> str:
+    return settings['engine_info']['unreal_project_file']
+
+
+def get_uproject_name() -> str:
+    return os.path.splitext(os.path.basename(get_uproject_file()))[0]
+
+
+def get_uproject_file_dir() -> str:
+    return os.path.dirname(get_uproject_file())
+
+
+def get_win_dir_str() -> str:
+    win_dir_type = 'Windows'
+    if is_game_ue4():
+        win_dir_type = f'{win_dir_type}NoEditor'
+    return win_dir_type
+
+
+def get_cooked_uproject_dir() -> str:
+    return f'{get_uproject_file_dir()}/Saved/Cooked/{get_win_dir_str()}/{get_uproject_name()}'
+
+
+def get_cooked_mod_files(mod_name: str) -> list:
+    cooked_uproject_dir = utilities.get_cooked_uproject_dir()
+    from packing import get_mod_pak_list_entry
+    mod_pak_info = get_mod_pak_list_entry(mod_name)
+    file_list = []
+    for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
+        for extension in utilities.get_file_extensions(f'{cooked_uproject_dir}/{asset}'):
+            path = f'{utilities.get_game_dir()}/{asset}{extension}'
+            file_list.append(path)
+    for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
+        for path in utilities.get_files_in_tree(f'{cooked_uproject_dir}/{tree}'):
+            file_list.append(path)
+    return file_list

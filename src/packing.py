@@ -1,4 +1,6 @@
 import os
+import shutil
+import utilities
 from settings import settings
 from script_states import ScriptState
 from enums import PackingType, ScriptStateType, get_enum_from_val
@@ -13,14 +15,36 @@ class PopulateQueueTypeCheckDict():
             queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
             if not queue_type in queue_types:
                 queue_types.append(queue_type)
+def get_mod_packing_type(mod_name: str) -> PackingType:
+    mod_pak_info_list = settings['mod_pak_info']
+    for mod_pak_info in mod_pak_info_list:
+        if mod_name == mod_pak_info['mod_name']:
+            str_packing_type = mod_pak_info['packing_type']
+            return get_enum_from_val(PackingType, str_packing_type)
 
 
-def set_packing_type_true(packing_type_enum: PackingType):
-    global queue_type_check_dict
-    if packing_type_enum in queue_type_check_dict:
-        queue_type_check_dict[packing_type_enum] = True
-    else:
-        raise ValueError(f'{packing_type_enum} is not a valid packing type')
+def get_is_mod_name_in_list(mod_name: str) -> bool:
+    mod_pak_info_list = settings['mod_pak_info']
+    for mod_pak_info in mod_pak_info_list:
+        if mod_name == mod_pak_info['mod_name']:
+            return True
+    return False
+
+
+def get_mod_pak_list_entry(mod_name: str) -> dict:
+    mod_pak_info_list = settings['mod_pak_info']
+    for info in mod_pak_info_list:
+        if info['mod_name'] == mod_name:
+            return dict(info)
+    return None
+
+
+def get_is_mod_enabled(mod_name: str) -> bool:
+    mod_pak_info_list = settings['mod_pak_info']
+    for info in mod_pak_info_list:
+        if info['mod_name'] == mod_name:
+            return True
+    return False
 
 
 def get_engine_pak_command() -> str:
@@ -100,50 +124,66 @@ def handle_repak_logic():
 
 
 def handle_loose_logic():
-    from utilities import is_game_ue4
-    win_dir_type = 'Windows'
-    if is_game_ue4():
-        win_dir_type = f'{win_dir_type}NoEditor'
-    uproject_file = settings['engine_info']['unreal_project_file']
-    uproject_name = os.path.splitext(os.path.basename(uproject_file))[0]
-    uproject_file_dir = os.path.dirname(uproject_file)
-
     for mod_pak_info in settings['mod_pak_info']:
-        manually_specified_asset_paths = mod_pak_info['manually_specified_assets']['asset_paths']
-        for asset in manually_specified_asset_paths:
-            print(f'{uproject_file_dir}/Saved/Cooked/{win_dir_type}/{uproject_name}/{asset}')
-        
-        manually_specified_tree_paths = mod_pak_info['manually_specified_assets']['tree_paths']
-        for tree in manually_specified_tree_paths:
-            print(f'{uproject_file_dir}/Saved/Cooked/{win_dir_type}/{uproject_name}/{tree}')
+        if not mod_pak_info['is_enabled']:
+            disable_mod(PackingType.LOOSE, mod_pak_info['mod_name'])
+    for mod_pak_info in settings['mod_pak_info']: 
+        if mod_pak_info['is_enabled']:
+            enable_mod(PackingType.LOOSE, mod_pak_info['mod_name'])
 
 
-def handle_alt_exe_logic():
-    pass
-        
-
-def make_pak_repak():
+def disable_loose_mod(mod_name: str):
     pass
 
 
-def make_pak_unreal_pak():
+def disable_engine_mod(mod_name: str):
     pass
 
 
-def move_loose_file_mods():
+def disable_repak_mod(mod_name: str):
     pass
 
 
-def move_engine_made_paks():
+def disable_unreal_pak_mod(mod_name: str):
     pass
 
 
-def cleanup_disabled_mods():
+def disable_mod(packing_type: PackingType, mod_name: str):
+    if packing_type == PackingType.LOOSE:
+        disable_loose_mod(mod_name)
+    if packing_type == PackingType.ENGINE:
+        disable_engine_mod(mod_name)
+    if packing_type == PackingType.REPAK:
+        disable_repak_mod(mod_name)
+    if packing_type == PackingType.UNREAL_PAK:
+        disable_unreal_pak_mod(mod_name)
+
+
+def enable_loose_mod(mod_name: str):
+    mod_files = utilities.get_cooked_mod_files(mod_name)
+    for mod_file in mod_files:
+        print(mod_file)
+
+
+def enable_engine_mod(mod_name: str):
+    pass
+
+def enable_repak_mod(mod_name: str):
+    pass
+
+def enable_unreal_pak_mod(mod_name: str):
     pass
 
 
-def cleanup_output_dir():
-    pass
+def enable_mod(packing_type: PackingType, mod_name: str):
+    if packing_type == PackingType.LOOSE:
+        enable_loose_mod(mod_name)
+    if packing_type == PackingType.ENGINE:
+        enable_engine_mod(mod_name)
+    if packing_type == PackingType.REPAK:
+        enable_repak_mod(mod_name)
+    if packing_type == PackingType.UNREAL_PAK:
+        enable_unreal_pak_mod(mod_name)
 
 
 def pre_packaging():

@@ -20,3 +20,5 @@ polish arg parsing
 dll injection options
 switch to pathlib from strings
 better logging/log file creation
+docstrings
+better type hints

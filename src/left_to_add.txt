@@ -24,3 +24,4 @@ docstrings
 better type hints
 -unversionedcookedcontent: Cooks content without embedding version information.
 -compressed: Compresses the packaged content.
+rename to UnrealAutoMod?

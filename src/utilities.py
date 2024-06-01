@@ -146,7 +146,9 @@ def is_game_ue4() -> bool:
 
 def get_file_hash(file_path: str) -> str:
     import hashlib
-    hasher = hashlib.sha256()
+    # md5 is faster
+    # hasher = hashlib.sha256()
+    hasher = hashlib.md5()
     with open(file_path, 'rb') as f:
         for chunk in iter(lambda: f.read(4096), b''):
             hasher.update(chunk)
@@ -289,7 +291,7 @@ def get_mod_files(mod_name: str) -> dict:
                 base_entry = os.path.splitext(entry)[0]
                 for extension in utilities.get_file_extensions(entry):
                     before_path = f'{base_entry}{extension}'
-                    relative_path = os.path.relpath(base_entry, cooked_uproject_dir)  # Get the relative path
+                    relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
                     after_path = f'{utilities.get_game_dir()}/{relative_path}{extension}'
                     file_dict[before_path] = after_path
     

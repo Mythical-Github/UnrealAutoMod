@@ -144,7 +144,8 @@ def install_loose_mod(mod_name: str):
             os.makedirs(dir)
         print(f'before file: {before_file}')
         print(f'after file: {after_file}')
-        shutil.copyfile(before_file, after_file)
+        if not utilities.get_do_files_have_same_hash(before_file, after_file):
+            shutil.copyfile(before_file, after_file)
 
 
 def install_engine_mod(mod_name: str, compression_type: CompressionType):

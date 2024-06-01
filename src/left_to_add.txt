@@ -2,10 +2,14 @@
 compressed and not  compressed for repak, engine, and unrealpak
 
 packing logic for the following:
-    loose file except add mod name folder
-    engine pak
+    loose file done except add mod name folder
+    engine pak done except compression
     unreal pak
     repak
+
+loose mod uninstalling can be tricky if the files used change
+what if engine pak but one with and one without compression
+
 
 LATER:
 settings configurator
@@ -24,4 +28,8 @@ docstrings
 better type hints
 -unversionedcookedcontent: Cooks content without embedding version information.
 -compressed: Compresses the packaged content.
-rename to UnrealAutoMod?
+rename to UnrealAutoMod? fix refrenced to tempol and renaem
+poetry
+pylint?
+git rubnner for erleraes?
+mod release creator

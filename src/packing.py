@@ -90,7 +90,8 @@ def handle_logic(packing_type: PackingType):
                 uninstall_mod(packing_type, mod_pak_info['mod_name'])
     for mod_pak_info in settings['mod_pak_info']: 
         if mod_pak_info['is_enabled']:
-            install_mod(packing_type, mod_pak_info['mod_name'], get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
+            if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
+                install_mod(packing_type, mod_pak_info['mod_name'], get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
 
 
 def make_mods():
@@ -116,7 +117,7 @@ def uninstall_loose_mod(mod_name: str):
 
 
 def uninstall_pak_mod(mod_name: str):
-    extensions = ['pak']
+    extensions = utilities.get_mod_extensions()
     if utilities.is_game_ue5():
         extensions.extend(['ucas', 'utoc'])
     for extension in extensions:
@@ -148,23 +149,43 @@ def install_loose_mod(mod_name: str):
             shutil.copyfile(before_file, after_file)
 
 
-def install_engine_mod(mod_name: str, compression_type: CompressionType):
-    pass
+def install_engine_mod(mod_name: str):
+    info_list = utilities.get_mod_pak_info_list()
+    for info in info_list:
+        mod_files = []
+        if info['mod_name'] == mod_name:
+            pak_chunk_num = info['pak_chunk_num']
+            prefix = f'{utilities.get_uproject_dir()}/Saved/StagedBuilds/{utilities.get_win_dir_str()}/{utilities.get_uproject_name()}/Content/Paks/pakchunk{pak_chunk_num}-{utilities.get_win_dir_str()}.'
+            mod_files.append(prefix)
+            for file in mod_files:
+                for suffix in utilities.get_mod_extensions():
+                    before_file = f'{file}{suffix}'
+                    dir = f'{utilities.get_game_dir()}/Content/Paks/{utilities.get_pak_dir_structure(mod_name)}'
+                    if not os.path.isdir(dir):
+                        os.makedirs(dir)
+                    after_file = f'{dir}/{mod_name}.{suffix}'
+                    print(before_file)
+                    print(after_file)
+                    if os.path.exists(after_file):
+                        if not utilities.get_do_files_have_same_hash(before_file, after_file):
+                            shutil.copy2(before_file, after_file)
+                    else:
+                        shutil.copy2(before_file, after_file)
 
 
 def install_repak_mod(mod_name: str, compression_type: CompressionType):
-    pass
+    import repak
 
 
 def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
-    pass
+    import unreal_pak
 
 
 def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
     if packing_type == PackingType.LOOSE:
         install_loose_mod(mod_name)
     if packing_type == PackingType.ENGINE:
-        install_engine_mod(mod_name, compression_type)
+        install_engine_mod(mod_name)
     if packing_type == PackingType.REPAK:
         install_repak_mod(mod_name, compression_type)
     if packing_type == PackingType.UNREAL_PAK:

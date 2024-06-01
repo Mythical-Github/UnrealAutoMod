@@ -87,13 +87,12 @@ Available SCRIPT_ARGs:
 
 
 def get_unreal_engine_version(engine_path: str) -> str:
-    override_automatic_version_finding = settings['engine_info']['override_automatic_version_finding']
-    if override_automatic_version_finding:
+    if settings['engine_info']['override_automatic_version_finding']:
         unreal_engine_major_version = settings['engine_info']['unreal_engine_major_version']
         unreal_engine_minor_version = settings['engine_info']['unreal_engine_minor_version']
         return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'
     else:
-        version_file_path = os.path.join(engine_path, 'Engine', 'Build', 'Build.version')
+        version_file_path = f'{engine_path}/Engine/Build/Build.version'        
         utilities.check_file_exists(version_file_path)
         with open(version_file_path, 'r') as f:
             version_info = json.load(f)
@@ -256,7 +255,7 @@ def get_uproject_name() -> str:
     return os.path.splitext(os.path.basename(get_uproject_file()))[0]
 
 
-def get_uproject_file_dir() -> str:
+def get_uproject_dir() -> str:
     return os.path.dirname(get_uproject_file())
 
 
@@ -268,22 +267,28 @@ def get_win_dir_str() -> str:
 
 
 def get_cooked_uproject_dir() -> str:
-    return f'{get_uproject_file_dir()}/Saved/Cooked/{get_win_dir_str()}/{get_uproject_name()}'
+    return f'{get_uproject_dir()}/Saved/Cooked/{get_win_dir_str()}/{get_uproject_name()}'
 
 
-def get_mod_files(mod_name: str) -> dict:
+def get_mod_files_asset_paths(mod_name: str) -> dict:
+    file_dict = {}
     cooked_uproject_dir = utilities.get_cooked_uproject_dir()
     from packing import get_mod_pak_entry
     mod_pak_info = get_mod_pak_entry(mod_name)
-    file_dict = {}
-
     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
         base_path = f'{cooked_uproject_dir}/{asset}'
         for extension in utilities.get_file_extensions(base_path):
             before_path = f'{base_path}{extension}'
             after_path = f'{utilities.get_game_dir()}/{asset}{extension}'
             file_dict[before_path] = after_path
+    return file_dict
 
+
+def get_mod_files_tree_paths(mod_name: str) -> dict:
+    file_dict = {}
+    cooked_uproject_dir = utilities.get_cooked_uproject_dir()
+    from packing import get_mod_pak_entry
+    mod_pak_info = get_mod_pak_entry(mod_name)
     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
         tree_path = f'{cooked_uproject_dir}/{tree}'
         for entry in utilities.get_files_in_tree(tree_path):
@@ -294,7 +299,11 @@ def get_mod_files(mod_name: str) -> dict:
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
                     after_path = f'{utilities.get_game_dir()}/{relative_path}{extension}'
                     file_dict[before_path] = after_path
-    
+    return file_dict
+
+
+def get_mod_files_persistant_paths(mod_name: str) -> dict:
+    file_dict = {}
     persistant_mod_dir = get_persistant_mod_dir(mod_name)
 
     for root, _, files in os.walk(persistant_mod_dir):
@@ -307,6 +316,30 @@ def get_mod_files(mod_name: str) -> dict:
             print(f'before path: {file_path}')
             print(f'after path: {game_dir_path}')
             file_dict[file_path] = game_dir_path
+
+    return file_dict
+
+
+def get_mod_files_mod_name_dir_paths(mod_name: str) -> dict:
+    file_dict = {}
+
+
+    
+    for key in file_dict.keys():
+        print(key)
+        print(file_dict[key])
+    from time import sleep
+    sleep(999)
+
+    return file_dict
+
+
+def get_mod_files(mod_name: str) -> dict:
+    file_dict = {}
+    file_dict.update(get_mod_files_asset_paths(mod_name))
+    file_dict.update(get_mod_files_tree_paths(mod_name))
+    file_dict.update(get_mod_files_persistant_paths(mod_name))
+    file_dict.update(get_mod_files_mod_name_dir_paths(mod_name))
 
     return file_dict
 
@@ -358,7 +391,7 @@ def is_mod_name_in_list(mod_name: str) -> bool:
 
 def get_mod_name_dir(mod_name: str) -> dir:
     if is_mod_name_in_list(mod_name):
-        return f'{get_uproject_file_dir}/Saved/Cooked/Mods/{mod_name}'
+        return f'{get_uproject_dir}/Saved/Cooked/Mods/{mod_name}'
 
 
 def get_mod_name_dir_files(mod_name: str) -> list:
@@ -366,7 +399,7 @@ def get_mod_name_dir_files(mod_name: str) -> list:
 
 
 def get_persistant_mod_dir(mod_name: str) -> str:
-    dir = get_uproject_file_dir()
+    dir = get_uproject_dir()
     from settings import GAME_NAME, PRESET_NAME
     prefix = f'{dir}/Plugins/Tempo/Tools/Tempo/presets/{GAME_NAME}'
     suffix = f'{PRESET_NAME}/mod_packaging/persistent_files/{mod_name}'
@@ -376,3 +409,13 @@ def get_persistant_mod_dir(mod_name: str) -> str:
 def get_persistant_mod_files(mod_name: str) -> list:
     return get_files_in_tree(get_persistant_mod_dir(mod_name))
  
+
+def get_mod_extensions() -> list:
+    if get_is_game_iostore():
+        return [
+            'pak',
+            'utoc',
+            'ucas'
+        ]
+    else:
+        return ['pak']

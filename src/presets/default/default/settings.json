@@ -156,7 +156,7 @@
       "pak_chunk_num": null,
       "packing_type": "loose",
       "compression_type": null,
-      "is_enabled": true,
+      "is_enabled": false,
       "manually_specified_assets": {
         "asset_paths": [
           "Content/Mods/ModEntry/BP_ModEntry"

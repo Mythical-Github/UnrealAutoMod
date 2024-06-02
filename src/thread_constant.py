@@ -3,7 +3,7 @@ import threading
 import windows as windows
 import utilities as utilities
 from enums import ScriptStateType
-from script_states import ScriptState, routine_checks, is_script_state_used
+from script_states import routine_checks, is_script_state_used
 
 
 def constant_thread_runner(tick_rate: float = 0.1):

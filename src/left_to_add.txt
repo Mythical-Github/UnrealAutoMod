@@ -19,6 +19,7 @@ some paths are grabbed relative from the uproect and not script, check this work
 
 
 Later:
+Engine Pak Io Store Option Testing
 Settings configurator
 Out of Editor GUI
 Editor EWBP GUI

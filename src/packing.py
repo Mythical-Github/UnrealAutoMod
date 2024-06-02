@@ -189,7 +189,7 @@ def install_engine_mod(mod_name: str):
 
 
 def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
-    pass
+    return
 
 
 def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
@@ -199,7 +199,7 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
         install_engine_mod(mod_name)
     if packing_type == PackingType.REPAK:
         from repak import install_repak_mod
-        install_repak_mod(mod_name, compression_type)
+        install_repak_mod(mod_name)
     if packing_type == PackingType.UNREAL_PAK:
         install_unreal_pak_mod(mod_name, compression_type)
 

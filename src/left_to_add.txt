@@ -16,7 +16,7 @@ logic for settings['engine_info']['fix_up_redirectors_on_proj_open']
 timeout settings logic
 make sure script states aren't ran unless they occur
 polish script states
-polish arg parsing
+logic for specifically listed mods in launch args
 dll injection options
 switch to pathlib from strings
 better logging/log file creation

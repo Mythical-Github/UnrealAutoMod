@@ -1,9 +1,6 @@
 import os
 import shutil
 import utilities
-from enums import CompressionType
-
-
 
 
 def get_repak_version_str_from_engine_version() -> str:
@@ -84,7 +81,7 @@ def make_pak_repak(mod_name: str):
     run(command)
 
 
-def install_repak_mod(mod_name: str, compression_type: CompressionType):
+def install_repak_mod(mod_name: str):
     mod_files_dict = utilities.get_mod_file_paths_for_manually_made_pak_mods(mod_name)
     for before_file in mod_files_dict.keys():
         after_file = mod_files_dict[before_file]
@@ -95,12 +92,6 @@ def install_repak_mod(mod_name: str, compression_type: CompressionType):
             else:
                 return
         if not os.path.isdir(os.path.dirname(after_file)):
-            os.makedirs(os.path.dirname(after_file))
-        # maybe try symlink stuff here later, better than copy/moving cuz moving breaks iterative 
+            os.makedirs(os.path.dirname(after_file)) 
         shutil.move(before_file, after_file)
-
-# implement pak making logic making sure the end pak is made where it should end up
     make_pak_repak(mod_name)
-
-    from time import sleep
-    sleep(999)

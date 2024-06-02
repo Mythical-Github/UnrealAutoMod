@@ -323,12 +323,11 @@ def get_mod_files_persistant_paths_for_loose_mods(mod_name: str) -> dict:
 
 def get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
-    game_content_dir = get_game_content_dir()
     cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/Mods/{mod_name}'
     for file in get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{os.path.dirname(utilities.get_game_dir())}/{relative_file_path}'
+        after_path = f'{os.path.dirname(utilities.get_game_dir())}/Content/Mods/{mod_name}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 

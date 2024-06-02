@@ -7,14 +7,21 @@ from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_v
 
 
 class PopulateQueueTypeCheckDict():
-    global queue_types
-    queue_types = []
+    global install_queue_types
+    install_queue_types = []
+    global uninstall_queue_types
+    uninstall_queue_types = []
 
     for packing_type in list(PackingType):
-        for mod_pak_info in settings['mod_pak_info']: 
-            queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
-            if not queue_type in queue_types:
-                queue_types.append(queue_type)
+        for mod_pak_info in settings['mod_pak_info']:
+            if mod_pak_info['is_enabled']:
+                install_queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
+                if not install_queue_type in install_queue_types:
+                    install_queue_types.append(install_queue_type)
+            else:
+                uninstall_queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
+                if not uninstall_queue_type in uninstall_queue_types:
+                    uninstall_queue_types.append(uninstall_queue_type)                
 
 
 def get_mod_packing_type(mod_name: str) -> PackingType:
@@ -53,6 +60,7 @@ def get_engine_pak_command() -> str:
         f'-iterate '
         f'-stage '
         f'-pak '
+        f'-compressed'
     )
     return command_str
 
@@ -84,10 +92,14 @@ def run_proj_command(command: str):
     os.system(command)
 
 
-def handle_logic(packing_type: PackingType):
-    for mod_pak_info in utilities.get_mod_pak_info_list():
-            if not mod_pak_info['is_enabled']:
+def handle_uninstall_logic(packing_type: PackingType):
+    for mod_pak_info in settings['mod_pak_info']: 
+        if not mod_pak_info['is_enabled']:
+            if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                 uninstall_mod(packing_type, mod_pak_info['mod_name'])
+
+
+def handle_install_logic(packing_type: PackingType):
     for mod_pak_info in settings['mod_pak_info']: 
         if mod_pak_info['is_enabled']:
             if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
@@ -98,13 +110,17 @@ def make_mods():
     pre_packaging()
     pre_pak_creation()
     
-    global queue_types
-    for queue_type in queue_types:
-        handle_logic(queue_type)
+    global uninstall_queue_types
+    for uninstall_queue_type in uninstall_queue_types:
+        handle_uninstall_logic(uninstall_queue_type)
+
+    global install_queue_types
+    for install_queue_type in install_queue_types:
+        handle_install_logic(install_queue_type)
 
 
 def uninstall_loose_mod(mod_name: str):
-    mod_files = utilities.get_mod_files(mod_name)
+    mod_files = utilities.get_mod_paths_for_loose_mods(mod_name)
     dict_keys = mod_files.keys()
     for key in dict_keys:
         file_to_remove = mod_files[key]
@@ -135,7 +151,7 @@ def uninstall_mod(packing_type: PackingType, mod_name: str):
 
 
 def install_loose_mod(mod_name: str):
-    mod_files = utilities.get_mod_files(mod_name)
+    mod_files = utilities.get_mod_paths_for_loose_mods(mod_name)
     dict_keys = mod_files.keys()
     for key in dict_keys:
         before_file = key
@@ -143,9 +159,10 @@ def install_loose_mod(mod_name: str):
         dir = os.path.dirname(after_file)
         if not os.path.isdir(dir):
             os.makedirs(dir)
-        print(f'before file: {before_file}')
-        print(f'after file: {after_file}')
-        if not utilities.get_do_files_have_same_hash(before_file, after_file):
+        if os.path.exists(after_file):
+            if not utilities.get_do_files_have_same_hash(before_file, after_file):
+                shutil.copyfile(before_file, after_file)
+        else:
             shutil.copyfile(before_file, after_file)
 
 
@@ -164,8 +181,6 @@ def install_engine_mod(mod_name: str):
                     if not os.path.isdir(dir):
                         os.makedirs(dir)
                     after_file = f'{dir}/{mod_name}.{suffix}'
-                    print(before_file)
-                    print(after_file)
                     if os.path.exists(after_file):
                         if not utilities.get_do_files_have_same_hash(before_file, after_file):
                             shutil.copy2(before_file, after_file)
@@ -173,12 +188,8 @@ def install_engine_mod(mod_name: str):
                         shutil.copy2(before_file, after_file)
 
 
-def install_repak_mod(mod_name: str, compression_type: CompressionType):
-    import repak
-
-
 def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
-    import unreal_pak
+    pass
 
 
 def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
@@ -187,6 +198,7 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
     if packing_type == PackingType.ENGINE:
         install_engine_mod(mod_name)
     if packing_type == PackingType.REPAK:
+        from repak import install_repak_mod
         install_repak_mod(mod_name, compression_type)
     if packing_type == PackingType.UNREAL_PAK:
         install_unreal_pak_mod(mod_name, compression_type)
@@ -194,7 +206,7 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
 
 def pre_packaging():
     ScriptState.set_script_state(ScriptStateType.PRE_PACKAGING)
-    if not PackingType.ENGINE in queue_types:
+    if not PackingType.ENGINE in install_queue_types:
         cook_uproject()
     post_packaging()
 
@@ -205,18 +217,10 @@ def post_packaging():
 
 def pre_pak_creation():
     ScriptState.set_script_state(ScriptStateType.PRE_PAK_CREATION)
-    if PackingType.ENGINE in queue_types:
+    if PackingType.ENGINE in install_queue_types:
         package_uproject()
     post_pak_creation()
 
 
 def post_pak_creation():
     ScriptState.set_script_state(ScriptStateType.POST_PAK_CREATION)
-
-
-def test_mods_all(mod_names: str):
-    test_mods(mod_names)
-
-
-def test_mods(mod_names):
-    pass

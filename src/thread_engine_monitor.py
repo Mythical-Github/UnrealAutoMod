@@ -7,6 +7,7 @@ from script_states import ScriptState
 
 
 def engine_moniter_thread():
+    # later on have this only activate when
     start_engine_monitor_thread()
     print('Engine monitering thread started')
     engine_monitor_thread.join()

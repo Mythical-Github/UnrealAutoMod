@@ -3,38 +3,7 @@ import threading
 import windows as windows
 import utilities as utilities
 from enums import ScriptStateType
-from script_states import ScriptState, routine_checks, is_script_state_used
-
-
-def constant_thread_runner(tick_rate: float = 0.1):
-    while run_constant_thread:
-        time.sleep(tick_rate)
-        constant_thread_logic()
-
-
-def constant_thread_logic():
-    routine_checks(ScriptStateType.CONSTANT)
-
-
-def start_constant_thread():
-    global constant_thread
-    global run_constant_thread
-    run_constant_thread = True
-    constant_thread = threading.Thread(target=constant_thread_runner, daemon=True)
-    constant_thread.start()
-
-
-def constant_thread():
-    if is_script_state_used(ScriptStateType.CONSTANT):
-        start_constant_thread()
-        print('constant thread started')
-    else:
-        print('constant thread not used in config, so not activated')         
-
-
-def stop_constant_thread():
-    global run_constant_thread
-    run_constant_thread = False
+from script_states import ScriptState
 
 
 def game_monitor_thread_runner(tick_rate: float = 0.1):
@@ -95,6 +64,7 @@ def stop_game_monitor_thread():
 
 
 def game_moniter_thread():
+    # later on have this only activate when
     start_game_monitor_thread()
     print('game monitering thread started')
     game_monitor_thread.join()

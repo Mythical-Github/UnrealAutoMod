@@ -73,7 +73,8 @@ class CompressionType(Enum):
     GZIP = 'Gzip'
     OODLE = 'Oodle'
     ZSTD = 'Zstd'
-    DEFAULT = 'Default'
+    LZ4 = 'Lz4'
+    LZMA = 'Lzma'
 
 
 class RepakVersionType(Enum):

@@ -1,43 +1,45 @@
 
-packing logic for the following:
-    loose file DONE
-    engine pak DONE
-    unreal pak
-    repak DONE
+
+Next:
+Finish unreal_pak mod install function
 
 
-LATER:
-engine pak compression types (right now always compresses, and doesn't specufy type)
-settings configurator
-gui out of editor
-gui in editor ewbp
-gui in editor c++ widget
-logic for settings['engine_info']['fix_up_redirectors_on_proj_open']
+"UnrealPak Files\UnrealPak.exe" "..\NewMod_P.pak" -Create="Repacking.txt" -compress
+   Modding Zedfest/Repack Zedfest.bat
+
+"..\Mod Files For Repacking\Engine\*" "../../../Engine/"
+"..\Mod Files For Repacking\KevinSpel\*" "../../../KevinSpel/"
+    Modding Zedfest/Repack Zedfest.bat
+
+
+Sooner:
+Option for mod name to differ from the actual pak name
+Use move over copy when possible, or maybe symlinks
+some paths are grabbed relative from the uproect and not script, check this works fine in all instances
+
+
+Later:
+Settings configurator
+Out of Editor GUI
+Editor EWBP GUI
+Editor C++ GUI
+auto fix_up_redirectors option
 timeout settings logic
-make sure script states aren't ran unless they occur
-polish script states
-logic for specifically listed mods in launch args
-dll injection options
-switch to pathlib from strings
-better logging/log file creation
-docstrings
-better type hints
--unversionedcookedcontent: Cooks content without embedding version information.
--compressed: Compresses the packaged content.
-rename to UnrealAutoMod? fix refrenced to l and renaem
-poetry
-pylint?
-git rubnner for erleraes?
+Polish script states (their names, when they're called, and make sure no unneeded calls)
+Support for test_mods launch param
+dll injection options (through nefarious?)
+Switch to pathlib from strings
+Better type hints
+Doc strings
+Logging/log file creation
+-unversionedcookedcontent support
+Pylint
 mod release creator
-file moving progress bar
-auto find steam with override options
-mod_name dir type enum custom content mods folders convention
-loose mod uninstalling can be tricky if the files used change
-what if engine pak but one with and one without compression
-modname diff than pak name?
-use move over copy when possible on drives
-some paths are grabbed not relative to exe but from uproject, change this since it will someteims be only used as a cli tool
-file cleanup thing
-slashes in get matching suffixes might cause problems
-checked non cooked dir to see which cooked files are still in the proj maybe
-s
+progress bars for various things
+Auto find steam install with override options
+Enum for Content/Mods/Modname versus Content/CustomContent/ModName
+loose file copying (can be tricky if the files used change, also checked non cooked dir to see which cooked files are still in the proj maybe)
+engine compression variants (diff types, in one run)
+Github runners
+Poetry
+Automic Release Creation

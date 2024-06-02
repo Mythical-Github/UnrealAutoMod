@@ -446,7 +446,6 @@ def clean_working_dir():
     if os.path.isdir(working_dir):
         from shutil import rmtree
         rmtree(working_dir)
-    pass
 
 
 def get_matching_suffix(path_one: str, path_two: str) -> str:

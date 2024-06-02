@@ -6,7 +6,7 @@ from script_states import ScriptState
 from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
 
 
-class PopulateQueueTypeCheckDict():
+class PopulateQueueTypeCheckDicts():
     global install_queue_types
     install_queue_types = []
     global uninstall_queue_types
@@ -52,7 +52,7 @@ def get_is_mod_installed(mod_name: str) -> bool:
 
 
 def get_engine_pak_command() -> str:
-    command_str = (
+    return (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
         f'-noP4 '
@@ -62,11 +62,10 @@ def get_engine_pak_command() -> str:
         f'-pak '
         f'-compressed'
     )
-    return command_str
 
 
 def get_cook_project_command() -> str:
-    command_str = (
+    return (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
         f'-noP4 '
@@ -76,7 +75,6 @@ def get_cook_project_command() -> str:
         f'-nocompileeditor '
         f'-nodebuginfo'
     )
-    return command_str
 
 
 def cook_uproject():
@@ -188,10 +186,6 @@ def install_engine_mod(mod_name: str):
                         shutil.copy2(before_file, after_file)
 
 
-def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
-    return
-
-
 def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
     if packing_type == PackingType.LOOSE:
         install_loose_mod(mod_name)
@@ -201,6 +195,7 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
         from repak import install_repak_mod
         install_repak_mod(mod_name)
     if packing_type == PackingType.UNREAL_PAK:
+        from unreal_pak import install_unreal_pak_mod
         install_unreal_pak_mod(mod_name, compression_type)
 
 

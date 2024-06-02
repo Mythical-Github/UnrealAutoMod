@@ -1,7 +1,8 @@
 {
   "general_info": {
+    "override_default_working_dir": false,
     "working_dir": "C:/Users/Mythical/Downloads/Output",
-    "window_title": "Tempo Automation Script"
+    "window_title": "UnrealAutoMod Automation Script"
   },
   "engine_info": {
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
@@ -35,8 +36,7 @@
   "repak_info": {
     "repak_path": "C:/modding/unreal_engine/repak/repak.exe",
     "override_automatic_version_finding": false,
-    "repak_version": "V11",
-    "compression_type": "Zlib"
+    "repak_version": "V11"
   },
   "alt_exe_methods": [
     {
@@ -119,7 +119,7 @@
       "pak_dir_structure": "LogicMods",
       "pak_chunk_num": 1,
       "packing_type": "engine",
-      "compression_type": "none",
+      "compression_type": "None",
       "is_enabled": true,
       "manually_specified_assets": {
         "asset_paths": [],
@@ -131,11 +131,15 @@
       "pak_dir_structure": "~mods",
       "pak_chunk_num": 2,
       "packing_type": "unreal_pak",
-      "compression_type": "none",
+      "compression_type": "None",
       "is_enabled": true,
       "manually_specified_assets": {
-        "asset_paths": [],
-        "tree_paths": []
+        "asset_paths": [
+          "Content/Mods/ModEntry/BP_ModEntry"
+        ],
+        "tree_paths": [
+          "Content/Mods/Z_VillageLevel_P"
+        ]
       }
     },
     {
@@ -143,11 +147,15 @@
       "pak_dir_structure": "interpose_mods/main",
       "pak_chunk_num": 3,
       "packing_type": "repak",
-      "compression_type": "none",
+      "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {
-        "asset_paths": [],
-        "tree_paths": []
+        "asset_paths": [
+          "Content/Mods/ModEntry/BP_ModEntry"
+        ],
+        "tree_paths": [
+          "Content/Mods/Z_VillageLevel_P"
+        ]
       }
     },
     {

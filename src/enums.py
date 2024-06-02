@@ -73,22 +73,22 @@ class CompressionType(Enum):
     GZIP = 'Gzip'
     OODLE = 'Oodle'
     ZSTD = 'Zstd'
-    DEFAULT = 'default'
+    DEFAULT = 'Default'
 
 
 class RepakVersionType(Enum):
     v1 = None
-    v2 = '2' # 4.0-4.2
-    v3 = '3' # 4.3-4.15
-    v4 = '4' # 4.16-4.19
-    v5 = '5' # 4.20
+    v2 = 'V2' # 4.0-4.2
+    v3 = 'V3' # 4.3-4.15
+    v4 = 'V4' # 4.16-4.19
+    v5 = 'V5' # 4.20
     v6 =  None
-    v7 = '7' # 4.21
-    v8a = '8A' # 4.22
-    v8b = '8B' # 4.23-4.24
-    v9 = '9' # 4.25
+    v7 = 'V7' # 4.21
+    v8a = 'V8A' # 4.22
+    v8b = 'V8B' # 4.23-4.24
+    v9 = 'V9' # 4.25
     v10 = None
-    v11 = '11' # 4.26-5.3
+    v11 = 'V11' # 4.26-5.3
 
 
 class UnrealModTreeType(Enum):

@@ -1,13 +1,13 @@
 
-compressed and not  compressed for repak, engine, and unrealpak
-
 packing logic for the following:
-    loose file except add mod name folder
-    engine pak
+    loose file DONE
+    engine pak DONE
     unreal pak
-    repak
+    repak DONE
+
 
 LATER:
+engine pak compression types (right now always compresses, and doesn't specufy type)
 settings configurator
 gui out of editor
 gui in editor ewbp
@@ -16,7 +16,7 @@ logic for settings['engine_info']['fix_up_redirectors_on_proj_open']
 timeout settings logic
 make sure script states aren't ran unless they occur
 polish script states
-polish arg parsing
+logic for specifically listed mods in launch args
 dll injection options
 switch to pathlib from strings
 better logging/log file creation
@@ -24,4 +24,20 @@ docstrings
 better type hints
 -unversionedcookedcontent: Cooks content without embedding version information.
 -compressed: Compresses the packaged content.
-rename to UnrealAutoMod?
+rename to UnrealAutoMod? fix refrenced to l and renaem
+poetry
+pylint?
+git rubnner for erleraes?
+mod release creator
+file moving progress bar
+auto find steam with override options
+mod_name dir type enum custom content mods folders convention
+loose mod uninstalling can be tricky if the files used change
+what if engine pak but one with and one without compression
+modname diff than pak name?
+use move over copy when possible on drives
+some paths are grabbed not relative to exe but from uproject, change this since it will someteims be only used as a cli tool
+file cleanup thing
+slashes in get matching suffixes might cause problems
+checked non cooked dir to see which cooked files are still in the proj maybe
+s

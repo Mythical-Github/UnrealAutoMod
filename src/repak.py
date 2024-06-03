@@ -1,8 +1,8 @@
 import os
 import shutil
 import utilities
+import script_states
 from enums import ScriptStateType
-from script_states import ScriptState
 
 
 def get_repak_version_str_from_engine_version() -> str:
@@ -85,7 +85,7 @@ def make_pak_repak(mod_name: str):
 
 
 def install_repak_mod(mod_name: str):
-    ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
     mod_files_dict = utilities.get_mod_file_paths_for_manually_made_pak_mods(mod_name)
     for before_file in mod_files_dict.keys():
         after_file = mod_files_dict[before_file]
@@ -98,5 +98,5 @@ def install_repak_mod(mod_name: str):
         if not os.path.isdir(os.path.dirname(after_file)):
             os.makedirs(os.path.dirname(after_file)) 
         shutil.copy2(before_file, after_file)
-    ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
     make_pak_repak(mod_name)

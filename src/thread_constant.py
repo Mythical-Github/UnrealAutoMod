@@ -2,8 +2,6 @@ import time
 import threading
 import script_states
 import routine_checks
-import windows as windows
-import utilities as utilities
 from enums import ScriptStateType
 
 

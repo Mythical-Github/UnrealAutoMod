@@ -1,10 +1,10 @@
+import settings
 import utilities
-from settings import settings
 from enums import ExecutionMode, ScriptStateType, get_enum_from_val
 
 
 def alt_exe_checks(script_state_type: ScriptStateType):
-    alt_exe_methods = settings['alt_exe_methods']
+    alt_exe_methods = settings.settings['alt_exe_methods']
     for alt_exe_method in alt_exe_methods:
         value = alt_exe_method['script_state']
         exe_state = get_enum_from_val(ScriptStateType, value)

@@ -1,18 +1,18 @@
+import os
 import utilities
-from os import system
-from screeninfo import get_monitors
+import screeninfo
+import pygetwindow
 from enums import WindowAction, ScriptStateType, get_enum_from_val
-from pygetwindow import getAllTitles, getWindowsWithTitle, getAllWindows, Win32Window, Window
 
 
 def does_window_exist(window_title: str, use_substring_check: bool = False) -> bool:
     try:
         if use_substring_check:
-            all_window_titles = getAllTitles()
+            all_window_titles = pygetwindow.getAllTitles()
             matched_windows = [window for window in all_window_titles if window_title in window]
             return len(matched_windows) > 0
         else:
-            all_window_titles = getWindowsWithTitle(window_title)
+            all_window_titles = pygetwindow.getWindowsWithTitle(window_title)
             return len(all_window_titles) > 0
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -21,35 +21,35 @@ def does_window_exist(window_title: str, use_substring_check: bool = False) -> b
 
 def get_windows_by_title(window_title: str, use_substring_check: bool = False) -> list:
     if use_substring_check:
-        all_windows = getAllWindows()
+        all_windows = pygetwindow.getAllWindows()
         matched_windows = [window for window in all_windows if window_title in window.title]
         return matched_windows
     else:
-        matched_windows = getWindowsWithTitle(window_title)
+        matched_windows = pygetwindow.getWindowsWithTitle(window_title)
         return matched_windows
 
 
-def get_window_by_title(window_title: str, use_substring_check: bool = False) -> Win32Window:
+def get_window_by_title(window_title: str, use_substring_check: bool = False) -> pygetwindow.Win32Window:
     windows = get_windows_by_title(window_title, use_substring_check)
     if not windows:
         raise ValueError(f'No windows found with title "{window_title}"')
     return windows[0]
 
 
-def minimize_window(window: Win32Window):
-    Window.minimize(window)
+def minimize_window(window: pygetwindow.Win32Window):
+    pygetwindow.Window.minimize(window)
 
 
-def maximize_window(window: Win32Window):
-    Window.maximize(window)
+def maximize_window(window: pygetwindow.Win32Window):
+    pygetwindow.Window.maximize(window)
 
 
-def close_window(window: Win32Window):
-    Window.close(window)
+def close_window(window: pygetwindow.Win32Window):
+    pygetwindow.Window.close(window)
 
 
-def move_window_to_monitor(window: Win32Window, monitor_index: int = 0):
-    screen_info = get_monitors()
+def move_window_to_monitor(window: pygetwindow.Win32Window, monitor_index: int = 0):
+    screen_info = screeninfo.get_monitors()
     if monitor_index < len(screen_info):
         monitor = screen_info[monitor_index]
         window.moveTo(monitor.x, monitor.y)
@@ -57,19 +57,19 @@ def move_window_to_monitor(window: Win32Window, monitor_index: int = 0):
         print('Invalid monitor index.')
 
 
-def set_window_size(window: Win32Window, width: int, height: int):
+def set_window_size(window: pygetwindow.Win32Window, width: int, height: int):
     window.size = (width, height)
 
 
 def change_window_name(window_name: str):
-    system(f'title {window_name}')
+    os.system(f'title {window_name}')
 
 
-def get_game_window() -> Win32Window:
+def get_game_window() -> pygetwindow.Win32Window:
     return get_window_by_title(utilities.get_game_process_name())
 
 
-def move_window(window: Win32Window, window_settings: list):
+def move_window(window: pygetwindow.Win32Window, window_settings: list):
     monitor_index = window_settings['monitor']
     if not monitor_index == None:
         move_window_to_monitor(window, monitor_index)

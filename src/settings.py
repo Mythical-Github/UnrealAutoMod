@@ -2,7 +2,7 @@ import os
 import sys
 import json
 import psutil
-from msvcrt import getch
+import msvcrt
 
 
 def print_possible_commands():
@@ -15,7 +15,7 @@ Available SCRIPT_ARGs:
 - test_mods_all
 - test_mods
 """)
-    getch()
+    msvcrt.getch()
     
     sys.exit(1)
 

@@ -1,9 +1,9 @@
 import time
+import windows
+import utilities
 import threading
-import windows as windows
-import utilities as utilities
+import script_states
 from enums import ScriptStateType
-from script_states import ScriptState
 
 
 init_done = False
@@ -46,12 +46,12 @@ def engine_monitor_thread_logic():
         if windows.does_window_exist(engine_window_name):
             print('Found engine window running')
             found_window = True
-            ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
+            script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
     elif not window_closed:
         if not windows.does_window_exist(engine_window_name):
             print('Engine window closed')
             window_closed = True
-            ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
+            script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
             stop_engine_monitor_thread()
 
 

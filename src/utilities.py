@@ -3,12 +3,12 @@ import glob
 import json
 import psutil
 import shutil
+import packing
+import hashlib
 import settings
 import subprocess
-from hashlib import md5
-from script_states import ScriptState
-from packing import get_mod_pak_entry
-from thread_engine_monitor import engine_moniter_thread
+import script_states
+import thread_engine_monitor
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
 
@@ -131,8 +131,8 @@ def is_game_ue4() -> bool:
 def get_file_hash(file_path: str) -> str:
     with open(file_path, 'rb') as f:
         for chunk in iter(lambda: f.read(4096), b''):
-            md5().update(chunk)
-    return md5().hexdigest()
+            hashlib.md5().update(chunk)
+    return hashlib.md5().hexdigest()
 
 
 def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
@@ -164,22 +164,22 @@ def get_unreal_editor_exe_path() -> str:
 
 
 def open_game_engine():
-    ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
     command = get_unreal_editor_exe_path()
     args = settings.settings['engine_info']['engine_launch_args']
     run_app(command, ExecutionMode.ASYNC, args)
-    ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
 
 
 def close_game_engine():
-    ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_CLOSE)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_CLOSE)
     if get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
         game_engine_processes = get_processes_by_substring('UE4Editor')
     else:
         game_engine_processes = get_processes_by_substring('UnrealEditor')
     for process_info in game_engine_processes:
         kill_process(process_info['name'])
-    ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
 
 
 def is_toggle_engine_during_testing_in_use() -> bool:
@@ -276,7 +276,7 @@ def get_mod_name_dir_name(mod_name: str) -> str:
 def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
     cooked_uproject_dir = get_cooked_uproject_dir()
-    mod_pak_info = get_mod_pak_entry(mod_name)
+    mod_pak_info = packing.get_mod_pak_entry(mod_name)
     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
         base_path = f'{cooked_uproject_dir}/{asset}'
         for extension in get_file_extensions(base_path):
@@ -289,7 +289,7 @@ def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:
 def get_mod_files_tree_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
     cooked_uproject_dir = get_cooked_uproject_dir()
-    mod_pak_info = get_mod_pak_entry(mod_name)
+    mod_pak_info = packing.get_mod_pak_entry(mod_name)
     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
         tree_path = f'{cooked_uproject_dir}/{tree}'
         for entry in get_files_in_tree(tree_path):
@@ -442,7 +442,7 @@ def toggle_engine_on():
         if get_fix_up_redirectors_before_engine_open():
             fix_up_uproject_redirectors()
         open_game_engine()
-        engine_moniter_thread()
+        thread_engine_monitor.engine_moniter_thread()
 
 
 def get_working_dir() -> str:
@@ -481,8 +481,7 @@ def get_matching_suffix(path_one: str, path_two: str) -> str:
 def get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name: str) -> dict:
     file_dict = {}
     cooked_uproject_dir = get_cooked_uproject_dir()
-    from packing import get_mod_pak_entry
-    mod_pak_info = get_mod_pak_entry(mod_name)
+    mod_pak_info = packing.get_mod_pak_entry(mod_name)
     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
         base_path = f'{cooked_uproject_dir}/{asset}'
         for extension in get_file_extensions(base_path):
@@ -495,8 +494,7 @@ def get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name: str) -> 
 def get_mod_file_paths_for_manually_made_pak_mods_tree_paths(mod_name: str) -> dict:
     file_dict = {}
     cooked_uproject_dir = get_cooked_uproject_dir()
-    from packing import get_mod_pak_entry
-    mod_pak_info = get_mod_pak_entry(mod_name)
+    mod_pak_info = packing.get_mod_pak_entry(mod_name)
     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
         tree_path = f'{cooked_uproject_dir}/{tree}'
         for entry in get_files_in_tree(tree_path):

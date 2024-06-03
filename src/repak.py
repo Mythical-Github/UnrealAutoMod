@@ -94,5 +94,5 @@ def install_repak_mod(mod_name: str):
                 return
         if not os.path.isdir(os.path.dirname(after_file)):
             os.makedirs(os.path.dirname(after_file)) 
-        shutil.move(before_file, after_file)
+        shutil.copy2(before_file, after_file)
     make_pak_repak(mod_name)

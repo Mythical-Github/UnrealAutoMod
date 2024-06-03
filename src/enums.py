@@ -14,8 +14,7 @@ class PackingType(Enum):
     UNREAL_PAK = 'unreal_pak'
     REPAK = 'repak'
     LOOSE = 'loose'
-    NONE = 'none'
-
+    
 
 class GameLaunchType(Enum):
     EXE = 'exe'
@@ -36,16 +35,14 @@ class ScriptStateType(Enum):
     PRE_INIT = 'pre_init'
     INIT = 'init'
     POST_INIT = 'post_init'
-
-
-    PRE_PACKAGING = 'pre_packaging'
-    POST_PACKAGING = 'post_packaging'
-    PRE_PAK_CREATION = 'pre_pak_creation'
-    POST_PAK_CREATION = 'post_pak_creation'
-    PRE_PAK_MOVING = 'pre_pak_moving'
-    POST_PAK_MOVING = 'post_pak_moving'
-
-
+    PRE_COOKING = 'pre_cooking'
+    POST_COOKING = 'post_cooking'
+    PRE_MODS_UNINSTALL = 'pre_mods_uninstall'
+    POST_MODS_UNINSTALL = 'post_mods_uninstall'
+    PRE_PAK_DIR_SETUP = 'pre_pak_dir_setup'
+    POST_PAK_DIR_SETUP = 'post_pak_dir_setup'
+    PRE_MODS_INSTALL = 'pre_mods_install'
+    POST_MODS_INSTALL = 'post_mods_install'
     PRE_GAME_LAUNCH = 'pre_game_launch'
     POST_GAME_LAUNCH = 'post_game_launch'
     PRE_GAME_CLOSE = 'pre_game_close'

@@ -2,7 +2,8 @@ import os
 import shutil
 import utilities
 from subprocess import run
-from enums import CompressionType
+from script_states import ScriptState
+from enums import CompressionType, ScriptStateType
 
 
 def get_pak_dir_to_pack(mod_name: str):
@@ -39,6 +40,7 @@ def make_response_file(mod_name: str) -> str:
 
 
 def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
+    ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
     move_files_for_packing(mod_name)
     compression_str = CompressionType(compression_type).value
     output_pak_dir = f'{utilities.get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
@@ -50,6 +52,7 @@ def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
     command = f'{exe_path} "{pak_path}" -Create="{response_file}"'
     if not compression_str == 'None':
         command = f'{command} -compress -compressionformat={compression_str}'
+    ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
     print(command)
     run(command)
 

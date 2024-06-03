@@ -113,6 +113,7 @@ def run_proj_command(command: str):
 
 
 def handle_uninstall_logic(packing_type: PackingType):
+    ScriptState.set_script_state(ScriptStateType.PRE_MODS_UNINSTALL)
     from settings import SCRIPT_ARG
     if SCRIPT_ARG == 'test_mods':
         from settings import mod_names
@@ -125,9 +126,11 @@ def handle_uninstall_logic(packing_type: PackingType):
             if not mod_pak_info['is_enabled']:
                 if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                     uninstall_mod(packing_type, mod_pak_info['mod_name'])
+    ScriptState.set_script_state(ScriptStateType.POST_MODS_UNINSTALL)
 
 
 def handle_install_logic(packing_type: PackingType):
+    ScriptState.set_script_state(ScriptStateType.PRE_MODS_INSTALL)
     from settings import SCRIPT_ARG
     if SCRIPT_ARG == 'test_mods':
         from settings import mod_names
@@ -140,13 +143,13 @@ def handle_install_logic(packing_type: PackingType):
             if mod_pak_info['is_enabled']:
                 if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                     install_mod(packing_type, mod_pak_info['mod_name'], get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
+    ScriptState.set_script_state(ScriptStateType.POST_MODS_INSTALL)
 
 
 def make_mods():
     if utilities.get_clear_uproject_saved_cooked_dir_before_tests:
         shutil.rmtree(f'{utilities.get_uproject_dir()}/Saved/Cooked')
-    pre_packaging()
-    pre_pak_creation()
+    cooking()
     
     global uninstall_queue_types
     for uninstall_queue_type in uninstall_queue_types:
@@ -239,23 +242,10 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
         install_unreal_pak_mod(mod_name, compression_type)
 
 
-def pre_packaging():
-    ScriptState.set_script_state(ScriptStateType.PRE_PACKAGING)
+def cooking():
+    ScriptState.set_script_state(ScriptStateType.PRE_COOKING)
     if not PackingType.ENGINE in install_queue_types:
         cook_uproject()
-    post_packaging()
-
-
-def post_packaging():
-    ScriptState.set_script_state(ScriptStateType.POST_PACKAGING)
-
-
-def pre_pak_creation():
-    ScriptState.set_script_state(ScriptStateType.PRE_PAK_CREATION)
-    if PackingType.ENGINE in install_queue_types:
+    else:
         package_uproject()
-    post_pak_creation()
-
-
-def post_pak_creation():
-    ScriptState.set_script_state(ScriptStateType.POST_PAK_CREATION)
+    ScriptState.set_script_state(ScriptStateType.POST_COOKING)

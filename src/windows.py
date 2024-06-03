@@ -1,6 +1,6 @@
+import utilities
 from os import system
 from screeninfo import get_monitors
-from utilities import get_game_process_name, get_auto_move_windows
 from enums import WindowAction, ScriptStateType, get_enum_from_val
 from pygetwindow import getAllTitles, getWindowsWithTitle, getAllWindows, Win32Window, Window
 
@@ -66,7 +66,7 @@ def change_window_name(window_name: str):
 
 
 def get_game_window() -> Win32Window:
-    return get_window_by_title(get_game_process_name())
+    return get_window_by_title(utilities.get_game_process_name())
 
 
 def move_window(window: Win32Window, window_settings: list):
@@ -80,7 +80,7 @@ def move_window(window: Win32Window, window_settings: list):
     
 
 def window_checks(current_state: WindowAction):
-    window_settings_list = get_auto_move_windows()
+    window_settings_list = utilities.get_auto_move_windows()
     for window_settings in window_settings_list:
         settings_state = get_enum_from_val(ScriptStateType, window_settings['script_state'])
         if settings_state == current_state:

@@ -3,9 +3,12 @@ import glob
 import json
 import psutil
 import shutil
+import settings
 import subprocess
-from settings import settings
+from hashlib import md5
 from script_states import ScriptState
+from packing import get_mod_pak_entry
+from thread_engine_monitor import engine_moniter_thread
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
 
@@ -26,7 +29,7 @@ def get_process_name(exe_path: str) -> str:
 
 
 def get_game_process_name() -> str:
-    process = settings['game_info']['game_exe_path']
+    process = settings.settings['game_info']['game_exe_path']
     return get_process_name(process)
 
 
@@ -52,7 +55,7 @@ def get_processes_by_substring(substring: str) -> list:
 
 
 def kill_processes(state: ScriptStateType):
-    process_to_kill_info = settings['process_kill_info']['processes']
+    process_to_kill_info = settings.settings['process_kill_info']['processes']
     current_state = state.value if isinstance(state, ScriptStateType) else state
 
     for process_info in process_to_kill_info:
@@ -70,9 +73,9 @@ def kill_processes(state: ScriptStateType):
 
 
 def get_unreal_engine_version(engine_path: str) -> str:
-    if settings['engine_info']['override_automatic_version_finding']:
-        unreal_engine_major_version = settings['engine_info']['unreal_engine_major_version']
-        unreal_engine_minor_version = settings['engine_info']['unreal_engine_minor_version']
+    if settings.settings['engine_info']['override_automatic_version_finding']:
+        unreal_engine_major_version = settings.settings['engine_info']['unreal_engine_major_version']
+        unreal_engine_minor_version = settings.settings['engine_info']['unreal_engine_minor_version']
         return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'
     else:
         version_file_path = f'{engine_path}/Engine/Build/Build.version'        
@@ -96,12 +99,12 @@ def get_is_game_iostore() -> bool:
 
 
 def get_game_paks_dir() -> str:
-    game_exe_path = settings['game_info']['game_exe_path']
+    game_exe_path = settings.settings['game_info']['game_exe_path']
     game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(game_exe_path)))))
-    uproject = settings['engine_info']['unreal_project_file']
+    uproject = settings.settings['engine_info']['unreal_project_file']
     uproject_name = os.path.basename(uproject)[:-9]
-    if settings['alt_uproject_name_in_game_dir']['use_alt_method']:
-        alt_dir_name = settings['alt_uproject_name_in_game_dir']['name']
+    if settings.settings['alt_uproject_name_in_game_dir']['use_alt_method']:
+        alt_dir_name = settings.settings['alt_uproject_name_in_game_dir']['name']
         dir = f'{game_dir}/{alt_dir_name}/Content/Paks'
     else:
         dir = f'{game_dir}/{uproject_name}/Content/Paks'
@@ -109,7 +112,7 @@ def get_game_paks_dir() -> str:
 
 
 def get_win_dir_type() -> PackagingDirType:
-    engine_dir = settings['engine_info']['unreal_engine_dir']
+    engine_dir = settings.settings['engine_info']['unreal_engine_dir']
     ue_version = get_unreal_engine_version(engine_dir)
     if ue_version.startswith('5'):
         return PackagingDirType.WINDOWS
@@ -126,7 +129,6 @@ def is_game_ue4() -> bool:
 
 
 def get_file_hash(file_path: str) -> str:
-    from hashlib import md5 # md5 is faster
     with open(file_path, 'rb') as f:
         for chunk in iter(lambda: f.read(4096), b''):
             md5().update(chunk)
@@ -147,11 +149,11 @@ def get_game_window_title() -> str:
 
 
 def get_unreal_engine_dir() -> str:
-    return settings['engine_info']['unreal_engine_dir']
+    return settings.settings['engine_info']['unreal_engine_dir']
 
 
 def get_unreal_editor_exe_path() -> str:
-    engine_dir = settings['engine_info']['unreal_engine_dir']
+    engine_dir = settings.settings['engine_info']['unreal_engine_dir']
     test = get_win_dir_type()
     if test == PackagingDirType.WINDOWS_NO_EDITOR:
         engine_path_suffix = '/Engine/Binaries/Win64/UE4Editor.exe'
@@ -164,7 +166,7 @@ def get_unreal_editor_exe_path() -> str:
 def open_game_engine():
     ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
     command = get_unreal_editor_exe_path()
-    args = settings['engine_info']['engine_launch_args']
+    args = settings.settings['engine_info']['engine_launch_args']
     run_app(command, ExecutionMode.ASYNC, args)
     ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
 
@@ -181,7 +183,7 @@ def close_game_engine():
 
 
 def is_toggle_engine_during_testing_in_use() -> bool:
-    return settings['engine_info']['toggle_engine_during_testing']
+    return settings.settings['engine_info']['toggle_engine_during_testing']
 
 
 def run_app(exe_path: str, exec_mode: ExecutionMode, args: str = {}, working_dir: str = None):
@@ -196,7 +198,7 @@ def run_app(exe_path: str, exec_mode: ExecutionMode, args: str = {}, working_dir
     
 
 def get_engine_window_title() -> str:
-    uproject_path = settings['engine_info']['unreal_project_file']
+    uproject_path = settings.settings['engine_info']['unreal_project_file']
     proc_name_prefix = get_process_name(uproject_path)[:-9]
     proc_name_suffix = 'Unreal Editor'
     engine_proc_name = f'{proc_name_prefix} - {proc_name_suffix}'
@@ -234,7 +236,7 @@ def get_game_dir():
 
 
 def get_uproject_file() -> str:
-    return settings['engine_info']['unreal_project_file']
+    return settings.settings['engine_info']['unreal_project_file']
 
 
 def get_uproject_name() -> str:
@@ -274,7 +276,6 @@ def get_mod_name_dir_name(mod_name: str) -> str:
 def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
     cooked_uproject_dir = get_cooked_uproject_dir()
-    from packing import get_mod_pak_entry
     mod_pak_info = get_mod_pak_entry(mod_name)
     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
         base_path = f'{cooked_uproject_dir}/{asset}'
@@ -288,7 +289,6 @@ def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:
 def get_mod_files_tree_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
     cooked_uproject_dir = get_cooked_uproject_dir()
-    from packing import get_mod_pak_entry
     mod_pak_info = get_mod_pak_entry(mod_name)
     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
         tree_path = f'{cooked_uproject_dir}/{tree}'
@@ -348,11 +348,11 @@ def get_game_mod_file_paths(mod_name: str) -> list:
 
 
 def get_unreal_engine_dir() -> str:
-    return settings['engine_info']['unreal_engine_dir']
+    return settings.settings['engine_info']['unreal_engine_dir']
 
 
 def get_mod_pak_info_list() -> list:
-    return settings['mod_pak_info']
+    return settings.settings['mod_pak_info']
 
 
 def get_pak_dir_structure(mod_name: str) -> str:
@@ -401,9 +401,8 @@ def get_mod_name_dir_files(mod_name: str) -> list:
 
 
 def get_persistant_mod_dir(mod_name: str) -> str:
-    from settings import GAME_NAME, PRESET_NAME, SCRIPT_DIR
-    prefix = f'{SCRIPT_DIR}/presets/{GAME_NAME}'
-    suffix = f'{PRESET_NAME}/mod_packaging/persistent_files/{mod_name}'
+    prefix = f'{settings.SCRIPT_DIR}/presets/{settings.GAME_NAME}'
+    suffix = f'{settings.PRESET_NAME}/mod_packaging/persistent_files/{mod_name}'
     return f'{prefix}/{suffix}'
 
 
@@ -423,7 +422,7 @@ def get_mod_extensions() -> list:
 
 
 def get_fix_up_redirectors_before_engine_open() -> bool:
-    return settings['engine_info']['resave_packages_and_fix_up_redirectors_before_engine_open']
+    return settings.settings['engine_info']['resave_packages_and_fix_up_redirectors_before_engine_open']
 
 
 def fix_up_uproject_redirectors():
@@ -443,16 +442,14 @@ def toggle_engine_on():
         if get_fix_up_redirectors_before_engine_open():
             fix_up_uproject_redirectors()
         open_game_engine()
-        from thread_engine_monitor import engine_moniter_thread
         engine_moniter_thread()
 
 
 def get_working_dir() -> str:
-    if settings['general_info']['override_default_working_dir']:
-        working_dir = settings['general_info']['working_dir']
+    if settings.settings['general_info']['override_default_working_dir']:
+        working_dir = settings.settings['general_info']['working_dir']
     else:
-        from settings import SCRIPT_DIR
-        working_dir = f'{SCRIPT_DIR}/working_dir'
+        working_dir = f'{settings.SCRIPT_DIR}/working_dir'
     if not os.path.isdir(working_dir):
         os.makedirs(working_dir)
     return working_dir
@@ -550,12 +547,12 @@ def get_mod_file_paths_for_manually_made_pak_mods(mod_name: str) -> dict:
 
 
 def get_clear_uproject_saved_cooked_dir_before_tests() -> bool:
-    return settings['engine_info']['clear_uproject_saved_cooked_dir_before_tests']
+    return settings.settings['engine_info']['clear_uproject_saved_cooked_dir_before_tests']
 
 
 def get_skip_launching_game() -> bool:
-    return settings['game_info']['skip_launching_game']
+    return settings.settings['game_info']['skip_launching_game']
 
 
 def get_auto_move_windows() -> dict:
-    return settings['auto_move_windows']
+    return settings.settings['auto_move_windows']

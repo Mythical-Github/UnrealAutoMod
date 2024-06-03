@@ -1,5 +1,8 @@
-from enums import ScriptStateType
+import utilities
 from settings import settings
+from windows import window_checks
+from enums import ScriptStateType
+from alt_exe_runner import alt_exe_checks
 
 
 def is_script_state_used(state: ScriptStateType) -> bool:
@@ -29,16 +32,12 @@ def is_script_state_used(state: ScriptStateType) -> bool:
 
     return False
 
-
 def routine_checks(state: ScriptStateType):
     if not state == ScriptStateType.CONSTANT:
         print(f'routine checks for the {state} are running')
     if is_script_state_used(state):
-        from utilities import kill_processes
-        kill_processes(state)
-        from windows import window_checks
+        utilities.kill_processes(state)
         window_checks(state)
-        from alt_exe_runner import alt_exe_checks
         alt_exe_checks(state)
     if not state == ScriptStateType.CONSTANT:
         print(f'routine checks for the {state} finished')
@@ -57,5 +56,4 @@ class ScriptState():
             routine_checks(ScriptStateType.PRE_ALL)
             routine_checks(ScriptStateType.POST_ALL)
 
-    
     set_script_state(ScriptStateType.PRE_INIT)

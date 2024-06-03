@@ -37,7 +37,8 @@ def get_repak_version_str_from_engine_version() -> str:
         "5.0": "V11",
         "5.1": "V11",
         "5.2": "V11",
-        "5.3": "V11"
+        "5.3": "V11",
+        "5.4": "V11"
     }
     return engine_version_to_repack_version[utilities.get_unreal_engine_version(utilities.get_unreal_engine_dir())]
 
@@ -93,5 +94,5 @@ def install_repak_mod(mod_name: str):
                 return
         if not os.path.isdir(os.path.dirname(after_file)):
             os.makedirs(os.path.dirname(after_file)) 
-        shutil.move(before_file, after_file)
+        shutil.copy2(before_file, after_file)
     make_pak_repak(mod_name)

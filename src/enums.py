@@ -46,11 +46,11 @@ class ScriptStateType(Enum):
     POST_GAME_LAUNCH = 'post_game_launch'
     PRE_GAME_CLOSE = 'pre_game_close'
     POST_GAME_CLOSE = 'post_game_close'
-    PRE_ENGINE_CLOSE = 'pre_engine_close'
-    POST_ENGINE_CLOSE = 'post_engine_close'
     PRE_ENGINE_OPEN = 'pre_engine_open'
     POST_ENGINE_OPEN = 'post_engine_open'
-    
+    PRE_ENGINE_CLOSE = 'pre_engine_close'
+    POST_ENGINE_CLOSE = 'post_engine_close'
+
 
 class ExecutionMode(Enum):
     SYNC = 'sync'
@@ -73,7 +73,8 @@ class CompressionType(Enum):
     GZIP = 'Gzip'
     OODLE = 'Oodle'
     ZSTD = 'Zstd'
-    DEFAULT = 'Default'
+    LZ4 = 'Lz4'
+    LZMA = 'Lzma'
 
 
 class RepakVersionType(Enum):
@@ -92,8 +93,8 @@ class RepakVersionType(Enum):
 
 
 class UnrealModTreeType(Enum):
-    CUSTOM_CONTENT = 'custom_content' # "Content/CustomContent/ModName"
-    MODS = 'mods' # "Content/Mods/ModName"
+    CUSTOM_CONTENT = 'CustomContent' # "Content/CustomContent/ModName"
+    MODS = 'Mods' # "Content/Mods/ModName"
 
 
 class FileFilterType(Enum):

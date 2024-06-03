@@ -6,6 +6,9 @@ from enums import ScriptStateType
 from script_states import ScriptState
 
 
+init_done = False
+
+
 def game_monitor_thread_runner(tick_rate: float = 0.1):
     while run_monitoring_thread:
         time.sleep(tick_rate)

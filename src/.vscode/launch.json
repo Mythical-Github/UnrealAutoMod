@@ -15,7 +15,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": ["default", "default", "test_mods", "example_one", "example_two"]
+            "args": ["default", "default", "test_mods", "EnginePakExample_P", "UnrealPakExample_P", "RepakExample_P", "LooseFileExample"]
         }
     ]
 }

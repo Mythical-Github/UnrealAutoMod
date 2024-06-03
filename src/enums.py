@@ -93,8 +93,8 @@ class RepakVersionType(Enum):
 
 
 class UnrealModTreeType(Enum):
-    CUSTOM_CONTENT = 'custom_content' # "Content/CustomContent/ModName"
-    MODS = 'mods' # "Content/Mods/ModName"
+    CUSTOM_CONTENT = 'CustomContent' # "Content/CustomContent/ModName"
+    MODS = 'Mods' # "Content/Mods/ModName"
 
 
 class FileFilterType(Enum):

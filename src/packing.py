@@ -12,9 +12,18 @@ class PopulateQueueTypeCheckDicts():
     global uninstall_queue_types
     uninstall_queue_types = []
     
-    from settings import SCRIPT_ARG
+    from settings import SCRIPT_ARG, mod_names
     if SCRIPT_ARG == 'test_mods':
-        print('add logic here later')
+        for packing_type in list(PackingType):
+            for mod_pak_info in settings['mod_pak_info']:
+                if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in mod_names:
+                    install_queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
+                    if not install_queue_type in install_queue_types:
+                        install_queue_types.append(install_queue_type)
+                if not mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in mod_names:
+                    uninstall_queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
+                    if not uninstall_queue_type in uninstall_queue_types:
+                        uninstall_queue_types.append(uninstall_queue_type)                
     else:
         for packing_type in list(PackingType):
             for mod_pak_info in settings['mod_pak_info']:
@@ -103,9 +112,12 @@ def run_proj_command(command: str):
 
 
 def handle_uninstall_logic(packing_type: PackingType):
-    from settings import SCRIPT_ARG
+    from settings import SCRIPT_ARG, mod_names
     if SCRIPT_ARG == 'test_mods':
-        print('add logic here later')
+        for mod_pak_info in settings['mod_pak_info']: 
+            if not mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in mod_names:
+                if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
+                    uninstall_mod(packing_type, mod_pak_info['mod_name'])
     else:
         for mod_pak_info in settings['mod_pak_info']: 
             if not mod_pak_info['is_enabled']:
@@ -114,9 +126,12 @@ def handle_uninstall_logic(packing_type: PackingType):
 
 
 def handle_install_logic(packing_type: PackingType):
-    from settings import SCRIPT_ARG
+    from settings import SCRIPT_ARG, mod_names
     if SCRIPT_ARG == 'test_mods':
-        print('add logic here later')
+        for mod_pak_info in settings['mod_pak_info']: 
+            if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in mod_names:
+                if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
+                    install_mod(packing_type, mod_pak_info['mod_name'], get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
     else:
         for mod_pak_info in settings['mod_pak_info']: 
             if mod_pak_info['is_enabled']:

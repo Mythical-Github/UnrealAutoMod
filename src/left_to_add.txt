@@ -1,11 +1,7 @@
 
 
-Polish script states (their names, when they're called, and make sure no unneeded calls)
-
-
 Later:
 Engine Pak Io Store Option Testing, make sure all extensions get created, moved, and deleted when needed
-Timeout settings logic
 loose file copying (can be tricky if the files used change, also checked non cooked dir to see which cooked files are still in the proj maybe)
 
 

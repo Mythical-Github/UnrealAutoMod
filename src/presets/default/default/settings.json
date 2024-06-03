@@ -73,10 +73,10 @@
   },
   "auto_move_windows": [
     {
-      "window_name": "move_test_window", 
+      "window_name": "UE4SS", 
       "use_substring_check": true,
       "window_behaviour": "move",
-      "script_state": "all",
+      "script_state": "post_game_launch",
       "monitor": 1,
       "resolution": {
         "x": 1525,

@@ -5,6 +5,9 @@ import psutil
 import utilities
 
 
+settings = ''
+
+
 def set_script_dir():
     global SCRIPT_DIR
     if getattr(sys, 'frozen', False):

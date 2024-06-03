@@ -1,12 +1,9 @@
 import os
-import sys
 import glob
 import json
 import psutil
 import shutil
-import utilities
 import subprocess
-from msvcrt import getch
 from settings import settings
 from script_states import ScriptState
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
@@ -63,28 +60,13 @@ def kill_processes(state: ScriptStateType):
         if target_state == current_state:
             if process_info['use_substring_check']:
                 proc_name_substring = process_info['process_name']
-                matching_processes = utilities.get_processes_by_substring(proc_name_substring)
+                matching_processes = get_processes_by_substring(proc_name_substring)
                 for proc_info in matching_processes:
                     proc_name = proc_info['name']
-                    utilities.kill_process(proc_name)
+                    kill_process(proc_name)
             else:
                 proc_name = process_info['process_name']
-                utilities.kill_process(proc_name)
-
-
-def print_possible_commands():
-    print("""
-Usage: 
-UnrealAutoModCLI.exe <GAME_NAME> <PRESET_NAME> <SCRIPT_ARG>
-main.py <GAME_NAME> <PRESET_NAME> <SCRIPT_ARG>
-
-Available SCRIPT_ARGs:
-- test_mods_all
-- test_mods
-""")
-    getch()
-    
-    sys.exit(1)
+                kill_process(proc_name)
 
 
 def get_unreal_engine_version(engine_path: str) -> str:
@@ -94,7 +76,7 @@ def get_unreal_engine_version(engine_path: str) -> str:
         return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'
     else:
         version_file_path = f'{engine_path}/Engine/Build/Build.version'        
-        utilities.check_file_exists(version_file_path)
+        check_file_exists(version_file_path)
         with open(version_file_path, 'r') as f:
             version_info = json.load(f)
             unreal_engine_major_version = version_info.get('MajorVersion', 0)
@@ -104,7 +86,7 @@ def get_unreal_engine_version(engine_path: str) -> str:
 
 def get_is_game_iostore() -> bool:
     is_game_iostore = False
-    file_extensions = utilities.get_file_extensions(get_game_paks_dir())
+    file_extensions = get_file_extensions(get_game_paks_dir())
     for file_extension in file_extensions:
         if file_extension == 'ucas':
             is_game_iostore = True
@@ -291,32 +273,32 @@ def get_mod_name_dir_name(mod_name: str) -> str:
 
 def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
-    cooked_uproject_dir = utilities.get_cooked_uproject_dir()
+    cooked_uproject_dir = get_cooked_uproject_dir()
     from packing import get_mod_pak_entry
     mod_pak_info = get_mod_pak_entry(mod_name)
     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
         base_path = f'{cooked_uproject_dir}/{asset}'
-        for extension in utilities.get_file_extensions(base_path):
+        for extension in get_file_extensions(base_path):
             before_path = f'{base_path}{extension}'
-            after_path = f'{utilities.get_game_dir()}/{asset}{extension}'
+            after_path = f'{get_game_dir()}/{asset}{extension}'
             file_dict[before_path] = after_path
     return file_dict
 
 
 def get_mod_files_tree_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
-    cooked_uproject_dir = utilities.get_cooked_uproject_dir()
+    cooked_uproject_dir = get_cooked_uproject_dir()
     from packing import get_mod_pak_entry
     mod_pak_info = get_mod_pak_entry(mod_name)
     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
         tree_path = f'{cooked_uproject_dir}/{tree}'
-        for entry in utilities.get_files_in_tree(tree_path):
+        for entry in get_files_in_tree(tree_path):
             if os.path.isfile(entry):
                 base_entry = os.path.splitext(entry)[0]
-                for extension in utilities.get_file_extensions(entry):
+                for extension in get_file_extensions(entry):
                     before_path = f'{base_entry}{extension}'
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
-                    after_path = f'{utilities.get_game_dir()}/{relative_path}{extension}'
+                    after_path = f'{get_game_dir()}/{relative_path}{extension}'
                     file_dict[before_path] = after_path
     return file_dict
 
@@ -329,7 +311,7 @@ def get_mod_files_persistant_paths_for_loose_mods(mod_name: str) -> dict:
         for file in files:
             file_path = os.path.join(root, file)
             relative_path = os.path.relpath(file_path, persistant_mod_dir)
-            game_dir = utilities.get_game_dir()
+            game_dir = get_game_dir()
             game_dir = os.path.dirname(game_dir)
             game_dir_path = os.path.join(game_dir, relative_path)
             file_dict[file_path] = game_dir_path
@@ -342,7 +324,7 @@ def get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name: str) -> dict:
     for file in get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{os.path.dirname(utilities.get_game_dir())}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}/{relative_file_path}'
+        after_path = f'{os.path.dirname(get_game_dir())}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 
@@ -501,32 +483,32 @@ def get_matching_suffix(path_one: str, path_two: str) -> str:
 
 def get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name: str) -> dict:
     file_dict = {}
-    cooked_uproject_dir = utilities.get_cooked_uproject_dir()
+    cooked_uproject_dir = get_cooked_uproject_dir()
     from packing import get_mod_pak_entry
     mod_pak_info = get_mod_pak_entry(mod_name)
     for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
         base_path = f'{cooked_uproject_dir}/{asset}'
-        for extension in utilities.get_file_extensions(base_path):
+        for extension in get_file_extensions(base_path):
             before_path = f'{base_path}{extension}'
-            after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/{asset}{extension}'
+            after_path = f'{get_working_dir()}/{mod_name}/{get_uproject_name()}/{asset}{extension}'
             file_dict[before_path] = after_path
     return file_dict
 
 
 def get_mod_file_paths_for_manually_made_pak_mods_tree_paths(mod_name: str) -> dict:
     file_dict = {}
-    cooked_uproject_dir = utilities.get_cooked_uproject_dir()
+    cooked_uproject_dir = get_cooked_uproject_dir()
     from packing import get_mod_pak_entry
     mod_pak_info = get_mod_pak_entry(mod_name)
     for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
         tree_path = f'{cooked_uproject_dir}/{tree}'
-        for entry in utilities.get_files_in_tree(tree_path):
+        for entry in get_files_in_tree(tree_path):
             if os.path.isfile(entry):
                 base_entry = os.path.splitext(entry)[0]
-                for extension in utilities.get_file_extensions(entry):
+                for extension in get_file_extensions(entry):
                     before_path = f'{base_entry}{extension}'
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
-                    after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/{relative_path}{extension}'
+                    after_path = f'{get_working_dir()}/{mod_name}/{get_uproject_name()}/{relative_path}{extension}'
                     file_dict[before_path] = after_path
     return file_dict
 
@@ -539,9 +521,9 @@ def get_mod_file_paths_for_manually_made_pak_mods_persistent_paths(mod_name: str
         for file in files:
             file_path = os.path.join(root, file)
             relative_path = os.path.relpath(file_path, persistant_mod_dir)
-            game_dir = utilities.get_working_dir()
+            game_dir = get_working_dir()
             game_dir = os.path.dirname(game_dir)
-            game_dir_path = f'{utilities.get_working_dir()}/{mod_name}/{relative_path}'
+            game_dir_path = f'{get_working_dir()}/{mod_name}/{relative_path}'
             file_dict[file_path] = game_dir_path
     return file_dict
 
@@ -552,7 +534,7 @@ def get_mod_file_paths_for_manually_made_pak_mods_mod_name_dir_paths(mod_name: s
     for file in get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}/{relative_file_path}'
+        after_path = f'{get_working_dir()}/{mod_name}/{get_uproject_name()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 

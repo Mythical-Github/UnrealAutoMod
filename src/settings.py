@@ -2,7 +2,22 @@ import os
 import sys
 import json
 import psutil
-import utilities
+from msvcrt import getch
+
+
+def print_possible_commands():
+    print("""
+Usage: 
+UnrealAutoModCLI.exe <GAME_NAME> <PRESET_NAME> <SCRIPT_ARG>
+main.py <GAME_NAME> <PRESET_NAME> <SCRIPT_ARG>
+
+Available SCRIPT_ARGs:
+- test_mods_all
+- test_mods
+""")
+    getch()
+    
+    sys.exit(1)
 
 
 if getattr(sys, 'frozen', False):
@@ -13,7 +28,7 @@ os.chdir(SCRIPT_DIR)
 
 
 if len(sys.argv) < 4:
-    utilities.print_possible_commands()
+    print_possible_commands()
 else:
     GAME_NAME = sys.argv[1]
     PRESET_NAME = sys.argv[2]
@@ -27,7 +42,7 @@ SCRIPT_ARGS = {
     'test_mods'
 }
 if not SCRIPT_ARG in SCRIPT_ARGS:
-    utilities.print_possible_commands()
+    print_possible_commands()
 
 
 PRESET_SETTINGS_JSON = f'{SCRIPT_DIR}/presets/{GAME_NAME}/{PRESET_NAME}/settings.json'

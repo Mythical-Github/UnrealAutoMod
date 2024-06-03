@@ -1,5 +1,5 @@
+import utilities
 from settings import settings
-import utilities as utilities
 from script_states import ScriptState
 from steam import get_steam_exe_location
 from enums import ScriptStateType, GameLaunchType, ExecutionMode
@@ -48,4 +48,4 @@ def run_game():
     # elif launch_type == game_launch_type.UBISOFT:
     #     pass
     else:
-        raise ValueError('Unsupported launch_type specified in the settings.json under game_info[launch_type]')
+        raise ValueError('Unsupported launch_type specified in the settings.json')

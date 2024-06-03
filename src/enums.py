@@ -30,18 +30,22 @@ class GameLaunchType(Enum):
     
 class ScriptStateType(Enum):
     NONE = 'none'
-    PRE_All = 'pre_all'
-    POST_All = 'post_all'
+    PRE_ALL = 'pre_all'
+    POST_ALL = 'post_all'
     CONSTANT = 'constant'
     PRE_INIT = 'pre_init'
     INIT = 'init'
     POST_INIT = 'post_init'
+
+
     PRE_PACKAGING = 'pre_packaging'
     POST_PACKAGING = 'post_packaging'
     PRE_PAK_CREATION = 'pre_pak_creation'
     POST_PAK_CREATION = 'post_pak_creation'
     PRE_PAK_MOVING = 'pre_pak_moving'
     POST_PAK_MOVING = 'post_pak_moving'
+
+
     PRE_GAME_LAUNCH = 'pre_game_launch'
     POST_GAME_LAUNCH = 'post_game_launch'
     PRE_GAME_CLOSE = 'pre_game_close'
@@ -75,21 +79,6 @@ class CompressionType(Enum):
     ZSTD = 'Zstd'
     LZ4 = 'Lz4'
     LZMA = 'Lzma'
-
-
-class RepakVersionType(Enum):
-    v1 = None
-    v2 = 'V2' # 4.0-4.2
-    v3 = 'V3' # 4.3-4.15
-    v4 = 'V4' # 4.16-4.19
-    v5 = 'V5' # 4.20
-    v6 =  None
-    v7 = 'V7' # 4.21
-    v8a = 'V8A' # 4.22
-    v8b = 'V8B' # 4.23-4.24
-    v9 = 'V9' # 4.25
-    v10 = None
-    v11 = 'V11' # 4.26-5.3
 
 
 class UnrealModTreeType(Enum):

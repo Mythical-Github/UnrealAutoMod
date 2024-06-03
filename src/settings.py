@@ -1,8 +1,8 @@
 import os
 import sys
 import json
-import windows as windows
-import utilities as utilities
+import psutil
+import utilities
 
 
 def set_script_dir():
@@ -55,7 +55,6 @@ class Settings():
     auto_close_game = settings['process_kill_info']['auto_close_game']
     if auto_close_game:
         def is_process_running(process_name):
-            import psutil
             for proc in psutil.process_iter():
                 try:
                     if process_name.lower() in proc.name().lower():

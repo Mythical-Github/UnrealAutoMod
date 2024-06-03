@@ -1,46 +1,41 @@
 
 
-Next:
-Finish unreal_pak mod install function
-
-
-"UnrealPak Files\UnrealPak.exe" "..\NewMod_P.pak" -Create="Repacking.txt" -compress
-   Modding Zedfest/Repack Zedfest.bat
-
-"..\Mod Files For Repacking\Engine\*" "../../../Engine/"
-"..\Mod Files For Repacking\KevinSpel\*" "../../../KevinSpel/"
-    Modding Zedfest/Repack Zedfest.bat
-
-
-Sooner:
+Support for test_mods launch param
 Option for mod name to differ from the actual pak name
-Use move over copy when possible, or maybe symlinks
-some paths are grabbed relative from the uproect and not script, check this works fine in all instances
+Polish script states (their names, when they're called, and make sure no unneeded calls)
 
 
 Later:
-Engine Pak Io Store Option Testing
-Settings configurator
+Engine Pak Io Store Option Testing, make sure all extensions get created, moved, and deleted when needed
+Timeout settings logic
+loose file copying (can be tricky if the files used change, also checked non cooked dir to see which cooked files are still in the proj maybe)
+
+
+Cleanup:
+Type hints
+Doc strings
+Switch to pathlib from strings
+Logging/log file creation
+Engine pak making compression variants (diff types, in one run), defaults to compressed rn
+unversioned per mod instead of global
+
+
+Github runners:
+Poetry
+Automic Release Creation
+Pylint
+
+
+GUI:
 Out of Editor GUI
 Editor EWBP GUI
 Editor C++ GUI
-auto fix_up_redirectors option
-timeout settings logic
-Polish script states (their names, when they're called, and make sure no unneeded calls)
-Support for test_mods launch param
-dll injection options (through nefarious?)
-Switch to pathlib from strings
-Better type hints
-Doc strings
-Logging/log file creation
--unversionedcookedcontent support
-Pylint
-mod release creator
-progress bars for various things
-Auto find steam install with override options
-Enum for Content/Mods/Modname versus Content/CustomContent/ModName
-loose file copying (can be tricky if the files used change, also checked non cooked dir to see which cooked files are still in the proj maybe)
-engine compression variants (diff types, in one run)
-Github runners
-Poetry
-Automic Release Creation
+Settings configurator GUI
+
+
+Other:
+Mod Release Creator
+Progress Bars
+DLL Injection
+Repak Installer
+

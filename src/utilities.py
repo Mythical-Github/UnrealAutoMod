@@ -3,11 +3,11 @@ import sys
 import glob
 import json
 import psutil
+import shutil
 import utilities
 import subprocess
 from msvcrt import getch
 from settings import settings
-from testing import test_dict
 from script_states import ScriptState
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
@@ -323,11 +323,11 @@ def get_mod_files_persistant_paths_for_loose_mods(mod_name: str) -> dict:
 
 def get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
-    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/Mods/{mod_name}'
+    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
     for file in get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{os.path.dirname(utilities.get_game_dir())}/Content/Mods/{mod_name}/{relative_file_path}'
+        after_path = f'{os.path.dirname(utilities.get_game_dir())}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 
@@ -373,6 +373,13 @@ def get_mod_compression_type(mod_name: str) -> CompressionType:
     return None
 
 
+def get_unreal_mod_tree_type_str(mod_name: str) -> str:
+    for info in get_mod_pak_info_list():
+        if info['mod_name'] == mod_name:
+            return info['mod_name_dir_type']
+    return None
+
+
 def get_mod_pak_info(mod_name:str) -> dict:
     for info in get_mod_pak_info_list():
         if info['mod_name'] == mod_name:
@@ -389,7 +396,7 @@ def is_mod_name_in_list(mod_name: str) -> bool:
 
 def get_mod_name_dir(mod_name: str) -> dir:
     if is_mod_name_in_list(mod_name):
-        return f'{get_uproject_dir}/Saved/Cooked/Mods/{mod_name}'
+        return f'{get_uproject_dir}/Saved/Cooked/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
 
 
 def get_mod_name_dir_files(mod_name: str) -> list:
@@ -397,9 +404,8 @@ def get_mod_name_dir_files(mod_name: str) -> list:
 
 
 def get_persistant_mod_dir(mod_name: str) -> str:
-    dir = get_uproject_dir()
-    from settings import GAME_NAME, PRESET_NAME
-    prefix = f'{dir}/Plugins/UnrealAutoMod/Tools/UnrealAutoMod/presets/{GAME_NAME}'
+    from settings import GAME_NAME, PRESET_NAME, SCRIPT_DIR
+    prefix = f'{SCRIPT_DIR}/presets/{GAME_NAME}'
     suffix = f'{PRESET_NAME}/mod_packaging/persistent_files/{mod_name}'
     return f'{prefix}/{suffix}'
 
@@ -419,6 +425,17 @@ def get_mod_extensions() -> list:
         return ['pak']
 
 
+def get_fix_up_redirectors_before_engine_open() -> bool:
+    return settings['engine_info']['resave_packages_and_fix_up_redirectors_before_engine_open']
+
+
+def fix_up_uproject_redirectors():
+    arg = '-run=ResavePackages -fixupredirects'
+    command = f'"{get_unreal_editor_exe_path()}" "{get_uproject_file()}" {arg}'
+    close_game_engine()
+    subprocess.run(command)
+
+
 def toggle_engine_off():
     if is_toggle_engine_during_testing_in_use():
         close_game_engine()
@@ -426,6 +443,8 @@ def toggle_engine_off():
 
 def toggle_engine_on():
     if is_toggle_engine_during_testing_in_use():
+        if get_fix_up_redirectors_before_engine_open():
+            fix_up_uproject_redirectors()
         open_game_engine()
         from thread_engine_monitor import engine_moniter_thread
         engine_moniter_thread()
@@ -435,7 +454,8 @@ def get_working_dir() -> str:
     if settings['general_info']['override_default_working_dir']:
         working_dir = settings['general_info']['working_dir']
     else:
-        working_dir = f'{get_uproject_dir()}/Plugins/UnrealAutoMod/Tools/UnrealAutoMod/working_dir'
+        from settings import SCRIPT_DIR
+        working_dir = f'{SCRIPT_DIR}/working_dir'
     if not os.path.isdir(working_dir):
         os.makedirs(working_dir)
     return working_dir
@@ -444,8 +464,10 @@ def get_working_dir() -> str:
 def clean_working_dir():
     working_dir = get_working_dir()
     if os.path.isdir(working_dir):
-        from shutil import rmtree
-        rmtree(working_dir)
+        try:
+            shutil.rmtree(working_dir)
+        except Exception as e:
+            print(f"Error: {e}")
 
 
 def get_matching_suffix(path_one: str, path_two: str) -> str:
@@ -511,11 +533,11 @@ def get_mod_file_paths_for_manually_made_pak_mods_persistent_paths(mod_name: str
 
 def get_mod_file_paths_for_manually_made_pak_mods_mod_name_dir_paths(mod_name: str) -> dict:
     file_dict = {}
-    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/Mods/{mod_name}'
+    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
     for file in get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/Content/Mods/{mod_name}/{relative_file_path}'
+        after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 
@@ -528,3 +550,11 @@ def get_mod_file_paths_for_manually_made_pak_mods(mod_name: str) -> dict:
     file_dict.update(get_mod_file_paths_for_manually_made_pak_mods_mod_name_dir_paths(mod_name))
 
     return file_dict
+
+
+def get_clear_uproject_saved_cooked_dir_before_tests() -> bool:
+    return settings['engine_info']['clear_uproject_saved_cooked_dir_before_tests']
+
+
+def get_skip_launching_game() -> bool:
+    return settings['game_info']['skip_launching_game']

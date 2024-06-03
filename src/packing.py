@@ -12,8 +12,9 @@ class PopulateQueueTypeCheckDicts():
     global uninstall_queue_types
     uninstall_queue_types = []
     
-    from settings import SCRIPT_ARG, mod_names
+    from settings import SCRIPT_ARG
     if SCRIPT_ARG == 'test_mods':
+        from settings import mod_names
         for packing_type in list(PackingType):
             for mod_pak_info in settings['mod_pak_info']:
                 if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in mod_names:
@@ -112,8 +113,9 @@ def run_proj_command(command: str):
 
 
 def handle_uninstall_logic(packing_type: PackingType):
-    from settings import SCRIPT_ARG, mod_names
+    from settings import SCRIPT_ARG
     if SCRIPT_ARG == 'test_mods':
+        from settings import mod_names
         for mod_pak_info in settings['mod_pak_info']: 
             if not mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in mod_names:
                 if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
@@ -126,8 +128,9 @@ def handle_uninstall_logic(packing_type: PackingType):
 
 
 def handle_install_logic(packing_type: PackingType):
-    from settings import SCRIPT_ARG, mod_names
+    from settings import SCRIPT_ARG
     if SCRIPT_ARG == 'test_mods':
+        from settings import mod_names
         for mod_pak_info in settings['mod_pak_info']: 
             if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in mod_names:
                 if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:

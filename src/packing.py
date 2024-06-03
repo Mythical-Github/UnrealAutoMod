@@ -11,17 +11,21 @@ class PopulateQueueTypeCheckDicts():
     install_queue_types = []
     global uninstall_queue_types
     uninstall_queue_types = []
-
-    for packing_type in list(PackingType):
-        for mod_pak_info in settings['mod_pak_info']:
-            if mod_pak_info['is_enabled']:
-                install_queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
-                if not install_queue_type in install_queue_types:
-                    install_queue_types.append(install_queue_type)
-            else:
-                uninstall_queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
-                if not uninstall_queue_type in uninstall_queue_types:
-                    uninstall_queue_types.append(uninstall_queue_type)                
+    
+    from settings import SCRIPT_ARG
+    if SCRIPT_ARG == 'test_mods':
+        print('add logic here later')
+    else:
+        for packing_type in list(PackingType):
+            for mod_pak_info in settings['mod_pak_info']:
+                if mod_pak_info['is_enabled']:
+                    install_queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
+                    if not install_queue_type in install_queue_types:
+                        install_queue_types.append(install_queue_type)
+                else:
+                    uninstall_queue_type = get_enum_from_val(PackingType, mod_pak_info['packing_type'])
+                    if not uninstall_queue_type in uninstall_queue_types:
+                        uninstall_queue_types.append(uninstall_queue_type)                
 
 
 def get_mod_packing_type(mod_name: str) -> PackingType:
@@ -64,8 +68,12 @@ def get_engine_pak_command() -> str:
     )
 
 
+def get_is_using_unversioned_cooked_content() -> bool:
+    return settings['engine_info']['use_unversioned_cooked_content']
+
+
 def get_cook_project_command() -> str:
-    return (
+    command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
         f'-noP4 '
@@ -75,6 +83,10 @@ def get_cook_project_command() -> str:
         f'-nocompileeditor '
         f'-nodebuginfo'
     )
+    if get_is_using_unversioned_cooked_content():
+        unversioned_arg = '-unversionedcookedcontent'
+        command = f'{command} {unversioned_arg}'
+    return command
 
 
 def cook_uproject():
@@ -91,20 +103,30 @@ def run_proj_command(command: str):
 
 
 def handle_uninstall_logic(packing_type: PackingType):
-    for mod_pak_info in settings['mod_pak_info']: 
-        if not mod_pak_info['is_enabled']:
-            if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
-                uninstall_mod(packing_type, mod_pak_info['mod_name'])
+    from settings import SCRIPT_ARG
+    if SCRIPT_ARG == 'test_mods':
+        print('add logic here later')
+    else:
+        for mod_pak_info in settings['mod_pak_info']: 
+            if not mod_pak_info['is_enabled']:
+                if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
+                    uninstall_mod(packing_type, mod_pak_info['mod_name'])
 
 
 def handle_install_logic(packing_type: PackingType):
-    for mod_pak_info in settings['mod_pak_info']: 
-        if mod_pak_info['is_enabled']:
-            if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
-                install_mod(packing_type, mod_pak_info['mod_name'], get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
+    from settings import SCRIPT_ARG
+    if SCRIPT_ARG == 'test_mods':
+        print('add logic here later')
+    else:
+        for mod_pak_info in settings['mod_pak_info']: 
+            if mod_pak_info['is_enabled']:
+                if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
+                    install_mod(packing_type, mod_pak_info['mod_name'], get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
 
 
 def make_mods():
+    if utilities.get_clear_uproject_saved_cooked_dir_before_tests:
+        shutil.rmtree(f'{utilities.get_uproject_dir()}/Saved/Cooked')
     pre_packaging()
     pre_pak_creation()
     

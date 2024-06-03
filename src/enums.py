@@ -2,11 +2,9 @@ from enum import Enum
 
 
 class WindowAction(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for how to treat handling windows
+    """
     NONE = 'none'
     MIN = 'min'
     MAX = 'max'
@@ -15,11 +13,9 @@ class WindowAction(Enum):
 
 
 class PackingType(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for how to treat packing mods
+    """
     ENGINE = 'engine'
     UNREAL_PAK = 'unreal_pak'
     REPAK = 'repak'
@@ -27,11 +23,9 @@ class PackingType(Enum):
 
 
 class GameLaunchType(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for how to launch the game
+    """
     EXE = 'exe'
     STEAM = 'steam'
     EPIC = 'epic'
@@ -43,11 +37,10 @@ class GameLaunchType(Enum):
 
 
 class ScriptStateType(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for the various script states, used to fire off other functions
+    at specific times
+    """
     NONE = 'none'
     PRE_ALL = 'pre_all'
     POST_ALL = 'post_all'
@@ -74,41 +67,33 @@ class ScriptStateType(Enum):
 
 
 class ExecutionMode(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for how to execute various processes
+    """
     SYNC = 'sync'
     ASYNC = 'async'
 
 
 class PackagingDirType(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for the directory type for packaging, it changes based on ue version
+    """
     WINDOWS = 'windows'
     WINDOWS_NO_EDITOR = 'windows_no_editor'
 
 
 class ScriptArg(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for the various args that can be passed to this program
+    """
     TEST_MODS_ALL = 'test_mods_all'
     TEST_MODS = 'test_mods'
 
 
 class CompressionType(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for the types of mod pak compression
+    """
     NONE =  'None'
     ZLIB =  'Zlib'
     GZIP = 'Gzip'
@@ -119,35 +104,32 @@ class CompressionType(Enum):
 
 
 class UnrealModTreeType(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for the mod dir type in the unreal file system
+    there are two main conventions used by communities
+    """
     CUSTOM_CONTENT = 'CustomContent' # "Content/CustomContent/ModName"
     MODS = 'Mods' # "Content/Mods/ModName"
 
 
 class FileFilterType(Enum):
-    """_summary_
-
-    Args:
-        Enum (_type_): _description_
-    """    
+    """
+    enum for how to include various files for mod creation functions
+    """
     ASSET_PATHS = 'asset_paths' # Takes the paths and gets all files regardless of extension
     TREE_PATHS = 'tree_paths' # Takes supplied dirs, and traverses it all, including every file
 
 
 def get_enum_from_val(enum: Enum, value: str) -> Enum:
-    """_summary_
-
+    """
+    Description: 
+        gets enum vlass from a value
     Args:
-        enum (Enum): _description_
-        value (str): _description_
-
+        enum (Enum): enum class from this class
+        value (str): str value of enum class
     Returns:
-        Enum: _description_
-    """    
+        Enum: enum class type
+    """
     for member in enum:
         if member.value == value:
             return member

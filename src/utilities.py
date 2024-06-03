@@ -274,6 +274,21 @@ def get_cooked_uproject_dir() -> str:
     return f'{get_uproject_dir()}/Saved/Cooked/{get_win_dir_str()}/{get_uproject_name()}'
 
 
+def get_use_mod_name_dir_name_override(mod_name: str) -> bool:
+    return get_mod_pak_info(mod_name)['use_mod_name_dir_name_override']
+
+
+def get_mod_name_dir_name_override(mod_name: str) -> bool:
+    return get_mod_pak_info(mod_name)['mod_name_dir_name_override']
+
+
+def get_mod_name_dir_name(mod_name: str) -> str:
+    if get_use_mod_name_dir_name_override(mod_name):
+        return get_mod_name_dir_name_override(mod_name)
+    else:
+        return mod_name
+
+
 def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
     cooked_uproject_dir = utilities.get_cooked_uproject_dir()
@@ -323,11 +338,11 @@ def get_mod_files_persistant_paths_for_loose_mods(mod_name: str) -> dict:
 
 def get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
-    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
+    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}'
     for file in get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{os.path.dirname(utilities.get_game_dir())}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}/{relative_file_path}'
+        after_path = f'{os.path.dirname(utilities.get_game_dir())}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 
@@ -533,11 +548,11 @@ def get_mod_file_paths_for_manually_made_pak_mods_persistent_paths(mod_name: str
 
 def get_mod_file_paths_for_manually_made_pak_mods_mod_name_dir_paths(mod_name: str) -> dict:
     file_dict = {}
-    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
+    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}'
     for file in get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}/{relative_file_path}'
+        after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 

@@ -1,6 +1,5 @@
 
 
-Option for mod name to differ from the actual pak name
 Polish script states (their names, when they're called, and make sure no unneeded calls)
 
 

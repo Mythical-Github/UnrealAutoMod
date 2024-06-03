@@ -1,6 +1,6 @@
 from os import system
 from screeninfo import get_monitors
-from utilities import get_game_process_name
+from utilities import get_game_process_name, get_auto_move_windows
 from enums import WindowAction, ScriptStateType, get_enum_from_val
 from pygetwindow import getAllTitles, getWindowsWithTitle, getAllWindows, Win32Window, Window
 
@@ -80,8 +80,7 @@ def move_window(window: Win32Window, window_settings: list):
     
 
 def window_checks(current_state: WindowAction):
-    from settings import settings
-    window_settings_list = settings['auto_move_windows']
+    window_settings_list = get_auto_move_windows()
     for window_settings in window_settings_list:
         settings_state = get_enum_from_val(ScriptStateType, window_settings['script_state'])
         if settings_state == current_state:
@@ -97,7 +96,5 @@ def window_checks(current_state: WindowAction):
                     close_window(window_to_change)
                 elif way_to_change_window == WindowAction.MOVE:
                     move_window(window_to_change, window_settings)
-                # elif way_to_change_window == WindowAction.NONE:
-                #     pass
                 else:
                     print('invalid window behaviour specified in settings')

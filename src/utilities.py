@@ -573,3 +573,7 @@ def get_clear_uproject_saved_cooked_dir_before_tests() -> bool:
 
 def get_skip_launching_game() -> bool:
     return settings['game_info']['skip_launching_game']
+
+
+def get_auto_move_windows() -> dict:
+    return settings['auto_move_windows']

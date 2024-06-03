@@ -7,7 +7,7 @@
   "engine_info": {
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/InterposePrivate/unreal_project/Interpose/KevinSpel.uproject",
-    "toggle_engine_during_testing": true,
+    "toggle_engine_during_testing": false,
     "resave_packages_and_fix_up_redirectors_before_engine_open": true,
     "engine_launch_args": [],
     "use_unversioned_cooked_content": true,
@@ -116,7 +116,7 @@
       "pak_chunk_num": 1,
       "packing_type": "engine",
       "compression_type": "None",
-      "is_enabled": true,
+      "is_enabled": false,
       "manually_specified_assets": {
         "asset_paths": [],
         "tree_paths": []
@@ -131,7 +131,7 @@
       "pak_chunk_num": 2,
       "packing_type": "unreal_pak",
       "compression_type": "Zlib",
-      "is_enabled": true,
+      "is_enabled": false,
       "manually_specified_assets": {
         "asset_paths": [
           "Content/Mods/ModEntry/BP_ModEntry"
@@ -169,7 +169,7 @@
       "pak_chunk_num": null,
       "packing_type": "loose",
       "compression_type": null,
-      "is_enabled": true,
+      "is_enabled": false,
       "manually_specified_assets": {
         "asset_paths": [
           "Content/Mods/ModEntry/BP_ModEntry"

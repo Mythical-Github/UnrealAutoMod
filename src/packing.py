@@ -1,10 +1,10 @@
 import os
+import repak
 import shutil
 import settings
 import utilities
-from repak import install_repak_mod
-from script_states import ScriptState
-from unreal_pak import install_unreal_pak_mod
+import unreal_pak
+import script_states
 from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
 
 
@@ -114,7 +114,7 @@ def run_proj_command(command: str):
 
 
 def handle_uninstall_logic(packing_type: PackingType):
-    ScriptState.set_script_state(ScriptStateType.PRE_MODS_UNINSTALL)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_UNINSTALL)
     if settings.SCRIPT_ARG == 'test_mods':
         for mod_pak_info in settings.settings['mod_pak_info']: 
             if not mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
@@ -125,11 +125,11 @@ def handle_uninstall_logic(packing_type: PackingType):
             if not mod_pak_info['is_enabled']:
                 if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                     uninstall_mod(packing_type, mod_pak_info['mod_name'])
-    ScriptState.set_script_state(ScriptStateType.POST_MODS_UNINSTALL)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_UNINSTALL)
 
 
 def handle_install_logic(packing_type: PackingType):
-    ScriptState.set_script_state(ScriptStateType.PRE_MODS_INSTALL)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_INSTALL)
     if settings.SCRIPT_ARG == 'test_mods':
         for mod_pak_info in settings.settings['mod_pak_info']: 
             if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
@@ -140,7 +140,7 @@ def handle_install_logic(packing_type: PackingType):
             if mod_pak_info['is_enabled']:
                 if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                     install_mod(packing_type, mod_pak_info['mod_name'], get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
-    ScriptState.set_script_state(ScriptStateType.POST_MODS_INSTALL)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_INSTALL)
 
 
 def make_mods():
@@ -232,15 +232,15 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
     if packing_type == PackingType.ENGINE:
         install_engine_mod(mod_name)
     if packing_type == PackingType.REPAK:
-        install_repak_mod(mod_name)
+        repak.install_repak_mod(mod_name)
     if packing_type == PackingType.UNREAL_PAK:
-        install_unreal_pak_mod(mod_name, compression_type)
+        unreal_pak.install_unreal_pak_mod(mod_name, compression_type)
 
 
 def cooking():
-    ScriptState.set_script_state(ScriptStateType.PRE_COOKING)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_COOKING)
     if not PackingType.ENGINE in install_queue_types:
         cook_uproject()
     else:
         package_uproject()
-    ScriptState.set_script_state(ScriptStateType.POST_COOKING)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_COOKING)

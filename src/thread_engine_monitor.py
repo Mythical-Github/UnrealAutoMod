@@ -6,6 +6,9 @@ from enums import ScriptStateType
 from script_states import ScriptState
 
 
+init_done = False
+
+
 def engine_moniter_thread():
     # later on have this only activate when
     start_engine_monitor_thread()
@@ -26,17 +29,11 @@ def engine_monitor_thread_logic():
     global window_closed
     global init_done
 
-    try:
-        if not init_done:
-            found_process = False
-            found_window = False
-            window_closed = False
-            init_done = True
-    except NameError:
-            found_process = False
-            found_window = False
-            window_closed = False
-            init_done = True
+    if not init_done:
+        found_process = False
+        found_window = False
+        window_closed = False
+        init_done = True
 
 
     engine_window_name = utilities.get_engine_window_title()

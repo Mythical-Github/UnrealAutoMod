@@ -2,6 +2,11 @@ from enum import Enum
 
 
 class WindowAction(Enum):
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
     NONE = 'none'
     MIN = 'min'
     MAX = 'max'
@@ -10,13 +15,23 @@ class WindowAction(Enum):
 
 
 class PackingType(Enum):
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
     ENGINE = 'engine'
     UNREAL_PAK = 'unreal_pak'
     REPAK = 'repak'
     LOOSE = 'loose'
-    
+
 
 class GameLaunchType(Enum):
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
     EXE = 'exe'
     STEAM = 'steam'
     EPIC = 'epic'
@@ -25,9 +40,14 @@ class GameLaunchType(Enum):
     ORIGIN = 'origin'
     UBISOFT = 'ubisoft'
     OTHER = 'other'
-    
-    
+
+
 class ScriptStateType(Enum):
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
     NONE = 'none'
     PRE_ALL = 'pre_all'
     POST_ALL = 'post_all'
@@ -54,21 +74,41 @@ class ScriptStateType(Enum):
 
 
 class ExecutionMode(Enum):
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
     SYNC = 'sync'
     ASYNC = 'async'
 
 
 class PackagingDirType(Enum):
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
     WINDOWS = 'windows'
     WINDOWS_NO_EDITOR = 'windows_no_editor'
 
 
 class ScriptArg(Enum):
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
     TEST_MODS_ALL = 'test_mods_all'
     TEST_MODS = 'test_mods'
 
 
 class CompressionType(Enum):
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
     NONE =  'None'
     ZLIB =  'Zlib'
     GZIP = 'Gzip'
@@ -79,16 +119,35 @@ class CompressionType(Enum):
 
 
 class UnrealModTreeType(Enum):
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
     CUSTOM_CONTENT = 'CustomContent' # "Content/CustomContent/ModName"
     MODS = 'Mods' # "Content/Mods/ModName"
 
 
 class FileFilterType(Enum):
-    ASSET_PATHS = 'asset_paths' # Takes the paths and gets all files regardless of extension and includes them
+    """_summary_
+
+    Args:
+        Enum (_type_): _description_
+    """    
+    ASSET_PATHS = 'asset_paths' # Takes the paths and gets all files regardless of extension
     TREE_PATHS = 'tree_paths' # Takes supplied dirs, and traverses it all, including every file
 
 
 def get_enum_from_val(enum: Enum, value: str) -> Enum:
+    """_summary_
+
+    Args:
+        enum (Enum): _description_
+        value (str): _description_
+
+    Returns:
+        Enum: _description_
+    """    
     for member in enum:
         if member.value == value:
             return member

@@ -11,6 +11,7 @@ from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_v
 install_queue_types = []
 uninstall_queue_types = []
 
+
 class PopulateQueueTypeCheckDicts():
     global install_queue_types
     global uninstall_queue_types

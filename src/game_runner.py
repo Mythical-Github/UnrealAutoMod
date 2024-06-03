@@ -1,8 +1,12 @@
-import enums as enum
 from settings import settings
 import utilities as utilities
 from script_states import ScriptState
+from steam import get_steam_exe_location
 from enums import ScriptStateType, GameLaunchType, ExecutionMode
+
+
+def get_override_automatic_launcher_exe_finding() -> bool:
+    return settings['game_info']['override_automatic_launcher_exe_finding']
 
 
 def run_game_exe():
@@ -14,7 +18,10 @@ def run_game_exe():
 
 
 def run_game_steam():
-    steam_exe = settings['game_info']['game_launcher_exe']
+    if get_override_automatic_launcher_exe_finding():
+        steam_exe = settings['game_info']['game_launcher_exe']
+    else:
+        steam_exe = get_steam_exe_location()
     steam_app_id = settings['game_info']['game_id']
     launch_params = settings['game_info']['launch_params']
     run_game_command = f'{steam_exe} -applaunch {steam_app_id}'

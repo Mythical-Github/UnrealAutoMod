@@ -1,14 +1,22 @@
 
 
 Later:
-loose file copying (can be tricky if the files used change, also checked non cooked dir to see which cooked files are still in the proj maybe)
-Progress Bars
-Type hints
-Doc strings
-Switch to pathlib from strings
-Logging/log file creation
+
 Engine pak making compression variants (diff types, in one run), defaults to compressed rn
+
 unversioned per mod instead of global
+
+Switch to pathlib from strings
+
+Progress Bars
+Logging/log file creation
+
+
+Later:
+script state polish
+better Type hints
+better and more Doc strings
+loose file copying/og_game file tracker to alleviate loose modding issues
 
 
 Github runners:

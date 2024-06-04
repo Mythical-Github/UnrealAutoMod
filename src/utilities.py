@@ -3,12 +3,9 @@ import glob
 import json
 import psutil
 import shutil
-import packing
 import hashlib
-import settings
 import subprocess
-import script_states
-import thread_engine_monitor
+import settings
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
 
@@ -163,25 +160,6 @@ def get_unreal_editor_exe_path() -> str:
     return engine_exe
 
 
-def open_game_engine():
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
-    command = get_unreal_editor_exe_path()
-    args = settings.settings['engine_info']['engine_launch_args']
-    run_app(command, ExecutionMode.ASYNC, args)
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
-
-
-def close_game_engine():
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_CLOSE)
-    if get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
-        game_engine_processes = get_processes_by_substring('UE4Editor')
-    else:
-        game_engine_processes = get_processes_by_substring('UnrealEditor')
-    for process_info in game_engine_processes:
-        kill_process(process_info['name'])
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
-
-
 def is_toggle_engine_during_testing_in_use() -> bool:
     return settings.settings['engine_info']['toggle_engine_during_testing']
 
@@ -273,80 +251,6 @@ def get_mod_name_dir_name(mod_name: str) -> str:
         return mod_name
 
 
-def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:
-    file_dict = {}
-    cooked_uproject_dir = get_cooked_uproject_dir()
-    mod_pak_info = packing.get_mod_pak_entry(mod_name)
-    for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
-        base_path = f'{cooked_uproject_dir}/{asset}'
-        for extension in get_file_extensions(base_path):
-            before_path = f'{base_path}{extension}'
-            after_path = f'{get_game_dir()}/{asset}{extension}'
-            file_dict[before_path] = after_path
-    return file_dict
-
-
-def get_mod_files_tree_paths_for_loose_mods(mod_name: str) -> dict:
-    file_dict = {}
-    cooked_uproject_dir = get_cooked_uproject_dir()
-    mod_pak_info = packing.get_mod_pak_entry(mod_name)
-    for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
-        tree_path = f'{cooked_uproject_dir}/{tree}'
-        for entry in get_files_in_tree(tree_path):
-            if os.path.isfile(entry):
-                base_entry = os.path.splitext(entry)[0]
-                for extension in get_file_extensions(entry):
-                    before_path = f'{base_entry}{extension}'
-                    relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
-                    after_path = f'{get_game_dir()}/{relative_path}{extension}'
-                    file_dict[before_path] = after_path
-    return file_dict
-
-
-def get_mod_files_persistant_paths_for_loose_mods(mod_name: str) -> dict:
-    file_dict = {}
-    persistant_mod_dir = get_persistant_mod_dir(mod_name)
-
-    for root, _, files in os.walk(persistant_mod_dir):
-        for file in files:
-            file_path = os.path.join(root, file)
-            relative_path = os.path.relpath(file_path, persistant_mod_dir)
-            game_dir = get_game_dir()
-            game_dir = os.path.dirname(game_dir)
-            game_dir_path = os.path.join(game_dir, relative_path)
-            file_dict[file_path] = game_dir_path
-    return file_dict
-
-
-def get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name: str) -> dict:
-    file_dict = {}
-    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}'
-    for file in get_files_in_tree(cooked_game_name_mod_dir):
-        relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
-        before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{os.path.dirname(get_game_dir())}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}/{relative_file_path}'
-        file_dict[before_path] = after_path
-    return file_dict
-
-
-def get_mod_paths_for_loose_mods(mod_name: str) -> dict:
-    file_dict = {}
-    file_dict.update(get_mod_files_asset_paths_for_loose_mods(mod_name))
-    file_dict.update(get_mod_files_tree_paths_for_loose_mods(mod_name))
-    file_dict.update(get_mod_files_persistant_paths_for_loose_mods(mod_name))
-    file_dict.update(get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name))
-
-    return file_dict
-
-
-def get_cooked_mod_file_paths(mod_name: str) -> list:
-    return list((get_mod_paths_for_loose_mods(mod_name)).keys())
-
-
-def get_game_mod_file_paths(mod_name: str) -> list:
-    return list((get_mod_paths_for_loose_mods(mod_name)).values())
-
-
 def get_unreal_engine_dir() -> str:
     return settings.settings['engine_info']['unreal_engine_dir']
 
@@ -425,26 +329,6 @@ def get_fix_up_redirectors_before_engine_open() -> bool:
     return settings.settings['engine_info']['resave_packages_and_fix_up_redirectors_before_engine_open']
 
 
-def fix_up_uproject_redirectors():
-    arg = '-run=ResavePackages -fixupredirects'
-    command = f'"{get_unreal_editor_exe_path()}" "{get_uproject_file()}" {arg}'
-    close_game_engine()
-    subprocess.run(command)
-
-
-def toggle_engine_off():
-    if is_toggle_engine_during_testing_in_use():
-        close_game_engine()
-
-
-def toggle_engine_on():
-    if is_toggle_engine_during_testing_in_use():
-        if get_fix_up_redirectors_before_engine_open():
-            fix_up_uproject_redirectors()
-        open_game_engine()
-        thread_engine_monitor.engine_moniter_thread()
-
-
 def get_working_dir() -> str:
     if settings.settings['general_info']['override_default_working_dir']:
         working_dir = settings.settings['general_info']['working_dir']
@@ -478,72 +362,6 @@ def get_matching_suffix(path_one: str, path_two: str) -> str:
     return ''.join(common_suffix)[::-1]
 
 
-def get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name: str) -> dict:
-    file_dict = {}
-    cooked_uproject_dir = get_cooked_uproject_dir()
-    mod_pak_info = packing.get_mod_pak_entry(mod_name)
-    for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
-        base_path = f'{cooked_uproject_dir}/{asset}'
-        for extension in get_file_extensions(base_path):
-            before_path = f'{base_path}{extension}'
-            after_path = f'{get_working_dir()}/{mod_name}/{get_uproject_name()}/{asset}{extension}'
-            file_dict[before_path] = after_path
-    return file_dict
-
-
-def get_mod_file_paths_for_manually_made_pak_mods_tree_paths(mod_name: str) -> dict:
-    file_dict = {}
-    cooked_uproject_dir = get_cooked_uproject_dir()
-    mod_pak_info = packing.get_mod_pak_entry(mod_name)
-    for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
-        tree_path = f'{cooked_uproject_dir}/{tree}'
-        for entry in get_files_in_tree(tree_path):
-            if os.path.isfile(entry):
-                base_entry = os.path.splitext(entry)[0]
-                for extension in get_file_extensions(entry):
-                    before_path = f'{base_entry}{extension}'
-                    relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
-                    after_path = f'{get_working_dir()}/{mod_name}/{get_uproject_name()}/{relative_path}{extension}'
-                    file_dict[before_path] = after_path
-    return file_dict
-
-
-def get_mod_file_paths_for_manually_made_pak_mods_persistent_paths(mod_name: str) -> dict:
-    file_dict = {}
-    persistant_mod_dir = get_persistant_mod_dir(mod_name)
-
-    for root, _, files in os.walk(persistant_mod_dir):
-        for file in files:
-            file_path = os.path.join(root, file)
-            relative_path = os.path.relpath(file_path, persistant_mod_dir)
-            game_dir = get_working_dir()
-            game_dir = os.path.dirname(game_dir)
-            game_dir_path = f'{get_working_dir()}/{mod_name}/{relative_path}'
-            file_dict[file_path] = game_dir_path
-    return file_dict
-
-
-def get_mod_file_paths_for_manually_made_pak_mods_mod_name_dir_paths(mod_name: str) -> dict:
-    file_dict = {}
-    cooked_game_name_mod_dir = f'{get_cooked_uproject_dir()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}'
-    for file in get_files_in_tree(cooked_game_name_mod_dir):
-        relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
-        before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{get_working_dir()}/{mod_name}/{get_uproject_name()}/Content/{get_unreal_mod_tree_type_str(mod_name)}/{get_mod_name_dir_name(mod_name)}/{relative_file_path}'
-        file_dict[before_path] = after_path
-    return file_dict
-
-
-def get_mod_file_paths_for_manually_made_pak_mods(mod_name: str) -> dict:
-    file_dict = {}
-    file_dict.update(get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name))
-    file_dict.update(get_mod_file_paths_for_manually_made_pak_mods_tree_paths(mod_name))
-    file_dict.update(get_mod_file_paths_for_manually_made_pak_mods_persistent_paths(mod_name))
-    file_dict.update(get_mod_file_paths_for_manually_made_pak_mods_mod_name_dir_paths(mod_name))
-
-    return file_dict
-
-
 def get_clear_uproject_saved_cooked_dir_before_tests() -> bool:
     return settings.settings['engine_info']['clear_uproject_saved_cooked_dir_before_tests']
 
@@ -566,3 +384,7 @@ def has_build_target_been_built() -> bool:
 
 def get_always_build_project() -> str:
     return settings.settings['engine_info']['always_build_project']
+
+
+def get_engine_cook_and_packaging_args() -> list:
+    return settings.settings['engine_info']['engine_cook_and_packaging_args']

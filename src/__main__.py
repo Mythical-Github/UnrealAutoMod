@@ -1,3 +1,4 @@
+import engine
 import packing
 import utilities
 import game_runner
@@ -13,11 +14,11 @@ def main():
     script_states.ScriptState.set_script_state(ScriptStateType.POST_INIT)
     utilities.clean_working_dir()
     packing.make_mods()
-    utilities.toggle_engine_off()
+    engine.toggle_engine_off()
     if not utilities.get_skip_launching_game():
         game_runner.run_game()
         thread_game_monitor.game_moniter_thread()
-        utilities.toggle_engine_on()
+        engine.toggle_engine_on()
     thread_constant.stop_constant_thread()
     utilities.clean_working_dir()
 

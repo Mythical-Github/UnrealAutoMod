@@ -10,6 +10,7 @@
     "toggle_engine_during_testing": false,
     "resave_packages_and_fix_up_redirectors_before_engine_open": true,
     "engine_launch_args": [],
+    "engine_cook_and_packaging_args": [],
     "use_unversioned_cooked_content": true,
     "clear_uproject_saved_cooked_dir_before_tests": false,
     "always_build_project": false,

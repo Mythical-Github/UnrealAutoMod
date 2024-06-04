@@ -554,3 +554,15 @@ def get_skip_launching_game() -> bool:
 
 def get_auto_move_windows() -> dict:
     return settings.settings['auto_move_windows']
+
+
+def has_build_target_been_built() -> bool:
+    build_target_file = f'{get_uproject_dir()}/Binaries/Win64/{get_uproject_name()}.target'
+    if os.path.exists(build_target_file):
+        return True
+    else:
+        return False
+
+
+def get_always_build_project() -> str:
+    return settings.settings['engine_info']['always_build_project']

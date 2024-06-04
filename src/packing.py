@@ -68,22 +68,28 @@ def get_is_mod_installed(mod_name: str) -> bool:
     return False
 
 
+def get_is_using_unversioned_cooked_content() -> bool:
+    return settings.settings['engine_info']['use_unversioned_cooked_content']
+
+
 def get_engine_pak_command() -> str:
-    return (
+    command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
         f'-noP4 '
         f'-cook '
         f'-iterate '
-        # f'-build '
         f'-stage '
         f'-pak '
         f'-compressed'
     )
-
-
-def get_is_using_unversioned_cooked_content() -> bool:
-    return settings.settings['engine_info']['use_unversioned_cooked_content']
+    if get_is_using_unversioned_cooked_content():
+        unversioned_arg = '-unversionedcookedcontent'
+        command = f'{command} {unversioned_arg}'
+    if utilities.get_always_build_project() or not utilities.has_build_target_been_built():
+        build_arg = '-build'
+        command = f'{command} {build_arg}'
+    return command
 
 
 def get_cook_project_command() -> str:
@@ -100,6 +106,9 @@ def get_cook_project_command() -> str:
     if get_is_using_unversioned_cooked_content():
         unversioned_arg = '-unversionedcookedcontent'
         command = f'{command} {unversioned_arg}'
+    if utilities.get_always_build_project() or not utilities.has_build_target_been_built():
+        build_arg = '-build'
+        command = f'{command} {build_arg}'
     return command
 
 

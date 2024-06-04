@@ -12,6 +12,7 @@
     "engine_launch_args": [],
     "use_unversioned_cooked_content": true,
     "clear_uproject_saved_cooked_dir_before_tests": false,
+    "always_build_project": false,
     "override_automatic_version_finding": false,
     "unreal_engine_major_version": "4",
     "unreal_engine_minor_version": "22"

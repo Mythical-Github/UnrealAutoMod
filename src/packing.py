@@ -1,9 +1,9 @@
 import os
-import repak
 import shutil
+import subprocess
+import repak
 import settings
 import utilities
-import subprocess
 import unreal_pak
 import script_states
 from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
@@ -208,9 +208,9 @@ def install_loose_mod(mod_name: str):
     for key in dict_keys:
         before_file = key
         after_file = mod_files[key]
-        dir = os.path.dirname(after_file)
-        if not os.path.isdir(dir):
-            os.makedirs(dir)
+        _dir = os.path.dirname(after_file)
+        if not os.path.isdir(_dir):
+            os.makedirs(_dir)
         if os.path.exists(after_file):
             if not utilities.get_do_files_have_same_hash(before_file, after_file):
                 shutil.copyfile(before_file, after_file)
@@ -219,25 +219,23 @@ def install_loose_mod(mod_name: str):
 
 
 def install_engine_mod(mod_name: str):
-    info_list = utilities.get_mod_pak_info_list()
-    for info in info_list:
-        mod_files = []
-        if info['mod_name'] == mod_name:
-            pak_chunk_num = info['pak_chunk_num']
-            prefix = f'{utilities.get_uproject_dir()}/Saved/StagedBuilds/{utilities.get_win_dir_str()}/{utilities.get_uproject_name()}/Content/Paks/pakchunk{pak_chunk_num}-{utilities.get_win_dir_str()}.'
-            mod_files.append(prefix)
-            for file in mod_files:
-                for suffix in utilities.get_mod_extensions():
-                    before_file = f'{file}{suffix}'
-                    dir_engine_mod = f'{utilities.get_game_dir()}/Content/Paks/{utilities.get_pak_dir_structure(mod_name)}'
-                    if not os.path.isdir(dir_engine_mod):
-                        os.makedirs(dir_engine_mod)
-                    after_file = f'{dir_engine_mod}/{mod_name}.{suffix}'
-                    if os.path.exists(after_file):
-                        if not utilities.get_do_files_have_same_hash(before_file, after_file):
-                            shutil.copy2(before_file, after_file)
-                    else:
-                        shutil.copy2(before_file, after_file)
+    mod_files = []
+    info = utilities.get_mod_pak_info(mod_name)
+    pak_chunk_num = info['pak_chunk_num']
+    prefix = f'{utilities.get_uproject_dir()}/Saved/StagedBuilds/{utilities.get_win_dir_str()}/{utilities.get_uproject_name()}/Content/Paks/pakchunk{pak_chunk_num}-{utilities.get_win_dir_str()}.'
+    mod_files.append(prefix)
+    for file in mod_files:
+        for suffix in utilities.get_mod_extensions():
+            before_file = f'{file}{suffix}'
+            dir_engine_mod = f'{utilities.get_game_dir()}/Content/Paks/{utilities.get_pak_dir_structure(mod_name)}'
+            if not os.path.isdir(dir_engine_mod):
+                os.makedirs(dir_engine_mod)
+            after_file = f'{dir_engine_mod}/{mod_name}.{suffix}'
+            if os.path.exists(after_file):
+                if not utilities.get_do_files_have_same_hash(before_file, after_file):
+                    shutil.copy2(before_file, after_file)
+            else:
+                shutil.copy2(before_file, after_file)
 
 
 def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
@@ -253,7 +251,7 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
 
 def cooking():
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_COOKING)
-    if not PackingType.ENGINE in install_queue_types:
+    if PackingType.ENGINE not in install_queue_types:
         cook_uproject()
     else:
         package_uproject()

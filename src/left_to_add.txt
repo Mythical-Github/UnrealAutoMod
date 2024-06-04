@@ -1,12 +1,8 @@
 
 
 Later:
-
-Engine Pak Io Store Option Testing, make sure all extensions get created, moved, and deleted when needed
 loose file copying (can be tricky if the files used change, also checked non cooked dir to see which cooked files are still in the proj maybe)
-
-
-Cleanup:
+Progress Bars
 Type hints
 Doc strings
 Switch to pathlib from strings
@@ -16,9 +12,9 @@ unversioned per mod instead of global
 
 
 Github runners:
+Pylint
 Poetry
 Automic Release Creation
-Pylint
 
 
 GUI:
@@ -30,7 +26,6 @@ Settings configurator GUI
 
 Other:
 Mod Release Creator
-Progress Bars
 DLL Injection
 Repak Installer
 

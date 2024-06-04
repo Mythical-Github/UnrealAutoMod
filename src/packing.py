@@ -1,7 +1,6 @@
 import os
 import shutil
 import subprocess
-import repak
 import settings
 import utilities
 import unreal_pak
@@ -252,9 +251,9 @@ def make_pak_repak(mod_name: str):
     before_symlinked_dir = f'{utilities.get_working_dir()}/{mod_name}'
     
 
-    command = f'{settings.get_repak_exe_path()} pack {before_symlinked_dir} {pak_dir}/{mod_name}.pak'
+    command = f'{utilities.get_repak_exe_path()} pack {before_symlinked_dir} {pak_dir}/{mod_name}.pak'
     if not compression_type_str == 'None':
-        command = f'{command} --compression {compression_type_str} --version {ettings.get_repak_pak_version_str()}'
+        command = f'{command} --compression {compression_type_str} --version {utilities.get_repak_pak_version_str()}'
     if os.path.isfile(f'{pak_dir}/{mod_name}.pak'):
         os.remove(f'{pak_dir}/{mod_name}.pak')
     print(command)

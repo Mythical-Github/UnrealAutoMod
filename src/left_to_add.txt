@@ -1,27 +1,28 @@
 
 
-Polish script states (their names, when they're called, and make sure no unneeded calls)
+Later:
+
+Engine pak making compression variants (diff types, in one run), defaults to compressed rn
+
+unversioned per mod instead of global
+
+Switch to pathlib from strings
+
+Progress Bars
+Logging/log file creation
 
 
 Later:
-Engine Pak Io Store Option Testing, make sure all extensions get created, moved, and deleted when needed
-Timeout settings logic
-loose file copying (can be tricky if the files used change, also checked non cooked dir to see which cooked files are still in the proj maybe)
-
-
-Cleanup:
-Type hints
-Doc strings
-Switch to pathlib from strings
-Logging/log file creation
-Engine pak making compression variants (diff types, in one run), defaults to compressed rn
-unversioned per mod instead of global
+script state polish
+better Type hints
+better and more Doc strings
+loose file copying/og_game file tracker to alleviate loose modding issues
 
 
 Github runners:
+Pylint
 Poetry
 Automic Release Creation
-Pylint
 
 
 GUI:
@@ -33,7 +34,6 @@ Settings configurator GUI
 
 Other:
 Mod Release Creator
-Progress Bars
 DLL Injection
 Repak Installer
 

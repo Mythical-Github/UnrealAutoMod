@@ -1,11 +1,27 @@
-from enums import ScriptStateType
-from settings import settings
+import windows
+import settings
+import utilities
+from enums import ScriptStateType, ExecutionMode, ScriptStateType, get_enum_from_val
+
+
+def alt_exe_checks(script_state_type: ScriptStateType):
+    """
+    """    
+    alt_exe_methods = settings.settings['alt_exe_methods']
+    for alt_exe_method in alt_exe_methods:
+        value = alt_exe_method['script_state']
+        exe_state = get_enum_from_val(ScriptStateType, value)
+        if exe_state == script_state_type:
+            exe_path = alt_exe_method['alt_exe_path']
+            exe_args = alt_exe_method['variable_args']
+            exe_exec_mode = get_enum_from_val(ExecutionMode, alt_exe_method['execution_mode'])
+            utilities.run_app(exe_path, exe_exec_mode, exe_args)
 
 
 def is_script_state_used(state: ScriptStateType) -> bool:
-    if isinstance(settings, dict):
-        if "process_kill_info" in settings:
-            process_kill_info = settings.get("process_kill_info", {})
+    if isinstance(settings.settings, dict):
+        if "process_kill_info" in settings.settings:
+            process_kill_info = settings.settings.get("process_kill_info", {})
             if "processes" in process_kill_info:
                 for process in process_kill_info["processes"]:
                     if isinstance(state, ScriptStateType):
@@ -13,15 +29,15 @@ def is_script_state_used(state: ScriptStateType) -> bool:
                     if process.get("script_state") == state:
                         return True
 
-        if "auto_move_windows" in settings:
-            for window in settings["auto_move_windows"]:
+        if "auto_move_windows" in settings.settings:
+            for window in settings.settings["auto_move_windows"]:
                 if isinstance(state, ScriptStateType):
                     state = state.value
                 if window.get("script_state") == state:
                     return True
 
-        if "alt_exe_methods" in settings:
-            for method in settings["alt_exe_methods"]:
+        if "alt_exe_methods" in settings.settings:
+            for method in settings.settings["alt_exe_methods"]:
                 if isinstance(state, ScriptStateType):
                     state = state.value
                 if method.get("script_state") == state:
@@ -34,11 +50,8 @@ def routine_checks(state: ScriptStateType):
     if not state == ScriptStateType.CONSTANT:
         print(f'routine checks for the {state} are running')
     if is_script_state_used(state):
-        from utilities import kill_processes
-        kill_processes(state)
-        from windows import window_checks
-        window_checks(state)
-        from alt_exe_runner import alt_exe_checks
+        utilities.kill_processes(state)
+        windows.window_checks(state)
         alt_exe_checks(state)
     if not state == ScriptStateType.CONSTANT:
         print(f'routine checks for the {state} finished')
@@ -57,5 +70,4 @@ class ScriptState():
             routine_checks(ScriptStateType.PRE_ALL)
             routine_checks(ScriptStateType.POST_ALL)
 
-    
     set_script_state(ScriptStateType.PRE_INIT)

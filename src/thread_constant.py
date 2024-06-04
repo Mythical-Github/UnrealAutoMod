@@ -1,9 +1,7 @@
 import time
 import threading
-import windows as windows
-import utilities as utilities
+import script_states
 from enums import ScriptStateType
-from script_states import routine_checks, is_script_state_used
 
 
 def constant_thread_runner(tick_rate: float = 0.1):
@@ -13,7 +11,7 @@ def constant_thread_runner(tick_rate: float = 0.1):
 
 
 def constant_thread_logic():
-    routine_checks(ScriptStateType.CONSTANT)
+    script_states.routine_checks(ScriptStateType.CONSTANT)
 
 
 def start_constant_thread():
@@ -25,7 +23,7 @@ def start_constant_thread():
 
 
 def constant_thread():
-    if is_script_state_used(ScriptStateType.CONSTANT):
+    if script_states.is_script_state_used(ScriptStateType.CONSTANT):
         start_constant_thread()
         print('constant thread started')
     else:
@@ -33,6 +31,6 @@ def constant_thread():
 
 
 def stop_constant_thread():
-    if is_script_state_used(ScriptStateType.CONSTANT):
+    if script_states.is_script_state_used(ScriptStateType.CONSTANT):
         global run_constant_thread
         run_constant_thread = False

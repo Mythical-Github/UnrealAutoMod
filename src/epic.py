@@ -1,5 +1,6 @@
 import winreg
 
+
 def get_epic_launcher_exe_location():
     first_arg = winreg.HKEY_LOCAL_MACHINE
     second_arg = r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"

@@ -3,6 +3,7 @@ import repak
 import shutil
 import settings
 import utilities
+import subprocess
 import unreal_pak
 import script_states
 from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
@@ -74,6 +75,7 @@ def get_engine_pak_command() -> str:
         f'-noP4 '
         f'-cook '
         f'-iterate '
+        # f'-build '
         f'-stage '
         f'-pak '
         f'-compressed'
@@ -110,8 +112,8 @@ def package_uproject():
 
 
 def run_proj_command(command: str):
-    os.chdir(utilities.get_unreal_engine_dir())
-    os.system(command)
+    print(command)
+    subprocess.run(command, check=True, shell=True, cwd=utilities.get_unreal_engine_dir())
 
 
 def handle_uninstall_logic(packing_type: PackingType):
@@ -145,8 +147,10 @@ def handle_install_logic(packing_type: PackingType):
 
 
 def make_mods():
-    if utilities.get_clear_uproject_saved_cooked_dir_before_tests:
-        shutil.rmtree(f'{utilities.get_uproject_dir()}/Saved/Cooked')
+    if utilities.get_clear_uproject_saved_cooked_dir_before_tests():
+        cooked_dir = f'{utilities.get_uproject_dir()}/Saved/Cooked'
+        if os.path.isdir(cooked_dir):
+            shutil.rmtree(cooked_dir)
     cooking()
     
     global uninstall_queue_types

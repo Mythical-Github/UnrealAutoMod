@@ -1,6 +1,7 @@
 
 
 Later:
+only build when needed (target stuff)
 Engine Pak Io Store Option Testing, make sure all extensions get created, moved, and deleted when needed
 loose file copying (can be tricky if the files used change, also checked non cooked dir to see which cooked files are still in the proj maybe)
 

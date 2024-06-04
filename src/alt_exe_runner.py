@@ -4,10 +4,7 @@ from enums import ExecutionMode, ScriptStateType, get_enum_from_val
 
 
 def alt_exe_checks(script_state_type: ScriptStateType):
-    """_summary_
-
-    Args:
-        script_state_type (ScriptStateType): _description_
+    """
     """    
     alt_exe_methods = settings.settings['alt_exe_methods']
     for alt_exe_method in alt_exe_methods:

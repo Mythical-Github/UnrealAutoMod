@@ -1,7 +1,6 @@
 import time
 import threading
 import script_states
-import routine_checks
 from enums import ScriptStateType
 
 
@@ -12,7 +11,7 @@ def constant_thread_runner(tick_rate: float = 0.1):
 
 
 def constant_thread_logic():
-    routine_checks.routine_checks(ScriptStateType.CONSTANT)
+    script_states.routine_checks(ScriptStateType.CONSTANT)
 
 
 def start_constant_thread():

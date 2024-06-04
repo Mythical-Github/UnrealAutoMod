@@ -1,7 +1,7 @@
 import time
 import windows
-import utilities
 import threading
+import utilities
 import script_states
 from enums import ScriptStateType
 

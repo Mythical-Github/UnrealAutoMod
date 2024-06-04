@@ -176,7 +176,7 @@ def make_mods():
 
 
 def uninstall_loose_mod(mod_name: str):
-    mod_files = utilities.get_mod_paths_for_loose_mods(mod_name)
+    mod_files = get_mod_paths_for_loose_mods(mod_name)
     dict_keys = mod_files.keys()
     for key in dict_keys:
         file_to_remove = mod_files[key]
@@ -207,7 +207,7 @@ def uninstall_mod(packing_type: PackingType, mod_name: str):
 
 
 def install_loose_mod(mod_name: str):
-    mod_files = utilities.get_mod_paths_for_loose_mods(mod_name)
+    mod_files = get_mod_paths_for_loose_mods(mod_name)
     dict_keys = mod_files.keys()
     for key in dict_keys:
         before_file = key
@@ -287,7 +287,7 @@ def get_mod_files_tree_paths_for_loose_mods(mod_name: str) -> dict:
                 for extension in utilities.get_file_extensions(entry):
                     before_path = f'{base_entry}{extension}'
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
-                    after_path = f'{utilities.et_game_dir()}/{relative_path}{extension}'
+                    after_path = f'{utilities.get_game_dir()}/{relative_path}{extension}'
                     file_dict[before_path] = after_path
     return file_dict
 

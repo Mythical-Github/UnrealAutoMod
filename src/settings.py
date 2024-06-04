@@ -1,8 +1,8 @@
 import os
 import sys
 import json
-import psutil
 import msvcrt
+import psutil
 
 
 def print_possible_commands():

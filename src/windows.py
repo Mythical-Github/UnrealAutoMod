@@ -1,7 +1,7 @@
 import os
-import utilities
 import screeninfo
 import pygetwindow
+import utilities
 from enums import WindowAction, ScriptStateType, get_enum_from_val
 
 
@@ -10,10 +10,9 @@ def does_window_exist(window_title: str, use_substring_check: bool = False) -> b
         if use_substring_check:
             all_window_titles = pygetwindow.getAllTitles()
             matched_windows = [window for window in all_window_titles if window_title in window]
-            return len(matched_windows) > 0
         else:
-            all_window_titles = pygetwindow.getWindowsWithTitle(window_title)
-            return len(all_window_titles) > 0
+            matched_windows = pygetwindow.getWindowsWithTitle(window_title)
+        return len(matched_windows) > 0
     except Exception as e:
         print(f"An error occurred: {e}")
         return False
@@ -23,10 +22,9 @@ def get_windows_by_title(window_title: str, use_substring_check: bool = False) -
     if use_substring_check:
         all_windows = pygetwindow.getAllWindows()
         matched_windows = [window for window in all_windows if window_title in window.title]
-        return matched_windows
     else:
-        matched_windows = pygetwindow.getWindowsWithTitle(window_title)
-        return matched_windows
+        matched_windows = pygetwindow.getWindowsWithTitle(window_title)    
+    return matched_windows
 
 
 def get_window_by_title(window_title: str, use_substring_check: bool = False) -> pygetwindow.Win32Window:
@@ -71,13 +69,13 @@ def get_game_window() -> pygetwindow.Win32Window:
 
 def move_window(window: pygetwindow.Win32Window, window_settings: list):
     monitor_index = window_settings['monitor']
-    if not monitor_index == None:
+    if monitor_index != None:
         move_window_to_monitor(window, monitor_index)
     width = window_settings['resolution']['x']
     height = window_settings['resolution']['y']
-    if not width == None:
+    if width != None:
         set_window_size(window, width, height)
-    
+
 
 def window_checks(current_state: WindowAction):
     window_settings_list = utilities.get_auto_move_windows()

@@ -1,7 +1,7 @@
 import os
 import shutil
-import utilities
 import subprocess
+import utilities
 import script_states
 from enums import CompressionType, ScriptStateType
 

@@ -1,10 +1,10 @@
 import os
 import glob
 import json
-import psutil
 import shutil
 import hashlib
 import subprocess
+import psutil
 import settings
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
@@ -102,10 +102,10 @@ def get_game_paks_dir() -> str:
     uproject_name = os.path.basename(uproject)[:-9]
     if settings.settings['alt_uproject_name_in_game_dir']['use_alt_method']:
         alt_dir_name = settings.settings['alt_uproject_name_in_game_dir']['name']
-        dir = f'{game_dir}/{alt_dir_name}/Content/Paks'
+        _dir = f'{game_dir}/{alt_dir_name}/Content/Paks'
     else:
-        dir = f'{game_dir}/{uproject_name}/Content/Paks'
-    return dir
+        _dir = f'{game_dir}/{uproject_name}/Content/Paks'
+    return _dir
 
 
 def get_win_dir_type() -> PackagingDirType:
@@ -251,10 +251,6 @@ def get_mod_name_dir_name(mod_name: str) -> str:
         return mod_name
 
 
-def get_unreal_engine_dir() -> str:
-    return settings.settings['engine_info']['unreal_engine_dir']
-
-
 def get_mod_pak_info_list() -> list:
     return settings.settings['mod_pak_info']
 
@@ -298,6 +294,7 @@ def is_mod_name_in_list(mod_name: str) -> bool:
 def get_mod_name_dir(mod_name: str) -> dir:
     if is_mod_name_in_list(mod_name):
         return f'{get_uproject_dir}/Saved/Cooked/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
+    return None
 
 
 def get_mod_name_dir_files(mod_name: str) -> list:
@@ -376,10 +373,7 @@ def get_auto_move_windows() -> dict:
 
 def has_build_target_been_built() -> bool:
     build_target_file = f'{get_uproject_dir()}/Binaries/Win64/{get_uproject_name()}.target'
-    if os.path.exists(build_target_file):
-        return True
-    else:
-        return False
+    return os.path.exists(build_target_file)
 
 
 def get_always_build_project() -> str:

@@ -242,13 +242,49 @@ def install_engine_mod(mod_name: str):
                 shutil.copy2(before_file, after_file)
 
 
+def make_pak_repak(mod_name: str):
+    pak_dir = f'{utilities.get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
+    if not os.path.isdir(pak_dir):
+        os.makedirs(pak_dir)
+    os.chdir(pak_dir)
+
+    compression_type_str = utilities.get_mod_pak_info(mod_name)['compression_type']
+    before_symlinked_dir = f'{utilities.get_working_dir()}/{mod_name}'
+    
+
+    command = f'{settings.get_repak_exe_path()} pack {before_symlinked_dir} {pak_dir}/{mod_name}.pak'
+    if not compression_type_str == 'None':
+        command = f'{command} --compression {compression_type_str} --version {ettings.get_repak_pak_version_str()}'
+    if os.path.isfile(f'{pak_dir}/{mod_name}.pak'):
+        os.remove(f'{pak_dir}/{mod_name}.pak')
+    print(command)
+    subprocess.run(command)
+
+
+def install_repak_mod(mod_name: str):
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
+    mod_files_dict = get_mod_file_paths_for_manually_made_pak_mods(mod_name)
+    for before_file in mod_files_dict.keys():
+        after_file = mod_files_dict[before_file]
+        if os.path.exists(after_file):
+            if not utilities.get_do_files_have_same_hash(before_file, after_file):
+                os.remove(after_file)
+            else:
+                return
+        if not os.path.isdir(os.path.dirname(after_file)):
+            os.makedirs(os.path.dirname(after_file)) 
+        shutil.copy2(before_file, after_file)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
+    make_pak_repak(mod_name)
+
+
 def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
     if packing_type == PackingType.LOOSE:
         install_loose_mod(mod_name)
     if packing_type == PackingType.ENGINE:
         install_engine_mod(mod_name)
     if packing_type == PackingType.REPAK:
-        repak.install_repak_mod(mod_name)
+        install_repak_mod(mod_name)
     if packing_type == PackingType.UNREAL_PAK:
         unreal_pak.install_unreal_pak_mod(mod_name, compression_type)
 

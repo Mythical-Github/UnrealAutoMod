@@ -4,7 +4,7 @@ Easy To Use Modding Utility For Unreal Engine Games
 
 <h2>Project Example:</h2>
 
-<img src="https://github.com/Mythical-Github/UnrealAutoMod/assets/67753356/54364be3-08fc-4fa3-ae6a-bd771c417182" alt="project-screenshot">
+[![Project Screenshot](https://github.com/Mythical-Github/UnrealAutoMod/assets/67753356/d36ab78e-af8d-4086-8ad9-fd6f39bba453.png)](https://github.com/Mythical-Github/UnrealAutoMod/assets/67753356/d36ab78e-af8d-4086-8ad9-fd6f39bba453.mp4)
 
 <h2>💪 Features</h2>
 

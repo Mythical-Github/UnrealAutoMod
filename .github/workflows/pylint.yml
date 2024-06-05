@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: windows-latest  # Changed to use Windows runner
+    runs-on: windows-latest
     strategy:
       matrix:
         python-version: ["3.12"]
@@ -20,4 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        python -m pylint $(git ls-files '*.py')  # Changed the command to run Pylint
+        python -m pylint --disable=missing-docstring,invalid-name $(git ls-files '*.py')

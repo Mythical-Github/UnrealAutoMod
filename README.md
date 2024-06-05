@@ -32,8 +32,8 @@ Easy To Use Modding Utility For Unreal Engine Games
 *   Choose a game preset name and a preset name, this will be passed to the program later on
 *   Copy and paste the template "UnrealAutoMod/assets/templates/settings.json" to "UnrealAutoMod/presets/your_game_name/your_preset_name/settings.json" 
 *   Setup your game's settings.json for modding using these two pages as reference
-*   [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/dev/docs/settings_json.md)
-*   [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/dev/docs/enums.md)
+*   [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
+*   [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/enums.md)
 
 <h2>🏃 Running Steps:</h2>
 

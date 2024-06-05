@@ -5,15 +5,19 @@ import utilities
 from enums import WindowAction, ScriptStateType, get_enum_from_val
 
 
+
 def does_window_exist(window_title: str, use_substring_check: bool = False) -> bool:
     try:
         if use_substring_check:
             all_window_titles = pygetwindow.getAllTitles()
             matched_windows = [window for window in all_window_titles if window_title in window]
         else:
-            matched_windows = pygetwindow.getWindowsWithTitle(window_title)
+            try:
+                matched_windows = pygetwindow.getWindowsWithTitle(window_title)
+            except pygetwindow.PyGetWindowException as e:
+                return False
         return len(matched_windows) > 0
-    except Exception as e:
+    except pygetwindow.PyGetWindowException as e:
         print(f"An error occurred: {e}")
         return False
 

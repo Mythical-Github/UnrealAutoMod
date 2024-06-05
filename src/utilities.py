@@ -141,10 +141,6 @@ def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
         return None
 
 
-def get_game_window_title() -> str:
-    return os.path.splitext(get_game_process_name())[0]
-
-
 def get_unreal_engine_dir() -> str:
     return settings.settings['engine_info']['unreal_engine_dir']
 
@@ -438,3 +434,18 @@ def get_repak_pak_version_str() -> str:
 
 def get_repak_exe_path() -> str:
     return settings.settings['repak_info']['repak_path']
+
+
+def get_override_automatic_window_title_finding() -> bool:
+    return settings.settings['game_info']['override_automatic_window_title_finding']
+
+
+def get_window_title_override_string() -> str:
+    return settings.settings['game_info']['window_title_override_string']
+
+
+def get_game_window_title() -> str:
+    if get_override_automatic_window_title_finding():
+        return get_window_title_override_string()
+    else:
+        return os.path.splitext(get_game_process_name())[0]

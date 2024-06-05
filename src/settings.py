@@ -9,11 +9,11 @@ def print_possible_commands():
     print("""
 Usage: 
 UnrealAutoModCLI.exe <GAME_NAME> <PRESET_NAME> <SCRIPT_ARG>
-main.py <GAME_NAME> <PRESET_NAME> <SCRIPT_ARG>
+__main__.py <GAME_NAME> <PRESET_NAME> <SCRIPT_ARG>
 
 Available SCRIPT_ARGs:
 - test_mods_all
-- test_mods
+- test_mods <mod_name> [<mod_name> ...]
 """)
     msvcrt.getch()
     

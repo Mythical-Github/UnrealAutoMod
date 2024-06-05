@@ -271,8 +271,11 @@ def install_repak_mod(mod_name: str):
             else:
                 return
         if not os.path.isdir(os.path.dirname(after_file)):
-            os.makedirs(os.path.dirname(after_file)) 
-        shutil.copy2(before_file, after_file)
+            os.makedirs(os.path.dirname(after_file))
+        if os.path.isfile(before_file):
+            print(before_file)
+            print(after_file)
+            shutil.copy2(before_file, after_file)
     script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
     make_pak_repak(mod_name)
 

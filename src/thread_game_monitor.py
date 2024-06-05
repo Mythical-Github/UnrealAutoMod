@@ -6,7 +6,11 @@ import script_states
 from enums import ScriptStateType
 
 
-init_done = False
+found_process = False
+found_window = False
+window_closed = False
+run_monitoring_thread = False
+game_monitor_thread = ''
 
 
 def game_monitor_thread_runner(tick_rate: float = 0.1):
@@ -19,25 +23,10 @@ def game_monitor_thread_logic():
     global found_process
     global found_window
     global window_closed
-    global init_done
-
-    
-    try:
-        if not init_done:
-            found_process = False
-            found_window = False
-            window_closed = False
-            init_done = True
-    except NameError:
-            found_process = False
-            found_window = False
-            window_closed = False
-            init_done = True
 
     game_window_name = utilities.get_game_window_title()
     if not found_process:
-        game_process_name = utilities.get_game_process_name()
-        if utilities.is_process_running(game_process_name):
+        if utilities.is_process_running(utilities.get_game_process_name()):
             print('Found game process running')
             found_process = True
     elif not found_window:
@@ -67,7 +56,6 @@ def stop_game_monitor_thread():
 
 
 def game_moniter_thread():
-    # later on have this only activate when
     start_game_monitor_thread()
     print('game monitering thread started')
     game_monitor_thread.join()

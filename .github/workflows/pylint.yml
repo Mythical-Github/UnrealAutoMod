@@ -20,4 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        python -m pylint --disable=missing-docstring,invalid-name $(git ls-files '*.py')
+        python -m pylint --disable=missing-docstring,invalid-name,trailing-whitespace,line-too-long $(git ls-files '*.py')

@@ -122,13 +122,6 @@ class FileFilterType(Enum):
 
 def get_enum_from_val(enum: Enum, value: str) -> Enum:
     """
-    Description: 
-        gets enum vlass from a value
-    Args:
-        enum (Enum): enum class from this class
-        value (str): str value of enum class
-    Returns:
-        Enum: enum class type
     """
     for member in enum:
         if member.value == value:

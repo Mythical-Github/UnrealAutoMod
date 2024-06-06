@@ -2,8 +2,16 @@
  "version": "auto-py-to-exe-configuration_v1",
  "pyinstallerOptions": [
   {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
    "optionDest": "filenames",
    "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/__main__.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": true
   },
   {
    "optionDest": "console",
@@ -43,11 +51,63 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src;src/"
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/engine.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/enums.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/epic.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/game_runner.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/packing.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/script_states.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/settings.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/steam.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_constant.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_engine_monitor.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_game_monitor.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/unreal_pak.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/utilities.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/windows.py;."
   }
  ],
  "nonPyinstallerOptions": {
-  "increaseRecursionLimit": false,
+  "increaseRecursionLimit": true,
   "manualArguments": ""
  }
 }

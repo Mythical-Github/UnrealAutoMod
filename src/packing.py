@@ -90,6 +90,8 @@ def get_engine_pak_command() -> str:
         command = f'{command} {build_arg}'
     for arg in utilities.get_engine_cook_and_packaging_args():
         command = f'{command} {arg}'
+    if utilities.get_is_game_iostore():
+        command = f'{command} -iostore'
     return command
 
 

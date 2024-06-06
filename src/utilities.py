@@ -88,9 +88,9 @@ def get_is_game_iostore() -> bool:
     is_game_iostore = False
     file_extensions = get_file_extensions(get_game_paks_dir())
     for file_extension in file_extensions:
-        if file_extension == 'ucas':
+        if file_extension == '.ucas':
             is_game_iostore = True
-        elif file_extension == 'utoc':
+        elif file_extension == '.utoc':
             is_game_iostore = True
     return is_game_iostore
 
@@ -188,17 +188,17 @@ def get_files_in_tree(tree_path: str) -> list:
     return glob.glob(tree_path + '/**/*', recursive=True)
 
 
-def get_file_extensions(file_path: str) -> list:
-    directory, file_name = os.path.split(file_path)
-    if not os.path.exists(directory):
-        print(f'Error: Directory "{directory}" does not exist.')
-        return []
+def get_file_extension(file_path: str) -> str:
+    _, file_extension = os.path.splitext(file_path)
+    return file_extension
 
-    file_name_no_ext, _ = os.path.splitext(file_name)
-    pattern = os.path.join(directory, file_name_no_ext + '*')
-    matching_files = glob.glob(pattern)
-    extensions = set(os.path.splitext(f)[1].lower() for f in matching_files)
-    return list(extensions)
+
+def get_file_extensions(file_path: str) -> list:
+    extensions = []
+    files = get_files_in_tree(file_path)
+    for file in files:
+        extensions.append(get_file_extension(file))
+    return extensions
 
 
 def get_game_content_dir():

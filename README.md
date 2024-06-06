@@ -39,10 +39,14 @@ Easy To Use Modding Utility For Unreal Engine Games
 
 ```
 UnrealAutoModCLI.exe default default test_mods_all
+```
+```
 UnrealAutoModCLI.exe default default test_mods <mod_name> [<mod_name> ...]
 ```
 ```
 __main__.py default default test_mods_all
+```
+```
 __main__.py default default test_mods <mod_name> [<mod_name> ...]
 ```
 

@@ -1,9 +1,23 @@
 import json
 import enums
-from settings import SCRIPT_DIR, GAME_NAME, PRESET_NAME
+# from settings import SCRIPT_DIR, GAME_NAME, PRESET_NAME
 
 
-SETTINGS_JSON = f'{SCRIPT_DIR}/presets/{GAME_NAME}/{PRESET_NAME}/settings.json'
+# SETTINGS_JSON = f'{SCRIPT_DIR}/presets/{GAME_NAME}/{PRESET_NAME}/settings.json'
+
+
+import os
+import sys
+
+
+if getattr(sys, 'frozen', False):
+    SCRIPT_DIR = os.path.dirname(os.path.abspath(sys.executable))
+else:
+    SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+os.chdir(SCRIPT_DIR)
+
+
+SETTINGS_JSON = f'{SCRIPT_DIR}/presets/default/default/settings.json'
 
 
 def load_settings():
@@ -214,7 +228,7 @@ def add_arg_to_variable_list_in_alt_exe_entry(alt_exe_path: str, arg: str):
     save_settings(settings)
 
 
-def remove_arg_to_variable_list_in_alt_exe_entry(alt_exe_path: str, arg: str):
+def remove_arg_from_variable_list_in_alt_exe_entry(alt_exe_path: str, arg: str):
     entries_to_remove = []
     alt_exe_path_entries = settings["alt_exe_methods"]
     for entry in alt_exe_path_entries:

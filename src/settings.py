@@ -14,6 +14,7 @@ __main__.py <GAME_NAME> <PRESET_NAME> <SCRIPT_ARG>
 Available SCRIPT_ARGs:
 - test_mods_all
 - test_mods <mod_name> [<mod_name> ...]
+          
 """)
     msvcrt.getch()
     

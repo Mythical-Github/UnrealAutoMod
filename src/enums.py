@@ -120,6 +120,16 @@ class FileFilterType(Enum):
     TREE_PATHS = 'tree_paths' # Takes supplied dirs, and traverses it all, including every file
 
 
+class SettingsEntryTypes(Enum):
+    """
+    enums for the settings configurator
+    """
+    MOD_INFO = 'mod_info'
+    PROCESS_INFO = 'process_info'
+    WINDOW_INFO = 'window_info'
+    ALT_EXE_INFO = 'alt_exe_info'
+
+
 def get_enum_from_val(enum: Enum, value: str) -> Enum:
     """
     """

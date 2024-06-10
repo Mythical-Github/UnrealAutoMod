@@ -15,6 +15,8 @@ uninstall_queue_types = []
 class PopulateQueueTypeCheckDicts():
     global install_queue_types
     global uninstall_queue_types
+    for mod_name in settings.mod_names:
+        print(mod_name)
     if settings.SCRIPT_ARG == 'test_mods':
         for packing_type in list(PackingType):
             for mod_info in settings.settings['mod_pak_info']:

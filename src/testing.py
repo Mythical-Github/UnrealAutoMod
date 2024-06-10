@@ -1,4 +1,4 @@
-from settings_configurator import *
+from settings import *
 
 
 def test_alt_exe_entry_logic():
@@ -8,7 +8,7 @@ def test_alt_exe_entry_logic():
     set_execution_mode_in_alt_exe_entry("test2", enums.ExecutionMode.SYNC)
     add_arg_to_variable_list_in_alt_exe_entry("test2", "ayo")
     add_arg_to_variable_list_in_alt_exe_entry("test2", "ayo2")
-    remove_arg_to_variable_list_in_alt_exe_entry("test2", "ayo")
+    remove_args_from_variable_list_in_alt_exe_entry("test2", "ayo")
 
     
 
@@ -23,14 +23,14 @@ def test_mod_pak_entry_logic():
     set_packing_type_in_mod_pak_info_entry('testing2', enums.PackingType.ENGINE)
     set_compression_type_in_mod_pak_info_entry('testing2', enums.CompressionType.ZLIB)
     set_is_enabled_in_mod_pak_info_entry('testing2', False)
-    add_tree_path_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test2')
-    add_asset_path_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test2')
-    add_tree_path_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test3')
-    add_asset_path_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test3')
-    remove_tree_path_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test2')
-    remove_asset_path_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test2')
-    remove_tree_path_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test3')
-    remove_asset_path_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test3')
+    add_tree_paths_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test2')
+    add_asset_paths_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test2')
+    add_tree_paths_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test3')
+    add_asset_paths_to_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test3')
+    remove_tree_paths_from_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test2')
+    remove_asset_paths_from_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test2')
+    remove_tree_paths_from_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test3')
+    remove_asset_paths_from_manually_specified_assets_in_mod_pak_info_entry('testing2', 'test3')
 
 
 def test_process_kill_entry_logic():

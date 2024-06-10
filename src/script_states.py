@@ -5,8 +5,6 @@ from enums import ScriptStateType, ExecutionMode, ScriptStateType, get_enum_from
 
 
 def alt_exe_checks(script_state_type: ScriptStateType):
-    """
-    """    
     alt_exe_methods = settings.settings['alt_exe_methods']
     for alt_exe_method in alt_exe_methods:
         value = alt_exe_method['script_state']
@@ -64,9 +62,9 @@ class ScriptState():
         global script_state
         script_state = new_state
         print(f'Script State changed to {new_state}')
-        routine_checks(new_state)
         # calling this on preinit causes problems so will avoid for now
         if not new_state == ScriptStateType.PRE_INIT:
+            routine_checks(new_state)
             routine_checks(ScriptStateType.PRE_ALL)
             routine_checks(ScriptStateType.POST_ALL)
 

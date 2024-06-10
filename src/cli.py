@@ -3,16 +3,34 @@ import argparse
 import settings_configurator
 
 
+
+class CustomArgumentParser(argparse.ArgumentParser):
+    def format_help(self):
+        formatter = self._get_formatter()
+        formatter.add_text(self.description)
+        positionals = [action for action in self._actions if action.option_strings == []]
+        if positionals:
+            formatter.start_section('positional arguments')
+            formatter.add_arguments(positionals)
+            formatter.end_section()
+        formatter.add_text(self.epilog)
+
+        return formatter.format_help()
+
+    def print_help(self, file=None):
+        print(self.format_help(), file=file)
+
+
 def main():
-    parser = argparse.ArgumentParser(description='UnrealAutoMod CLI Information')
+    parser = CustomArgumentParser()
 
   
     unreal_auto_mod_parser = parser.add_subparsers(dest='unreal_auto_mod_parser')
 
 
-    alt_exe_parser_name = 'add_entry_to_alt_exe_entry'
-    alt_exe_parser_help = 'takes in settings.json path, then alt_exe_path'
-    alt_exe_parser_description = 'adds an entry to the alt_exe_methods section of the setting.json'
+    alt_exe_parser_name = 'add_entry_to_alt_exe_info'
+    alt_exe_parser_help = ''
+    alt_exe_parser_description = ''
     add_entry_to_alt_exe_entry_parser = unreal_auto_mod_parser.add_parser(name=alt_exe_parser_name, help=alt_exe_parser_help, description=alt_exe_parser_description)
     add_entry_to_alt_exe_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
     add_entry_to_alt_exe_entry_parser.add_argument('alt_exe_path', help='Path to the executable') 
@@ -21,17 +39,17 @@ def main():
     add_entry_to_alt_exe_entry_parser.add_argument('variable_args', nargs='+', help='List of one or more Str args to pass to the exe when launched') 
 
 
-    rm_ae_name = 'remove_entry_from_alt_exe_entry'
-    rm_ae_help = 'takes in settings.json path, then alt_exe_path'
-    rm_ae_description = 'removes an entry from the alt_exe_methods section of the setting.json'
+    rm_ae_name = 'remove_entry_from_alt_exe_info'
+    rm_ae_help = ''
+    rm_ae_description = ''
     remove_entry_from_alt_exe_entry_parser = unreal_auto_mod_parser.add_parser(name=rm_ae_name, help=rm_ae_help, description=rm_ae_description)
     remove_entry_from_alt_exe_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
     remove_entry_from_alt_exe_entry_parser.add_argument('alt_exe_path', help='alt_exe_path of the entry')    
     
     
     ss_ae_name = 'set_script_state_in_alt_exe_entry'
-    ss_ae_help = 'takes in settings.json path, alt_exe_path, then ScriptStateType enum str value'
-    ss_ae_description = 'sets the script_state value in the corresponding entry in the settings.json'
+    ss_ae_help = ''
+    ss_ae_description = ''
     set_script_state_in_alt_exe_entry_parser = unreal_auto_mod_parser.add_parser(name=ss_ae_name, help=ss_ae_help, description=ss_ae_description)
     set_script_state_in_alt_exe_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
     set_script_state_in_alt_exe_entry_parser.add_argument('alt_exe_path', help='alt_exe_path of the entry')   
@@ -39,8 +57,8 @@ def main():
 
     
     ap_ae_name = 'set_alt_exe_path_in_alt_exe_entry'
-    ap_ae_help = 'takes in settings.json path, before_alt_exe_path, then after_alt_exe_path'
-    ap_ae_description = 'sets the alt_exe_path in the corresponding entry in the settings.json'
+    ap_ae_help = ''
+    ap_ae_description = ''
     set_alt_exe_path_in_alt_exe_entry_parser = unreal_auto_mod_parser.add_parser(name=ap_ae_name, help=ap_ae_help, description=ap_ae_description)
     set_alt_exe_path_in_alt_exe_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
     set_alt_exe_path_in_alt_exe_entry_parser.add_argument('after_alt_exe_path', help='after alt_exe_path of the entry')  
@@ -48,8 +66,8 @@ def main():
 
 
     em_ae_name = 'set_execution_mode_in_alt_exe_entry'
-    em_ae_help = 'takes in settings.json path, alt_exe_path, then ExecutionMode enum str value'
-    em_ae_description = 'sets the execution_mode value in the corresponding entry in the settings.json'
+    em_ae_help = ''
+    em_ae_description = ''
     set_exec_mode_in_alt_exe_entry_parser = unreal_auto_mod_parser.add_parser(name=em_ae_name, help=em_ae_help, description=em_ae_description)
     set_exec_mode_in_alt_exe_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
     set_exec_mode_in_alt_exe_entry_parser.add_argument('alt_exe_path', help='alt_exe_path of the entry')       
@@ -57,8 +75,8 @@ def main():
 
     
     aa_ae_name = 'add_args_to_alt_exe_entry'
-    aa_ae_help = 'takes in settings.json path, alt_exe_path, then one or more string args'
-    aa_ae_description = 'adds one or more string args to the corresponding entry in the settings.json'
+    aa_ae_help = ''
+    aa_ae_description = ''
     add_args_in_alt_exe_entry_parser = unreal_auto_mod_parser.add_parser(name=aa_ae_name, help=aa_ae_help, description=aa_ae_description)
     add_args_in_alt_exe_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
     add_args_in_alt_exe_entry_parser.add_argument('alt_exe_path', help='alt_exe_path of the entry')       
@@ -66,8 +84,8 @@ def main():
    
 
     rm_args_ae_name = 'remove_args_from_alt_exe_entry'
-    rm_args_ae_help = 'takes in settings.json path, alt_exe_path, then one or more string args'
-    rm_args_ae_description = 'removes one or more string args to the corresponding entry in the settings.json'
+    rm_args_ae_help = ''
+    rm_args_ae_description = ''
     remove_args_in_alt_exe_entry_parser = unreal_auto_mod_parser.add_parser(name=rm_args_ae_name, help=rm_args_ae_help, description=rm_args_ae_description)
     remove_args_in_alt_exe_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
     remove_args_in_alt_exe_entry_parser.add_argument('alt_exe_path', help='alt_exe_path of the entry')   
@@ -75,64 +93,64 @@ def main():
 
 
     owd_name = 'set_override_working_dir'
-    owd_help = 'takes in true/false STR'
-    owd_description = 'set whether or not to override the working dir default dir'
+    owd_help = ''
+    owd_description = ''
     override_working_dir_parser = unreal_auto_mod_parser.add_parser(name=owd_name, help=owd_help, description=owd_description)
     override_working_dir_parser.add_argument('settings_json_path', help='Path to settings.json')
     override_working_dir_parser.add_argument('override_value', help='true/false string value')
     
 
     wd_name = 'set_working_dir'
-    wd_help = 'Path to working_dir'
-    wd_description = 'Sets the working dir path, the working dir override uses'
+    wd_help = ''
+    wd_description = ''
     working_dir_parser = unreal_auto_mod_parser.add_parser(name=wd_name, help=wd_help, description=wd_description)
     working_dir_parser.add_argument('settings_json_path', help='Path to settings.json')
     working_dir_parser.add_argument('working_dir', help='Path to working_dir')
     
 
     wt_name = 'set_window_title'
-    wt_help = 'takes in window title Str'
-    wt_description = 'overrides the default script window title'
+    wt_help = ''
+    wt_description = ''
     window_title_parser = unreal_auto_mod_parser.add_parser(name=wt_name, help=wt_help, description=wt_description)
     window_title_parser.add_argument('settings_json_path', help='Path to settings.json')
     window_title_parser.add_argument('window_title', help='window title Str')
 
 
     am_aun_name = 'set_use_alt_uproject_name'
-    am_aun_help = 'takes in true/false STR'
-    am_aun_description = 'set whether or not to use alt method in alt uproject name in game dir'
+    am_aun_help = ''
+    am_aun_description = ''
     use_alt_method_in_alt_uproject_parser = unreal_auto_mod_parser.add_parser(name=am_aun_name, help=am_aun_help, description=am_aun_description)
     use_alt_method_in_alt_uproject_parser.add_argument('settings_json_path', help='Path to settings.json')
     use_alt_method_in_alt_uproject_parser.add_argument('override_value', help='true/false string value')
 
 
     am_augn_name = 'set_alt_uproject_name'
-    am_augn_help = 'takes in uproject name STR'
-    am_augn_description = 'sets alternative uproject name for packing structures'
+    am_augn_help = ''
+    am_augn_description = ''
     alt_method_alt_uproject_name_parser = unreal_auto_mod_parser.add_parser(name=am_augn_name, help=am_augn_help, description=am_augn_description)
     alt_method_alt_uproject_name_parser.add_argument('settings_json_path', help='Path to settings.json')
     alt_method_alt_uproject_name_parser.add_argument('alt_project_name', help='uproject name Str')
 
 
     rpp_name = 'set_repak_path'
-    rpp_help = 'takes in repak path Str'
-    rpp_description = 'sets the repak path in the repak info section'
+    rpp_help = ''
+    rpp_description = ''
     repak_path_in_repak_info_parser = unreal_auto_mod_parser.add_parser(name=rpp_name, help=rpp_help, description=rpp_description)
     repak_path_in_repak_info_parser.add_argument('settings_json_path', help='Path to settings.json')
     repak_path_in_repak_info_parser.add_argument('repak_path', help='Path to repak exe')
 
 
-    rpo_name = 'set_override_automatic_version_finding'
-    rpo_help = 'takes in true/false Str value'
-    rpo_description = 'sets whether or not to use the repak version override in the repak info section'
+    rpo_name = 'set_override_automatic_repak_version_finding'
+    rpo_help = ''
+    rpo_description = ''
     override_automatic_version_finding_in_repak_info_parser = unreal_auto_mod_parser.add_parser(name=rpo_name, help=rpo_help, description=rpo_description)
     override_automatic_version_finding_in_repak_info_parser.add_argument('settings_json_path', help='Path to settings.json')
     override_automatic_version_finding_in_repak_info_parser.add_argument('override_value', help='true/false string value')
 
 
     rpv_name = 'set_repak_version'
-    rpv_help = 'takes in repak version Str'
-    rpv_description = 'sets the repak version for use with manual override in the repak info section'
+    rpv_help = ''
+    rpv_description = ''
     repak_version_in_repak_info_parser = unreal_auto_mod_parser.add_parser(name=rpv_name, help=rpv_help, description=rpv_description)
     repak_version_in_repak_info_parser.add_argument('settings_json_path', help='Path to settings.json')
     repak_version_in_repak_info_parser.add_argument('repak_version', help='repak version in Str')
@@ -146,7 +164,7 @@ def main():
     engine_info_unreal_engine_dir_parser.add_argument('unreal_engine_dir', help='Path to unreal engine directory')
 
 
-    ei_uep_name = 'set_unreal_project'
+    ei_uep_name = 'set_unreal_project_path'
     ei_uep_help = ''
     ei_uep_description = ''
     engine_info_unreal_engine_project_parser = unreal_auto_mod_parser.add_parser(name=ei_uep_name, help=ei_uep_help, description=ei_uep_description)
@@ -226,7 +244,7 @@ def main():
     always_build_project_parser.add_argument('override_value', help='true/false string value')
 
 
-    ei_oavf_name = 'set_override_automatic_version_finding'
+    ei_oavf_name = 'set_override_automatic_engine_version_finding'
     ei_oavf_help = ''
     ei_oavf_description = ''
     override_automatic_version_finding_parser = unreal_auto_mod_parser.add_parser(name=ei_oavf_name, help= ei_oavf_help, description=ei_oavf_description)
@@ -266,7 +284,7 @@ def main():
     game_launch_type_parser.add_argument('game_launch_type', help='Corresponding Str value from game launch type enum')
 
 
-    gi_oalef_name = 'set_override_automatic_launcher_exe_finding'
+    gi_oalef_name = 'set_override_automatic_launcher_finding'
     gi_oalef_help = ''
     gi_oalef_description = ''
     override_automatic_launcher_parser = unreal_auto_mod_parser.add_parser(name=gi_oalef_name, help= gi_oalef_help, description=gi_oalef_description)
@@ -290,7 +308,7 @@ def main():
     game_id_parser.add_argument('game_id', help='game id of the game for the launcher, Str')
 
 
-    gi_slg_name = 'set_skip_launching_game'
+    gi_slg_name = 'set_skip_game_launch'
     gi_slg_help = ''
     gi_slg_description = ''
     skip_launching_game_parser = unreal_auto_mod_parser.add_parser(name=gi_slg_name, help= gi_slg_help, description=gi_slg_description)
@@ -338,325 +356,555 @@ def main():
     auto_close_game_parser.add_argument('override_value', help='true/false string value')
     
 
-    # pki__name = ''
-    # pki__help = ''
-    # pki__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=pki__name, help= pki__help, description=pki__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    pki_ae_name = 'add_entry_to_process_info'
+    pki_ae_help = ''
+    pki_ae_description = ''
+    add_pki_entry_parser = unreal_auto_mod_parser.add_parser(name=pki_ae_name, help= pki_ae_help, description=pki_ae_description)
+    add_pki_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
+    add_pki_entry_parser.add_argument('process_name', help='process name in Str')
+    add_pki_entry_parser.add_argument('use_substring_check', help='true/false string value')
+    add_pki_entry_parser.add_argument('script_state', help='Corresponding Str value from the ScriptStateType enum')
+   
+
+    pki_re_name = 'remove_entry_from_process_info'
+    pki_re_help = ''
+    pki_re_description = ''
+    remove_pki_entry_parser = unreal_auto_mod_parser.add_parser(name=pki_re_name, help= pki_re_help, description=pki_re_description)
+    remove_pki_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
+    remove_pki_entry_parser.add_argument('process_name', help='process name in Str')
     
 
-    # pki__name = ''
-    # pki__help = ''
-    # pki__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=pki__name, help= pki__help, description=pki__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    pki_pn_name = 'set_process_name_in_process_info_entry'
+    pki_pn_help = ''
+    pki_pn_description = ''
+    process_name_parser = unreal_auto_mod_parser.add_parser(name=pki_pn_name, help= pki_pn_help, description=pki_pn_description)
+    process_name_parser.add_argument('settings_json_path', help='Path to settings.json')
+    process_name_parser.add_argument('process_name', help='process name in Str')
     
 
-    # pki__name = ''
-    # pki__help = ''
-    # pki__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=pki__name, help= pki__help, description=pki__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    pki_uss_name = 'set_use_substring_check_in_process_info_entry'
+    pki_uss_help = ''
+    pki_uss_description = ''
+    pki_use_substring_check_parser = unreal_auto_mod_parser.add_parser(name=pki_uss_name, help= pki_uss_help, description=pki_uss_description)
+    pki_use_substring_check_parser.add_argument('settings_json_path', help='Path to settings.json')
+    pki_use_substring_check_parser.add_argument('process_name', help='process name in Str')
+    pki_use_substring_check_parser.add_argument('use_substring_check', help='true/false string value')
     
 
-    # pki__name = ''
-    # pki__help = ''
-    # pki__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=pki__name, help= pki__help, description=pki__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    pki_ss_name = 'set_script_state_in_process_info_entry'
+    pki_ss_help = ''
+    pki_ss_description = ''
+    pki_script_state_parser = unreal_auto_mod_parser.add_parser(name=pki_ss_name, help= pki_ss_help, description=pki_ss_description)
+    pki_script_state_parser.add_argument('settings_json_path', help='Path to settings.json')
+    pki_script_state_parser.add_argument('process_name', help='process name in Str')
+    pki_script_state_parser.add_argument('script_state', help='Corresponding Str value from the ScriptStateType enum')
+
+
+    amw_ae_name = 'add_entry_to_window_management'
+    amw_ae_help = ''
+    amw_ae_description = ''
+    awm_add_entry_parser = unreal_auto_mod_parser.add_parser(name=amw_ae_name, help= amw_ae_help, description=amw_ae_description)
+    awm_add_entry_parser.add_argument('settings_json_path', help='Path to settings.json')
+    awm_add_entry_parser.add_argument('window_name', help='Window name Str')
+    awm_add_entry_parser.add_argument('use_substring_check', help='true/false string value')
+    awm_add_entry_parser.add_argument('window_behaviour', help='Corresponding Str value from the WindowAction enum')
+    awm_add_entry_parser.add_argument('script_state', help='Corresponding Str value from the ScriptStateType enum')
+    awm_add_entry_parser.add_argument('monitor_index', help='monitor index Int')
+    awm_add_entry_parser.add_argument('resolution_x', help='x resolution Int')
+    awm_add_entry_parser.add_argument('resolution_y', help='y resolution Int')
     
 
-    # pki__name = ''
-    # pki__help = ''
-    # pki__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=pki__name, help= pki__help, description=pki__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
-
-
-    # amw__name = ''
-    # amw__help = ''
-    # amw__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=amw__name, help= amw__help, description=amw__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    amw_re_name = 'remove_entry_from_window_management'
+    amw_re_help = ''
+    amw_re_description = ''
+    amw_re_parser = unreal_auto_mod_parser.add_parser(name=amw_re_name, help= amw_re_help, description=amw_re_description)
+    amw_re_parser.add_argument('settings_json_path', help='Path to settings.json')
+    amw_re_parser.add_argument('window_name', help='Window name Str')
     
 
-    # amw__name = ''
-    # amw__help = ''
-    # amw__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=amw__name, help= amw__help, description=amw__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    amw_wn_name = 'set_window_name_in_window_management_entry'
+    amw_wn_help = ''
+    amw_wn_description = ''
+    amw_wn_parser = unreal_auto_mod_parser.add_parser(name=amw_wn_name, help= amw_wn_help, description=amw_wn_description)
+    amw_wn_parser.add_argument('settings_json_path', help='Path to settings.json')
+    amw_wn_parser.add_argument('window_name', help='Window name Str')
+
+
+    amw_uss_name = 'set_use_substring_check_in_window_management_entry'
+    amw_uss_help = ''
+    amw_uss_description = ''
+    amw_uss_parser = unreal_auto_mod_parser.add_parser(name=amw_uss_name, help= amw_uss_help, description=amw_uss_description)
+    amw_uss_parser.add_argument('settings_json_path', help='Path to settings.json')
+    amw_wn_parser.add_argument('window_name', help='Window name Str')
+    amw_uss_parser.add_argument('use_substring_check', help='true/false string value')
+
+
+    amw_wb_name = 'set_window_behaviour_in_window_management_entry'
+    amw_wb_help = ''
+    amw_wb_description = ''
+    amw_wb_parser = unreal_auto_mod_parser.add_parser(name=amw_wb_name, help= amw_wb_help, description=amw_wb_description)
+    amw_wb_parser.add_argument('settings_json_path', help='Path to settings.json')
+    amw_wn_parser.add_argument('window_name', help='Window name Str')
+    amw_wb_parser.add_argument('window_behaviour', help='Corresponding Str value from the WindowAction enum')
     
 
-    # amw__name = ''
-    # amw__help = ''
-    # amw__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=amw__name, help= amw__help, description=amw__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    amw_ss_name = 'set_script_state_in_window_management_entry'
+    amw_ss_help = ''
+    amw_ss_description = ''
+    amw_ss_parser = unreal_auto_mod_parser.add_parser(name=amw_ss_name, help= amw_ss_help, description=amw_ss_description)
+    amw_ss_parser.add_argument('settings_json_path', help='Path to settings.json')
+    amw_ss_parser.add_argument('window_name', help='Window name Str')
+    amw_ss_parser.add_argument('script_state', help='Corresponding Str value from the ScriptStateType enum')
     
 
-    # amw__name = ''
-    # amw__help = ''
-    # amw__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=amw__name, help= amw__help, description=amw__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    amw_mi_name = 'set_monitor_index_in_window_management_entry'
+    amw_mi_help = ''
+    amw_mi_description = ''
+    amw_mi_parser = unreal_auto_mod_parser.add_parser(name=amw_mi_name, help= amw_mi_help, description=amw_mi_description)
+    amw_mi_parser.add_argument('settings_json_path', help='Path to settings.json')
+    amw_mi_parser.add_argument('window_name', help='Window name Str')
+    amw_mi_parser.add_argument('monitor_index', help='monitor index Int')
+
     
 
-    # amw__name = ''
-    # amw__help = ''
-    # amw__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=amw__name, help= amw__help, description=amw__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    amw_srx_name = 'set_resolution_x_in_window_management_entry'
+    amw_srx_help = ''
+    amw_srx_description = ''
+    amw_srx_parser = unreal_auto_mod_parser.add_parser(name=amw_srx_name, help= amw_srx_help, description=amw_srx_description)
+    amw_srx_parser.add_argument('settings_json_path', help='Path to settings.json')
+    amw_srx_parser.add_argument('window_name', help='Window name Str')
+    amw_srx_parser.add_argument('resolution_x', help='x resolution Int')
     
 
-    # amw__name = ''
-    # amw__help = ''
-    # amw__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=amw__name, help= amw__help, description=amw__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    amw_sry_name = 'set_resolution_y_in_window_management_entry'
+    amw_sry_help = ''
+    amw_sry_description = ''
+    amw_sry_parser = unreal_auto_mod_parser.add_parser(name=amw_sry_name, help= amw_sry_help, description=amw_sry_description)
+    amw_sry_parser.add_argument('settings_json_path', help='Path to settings.json')
+    amw_sry_parser.add_argument('window_name', help='Window name Str')
+    amw_sry_parser.add_argument('resolution_y', help='y resolution Int')
+
+
+    mod_info_ae_name = 'add_entry_to_mod_list'
+    mod_info_ae_help = ''
+    mod_info_ae_description = ''
+    mod_info_ae_parser = unreal_auto_mod_parser.add_parser(name=mod_info_ae_name, help= mod_info_ae_help, description=mod_info_ae_description)
+    mod_info_ae_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_ae_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_ae_parser.add_argument('pak_dir_structure', help='pak folder structure Str')
+    mod_info_ae_parser.add_argument('mod_name_dir_type', help='Corresponding Str value from UnrealModTreeType enum')
+    mod_info_ae_parser.add_argument('use_mod_name_dir_name_override', help='true/false string value')
+    mod_info_ae_parser.add_argument('mod_name_dir_name_override', help='Mod name dir Str')
+    mod_info_ae_parser.add_argument('pak_chunk_num', help='pak chunk Int')
+    mod_info_ae_parser.add_argument('packing_type', help='Corresponding Str value from PackingType enum')
+    mod_info_ae_parser.add_argument('compression_type', help='Corresponding Str value from CompressionType enum')
+    mod_info_ae_parser.add_argument('is_enabled', help='true/false string value')
+    mod_info_ae_parser.add_argument('manually_specified_assets_tree_paths', help='A list of one or more Str paths')
+    mod_info_ae_parser.add_argument('manually_specified_assets_asset_paths', help='A list of one or more Str paths')
     
 
-    # amw__name = ''
-    # amw__help = ''
-    # amw__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=amw__name, help= amw__help, description=amw__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_re_name = 'remove_entry_from_mod_list'
+    mod_info_re_help = ''
+    mod_info_re_description = ''
+    mod_info_re_parser = unreal_auto_mod_parser.add_parser(name=mod_info_re_name, help= mod_info_re_help, description=mod_info_re_description)
+    mod_info_re_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_re_parser.add_argument('mod_name', help='Mod name Str')
     
 
-    # amw__name = ''
-    # amw__help = ''
-    # amw__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=amw__name, help= amw__help, description=amw__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_mn_name = 'set_mod_name_in_mod_list_entry'
+    mod_info_mn_help = ''
+    mod_info_mn_description = ''
+    mod_info_mn_parser = unreal_auto_mod_parser.add_parser(name=mod_info_mn_name, help= mod_info_mn_help, description=mod_info_mn_description)
+    mod_info_mn_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_mn_parser.add_argument('before_mod_name', help='Mod name Str')
+    mod_info_mn_parser.add_argument('after_mod_name', help='Mod name Str')
     
 
-    # amw__name = ''
-    # amw__help = ''
-    # amw__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=amw__name, help= amw__help, description=amw__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
-
-
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_pds_name = 'set_pak_dir_structure_in_mod_list_entry'
+    mod_info_pds_help = ''
+    mod_info_pds_description = ''
+    mod_info_pds_parser = unreal_auto_mod_parser.add_parser(name=mod_info_pds_name, help= mod_info_pds_help, description=mod_info_pds_description)
+    mod_info_pds_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_pds_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_pds_parser.add_argument('pak_dir_structure', help='pak folder structure Str')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_mndt_name = 'set_mod_name_dir_type_in_mod_list_entry'
+    mod_info_mndt_help = ''
+    mod_info_mndt_description = ''
+    mod_info_mndt_parser = unreal_auto_mod_parser.add_parser(name=mod_info_mndt_name, help= mod_info_mndt_help, description=mod_info_mndt_description)
+    mod_info_mndt_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_mndt_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_mndt_parser.add_argument('mod_name_dir_type', help='Corresponding Str value from UnrealModTreeType enum')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_mndno_name = 'set_use_mod_name_dir_name_override_in_mod_list_entry'
+    mod_info_mndno_help = ''
+    mod_info_mndno_description = ''
+    mod_info_mndno_parser = unreal_auto_mod_parser.add_parser(name=mod_info_mndno_name, help= mod_info_mndno_help, description=mod_info_mndno_description)
+    mod_info_mndno_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_mndno_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_mndno_parser.add_argument('use_mod_name_dir_name_override', help='true/false string value')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_mndnon_name = 'set_mod_name_dir_name_override_in_mod_list_entry'
+    mod_info_mndnon_help = ''
+    mod_info_mndnon_description = ''
+    mod_info_mndnon_parser = unreal_auto_mod_parser.add_parser(name=mod_info_mndnon_name, help= mod_info_mndnon_help, description=mod_info_mndnon_description)
+    mod_info_mndnon_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_mndnon_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_mndnon_parser.add_argument('mod_name_dir_name_override', help='Mod name dir Str')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_pcn_name = 'set_pak_chunk_num_in_mod_list_entry'
+    mod_info_pcn_help = ''
+    mod_info_pcn_description = ''
+    mod_info_pcn_parser = unreal_auto_mod_parser.add_parser(name=mod_info_pcn_name, help= mod_info_pcn_help, description=mod_info_pcn_description)
+    mod_info_pcn_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_pcn_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_pcn_parser.add_argument('pak_chunk_num', help='pak chunk Int')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_pt_name = 'set_packing_type_in_mod_list_entry'
+    mod_info_pt_help = ''
+    mod_info_pt_description = ''
+    mod_info_pt_parser = unreal_auto_mod_parser.add_parser(name=mod_info_pt_name, help= mod_info_pt_help, description=mod_info_pt_description)
+    mod_info_pt_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_pt_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_pt_parser.add_argument('packing_type', help='Corresponding Str value from PackingType enum')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_ct_name = 'set_compression_type_in_mod_list_entry'
+    mod_info_ct_help = ''
+    mod_info_ct_description = ''
+    mod_info_ct_parser = unreal_auto_mod_parser.add_parser(name=mod_info_ct_name, help= mod_info_ct_help, description=mod_info_ct_description)
+    mod_info_ct_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_ct_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_ct_parser.add_argument('compression_type', help='Corresponding Str value from CompressionType enum')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_ie_name = 'set_is_enabled_in_mod_list_entry'
+    mod_info_ie_help = ''
+    mod_info_ie_description = ''
+    mod_info_ie_parser = unreal_auto_mod_parser.add_parser(name=mod_info_ie_name, help= mod_info_ie_help, description=mod_info_ie_description)
+    mod_info_ie_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_ie_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_ie_parser.add_argument('is_enabled', help='true/false string value')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_atp_name = 'add_tree_paths_to_mod_list_entry'
+    mod_info_atp_help = ''
+    mod_info_atp_description = ''
+    mod_info_atp_parser = unreal_auto_mod_parser.add_parser(name=mod_info_atp_name, help= mod_info_atp_help, description=mod_info_atp_description)
+    mod_info_atp_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_atp_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_atp_parser.add_argument('manually_specified_assets_tree_paths', help='A list of one or more Str paths')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_rat_name = 'remove_trees_paths_from_mod_list_entry'
+    mod_info_rat_help = ''
+    mod_info_rat_description = ''
+    mod_info_rat_parser = unreal_auto_mod_parser.add_parser(name=mod_info_rat_name, help= mod_info_rat_help, description=mod_info_rat_description)
+    mod_info_rat_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_rat_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_rat_parser.add_argument('manually_specified_assets_tree_paths', help='A list of one or more Str paths')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_aat_name = 'add_asset_tree_paths_to_mod_list_entry'
+    mod_info_aat_help = ''
+    mod_info_aat_description = ''
+    mod_info_aat_parser = unreal_auto_mod_parser.add_parser(name=mod_info_aat_name, help= mod_info_aat_help, description=mod_info_aat_description)
+    mod_info_aat_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_aat_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_aat_parser.add_argument('manually_specified_assets_asset_paths', help='A list of one or more Str paths')
     
 
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
-    
-
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
-    
-
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
-    
-
-    # mod_info__name = ''
-    # mod_info__help = ''
-    # mod_info__description = ''
-    # _parser = unreal_auto_mod_parser.add_parser(name=mod_info__name, help= mod_info__help, description=mod_info__description)
-    # _parser.add_argument('settings_json_path', help='Path to settings.json')
-    # _parser.add_argument('', help='')
+    mod_info_aatp_name = 'add_asset_tree_paths_from_mod_list_entry'
+    mod_info_aatp_help = ''
+    mod_info_aatp_description = ''
+    mod_info_aatp_parser = unreal_auto_mod_parser.add_parser(name=mod_info_aatp_name, help= mod_info_aatp_help, description=mod_info_aatp_description)
+    mod_info_aatp_parser.add_argument('settings_json_path', help='Path to settings.json')
+    mod_info_aatp_parser.add_argument('mod_name', help='Mod name Str')
+    mod_info_aatp_parser.add_argument('manually_specified_assets_asset_paths', help='A list of one or more Str paths')
 
 
     args = parser.parse_args()
+    json_path = sys.argv[2]
 
 
-    if args.unreal_auto_mod_parser == 'add_entry_to_alt_exe_entry':
-        json_path = sys.argv[2]
+    if args.unreal_auto_mod_parser == 'add_entry_to_alt_exe_info':
         alt_exe_path = sys.argv[3]
         script_state = sys.argv[4]
         exec_mode = sys.argv[5]
         args = sys.argv[6:]
         settings_configurator.add_alt_exe_entry(json_path, script_state, alt_exe_path, exec_mode, args)
-    elif args.unreal_auto_mod_parser == 'remove_entry_from_alt_exe_entry':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'remove_entry_from_alt_exe_info':
         alt_exe_path = sys.argv[3]    
         settings_configurator.remove_alt_exe_entry(json_path, alt_exe_path)
+    
     elif args.unreal_auto_mod_parser == 'set_script_state_in_alt_exe_entry':
-        json_path = sys.argv[2]
         alt_exe_path = sys.argv[3]
         script_state = sys.argv[4]       
         settings_configurator.set_script_state_in_alt_exe_entry(json_path, alt_exe_path, script_state)
+    
     elif args.unreal_auto_mod_parser == 'set_alt_exe_path_in_alt_exe_entry':
-        json_path = sys.argv[2]
         before_alt_exe_path = sys.argv[3]
         after_alt_exe_path = sys.argv[4]
         settings_configurator.set_alt_exe_path_in_alt_exe_entry(json_path, before_alt_exe_path, after_alt_exe_path)
+    
     elif args.unreal_auto_mod_parser == 'set_execution_mode_in_alt_exe_entry':
-        json_path = sys.argv[2]
         alt_exe_path = sys.argv[3]
         exec_mode = sys.argv[4]
         settings_configurator.set_execution_mode_in_alt_exe_entry(json_path, alt_exe_path, exec_mode)
+    
     elif args.unreal_auto_mod_parser == 'add_args_to_alt_exe_entry':
-        json_path = sys.argv[2]
         alt_exe_path = sys.argv[3]
         args = sys.argv[4:]
         settings_configurator.add_arg_to_variable_list_in_alt_exe_entry(json_path, alt_exe_path, args)
+    
     elif args.unreal_auto_mod_parser == 'remove_args_from_alt_exe_entry':
-        json_path = sys.argv[2]
         alt_exe_path = sys.argv[3]
         args = sys.argv[4:]
         settings_configurator.remove_arg_from_variable_list_in_alt_exe_entry(json_path, alt_exe_path, args)
-    elif args.unreal_auto_mod_parser == 'set_override_working_dir_in_general_info':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_override_working_dir':
         override_value = sys.argv[3]
         settings_configurator.set_general_info_override_default_working_dir(json_path, override_value)
-    elif args.unreal_auto_mod_parser == 'set_working_dir_in_general_info':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_working_dir':
         working_dir = sys.argv[3]
         settings_configurator.set_general_info_working_dir(json_path, working_dir)
-    elif args.unreal_auto_mod_parser == 'set_window_title_in_general_info':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_window_title':
         window_title = sys.argv[3]
         settings_configurator.set_general_info_window_title(json_path, window_title)
-    elif args.unreal_auto_mod_parser == 'set_use_alt_method_in_alt_uproject_name_in_game_dir':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_use_alt_uproject_name':
         override_value = sys.argv[3]
         settings_configurator.set_alt_uproject_name_in_game_dir_use_alt_method(json_path, override_value)
-    elif args.unreal_auto_mod_parser == 'set_alt_uproject_name_in_alt_uproject_name_in_game_dir':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_alt_uproject_name':
         uproject_str = sys.argv[3]
         settings_configurator.set_alt_uproject_name_in_game_dir_name(json_path, uproject_str)
-    elif args.unreal_auto_mod_parser == 'set_repak_path_in_repak_info':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_repak_path':
         repak_path = sys.argv[3]
         settings_configurator.set_repak_info_repak_path(json_path, repak_path)
-    elif args.unreal_auto_mod_parser == 'set_override_automatic_version_finding_in_repak_info':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_override_automatic_repak_version_finding':
         override_string = sys.argv[3]
         settings_configurator.set_repak_info_override_automatic_version_finding(json_path, override_string)
-    elif args.unreal_auto_mod_parser == 'set_repak_version_in_repak_info':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_repak_version':
         repak_version_string = sys.argv[3]
         settings_configurator.set_repak_info_repak_version(json_path, repak_version_string)
-    elif args.unreal_auto_mod_parser == 'set_unreal_engine_dir_in_engine_info':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_unreal_engine_dir':
         unreal_engine_dir = sys.argv[3]
         settings_configurator.set_engine_info_unreal_engine_dir(json_path, unreal_engine_dir)
-    elif args.unreal_auto_mod_parser == 'set_unreal_project_file_in_engine_info':
-        json_path = sys.argv[2]
+    
+    elif args.unreal_auto_mod_parser == 'set_unreal_project_path':
         uproject_file = sys.argv[3]
         settings_configurator.set_engine_info_unreal_project_file(json_path, uproject_file)
+    
     elif args.unreal_auto_mod_parser == 'set_toggle_engine_during_testing':
-        json_path = sys.argv[2]
         override_value = sys.argv[3]
         settings_configurator.set_engine_info_toggle_engine_during_testing(json_path, override_value)
+    
     elif args.unreal_auto_mod_parser == 'set_resave_packages_and_fix_up_redirectors_before_engine_open':
-        json_path = sys.argv[2]
         override_value = sys.argv[3]
         settings_configurator.set_engine_info_resave_packages_and_fix_up_redirectors_before_engine_open(json_path, override_value)
+    
+    elif args.unreal_auto_mod_parser == 'add_engine_launch_args':
+        engine_launch_args = sys.argv[3:]
+        for arg in engine_launch_args:
+            settings_configurator.add_entry_to_engine_info_launch_args(json_path, arg)
+
+    elif args.unreal_auto_mod_parser == 'remove_engine_launch_args':
+        engine_launch_args = sys.argv[3:]
+        for arg in engine_launch_args:
+            settings_configurator.remove_entry_from_engine_info_launch_args(json_path, arg)
+    
+    elif args.unreal_auto_mod_parser == 'add_cook_and_packaging_args':
+        engine_launch_args = sys.argv[3:]
+        for arg in engine_launch_args:
+            settings_configurator.add_entry_to_engine_info_cook_and_packaging(json_path, arg)
+
+    elif args.unreal_auto_mod_parser == 'remove_cook_and_packaging_args':
+        engine_launch_args = sys.argv[3:]
+        for arg in engine_launch_args:
+            settings_configurator.remove_entry_from_engine_info_cook_and_packaging(json_path, arg)
+
+    elif args.unreal_auto_mod_parser == 'set_use_unversioned_cooked_content':
+        override_value = sys.argv[3]
+        settings_configurator.set_engine_info_use_unversioned_cooked_content(json_path, override_value)
+
+    elif args.unreal_auto_mod_parser == 'set_clear_uproject_saved_cooked_dir_before_tests':
+        override_value = sys.argv[3]
+        settings_configurator.set_engine_info_clear_uproject_saved_cooked_dir_before_tests(json_path, override_value)
+
+    elif args.unreal_auto_mod_parser == 'set_always_build_project':
+        override_value = sys.argv[3]
+        settings_configurator.set_engine_info_always_build_project(json_path, override_value)
+
+    elif args.unreal_auto_mod_parser == 'set_override_automatic_engine_version_finding':
+        override_value = sys.argv[3]
+        settings_configurator.set_engine_info_override_automatic_version_finding(json_path, override_value)
+
+    elif args.unreal_auto_mod_parser == 'set_unreal_engine_major_version':
+        maj_ver = sys.argv[3]        
+        settings_configurator.set_engine_info_unreal_engine_major_version(json_path, maj_ver)
+
+    elif args.unreal_auto_mod_parser == 'set_unreal_engine_minor_version':
+        min_ver = sys.argv[3]        
+        settings_configurator.set_engine_info_unreal_engine_minor_version(json_path, min_ver)
+
+    elif args.unreal_auto_mod_parser == 'set_game_path':
+        game_path = sys.argv[3]
+        settings_configurator.set_game_info_game_exe_path(json_path, game_path)
+
+    elif args.unreal_auto_mod_parser == 'set_game_launch_type':
+        game_launch_type = sys.argv[3]
+        settings_configurator.set_game_info_launch_type(json_path, game_launch_type)
+    
+    elif args.unreal_auto_mod_parser == 'set_override_automatic_launcher_finding':
+        override_value = sys.argv[3]
+        settings_configurator.set_game_info_override_automatic_launcher_exe_finding(json_path, override_value)
+    
+    elif args.unreal_auto_mod_parser == 'set_game_launcher_path':
+        game_launcher_path = sys.argv[3]
+        settings_configurator.set_game_info_game_launcher_exe(json_path, game_launcher_path)
+    
+    elif args.unreal_auto_mod_parser == 'set_game_id':
+        game_id = sys.argv[3]
+        settings_configurator.set_game_info_game_id(json_path, game_id)
+    
+    elif args.unreal_auto_mod_parser == 'set_skip_game_launch':
+        override_value = sys.argv[3]
+        settings_configurator.set_game_info_skip_launching_game(json_path, override_value)
+    
+    elif args.unreal_auto_mod_parser == 'set_override_automatic_window_title_finding':
+        override_value = sys.argv[3]
+        settings_configurator.set_game_info_override_automatic_window_title_finding(json_path, override_value)
+
+    elif args.unreal_auto_mod_parser == 'set_window_title_override_string':
+        window_title = sys.argv[3]
+        settings_configurator.set_game_info_override_automatic_window_title_finding(json_path, window_title)
+
+    elif args.unreal_auto_mod_parser == 'add_params_to_game_launch_params':
+        launch_params = sys.argv[3:]
+        for param in launch_params:
+            settings_configurator.add_entry_to_game_info_launch_params(json_path, param)
+
+    elif args.unreal_auto_mod_parser == 'remove_params_from_game_launch_params':
+        launch_params = sys.argv[3:]
+        for param in launch_params:
+            settings_configurator.remove_entry_from_game_info_launch_params(json_path, param)
+
+    elif args.unreal_auto_mod_parser == 'set_auto_close_game':
+        override_value = sys.argv[3]
+        settings_configurator.set_process_kill_info_auto_close_game(json_path, override_value)
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

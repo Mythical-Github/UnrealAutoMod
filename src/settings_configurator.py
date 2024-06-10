@@ -5,7 +5,6 @@ import enums
 
 # SETTINGS_JSON = f'{SCRIPT_DIR}/presets/{GAME_NAME}/{PRESET_NAME}/settings.json'
 
-
 import os
 import sys
 
@@ -228,7 +227,7 @@ def add_arg_to_variable_list_in_alt_exe_entry(alt_exe_path: str, arg: str):
     save_settings(settings)
 
 
-def remove_arg_from_variable_list_in_alt_exe_entry(alt_exe_path: str, arg: str):
+def remove_arg_to_variable_list_in_alt_exe_entry(alt_exe_path: str, arg: str):
     entries_to_remove = []
     alt_exe_path_entries = settings["alt_exe_methods"]
     for entry in alt_exe_path_entries:

@@ -68,4 +68,4 @@ class ScriptState():
             routine_checks(ScriptStateType.PRE_ALL)
             routine_checks(ScriptStateType.POST_ALL)
 
-    set_script_state(ScriptStateType.PRE_INIT)
+    # set_script_state(ScriptStateType.PRE_INIT)

@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": ["default", "default", "test_mods_all"]
+            "args": ["test_mods_all", "${workspaceFolder}/presets/default/default/settings.json"]
         },
         {
             "name": "test_mods",
@@ -15,15 +15,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": ["default", "default", "test_mods", "EnginePakExample_P", "UnrealPakExample_P", "RepakExample_P", "LooseFileExample"]
-        },
-        {
-            "name": "etb_mod_testing",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/__main__.py",
-            "console": "integratedTerminal",
-            "args": ["escape_the_backrooms", "character_mods", "test_mods_all"]
+            "args": ["test_mods", "${workspaceFolder}/presets/default/default/settings.json", "EnginePakExample_P", "UnrealPakExample_P", "RepakExample_P", "LooseFileExample"]
         }
     ]
 }

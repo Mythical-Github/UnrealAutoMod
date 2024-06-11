@@ -627,12 +627,18 @@ def cli_logic():
     mod_info_rap_parser.add_argument('manually_specified_assets_asset_paths', help='A list of one or more Str paths')
 
 
-    test_mods_parser = unreal_auto_mod_parser.add_parser(name='test_mods')
+    test_mods_name = 'test_mods'
+    test_mods_help = ''
+    test_mods_description = ''
+    test_mods_parser = unreal_auto_mod_parser.add_parser(name=test_mods_name, help=test_mods_help, description=test_mods_description)
     test_mods_parser.add_argument('settings_json_path', help='Path to settings.json')
     test_mods_parser.add_argument('mod_names', help='list of mod_names, strings')
 
 
-    test_mods_all_parser = unreal_auto_mod_parser.add_parser(name='test_mods_all')
+    test_mods_all_name = 'test_mods_all'
+    test_mods_all_help = ''
+    test_mods_all_description = ''
+    test_mods_all_parser = unreal_auto_mod_parser.add_parser(name=test_mods_all_name, help=test_mods_all_help, description=test_mods_all_description)
     test_mods_all_parser.add_argument('settings_json_path', help='Path to settings.json')
 
 

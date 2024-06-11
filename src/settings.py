@@ -11,12 +11,24 @@ init_settings_done = False
 settings_json_dir = ''
 program_dir = ''
 mod_names = []
+settings_json = ''
 
 
-def init_settings(settings_json: str):
+if getattr(sys, 'frozen', False):
+    SCRIPT_DIR = os.path.dirname(os.path.abspath(sys.executable))
+else:
+    SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+os.chdir(SCRIPT_DIR)
+
+
+def init_settings(settings_json_path: str):
     global settings
     global init_settings_done
-    settings = json.load(settings_json)
+    global settings_json
+    global settings_json_dir
+
+    with open(settings_json_path, 'r') as file:
+        settings = json.load(file)
     window_name = settings['general_info']['window_title']
     os.system(f'title {window_name}')
     auto_close_game = settings['process_kill_info']['auto_close_game']
@@ -33,7 +45,9 @@ def init_settings(settings_json: str):
         process_name = os.path.basename(process_name)
         if is_process_running(process_name):
             os.system(f'taskkill /f /im {process_name}')
-    init_settings_done =  True
+    init_settings_done = True
+    settings_json = settings_json_path
+    settings_json_dir = os.path.dirname(settings_json)
     return
 
 

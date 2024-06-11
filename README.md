@@ -29,25 +29,36 @@ Easy To Use Modding Utility For Unreal Engine Games
 <h2>🛠️ Installation Steps:</h2>
 
 *   Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases)
-*   Choose a game preset name and a preset name, this will be passed to the program later on
-*   Copy and paste the template "UnrealAutoMod/assets/templates/settings.json" to "UnrealAutoMod/presets/your_game_name/your_preset_name/settings.json" 
-*   Setup your game's settings.json for modding using these two pages as reference
+*   Chose to edit the existing settings.json, or create a new one using the cli args 
+*   Setup your game's settings.json for modding using these two pages as reference, you can edit manually or through cli args
 *   [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
 *   [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/enums.md)
 
 <h2>🏃 Running Steps:</h2>
 
 ```
-UnrealAutoModCLI.exe default default test_mods_all
+UnrealAutoModCLI.exe -h
 ```
 ```
-UnrealAutoModCLI.exe default default test_mods <mod_name> [<mod_name> ...]
+UnrealAutoModCLI.exe command -h
 ```
 ```
-__main__.py default default test_mods_all
+UnrealAutoModCLI.exe test_mods_all settings.json
 ```
 ```
-__main__.py default default test_mods <mod_name> [<mod_name> ...]
+UnrealAutoModCLI.exe test_mods settings.json <mod_name> [<mod_name> ...]
+```
+```
+__main__.py -h
+```
+```
+__main__.py command -h
+```
+```
+__main__.py test_mods_all settings.json
+```
+```
+__main__.py test_mods settings.json <mod_name> [<mod_name> ...]
 ```
 
 <h2>💻 Built with</h2>

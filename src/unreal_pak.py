@@ -1,6 +1,7 @@
 import os
 import shutil
 import subprocess
+import packing
 import utilities
 import script_states
 from enums import CompressionType, ScriptStateType
@@ -58,7 +59,7 @@ def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
 
 
 def move_files_for_packing(mod_name: str):
-    mod_files_dict = utilities.get_mod_file_paths_for_manually_made_pak_mods(mod_name)
+    mod_files_dict = packing.get_mod_file_paths_for_manually_made_pak_mods(mod_name)
     for before_file in mod_files_dict.keys():
         after_file = mod_files_dict[before_file]
         if os.path.exists(after_file):

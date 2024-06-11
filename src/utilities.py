@@ -298,9 +298,7 @@ def get_mod_name_dir_files(mod_name: str) -> list:
 
 
 def get_persistant_mod_dir(mod_name: str) -> str:
-    prefix = f'{settings.SCRIPT_DIR}/presets/{settings.GAME_NAME}'
-    suffix = f'{settings.PRESET_NAME}/mod_packaging/persistent_files/{mod_name}'
-    return f'{prefix}/{suffix}'
+    return f'{settings.settings_json_dir}/mod_packaging/persistent_files/{mod_name}'
 
 
 def get_persistant_mod_files(mod_name: str) -> list:

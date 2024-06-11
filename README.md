@@ -29,7 +29,6 @@ Easy To Use Modding Utility For Unreal Engine Games
 <h2>🛠️ Installation Steps:</h2>
 
 *   Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases)
-*   Chose to edit the existing settings.json, or create a new one using the cli args 
 *   Setup your game's settings.json for modding using these two pages as reference, you can edit manually or through cli args
 *   [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
 *   [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/enums.md)

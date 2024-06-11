@@ -83,6 +83,10 @@
   },
   {
    "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/testing.py;."
+  },
+  {
+   "optionDest": "datas",
    "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_constant.py;."
   },
   {
@@ -107,7 +111,7 @@
   }
  ],
  "nonPyinstallerOptions": {
-  "increaseRecursionLimit": true,
+  "increaseRecursionLimit": false,
   "manualArguments": ""
  }
 }

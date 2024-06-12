@@ -221,12 +221,12 @@ def install_engine_mod(mod_name: str):
                 if not utilities.get_do_files_have_same_hash(before_file, after_file):
                     print('file did not same hash')
                     os.remove(after_file)
-                    shutil.copy(before_file, after_file)
+                    shutil.copy2(before_file, after_file)
                 else:
                     print('file did have same hash')
             else:
                 print('file did not exist')
-                shutil.copy(before_file, after_file)
+                shutil.copy2(before_file, after_file)
 
 
 def make_pak_repak(mod_name: str):
@@ -383,7 +383,7 @@ def get_mod_file_paths_for_manually_made_pak_mods_tree_paths(mod_name: str) -> d
         for entry in utilities.get_files_in_tree(tree_path):
             if os.path.isfile(entry):
                 base_entry = os.path.splitext(entry)[0]
-                for extension in utilities.get_file_extensions(entry):
+                for extension in utilities.get_file_extensions(base_entry):
                     before_path = f'{base_entry}{extension}'
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
                     after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/{relative_path}{extension}'

@@ -69,5 +69,6 @@ def move_files_for_packing(mod_name: str):
             else:
                 return
         if not os.path.isdir(os.path.dirname(after_file)):
-            os.makedirs(os.path.dirname(after_file)) 
-        shutil.copy2(before_file, after_file)
+            os.makedirs(os.path.dirname(after_file))
+        if os.path.isfile(before_file):
+            shutil.copy2(before_file, after_file)

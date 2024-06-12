@@ -194,12 +194,16 @@ def get_file_extension(file_path: str) -> str:
     return file_extension
 
 
-def get_file_extensions(file_path: str) -> list:
-    extensions = []
-    files = get_files_in_tree(file_path)
-    for file in files:
-        extensions.append(get_file_extension(file))
-    return extensions
+def get_file_extensions(directory_with_base_name: str) -> list:
+    directory, base_name = os.path.split(directory_with_base_name)
+    extensions = set()
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if file.startswith(base_name):
+                _, ext = os.path.splitext(file)
+                if ext:
+                    extensions.add(ext)
+    return list(extensions)
 
 
 def get_game_content_dir():

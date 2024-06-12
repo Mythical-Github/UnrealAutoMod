@@ -5,19 +5,19 @@
             "name": "test_mods_all",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/__main__.py",
+            "program": "${workspaceFolder}/src/__main__.py",
             "console": "integratedTerminal",
-            "args": ["test_mods_all", "${workspaceFolder}/settings.json"]
+            "args": ["test_mods_all", "${workspaceFolder}/assets/settings/settings.json"]
         },
         {
             "name": "test_mods",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/__main__.py",
+            "program": "${workspaceFolder}/src/__main__.py",
             "console": "integratedTerminal",
             "args": [
                 "test_mods",
-                 "${workspaceFolder}/settings.json", "EnginePakExample_P", "UnrealPakExample_P", "RepakExample_P", "LooseFileExample"]
+                 "${workspaceFolder}/assets/settings/settings.json", "EnginePakExample_P", "UnrealPakExample_P", "RepakExample_P", "LooseFileExample"]
         }
     ]
 }

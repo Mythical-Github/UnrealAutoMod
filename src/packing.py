@@ -310,7 +310,7 @@ def get_mod_files_tree_paths_for_loose_mods(mod_name: str) -> dict:
         for entry in utilities.get_files_in_tree(tree_path):
             if os.path.isfile(entry):
                 base_entry = os.path.splitext(entry)[0]
-                for extension in utilities.get_file_extensions(entry):
+                for extension in utilities.get_file_extensions_two(entry):
                     before_path = f'{base_entry}{extension}'
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
                     after_path = f'{utilities.get_game_dir()}/{relative_path}{extension}'

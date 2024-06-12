@@ -126,10 +126,11 @@ def is_game_ue4() -> bool:
 
 
 def get_file_hash(file_path: str) -> str:
+    md5 = hashlib.md5()
     with open(file_path, 'rb') as f:
         for chunk in iter(lambda: f.read(4096), b''):
-            hashlib.md5().update(chunk)
-    return hashlib.md5().hexdigest()
+            md5.update(chunk)
+    return md5.hexdigest()
 
 
 def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
@@ -138,7 +139,7 @@ def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
         hash_two = get_file_hash(file_path_two)
         return hash_one == hash_two
     else:
-        return None
+        return False
 
 
 def get_unreal_engine_dir() -> str:

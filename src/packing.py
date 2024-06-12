@@ -208,16 +208,25 @@ def install_engine_mod(mod_name: str):
     mod_files.append(prefix)
     for file in mod_files:
         for suffix in utilities.get_mod_extensions():
+            print(suffix)
             before_file = f'{file}{suffix}'
             dir_engine_mod = f'{utilities.get_game_dir()}/Content/Paks/{utilities.get_pak_dir_structure(mod_name)}'
             if not os.path.isdir(dir_engine_mod):
                 os.makedirs(dir_engine_mod)
             after_file = f'{dir_engine_mod}/{mod_name}.{suffix}'
+            print(before_file)
+            print(after_file)
             if os.path.exists(after_file):
+                print('file existed')
                 if not utilities.get_do_files_have_same_hash(before_file, after_file):
-                    shutil.copy2(before_file, after_file)
+                    print('file did not same hash')
+                    os.remove(after_file)
+                    shutil.copy(before_file, after_file)
+                else:
+                    print('file did have same hash')
             else:
-                shutil.copy2(before_file, after_file)
+                print('file did not exist')
+                shutil.copy(before_file, after_file)
 
 
 def make_pak_repak(mod_name: str):

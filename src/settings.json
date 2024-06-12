@@ -6,7 +6,7 @@
     },
     "engine_info": {
       "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
-      "unreal_project_file": "C:/Users/Mythical/Documents/Github/InterposePrivate/unreal_project/Interpose/KevinSpel.uproject",
+      "unreal_project_file": "C:/Users/Mythical/Documents/Github/InterposePrivate/KevinSpel.uproject",
       "toggle_engine_during_testing": false,
       "resave_packages_and_fix_up_redirectors_before_engine_open": true,
       "engine_launch_args": [],

@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": ["test_mods_all", "${workspaceFolder}/presets/default/default/settings.json"]
+            "args": ["test_mods_all", "${workspaceFolder}/settings.json"]
         },
         {
             "name": "test_mods",
@@ -15,7 +15,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/__main__.py",
             "console": "integratedTerminal",
-            "args": ["test_mods", "${workspaceFolder}/presets/default/default/settings.json", "EnginePakExample_P", "UnrealPakExample_P", "RepakExample_P", "LooseFileExample"]
+            "args": [
+                "test_mods",
+                 "${workspaceFolder}/settings.json", "EnginePakExample_P", "UnrealPakExample_P", "RepakExample_P", "LooseFileExample"]
         }
     ]
 }

@@ -9,23 +9,5 @@
             "console": "integratedTerminal",
             "args": ["test_mods_all", "${workspaceFolder}/assets/settings/settings.json"]
         },
-        {
-            "name": "test_mods",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/src/__main__.py",
-            "console": "integratedTerminal",
-            "args": [
-                "test_mods",
-                 "${workspaceFolder}/assets/settings/settings.json", "EnginePakExample_P", "UnrealPakExample_P", "RepakExample_P", "LooseFileExample"]
-        },
-        {
-            "name": "remnant_2",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/src/__main__.py",
-            "console": "integratedTerminal",
-            "args": ["test_mods_all", "${workspaceFolder}/assets/settings/remnant_2.json"]
-        }
     ]
 }

@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "test_mods_all",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/__main__.py",
+            "console": "integratedTerminal",
+            "args": ["test_mods_all", "${workspaceFolder}/assets/settings/settings.json"]
+        },
+    ]
+}

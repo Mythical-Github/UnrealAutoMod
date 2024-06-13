@@ -208,15 +208,24 @@ def install_engine_mod(mod_name: str):
     mod_files.append(prefix)
     for file in mod_files:
         for suffix in utilities.get_mod_extensions():
+            print(suffix)
             before_file = f'{file}{suffix}'
             dir_engine_mod = f'{utilities.get_game_dir()}/Content/Paks/{utilities.get_pak_dir_structure(mod_name)}'
             if not os.path.isdir(dir_engine_mod):
                 os.makedirs(dir_engine_mod)
             after_file = f'{dir_engine_mod}/{mod_name}.{suffix}'
+            print(before_file)
+            print(after_file)
             if os.path.exists(after_file):
+                print('file existed')
                 if not utilities.get_do_files_have_same_hash(before_file, after_file):
+                    print('file did not same hash')
+                    os.remove(after_file)
                     shutil.copy2(before_file, after_file)
+                else:
+                    print('file did have same hash')
             else:
+                print('file did not exist')
                 shutil.copy2(before_file, after_file)
 
 
@@ -230,12 +239,12 @@ def make_pak_repak(mod_name: str):
     before_symlinked_dir = f'{utilities.get_working_dir()}/{mod_name}'
     
 
-    command = f'{utilities.get_repak_exe_path()} pack {before_symlinked_dir} {pak_dir}/{mod_name}.pak'
+    command = f'"{utilities.get_repak_exe_path()}" pack "{before_symlinked_dir}" "{pak_dir}/{mod_name}.pak"'
     if not compression_type_str == 'None':
         command = f'{command} --compression {compression_type_str} --version {utilities.get_repak_pak_version_str()}'
+        print(f'command: {command}')
     if os.path.isfile(f'{pak_dir}/{mod_name}.pak'):
         os.remove(f'{pak_dir}/{mod_name}.pak')
-    print(command)
     subprocess.run(command)
 
 
@@ -257,6 +266,7 @@ def install_repak_mod(mod_name: str):
             shutil.copy2(before_file, after_file)
     script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
     make_pak_repak(mod_name)
+
 
 
 def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
@@ -301,7 +311,7 @@ def get_mod_files_tree_paths_for_loose_mods(mod_name: str) -> dict:
         for entry in utilities.get_files_in_tree(tree_path):
             if os.path.isfile(entry):
                 base_entry = os.path.splitext(entry)[0]
-                for extension in utilities.get_file_extensions(entry):
+                for extension in utilities.get_file_extensions_two(entry):
                     before_path = f'{base_entry}{extension}'
                     relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
                     after_path = f'{utilities.get_game_dir()}/{relative_path}{extension}'
@@ -356,12 +366,13 @@ def get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name: str) -> 
     file_dict = {}
     cooked_uproject_dir = utilities.get_cooked_uproject_dir()
     mod_pak_info = get_mod_pak_entry(mod_name)
-    for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
-        base_path = f'{cooked_uproject_dir}/{asset}'
-        for extension in utilities.get_file_extensions(base_path):
-            before_path = f'{base_path}{extension}'
-            after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/{asset}{extension}'
-            file_dict[before_path] = after_path
+    if not mod_pak_info['manually_specified_assets']['asset_paths'] == None:
+        for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
+            base_path = f'{cooked_uproject_dir}/{asset}'
+            for extension in utilities.get_file_extensions(base_path):
+                before_path = f'{base_path}{extension}'
+                after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/{asset}{extension}'
+                file_dict[before_path] = after_path
     return file_dict
 
 
@@ -369,16 +380,17 @@ def get_mod_file_paths_for_manually_made_pak_mods_tree_paths(mod_name: str) -> d
     file_dict = {}
     cooked_uproject_dir = utilities.get_cooked_uproject_dir()
     mod_pak_info = get_mod_pak_entry(mod_name)
-    for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
-        tree_path = f'{cooked_uproject_dir}/{tree}'
-        for entry in utilities.get_files_in_tree(tree_path):
-            if os.path.isfile(entry):
-                base_entry = os.path.splitext(entry)[0]
-                for extension in utilities.get_file_extensions(entry):
-                    before_path = f'{base_entry}{extension}'
-                    relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
-                    after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/{relative_path}{extension}'
-                    file_dict[before_path] = after_path
+    if not mod_pak_info['manually_specified_assets']['tree_paths'] == None:
+        for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
+            tree_path = f'{cooked_uproject_dir}/{tree}'
+            for entry in utilities.get_files_in_tree(tree_path):
+                if os.path.isfile(entry):
+                    base_entry = os.path.splitext(entry)[0]
+                    for extension in utilities.get_file_extensions(base_entry):
+                        before_path = f'{base_entry}{extension}'
+                        relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
+                        after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/{relative_path}{extension}'
+                        file_dict[before_path] = after_path
     return file_dict
 
 

@@ -6,7 +6,7 @@
     },
     "engine_info": {
       "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
-      "unreal_project_file": "C:/Users/Mythical/Documents/Github/InterposePrivate/unreal_project/Interpose/KevinSpel.uproject",
+      "unreal_project_file": "C:/Users/Mythical/Documents/Github/ZedfestModdingKit/KevinSpel.uproject",
       "toggle_engine_during_testing": false,
       "resave_packages_and_fix_up_redirectors_before_engine_open": true,
       "engine_launch_args": [],
@@ -41,37 +41,19 @@
       "override_automatic_version_finding": false,
       "repak_version": "V11"
     },
-    "alt_exe_methods": [
-      {
-        "script_state": "pre_game_launch",
-        "alt_exe_path": "C:/modding/unreal_engine/Umodel/umodel.exe",
-        "execution_mode": "async",
-        "variable_args": []
-      },
-      {
-        "script_state": "post_game_launch",
-        "alt_exe_path": "C:/modding/unreal_engine/Umodel/umodel.exe",
-        "execution_mode": "async",
-        "variable_args": []
-      }
-    ],
+    "alt_exe_methods": [],
     "process_kill_info": {
       "auto_close_game": true,
       "processes": [
         {
-          "process_name": "Fmodel.exe",
-          "use_substring_check": false,
-          "script_state": "all"
+          "process_name": "Fmodel",
+          "use_substring_check": true,
+          "script_state": "constant"
         },
         {
           "process_name": "Umodel",
           "use_substring_check": true,
           "script_state": "constant"
-        },
-        {
-          "process_name": "Zedfest",
-          "use_substring_check": true,
-          "script_state": "post_game_launch"
         }
       ]
     },
@@ -86,48 +68,28 @@
           "x": 1525,
           "y": 850
         }
-      },
-      {
-        "window_name": "min_test_window", 
-        "use_substring_check": true,
-        "window_behaviour": "min",
-        "script_state": "constant",
-        "monitor": null,
-        "resolution": {
-          "x": null,
-          "y": null
-        }
-      },
-      {
-        "window_name": "max_test_window", 
-        "use_substring_check": true,
-        "window_behaviour": "max",
-        "script_state": "post_game_launch",
-        "monitor": null,
-        "resolution": {
-          "x": null,
-          "y": null
-        }
       }
     ],  
     "mod_pak_info": [
       {
-        "mod_name": "EnginePakExample_P",
-        "pak_dir_structure": "LogicMods",
+        "mod_name": "ModLoader_P",
+        "pak_dir_structure": "~mods",
         "mod_name_dir_type": "Mods",
-        "use_mod_name_dir_name_override": false,
-        "mod_name_dir_name_override": null,
+        "use_mod_name_dir_name_override": true,
+        "mod_name_dir_name_override": "ModEntry",
         "pak_chunk_num": 1,
-        "packing_type": "engine",
-        "compression_type": "None",
+        "packing_type": "repak",
+        "compression_type": "Zlib",
         "is_enabled": true,
         "manually_specified_assets": {
           "asset_paths": [],
-          "tree_paths": []
+          "tree_paths": [
+			"Content/Mods/MapKit"
+		  ]
         }
       },
       {
-        "mod_name": "UnrealPakExample_P",
+        "mod_name": "VillageLevel",
         "pak_dir_structure": "~mods",
         "mod_name_dir_type": "Mods",
         "use_mod_name_dir_name_override": false,
@@ -137,17 +99,13 @@
         "compression_type": "Zlib",
         "is_enabled": true,
         "manually_specified_assets": {
-          "asset_paths": [
-            "Content/Mods/ModEntry/BP_ModEntry"
-          ],
-          "tree_paths": [
-            "Content/Mods/Z_VillageLevel_P"
-          ]
+          "asset_paths": [],
+          "tree_paths": []
         }
       },
       {
-        "mod_name": "RepakExample_P",
-        "pak_dir_structure": "interpose_mods/main",
+        "mod_name": "KokoriForestLevel",
+        "pak_dir_structure": "~mods",
         "mod_name_dir_type": "Mods",
         "use_mod_name_dir_name_override": false,
         "mod_name_dir_name_override": null,
@@ -156,32 +114,39 @@
         "compression_type": "Zlib",
         "is_enabled": true,
         "manually_specified_assets": {
-          "asset_paths": [
-            "Content/Mods/ModEntry/BP_ModEntry"
-          ],
-          "tree_paths": [
-            "Content/Mods/Z_VillageLevel_P"
-          ]
+          "asset_paths": [],
+          "tree_paths": []
         }
       },
       {
-        "mod_name": "LooseFileExample",
-        "pak_dir_structure": null,
+        "mod_name": "KakarikoGraveyardLevel",
+        "pak_dir_structure": "~mods",
         "mod_name_dir_type": "Mods",
         "use_mod_name_dir_name_override": false,
         "mod_name_dir_name_override": null,
-        "pak_chunk_num": null,
-        "packing_type": "loose",
-        "compression_type": null,
+        "pak_chunk_num": 4,
+        "packing_type": "repak",
+        "compression_type": "Zlib",
         "is_enabled": true,
         "manually_specified_assets": {
-          "asset_paths": [
-            "Content/Mods/ModEntry/BP_ModEntry"
-          ],
-          "tree_paths": [
-            "Content/Mods/Z_VillageLevel_P"
-          ]
-        }
+          "asset_paths": [],
+          "tree_paths": []
+		}
+      },
+      {
+        "mod_name": "BowsersCastleLevel",
+        "pak_dir_structure": "~mods",
+        "mod_name_dir_type": "Mods",
+        "use_mod_name_dir_name_override": false,
+        "mod_name_dir_name_override": null,
+        "pak_chunk_num": 5,
+        "packing_type": "repak",
+        "compression_type": "Zlib",
+        "is_enabled": true,
+        "manually_specified_assets": {
+          "asset_paths": [],
+          "tree_paths": []
+		}
       }
     ]
   }

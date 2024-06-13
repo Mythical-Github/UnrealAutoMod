@@ -57,19 +57,7 @@
         }
       ]
     },
-    "auto_move_windows": [
-      {
-        "window_name": "UE4SS", 
-        "use_substring_check": true,
-        "window_behaviour": "move",
-        "script_state": "post_game_launch",
-        "monitor": 1,
-        "resolution": {
-          "x": 1525,
-          "y": 850
-        }
-      }
-    ],  
+    "auto_move_windows": [],  
     "mod_pak_info": [
       {
         "mod_name": "UnrealBlueprintModLoader_P",

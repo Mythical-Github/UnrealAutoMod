@@ -61,7 +61,7 @@
     "mod_pak_info": [
       {
         "mod_name": "UnrealBlueprintModLoader_P",
-        "pak_dir_structure": "~mods",
+        "pak_dir_structure": "LogicMods",
         "mod_name_dir_type": "Mods",
         "use_mod_name_dir_name_override": true,
         "mod_name_dir_name_override": "UnrealBlueprintModLoader",

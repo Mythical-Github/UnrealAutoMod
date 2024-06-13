@@ -9,5 +9,13 @@
             "console": "integratedTerminal",
             "args": ["test_mods_all", "${workspaceFolder}/assets/settings/settings.json"]
         },
+        {
+            "name": "remnant_2",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/__main__.py",
+            "console": "integratedTerminal",
+            "args": ["test_mods_all", "${workspaceFolder}/assets/game_presets/remnant_2.json"]
+        }
     ]
 }

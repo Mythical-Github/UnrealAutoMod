@@ -415,7 +415,11 @@ def get_mod_file_paths_for_manually_made_pak_mods_mod_name_dir_paths(mod_name: s
     for file in utilities.get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/Content/{utilities.get_unreal_mod_tree_type_str(mod_name)}/{utilities.get_mod_name_dir_name(mod_name)}/{relative_file_path}'
+        if utilities.get_is_using_alt_dir_name():
+            dir_name = utilities.get_alt_packing_dir_name()
+        else:
+            dir_name = utilities.get_uproject_name()
+        after_path = f'{utilities.get_working_dir()}/{mod_name}/{dir_name}/Content/{utilities.get_unreal_mod_tree_type_str(mod_name)}/{utilities.get_mod_name_dir_name(mod_name)}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 

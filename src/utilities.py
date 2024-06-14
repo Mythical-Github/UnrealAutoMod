@@ -9,6 +9,14 @@ import settings
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
 
+def get_is_using_alt_dir_name() -> bool:
+    return settings.settings['alt_uproject_name_in_game_dir']['use_alt_method']
+
+
+def get_alt_packing_dir_name() -> str:
+    return settings.settings['alt_uproject_name_in_game_dir']['name']
+
+
 def check_file_exists(file_path: str) -> bool:
     if os.path.exists(file_path):
         return True
@@ -100,9 +108,8 @@ def get_game_paks_dir() -> str:
     game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(game_exe_path)))))
     uproject = settings.settings['engine_info']['unreal_project_file']
     uproject_name = os.path.basename(uproject)[:-9]
-    if settings.settings['alt_uproject_name_in_game_dir']['use_alt_method']:
-        alt_dir_name = settings.settings['alt_uproject_name_in_game_dir']['name']
-        _dir = f'{game_dir}/{alt_dir_name}/Content/Paks'
+    if get_is_using_alt_dir_name():
+        _dir = f'{game_dir}/{get_alt_packing_dir_name()}/Content/Paks'
     else:
         _dir = f'{game_dir}/{uproject_name}/Content/Paks'
     return _dir
@@ -460,3 +467,4 @@ def get_game_window_title() -> str:
         return get_window_title_override_string()
     else:
         return os.path.splitext(get_game_process_name())[0]
+

@@ -16,6 +16,14 @@
             "program": "${workspaceFolder}/src/__main__.py",
             "console": "integratedTerminal",
             "args": ["test_mods_all", "${workspaceFolder}/assets/game_presets/remnant_2.json"]
+        },
+        {
+            "name": "kh3",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/__main__.py",
+            "console": "integratedTerminal",
+            "args": ["test_mods_all", "${workspaceFolder}/assets/game_presets/kingdom_hearts_iii/kingdom_hearts_iii.json"]
         }
     ]
 }

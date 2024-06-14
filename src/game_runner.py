@@ -1,5 +1,4 @@
 import steam
-import settings
 import utilities
 import script_states
 from enums import ScriptStateType, GameLaunchType, ExecutionMode

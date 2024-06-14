@@ -102,17 +102,18 @@ def get_processes_by_substring(substring: str) -> list:
     return matching_processes
 
 
-def kill_processes(state: ScriptStateType):
-    process_to_kill_info = settings.settings['process_kill_info']['processes']
-    current_state = state.value if isinstance(state, ScriptStateType) else state
+def get_process_to_kill_info_list() -> list:
+    return settings.settings['process_kill_info']['processes']
 
-    for process_info in process_to_kill_info:
+
+def kill_processes(state: ScriptStateType):
+    current_state = state.value if isinstance(state, ScriptStateType) else state
+    for process_info in get_process_to_kill_info_list():
         target_state = process_info.get('script_state')
         if target_state == current_state:
             if process_info['use_substring_check']:
                 proc_name_substring = process_info['process_name']
-                matching_processes = get_processes_by_substring(proc_name_substring)
-                for proc_info in matching_processes:
+                for proc_info in get_processes_by_substring(proc_name_substring):
                     proc_name = proc_info['name']
                     kill_process(proc_name)
             else:
@@ -120,8 +121,12 @@ def kill_processes(state: ScriptStateType):
                 kill_process(proc_name)
 
 
+def get_override_automatic_version_finding() -> bool:
+    return settings.settings['engine_info']['override_automatic_version_finding']
+
+
 def get_unreal_engine_version(engine_path: str) -> str:
-    if settings.settings['engine_info']['override_automatic_version_finding']:
+    if get_override_automatic_version_finding():
         unreal_engine_major_version = settings.settings['engine_info']['unreal_engine_major_version']
         unreal_engine_minor_version = settings.settings['engine_info']['unreal_engine_minor_version']
         return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'

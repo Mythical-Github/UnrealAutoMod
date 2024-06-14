@@ -9,6 +9,10 @@ import settings
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
 
+def get_game_exe_path() -> str:
+    return settings.settings['game_info']['game_exe_path']
+
+
 def get_is_using_alt_dir_name() -> bool:
     return settings.settings['alt_uproject_name_in_game_dir']['use_alt_method']
 
@@ -34,8 +38,7 @@ def get_process_name(exe_path: str) -> str:
 
 
 def get_game_process_name() -> str:
-    process = settings.settings['game_info']['game_exe_path']
-    return get_process_name(process)
+    return get_process_name(get_game_exe_path())
 
 
 def kill_process(process_name: str):
@@ -104,21 +107,20 @@ def get_is_game_iostore() -> bool:
 
 
 def get_game_paks_dir() -> str:
-    game_exe_path = settings.settings['game_info']['game_exe_path']
-    game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(game_exe_path)))))
-    uproject = settings.settings['engine_info']['unreal_project_file']
-    uproject_name = os.path.basename(uproject)[:-9]
+    game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(get_game_exe_path())))))
     if get_is_using_alt_dir_name():
         _dir = f'{game_dir}/{get_alt_packing_dir_name()}/Content/Paks'
     else:
-        _dir = f'{game_dir}/{uproject_name}/Content/Paks'
+        _dir = f'{game_dir}/{get_uproject_name()}/Content/Paks'
     return _dir
 
 
+def get_unreal_engine_dir() -> str:
+    return settings.settings['engine_info']['unreal_engine_dir']
+
+
 def get_win_dir_type() -> PackagingDirType:
-    engine_dir = settings.settings['engine_info']['unreal_engine_dir']
-    ue_version = get_unreal_engine_version(engine_dir)
-    if ue_version.startswith('5'):
+    if get_unreal_engine_version(get_unreal_engine_dir()).startswith('5'):
         return PackagingDirType.WINDOWS
     else:
         return PackagingDirType.WINDOWS_NO_EDITOR
@@ -149,18 +151,12 @@ def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
         return False
 
 
-def get_unreal_engine_dir() -> str:
-    return settings.settings['engine_info']['unreal_engine_dir']
-
-
 def get_unreal_editor_exe_path() -> str:
-    engine_dir = settings.settings['engine_info']['unreal_engine_dir']
-    test = get_win_dir_type()
-    if test == PackagingDirType.WINDOWS_NO_EDITOR:
+    if get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
         engine_path_suffix = '/Engine/Binaries/Win64/UE4Editor.exe'
     else:
         engine_path_suffix = '/Engine/Binaries/Win64/UnrealEditor.exe'
-    engine_exe = f'{engine_dir}{engine_path_suffix}'
+    engine_exe = f'{get_unreal_engine_dir()}{engine_path_suffix}'
     return engine_exe
 
 
@@ -180,8 +176,7 @@ def run_app(exe_path: str, exec_mode: ExecutionMode, args: str = {}, working_dir
     
 
 def get_engine_window_title() -> str:
-    uproject_path = settings.settings['engine_info']['unreal_project_file']
-    proc_name_prefix = get_process_name(uproject_path)[:-9]
+    proc_name_prefix = get_process_name(get_uproject_file())[:-9]
     proc_name_suffix = 'Unreal Editor'
     engine_proc_name = f'{proc_name_prefix} - {proc_name_suffix}'
     return engine_proc_name
@@ -309,7 +304,7 @@ def is_mod_name_in_list(mod_name: str) -> bool:
 
 def get_mod_name_dir(mod_name: str) -> dir:
     if is_mod_name_in_list(mod_name):
-        return f'{get_uproject_dir}/Saved/Cooked/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
+        return f'{get_uproject_dir()}/Saved/Cooked/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
     return None
 
 

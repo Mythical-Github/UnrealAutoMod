@@ -16,7 +16,7 @@ class PopulateQueueTypeCheckDicts():
     global install_queue_types
     global uninstall_queue_types
     for packing_type in list(PackingType):
-        for mod_info in settings.settings['mod_pak_info']:
+        for mod_info in utilities.get_mod_info_list():
             if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
                 install_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
                 if not install_queue_type in install_queue_types:
@@ -56,10 +56,6 @@ def get_is_mod_installed(mod_name: str) -> bool:
     return False
 
 
-def get_is_using_unversioned_cooked_content() -> bool:
-    return settings.settings['engine_info']['use_unversioned_cooked_content']
-
-
 def get_engine_pak_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
@@ -71,7 +67,7 @@ def get_engine_pak_command() -> str:
         f'-pak '
         f'-compressed'
     )
-    if get_is_using_unversioned_cooked_content():
+    if utilities.get_is_using_unversioned_cooked_content():
         unversioned_arg = '-unversionedcookedcontent'
         command = f'{command} {unversioned_arg}'
     if utilities.get_always_build_project() or not utilities.has_build_target_been_built():
@@ -95,7 +91,7 @@ def get_cook_project_command() -> str:
         f'-nocompileeditor '
         f'-nodebuginfo'
     )
-    if get_is_using_unversioned_cooked_content():
+    if utilities.get_is_using_unversioned_cooked_content():
         unversioned_arg = '-unversionedcookedcontent'
         command = f'{command} {unversioned_arg}'
     if utilities.get_always_build_project() or not utilities.has_build_target_been_built():
@@ -121,7 +117,7 @@ def run_proj_command(command: str):
 
 def handle_uninstall_logic(packing_type: PackingType):
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_UNINSTALL)
-    for mod_pak_info in settings.settings['mod_pak_info']: 
+    for mod_pak_info in utilities.get_mod_info_list(): 
         if not mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
             if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                 uninstall_mod(packing_type, mod_pak_info['mod_name'])
@@ -130,7 +126,7 @@ def handle_uninstall_logic(packing_type: PackingType):
 
 def handle_install_logic(packing_type: PackingType):
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_INSTALL)
-    for mod_pak_info in settings.settings['mod_pak_info']: 
+    for mod_pak_info in utilities.get_mod_info_list(): 
         if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
             if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                 install_mod(packing_type, mod_pak_info['mod_name'], get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
@@ -139,7 +135,7 @@ def handle_install_logic(packing_type: PackingType):
 
 def make_mods():
     if utilities.get_clear_uproject_saved_cooked_dir_before_tests():
-        cooked_dir = f'{utilities.get_uproject_dir()}/Saved/Cooked'
+        cooked_dir = utilities.get_saved_cooked_dir()
         if os.path.isdir(cooked_dir):
             shutil.rmtree(cooked_dir)
     cooking()
@@ -415,7 +411,11 @@ def get_mod_file_paths_for_manually_made_pak_mods_mod_name_dir_paths(mod_name: s
     for file in utilities.get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{utilities.get_working_dir()}/{mod_name}/{utilities.get_uproject_name()}/Content/{utilities.get_unreal_mod_tree_type_str(mod_name)}/{utilities.get_mod_name_dir_name(mod_name)}/{relative_file_path}'
+        if utilities.get_is_using_alt_dir_name():
+            dir_name = utilities.get_alt_packing_dir_name()
+        else:
+            dir_name = utilities.get_uproject_name()
+        after_path = f'{utilities.get_working_dir()}/{mod_name}/{dir_name}/Content/{utilities.get_unreal_mod_tree_type_str(mod_name)}/{utilities.get_mod_name_dir_name(mod_name)}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 

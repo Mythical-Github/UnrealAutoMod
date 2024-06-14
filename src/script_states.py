@@ -5,7 +5,7 @@ from enums import ScriptStateType, ExecutionMode, ScriptStateType, get_enum_from
 
 
 def alt_exe_checks(script_state_type: ScriptStateType):
-    alt_exe_methods = settings.settings['alt_exe_methods']
+    alt_exe_methods = utilities.get_alt_exe_methods()
     for alt_exe_method in alt_exe_methods:
         value = alt_exe_method['script_state']
         exe_state = get_enum_from_val(ScriptStateType, value)
@@ -28,14 +28,14 @@ def is_script_state_used(state: ScriptStateType) -> bool:
                         return True
 
         if "auto_move_windows" in settings.settings:
-            for window in settings.settings["auto_move_windows"]:
+            for window in utilities.get_auto_move_windows():
                 if isinstance(state, ScriptStateType):
                     state = state.value
                 if window.get("script_state") == state:
                     return True
 
         if "alt_exe_methods" in settings.settings:
-            for method in settings.settings["alt_exe_methods"]:
+            for method in utilities.get_alt_exe_methods():
                 if isinstance(state, ScriptStateType):
                     state = state.value
                 if method.get("script_state") == state:

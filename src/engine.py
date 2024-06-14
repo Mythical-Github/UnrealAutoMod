@@ -9,8 +9,7 @@ from enums import PackagingDirType, ExecutionMode, ScriptStateType
 def open_game_engine():
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
     command = utilities.get_unreal_editor_exe_path()
-    args = settings.settings['engine_info']['engine_launch_args']
-    utilities.run_app(command, ExecutionMode.ASYNC, args)
+    utilities.run_app(command, ExecutionMode.ASYNC, utilities.get_engine_launch_args())
     script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
 
 

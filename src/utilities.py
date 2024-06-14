@@ -9,6 +9,46 @@ import settings
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
 
+def get_game_info_launch_type_enum_str_value() -> str:
+    return settings.settings['game_info']['launch_type']
+
+
+def get_game_id() -> int:
+    return settings.settings['game_info']['game_id']
+
+
+def get_game_launcher_exe_path() -> str:
+    return settings.settings['game_info']['game_launcher_exe']
+
+
+def get_game_launch_params() -> list:
+    return settings.settings['game_info']['launch_params']
+
+
+def get_override_automatic_launcher_exe_finding() -> bool:
+    return settings.settings['game_info']['override_automatic_launcher_exe_finding']
+
+
+def get_auto_move_windows():
+    return settings.settings["auto_move_windows"]
+
+
+def get_engine_launch_args() -> list:
+    return settings.settings['engine_info']['engine_launch_args']
+
+
+def get_alt_exe_methods() -> list:
+    return settings.settings['alt_exe_methods']
+
+
+def get_is_using_unversioned_cooked_content() -> bool:
+    return settings.settings['engine_info']['use_unversioned_cooked_content']
+
+
+def get_mod_info_list() -> list:
+    return settings.settings['mod_pak_info']
+
+
 def get_game_exe_path() -> str:
     return settings.settings['game_info']['game_exe_path']
 
@@ -106,12 +146,20 @@ def get_is_game_iostore() -> bool:
     return is_game_iostore
 
 
+def get_game_dir():
+    return os.path.dirname(os.path.dirname(os.path.dirname(get_game_exe_path())))
+
+
+def get_game_content_dir():
+    return f'{get_game_dir()}/Content'
+
+
 def get_game_paks_dir() -> str:
-    game_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(get_game_exe_path())))))
+    alt_game_dir = os.path.dirname(get_game_dir())
     if get_is_using_alt_dir_name():
-        _dir = f'{game_dir}/{get_alt_packing_dir_name()}/Content/Paks'
+        _dir = f'{alt_game_dir}/{get_alt_packing_dir_name()}/Content/Paks'
     else:
-        _dir = f'{game_dir}/{get_uproject_name()}/Content/Paks'
+        _dir = f'{alt_game_dir}/{get_uproject_name()}/Content/Paks'
     return _dir
 
 
@@ -153,11 +201,10 @@ def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
 
 def get_unreal_editor_exe_path() -> str:
     if get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
-        engine_path_suffix = '/Engine/Binaries/Win64/UE4Editor.exe'
+        engine_path_suffix = 'UE4Editor.exe'
     else:
-        engine_path_suffix = '/Engine/Binaries/Win64/UnrealEditor.exe'
-    engine_exe = f'{get_unreal_engine_dir()}{engine_path_suffix}'
-    return engine_exe
+        engine_path_suffix = 'UnrealEditor.exe'
+    return f'{get_unreal_engine_dir()}/Engine/Binaries/Win64/{engine_path_suffix}'
 
 
 def is_toggle_engine_during_testing_in_use() -> bool:
@@ -176,15 +223,11 @@ def run_app(exe_path: str, exec_mode: ExecutionMode, args: str = {}, working_dir
     
 
 def get_engine_window_title() -> str:
-    proc_name_prefix = get_process_name(get_uproject_file())[:-9]
-    proc_name_suffix = 'Unreal Editor'
-    engine_proc_name = f'{proc_name_prefix} - {proc_name_suffix}'
-    return engine_proc_name
+    return f'{get_process_name(get_uproject_file())[:-9]} - {'Unreal Editor'}'
 
 
 def get_engine_process_name() -> str:
-    exe_path = get_unreal_editor_exe_path()
-    return get_process_name(exe_path)
+    return get_process_name(get_unreal_editor_exe_path())
 
 
 def get_files_in_tree(tree_path: str) -> list:
@@ -216,14 +259,6 @@ def get_file_extensions_two(directory_with_base_name: str) -> list:
     return list(extensions)
 
 
-def get_game_content_dir():
-    return os.path.dirname(get_game_paks_dir())
-
-
-def get_game_dir():
-    return os.path.dirname(get_game_content_dir())
-
-
 def get_uproject_file() -> str:
     return settings.settings['engine_info']['unreal_project_file']
 
@@ -234,6 +269,10 @@ def get_uproject_name() -> str:
 
 def get_uproject_dir() -> str:
     return os.path.dirname(get_uproject_file())
+
+
+def get_saved_cooked_dir() -> str:
+    return f'{get_uproject_dir()}/Saved/Cooked'
 
 
 def get_win_dir_str() -> str:
@@ -335,9 +374,17 @@ def get_fix_up_redirectors_before_engine_open() -> bool:
     return settings.settings['engine_info']['resave_packages_and_fix_up_redirectors_before_engine_open']
 
 
+def get_is_overriding_default_working_dir() -> bool:
+    return settings.settings['general_info']['override_default_working_dir']
+
+
+def get_override_working_dir() -> str:
+    return settings.settings['general_info']['working_dir']
+
+
 def get_working_dir() -> str:
-    if settings.settings['general_info']['override_default_working_dir']:
-        working_dir = settings.settings['general_info']['working_dir']
+    if get_is_overriding_default_working_dir():
+        working_dir = get_override_working_dir()
     else:
         working_dir = f'{settings.SCRIPT_DIR}/working_dir'
     if not os.path.isdir(working_dir):
@@ -355,11 +402,9 @@ def clean_working_dir():
 
 
 def get_matching_suffix(path_one: str, path_two: str) -> str:
-    rev_one = path_one[::-1]
-    rev_two = path_two[::-1]
     common_suffix = []
 
-    for char_one, char_two in zip(rev_one, rev_two):
+    for char_one, char_two in zip(path_one[::-1], path_two[::-1]):
         if char_one == char_two:
             common_suffix.append(char_one)
         else:
@@ -380,9 +425,12 @@ def get_auto_move_windows() -> dict:
     return settings.settings['auto_move_windows']
 
 
+def get_build_target_file_path() -> str:
+    return f'{get_uproject_dir()}/Binaries/Win64/{get_uproject_name()}.target'
+
+
 def has_build_target_been_built() -> bool:
-    build_target_file = f'{get_uproject_dir()}/Binaries/Win64/{get_uproject_name()}.target'
-    return os.path.exists(build_target_file)
+    return os.path.exists(get_build_target_file_path())
 
 
 def get_always_build_project() -> str:

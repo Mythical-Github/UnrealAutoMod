@@ -53,7 +53,7 @@ def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
     command = f'{exe_path} "{pak_path}" -Create="{response_file}"'
     if not compression_str == 'None':
         command = f'{command} -compress -compressionformat={compression_str}'
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
     print(command)
     subprocess.run(command)
 

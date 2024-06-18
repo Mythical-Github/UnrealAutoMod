@@ -24,22 +24,21 @@ def game_monitor_thread_logic():
     global found_window
     global window_closed
 
-    game_window_name = utilities.get_game_window_title()
     if not found_process:
         if utilities.is_process_running(utilities.get_game_process_name()):
             print('Found game process running')
             found_process = True
     elif not found_window:
-        if windows.does_window_exist(game_window_name):
+        if windows.get_game_window():
             print('Found game window running')
             found_window = True
             script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
     elif not window_closed:
-        if not windows.does_window_exist(game_window_name):
+        if not windows.get_game_window():
             print('Game window closed')
-            window_closed = True
             script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_CLOSE)
             stop_game_monitor_thread()
+            window_closed = True
 
 
 def start_game_monitor_thread():

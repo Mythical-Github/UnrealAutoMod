@@ -5,7 +5,7 @@
       "window_title": "UnrealAutoMod Automation Script"
     },
     "engine_info": {
-      "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
+      "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.27",
       "unreal_project_file": "C:/Users/Mythical/Documents/Github/EscapeTheBackroomsPrivate/EscapeTheBackrooms.uproject",
       "toggle_engine_during_testing": false,
       "resave_packages_and_fix_up_redirectors_before_engine_open": true,
@@ -19,7 +19,7 @@
       "unreal_engine_minor_version": "22"
     },
     "game_info": {
-      "game_exe_path": "D:/SteamLibrary/steamapps/common/EscapeTheBackrooms/EscapeTheBackrooms/Binaries/Win64\/ackrooms-Win64-Shipping.exe",
+      "game_exe_path": "D:/SteamLibrary/steamapps/common/EscapeTheBackrooms/EscapeTheBackrooms/Binaries/Win64/Backrooms-Win64-Shipping.exe",
       "launch_type": "steam",
       "override_automatic_launcher_exe_finding": false,
       "game_launcher_exe": "C:/Program Files (x86)/Steam/steam.exe",

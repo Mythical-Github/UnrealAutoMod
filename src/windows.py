@@ -67,8 +67,13 @@ def change_window_name(window_name: str):
     os.system(f'title {window_name}')
 
 
-def get_game_window() -> pygetwindow.Win32Window:
-    return get_window_by_title(utilities.get_game_process_name())
+def get_game_window():
+    game_window_name = utilities.get_game_process_name()
+    for title in pygetwindow.getAllTitles():
+        if game_window_name in title:
+            if 'Editor' not in title:
+                return pygetwindow.getWindowsWithTitle(title)
+    return None
 
 
 def move_window(window: pygetwindow.Win32Window, window_settings: list):

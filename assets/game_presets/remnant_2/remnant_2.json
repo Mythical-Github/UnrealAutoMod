@@ -46,9 +46,9 @@
       "auto_close_game": true,
       "processes": [
         {
-          "process_name": "Fmodel.exe",
-          "use_substring_check": false,
-          "script_state": "all"
+          "process_name": "Fmodel",
+          "use_substring_check": true,
+          "script_state": "constant"
         },
         {
           "process_name": "Umodel",

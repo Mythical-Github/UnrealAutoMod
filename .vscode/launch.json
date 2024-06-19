@@ -15,7 +15,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/src/__main__.py",
             "console": "integratedTerminal",
-            "args": ["test_mods_all", "${workspaceFolder}/assets/game_presets/remnant_2.json"]
+            "args": ["test_mods_all", "${workspaceFolder}/assets/game_presets/remnant_2/remnant_2.json"]
         },
         {
             "name": "kh3",

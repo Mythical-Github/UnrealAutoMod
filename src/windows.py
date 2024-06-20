@@ -72,7 +72,10 @@ def get_game_window():
     for title in pygetwindow.getAllTitles():
         if game_window_name in title:
             if 'Editor' not in title:
-                return pygetwindow.getWindowsWithTitle(title)
+                try:
+                    return pygetwindow.getWindowsWithTitle(title)
+                except:
+                    return None
     return None
 
 

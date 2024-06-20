@@ -13,7 +13,7 @@ run_monitoring_thread = False
 game_monitor_thread = ''
 
 
-def game_monitor_thread_runner(tick_rate: float = 0.1):
+def game_monitor_thread_runner(tick_rate: float = 0.01):
     while run_monitoring_thread:
         time.sleep(tick_rate)
         game_monitor_thread_logic()

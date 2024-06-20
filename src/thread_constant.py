@@ -4,7 +4,7 @@ import script_states
 from enums import ScriptStateType
 
 
-def constant_thread_runner(tick_rate: float = 0.1):
+def constant_thread_runner(tick_rate: float = 0.01):
     while run_constant_thread:
         time.sleep(tick_rate)
         constant_thread_logic()

@@ -17,7 +17,7 @@ def engine_moniter_thread():
     print('Engine monitering thread ended')  
 
 
-def engine_monitor_thread_runner(tick_rate: float = 0.1):
+def engine_monitor_thread_runner(tick_rate: float = 0.01):
     while run_monitoring_thread:
         time.sleep(tick_rate)
         engine_monitor_thread_logic()

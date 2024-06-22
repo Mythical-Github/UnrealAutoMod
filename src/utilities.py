@@ -1,10 +1,12 @@
-import os
 import glob
-import json
-import shutil
 import hashlib
+import json
+import os
+import shutil
 import subprocess
+
 import psutil
+
 import settings
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 

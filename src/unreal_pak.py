@@ -1,9 +1,10 @@
 import os
 import shutil
 import subprocess
+
 import packing
-import utilities
 import script_states
+import utilities
 from enums import CompressionType, ScriptStateType
 
 

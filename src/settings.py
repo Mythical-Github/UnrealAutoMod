@@ -1,10 +1,11 @@
+import json
 import os
 import sys
-import json
-import enums
-import psutil
-import engine
 
+import psutil
+
+import engine
+import enums
 
 settings = ''
 init_settings_done = False

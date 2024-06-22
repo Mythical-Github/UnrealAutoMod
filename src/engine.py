@@ -1,7 +1,8 @@
 import subprocess
-import utilities
+
 import script_states
 import thread_engine_monitor
+import utilities
 from enums import PackagingDirType, ExecutionMode, ScriptStateType
 
 

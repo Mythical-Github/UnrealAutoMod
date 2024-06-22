@@ -1,12 +1,12 @@
 import os
 import shutil
 import subprocess
-import settings
-import utilities
-import unreal_pak
-import script_states
-from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
 
+import script_states
+import settings
+import unreal_pak
+import utilities
+from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
 
 install_queue_types = []
 uninstall_queue_types = []

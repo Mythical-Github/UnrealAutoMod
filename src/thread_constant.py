@@ -1,5 +1,6 @@
-import time
 import threading
+import time
+
 import script_states
 from enums import ScriptStateType
 

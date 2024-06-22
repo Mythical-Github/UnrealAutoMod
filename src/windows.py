@@ -1,9 +1,10 @@
 import os
-import screeninfo
+
 import pygetwindow
+import screeninfo
+
 import utilities
 from enums import WindowAction, ScriptStateType, get_enum_from_val
-
 
 
 def does_window_exist(window_title: str, use_substring_check: bool = False) -> bool:

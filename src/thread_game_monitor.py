@@ -1,10 +1,10 @@
-import time
-import windows
 import threading
-import utilities
-import script_states
-from enums import ScriptStateType
+import time
 
+import script_states
+import utilities
+import windows
+from enums import ScriptStateType
 
 found_process = False
 found_window = False

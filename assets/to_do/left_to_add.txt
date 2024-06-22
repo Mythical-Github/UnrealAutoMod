@@ -1,4 +1,3 @@
-for repak currently it seems tree paths aren't being added
 
 Later:
 
@@ -37,3 +36,8 @@ Mod Release Creator
 DLL Injection
 Repak Installer
 
+make is so the exe takes in settings json first
+unit tests
+build.py
+poetry
+github actions for release and pylinting

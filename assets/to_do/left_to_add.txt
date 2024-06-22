@@ -26,16 +26,13 @@ Automic Release Creation
 
 GUI:
 Out of Editor GUI
-Editor EWBP GUI
-Editor C++ GUI
-Settings configurator GUI
-
+Editor GUI
 
 Other:
 Mod Release Creator
-DLL Injection
-Repak Installer
-
+DLL Injection example, through alt exe methods
+Repak Installer, maybe
+ 
 make is so the exe takes in settings json first
 unit tests
 build.py

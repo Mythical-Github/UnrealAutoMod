@@ -1,8 +1,9 @@
-
 ## Enums Documentation
 
 ### WindowAction
+
 Enum for handling window actions.
+
 - **NONE**: 'none'
 - **MIN**: 'min'
 - **MAX**: 'max'
@@ -10,14 +11,18 @@ Enum for handling window actions.
 - **CLOSE**: 'close'
 
 ### PackingType
+
 Enum for how to pack mods.
+
 - **ENGINE**: 'engine'
 - **UNREAL_PAK**: 'unreal_pak'
 - **REPAK**: 'repak'
 - **LOOSE**: 'loose'
 
 ### GameLaunchType
+
 Enum for how to launch the game.
+
 - **EXE**: 'exe'
 - **STEAM**: 'steam'
 - **EPIC**: 'epic'
@@ -28,7 +33,9 @@ Enum for how to launch the game.
 - **OTHER**: 'other'
 
 ### ScriptStateType
+
 Enum for the various script states, used to fire off other functions at specific times.
+
 - **NONE**: 'none'
 - **PRE_ALL**: 'pre_all'
 - **POST_ALL**: 'post_all'
@@ -54,12 +61,16 @@ Enum for the various script states, used to fire off other functions at specific
 - **POST_ENGINE_CLOSE**: 'post_engine_close'
 
 ### ExecutionMode
+
 Enum for how to execute various processes.
+
 - **SYNC**: 'sync'
 - **ASYNC**: 'async'
 
 ### CompressionType
+
 Enum for the types of mod pak compression.
+
 - **NONE**: 'None'
 - **ZLIB**: 'Zlib'
 - **GZIP**: 'Gzip'
@@ -69,7 +80,9 @@ Enum for the types of mod pak compression.
 - **LZMA**: 'Lzma'
 
 ### UnrealModTreeType
+
 Enum for the mod dir type in the Unreal file system.
 There are two main conventions used by communities.
-- **CUSTOM_CONTENT**: 'CustomContent'  // "Content/CustomContent/ModName"
-- **MODS**: 'Mods'  // "Content/Mods/ModName"
+
+- **CUSTOM_CONTENT**: 'CustomContent' // "Content/CustomContent/ModName"
+- **MODS**: 'Mods' // "Content/Mods/ModName"

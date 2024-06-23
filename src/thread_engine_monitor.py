@@ -14,7 +14,7 @@ def engine_moniter_thread():
     start_engine_monitor_thread()
     print('Engine monitering thread started')
     engine_monitor_thread.join()
-    print('Engine monitering thread ended')  
+    print('Engine monitering thread ended')
 
 
 def engine_monitor_thread_runner(tick_rate: float = 0.01):
@@ -34,7 +34,6 @@ def engine_monitor_thread_logic():
         found_window = False
         window_closed = False
         init_done = True
-
 
     engine_window_name = utilities.get_engine_window_title()
     if not found_process:

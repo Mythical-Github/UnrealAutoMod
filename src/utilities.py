@@ -133,7 +133,7 @@ def get_unreal_engine_version(engine_path: str) -> str:
         unreal_engine_minor_version = settings.settings['engine_info']['unreal_engine_minor_version']
         return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'
     else:
-        version_file_path = f'{engine_path}/Engine/Build/Build.version'        
+        version_file_path = f'{engine_path}/Engine/Build/Build.version'
         check_file_exists(version_file_path)
         with open(version_file_path, 'r') as f:
             version_info = json.load(f)
@@ -227,7 +227,7 @@ def run_app(exe_path: str, exec_mode: ExecutionMode, args: str = {}, working_dir
         subprocess.run(command, cwd=working_dir)
     elif exec_mode == ExecutionMode.ASYNC:
         subprocess.Popen(command, cwd=working_dir, start_new_session=True)
-    
+
 
 def get_engine_window_title() -> str:
     return f'{get_process_name(get_uproject_file())[:-9]} - {'Unreal Editor'}'
@@ -334,7 +334,7 @@ def get_unreal_mod_tree_type_str(mod_name: str) -> str:
     return None
 
 
-def get_mod_pak_info(mod_name:str) -> dict:
+def get_mod_pak_info(mod_name: str) -> dict:
     for info in get_mod_pak_info_list():
         if info['mod_name'] == mod_name:
             return dict(info)
@@ -364,7 +364,7 @@ def get_persistant_mod_dir(mod_name: str) -> str:
 
 def get_persistant_mod_files(mod_name: str) -> list:
     return get_files_in_tree(get_persistant_mod_dir(mod_name))
- 
+
 
 def get_mod_extensions() -> list:
     if get_is_game_iostore():
@@ -517,4 +517,3 @@ def get_game_window_title() -> str:
         return get_window_title_override_string()
     else:
         return os.path.splitext(get_game_process_name())[0]
-

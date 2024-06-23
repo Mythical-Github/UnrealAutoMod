@@ -58,4 +58,4 @@ def game_moniter_thread():
     start_game_monitor_thread()
     print('game monitering thread started')
     game_monitor_thread.join()
-    print('game monitering thread ended')  
+    print('game monitering thread ended')

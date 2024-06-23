@@ -28,7 +28,7 @@ def get_windows_by_title(window_title: str, use_substring_check: bool = False) -
         all_windows = pygetwindow.getAllWindows()
         matched_windows = [window for window in all_windows if window_title in window.title]
     else:
-        matched_windows = pygetwindow.getWindowsWithTitle(window_title)    
+        matched_windows = pygetwindow.getWindowsWithTitle(window_title)
     return matched_windows
 
 
@@ -82,11 +82,11 @@ def get_game_window():
 
 def move_window(window: pygetwindow.Win32Window, window_settings: list):
     monitor_index = window_settings['monitor']
-    if monitor_index != None:
+    if monitor_index is not None:
         move_window_to_monitor(window, monitor_index)
     width = window_settings['resolution']['x']
     height = window_settings['resolution']['y']
-    if width != None:
+    if width is not None:
         set_window_size(window, width, height)
 
 

@@ -1,37 +1,49 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "test_mods_all",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/src/__main__.py",
-            "console": "integratedTerminal",
-            "args": ["test_mods_all", "${workspaceFolder}/assets/settings/settings.json"]
-        },
-        {
-            "name": "remnant_2",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/src/__main__.py",
-            "console": "integratedTerminal",
-            "args": ["test_mods_all", "${workspaceFolder}/assets/game_presets/remnant_2/remnant_2.json"]
-        },
-        {
-            "name": "kh3",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/src/__main__.py",
-            "console": "integratedTerminal",
-            "args": ["test_mods_all", "${workspaceFolder}/assets/game_presets/kingdom_hearts_iii/kingdom_hearts_iii.json"]
-        },
-        {
-            "name": "escape_the_backrooms",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/src/__main__.py",
-            "console": "integratedTerminal",
-            "args": ["test_mods_all", "${workspaceFolder}/assets/game_presets/escape_the_backrooms/escape_the_backrooms.json"]
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "test_mods_all",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "test_mods_all",
+        "${workspaceFolder}/assets/settings/settings.json"
+      ]
+    },
+    {
+      "name": "remnant_2",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "test_mods_all",
+        "${workspaceFolder}/assets/game_presets/remnant_2/remnant_2.json"
+      ]
+    },
+    {
+      "name": "kh3",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "test_mods_all",
+        "${workspaceFolder}/assets/game_presets/kingdom_hearts_iii/kingdom_hearts_iii.json"
+      ]
+    },
+    {
+      "name": "escape_the_backrooms",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "test_mods_all",
+        "${workspaceFolder}/assets/game_presets/escape_the_backrooms/escape_the_backrooms.json"
+      ]
+    }
+  ]
 }

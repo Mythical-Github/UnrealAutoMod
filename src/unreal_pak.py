@@ -24,10 +24,10 @@ def make_response_file(mod_name: str) -> str:
     file_list_path = os.path.join(utilities.get_working_dir(), "filelist.txt")
     if os.path.isfile(file_list_path):
         os.remove(file_list_path)
-    
+
     dir_to_pack = get_pak_dir_to_pack(mod_name)
     print("Directory to pack:", dir_to_pack)
-    
+
     with open(file_list_path, "w") as file:
         for root, _, files in os.walk(dir_to_pack):
             for file_name in files:
@@ -35,10 +35,9 @@ def make_response_file(mod_name: str) -> str:
                 relative_path = os.path.relpath(root, dir_to_pack).replace("\\", "/")
                 mount_point = f'../../../{relative_path}/'
                 file.write(f'"{absolute_path}" "{mount_point}"\n')
-    
+
     print("Created response file:", file_list_path)
     return file_list_path
-
 
 
 def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):

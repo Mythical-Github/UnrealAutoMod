@@ -94,8 +94,8 @@ class CompressionType(Enum):
     """
     enum for the types of mod pak compression
     """
-    NONE =  'None'
-    ZLIB =  'Zlib'
+    NONE = 'None'
+    ZLIB = 'Zlib'
     GZIP = 'Gzip'
     OODLE = 'Oodle'
     ZSTD = 'Zstd'
@@ -108,16 +108,16 @@ class UnrealModTreeType(Enum):
     enum for the mod dir type in the unreal file system
     there are two main conventions used by communities
     """
-    CUSTOM_CONTENT = 'CustomContent' # "Content/CustomContent/ModName"
-    MODS = 'Mods' # "Content/Mods/ModName"
+    CUSTOM_CONTENT = 'CustomContent'  # "Content/CustomContent/ModName"
+    MODS = 'Mods'  # "Content/Mods/ModName"
 
 
 class FileFilterType(Enum):
     """
     enum for how to include various files for mod creation functions
     """
-    ASSET_PATHS = 'asset_paths' # Takes the paths and gets all files regardless of extension
-    TREE_PATHS = 'tree_paths' # Takes supplied dirs, and traverses it all, including every file
+    ASSET_PATHS = 'asset_paths'  # Takes the paths and gets all files regardless of extension
+    TREE_PATHS = 'tree_paths'  # Takes supplied dirs, and traverses it all, including every file
 
 
 class SettingsEntryTypes(Enum):

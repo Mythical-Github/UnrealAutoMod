@@ -28,7 +28,7 @@ def constant_thread():
         start_constant_thread()
         print('constant thread started')
     else:
-        print('constant thread not used in config, so not activated')         
+        print('constant thread not used in config, so not activated')
 
 
 def stop_constant_thread():

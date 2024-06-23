@@ -10,10 +10,10 @@ def test_alt_exe_entry_logic():
     add_arg_to_variable_list_in_alt_exe_entry("test2", "ayo2")
     remove_args_from_variable_list_in_alt_exe_entry("test2", "ayo")
 
-    
 
 def test_mod_pak_entry_logic():
-    args = ['testing', 'testing', enums.UnrealModTreeType.MODS, False, 'override', 1, enums.PackingType.REPAK, enums.CompressionType.ZLIB, True, ['test', 'test2'], ['test3', 'test4']]
+    args = ['testing', 'testing', enums.UnrealModTreeType.MODS, False, 'override', 1, enums.PackingType.REPAK,
+            enums.CompressionType.ZLIB, True, ['test', 'test2'], ['test3', 'test4']]
     add_mod_pak_entry(*args)
     set_mod_name_in_mod_pak_info_entry('testing', 'testing2')
     set_pak_dir_structure_in_mod_pak_info_entry('testing2', 'yo')
@@ -62,7 +62,7 @@ def destroy_test_settings():
     remove_window_management_entry('test2')
     remove_process_kill_entry('testing2')
     remove_mod_pak_entry('testing2')
-    remove_alt_exe_entry('test2')   
+    remove_alt_exe_entry('test2')
 
 
 create_test_settings()

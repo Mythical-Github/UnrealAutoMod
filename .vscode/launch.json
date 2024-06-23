@@ -41,8 +41,8 @@
       "program": "${workspaceFolder}/src/__main__.py",
       "console": "integratedTerminal",
       "args": [
-        "test_mods_all",
-        "${workspaceFolder}/assets/game_presets/escape_the_backrooms/escape_the_backrooms.json"
+        "${workspaceFolder}/assets/game_presets/escape_the_backrooms/escape_the_backrooms.json",
+        "test_mods_all"
       ]
     }
   ]

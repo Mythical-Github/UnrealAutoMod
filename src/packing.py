@@ -7,7 +7,7 @@ import settings
 import unreal_pak
 import utilities
 from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
-import enum as Enum
+
 
 install_queue_types = []
 uninstall_queue_types = []

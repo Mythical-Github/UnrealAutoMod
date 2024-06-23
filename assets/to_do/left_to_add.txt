@@ -1,40 +1,28 @@
+ 
+First:
 
-Later:
-
-Engine pak making compression variants (diff types, in one run), defaults to compressed rn
-
+script state polish
 unversioned per mod instead of global
+Engine pak making compression variants (diff types, in one run), defaults to compressed rn
+make is so the exe takes in settings json first
+build.py
 
+
+Mod Release Creator
+more Doc strings
+loose file copying/og_game file tracker to alleviate loose modding issues
+better Type hints
+
+Logging/log file creation
 Switch to pathlib from strings
 
-Progress Bars
-Logging/log file creation
-
-
 Later:
-script state polish
-better Type hints
-better and more Doc strings
-loose file copying/og_game file tracker to alleviate loose modding issues
-
-
-Github runners:
-Pylint
-Poetry
-Automic Release Creation
-
-
-GUI:
-Out of Editor GUI
-Editor GUI
-
-Other:
-Mod Release Creator
-DLL Injection example, through alt exe methods
-Repak Installer, maybe
- 
-make is so the exe takes in settings json first
-unit tests
-build.py
+github action pylinting
 poetry
-github actions for release and pylinting
+unit tests
+Progress Bars
+
+"UnrealAutoModCLI.exe" "json_path" "main_arg" "optional_sub_arg"  "optional_sub_arg"  "optional_sub_arg"   "optional_sub_arg"    "optional_sub_arg"    
+         0                   1          2               3                4                  5                       6                      7.............
+
+         

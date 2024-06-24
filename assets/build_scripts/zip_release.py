@@ -82,6 +82,3 @@ with zipfile.ZipFile(unreal_auto_mod_zip, 'w') as zipf:
     for root, _, files in os.walk(unreal_auto_mod_dir):
         for file in files:
             zipf.write(os.path.join(root, file), os.path.relpath(os.path.join(root, file), unreal_auto_mod_dir))
-
-import subprocess
-subprocess.run(f'{SCRIPT_DIR}/cleanup.py')

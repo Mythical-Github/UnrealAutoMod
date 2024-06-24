@@ -15,4 +15,3 @@ if os.path.isfile(old_exe):
     os.remove(old_exe)
 if os.path.isfile(new_exe):
     shutil.copy(new_exe, old_exe)
-

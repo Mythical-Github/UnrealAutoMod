@@ -14,7 +14,7 @@ echo %command%
 %command%
 
 
-pause
+rem pause
 
 
 exit /b

@@ -51,6 +51,7 @@ def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
 
 def move_files_for_packing(mod_name: str):
     mod_files_dict = packing.get_mod_file_paths_for_manually_made_pak_mods(mod_name)
+    mod_files_dict = utilities.filter_file_paths(mod_files_dict)
     with alive_bar(len(mod_files_dict), title=f'Progress Bar: Copying files for {mod_name} mod', bar = 'filling', spinner = 'waves2') as bar:
         for before_file in mod_files_dict.keys():
             after_file = mod_files_dict[before_file]

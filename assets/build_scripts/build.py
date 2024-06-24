@@ -34,6 +34,7 @@ files_to_include = [
 
 pyinstaller_cmd = [
     "pyinstaller",
+    "--collect-data grapheme",
     "--noconfirm",
     "--onefile",
     "--console",

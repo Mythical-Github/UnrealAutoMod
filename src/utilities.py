@@ -522,3 +522,12 @@ def get_game_window_title() -> str:
         return get_window_title_override_string()
     else:
         return os.path.splitext(get_game_process_name())[0]
+
+
+def filter_file_paths(paths_dict: dict) -> dict:
+    filtered_dict = {}
+    path_dict_keys = paths_dict.keys()
+    for path_dict_key in path_dict_keys:
+        if os.path.isfile(path_dict_key):
+            filtered_dict[path_dict_key] = paths_dict[path_dict_key]
+    return filtered_dict

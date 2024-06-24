@@ -8,6 +8,10 @@ else:
 os.chdir(SCRIPT_DIR)
 
 assets_dir = os.path.dirname(SCRIPT_DIR)
-help_bat_file = f'{assets_dir}/base/help.bat'
-if os.path.isfile(help_bat_file):
-    os.system(help_bat_file)
+run_bat_file = f'{assets_dir}/base/run.bat'
+if os.path.isfile(run_bat_file):
+    os.system(run_bat_file)
+
+# help_bat_file = f'{assets_dir}/base/help.bat'
+# if os.path.isfile(help_bat_file):
+#     os.system(help_bat_file)

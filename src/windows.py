@@ -5,6 +5,7 @@ import screeninfo
 
 import utilities
 from enums import WindowAction, ScriptStateType, get_enum_from_val
+import log
 
 
 def does_window_exist(window_title: str, use_substring_check: bool = False) -> bool:
@@ -19,7 +20,7 @@ def does_window_exist(window_title: str, use_substring_check: bool = False) -> b
                 return False
         return len(matched_windows) > 0
     except pygetwindow.PyGetWindowException as e:
-        print(f'Error: An error occurred: {e}')
+        log.log_message(f'Error: An error occurred: {e}')
         return False
 
 
@@ -57,7 +58,7 @@ def move_window_to_monitor(window: pygetwindow.Win32Window, monitor_index: int =
         monitor = screen_info[monitor_index]
         window.moveTo(monitor.x, monitor.y)
     else:
-        print('Monitor: Invalid monitor index.')
+        log.log_message('Monitor: Invalid monitor index.')
 
 
 def set_window_size(window: pygetwindow.Win32Window, width: int, height: int):
@@ -69,7 +70,7 @@ def change_window_name(window_name: str):
 
 
 def get_game_window():
-    game_window_name = utilities.get_game_process_name()
+    game_window_name = utilities.get_game_window_title()
     for title in pygetwindow.getAllTitles():
         if game_window_name in title:
             if 'Editor' not in title:
@@ -108,4 +109,4 @@ def window_checks(current_state: WindowAction):
                 elif way_to_change_window == WindowAction.MOVE:
                     move_window(window_to_change, window_settings)
                 else:
-                    print('Monitor: invalid window behaviour specified in settings')
+                    log.log_message('Monitor: invalid window behaviour specified in settings')

@@ -3,6 +3,7 @@ import time
 
 import script_states
 from enums import ScriptStateType
+import log
 
 
 def constant_thread_runner(tick_rate: float = 0.01):
@@ -26,9 +27,9 @@ def start_constant_thread():
 def constant_thread():
     if script_states.is_script_state_used(ScriptStateType.CONSTANT):
         start_constant_thread()
-        print('Thread: Constant Thread Started')
+        log.log_message('Thread: Constant Thread Started')
     else:
-        print('Thread: Constant Thread Ended')
+        log.log_message('Thread: Constant Thread Ended')
 
 
 def stop_constant_thread():

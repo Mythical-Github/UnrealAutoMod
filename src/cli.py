@@ -3,6 +3,7 @@ import sys
 import os
 
 import settings
+import log
 
 
 def cli_logic():
@@ -21,14 +22,14 @@ def cli_logic():
 
     if len(sys.argv) < 2:
         for key in cli_info_dict.keys():
-            print('Args:')
-            print(f'Arg: {key}')
+            log.log_message('Args:')
+            log.log_message(f'Arg: {key}')
         sys.exit()
 
     if sys.argv[1] == '-h':
         for key in cli_info_dict.keys():
-            print('Args:')
-            print(f'Arg: {key}')
+            log.log_message('Args:')
+            log.log_message(f'Arg: {key}')
         sys.exit()
 
     if sys.argv[2] == '-h':
@@ -36,13 +37,13 @@ def cli_logic():
         for entry_key in cli_info_dict:
             if entry_key == arg:
                 arg_help_pairs_list = cli_info_dict[entry_key]['arg_help_pairs']
-                print('Args:')
+                log.log_message('Args:')
                 for arg_help_dict in arg_help_pairs_list:
                     arg_help_dict_keys = list(arg_help_dict.keys())
                     if arg_help_dict_keys:
                         arg_name = arg_help_dict_keys[0]
                         arg_help = arg_help_dict[arg_name]
-                        print(f'Arg: {arg_name}    Help: {arg_help}')
+                        log.log_message(f'Arg: {arg_name}    Help: {arg_help}')
         sys.exit()
 
 
@@ -52,10 +53,10 @@ def cli_logic():
                 function_name = cli_info_dict[entry]['function_name']
                 if function_name:
                     function = getattr(settings, function_name)
-                    print(f'Function: {function_name} was called')
-                    print('Args:')
+                    log.log_message(f'Function: {function_name} was called')
+                    log.log_message('Args:')
                     cli_args[0], cli_args[1] = cli_args[1], cli_args[0]
                     for arg in cli_args:
-                        print(f'Arg: {arg}')
+                        log.log_message(f'Arg: {arg}')
                     function(*cli_args[1:])
     

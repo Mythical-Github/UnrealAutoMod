@@ -245,23 +245,14 @@ def install_repak_mod(mod_name: str):
     
     with alive_bar(len(mod_files_dict), title=f'Progress Bar: Copying files for {mod_name} mod', bar='filling', spinner='waves2') as bar:
         for before_file, after_file in mod_files_dict.items():
-            # Check if after_file exists and if its hash matches with before_file
             if os.path.exists(after_file):
                 if not utilities.get_do_files_have_same_hash(before_file, after_file):
                     os.remove(after_file)
-            
-            # Ensure the directory exists
             if not os.path.isdir(os.path.dirname(after_file)):
                 os.makedirs(os.path.dirname(after_file))
-                
-            # Copy the before_file to after_file if before_file is a valid file
             if os.path.isfile(before_file):
                 shutil.copy2(before_file, after_file)
-            
-            # Update the progress bar
-            bar()                
-    
-    # Call the make_pak_repak function
+            bar()          
     make_pak_repak(mod_name)
 
 

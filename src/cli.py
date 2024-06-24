@@ -1,11 +1,18 @@
 import json
 import sys
+import os
 
 import settings
 
 
 def cli_logic():
-    cli_json = f'{settings.SCRIPT_DIR}/cli.json'
+    if getattr(sys, 'frozen', False):
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+
+    cli_json = os.path.join(base_path, 'cli.json')
+
     with open(cli_json, 'r') as file:
         cli_info_dict = json.load(file)
 

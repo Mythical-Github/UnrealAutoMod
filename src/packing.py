@@ -11,6 +11,7 @@ from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_v
 
 install_queue_types = []
 uninstall_queue_types = []
+command_queue = []
 
 
 class PopulateQueueTypeCheckDicts():
@@ -116,22 +117,22 @@ def run_proj_command(command: str):
 
 
 def handle_uninstall_logic(packing_type: PackingType):
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_UNINSTALL)
     for mod_pak_info in utilities.get_mod_info_list():
         if not mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
             if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                 uninstall_mod(packing_type, mod_pak_info['mod_name'])
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_UNINSTALL)
 
 
 def handle_install_logic(packing_type: PackingType):
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_INSTALL)
     for mod_pak_info in utilities.get_mod_info_list():
         if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
             if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                 install_mod(packing_type, mod_pak_info['mod_name'],
                             get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_INSTALL)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
+    for command in command_queue:
+        subprocess.run(command)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
 
 
 def make_mods():
@@ -142,12 +143,16 @@ def make_mods():
     cooking()
 
     global uninstall_queue_types
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_UNINSTALL)
     for uninstall_queue_type in uninstall_queue_types:
         handle_uninstall_logic(uninstall_queue_type)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_UNINSTALL)
 
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_INSTALL)
     global install_queue_types
     for install_queue_type in install_queue_types:
         handle_install_logic(install_queue_type)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_INSTALL)
 
 
 def uninstall_loose_mod(mod_name: str):
@@ -241,11 +246,10 @@ def make_pak_repak(mod_name: str):
         print(f'command: {command}')
     if os.path.isfile(f'{pak_dir}/{mod_name}.pak'):
         os.remove(f'{pak_dir}/{mod_name}.pak')
-    subprocess.run(command)
+    command_queue.append(command)
 
 
 def install_repak_mod(mod_name: str):
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
     mod_files_dict = get_mod_file_paths_for_manually_made_pak_mods(mod_name)
     for before_file in mod_files_dict.keys():
         after_file = mod_files_dict[before_file]
@@ -260,7 +264,6 @@ def install_repak_mod(mod_name: str):
             print(before_file)
             print(after_file)
             shutil.copy2(before_file, after_file)
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
     make_pak_repak(mod_name)
 
 

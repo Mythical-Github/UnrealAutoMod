@@ -4,3 +4,4 @@ assets/base/UnrealAutoModCLI.exe
 assets/base/UnrealAutoMod.zip
 /assets/base/working_dir
 /assets/build_scripts/build
+/assets/build_scripts/dist

@@ -8,7 +8,7 @@
       "program": "${workspaceFolder}/src/__main__.py",
       "console": "integratedTerminal",
       "args": [
-        "${workspaceFolder}/assets/game_presets/escape_the_backrooms/escape_the_backrooms.json",
+        "${workspaceFolder}/assets/base/default/settings.json",
         "test_mods",
         "CharacterLoader",
         "GlamrockFreddyCharacter",
@@ -23,7 +23,7 @@
       "program": "${workspaceFolder}/src/__main__.py",
       "console": "integratedTerminal",
       "args": [
-        "${workspaceFolder}/assets/settings/settings.json",
+        "${workspaceFolder}/assets/base/default/settings.json",
         "test_mods_all"
       ]
     },

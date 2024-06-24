@@ -18,4 +18,3 @@ Later:
 github action pylinting
 poetry
 unit tests
-Progress Bars

@@ -1,39 +1,23 @@
-for repak currently it seems tree paths aren't being added
-
-Later:
-
-Engine pak making compression variants (diff types, in one run), defaults to compressed rn
+ 
+First:
 
 unversioned per mod instead of global
+Engine pak making compression variants (diff types, in one run), defaults to compressed rn
 
+loose file copying/og_game file tracker to alleviate loose modding issues
+Mod Release Creator
+
+iterative mod testing, should probably not clear working dir, 
+and do a hash check for if files are diff, 
+and delete any not in the other dirs that were removed since last mod building
+maybe also for loose file modding copying
+
+more Doc strings
+better Type hints
+Logging/log file creation
 Switch to pathlib from strings
 
-Progress Bars
-Logging/log file creation
-
-
 Later:
-script state polish
-better Type hints
-better and more Doc strings
-loose file copying/og_game file tracker to alleviate loose modding issues
-
-
-Github runners:
-Pylint
-Poetry
-Automic Release Creation
-
-
-GUI:
-Out of Editor GUI
-Editor EWBP GUI
-Editor C++ GUI
-Settings configurator GUI
-
-
-Other:
-Mod Release Creator
-DLL Injection
-Repak Installer
-
+github action pylinting
+poetry
+unit tests

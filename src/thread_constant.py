@@ -1,10 +1,11 @@
-import time
 import threading
+import time
+
 import script_states
 from enums import ScriptStateType
 
 
-def constant_thread_runner(tick_rate: float = 0.1):
+def constant_thread_runner(tick_rate: float = 0.01):
     while run_constant_thread:
         time.sleep(tick_rate)
         constant_thread_logic()
@@ -25,9 +26,9 @@ def start_constant_thread():
 def constant_thread():
     if script_states.is_script_state_used(ScriptStateType.CONSTANT):
         start_constant_thread()
-        print('constant thread started')
+        print('Thread: Constant Thread Started')
     else:
-        print('constant thread not used in config, so not activated')         
+        print('Thread: Constant Thread Ended')
 
 
 def stop_constant_thread():

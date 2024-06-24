@@ -1,6 +1,6 @@
+import script_states
 import steam
 import utilities
-import script_states
 from enums import ScriptStateType, GameLaunchType, ExecutionMode
 
 

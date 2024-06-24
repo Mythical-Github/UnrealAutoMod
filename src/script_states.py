@@ -1,7 +1,7 @@
-import windows
 import settings
 import utilities
-from enums import ScriptStateType, ExecutionMode, ScriptStateType, get_enum_from_val
+import windows
+from enums import ExecutionMode, ScriptStateType, get_enum_from_val
 
 
 def alt_exe_checks(script_state_type: ScriptStateType):
@@ -46,13 +46,13 @@ def is_script_state_used(state: ScriptStateType) -> bool:
 
 def routine_checks(state: ScriptStateType):
     if not state == ScriptStateType.CONSTANT:
-        print(f'routine checks for the {state} are running')
+        print(f'Routine Check: {state} is running')
     if is_script_state_used(state):
         utilities.kill_processes(state)
         windows.window_checks(state)
         alt_exe_checks(state)
     if not state == ScriptStateType.CONSTANT:
-        print(f'routine checks for the {state} finished')
+        print(f'Routine Check: {state} finished')
 
 
 class ScriptState():
@@ -61,11 +61,9 @@ class ScriptState():
     def set_script_state(new_state: ScriptStateType):
         global script_state
         script_state = new_state
-        print(f'Script State changed to {new_state}')
+        print(f'Script State: changed to {new_state}')
         # calling this on preinit causes problems so will avoid for now
         if not new_state == ScriptStateType.PRE_INIT:
             routine_checks(new_state)
             routine_checks(ScriptStateType.PRE_ALL)
             routine_checks(ScriptStateType.POST_ALL)
-
-    # set_script_state(ScriptStateType.PRE_INIT)

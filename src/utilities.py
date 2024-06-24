@@ -1,10 +1,12 @@
-import os
 import glob
-import json
-import shutil
 import hashlib
+import json
+import os
+import shutil
 import subprocess
+
 import psutil
+
 import settings
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
@@ -131,7 +133,7 @@ def get_unreal_engine_version(engine_path: str) -> str:
         unreal_engine_minor_version = settings.settings['engine_info']['unreal_engine_minor_version']
         return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'
     else:
-        version_file_path = f'{engine_path}/Engine/Build/Build.version'        
+        version_file_path = f'{engine_path}/Engine/Build/Build.version'
         check_file_exists(version_file_path)
         with open(version_file_path, 'r') as f:
             version_info = json.load(f)
@@ -216,16 +218,21 @@ def is_toggle_engine_during_testing_in_use() -> bool:
     return settings.settings['engine_info']['toggle_engine_during_testing']
 
 
-def run_app(exe_path: str, exec_mode: ExecutionMode, args: str = {}, working_dir: str = None):
+def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: str = {}, working_dir: str = None):
     command = exe_path
     for arg in args:
         command = f'{command} {arg}'
-    print(f'{command} was ran with {exec_mode} enum')
     if exec_mode == ExecutionMode.SYNC:
-        subprocess.run(command, cwd=working_dir)
+        print(f'Command: {command} running with the {exec_mode} enum')
+        if working_dir:
+            if os.path.isdir(working_dir):
+                os.chdir(working_dir)
+        subprocess.run(command)
+        print(f'Command: {command} finished')
     elif exec_mode == ExecutionMode.ASYNC:
+        print(f'Command: {command} started with the {exec_mode} enum')
         subprocess.Popen(command, cwd=working_dir, start_new_session=True)
-    
+
 
 def get_engine_window_title() -> str:
     return f'{get_process_name(get_uproject_file())[:-9]} - {'Unreal Editor'}'
@@ -332,7 +339,7 @@ def get_unreal_mod_tree_type_str(mod_name: str) -> str:
     return None
 
 
-def get_mod_pak_info(mod_name:str) -> dict:
+def get_mod_pak_info(mod_name: str) -> dict:
     for info in get_mod_pak_info_list():
         if info['mod_name'] == mod_name:
             return dict(info)
@@ -362,7 +369,7 @@ def get_persistant_mod_dir(mod_name: str) -> str:
 
 def get_persistant_mod_files(mod_name: str) -> list:
     return get_files_in_tree(get_persistant_mod_dir(mod_name))
- 
+
 
 def get_mod_extensions() -> list:
     if get_is_game_iostore():
@@ -515,4 +522,3 @@ def get_game_window_title() -> str:
         return get_window_title_override_string()
     else:
         return os.path.splitext(get_game_process_name())[0]
-

@@ -1,10 +1,11 @@
+import json
 import os
 import sys
-import json
-import enums
-import psutil
-import engine
 
+import psutil
+
+import engine
+import enums
 
 settings = ''
 init_settings_done = False
@@ -12,7 +13,6 @@ settings_json_dir = ''
 program_dir = ''
 mod_names = []
 settings_json = ''
-
 
 if getattr(sys, 'frozen', False):
     SCRIPT_DIR = os.path.dirname(os.path.abspath(sys.executable))
@@ -41,6 +41,7 @@ def init_settings(settings_json_path: str):
                 except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                     pass
             return False
+
         process_name = settings['game_info']['game_exe_path']
         process_name = os.path.basename(process_name)
         if is_process_running(process_name):
@@ -89,10 +90,11 @@ def create_mods():
     utilities.clean_working_dir()
 
 
-def test_mods(settings_json: str):
+def test_mods(settings_json: str, *input_mod_names: str):
     load_settings(settings_json)
     global mod_names
-    mod_names = sys.argv[2:]
+    for mod_name in input_mod_names:
+        mod_names.append(mod_name)
     create_mods()
 
 
@@ -245,7 +247,7 @@ def add_entries_to_engine_info_launch_args(settings_json: str, args: list):
     save_settings(pass_settings(settings_json))
 
 
-def remove_entries_from_engine_info_launch_args(settings_json: str, args:list):
+def remove_entries_from_engine_info_launch_args(settings_json: str, args: list):
     for arg in args:
         settings["engine_info"]["engine_launch_args"].remove(arg)
     save_settings(pass_settings(settings_json))
@@ -361,7 +363,8 @@ def set_use_substring_check_in_window_management_entry(settings_json: str, windo
     save_settings(pass_settings(settings_json))
 
 
-def set_script_state_in_window_management_entry(settings_json: str, window_name: str, script_state: enums.ScriptStateType):
+def set_script_state_in_window_management_entry(settings_json: str, window_name: str,
+                                                script_state: enums.ScriptStateType):
     for window_entry in settings["auto_move_windows"]:
         if window_entry['window_name'] == window_name:
             window_entry['script_state'] = script_state.value
@@ -410,7 +413,8 @@ def set_pak_dir_structure_in_mod_pak_info_entry(settings_json: str, mod_name: st
     save_settings(pass_settings(settings_json))
 
 
-def set_mod_name_dir_type_in_mod_pak_info_entry(settings_json: str, mod_name: str, mod_name_dir_type: enums.UnrealModTreeType):
+def set_mod_name_dir_type_in_mod_pak_info_entry(settings_json: str, mod_name: str,
+                                                mod_name_dir_type: enums.UnrealModTreeType):
     for info in settings["mod_pak_info"]:
         if info['mod_name'] == mod_name:
             info['mod_name_dir_type'] = mod_name_dir_type.value
@@ -424,7 +428,8 @@ def set_use_mod_name_dir_name_override_in_mod_pak_info_entry(settings_json: str,
     save_settings(pass_settings(settings_json))
 
 
-def set_mod_name_dir_name_override_in_mod_pak_info_entry(settings_json: str, mod_name: str, mod_name_dir_name_override: str):
+def set_mod_name_dir_name_override_in_mod_pak_info_entry(settings_json: str, mod_name: str,
+                                                         mod_name_dir_name_override: str):
     for info in settings["mod_pak_info"]:
         if info['mod_name'] == mod_name:
             info['mod_name_dir_name_override'] = mod_name_dir_name_override
@@ -445,7 +450,8 @@ def set_packing_type_in_mod_pak_info_entry(settings_json: str, mod_name: str, pa
     save_settings(pass_settings(settings_json))
 
 
-def set_compression_type_in_mod_pak_info_entry(settings_json: str, mod_name: str, compression_type: enums.CompressionType):
+def set_compression_type_in_mod_pak_info_entry(settings_json: str, mod_name: str,
+                                               compression_type: enums.CompressionType):
     for info in settings["mod_pak_info"]:
         if info['mod_name'] == mod_name:
             info['compression_type'] = compression_type.value
@@ -459,7 +465,8 @@ def set_is_enabled_in_mod_pak_info_entry(settings_json: str, mod_name: str, inpu
     save_settings(pass_settings(settings_json))
 
 
-def add_tree_paths_to_manually_specified_assets_in_mod_pak_info_entry(settings_json: str, mod_name: str, tree_paths: list):
+def add_tree_paths_to_manually_specified_assets_in_mod_pak_info_entry(settings_json: str, mod_name: str,
+                                                                      tree_paths: list):
     for info in settings["mod_pak_info"]:
         if info['mod_name'] == mod_name:
             for tree_path in tree_paths:
@@ -467,7 +474,8 @@ def add_tree_paths_to_manually_specified_assets_in_mod_pak_info_entry(settings_j
     save_settings(pass_settings(settings_json))
 
 
-def remove_tree_paths_from_manually_specified_assets_in_mod_pak_info_entry(settings_json: str, mod_name: str, tree_paths: list):
+def remove_tree_paths_from_manually_specified_assets_in_mod_pak_info_entry(settings_json: str, mod_name: str,
+                                                                           tree_paths: list):
     if "mod_pak_info" not in settings:
         return
     for info in settings["mod_pak_info"]:
@@ -480,7 +488,8 @@ def remove_tree_paths_from_manually_specified_assets_in_mod_pak_info_entry(setti
     save_settings(pass_settings(settings_json))
 
 
-def add_asset_paths_to_manually_specified_assets_in_mod_pak_info_entry(settings_json: str, mod_name: str, asset_paths: list):
+def add_asset_paths_to_manually_specified_assets_in_mod_pak_info_entry(settings_json: str, mod_name: str,
+                                                                       asset_paths: list):
     for info in settings["mod_pak_info"]:
         if info['mod_name'] == mod_name:
             for asset_path in asset_paths:
@@ -488,7 +497,8 @@ def add_asset_paths_to_manually_specified_assets_in_mod_pak_info_entry(settings_
     save_settings(pass_settings(settings_json))
 
 
-def remove_asset_paths_from_manually_specified_assets_in_mod_pak_info_entry(settings_json: str, mod_name: str, asset_paths: list):
+def remove_asset_paths_from_manually_specified_assets_in_mod_pak_info_entry(settings_json: str, mod_name: str,
+                                                                            asset_paths: list):
     if "mod_pak_info" not in settings:
         return
     for info in settings["mod_pak_info"]:
@@ -501,7 +511,8 @@ def remove_asset_paths_from_manually_specified_assets_in_mod_pak_info_entry(sett
     save_settings(pass_settings(settings_json))
 
 
-def add_process_kill_entry(settings_json: str, process_name: str, use_substring_check: bool, script_state: enums.ScriptStateType):
+def add_process_kill_entry(settings_json: str, process_name: str, use_substring_check: bool,
+                           script_state: enums.ScriptStateType):
     new_entry = {
         "process_name": process_name,
         "use_substring_check": use_substring_check,
@@ -511,7 +522,9 @@ def add_process_kill_entry(settings_json: str, process_name: str, use_substring_
     save_settings(pass_settings(settings_json))
 
 
-def add_window_management_entry(settings_json: str, window_name: str, use_substring_check: bool, window_behaviour: enums.WindowAction, script_state: enums.ScriptStateType, monitor_index: int, resolution_x: int, resolution_y: int):
+def add_window_management_entry(settings_json: str, window_name: str, use_substring_check: bool,
+                                window_behaviour: enums.WindowAction, script_state: enums.ScriptStateType,
+                                monitor_index: int, resolution_x: int, resolution_y: int):
     new_entry = {
         "window_name": window_name,
         "use_substring_check": use_substring_check,
@@ -527,7 +540,8 @@ def add_window_management_entry(settings_json: str, window_name: str, use_substr
     save_settings(pass_settings(settings_json))
 
 
-def add_alt_exe_entry(settings_json: str, script_state: enums.ScriptStateType, alt_exe_path: str, exec_mode: enums.ExecutionMode, args: list):
+def add_alt_exe_entry(settings_json: str, script_state: enums.ScriptStateType, alt_exe_path: str,
+                      exec_mode: enums.ExecutionMode, args: list):
     new_entry = {
         "script_state": script_state.value,
         "alt_exe_path": alt_exe_path,
@@ -579,7 +593,10 @@ def remove_alt_exe_entry(settings_json: str, alt_exe_path: str):
     save_settings(pass_settings(settings_json))
 
 
-def add_mod_pak_entry(settings_json: str, mod_name: str, pak_dir_structure: str, mod_name_dir_type: enums.UnrealModTreeType, use_mod_name_dir_name_override: bool, mod_name_dir_name_override: str, pak_chunk_num: int, packing_type: enums.CompressionType, compression_type: enums.CompressionType, is_enabled: bool, asset_paths: list, tree_paths: list):
+def add_mod_pak_entry(settings_json: str, mod_name: str, pak_dir_structure: str,
+                      mod_name_dir_type: enums.UnrealModTreeType, use_mod_name_dir_name_override: bool,
+                      mod_name_dir_name_override: str, pak_chunk_num: int, packing_type: enums.CompressionType,
+                      compression_type: enums.CompressionType, is_enabled: bool, asset_paths: list, tree_paths: list):
     new_entry = {
         "mod_name": mod_name,
         "pak_dir_structure": pak_dir_structure,

@@ -8,63 +8,69 @@ Easy To Use Modding Utility For Unreal Engine Games
 
 <h2>💪 Features</h2>
 
-*   supports unreal game versions 4.0-5.4
-*   supports loose file modding
-*   supports iostore pak modding
-*   automatic mod creation
-*   automatic cooking/packaging
-*   automatic process management
-*   automatic window management
-*   automatic game launching
-*   automatic editor launching
-*   automatic exe launching
-*   script state system, for various automatic utilities
-*   supports games with alternative packing dir structures (example game: Kingdom Hearts 3)
-*   supports packing manually edited files, through the persistent directory
-*   supports various packing type enums, for easily specifying which files end up in mods
-*   supports unreal_pak, repak, engine made paks, and loose file mod creation
-*   parameter loading for various functions (engine launch, engine cook, etc...)
-
+* supports unreal game versions 4.0-5.4
+* supports loose file modding
+* supports iostore pak modding
+* automatic mod creation
+* automatic cooking/packaging
+* automatic process management
+* automatic window management
+* automatic game launching
+* automatic editor launching
+* automatic exe launching
+* script state system, for various automatic utilities
+* supports games with alternative packing dir structures (example game: Kingdom Hearts 3)
+* supports packing manually edited files, through the persistent directory
+* supports various packing type enums, for easily specifying which files end up in mods
+* supports unreal_pak, repak, engine made paks, and loose file mod creation
+* parameter loading for various functions (engine launch, engine cook, etc...)
 
 <h2>🛠️ Installation Steps:</h2>
 
-*   Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest)
-*   Setup your game's settings.json for modding using these two pages as reference, you can edit manually or through cli args
-*   [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
-*   [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/enums.md)
-*   [Youtube Example Setup Reference](https://www.youtube.com/watch?v=6MUkUFhumo8)
+* Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest)
+* Setup your game's settings.json for modding using these two pages as reference, you can edit manually or through cli
+  args
+* [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
+* [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/enums.md)
+* [Youtube Example Setup Reference](https://www.youtube.com/watch?v=6MUkUFhumo8)
 
-  
 <h2>🏃 Running Steps:</h2>
 
 ```
 UnrealAutoModCLI.exe -h
 ```
+
 ```
 UnrealAutoModCLI.exe command -h
 ```
+
 ```
-UnrealAutoModCLI.exe test_mods_all settings.json
+UnrealAutoModCLI.exe settings.json test_mods_all
 ```
+
 ```
-UnrealAutoModCLI.exe test_mods settings.json <mod_name> [<mod_name> ...]
+UnrealAutoModCLI.exe settings.json test_mods <mod_name> [<mod_name> ...]
 ```
+
 ```
 __main__.py -h
 ```
+
 ```
 __main__.py command -h
 ```
+
 ```
-__main__.py test_mods_all settings.json
+__main__.py settings.json test_mods_all
 ```
+
 ```
-__main__.py test_mods settings.json <mod_name> [<mod_name> ...]
+__main__.py settings.json test_mods <mod_name> [<mod_name> ...]
 ```
 
 <h2>💻 Built with</h2>
 
-*   Python
+* Python
 
 <h2>🛡️ License:</h2>
 

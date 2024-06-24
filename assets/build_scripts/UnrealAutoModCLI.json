@@ -18,6 +18,10 @@
    "value": true
   },
   {
+   "optionDest": "icon_file",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/assets/images/UnrealAutoModIcon.ico"
+  },
+  {
    "optionDest": "clean_build",
    "value": false
   },
@@ -55,6 +59,14 @@
   },
   {
    "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/cli.json;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/cli.py;."
+  },
+  {
+   "optionDest": "datas",
    "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/engine.py;."
   },
   {
@@ -84,10 +96,6 @@
   {
    "optionDest": "datas",
    "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/steam.py;."
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/testing.py;."
   },
   {
    "optionDest": "datas",

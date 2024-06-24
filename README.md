@@ -45,11 +45,11 @@ UnrealAutoModCLI.exe command -h
 ```
 
 ```
-UnrealAutoModCLI.exe test_mods_all settings.json
+UnrealAutoModCLI.exe settings.json test_mods_all
 ```
 
 ```
-UnrealAutoModCLI.exe test_mods settings.json <mod_name> [<mod_name> ...]
+UnrealAutoModCLI.exe settings.json test_mods <mod_name> [<mod_name> ...]
 ```
 
 ```
@@ -61,11 +61,11 @@ __main__.py command -h
 ```
 
 ```
-__main__.py test_mods_all settings.json
+__main__.py settings.json test_mods_all
 ```
 
 ```
-__main__.py test_mods settings.json <mod_name> [<mod_name> ...]
+__main__.py settings.json test_mods <mod_name> [<mod_name> ...]
 ```
 
 <h2>💻 Built with</h2>

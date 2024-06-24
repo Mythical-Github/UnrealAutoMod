@@ -7,11 +7,6 @@ Engine pak making compression variants (diff types, in one run), defaults to com
 loose file copying/og_game file tracker to alleviate loose modding issues
 Mod Release Creator
 
-iterative mod testing, should probably not clear working dir, 
-and do a hash check for if files are diff, 
-and delete any not in the other dirs that were removed since last mod building
-maybe also for loose file modding copying
-
 more Doc strings
 better Type hints
 Logging/log file creation

@@ -2,51 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "test_mods_all",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${workspaceFolder}/src/__main__.py",
-      "console": "integratedTerminal",
-      "args": [
-        "${workspaceFolder}/assets/settings/settings.json",
-        "test_mods_all"
-      ]
-    },
-    {
-      "name": "remnant_2",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${workspaceFolder}/src/__main__.py",
-      "console": "integratedTerminal",
-      "args": [
-        "${workspaceFolder}/assets/game_presets/remnant_2/remnant_2.json",
-        "test_mods_all"
-      ]
-    },
-    {
-      "name": "kh3",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${workspaceFolder}/src/__main__.py",
-      "console": "integratedTerminal",
-      "args": [
-        "${workspaceFolder}/assets/game_presets/kingdom_hearts_iii/kingdom_hearts_iii.json",
-        "test_mods_all"
-      ]
-    },
-    {
-      "name": "etb_all",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${workspaceFolder}/src/__main__.py",
-      "console": "integratedTerminal",
-      "args": [
-        "${workspaceFolder}/assets/game_presets/escape_the_backrooms/escape_the_backrooms.json",
-        "test_mods_all"
-      ]
-    },
-    {
-      "name": "etb_test_mods",
+      "name": "test_mods",
       "type": "debugpy",
       "request": "launch",
       "program": "${workspaceFolder}/src/__main__.py",
@@ -59,6 +15,41 @@
         "TheBabyInYellowCharacter",
         "TheNeighborCharacter"
       ]
+    },
+    {
+      "name": "test_mods_all",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/assets/settings/settings.json",
+        "test_mods_all"
+      ]
+    },
+    {
+      "name": "run_build",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/assets/build_scripts/run_build.py",
+      "console": "integratedTerminal",
+      "args": []
+    },
+    {
+      "name": "run_build_and_test",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/assets/build_scripts/run_build_and_test.py",
+      "console": "integratedTerminal",
+      "args": []
+    },
+    {
+      "name": "run_build_and_zip",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/assets/build_scripts/run_build_and_zip.py",
+      "console": "integratedTerminal",
+      "args": []
     }
   ]
 }

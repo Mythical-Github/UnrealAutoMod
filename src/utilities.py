@@ -218,14 +218,19 @@ def is_toggle_engine_during_testing_in_use() -> bool:
     return settings.settings['engine_info']['toggle_engine_during_testing']
 
 
-def run_app(exe_path: str, exec_mode: ExecutionMode, args: str = {}, working_dir: str = None):
+def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: str = {}, working_dir: str = None):
     command = exe_path
     for arg in args:
         command = f'{command} {arg}'
-    print(f'{command} was ran with {exec_mode} enum')
     if exec_mode == ExecutionMode.SYNC:
-        subprocess.run(command, cwd=working_dir)
+        print(f'Command: {command} running with the {exec_mode} enum')
+        if working_dir:
+            if os.path.isdir(working_dir):
+                os.chdir(working_dir)
+        subprocess.run(command)
+        print(f'Command: {command} finished')
     elif exec_mode == ExecutionMode.ASYNC:
+        print(f'Command: {command} started with the {exec_mode} enum')
         subprocess.Popen(command, cwd=working_dir, start_new_session=True)
 
 

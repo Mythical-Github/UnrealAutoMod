@@ -46,13 +46,13 @@ def is_script_state_used(state: ScriptStateType) -> bool:
 
 def routine_checks(state: ScriptStateType):
     if not state == ScriptStateType.CONSTANT:
-        print(f'routine checks for the {state} are running')
+        print(f'Routine Check: {state} is running')
     if is_script_state_used(state):
         utilities.kill_processes(state)
         windows.window_checks(state)
         alt_exe_checks(state)
     if not state == ScriptStateType.CONSTANT:
-        print(f'routine checks for the {state} finished')
+        print(f'Routine Check: {state} finished')
 
 
 class ScriptState():
@@ -61,7 +61,7 @@ class ScriptState():
     def set_script_state(new_state: ScriptStateType):
         global script_state
         script_state = new_state
-        print(f'Script State changed to {new_state}')
+        print(f'Script State: changed to {new_state}')
         # calling this on preinit causes problems so will avoid for now
         if not new_state == ScriptStateType.PRE_INIT:
             routine_checks(new_state)

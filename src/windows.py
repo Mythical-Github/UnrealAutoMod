@@ -19,7 +19,7 @@ def does_window_exist(window_title: str, use_substring_check: bool = False) -> b
                 return False
         return len(matched_windows) > 0
     except pygetwindow.PyGetWindowException as e:
-        print(f"An error occurred: {e}")
+        print(f'Error: An error occurred: {e}')
         return False
 
 
@@ -57,7 +57,7 @@ def move_window_to_monitor(window: pygetwindow.Win32Window, monitor_index: int =
         monitor = screen_info[monitor_index]
         window.moveTo(monitor.x, monitor.y)
     else:
-        print('Invalid monitor index.')
+        print('Monitor: Invalid monitor index.')
 
 
 def set_window_size(window: pygetwindow.Win32Window, width: int, height: int):
@@ -108,4 +108,4 @@ def window_checks(current_state: WindowAction):
                 elif way_to_change_window == WindowAction.MOVE:
                     move_window(window_to_change, window_settings)
                 else:
-                    print('invalid window behaviour specified in settings')
+                    print('Monitor: invalid window behaviour specified in settings')

@@ -14,12 +14,12 @@ def cli_logic():
 
     if len(sys.argv) < 2:
         for key in cli_info_dict.keys():
-            print(key)
+            print(f'Arg: {key}')
         sys.exit()
 
     if sys.argv[1] == '-h':
         for key in cli_info_dict.keys():
-            print(key)
+            print(f'Arg: {key}')
         sys.exit()
 
     if sys.argv[2] == '-h':
@@ -32,7 +32,7 @@ def cli_logic():
                     if arg_help_dict_keys:
                         arg_name = arg_help_dict_keys[0]
                         arg_help = arg_help_dict[arg_name]
-                        print(f'arg: {arg_name}    help: {arg_help}')
+                        print(f'Arg: {arg_name}    Help: {arg_help}')
         sys.exit()
 
 
@@ -42,10 +42,10 @@ def cli_logic():
                 function_name = cli_info_dict[entry]['function_name']
                 if function_name:
                     function = getattr(settings, function_name)
-                    print(f'called function: {function_name}')
-                    print('cli args:')
+                    print(f'Function: {function_name} was called')
+                    print('Args:')
                     cli_args[0], cli_args[1] = cli_args[1], cli_args[0]
                     for arg in cli_args:
-                        print(f'arg: {arg}')
+                        print(f'Arg: {arg}')
                     function(*cli_args[1:])
     

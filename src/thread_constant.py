@@ -26,9 +26,9 @@ def start_constant_thread():
 def constant_thread():
     if script_states.is_script_state_used(ScriptStateType.CONSTANT):
         start_constant_thread()
-        print('constant thread started')
+        print('Thread: Constant Thread Started')
     else:
-        print('constant thread not used in config, so not activated')
+        print('Thread: Constant Thread Ended')
 
 
 def stop_constant_thread():

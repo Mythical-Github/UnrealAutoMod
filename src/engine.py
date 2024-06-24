@@ -1,5 +1,3 @@
-import subprocess
-
 import script_states
 import thread_engine_monitor
 import utilities
@@ -28,7 +26,7 @@ def fix_up_uproject_redirectors():
     close_game_engine()
     arg = '-run=ResavePackages -fixupredirects'
     command = f'"{utilities.get_unreal_editor_exe_path()}" "{utilities.get_uproject_file()}" {arg}'
-    subprocess.run(command)
+    utilities.run_app(command)
 
 
 def toggle_engine_off():

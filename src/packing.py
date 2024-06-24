@@ -1,7 +1,6 @@
 import os
 import shutil
-import subprocess
-
+from alive_progress import alive_bar
 import script_states
 import settings
 import unreal_pak
@@ -112,8 +111,7 @@ def package_uproject():
 
 
 def run_proj_command(command: str):
-    print(command)
-    subprocess.run(command, check=True, shell=True, cwd=utilities.get_unreal_engine_dir())
+    utilities.run_app(command, working_dir=utilities.get_unreal_engine_dir())
 
 
 def handle_uninstall_logic(packing_type: PackingType):
@@ -124,15 +122,16 @@ def handle_uninstall_logic(packing_type: PackingType):
 
 
 def handle_install_logic(packing_type: PackingType):
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
     for mod_pak_info in utilities.get_mod_info_list():
         if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
             if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                 install_mod(packing_type, mod_pak_info['mod_name'],
                             get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
-    for command in command_queue:
-        subprocess.run(command)
     script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
+    for command in command_queue:
+        utilities.run_app(command)
+    
 
 
 def make_mods():
@@ -210,24 +209,16 @@ def install_engine_mod(mod_name: str):
     mod_files.append(prefix)
     for file in mod_files:
         for suffix in utilities.get_mod_extensions():
-            print(suffix)
             before_file = f'{file}{suffix}'
             dir_engine_mod = f'{utilities.get_game_dir()}/Content/Paks/{utilities.get_pak_dir_structure(mod_name)}'
             if not os.path.isdir(dir_engine_mod):
                 os.makedirs(dir_engine_mod)
             after_file = f'{dir_engine_mod}/{mod_name}.{suffix}'
-            print(before_file)
-            print(after_file)
             if os.path.exists(after_file):
-                print('file existed')
                 if not utilities.get_do_files_have_same_hash(before_file, after_file):
-                    print('file did not same hash')
                     os.remove(after_file)
                     shutil.copy2(before_file, after_file)
-                else:
-                    print('file did have same hash')
             else:
-                print('file did not exist')
                 shutil.copy2(before_file, after_file)
 
 
@@ -243,7 +234,6 @@ def make_pak_repak(mod_name: str):
     command = f'"{utilities.get_repak_exe_path()}" pack "{before_symlinked_dir}" "{pak_dir}/{mod_name}.pak"'
     if not compression_type_str == 'None':
         command = f'{command} --compression {compression_type_str} --version {utilities.get_repak_pak_version_str()}'
-        print(f'command: {command}')
     if os.path.isfile(f'{pak_dir}/{mod_name}.pak'):
         os.remove(f'{pak_dir}/{mod_name}.pak')
     command_queue.append(command)
@@ -251,19 +241,20 @@ def make_pak_repak(mod_name: str):
 
 def install_repak_mod(mod_name: str):
     mod_files_dict = get_mod_file_paths_for_manually_made_pak_mods(mod_name)
-    for before_file in mod_files_dict.keys():
-        after_file = mod_files_dict[before_file]
-        if os.path.exists(after_file):
-            if not utilities.get_do_files_have_same_hash(before_file, after_file):
-                os.remove(after_file)
-            else:
-                return
-        if not os.path.isdir(os.path.dirname(after_file)):
-            os.makedirs(os.path.dirname(after_file))
-        if os.path.isfile(before_file):
-            print(before_file)
-            print(after_file)
-            shutil.copy2(before_file, after_file)
+    with alive_bar(len(mod_files_dict), title=f'Progress Bar: Copying files for {mod_name} mod', bar = 'filling', spinner = 'waves2') as bar:
+        for before_file in mod_files_dict.keys():
+            after_file = mod_files_dict[before_file]
+            if os.path.exists(after_file):
+                if not utilities.get_do_files_have_same_hash(before_file, after_file):
+                    os.remove(after_file)
+                else:
+                    bar()
+                    continue
+            if not os.path.isdir(os.path.dirname(after_file)):
+                os.makedirs(os.path.dirname(after_file))
+            if os.path.isfile(before_file):
+                shutil.copy2(before_file, after_file)
+                bar()
     make_pak_repak(mod_name)
 
 

@@ -90,10 +90,11 @@ def create_mods():
     utilities.clean_working_dir()
 
 
-def test_mods(settings_json: str):
+def test_mods(settings_json: str, *input_mod_names: str):
     load_settings(settings_json)
     global mod_names
-    mod_names = sys.argv[2:]
+    for mod_name in input_mod_names:
+        mod_names.append(mod_name)
     create_mods()
 
 

@@ -85,6 +85,51 @@
         "asset_paths": [],
         "tree_paths": []
       }
+    },
+    {
+      "mod_name": "GlamrockFreddyCharacter",
+      "pak_dir_structure": "~mods",
+      "mod_name_dir_type": "Mods",
+      "use_mod_name_dir_name_override": false,
+      "mod_name_dir_name_override": null,
+      "pak_chunk_num": null,
+      "packing_type": "repak",
+      "compression_type": "Zlib",
+      "is_enabled": true,
+      "manually_specified_assets": {
+        "asset_paths": [],
+        "tree_paths": []
+      }
+    },
+    {
+      "mod_name": "TheBabyInYellowCharacter",
+      "pak_dir_structure": "~mods",
+      "mod_name_dir_type": "Mods",
+      "use_mod_name_dir_name_override": false,
+      "mod_name_dir_name_override": null,
+      "pak_chunk_num": null,
+      "packing_type": "repak",
+      "compression_type": "Zlib",
+      "is_enabled": true,
+      "manually_specified_assets": {
+        "asset_paths": [],
+        "tree_paths": []
+      }
+    },
+    {
+      "mod_name": "TheNeighborCharacter",
+      "pak_dir_structure": "~mods",
+      "mod_name_dir_type": "Mods",
+      "use_mod_name_dir_name_override": false,
+      "mod_name_dir_name_override": null,
+      "pak_chunk_num": null,
+      "packing_type": "repak",
+      "compression_type": "Zlib",
+      "is_enabled": true,
+      "manually_specified_assets": {
+        "asset_paths": [],
+        "tree_paths": []
+  }
     }
   ]
 }

@@ -8,8 +8,8 @@
       "program": "${workspaceFolder}/src/__main__.py",
       "console": "integratedTerminal",
       "args": [
-        "test_mods_all",
-        "${workspaceFolder}/assets/settings/settings.json"
+        "${workspaceFolder}/assets/settings/settings.json",
+        "test_mods_all"
       ]
     },
     {
@@ -19,8 +19,8 @@
       "program": "${workspaceFolder}/src/__main__.py",
       "console": "integratedTerminal",
       "args": [
-        "test_mods_all",
-        "${workspaceFolder}/assets/game_presets/remnant_2/remnant_2.json"
+        "${workspaceFolder}/assets/game_presets/remnant_2/remnant_2.json",
+        "test_mods_all"
       ]
     },
     {
@@ -30,12 +30,12 @@
       "program": "${workspaceFolder}/src/__main__.py",
       "console": "integratedTerminal",
       "args": [
-        "test_mods_all",
-        "${workspaceFolder}/assets/game_presets/kingdom_hearts_iii/kingdom_hearts_iii.json"
+        "${workspaceFolder}/assets/game_presets/kingdom_hearts_iii/kingdom_hearts_iii.json",
+        "test_mods_all"
       ]
     },
     {
-      "name": "escape_the_backrooms",
+      "name": "etb_all",
       "type": "debugpy",
       "request": "launch",
       "program": "${workspaceFolder}/src/__main__.py",
@@ -43,6 +43,21 @@
       "args": [
         "${workspaceFolder}/assets/game_presets/escape_the_backrooms/escape_the_backrooms.json",
         "test_mods_all"
+      ]
+    },
+    {
+      "name": "etb_test_mods",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/assets/game_presets/escape_the_backrooms/escape_the_backrooms.json",
+        "test_mods",
+        "CharacterLoader",
+        "GlamrockFreddyCharacter",
+        "TheBabyInYellowCharacter",
+        "TheNeighborCharacter"
       ]
     }
   ]

@@ -21,11 +21,13 @@ def cli_logic():
 
     if len(sys.argv) < 2:
         for key in cli_info_dict.keys():
+            print('Args:')
             print(f'Arg: {key}')
         sys.exit()
 
     if sys.argv[1] == '-h':
         for key in cli_info_dict.keys():
+            print('Args:')
             print(f'Arg: {key}')
         sys.exit()
 
@@ -34,6 +36,7 @@ def cli_logic():
         for entry_key in cli_info_dict:
             if entry_key == arg:
                 arg_help_pairs_list = cli_info_dict[entry_key]['arg_help_pairs']
+                print('Args:')
                 for arg_help_dict in arg_help_pairs_list:
                     arg_help_dict_keys = list(arg_help_dict.keys())
                     if arg_help_dict_keys:

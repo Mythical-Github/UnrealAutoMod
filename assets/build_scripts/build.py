@@ -1,7 +1,6 @@
 import sys
 import os
 from pathlib import Path
-import shutil
 
 if getattr(sys, 'frozen', False):
     SCRIPT_DIR = os.path.dirname(os.path.abspath(sys.executable))
@@ -29,7 +28,8 @@ files_to_include = [
     base_path / "thread_game_monitor.py",
     base_path / "unreal_pak.py",
     base_path / "utilities.py",
-    base_path / "windows.py"
+    base_path / "windows.py",
+    base_path / "log.py"
 ]
 
 pyinstaller_cmd = [

@@ -9,6 +9,7 @@ Mod Release Creator
 
 more Doc strings
 better Type hints
+Logging/log file creation
 Switch to pathlib from strings
 
 Later:

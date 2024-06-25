@@ -1,25 +1,25 @@
 import script_states
 import thread_engine_monitor
 import utilities
-import enums as Enum
+from enums import PackagingDirType, ExecutionMode, ScriptStateType
 
 
 def open_game_engine():
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.PRE_ENGINE_OPEN)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
     command = utilities.get_unreal_editor_exe_path()
-    utilities.run_app(command, Enum.ExecutionMode.ASYNC, utilities.get_engine_launch_args())
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_ENGINE_OPEN)
+    utilities.run_app(command, ExecutionMode.ASYNC, utilities.get_engine_launch_args())
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
 
 
 def close_game_engine():
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.PRE_ENGINE_CLOSE)
-    if utilities.get_win_dir_type() == Enum.PackagingDirType.WINDOWS_NO_EDITOR:
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_CLOSE)
+    if utilities.get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
         game_engine_processes = utilities.get_processes_by_substring('UE4Editor')
     else:
         game_engine_processes = utilities.get_processes_by_substring('UnrealEditor')
     for process_info in game_engine_processes:
         utilities.kill_process(process_info['name'])
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_ENGINE_CLOSE)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
 
 
 def fix_up_uproject_redirectors():

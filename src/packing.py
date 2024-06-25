@@ -5,7 +5,7 @@ import script_states
 import settings
 import unreal_pak
 import utilities
-import enums as Enum
+from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
 
 
 install_queue_types = []
@@ -16,22 +16,22 @@ command_queue = []
 class PopulateQueueTypeCheckDicts():
     global install_queue_types
     global uninstall_queue_types
-    for packing_type in list(Enum.PackingType):
+    for packing_type in list(PackingType):
         for mod_info in utilities.get_mod_info_list():
             if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
-                install_queue_type = Enum.get_enum_from_val(Enum.PackingType, mod_info['packing_type'])
+                install_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
                 if not install_queue_type in install_queue_types:
                     install_queue_types.append(install_queue_type)
             if not mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
-                uninstall_queue_type = Enum.get_enum_from_val(Enum.PackingType, mod_info['packing_type'])
+                uninstall_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
                 if not uninstall_queue_type in uninstall_queue_types:
                     uninstall_queue_types.append(uninstall_queue_type)
 
 
-def get_mod_packing_type(mod_name: str) -> Enum.PackingType:
+def get_mod_packing_type(mod_name: str) -> PackingType:
     for mod_pak_info in utilities.get_mod_pak_info_list():
         if mod_name == mod_pak_info['mod_name']:
-            return Enum.get_enum_from_val(Enum.PackingType, mod_pak_info['packing_type'])
+            return get_enum_from_val(PackingType, mod_pak_info['packing_type'])
     return None
 
 
@@ -114,21 +114,21 @@ def run_proj_command(command: str):
     utilities.run_app(command, working_dir=utilities.get_unreal_engine_dir())
 
 
-def handle_uninstall_logic(packing_type: Enum.PackingType):
+def handle_uninstall_logic(packing_type: PackingType):
     for mod_pak_info in utilities.get_mod_info_list():
         if not mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
-            if Enum.get_enum_from_val(Enum.PackingType, mod_pak_info['packing_type']) == packing_type:
+            if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                 uninstall_mod(packing_type, mod_pak_info['mod_name'])
 
 
-def handle_install_logic(packing_type: Enum.PackingType):
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.PRE_PAK_DIR_SETUP)
+def handle_install_logic(packing_type: PackingType):
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
     for mod_pak_info in utilities.get_mod_info_list():
         if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
-            if Enum.get_enum_from_val(Enum.PackingType, mod_pak_info['packing_type']) == packing_type:
+            if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                 install_mod(packing_type, mod_pak_info['mod_name'],
-                            Enum.get_enum_from_val(Enum.CompressionType, mod_pak_info['compression_type']))
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_PAK_DIR_SETUP)
+                            get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
     for command in command_queue:
         utilities.run_app(command)
     
@@ -142,16 +142,16 @@ def make_mods():
     cooking()
 
     global uninstall_queue_types
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.PRE_MODS_UNINSTALL)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_UNINSTALL)
     for uninstall_queue_type in uninstall_queue_types:
         handle_uninstall_logic(uninstall_queue_type)
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_MODS_UNINSTALL)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_UNINSTALL)
 
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.PRE_MODS_INSTALL)
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_INSTALL)
     global install_queue_types
     for install_queue_type in install_queue_types:
         handle_install_logic(install_queue_type)
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_MODS_INSTALL)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_INSTALL)
 
 
 def uninstall_loose_mod(mod_name: str):
@@ -177,11 +177,11 @@ def uninstall_pak_mod(mod_name: str):
             os.remove(file_path)
 
 
-def uninstall_mod(packing_type: Enum.PackingType, mod_name: str):
-    if packing_type == Enum.PackingType.LOOSE:
+def uninstall_mod(packing_type: PackingType, mod_name: str):
+    if packing_type == PackingType.LOOSE:
         uninstall_loose_mod(mod_name)
     else:
-        if packing_type in list(Enum.PackingType):
+        if packing_type in list(PackingType):
             uninstall_pak_mod(mod_name)
 
 
@@ -256,24 +256,24 @@ def install_repak_mod(mod_name: str):
     make_pak_repak(mod_name)
 
 
-def install_mod(packing_type: Enum.PackingType, mod_name: str, compression_type: Enum.CompressionType):
-    if packing_type == Enum.PackingType.LOOSE:
+def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
+    if packing_type == PackingType.LOOSE:
         install_loose_mod(mod_name)
-    if packing_type == Enum.PackingType.ENGINE:
+    if packing_type == PackingType.ENGINE:
         install_engine_mod(mod_name)
-    if packing_type == Enum.PackingType.REPAK:
+    if packing_type == PackingType.REPAK:
         install_repak_mod(mod_name)
-    if packing_type == Enum.PackingType.UNREAL_PAK:
+    if packing_type == PackingType.UNREAL_PAK:
         unreal_pak.install_unreal_pak_mod(mod_name, compression_type)
 
 
 def cooking():
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.PRE_COOKING)
-    if Enum.PackingType.ENGINE not in install_queue_types:
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_COOKING)
+    if PackingType.ENGINE not in install_queue_types:
         cook_uproject()
     else:
         package_uproject()
-    script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_COOKING)
+    script_states.ScriptState.set_script_state(ScriptStateType.POST_COOKING)
 
 
 def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:

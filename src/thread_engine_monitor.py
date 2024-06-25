@@ -4,7 +4,7 @@ import time
 import script_states
 import utilities
 import windows
-import enums as Enum
+from enums import ScriptStateType
 import log
 
 
@@ -47,12 +47,12 @@ def engine_monitor_thread_logic():
         if windows.does_window_exist(engine_window_name):
             log.log_message('Window: Engine Window Found')
             found_window = True
-            script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_ENGINE_OPEN)
+            script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
     elif not window_closed:
         if not windows.does_window_exist(engine_window_name):
             log.log_message('Window: Engine Window Closed')
             window_closed = True
-            script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_ENGINE_CLOSE)
+            script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
             stop_engine_monitor_thread()
 
 

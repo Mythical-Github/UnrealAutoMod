@@ -5,6 +5,8 @@ import script_states
 import utilities
 import windows
 from enums import ScriptStateType
+import log
+
 
 init_done = False
 
@@ -12,9 +14,9 @@ init_done = False
 def engine_moniter_thread():
     # later on have this only activate when
     start_engine_monitor_thread()
-    print('Thread: Engine Monitoring Thread Started')
+    log.log_message('Thread: Engine Monitoring Thread Started')
     engine_monitor_thread.join()
-    print('Thread: Engine Monitoring Thread Ended')
+    log.log_message('Thread: Engine Monitoring Thread Ended')
 
 
 def engine_monitor_thread_runner(tick_rate: float = 0.01):
@@ -39,16 +41,16 @@ def engine_monitor_thread_logic():
     if not found_process:
         engine_process_name = utilities.get_engine_process_name()
         if utilities.is_process_running(engine_process_name):
-            print('Process: Found Engine Process')
+            log.log_message('Process: Found Engine Process')
             found_process = True
     elif not found_window:
         if windows.does_window_exist(engine_window_name):
-            print('Window: Engine Window Found')
+            log.log_message('Window: Engine Window Found')
             found_window = True
             script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
     elif not window_closed:
         if not windows.does_window_exist(engine_window_name):
-            print('Window: Engine Window Closed')
+            log.log_message('Window: Engine Window Closed')
             window_closed = True
             script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
             stop_engine_monitor_thread()

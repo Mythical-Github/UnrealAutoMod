@@ -4,7 +4,6 @@ import sys
 
 import psutil
 
-import engine
 import enums
 
 settings = ''
@@ -69,6 +68,7 @@ def pass_settings(settings_json: str):
 
 
 def create_mods():
+    import engine
     import packing
     import utilities
     import game_runner

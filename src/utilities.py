@@ -9,6 +9,7 @@ import psutil
 
 import settings
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
+import log
 
 
 def get_game_info_launch_type_enum_str_value() -> str:
@@ -223,14 +224,14 @@ def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: 
     for arg in args:
         command = f'{command} {arg}'
     if exec_mode == ExecutionMode.SYNC:
-        print(f'Command: {command} running with the {exec_mode} enum')
+        log.log_message(f'Command: {command} running with the {exec_mode} enum')
         if working_dir:
             if os.path.isdir(working_dir):
                 os.chdir(working_dir)
         subprocess.run(command)
-        print(f'Command: {command} finished')
+        log.log_message(f'Command: {command} finished')
     elif exec_mode == ExecutionMode.ASYNC:
-        print(f'Command: {command} started with the {exec_mode} enum')
+        log.log_message(f'Command: {command} started with the {exec_mode} enum')
         subprocess.Popen(command, cwd=working_dir, start_new_session=True)
 
 
@@ -410,7 +411,7 @@ def clean_working_dir():
         try:
             shutil.rmtree(working_dir)
         except Exception as e:
-            print(f"Error: {e}")
+            log.log_message(f"Error: {e}")
 
 
 def get_matching_suffix(path_one: str, path_two: str) -> str:

@@ -21,14 +21,14 @@ def cli_logic():
     cli_args = sys.argv[1:]
 
     if len(sys.argv) < 2:
+        log.log_message('Args:')
         for key in cli_info_dict.keys():
-            log.log_message('Args:')
             log.log_message(f'Arg: {key}')
         sys.exit()
 
     if sys.argv[1] == '-h':
+        log.log_message('Args:')
         for key in cli_info_dict.keys():
-            log.log_message('Args:')
             log.log_message(f'Arg: {key}')
         sys.exit()
 

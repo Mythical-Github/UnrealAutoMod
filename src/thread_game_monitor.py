@@ -4,7 +4,7 @@ import time
 import script_states
 import utilities
 import windows
-from enums import ScriptStateType
+import enums as Enum
 import log
 
 found_process = False
@@ -33,11 +33,11 @@ def game_monitor_thread_logic():
         if windows.get_game_window():
             log.log_message('Window: Game Window Found')
             found_window = True
-            script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
+            script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_GAME_LAUNCH)
     elif not window_closed:
         if not windows.get_game_window():
             log.log_message('Window: Game Window Closed')
-            script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_CLOSE)
+            script_states.ScriptState.set_script_state(Enum.ScriptStateType.POST_GAME_CLOSE)
             stop_game_monitor_thread()
             window_closed = True
 

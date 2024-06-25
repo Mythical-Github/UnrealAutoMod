@@ -8,7 +8,7 @@ import subprocess
 import psutil
 
 import settings
-from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
+import enums as Enum
 import log
 
 
@@ -109,8 +109,8 @@ def get_process_to_kill_info_list() -> list:
     return settings.settings['process_kill_info']['processes']
 
 
-def kill_processes(state: ScriptStateType):
-    current_state = state.value if isinstance(state, ScriptStateType) else state
+def kill_processes(state: Enum.ScriptStateType):
+    current_state = state.value if isinstance(state, Enum.ScriptStateType) else state
     for process_info in get_process_to_kill_info_list():
         target_state = process_info.get('script_state')
         if target_state == current_state:
@@ -175,19 +175,19 @@ def get_unreal_engine_dir() -> str:
     return settings.settings['engine_info']['unreal_engine_dir']
 
 
-def get_win_dir_type() -> PackagingDirType:
+def get_win_dir_type() -> Enum.ackagingDirType:
     if get_unreal_engine_version(get_unreal_engine_dir()).startswith('5'):
-        return PackagingDirType.WINDOWS
+        return Enum.PackagingDirType.WINDOWS
     else:
-        return PackagingDirType.WINDOWS_NO_EDITOR
+        return Enum.PackagingDirType.WINDOWS_NO_EDITOR
 
 
 def is_game_ue5() -> bool:
-    return get_win_dir_type() == PackagingDirType.WINDOWS
+    return get_win_dir_type() == Enum.PackagingDirType.WINDOWS
 
 
 def is_game_ue4() -> bool:
-    return get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR
+    return get_win_dir_type() == Enum.PackagingDirType.WINDOWS_NO_EDITOR
 
 
 def get_file_hash(file_path: str) -> str:
@@ -208,7 +208,7 @@ def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
 
 
 def get_unreal_editor_exe_path() -> str:
-    if get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
+    if get_win_dir_type() == Enum.PackagingDirType.WINDOWS_NO_EDITOR:
         engine_path_suffix = 'UE4Editor.exe'
     else:
         engine_path_suffix = 'UnrealEditor.exe'
@@ -219,18 +219,18 @@ def is_toggle_engine_during_testing_in_use() -> bool:
     return settings.settings['engine_info']['toggle_engine_during_testing']
 
 
-def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: str = {}, working_dir: str = None):
+def run_app(exe_path: str, exec_mode: Enum.ExecutionMode = Enum.ExecutionMode.SYNC, args: str = {}, working_dir: str = None):
     command = exe_path
     for arg in args:
         command = f'{command} {arg}'
-    if exec_mode == ExecutionMode.SYNC:
+    if exec_mode == Enum.ExecutionMode.SYNC:
         log.log_message(f'Command: {command} running with the {exec_mode} enum')
         if working_dir:
             if os.path.isdir(working_dir):
                 os.chdir(working_dir)
         subprocess.run(command)
         log.log_message(f'Command: {command} finished')
-    elif exec_mode == ExecutionMode.ASYNC:
+    elif exec_mode == Enum.ExecutionMode.ASYNC:
         log.log_message(f'Command: {command} started with the {exec_mode} enum')
         subprocess.Popen(command, cwd=working_dir, start_new_session=True)
 
@@ -325,11 +325,11 @@ def get_pak_dir_structure(mod_name: str) -> str:
     return None
 
 
-def get_mod_compression_type(mod_name: str) -> CompressionType:
+def get_mod_compression_type(mod_name: str) -> Enum.CompressionType:
     for info in get_mod_pak_info_list():
         if info['mod_name'] == mod_name:
             compresion_str = info['compression_type']
-            return get_enum_from_val(CompressionType, compresion_str)
+            return Enum.get_enum_from_val(Enum.CompressionType, compresion_str)
     return None
 
 

@@ -1,5 +1,5 @@
-import log
 import cli
+import log
 
 
 if __name__ == "__main__":

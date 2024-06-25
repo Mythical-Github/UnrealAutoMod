@@ -4,7 +4,7 @@ import pygetwindow
 import screeninfo
 
 import utilities
-from enums import WindowAction, ScriptStateType, get_enum_from_val
+import enums as Enum
 import log
 
 
@@ -91,22 +91,22 @@ def move_window(window: pygetwindow.Win32Window, window_settings: list):
         set_window_size(window, width, height)
 
 
-def window_checks(current_state: WindowAction):
+def window_checks(current_state: Enum.WindowAction):
     window_settings_list = utilities.get_auto_move_windows()
     for window_settings in window_settings_list:
-        settings_state = get_enum_from_val(ScriptStateType, window_settings['script_state'])
+        settings_state = Enum.get_enum_from_val(Enum.ScriptStateType, window_settings['script_state'])
         if settings_state == current_state:
             title = window_settings['window_name']
             windows_to_change = get_windows_by_title(title)
             for window_to_change in windows_to_change:
-                way_to_change_window = get_enum_from_val(WindowAction, window_settings['window_behaviour'])
-                if way_to_change_window == WindowAction.MAX:
+                way_to_change_window = Enum.get_enum_from_val(Enum.WindowAction, window_settings['window_behaviour'])
+                if way_to_change_window == Enum.WindowAction.MAX:
                     maximize_window(window_to_change)
-                elif way_to_change_window == WindowAction.MIN:
+                elif way_to_change_window == Enum.WindowAction.MIN:
                     minimize_window(window_to_change)
-                elif way_to_change_window == WindowAction.CLOSE:
+                elif way_to_change_window == Enum.WindowAction.CLOSE:
                     close_window(window_to_change)
-                elif way_to_change_window == WindowAction.MOVE:
+                elif way_to_change_window == Enum.WindowAction.MOVE:
                     move_window(window_to_change, window_settings)
                 else:
                     log.log_message('Monitor: invalid window behaviour specified in settings')

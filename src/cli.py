@@ -46,7 +46,6 @@ def cli_logic():
                         log.log_message(f'Arg: {arg_name}    Help: {arg_help}')
         sys.exit()
 
-
     for entry in cli_info_dict.keys():
         for arg in args:
             if arg == entry:
@@ -59,4 +58,3 @@ def cli_logic():
                     for arg in cli_args:
                         log.log_message(f'Arg: {arg}')
                     function(*cli_args[1:])
-    

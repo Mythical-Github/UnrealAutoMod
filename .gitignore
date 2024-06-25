@@ -7,3 +7,4 @@ assets/base/UnrealAutoMod.zip
 /assets/build_scripts/dist
 assets/build_scripts/__main__.spec
 /src/working_dir
+/assets/base/logs

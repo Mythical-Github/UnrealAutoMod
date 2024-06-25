@@ -5,6 +5,7 @@ import sys
 import psutil
 
 import enums
+import mods
 
 settings = ''
 init_settings_done = False
@@ -67,35 +68,12 @@ def pass_settings(settings_json: str):
     load_settings(settings_json)
 
 
-def create_mods():
-    import engine
-    import packing
-    import utilities
-    import game_runner
-    import script_states
-    import thread_constant
-    import thread_game_monitor
-    from enums import ScriptStateType
-    script_states.ScriptState.set_script_state(ScriptStateType.INIT)
-    thread_constant.constant_thread()
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_INIT)
-    utilities.clean_working_dir()
-    packing.make_mods()
-    engine.toggle_engine_off()
-    if not utilities.get_skip_launching_game():
-        game_runner.run_game()
-        thread_game_monitor.game_moniter_thread()
-        engine.toggle_engine_on()
-    thread_constant.stop_constant_thread()
-    utilities.clean_working_dir()
-
-
 def test_mods(settings_json: str, *input_mod_names: str):
     load_settings(settings_json)
     global mod_names
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
-    create_mods()
+    mods.create_mods()
 
 
 def test_mods_all(settings_json: str):
@@ -103,7 +81,7 @@ def test_mods_all(settings_json: str):
     global mod_names
     for entry in settings['mod_pak_info']:
         mod_names.append(entry['mod_name'])
-    create_mods()
+    mods.create_mods()
 
 
 def set_general_info_override_default_working_dir(settings_json: str, input: bool):

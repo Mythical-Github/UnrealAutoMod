@@ -29,7 +29,9 @@ files_to_include = [
     base_path / "unreal_pak.py",
     base_path / "utilities.py",
     base_path / "windows.py",
-    base_path / "log.py"
+    base_path / "log.py",
+    base_path / "mods.py"
+
 ]
 
 pyinstaller_cmd = [

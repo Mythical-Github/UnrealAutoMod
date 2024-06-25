@@ -5,6 +5,7 @@ import sys
 import psutil
 
 import enums
+import mods
 
 settings = ''
 init_settings_done = False
@@ -72,7 +73,6 @@ def test_mods(settings_json: str, *input_mod_names: str):
     global mod_names
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
-    import mods
     mods.create_mods()
 
 
@@ -81,7 +81,6 @@ def test_mods_all(settings_json: str):
     global mod_names
     for entry in settings['mod_pak_info']:
         mod_names.append(entry['mod_name'])
-    import mods
     mods.create_mods()
 
 

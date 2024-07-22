@@ -20,8 +20,12 @@
 - [ ] Better type hints
 - [ ] Switch to `pathlib` from strings
 - [ ] Better documentation
+- [ ] better window handling (grabbing windows, sometimes there are false positives)
 
 ## Later
 - [ ] Poetry / other dependency management
 - [ ] Unit tests
 - [ ] GitHub Action pylinting
+- [ ] Utility DLL, pak management
+- [ ] Utility DLL, json manager
+- [ ] Utility DLL, file downloader

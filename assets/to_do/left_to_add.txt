@@ -1,4 +1,17 @@
- 
+
+UnrealAutoMod To Do List:
+
+close game hotkey
+run script again hot key
+bring ue to front hot key
+bring game to front hot key
+close all (game, engine and instances of UAM)
+
+Linux support
+Multiplayer component
+Make printing out colorful
+option to run with no window 
+
 First:
 
 unversioned per mod instead of global

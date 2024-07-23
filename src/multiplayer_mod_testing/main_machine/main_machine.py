@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import time
 import socket
 
 
@@ -64,6 +65,8 @@ def send_files():
                 for root, dirs, files in os.walk(file_path):
                     for file in files:
                         send_file(os.path.join(root, file), get_server_ip(entry), get_server_port(entry))
+            print('delay of one second happening to prevent disconnection')
+            time.sleep(1)
 
 
 def cli_logic():

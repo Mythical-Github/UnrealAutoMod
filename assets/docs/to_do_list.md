@@ -29,3 +29,5 @@
 - [ ] Utility DLL, pak management
 - [ ] Utility DLL, json manager
 - [ ] Utility DLL, file downloader
+- [ ] Utility DLL, sockets
+- [ ] Utility DLL, file io

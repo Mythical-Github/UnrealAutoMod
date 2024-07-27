@@ -219,20 +219,50 @@ def is_toggle_engine_during_testing_in_use() -> bool:
     return settings.settings['engine_info']['toggle_engine_during_testing']
 
 
-def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: str = {}, working_dir: str = None):
-    command = exe_path
-    for arg in args:
-        command = f'{command} {arg}'
+# def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: str = {}, working_dir: str = None):
+#     command = exe_path
+#     for arg in args:
+#         command = f'{command} {arg}'
+#     if exec_mode == ExecutionMode.SYNC:
+#         log.log_message(f'Command: {command} running with the {exec_mode} enum')
+#         if working_dir:
+#             if os.path.isdir(working_dir):
+#                 os.chdir(working_dir)
+#         subprocess.run(command)
+#         log.log_message(f'Command: {command} finished')
+#     elif exec_mode == ExecutionMode.ASYNC:
+#         log.log_message(f'Command: {command} started with the {exec_mode} enum')
+#         subprocess.Popen(command, cwd=working_dir, start_new_session=True)
+
+
+def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):
     if exec_mode == ExecutionMode.SYNC:
+        command = exe_path
+        for arg in args:
+            command = f'{command} {arg}'
+        if working_dir:
+            command = f'{working_dir}/{command}'
         log.log_message(f'Command: {command} running with the {exec_mode} enum')
         if working_dir:
             if os.path.isdir(working_dir):
                 os.chdir(working_dir)
-        subprocess.run(command)
+
+        process = subprocess.Popen(command, cwd=working_dir, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True)
+        
+        for line in iter(process.stdout.readline, ''):
+            log.log_message(line.strip())
+
+        process.stdout.close()
+        process.wait()
         log.log_message(f'Command: {command} finished')
+
     elif exec_mode == ExecutionMode.ASYNC:
+        command = exe_path
+        command = f'"{command}"'
+        for arg in args:
+            command = f'{command} {arg}'
         log.log_message(f'Command: {command} started with the {exec_mode} enum')
-        subprocess.Popen(command, cwd=working_dir, start_new_session=True)
+        subprocess.Popen(command, cwd=working_dir, start_new_session=True, shell=True)
 
 
 def get_engine_window_title() -> str:

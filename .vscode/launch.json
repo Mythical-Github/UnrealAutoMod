@@ -23,7 +23,7 @@
       "program": "${workspaceFolder}/src/__main__.py",
       "console": "integratedTerminal",
       "args": [
-        "${workspaceFolder}/assets/base/default/settings.json",
+        "${workspaceFolder}/assets/game_presets/zedfest/settings.json",
         "test_mods_all"
       ]
     },

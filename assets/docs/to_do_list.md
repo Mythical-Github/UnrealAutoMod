@@ -10,7 +10,7 @@
 ## Enhancements
 - [ ] Linux support
 - [ ] Multiplayer component
-- [ ] Make printing out colorful
+- [ ] Make printing out colorful, for called subprograms (unreal bats, unrealpak, etc...)
 - [ ] Option to run with no window
 - [ ] Unversioned per mod instead of global
 - [ ] Engine pak making compression variants (different types, in one run), defaults to compressed currently
@@ -23,7 +23,7 @@
 - [ ] better window handling (grabbing windows, sometimes there are false positives)
 
 ## Later
-- [ ] Poetry / other dependency management
+- [ ] UV / other dependency management
 - [ ] Unit tests
 - [ ] GitHub Action pylinting
 - [ ] Utility DLL, pak management

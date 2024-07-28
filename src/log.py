@@ -8,10 +8,7 @@ init(autoreset=True)
 
 logger = logging.getLogger(__name__)
 
-os.system('')
-
-print('\033[48;2;0;255;0m')
-
+# Define foreground colors using ANSI escape codes
 theme_colors = {
     'Arg:': '\033[38;2;255;105;180m',  # Hot Pink
     'Args:': '\033[38;2;75;0;130m',    # Indigo
@@ -36,7 +33,11 @@ theme_colors = {
     'Warning:': Fore.YELLOW + Style.BRIGHT  # Yellow
 }
 
+# Default foreground color
 default_color = Fore.LIGHTBLUE_EX
+
+# Background color
+background_color = '\033[48;2;40;42;54m'
 
 def configure_logging():
     log_dir = os.path.join(settings.SCRIPT_DIR, 'logs')
@@ -53,6 +54,7 @@ def configure_logging():
     logger.addHandler(file_handler)
     logger.setLevel(logging.INFO)
 
+
 def log_message(message: str):
     logger.info(message)
     color = default_color
@@ -60,6 +62,10 @@ def log_message(message: str):
         if keyword in message:
             color = assigned_color
             break
-    print(f"{color}{message}{Style.RESET_ALL}")
+    import shutil
+    terminal_width = shutil.get_terminal_size().columns
+    padded_message = (message[:terminal_width] if len(message) > terminal_width else message.ljust(terminal_width))
+    print(f"{background_color}{color}{padded_message}{Style.RESET_ALL}")
+
 
 configure_logging()

@@ -41,7 +41,7 @@ def get_windows_by_title(window_title: str, use_substring_check: bool = False) -
 def get_window_by_title(window_title: str, use_substring_check: bool = False) -> pygetwindow.Win32Window:
     windows = get_windows_by_title(window_title, use_substring_check)
     if not windows:
-        log.log_message(f'Error: No windows found with title "{window_title}"')
+        log.log_message(f'Warning: No windows found with title "{window_title}"')
         return None
     return windows[0]
 

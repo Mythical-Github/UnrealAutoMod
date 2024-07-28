@@ -1,6 +1,7 @@
 import os
 import logging
 from datetime import datetime
+from shutil import get_terminal_size
 from colorama import Fore, Style, init
 import settings
 
@@ -8,10 +9,9 @@ init(autoreset=True)
 
 logger = logging.getLogger(__name__)
 
-# Define foreground colors using ANSI escape codes
 theme_colors = {
     'Arg:': '\033[38;2;255;105;180m',  # Hot Pink
-    'Args:': '\033[38;2;75;0;130m',    # Indigo
+    'Args:': '\033[38;2;181;92;9m',    # Orange
     'Function:': '\033[38;2;0;255;0m',  # Lime
     'Routine Check:': '\033[38;2;138;43;226m',  # Blue Violet
     'Script State:': '\033[38;2;0;206;209m',  # Dark Turquoise
@@ -33,11 +33,10 @@ theme_colors = {
     'Warning:': Fore.YELLOW + Style.BRIGHT  # Yellow
 }
 
-# Default foreground color
 default_color = Fore.LIGHTBLUE_EX
 
-# Background color
 background_color = '\033[48;2;40;42;54m'
+
 
 def configure_logging():
     log_dir = os.path.join(settings.SCRIPT_DIR, 'logs')
@@ -62,8 +61,7 @@ def log_message(message: str):
         if keyword in message:
             color = assigned_color
             break
-    import shutil
-    terminal_width = shutil.get_terminal_size().columns
+    terminal_width = get_terminal_size().columns
     padded_message = (message[:terminal_width] if len(message) > terminal_width else message.ljust(terminal_width))
     print(f"{background_color}{color}{padded_message}{Style.RESET_ALL}")
 

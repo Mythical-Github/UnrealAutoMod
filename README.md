@@ -7,9 +7,6 @@ Easy To Use Modding Utility For Unreal Engine Games 4.0-5.4
 [![Project Screenshot](https://github.com/Mythical-Github/UnrealAutoMod/assets/67753356/d36ab78e-af8d-4086-8ad9-fd6f39bba453.png)](https://github.com/Mythical-Github/UnrealAutoMod/assets/67753356/7a316798-fc05-49af-ab23-c98435b252be.mp4)
 
 
-
-
-
 <h2>💪 Features</h2>
 
 * supports unreal game versions 4.0-5.4
@@ -32,8 +29,10 @@ Easy To Use Modding Utility For Unreal Engine Games 4.0-5.4
 <h2>🛠️ Installation Steps:</h2>
 
 * Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest)
-* Setup your game's settings.json for modding using these two pages as reference, you can edit manually or through cli
+* Setup your game's settings.json for modding using these pages as reference, you can edit manually or through cli
   args
+
+* [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/faq.md)
 * [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
 * [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/enums.md)
 * [Youtube Example Setup Reference](https://www.youtube.com/watch?v=6MUkUFhumo8)

@@ -8,7 +8,6 @@
 - [ ] Close all (game, engine, and instances of UAM)
 
 ## Enhancements
-
 - [ ] Option to run with no window
 - [ ] Unversioned per mod instead of global
 - [ ] Engine pak making compression variants (different types, in one run), defaults to compressed currently

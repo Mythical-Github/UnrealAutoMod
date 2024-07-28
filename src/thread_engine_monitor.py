@@ -11,7 +11,7 @@ import log
 init_done = False
 
 
-def engine_moniter_thread():
+def engine_monitor_thread():
     # later on have this only activate when
     start_engine_monitor_thread()
     log.log_message('Thread: Engine Monitoring Thread Started')

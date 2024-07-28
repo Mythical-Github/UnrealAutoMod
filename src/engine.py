@@ -39,4 +39,4 @@ def toggle_engine_on():
         if utilities.get_fix_up_redirectors_before_engine_open():
             fix_up_uproject_redirectors()
         open_game_engine()
-        thread_engine_monitor.engine_moniter_thread()
+        thread_engine_monitor.engine_monitor_thread()

@@ -10,7 +10,7 @@ set arg=test_mods_all
 set command=%exe_file% %settings_json% %arg%
 
 
-echo %command%
+rem echo %command%
 %command%
 
 

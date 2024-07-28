@@ -1,0 +1,7 @@
+{
+    "server_ip": "0.0.0.0",
+    "server_port": 5001,
+    "mods_dir": "D:/SteamLibrary/steamapps/common/EscapeTheBackrooms/EscapeTheBackrooms/Content/Paks/Testing",
+    "process_kill_strings": ["Backrooms-Win64"],
+    "exec_path": "/home/mythical/Desktop/Escape the Backrooms.desktop"
+}

@@ -16,11 +16,13 @@ def run_game_steam():
         steam_exe = utilities.get_game_launcher_exe_path()
     else:
         steam_exe = steam.get_steam_exe_location()
-    launch_params = utilities.get_game_launch_params()
-    run_game_command = f'{steam_exe} -applaunch {utilities.get_game_id()}'
-    for launch_param in launch_params:
-        run_game_command = f'{run_game_command} {launch_param}'
-    utilities.run_app(run_game_command, ExecutionMode.ASYNC)
+    launch_params = []
+    launch_params.append('-applaunch')
+    launch_params.append(utilities.get_game_id())
+    new_params = utilities.get_game_launch_params()
+    for param in new_params:
+        launch_params.append(param)
+    utilities.run_app(exe_path=steam_exe, exec_mode=ExecutionMode.ASYNC, args=launch_params)
 
 
 def run_game():

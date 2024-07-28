@@ -19,7 +19,6 @@
 - [ ] Better type hints
 - [ ] Switch to `pathlib` from strings
 - [ ] Better documentation
-- [ ] better window handling (grabbing windows, sometimes there are false positives)
 
 ## Later
 - [ ] UV / other dependency management

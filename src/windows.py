@@ -14,29 +14,35 @@ def does_window_exist(window_title: str, use_substring_check: bool = False) -> b
             all_window_titles = pygetwindow.getAllTitles()
             matched_windows = [window for window in all_window_titles if window_title in window]
         else:
-            try:
-                matched_windows = pygetwindow.getWindowsWithTitle(window_title)
-            except pygetwindow.PyGetWindowException as e:
-                return False
+            all_window_titles = pygetwindow.getAllTitles()
+            matched_windows = [window for window in all_window_titles if window_title == window]
         return len(matched_windows) > 0
     except pygetwindow.PyGetWindowException as e:
-        log.log_message(f'Error: An error occurred: {e}')
+        log.logging(f'Error: An error occurred: {e}')
         return False
 
 
 def get_windows_by_title(window_title: str, use_substring_check: bool = False) -> list:
+    matched_windows = []
     if use_substring_check:
         all_windows = pygetwindow.getAllWindows()
-        matched_windows = [window for window in all_windows if window_title in window.title]
+        try:
+            matched_windows = [window for window in all_windows if window_title in window.title]
+        except Exception as error_message:
+            log.log_message(str(error_message))
     else:
-        matched_windows = pygetwindow.getWindowsWithTitle(window_title)
+        try:
+            matched_windows = pygetwindow.getWindowsWithTitle(window_title)
+        except Exception as error_message:
+            log.log_message(str(error_message))
     return matched_windows
 
 
 def get_window_by_title(window_title: str, use_substring_check: bool = False) -> pygetwindow.Win32Window:
     windows = get_windows_by_title(window_title, use_substring_check)
     if not windows:
-        raise ValueError(f'No windows found with title "{window_title}"')
+        log.log_message(f'Error: No windows found with title "{window_title}"')
+        return None
     return windows[0]
 
 
@@ -70,15 +76,7 @@ def change_window_name(window_name: str):
 
 
 def get_game_window():
-    game_window_name = utilities.get_game_window_title()
-    for title in pygetwindow.getAllTitles():
-        if game_window_name in title:
-            if 'Editor' not in title:
-                try:
-                    return pygetwindow.getWindowsWithTitle(title)
-                except:
-                    return None
-    return None
+    return get_window_by_title(utilities.get_game_window_title())
 
 
 def move_window(window: pygetwindow.Win32Window, window_settings: list):

@@ -8,13 +8,14 @@
 - [ ] Close all (game, engine, and instances of UAM)
 
 ## Enhancements
-- [ ] Linux support
-- [ ] Multiplayer component
+
 - [ ] Option to run with no window
 - [ ] Unversioned per mod instead of global
 - [ ] Engine pak making compression variants (different types, in one run), defaults to compressed currently
 - [ ] Mod Release Creator
 - [ ] Switch to `pathlib` from strings
+- [ ] Multiplayer component
+- [ ] Linux support
 - [ ] Better documentation
 
 ## Later

@@ -10,6 +10,8 @@ init(autoreset=True)
 logger = logging.getLogger(__name__)
 
 theme_colors = {
+    'Error': Fore.RED + Style.BRIGHT,  # Red
+    'Warning': Fore.YELLOW + Style.BRIGHT,  # Yellow
     'Arg:': '\033[38;2;255;105;180m',  # Hot Pink
     'Args:': '\033[38;2;181;92;9m',    # Orange
     'Function:': '\033[38;2;0;255;0m',  # Lime
@@ -18,7 +20,6 @@ theme_colors = {
     'Thread:': '\033[38;2;255;140;0m', # Dark Orange
     'Process:': '\033[38;2;255;20;147m',  # Deep Pink
     'Window:': '\033[38;2;255;165;0m',  # Light Orange
-    'Error:': Fore.RED + Style.BRIGHT,  # Red
     'Monitor:': '\033[38;2;173;216;230m',  # Light Blue
     'Progress Bar:': '\033[38;2;144;238;144m',  # Light Green
     'Packed': '\033[38;2;218;112;214m',  # Orchid
@@ -27,10 +28,7 @@ theme_colors = {
     'LogTemp:': '\033[38;2;255;228;181m',  # Moccasin
     'LogCook: Display:': '\033[38;2;123;104;238m',  # Medium Slate Blue
     'LogCookCommandlet: Display:': '\033[38;2;135;206;250m',  # Light Sky Blue
-    'LogInit': '\033[38;2;238;130;238m',  # Violet
-    'LogAutomationTest: Warning:': Fore.YELLOW + Style.BRIGHT,  # Yellow
-    'LogClass: Warning:': Fore.YELLOW + Style.BRIGHT,  # Yellow
-    'Warning:': Fore.YELLOW + Style.BRIGHT  # Yellow
+    'LogInit': '\033[38;2;238;130;238m'  # Violet
 }
 
 default_color = Fore.LIGHTBLUE_EX

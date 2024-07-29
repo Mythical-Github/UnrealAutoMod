@@ -5,10 +5,7 @@ from enums import ScriptStateType, GameLaunchType, ExecutionMode
 
 
 def run_game_exe():
-    run_game_command = utilities.get_game_exe_path()
-    for launch_param in utilities.get_game_launch_params():
-        run_game_command = f'{run_game_command} {launch_param}'
-    utilities.run_app(run_game_command, ExecutionMode.ASYNC)
+    utilities.run_app(exe_path=utilities.get_game_exe_path(), exec_mode=ExecutionMode.ASYNC, args=utilities.get_game_launch_params())
 
 
 def run_game_steam():

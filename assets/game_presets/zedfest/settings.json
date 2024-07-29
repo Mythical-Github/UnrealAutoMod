@@ -20,7 +20,7 @@
   },
   "game_info": {
     "game_exe_path": "D:/SteamLibrary/steamapps/common/Zedfest/KevinSpel/Binaries/Win64/Zedfest.exe",
-    "launch_type": "steam",
+    "launch_type": "exe",
     "override_automatic_launcher_exe_finding": false,
     "game_launcher_exe": "C:/Program Files (x86)/Steam/steam.exe",
     "game_id": 1037080,
@@ -68,6 +68,28 @@
         "x": 1525,
         "y": 850
       }
+    }
+  ],
+  "hot_key_info": [
+    {
+      "key": "6",
+      "function_enum": "close_game"
+    },
+    {
+      "key": "7",
+      "function_enum": "close_all"
+    },
+    {
+      "key": "8",
+      "function_enum": "unreal_to_front"
+    },
+    {
+      "key": "9",
+      "function_enum": "game_to_front"
+    },
+    {
+      "key": "0",
+      "function_enum": "rerun_unreal_auto_mod"
     }
   ],
   "mod_pak_info": [

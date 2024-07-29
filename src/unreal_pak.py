@@ -20,7 +20,7 @@ def get_pak_dir_to_pack(mod_name: str) -> str:
 
 
 def make_response_file(mod_name: str) -> str:
-    file_list_path = os.path.join(utilities.get_working_dir(), "filelist.txt")
+    file_list_path = os.path.join(utilities.get_working_dir(), f'{mod_name}_filelist.txt')
     if os.path.isfile(file_list_path):
         os.remove(file_list_path)
     dir_to_pack = get_pak_dir_to_pack(mod_name)

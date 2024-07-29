@@ -100,7 +100,7 @@
       "use_mod_name_dir_name_override": true,
       "mod_name_dir_name_override": "ModEntry",
       "pak_chunk_num": null,
-      "packing_type": "unreal_pak",
+      "packing_type": "repak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {
@@ -115,7 +115,7 @@
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
       "pak_chunk_num": null,
-      "packing_type": "unreal_pak",
+      "packing_type": "repak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {
@@ -130,7 +130,7 @@
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
       "pak_chunk_num": null,
-      "packing_type": "unreal_pak",
+      "packing_type": "repak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {

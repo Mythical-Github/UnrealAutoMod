@@ -55,7 +55,7 @@ def stop_game_monitor_thread():
     run_monitoring_thread = False
 
 
-def game_moniter_thread():
+def game_monitor_thread():
     start_game_monitor_thread()
     log.log_message('Thread: Game Monitoring Thread Started')
     game_monitor_thread.join()

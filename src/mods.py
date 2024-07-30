@@ -17,7 +17,7 @@ def create_mods():
     engine.toggle_engine_off()
     if not utilities.get_skip_launching_game():
         game_runner.run_game()
-        thread_game_monitor.game_moniter_thread()
+        thread_game_monitor.game_monitor_thread()
         engine.toggle_engine_on()
     thread_constant.stop_constant_thread()
     utilities.clean_working_dir()

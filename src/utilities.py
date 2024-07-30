@@ -53,7 +53,9 @@ def get_mod_info_list() -> list:
 
 
 def get_game_exe_path() -> str:
-    return settings.settings['game_info']['game_exe_path']
+    game_exe_path = settings.settings['game_info']['game_exe_path']
+    check_file_exists(game_exe_path)
+    return game_exe_path
 
 
 def get_is_using_alt_dir_name() -> bool:
@@ -172,7 +174,9 @@ def get_game_paks_dir() -> str:
 
 
 def get_unreal_engine_dir() -> str:
-    return settings.settings['engine_info']['unreal_engine_dir']
+    ue_dir = settings.settings['engine_info']['unreal_engine_dir']
+    check_file_exists(ue_dir)
+    return ue_dir
 
 
 def get_win_dir_type() -> PackagingDirType:
@@ -303,7 +307,9 @@ def get_file_extensions_two(directory_with_base_name: str) -> list:
 
 
 def get_uproject_file() -> str:
-    return settings.settings['engine_info']['unreal_project_file']
+    uproject_file = settings.settings['engine_info']['unreal_project_file']
+    check_file_exists(uproject_file)
+    return uproject_file
 
 
 def get_uproject_name() -> str:
@@ -537,7 +543,9 @@ def get_repak_pak_version_str() -> str:
 
 
 def get_repak_exe_path() -> str:
-    return settings.settings['repak_info']['repak_path']
+    repak_path = settings.settings['repak_info']['repak_path']
+    check_file_exists(repak_path)
+    return repak_path
 
 
 def get_override_automatic_window_title_finding() -> bool:

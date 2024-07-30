@@ -88,7 +88,7 @@ def get_cook_project_command() -> str:
         f'-cook '
         f'-iterate '
         f'-skipstage '
-        f'-nocompileeditor '
+        # f'-nocompileeditor '
         f'-nodebuginfo'
     )
     if utilities.get_is_using_unversioned_cooked_content():

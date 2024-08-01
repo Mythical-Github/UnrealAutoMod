@@ -24,7 +24,7 @@
     "override_automatic_launcher_exe_finding": false,
     "game_launcher_exe": "C:/Program Files (x86)/Steam/steam.exe",
     "game_id": 1259420,
-    "skip_launching_game": false,
+    "skip_launching_game": true,
     "override_automatic_window_title_finding": true,
     "window_title_override_string": "Days Gone",
     "launch_params": [

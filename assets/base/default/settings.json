@@ -5,10 +5,10 @@
     "window_title": "UnrealAutoMod Automation Script"
   },
   "engine_info": {
-    "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.11_source",
+    "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.11_source_build",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/UnrealBlueprintModLoader/BendGame.uproject",
-    "toggle_engine_during_testing": false,
-    "resave_packages_and_fix_up_redirectors_before_engine_open": true,
+    "toggle_engine_during_testing": true,
+    "resave_packages_and_fix_up_redirectors_before_engine_open": false,
     "engine_launch_args": [],
     "engine_cook_and_packaging_args": [],
     "use_unversioned_cooked_content": true,
@@ -57,7 +57,19 @@
       }
     ]
   },
-  "auto_move_windows": [],
+  "auto_move_windows": [
+    {
+      "window_name": "DaysGone.exe",
+      "use_substring_check": true,
+      "window_behaviour": "move",
+      "script_state": "post_game_launch",
+      "monitor": 1,
+      "resolution": {
+        "x": 1525,
+        "y": 850
+      }
+    }
+  ],
   "mod_pak_info": [
     {
       "mod_name": "UnrealBlueprintModLoader_P",
@@ -65,6 +77,21 @@
       "mod_name_dir_type": "Mods",
       "use_mod_name_dir_name_override": true,
       "mod_name_dir_name_override": "UnrealBlueprintModLoader",
+      "pak_chunk_num": null,
+      "packing_type": "repak",
+      "compression_type": "Zlib",
+      "is_enabled": true,
+      "manually_specified_assets": {
+        "asset_paths": null,
+        "tree_paths": null
+      }
+    },
+    {
+      "mod_name": "UML_Testing",
+      "pak_dir_structure": "LogicMods",
+      "mod_name_dir_type": "Mods",
+      "use_mod_name_dir_name_override": false,
+      "mod_name_dir_name_override": null,
       "pak_chunk_num": null,
       "packing_type": "repak",
       "compression_type": "Zlib",

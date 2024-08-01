@@ -32,21 +32,33 @@ theme_colors = {
 }
 
 default_color = Fore.LIGHTBLUE_EX
-
 background_color = '\033[48;2;40;42;54m'
+
+
+def rename_latest_log(log_dir):
+    latest_log_path = os.path.join(log_dir, 'latest.log')
+    if os.path.isfile(latest_log_path):
+        # Rename the latest log file to include a timestamp
+        timestamp = datetime.now().strftime('%m_%d_%Y_%H%M')
+        new_name = f'unreal_auto_mod_{timestamp}.log'
+        new_log_path = os.path.join(log_dir, new_name)
+        os.rename(latest_log_path, new_log_path)
 
 
 def configure_logging():
     log_dir = os.path.join(settings.SCRIPT_DIR, 'logs')
-    timestamp = datetime.now().strftime('%m_%d_%Y_%H%M')
-    log_file = os.path.join(log_dir, f'unreal_auto_mod_{timestamp}.log')
-
     if not os.path.isdir(log_dir):
         os.makedirs(log_dir)
 
+    # Rename the latest log file if it exists
+    rename_latest_log(log_dir)
+
+    # Create a new log file named latest.log
+    log_file = os.path.join(log_dir, 'latest.log')
+
     file_handler = logging.FileHandler(log_file)
     file_handler.setLevel(logging.INFO)
-    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+    file_handler.setFormatter(logging.Formatter('%(message)s'))  # Only log message, no error level
 
     logger.addHandler(file_handler)
     logger.setLevel(logging.INFO)

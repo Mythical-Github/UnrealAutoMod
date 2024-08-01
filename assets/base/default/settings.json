@@ -5,7 +5,7 @@
     "window_title": "UnrealAutoMod Automation Script"
   },
   "engine_info": {
-    "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.11_mythical",
+    "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.11_source",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/UnrealBlueprintModLoader/BendGame.uproject",
     "toggle_engine_during_testing": false,
     "resave_packages_and_fix_up_redirectors_before_engine_open": true,

@@ -8,11 +8,11 @@ import log
 
 def cli_logic():
     if getattr(sys, 'frozen', False):
-        base_path = sys._MEIPASS
+        script_dir = os.path.dirname(sys.executable)
     else:
-        base_path = os.path.dirname(os.path.abspath(__file__))
+        script_dir = os.path.dirname(os.path.abspath(__file__))
 
-    cli_json = os.path.join(base_path, 'cli.json')
+    cli_json = f'{script_dir}/cli.json'
 
     with open(cli_json, 'r') as file:
         cli_info_dict = json.load(file)

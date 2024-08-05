@@ -3,10 +3,10 @@ import time
 
 import script_states
 import utilities
-import windows
+from python_window_management import windows
 from enums import ScriptStateType
 from python_logging import log
-
+import general_utils
 
 init_done = False
 
@@ -40,7 +40,7 @@ def engine_monitor_thread_logic():
     engine_window_name = utilities.get_engine_window_title()
     if not found_process:
         engine_process_name = utilities.get_engine_process_name()
-        if utilities.is_process_running(engine_process_name):
+        if general_utils.is_process_running(engine_process_name):
             log.log_message('Process: Found Engine Process')
             found_process = True
     elif not found_window:

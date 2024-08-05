@@ -3,9 +3,10 @@ import time
 
 import script_states
 import utilities
-import windows
+from python_window_management import windows
 from enums import ScriptStateType
 from python_logging import log
+import general_utils
 
 found_process = False
 found_window = False
@@ -20,17 +21,21 @@ def game_monitor_thread_runner(tick_rate: float = 0.01):
         game_monitor_thread_logic()
 
 
+def get_game_window():
+    return windows.get_window_by_title(utilities.get_game_window_title())
+
+
 def game_monitor_thread_logic():
     global found_process
     global found_window
     global window_closed
 
     if not found_process:
-        if utilities.is_process_running(utilities.get_game_process_name()):
+        if general_utils.is_process_running(utilities.get_game_process_name()):
             log.log_message('Process: Found Game Process')
             found_process = True
     elif not found_window:
-        if windows.get_game_window():
+        if get_game_window():
             log.log_message('Window: Game Window Found')
             found_window = True
             script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)

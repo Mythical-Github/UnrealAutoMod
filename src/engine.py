@@ -1,5 +1,6 @@
 import script_states
 import thread_engine_monitor
+import general_utils
 import utilities
 from enums import PackagingDirType, ExecutionMode, ScriptStateType
 
@@ -14,11 +15,11 @@ def open_game_engine():
 def close_game_engine():
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_CLOSE)
     if utilities.get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
-        game_engine_processes = utilities.get_processes_by_substring('UE4Editor')
+        game_engine_processes = general_utils.get_processes_by_substring('UE4Editor')
     else:
-        game_engine_processes = utilities.get_processes_by_substring('UnrealEditor')
+        game_engine_processes = general_utils.get_processes_by_substring('UnrealEditor')
     for process_info in game_engine_processes:
-        utilities.kill_process(process_info['name'])
+        general_utils.kill_process(process_info['name'])
     script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
 
 

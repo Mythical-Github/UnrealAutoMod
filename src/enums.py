@@ -1,6 +1,6 @@
 from enum import Enum
 
-
+# port to python window management
 class WindowAction(Enum):
     """
     enum for how to treat handling windows
@@ -74,14 +74,6 @@ class ExecutionMode(Enum):
     ASYNC = 'async'
 
 
-class ScriptArg(Enum):
-    """
-    enum for the various args that can be passed to this program
-    """
-    TEST_MODS_ALL = 'test_mods_all'
-    TEST_MODS = 'test_mods'
-
-
 class CompressionType(Enum):
     """
     enum for the types of mod pak compression
@@ -110,16 +102,6 @@ class FileFilterType(Enum):
     """
     ASSET_PATHS = 'asset_paths'  # Takes the paths and gets all files regardless of extension
     TREE_PATHS = 'tree_paths'  # Takes supplied dirs, and traverses it all, including every file
-
-
-class SettingsEntryTypes(Enum):
-    """
-    enums for the settings configurator
-    """
-    MOD_INFO = 'mod_info'
-    PROCESS_INFO = 'process_info'
-    WINDOW_INFO = 'window_info'
-    ALT_EXE_INFO = 'alt_exe_info'
 
 
 def get_enum_from_val(enum: Enum, value: str) -> Enum:

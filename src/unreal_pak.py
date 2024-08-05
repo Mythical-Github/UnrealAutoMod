@@ -7,13 +7,13 @@ import utilities
 from general_python_utilities import general_utils
 from enums import CompressionType
 
+# port to unreal_dev_utils
+def get_unreal_pak_exe_path() -> str:
+    return f'{utilities.get_unreal_engine_dir()}/Engine/Binaries/Win64/UnrealPak.exe'
+
 
 def get_pak_dir_to_pack(mod_name: str):
     return f'{utilities.get_working_dir()}/{mod_name}'
-
-
-def get_unreal_pak_exe_path() -> str:
-    return f'{utilities.get_unreal_engine_dir()}/Engine/Binaries/Win64/UnrealPak.exe'
 
 
 def get_pak_dir_to_pack(mod_name: str) -> str:

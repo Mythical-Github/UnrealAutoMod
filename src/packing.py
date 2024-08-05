@@ -5,8 +5,8 @@ import script_states
 import settings
 import unreal_pak
 import utilities
-import general_utils
-import unreal_dev_utils
+from general_python_utilities import general_utils
+from unreal_engine_development_python_utilities import unreal_dev_utils 
 from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
 import repak_utilities
 

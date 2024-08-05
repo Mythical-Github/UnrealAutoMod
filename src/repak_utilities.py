@@ -1,6 +1,6 @@
 import settings
 import utilities
-import general_utils
+from general_python_utilities import general_utils
 
 
 def get_repak_version_str_from_engine_version() -> str:

@@ -4,7 +4,7 @@ import shutil
 from alive_progress import alive_bar
 import packing
 import utilities
-import general_utils
+from general_python_utilities import general_utils
 from enums import CompressionType
 
 

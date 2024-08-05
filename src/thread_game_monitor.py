@@ -6,7 +6,8 @@ import utilities
 from python_window_management import windows
 from enums import ScriptStateType
 from python_logging import log
-import general_utils
+from general_python_utilities import general_utils
+
 
 found_process = False
 found_window = False

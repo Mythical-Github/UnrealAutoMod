@@ -1,11 +1,9 @@
+from unreal_engine_development_python_utilities import unreal_dev_enums, unreal_dev_utils
+from enums import  ExecutionMode, ScriptStateType
 import script_states
 import thread_engine_monitor
-import unreal_dev_utils
-import general_utils
+from general_python_utilities import general_utils
 import utilities
-from unreal_dev_enums import PackagingDirType
-from enums import  ExecutionMode, ScriptStateType
-
 
 
 def open_game_engine():
@@ -17,7 +15,7 @@ def open_game_engine():
 
 def close_game_engine():
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_CLOSE)
-    if unreal_dev_utils.get_win_dir_type(utilities.get_unreal_engine_dir()) == PackagingDirType.WINDOWS_NO_EDITOR:
+    if unreal_dev_utils.get_win_dir_type(utilities.get_unreal_engine_dir()) == unreal_dev_enums.PackagingDirType.WINDOWS_NO_EDITOR:
         game_engine_processes = general_utils.get_processes_by_substring('UE4Editor')
     else:
         game_engine_processes = general_utils.get_processes_by_substring('UnrealEditor')

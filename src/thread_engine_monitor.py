@@ -6,8 +6,8 @@ import utilities
 from python_window_management import windows
 from enums import ScriptStateType
 from python_logging import log
-import unreal_dev_utils
-import general_utils
+from unreal_engine_development_python_utilities import unreal_dev_utils
+from general_python_utilities import general_utils
 
 init_done = False
 

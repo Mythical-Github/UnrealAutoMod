@@ -121,37 +121,6 @@ def is_toggle_engine_during_testing_in_use() -> bool:
     return settings.settings['engine_info']['toggle_engine_during_testing']
 
 
-# port out
-def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):
-    if exec_mode == ExecutionMode.SYNC:
-        command = exe_path
-        for arg in args:
-            command = f'{command} {arg}'
-        if working_dir:
-            command = f'{working_dir}/{command}'
-        log.log_message(f'Command: {command} running with the {exec_mode} enum')
-        if working_dir:
-            if os.path.isdir(working_dir):
-                os.chdir(working_dir)
-
-        process = subprocess.Popen(command, cwd=working_dir, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True)
-        
-        for line in iter(process.stdout.readline, ''):
-            log.log_message(line.strip())
-
-        process.stdout.close()
-        process.wait()
-        log.log_message(f'Command: {command} finished')
-
-    elif exec_mode == ExecutionMode.ASYNC:
-        command = exe_path
-        command = f'"{command}"'
-        for arg in args:
-            command = f'{command} {arg}'
-        log.log_message(f'Command: {command} started with the {exec_mode} enum')
-        subprocess.Popen(command, cwd=working_dir, start_new_session=True, shell=True)
-
-
 def get_uproject_file() -> str:
     uproject_file = settings.settings['engine_info']['unreal_project_file']
     general_utils.check_file_exists(uproject_file)
@@ -293,13 +262,6 @@ def get_override_automatic_window_title_finding() -> bool:
 def get_window_title_override_string() -> str:
     return settings.settings['game_info']['window_title_override_string']
 
-# port out
-def get_game_window_title() -> str:
-    if get_override_automatic_window_title_finding():
-        return get_window_title_override_string()
-    else:
-        return os.path.splitext(get_game_process_name())[0]
-
 
 def filter_file_paths(paths_dict: dict) -> dict:
     filtered_dict = {}
@@ -308,3 +270,42 @@ def filter_file_paths(paths_dict: dict) -> dict:
         if os.path.isfile(path_dict_key):
             filtered_dict[path_dict_key] = paths_dict[path_dict_key]
     return filtered_dict
+
+
+# port below this out
+
+def get_game_window_title() -> str:
+    if get_override_automatic_window_title_finding():
+        return get_window_title_override_string()
+    else:
+        return os.path.splitext(get_game_process_name())[0]
+
+
+def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):
+    if exec_mode == ExecutionMode.SYNC:
+        command = exe_path
+        for arg in args:
+            command = f'{command} {arg}'
+        if working_dir:
+            command = f'{working_dir}/{command}'
+        log.log_message(f'Command: {command} running with the {exec_mode} enum')
+        if working_dir:
+            if os.path.isdir(working_dir):
+                os.chdir(working_dir)
+
+        process = subprocess.Popen(command, cwd=working_dir, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True)
+        
+        for line in iter(process.stdout.readline, ''):
+            log.log_message(line.strip())
+
+        process.stdout.close()
+        process.wait()
+        log.log_message(f'Command: {command} finished')
+
+    elif exec_mode == ExecutionMode.ASYNC:
+        command = exe_path
+        command = f'"{command}"'
+        for arg in args:
+            command = f'{command} {arg}'
+        log.log_message(f'Command: {command} started with the {exec_mode} enum')
+        subprocess.Popen(command, cwd=working_dir, start_new_session=True, shell=True)

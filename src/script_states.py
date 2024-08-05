@@ -3,7 +3,7 @@ import utilities
 from python_window_management import windows
 from enums import ExecutionMode, ScriptStateType, WindowAction, get_enum_from_val
 from python_logging import log
-import general_utils
+
 
 def alt_exe_checks(script_state_type: ScriptStateType):
     alt_exe_methods = utilities.get_alt_exe_methods()

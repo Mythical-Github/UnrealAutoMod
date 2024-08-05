@@ -29,7 +29,7 @@ def get_client():
     return f'{SCRIPT_DIR}/main_machine.py'
 
 
-def get_files_in_tree_dir(root_dir):
+def get_files_in_tree_dir_alt(root_dir):
     files_list = []
     for dirpath, dirnames, filenames in os.walk(root_dir):
         for filename in filenames:
@@ -40,7 +40,7 @@ def get_files_in_tree_dir(root_dir):
 
 def send_command():
     executable = get_client()
-    args = get_files_in_tree_dir(get_mods_dir())
+    args = get_files_in_tree_dir_alt(get_mods_dir())
     command = ["python", executable] + args
     subprocess.run(command)
 

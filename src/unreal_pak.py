@@ -4,6 +4,7 @@ import shutil
 from alive_progress import alive_bar
 import packing
 import utilities
+import general_utils
 from enums import CompressionType
 
 
@@ -37,7 +38,7 @@ def make_response_file(mod_name: str) -> str:
 def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
     move_files_for_packing(mod_name)
     compression_str = CompressionType(compression_type).value
-    output_pak_dir = f'{utilities.get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
+    output_pak_dir = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
     if not os.path.isdir(output_pak_dir):
         os.makedirs(output_pak_dir)
     exe_path = get_unreal_pak_exe_path()
@@ -56,7 +57,7 @@ def move_files_for_packing(mod_name: str):
     with alive_bar(len(mod_files_dict), title=f'Progress Bar: Copying files for {mod_name} mod', bar='filling', spinner='waves2') as bar:
         for before_file, after_file in mod_files_dict.items():
             if os.path.exists(after_file):
-                if not utilities.get_do_files_have_same_hash(before_file, after_file):
+                if not general_utils.get_do_files_have_same_hash(before_file, after_file):
                     os.remove(after_file)
             else:
                 if not os.path.isdir(os.path.dirname(after_file)):

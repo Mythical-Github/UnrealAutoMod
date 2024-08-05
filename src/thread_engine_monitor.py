@@ -6,6 +6,7 @@ import utilities
 from python_window_management import windows
 from enums import ScriptStateType
 from python_logging import log
+import unreal_dev_utils
 import general_utils
 
 init_done = False
@@ -37,9 +38,9 @@ def engine_monitor_thread_logic():
         window_closed = False
         init_done = True
 
-    engine_window_name = utilities.get_engine_window_title()
+    engine_window_name = unreal_dev_utils.get_engine_window_title(utilities.get_uproject_file())
     if not found_process:
-        engine_process_name = utilities.get_engine_process_name()
+        engine_process_name = unreal_dev_utils.get_engine_process_name()
         if general_utils.is_process_running(engine_process_name):
             log.log_message('Process: Found Engine Process')
             found_process = True

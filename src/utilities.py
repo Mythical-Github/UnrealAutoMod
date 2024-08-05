@@ -1,11 +1,9 @@
-import glob
-import hashlib
 import os
 import shutil
 import subprocess
 
 import settings
-from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
+from enums import ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 from python_logging import log
 import general_utils
 import unreal_dev_utils
@@ -105,64 +103,18 @@ def custom_get_game_dir():
     return unreal_dev_utils.get_game_dir(get_game_exe_path())
 
 
-# port out
-def get_game_content_dir():
-    return f'{custom_get_game_dir()}/Content'
-
-# port out
-def get_game_paks_dir() -> str:
+def custom_get_game_paks_dir() -> str:
     alt_game_dir = os.path.dirname(custom_get_game_dir())
     if get_is_using_alt_dir_name():
-        _dir = f'{alt_game_dir}/{get_alt_packing_dir_name()}/Content/Paks'
+        return f'{alt_game_dir}/{get_alt_packing_dir_name()}/Content/Paks'
     else:
-        _dir = f'{alt_game_dir}/{get_uproject_name()}/Content/Paks'
-    return _dir
+        return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
 
 
 def get_unreal_engine_dir() -> str:
     ue_dir = settings.settings['engine_info']['unreal_engine_dir']
     general_utils.check_file_exists(ue_dir)
     return ue_dir
-
-# port out
-def get_win_dir_type() -> PackagingDirType:
-    if custom_get_unreal_engine_version(get_unreal_engine_dir()).startswith('5'):
-        return PackagingDirType.WINDOWS
-    else:
-        return PackagingDirType.WINDOWS_NO_EDITOR
-
-# port out
-def is_game_ue5() -> bool:
-    return get_win_dir_type() == PackagingDirType.WINDOWS
-
-# port out
-def is_game_ue4() -> bool:
-    return get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR
-
-# port out
-def get_file_hash(file_path: str) -> str:
-    md5 = hashlib.md5()
-    with open(file_path, 'rb') as f:
-        for chunk in iter(lambda: f.read(4096), b''):
-            md5.update(chunk)
-    return md5.hexdigest()
-
-# port out
-def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
-    if os.path.exists(file_path_one) and os.path.exists(file_path_two):
-        hash_one = get_file_hash(file_path_one)
-        hash_two = get_file_hash(file_path_two)
-        return hash_one == hash_two
-    else:
-        return False
-
-# port out
-def get_unreal_editor_exe_path() -> str:
-    if get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
-        engine_path_suffix = 'UE4Editor.exe'
-    else:
-        engine_path_suffix = 'UnrealEditor.exe'
-    return f'{get_unreal_engine_dir()}/Engine/Binaries/Win64/{engine_path_suffix}'
 
 
 def is_toggle_engine_during_testing_in_use() -> bool:
@@ -199,73 +151,11 @@ def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: 
         log.log_message(f'Command: {command} started with the {exec_mode} enum')
         subprocess.Popen(command, cwd=working_dir, start_new_session=True, shell=True)
 
-# port out
-def get_engine_window_title() -> str:
-    return f'{general_utils.get_process_name(get_uproject_file())[:-9]} - {'Unreal Editor'}'
-
-# port out
-def get_engine_process_name() -> str:
-    return general_utils.get_process_name(get_unreal_editor_exe_path())
-
-# port out
-def get_files_in_tree(tree_path: str) -> list:
-    return glob.glob(tree_path + '/**/*', recursive=True)
-
-# port out
-def get_file_extension(file_path: str) -> str:
-    _, file_extension = os.path.splitext(file_path)
-    return file_extension
-
-# port out
-# returns .extension not extension
-def get_file_extensions(file_path: str) -> list:
-    extensions = []
-    files = get_files_in_tree(file_path)
-    for file in files:
-        extensions.append(get_file_extension(file))
-    return extensions
-
-# port out
-# returns extension, not .extension
-def get_file_extensions_two(directory_with_base_name: str) -> list:
-    directory, base_name = os.path.split(directory_with_base_name)
-    extensions = set()
-    for _, files in os.walk(directory):
-        for file in files:
-            if file.startswith(base_name):
-                _, ext = os.path.splitext(file)
-                if ext:
-                    extensions.add(ext)
-    return list(extensions)
-
 
 def get_uproject_file() -> str:
     uproject_file = settings.settings['engine_info']['unreal_project_file']
     general_utils.check_file_exists(uproject_file)
     return uproject_file
-
-# port out
-def get_uproject_name() -> str:
-    return os.path.splitext(os.path.basename(get_uproject_file()))[0]
-
-# port out
-def get_uproject_dir() -> str:
-    return os.path.dirname(get_uproject_file())
-
-# port out
-def get_saved_cooked_dir() -> str:
-    return f'{get_uproject_dir()}/Saved/Cooked'
-
-# port out
-def get_win_dir_str() -> str:
-    win_dir_type = 'Windows'
-    if is_game_ue4():
-        win_dir_type = f'{win_dir_type}NoEditor'
-    return win_dir_type
-
-# port out
-def get_cooked_uproject_dir() -> str:
-    return f'{get_uproject_dir()}/Saved/Cooked/{get_win_dir_str()}/{get_uproject_name()}'
 
 
 def get_use_mod_name_dir_name_override(mod_name: str) -> bool:
@@ -297,8 +187,8 @@ def get_pak_dir_structure(mod_name: str) -> str:
 def get_mod_compression_type(mod_name: str) -> CompressionType:
     for info in get_mod_pak_info_list():
         if info['mod_name'] == mod_name:
-            compresion_str = info['compression_type']
-            return get_enum_from_val(CompressionType, compresion_str)
+            compression_str = info['compression_type']
+            return get_enum_from_val(CompressionType, compression_str)
     return None
 
 
@@ -325,12 +215,12 @@ def is_mod_name_in_list(mod_name: str) -> bool:
 
 def get_mod_name_dir(mod_name: str) -> dir:
     if is_mod_name_in_list(mod_name):
-        return f'{get_uproject_dir()}/Saved/Cooked/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
+        return f'{unreal_dev_utils.get_uproject_dir(get_uproject_file())}/Saved/Cooked/{get_unreal_mod_tree_type_str(mod_name)}/{mod_name}'
     return None
 
 
 def get_mod_name_dir_files(mod_name: str) -> list:
-    return get_files_in_tree(get_mod_name_dir(mod_name))
+    return general_utils.get_files_in_tree(get_mod_name_dir(mod_name))
 
 
 def get_persistant_mod_dir(mod_name: str) -> str:
@@ -338,18 +228,7 @@ def get_persistant_mod_dir(mod_name: str) -> str:
 
 
 def get_persistant_mod_files(mod_name: str) -> list:
-    return get_files_in_tree(get_persistant_mod_dir(mod_name))
-
-# port out
-def get_mod_extensions() -> list:
-    if general_utils.get_is_game_iostore():
-        return [
-            'pak',
-            'utoc',
-            'ucas'
-        ]
-    else:
-        return ['pak']
+    return general_utils.get_files_in_tree(get_persistant_mod_dir(mod_name))
 
 
 def get_fix_up_redirectors_before_engine_open() -> bool:
@@ -382,18 +261,6 @@ def clean_working_dir():
         except Exception as e:
             log.log_message(f"Error: {e}")
 
-# port out
-def get_matching_suffix(path_one: str, path_two: str) -> str:
-    common_suffix = []
-
-    for char_one, char_two in zip(path_one[::-1], path_two[::-1]):
-        if char_one == char_two:
-            common_suffix.append(char_one)
-        else:
-            break
-
-    return ''.join(common_suffix)[::-1]
-
 
 def get_clear_uproject_saved_cooked_dir_before_tests() -> bool:
     return settings.settings['engine_info']['clear_uproject_saved_cooked_dir_before_tests']
@@ -406,14 +273,6 @@ def get_skip_launching_game() -> bool:
 def get_auto_move_windows() -> dict:
     return settings.settings['auto_move_windows']
 
-# port out
-def get_build_target_file_path() -> str:
-    return f'{get_uproject_dir()}/Binaries/Win64/{get_uproject_name()}.target'
-
-# port out
-def has_build_target_been_built() -> bool:
-    return os.path.exists(get_build_target_file_path())
-
 
 def get_always_build_project() -> str:
     return settings.settings['engine_info']['always_build_project']
@@ -422,63 +281,9 @@ def get_always_build_project() -> str:
 def get_engine_cook_and_packaging_args() -> list:
     return settings.settings['engine_info']['engine_cook_and_packaging_args']
 
-# port out
-def get_repak_version_str_from_engine_version() -> str:
-    engine_version_to_repack_version = {
-        "4.0": "V1",
-        "4.1": "V1",
-        "4.2": "V1",
-        "4.3": "V3",
-        "4.4": "V3",
-        "4.5": "V3",
-        "4.6": "V3",
-        "4.7": "V3",
-        "4.8": "V3",
-        "4.9": "V3",
-        "4.10": "V3",
-        "4.11": "V3",
-        "4.12": "V3",
-        "4.13": "V3",
-        "4.14": "V3",
-        "4.15": "V3",
-        "4.16": "V4",
-        "4.17": "V4",
-        "4.18": "V4",
-        "4.19": "V4",
-        "4.20": "V5",
-        "4.21": "V7",
-        "4.22": "V8A",
-        "4.23": "V8B",
-        "4.24": "V8B",
-        "4.25": "V9",
-        "4.26": "V11",
-        "4.27": "V11",
-        "4.28": "V11",
-        "5.0": "V11",
-        "5.1": "V11",
-        "5.2": "V11",
-        "5.3": "V11",
-        "5.4": "V11"
-    }
-    return engine_version_to_repack_version[custom_get_unreal_engine_version(get_unreal_engine_dir())]
-
 
 def get_is_overriding_automatic_version_finding() -> bool:
     return settings.settings['repak_info']['override_automatic_version_finding']
-
-# port out
-def get_repak_pak_version_str() -> str:
-    if get_is_overriding_automatic_version_finding():
-        repak_version_str = settings.settings['repak_info']['repak_version']
-    else:
-        repak_version_str = get_repak_version_str_from_engine_version()
-    return repak_version_str
-
-# port out
-def get_repak_exe_path() -> str:
-    repak_path = settings.settings['repak_info']['repak_path']
-    general_utils.check_file_exists(repak_path)
-    return repak_path
 
 
 def get_override_automatic_window_title_finding() -> bool:

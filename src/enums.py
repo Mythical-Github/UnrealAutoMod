@@ -74,14 +74,6 @@ class ExecutionMode(Enum):
     ASYNC = 'async'
 
 
-class PackagingDirType(Enum):
-    """
-    enum for the directory type for packaging, it changes based on ue version
-    """
-    WINDOWS = 'windows'
-    WINDOWS_NO_EDITOR = 'windows_no_editor'
-
-
 class ScriptArg(Enum):
     """
     enum for the various args that can be passed to this program

@@ -70,7 +70,7 @@ def routine_checks(state: ScriptStateType):
     if not state == ScriptStateType.CONSTANT:
         log.log_message(f'Routine Check: {state} is running')
     if is_script_state_used(state):
-        general_utils.kill_processes(state)
+        utilities.kill_processes(state)
         window_checks(state)
         alt_exe_checks(state)
     if not state == ScriptStateType.CONSTANT:

@@ -40,7 +40,7 @@ def game_monitor_thread_logic():
             found_window = True
             script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
     elif not window_closed:
-        if not windows.get_game_window():
+        if not get_game_window():
             log.log_message('Window: Game Window Closed')
             script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_CLOSE)
             stop_game_monitor_thread()

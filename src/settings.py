@@ -7,6 +7,8 @@ import psutil
 import enums
 import mods
 
+from python_window_management.window_enums import WindowAction
+
 settings = ''
 init_settings_done = False
 settings_json_dir = ''
@@ -349,7 +351,7 @@ def set_script_state_in_window_management_entry(settings_json: str, window_name:
     save_settings(pass_settings(settings_json))
 
 
-def set_window_state_in_window_management_entry(settings_json: str, window_name: str, window_state: enums.WindowAction):
+def set_window_state_in_window_management_entry(settings_json: str, window_name: str, window_state: WindowAction):
     for window_entry in settings["auto_move_windows"]:
         if window_entry['window_name'] == window_name:
             window_entry['window_behaviour'] = window_state.value
@@ -501,7 +503,7 @@ def add_process_kill_entry(settings_json: str, process_name: str, use_substring_
 
 
 def add_window_management_entry(settings_json: str, window_name: str, use_substring_check: bool,
-                                window_behaviour: enums.WindowAction, script_state: enums.ScriptStateType,
+                                window_behaviour: WindowAction, script_state: enums.ScriptStateType,
                                 monitor_index: int, resolution_x: int, resolution_y: int):
     new_entry = {
         "window_name": window_name,

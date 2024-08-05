@@ -1,16 +1,5 @@
 from enum import Enum
 
-# port to python window management
-class WindowAction(Enum):
-    """
-    enum for how to treat handling windows
-    """
-    NONE = 'none'
-    MIN = 'min'
-    MAX = 'max'
-    MOVE = 'move'
-    CLOSE = 'close'
-
 
 class PackingType(Enum):
     """

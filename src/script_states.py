@@ -1,7 +1,8 @@
 import settings
 import utilities
 from python_window_management import windows
-from enums import ExecutionMode, ScriptStateType, WindowAction, get_enum_from_val
+from enums import ExecutionMode, ScriptStateType, get_enum_from_val
+from python_window_management.window_enums import WindowAction
 from python_logging import log
 
 

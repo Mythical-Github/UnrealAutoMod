@@ -4,12 +4,9 @@ import shutil
 from alive_progress import alive_bar
 import packing
 import utilities
+from unreal_engine_development_python_utilities import unreal_dev_utils
 from general_python_utilities import general_utils
 from enums import CompressionType
-
-# port to unreal_dev_utils
-def get_unreal_pak_exe_path() -> str:
-    return f'{utilities.get_unreal_engine_dir()}/Engine/Binaries/Win64/UnrealPak.exe'
 
 
 def get_pak_dir_to_pack(mod_name: str):
@@ -41,7 +38,7 @@ def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
     output_pak_dir = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
     if not os.path.isdir(output_pak_dir):
         os.makedirs(output_pak_dir)
-    exe_path = get_unreal_pak_exe_path()
+    exe_path = unreal_dev_utils.get_unreal_pak_exe_path(utilities.get_unreal_engine_dir())
     pak_path = f'{output_pak_dir}/{mod_name}.pak'
     response_file = make_response_file(mod_name)
     command = f'{exe_path} "{pak_path}" -Create="{response_file}"'

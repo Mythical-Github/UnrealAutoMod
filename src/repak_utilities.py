@@ -1,4 +1,3 @@
-# port all
 import settings
 import utilities
 from general_python_utilities import general_utils

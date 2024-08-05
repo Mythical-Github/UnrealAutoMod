@@ -272,13 +272,11 @@ def filter_file_paths(paths_dict: dict) -> dict:
     return filtered_dict
 
 
-
-# port make custom and port leftover to unreal_dev_utils
 def get_game_window_title() -> str:
     if get_override_automatic_window_title_finding():
         return get_window_title_override_string()
     else:
-        return os.path.splitext(get_game_process_name())[0]
+        unreal_dev_utils.get_game_process_name(get_game_exe_path())
 
 
 def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):

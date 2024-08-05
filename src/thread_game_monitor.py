@@ -5,7 +5,7 @@ import script_states
 import utilities
 import windows
 from enums import ScriptStateType
-import log
+from python_logging import log
 
 found_process = False
 found_window = False

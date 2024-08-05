@@ -3,7 +3,7 @@ import time
 
 import script_states
 from enums import ScriptStateType
-import log
+from python_logging import log
 
 
 def constant_thread_runner(tick_rate: float = 0.01):

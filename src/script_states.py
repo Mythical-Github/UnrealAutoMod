@@ -2,7 +2,7 @@ import settings
 import utilities
 import windows
 from enums import ExecutionMode, ScriptStateType, get_enum_from_val
-import log
+from python_logging import log
 
 
 def alt_exe_checks(script_state_type: ScriptStateType):

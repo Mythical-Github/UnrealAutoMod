@@ -4,8 +4,7 @@ import pygetwindow
 import screeninfo
 
 import utilities
-from enums import WindowAction, ScriptStateType, get_enum_from_val
-import log
+from python_logging import log
 
 
 def does_window_exist(window_title: str, use_substring_check: bool = False) -> bool:
@@ -88,6 +87,9 @@ def move_window(window: pygetwindow.Win32Window, window_settings: list):
     if width is not None:
         set_window_size(window, width, height)
 
+# this shouldn't be part of the windows module, it's not modular
+
+from enums import WindowAction, ScriptStateType, get_enum_from_val
 
 def window_checks(current_state: WindowAction):
     window_settings_list = utilities.get_auto_move_windows()

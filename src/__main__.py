@@ -1,4 +1,4 @@
-import log
+from python_logging import log
 import cli
 
 

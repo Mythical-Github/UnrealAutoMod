@@ -9,7 +9,7 @@ import psutil
 
 import settings
 from enums import PackagingDirType, ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
-import log
+from python_logging import log
 
 
 def get_game_info_launch_type_enum_str_value() -> str:
@@ -65,7 +65,7 @@ def get_is_using_alt_dir_name() -> bool:
 def get_alt_packing_dir_name() -> str:
     return settings.settings['alt_uproject_name_in_game_dir']['name']
 
-
+# port out
 def check_file_exists(file_path: str) -> bool:
     if os.path.exists(file_path):
         return True
@@ -76,21 +76,21 @@ def check_file_exists(file_path: str) -> bool:
 # def check_file_exists(file_path: str) -> bool:
 #     return os.path.exists(file_path)
 
-
+# port out
 def get_process_name(exe_path: str) -> str:
     filename = os.path.basename(exe_path)
     return filename
 
-
+# port out
 def get_game_process_name() -> str:
     return get_process_name(get_game_exe_path())
 
-
+# port out
 def kill_process(process_name: str):
     if is_process_running(process_name):
         os.system(f'taskkill /f /im {process_name}')
 
-
+# port out
 def is_process_running(process_name: str) -> bool:
     for proc in psutil.process_iter():
         try:
@@ -100,7 +100,7 @@ def is_process_running(process_name: str) -> bool:
             pass
     return False
 
-
+# port out
 def get_processes_by_substring(substring: str) -> list:
     all_processes = psutil.process_iter(['pid', 'name'])
     matching_processes = [proc.info for proc in all_processes if substring.lower() in proc.info['name'].lower()]
@@ -129,7 +129,7 @@ def kill_processes(state: ScriptStateType):
 def get_override_automatic_version_finding() -> bool:
     return settings.settings['engine_info']['override_automatic_version_finding']
 
-
+# port out
 def get_unreal_engine_version(engine_path: str) -> str:
     if get_override_automatic_version_finding():
         unreal_engine_major_version = settings.settings['engine_info']['unreal_engine_major_version']
@@ -144,7 +144,7 @@ def get_unreal_engine_version(engine_path: str) -> str:
             unreal_engine_minor_version = version_info.get('MinorVersion', 0)
             return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'
 
-
+# port out
 def get_is_game_iostore() -> bool:
     is_game_iostore = False
     file_extensions = get_file_extensions(get_game_paks_dir())
@@ -155,15 +155,15 @@ def get_is_game_iostore() -> bool:
             is_game_iostore = True
     return is_game_iostore
 
-
+# port out
 def get_game_dir():
     return os.path.dirname(os.path.dirname(os.path.dirname(get_game_exe_path())))
 
-
+# port out
 def get_game_content_dir():
     return f'{get_game_dir()}/Content'
 
-
+# port out
 def get_game_paks_dir() -> str:
     alt_game_dir = os.path.dirname(get_game_dir())
     if get_is_using_alt_dir_name():
@@ -178,22 +178,22 @@ def get_unreal_engine_dir() -> str:
     check_file_exists(ue_dir)
     return ue_dir
 
-
+# port out
 def get_win_dir_type() -> PackagingDirType:
     if get_unreal_engine_version(get_unreal_engine_dir()).startswith('5'):
         return PackagingDirType.WINDOWS
     else:
         return PackagingDirType.WINDOWS_NO_EDITOR
 
-
+# port out
 def is_game_ue5() -> bool:
     return get_win_dir_type() == PackagingDirType.WINDOWS
 
-
+# port out
 def is_game_ue4() -> bool:
     return get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR
 
-
+# port out
 def get_file_hash(file_path: str) -> str:
     md5 = hashlib.md5()
     with open(file_path, 'rb') as f:
@@ -201,7 +201,7 @@ def get_file_hash(file_path: str) -> str:
             md5.update(chunk)
     return md5.hexdigest()
 
-
+# port out
 def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
     if os.path.exists(file_path_one) and os.path.exists(file_path_two):
         hash_one = get_file_hash(file_path_one)
@@ -210,7 +210,7 @@ def get_do_files_have_same_hash(file_path_one: str, file_path_two: str) -> bool:
     else:
         return False
 
-
+# port out
 def get_unreal_editor_exe_path() -> str:
     if get_win_dir_type() == PackagingDirType.WINDOWS_NO_EDITOR:
         engine_path_suffix = 'UE4Editor.exe'
@@ -238,7 +238,7 @@ def is_toggle_engine_during_testing_in_use() -> bool:
 #         log.log_message(f'Command: {command} started with the {exec_mode} enum')
 #         subprocess.Popen(command, cwd=working_dir, start_new_session=True)
 
-
+# port out
 def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):
     if exec_mode == ExecutionMode.SYNC:
         command = exe_path
@@ -268,24 +268,24 @@ def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: 
         log.log_message(f'Command: {command} started with the {exec_mode} enum')
         subprocess.Popen(command, cwd=working_dir, start_new_session=True, shell=True)
 
-
+# port out
 def get_engine_window_title() -> str:
     return f'{get_process_name(get_uproject_file())[:-9]} - {'Unreal Editor'}'
 
-
+# port out
 def get_engine_process_name() -> str:
     return get_process_name(get_unreal_editor_exe_path())
 
-
+# port out
 def get_files_in_tree(tree_path: str) -> list:
     return glob.glob(tree_path + '/**/*', recursive=True)
 
-
+# port out
 def get_file_extension(file_path: str) -> str:
     _, file_extension = os.path.splitext(file_path)
     return file_extension
 
-
+# port out
 def get_file_extensions(file_path: str) -> list:
     extensions = []
     files = get_files_in_tree(file_path)
@@ -293,7 +293,7 @@ def get_file_extensions(file_path: str) -> list:
         extensions.append(get_file_extension(file))
     return extensions
 
-
+# port out
 def get_file_extensions_two(directory_with_base_name: str) -> list:
     directory, base_name = os.path.split(directory_with_base_name)
     extensions = set()
@@ -311,26 +311,26 @@ def get_uproject_file() -> str:
     check_file_exists(uproject_file)
     return uproject_file
 
-
+# port out
 def get_uproject_name() -> str:
     return os.path.splitext(os.path.basename(get_uproject_file()))[0]
 
-
+# port out
 def get_uproject_dir() -> str:
     return os.path.dirname(get_uproject_file())
 
-
+# port out
 def get_saved_cooked_dir() -> str:
     return f'{get_uproject_dir()}/Saved/Cooked'
 
-
+# port out
 def get_win_dir_str() -> str:
     win_dir_type = 'Windows'
     if is_game_ue4():
         win_dir_type = f'{win_dir_type}NoEditor'
     return win_dir_type
 
-
+# port out
 def get_cooked_uproject_dir() -> str:
     return f'{get_uproject_dir()}/Saved/Cooked/{get_win_dir_str()}/{get_uproject_name()}'
 
@@ -407,7 +407,7 @@ def get_persistant_mod_dir(mod_name: str) -> str:
 def get_persistant_mod_files(mod_name: str) -> list:
     return get_files_in_tree(get_persistant_mod_dir(mod_name))
 
-
+# port out
 def get_mod_extensions() -> list:
     if get_is_game_iostore():
         return [
@@ -449,7 +449,7 @@ def clean_working_dir():
         except Exception as e:
             log.log_message(f"Error: {e}")
 
-
+# port out
 def get_matching_suffix(path_one: str, path_two: str) -> str:
     common_suffix = []
 
@@ -473,11 +473,11 @@ def get_skip_launching_game() -> bool:
 def get_auto_move_windows() -> dict:
     return settings.settings['auto_move_windows']
 
-
+# port out
 def get_build_target_file_path() -> str:
     return f'{get_uproject_dir()}/Binaries/Win64/{get_uproject_name()}.target'
 
-
+# port out
 def has_build_target_been_built() -> bool:
     return os.path.exists(get_build_target_file_path())
 
@@ -489,7 +489,7 @@ def get_always_build_project() -> str:
 def get_engine_cook_and_packaging_args() -> list:
     return settings.settings['engine_info']['engine_cook_and_packaging_args']
 
-
+# port out
 def get_repak_version_str_from_engine_version() -> str:
     engine_version_to_repack_version = {
         "4.0": "V1",
@@ -533,7 +533,7 @@ def get_repak_version_str_from_engine_version() -> str:
 def get_is_overriding_automatic_version_finding() -> bool:
     return settings.settings['repak_info']['override_automatic_version_finding']
 
-
+# port out
 def get_repak_pak_version_str() -> str:
     if get_is_overriding_automatic_version_finding():
         repak_version_str = settings.settings['repak_info']['repak_version']
@@ -541,7 +541,7 @@ def get_repak_pak_version_str() -> str:
         repak_version_str = get_repak_version_str_from_engine_version()
     return repak_version_str
 
-
+# port out
 def get_repak_exe_path() -> str:
     repak_path = settings.settings['repak_info']['repak_path']
     check_file_exists(repak_path)
@@ -555,7 +555,7 @@ def get_override_automatic_window_title_finding() -> bool:
 def get_window_title_override_string() -> str:
     return settings.settings['game_info']['window_title_override_string']
 
-
+# port out
 def get_game_window_title() -> str:
     if get_override_automatic_window_title_finding():
         return get_window_title_override_string()

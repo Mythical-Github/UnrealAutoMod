@@ -5,7 +5,7 @@ import script_states
 import utilities
 import windows
 from enums import ScriptStateType
-import log
+from python_logging import log
 
 
 init_done = False

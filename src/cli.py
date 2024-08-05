@@ -3,7 +3,7 @@ import sys
 import os
 
 import settings
-import log
+from python_logging import log
 
 
 def cli_logic():

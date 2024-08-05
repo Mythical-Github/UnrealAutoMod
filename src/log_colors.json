@@ -21,5 +21,6 @@
         "LogInit": "\u001b[38;2;238;130;238m"
     },
     "default_color": "\u001b[94m",
-    "background_color": "\u001b[48;2;40;42;54m"
+    "background_color": "\u001b[48;2;40;42;54m",
+    "log_name_prefix": "unreal_auto_mod"
 }

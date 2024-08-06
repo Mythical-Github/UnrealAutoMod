@@ -36,6 +36,7 @@ def game_monitor_thread_logic():
             log.log_message('Process: Found Game Process')
             found_process = True
     elif not found_window:
+        time.sleep(3)
         if get_game_window():
             log.log_message('Window: Game Window Found')
             found_window = True

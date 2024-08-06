@@ -22,6 +22,10 @@
    "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/assets/images/UnrealAutoModIcon.ico"
   },
   {
+   "optionDest": "name",
+   "value": "UnrealAutoModCLI"
+  },
+  {
    "optionDest": "clean_build",
    "value": false
   },
@@ -55,15 +59,11 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/__main__.py;."
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/json/cli.json;."
   },
   {
    "optionDest": "datas",
-   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/cli.json;."
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/cli.py;."
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/json/log_colors.json;."
   },
   {
    "optionDest": "datas",
@@ -75,15 +75,19 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/epic.py;."
-  },
-  {
-   "optionDest": "datas",
    "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/game_runner.py;."
   },
   {
    "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/mods.py;."
+  },
+  {
+   "optionDest": "datas",
    "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/packing.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/repak_utilities.py;."
   },
   {
    "optionDest": "datas",
@@ -92,10 +96,6 @@
   {
    "optionDest": "datas",
    "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/settings.py;."
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/steam.py;."
   },
   {
    "optionDest": "datas",
@@ -118,12 +118,28 @@
    "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/utilities.py;."
   },
   {
-   "optionDest": "datas",
-   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/windows.py;."
+   "optionDest": "collect_submodules",
+   "value": "psutil"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "python_window_management"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "unreal_engine_development_python_utilities"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "alive_progress"
+  },
+  {
+   "optionDest": "collect_data",
+   "value": "grapheme"
   }
  ],
  "nonPyinstallerOptions": {
-  "increaseRecursionLimit": false,
+  "increaseRecursionLimit": true,
   "manualArguments": ""
  }
 }

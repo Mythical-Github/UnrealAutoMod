@@ -6,7 +6,7 @@ For an in editor menu version be sure to check out [UnrealAutoModInEditor](https
 
 <h2>Project Example:</h2>
 
-[![Project Screenshot](https://github.com/Mythical-Github/UnrealAutoMod/assets/4b65e3a3-ae7f-4881-bea4-e73191594587.png)](https://github.com/user-attachments/assets/4b65e3a3-ae7f-4881-bea4-e73191594587.mp4) # update this to use a better example
+[![Project Screenshot](https://github.com/Mythical-Github/UnrealAutoMod/assets/4b65e3a3-ae7f-4881-bea4-e73191594587.png)](https://github.com/user-attachments/assets/4b65e3a3-ae7f-4881-bea4-e73191594587.mp4)
 
 
 <h2>💪 Features</h2>

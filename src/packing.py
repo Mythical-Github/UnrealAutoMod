@@ -234,7 +234,7 @@ def make_pak_repak(mod_name: str):
     compression_type_str = utilities.get_mod_pak_info(mod_name)['compression_type']
     before_symlinked_dir = f'{utilities.get_working_dir()}/{mod_name}'
 
-    command = f'"{repak_utilities.get_repak_exe_path()}" pack "{before_symlinked_dir}" "{pak_dir}/{mod_name}.pak"'
+    command = f'"{repak_utilities.get_package_path()}" pack "{before_symlinked_dir}" "{pak_dir}/{mod_name}.pak"'
     if not compression_type_str == 'None':
         command = f'{command} --compression {compression_type_str} --version {repak_utilities.get_repak_pak_version_str()}'
     if os.path.isfile(f'{pak_dir}/{mod_name}.pak'):

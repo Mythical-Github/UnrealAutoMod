@@ -1,6 +1,10 @@
+import os
+import requests
+import subprocess
+
 import settings
 import utilities
-from general_python_utilities import general_utils
+from python_logging import log
 
 
 def get_repak_version_str_from_engine_version() -> str:
@@ -51,7 +55,88 @@ def get_repak_pak_version_str() -> str:
     return repak_version_str
 
 
-def get_repak_exe_path() -> str:
-    repak_path = settings.settings['repak_info']['repak_path']
-    general_utils.check_file_exists(repak_path)
-    return repak_path
+def get_latest_version_number(repository="trumank/repak"):
+    api_url = f"https://api.github.com/repos/{repository}/releases/latest"
+    
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        release_data = response.json()
+        version_number = release_data['tag_name'].lstrip('v')
+        return version_number
+    
+    except requests.RequestException as e:
+        log.log_message(f"Error: fetching release information: {e}")
+        return None
+
+
+def get_installed_version(executable_path):
+    try:
+        result = subprocess.run([executable_path, '--version'], capture_output=True, text=True, check=True)
+        version_output = result.stdout.strip()
+        version = version_output.split(' ')[-1]
+        return version
+    
+    except subprocess.CalledProcessError as e:
+        log.log_message(f"Error: retrieving installed version: {e}")
+        return None
+    except FileNotFoundError:
+        log.log_message(f"Warning: Executable not found at {executable_path}")
+        return None
+
+
+def download_and_install_latest_version(repository="trumank/repak", install_path=None):
+    latest_version = get_latest_version_number(repository)
+    if not latest_version:
+        log.log_message("Error: Could not retrieve the latest version number.")
+        return
+    
+    if install_path is None:
+        install_path = os.path.join(os.path.expanduser("~"), '.cargo', 'bin')
+        
+    installed_version = get_installed_version(os.path.join(install_path, 'repak.exe'))
+    
+    if installed_version == latest_version:
+        log.log_message("The latest version is already installed.")
+        return
+    
+    log.log_message(f"Updating to latest version {latest_version}...")
+    
+    api_url = f"https://api.github.com/repos/{repository}/releases/latest"
+    
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        release_data = response.json()
+        asset = next((asset for asset in release_data['assets'] if asset['name'] == 'repak_cli-installer.ps1'), None)
+        
+        if asset is None:
+            raise RuntimeError("Asset 'repak_cli-installer.ps1' not found in the latest release.")
+        
+        asset_url = asset['browser_download_url']
+        script_path = os.path.join(os.environ['TEMP'], 'repak_cli-installer.ps1')
+        script_response = requests.get(asset_url)
+        script_response.raise_for_status()
+        
+        with open(script_path, 'wb') as file:
+            file.write(script_response.content)
+        
+        subprocess.run(["powershell.exe", "-ExecutionPolicy", "Bypass", "-File", script_path], check=True)
+        
+        log.log_message("Repak CLI installed successfully.")
+    
+    except requests.RequestException as e:
+        log.log_message(f"Error fetching release information: {e}")
+    except subprocess.CalledProcessError as e:
+        log.log_message(f"Error executing the installer script: {e}")
+    except RuntimeError as e:
+        log.log_message(e)
+
+
+def get_package_path():
+    user_home = os.path.expanduser("~")
+    package_path = os.path.join(user_home, '.cargo', 'bin', 'repak.exe')
+    return package_path
+
+
+download_and_install_latest_version()

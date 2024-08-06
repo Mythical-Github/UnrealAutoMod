@@ -50,6 +50,13 @@
       "program": "${workspaceFolder}/assets/build_scripts/run_build_and_zip.py",
       "console": "integratedTerminal",
       "args": []
+    },
+    {
+      "name": "reinstall_dependencies",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/assets/build_scripts/dependency_installer.py",
+      "console": "integratedTerminal"
     }
   ]
 }

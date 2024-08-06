@@ -126,7 +126,7 @@ You can keep the program anywhere you'd like.
    Once everything is set up, you can proceed to the [Running Steps](#running-steps).
 
 **Notes:**
-- For JSON paths, use backslashes (`\`) instead of forward slashes (`/`). Make sure your paths match this format when editing the JSON file.
+- For JSON paths, use forward slashes (`/`) instead of backslashes (`\`). Make sure your paths match this format when editing the JSON file.
 
 <h2 id="running-steps">🏃 Running Steps:</h2>
 The release version, has some included bat files.<br>

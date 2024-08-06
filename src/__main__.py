@@ -1,8 +1,8 @@
 import sys
 from pathlib import Path
 
-from python_logging import log
 from cli_py import cli
+from python_logging import log
 
 
 if getattr(sys, 'frozen', False):
@@ -12,10 +12,8 @@ else:
 
 
 if __name__ == "__main__":
-    
     try:
         log.set_colors_json_path(f'{script_dir}/json/log_colors.json')
-        log.configure_logging()
         cli.set_json_location(f'{script_dir}/json/cli.json')
         cli.cli_logic()
     except Exception as error_message:

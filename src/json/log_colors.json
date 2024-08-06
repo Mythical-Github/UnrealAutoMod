@@ -22,5 +22,5 @@
     },
     "default_color": "\u001b[94m",
     "background_color": "\u001b[48;2;40;42;54m",
-    "log_name_prefix_": "unreal_auto_mod_"
+    "log_name_prefix": "unreal_auto_mod_"
 }

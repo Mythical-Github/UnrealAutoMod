@@ -1,17 +1,6 @@
 from enum import Enum
 
 
-class WindowAction(Enum):
-    """
-    enum for how to treat handling windows
-    """
-    NONE = 'none'
-    MIN = 'min'
-    MAX = 'max'
-    MOVE = 'move'
-    CLOSE = 'close'
-
-
 class PackingType(Enum):
     """
     enum for how to treat packing mods
@@ -74,22 +63,6 @@ class ExecutionMode(Enum):
     ASYNC = 'async'
 
 
-class PackagingDirType(Enum):
-    """
-    enum for the directory type for packaging, it changes based on ue version
-    """
-    WINDOWS = 'windows'
-    WINDOWS_NO_EDITOR = 'windows_no_editor'
-
-
-class ScriptArg(Enum):
-    """
-    enum for the various args that can be passed to this program
-    """
-    TEST_MODS_ALL = 'test_mods_all'
-    TEST_MODS = 'test_mods'
-
-
 class CompressionType(Enum):
     """
     enum for the types of mod pak compression
@@ -118,16 +91,6 @@ class FileFilterType(Enum):
     """
     ASSET_PATHS = 'asset_paths'  # Takes the paths and gets all files regardless of extension
     TREE_PATHS = 'tree_paths'  # Takes supplied dirs, and traverses it all, including every file
-
-
-class SettingsEntryTypes(Enum):
-    """
-    enums for the settings configurator
-    """
-    MOD_INFO = 'mod_info'
-    PROCESS_INFO = 'process_info'
-    WINDOW_INFO = 'window_info'
-    ALT_EXE_INFO = 'alt_exe_info'
 
 
 def get_enum_from_val(enum: Enum, value: str) -> Enum:

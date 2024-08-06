@@ -1,8 +1,9 @@
 import settings
 import utilities
-import windows
+from python_window_management import windows
 from enums import ExecutionMode, ScriptStateType, get_enum_from_val
-import log
+from python_window_management.window_enums import WindowAction
+from python_logging import log
 
 
 def alt_exe_checks(script_state_type: ScriptStateType):
@@ -45,12 +46,33 @@ def is_script_state_used(state: ScriptStateType) -> bool:
     return False
 
 
+def window_checks(current_state: WindowAction):
+    window_settings_list = utilities.get_auto_move_windows()
+    for window_settings in window_settings_list:
+        settings_state = get_enum_from_val(ScriptStateType, window_settings['script_state'])
+        if settings_state == current_state:
+            title = window_settings['window_name']
+            windows_to_change = windows.get_windows_by_title(title)
+            for window_to_change in windows_to_change:
+                way_to_change_window = get_enum_from_val(WindowAction, window_settings['window_behaviour'])
+                if way_to_change_window == WindowAction.MAX:
+                    windows.maximize_window(window_to_change)
+                elif way_to_change_window == WindowAction.MIN:
+                    windows.minimize_window(window_to_change)
+                elif way_to_change_window == WindowAction.CLOSE:
+                    windows.close_window(window_to_change)
+                elif way_to_change_window == WindowAction.MOVE:
+                    windows.move_window(window_to_change, window_settings)
+                else:
+                    log.log_message('Monitor: invalid window behaviour specified in settings')
+
+
 def routine_checks(state: ScriptStateType):
     if not state == ScriptStateType.CONSTANT:
         log.log_message(f'Routine Check: {state} is running')
     if is_script_state_used(state):
         utilities.kill_processes(state)
-        windows.window_checks(state)
+        window_checks(state)
         alt_exe_checks(state)
     if not state == ScriptStateType.CONSTANT:
         log.log_message(f'Routine Check: {state} finished')

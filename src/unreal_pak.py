@@ -4,15 +4,13 @@ import shutil
 from alive_progress import alive_bar
 import packing
 import utilities
+from unreal_engine_development_python_utilities import unreal_dev_utils
+from general_python_utilities import general_utils
 from enums import CompressionType
 
 
 def get_pak_dir_to_pack(mod_name: str):
     return f'{utilities.get_working_dir()}/{mod_name}'
-
-
-def get_unreal_pak_exe_path() -> str:
-    return f'{utilities.get_unreal_engine_dir()}/Engine/Binaries/Win64/UnrealPak.exe'
 
 
 def get_pak_dir_to_pack(mod_name: str) -> str:
@@ -37,10 +35,10 @@ def make_response_file(mod_name: str) -> str:
 def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
     move_files_for_packing(mod_name)
     compression_str = CompressionType(compression_type).value
-    output_pak_dir = f'{utilities.get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
+    output_pak_dir = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
     if not os.path.isdir(output_pak_dir):
         os.makedirs(output_pak_dir)
-    exe_path = get_unreal_pak_exe_path()
+    exe_path = unreal_dev_utils.get_unreal_pak_exe_path(utilities.get_unreal_engine_dir())
     pak_path = f'{output_pak_dir}/{mod_name}.pak'
     response_file = make_response_file(mod_name)
     command = f'{exe_path} "{pak_path}" -Create="{response_file}"'
@@ -56,7 +54,7 @@ def move_files_for_packing(mod_name: str):
     with alive_bar(len(mod_files_dict), title=f'Progress Bar: Copying files for {mod_name} mod', bar='filling', spinner='waves2') as bar:
         for before_file, after_file in mod_files_dict.items():
             if os.path.exists(after_file):
-                if not utilities.get_do_files_have_same_hash(before_file, after_file):
+                if not general_utils.get_do_files_have_same_hash(before_file, after_file):
                     os.remove(after_file)
             else:
                 if not os.path.isdir(os.path.dirname(after_file)):

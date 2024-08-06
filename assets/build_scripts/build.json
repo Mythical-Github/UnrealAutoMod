@@ -1,0 +1,145 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/__main__.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": true
+  },
+  {
+   "optionDest": "console",
+   "value": true
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/assets/images/UnrealAutoModIcon.ico"
+  },
+  {
+   "optionDest": "name",
+   "value": "UnrealAutoModCLI"
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/json/cli.json;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/json/log_colors.json;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/engine.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/enums.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/game_runner.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/mods.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/packing.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/repak_utilities.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/script_states.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/settings.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_constant.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_engine_monitor.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_game_monitor.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/unreal_pak.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/utilities.py;."
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "psutil"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "python_window_management"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "unreal_engine_development_python_utilities"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "alive_progress"
+  },
+  {
+   "optionDest": "collect_data",
+   "value": "grapheme"
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}

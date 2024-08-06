@@ -72,23 +72,23 @@
   ],
   "hot_key_info": [
     {
-      "key_enum": "6",
+      "key": "6",
       "function_enum": "close_game"
     },
     {
-      "key_enum": "7",
+      "key": "7",
       "function_enum": "close_all"
     },
     {
-      "key_enum": "8",
+      "key": "8",
       "function_enum": "unreal_to_front"
     },
     {
-      "key_enum": "9",
+      "key": "9",
       "function_enum": "game_to_front"
     },
     {
-      "key_enum": "0",
+      "key": "0",
       "function_enum": "rerun_unreal_auto_mod"
     }
   ],

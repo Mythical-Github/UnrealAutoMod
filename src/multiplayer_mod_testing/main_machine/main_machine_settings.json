@@ -1,6 +1,0 @@
-{
-    "servers": [
-        {"title": "TestingMachine", "ip": "mythical-host-name", "port": 5001}
-    ],
-    "mods_dir": "D:/SteamLibrary/steamapps/common/EscapeTheBackrooms/EscapeTheBackrooms/Content/Paks/Testing"
-}

@@ -36,6 +36,7 @@ def game_monitor_thread_logic():
             log.log_message('Process: Found Game Process')
             found_process = True
     elif not found_window:
+        time.sleep(4)
         if get_game_window():
             log.log_message('Window: Game Window Found')
             found_window = True
@@ -66,3 +67,4 @@ def game_monitor_thread():
     log.log_message('Thread: Game Monitoring Thread Started')
     game_monitor_thread.join()
     log.log_message('Thread: Game Monitoring Thread Ended')
+    log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')

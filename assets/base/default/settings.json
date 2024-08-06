@@ -37,7 +37,6 @@
     "name": "Game"
   },
   "repak_info": {
-    "repak_path": "C:/modding/unreal_engine/repak/repak.exe",
     "override_automatic_version_finding": false,
     "repak_version": "V8A"
   },
@@ -59,7 +58,7 @@
   },
   "auto_move_windows": [
     {
-      "window_name": "UE4SS",
+      "window_name": "UE4SS Debugging Tools",
       "use_substring_check": true,
       "window_behaviour": "move",
       "script_state": "post_game_launch",

@@ -1,7 +1,8 @@
 import winreg
 
-import script_states
 import utilities
+import script_states
+from python_logging import log
 from enums import ScriptStateType, GameLaunchType, ExecutionMode
 
 
@@ -58,6 +59,7 @@ def run_game_steam():
 
 
 def run_game():
+    log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_GAME_LAUNCH)
     launch_type = GameLaunchType(utilities.get_game_info_launch_type_enum_str_value())
     if launch_type == GameLaunchType.EXE:

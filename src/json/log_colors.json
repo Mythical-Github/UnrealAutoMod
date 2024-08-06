@@ -18,7 +18,8 @@
         "LogTemp:": "\u001b[38;2;255;228;181m",
         "LogCook: Display:": "\u001b[38;2;123;104;238m",
         "LogCookCommandlet: Display:": "\u001b[38;2;135;206;250m",
-        "LogInit": "\u001b[38;2;238;130;238m"
+        "LogInit": "\u001b[38;2;238;130;238m",
+        "Timer:": "\u001b[38;2;255;105;180m" 
     },
     "default_color": "\u001b[94m",
     "background_color": "\u001b[48;2;40;42;54m",

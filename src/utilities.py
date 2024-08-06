@@ -1,4 +1,5 @@
 import os
+import time
 import shutil
 import subprocess
 
@@ -307,3 +308,7 @@ def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: 
             command = f'{command} {arg}'
         log.log_message(f'Command: {command} started with the {exec_mode} enum')
         subprocess.Popen(command, cwd=working_dir, start_new_session=True, shell=True)
+
+
+def get_running_time():
+    return time.time() - settings.start_time

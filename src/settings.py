@@ -1,13 +1,16 @@
-import json
 import os
 import sys
+import time
+import json
 
 import psutil
 
-import enums
 import mods
+import enums
 
 from python_window_management.window_enums import WindowAction
+
+start_time = time.time()
 
 settings = ''
 init_settings_done = False
@@ -15,6 +18,7 @@ settings_json_dir = ''
 program_dir = ''
 mod_names = []
 settings_json = ''
+
 
 if getattr(sys, 'frozen', False):
     SCRIPT_DIR = os.path.dirname(os.path.abspath(sys.executable))

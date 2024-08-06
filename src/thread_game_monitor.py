@@ -67,3 +67,4 @@ def game_monitor_thread():
     log.log_message('Thread: Game Monitoring Thread Started')
     game_monitor_thread.join()
     log.log_message('Thread: Game Monitoring Thread Ended')
+    log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')

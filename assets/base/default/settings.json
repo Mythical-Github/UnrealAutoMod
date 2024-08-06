@@ -58,7 +58,7 @@
   },
   "auto_move_windows": [
     {
-      "window_name": "UE4SS",
+      "window_name": "UE4SS Debugging Tools",
       "use_substring_check": true,
       "window_behaviour": "move",
       "script_state": "post_game_launch",

@@ -101,7 +101,9 @@ def download_and_install_latest_version(repository="trumank/repak", install_path
         return
     
     log.log_message(f"Updating to latest version {latest_version}...")
-    
+    log.log_message("Repak is from https://github.com/trumank/repak")
+    log.log_message("and was worked on by https://github.com/trumank/repak/graphs/contributors")
+
     api_url = f"https://api.github.com/repos/{repository}/releases/latest"
     
     try:

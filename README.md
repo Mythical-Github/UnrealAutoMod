@@ -30,7 +30,7 @@ For an in editor menu version check out [UnrealAutoModInEditor](https://github.c
 * Supports loading from json file, so you can have multiple projects easily
 * Logging
 * Colorful printouts
-* Ability to run headless
+* Ability to run in the background, with no windows
 
 
 <h2>🛠️ Installation Steps:</h2>

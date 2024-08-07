@@ -30,7 +30,7 @@ For an in editor menu version check out [UnrealAutoModInEditor](https://github.c
 * Supports loading from json file, so you can have multiple projects easily
 * Logging
 * Colorful printouts
-* Ability to run headless
+* Ability to run in the background, with no windows
 
 
 <h2>🛠️ Installation Steps:</h2>
@@ -106,6 +106,7 @@ You can keep the program anywhere you'd like.
   - `repak` for general use.
   - `engine` for iostore games.
   - `loose` for games using loose file modding.
+  - `unreal_pak` for when you want to pak using unreal_pak, from your game engine install, usually not ever needed.
 
 - **`compression_type`**: Determines the compression method for the mod archives. Not applicable for loose file modding.
 

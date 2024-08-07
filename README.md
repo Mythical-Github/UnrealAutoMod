@@ -1,12 +1,12 @@
 <h1 id="title" align="left">UnrealAutoMod</h1>
 
-Easy To Use Command Line Modding Utility For Unreal Engine Games 4.0-5.4
-Automates creation, and placement, of mod archives, and other various actions.
-For an in editor menu version be sure to check out [UnrealAutoModInEditor](https://github.com/Mythical-Github/UnrealAutoModInEditor)
+Easy To Use Command Line Modding Utility For Unreal Engine Games 4.0-5.4 <br>
+Automates creation, and placement, of mod archives, and other various actions. <br>
+For an in editor menu version check out [UnrealAutoModInEditor](https://github.com/Mythical-Github/UnrealAutoModInEditor)
 
 <h2>Project Example:</h2>
 
-[![Project Screenshot](https://github.com/Mythical-Github/UnrealAutoMod/assets/4b65e3a3-ae7f-4881-bea4-e73191594587.png)](https://github.com/user-attachments/assets/4b65e3a3-ae7f-4881-bea4-e73191594587.mp4) # update this to use a better example
+[![Project Screenshot](https://github.com/Mythical-Github/UnrealAutoMod/assets/4b65e3a3-ae7f-4881-bea4-e73191594587.png)](https://github.com/user-attachments/assets/76da1afc-9c30-4ec8-b27c-8c072e73f696)
 
 
 <h2>💪 Features</h2>
@@ -126,7 +126,7 @@ You can keep the program anywhere you'd like.
    Once everything is set up, you can proceed to the [Running Steps](#running-steps).
 
 **Notes:**
-- For JSON paths, use backslashes (`\`) instead of forward slashes (`/`). Make sure your paths match this format when editing the JSON file.
+- For JSON paths, use forward slashes (`/`) instead of backslashes (`\`). Make sure your paths match this format when editing the JSON file.
 
 <h2 id="running-steps">🏃 Running Steps:</h2>
 The release version, has some included bat files.<br>

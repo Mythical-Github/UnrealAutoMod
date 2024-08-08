@@ -1,3 +1,5 @@
+import __init__
+
 import sys
 from pathlib import Path
 

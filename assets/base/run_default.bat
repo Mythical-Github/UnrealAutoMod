@@ -9,12 +9,10 @@ set settings_json="%CD%\default\settings.json"
 set arg=test_mods_all
 set command=%exe_file% %settings_json% %arg%
 
-
 rem echo %command%
-%command%
+start "" /B %command%
 
-
-rem pause
+pause
 
 
 exit /b

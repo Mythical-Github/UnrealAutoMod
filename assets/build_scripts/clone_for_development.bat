@@ -10,12 +10,9 @@ set "base_dir=%~dp0UnrealAutoMod"
 pip install uv
 
 :: Remove the existing directory if it exists
-if exist "%base_dir%" (
-    rmdir /s /q "%base_dir%"
+if not exist "%base_dir%" (
+    git clone https://github.com/Mythical-Github/UnrealAutoMod.git "%base_dir%"
 )
-
-:: Clone the repository
-git clone https://github.com/Mythical-Github/UnrealAutoMod.git "%base_dir%"
 
 :: Change to the base directory
 cd "%base_dir%"

@@ -14,6 +14,7 @@ base_path = Path(src_dir)
 files_to_include = [
     base_path / "json/cli.json",
     base_path / "json/log_colors.json",
+    base_path / "__init__.py",
     base_path / "engine.py",
     base_path / "enums.py",
     base_path / "game_runner.py",

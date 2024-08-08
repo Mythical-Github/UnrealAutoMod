@@ -1,1 +1,10 @@
-pyinstaller --noconfirm --onefile --console --icon "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/assets/images/UnrealAutoModIcon.ico" --name "UnrealAutoModCLI" --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/json/cli.json;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/json/log_colors.json;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/engine.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/enums.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/game_runner.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/mods.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/packing.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/repak_utilities.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/script_states.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/settings.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_constant.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_engine_monitor.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/thread_game_monitor.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/unreal_pak.py;." --add-data "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/utilities.py;." --collect-submodules "psutil" --collect-submodules "python_window_management" --collect-submodules "unreal_engine_development_python_utilities" --collect-submodules "alive_progress" --collect-data "grapheme"  "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/__main__.py"
+pyinstaller 
+--noconfirm 
+--onefile 
+--console 
+--icon "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/assets/images/UnrealAutoModIcon.ico" 
+--name "UnrealAutoModCLI" 
+
+
+
+  "C:/Users/Mythical/Documents/GitHub/UnrealAutoMod/src/__main__.py"

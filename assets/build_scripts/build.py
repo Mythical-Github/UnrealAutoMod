@@ -12,34 +12,34 @@ src_dir = f'{os.path.dirname(os.path.dirname(SCRIPT_DIR))}/src'
 
 base_path = Path(src_dir)
 files_to_include = [
-    base_path / "__main__.py",
-    base_path / "cli.json",
-    base_path / "cli.py",
+    base_path / "json/cli.json",
+    base_path / "json/log_colors.json",
     base_path / "engine.py",
     base_path / "enums.py",
-    base_path / "epic.py",
     base_path / "game_runner.py",
+    base_path / "mods.py",
     base_path / "packing.py",
+    base_path / "repak_utilities.py",
     base_path / "script_states.py",
     base_path / "settings.py",
-    base_path / "steam.py",
     base_path / "thread_constant.py",
     base_path / "thread_engine_monitor.py",
     base_path / "thread_game_monitor.py",
     base_path / "unreal_pak.py",
-    base_path / "utilities.py",
-    base_path / "windows.py",
-    base_path / "log.py",
-    base_path / "mods.py"
-
+    base_path / "utilities.py"
 ]
 
 pyinstaller_cmd = [
-    "pyinstaller",
-    "--collect-data grapheme",
-    "--noconfirm",
-    "--onefile",
-    "--console",
+    'pyinstaller',
+    '--collect-data grapheme',
+    '--collect-submodules "psutil"',
+    '--collect-submodules "python_window_management"',
+    '--collect-submodules "unreal_engine_development_python_utilities"',
+    '--collect-submodules "alive_progress"',
+    '--collect-submodules "requests"',
+    '--noconfirm',
+    '--onefile',
+    '--console',
     f"--icon={base_path.parent / 'assets/images/UnrealAutoModIcon.ico'}"
 ]
 

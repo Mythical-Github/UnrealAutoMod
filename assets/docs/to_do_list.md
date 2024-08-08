@@ -29,5 +29,5 @@
 - [ ] Utility DLL, sockets
 - [ ] Utility DLL, file io
 - [ ] Loose file copying / original game file tracker to alleviate loose modding issues
-- [ ] update read me
-- [ ] witch to json with comments
+- [ ] deal with concurrent running problems
+- [ ] better timers

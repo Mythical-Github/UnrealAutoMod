@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='unreal_auto_mod',
+    name='UnrealAutoMod',
     version='0.1',
     packages=find_packages(),
     install_requires=[

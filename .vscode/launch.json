@@ -5,7 +5,7 @@
       "name": "test_mods",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/src/__main__.py",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
       "console": "integratedTerminal",
       "args": [
         "${workspaceFolder}/assets/base/default/settings.json",
@@ -20,7 +20,7 @@
       "name": "test_mods_all",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/src/__main__.py",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
       "console": "integratedTerminal",
       "args": [
         "${workspaceFolder}/assets/base/default/settings.json",

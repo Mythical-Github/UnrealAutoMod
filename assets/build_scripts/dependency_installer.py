@@ -12,20 +12,19 @@ def run_command(command):
         print(e.output, file=sys.stderr)
         print(e.stderr, file=sys.stderr)
 
-# UPDATE THIS LATER
 
 def main():
     commands = [
-        "pip uninstall python_logging -y",
+        "pip uninstall log_py -y",
         "pip uninstall cli_py -y",
-        "pip uninstall unreal_engine_development_python_utilities -y",
-        "pip uninstall python_window_management -y",
-        "pip uninstall general_python_utilities -y",
-        "pip install git+https://github.com/Mythical-Github/python_logging.git",
+        "pip uninstall ue_dev_py_utils -y",
+        "pip uninstall win_man_py -y",
+        "pip uninstall gen_py_utils -y",
+        "pip install git+https://github.com/Mythical-Github/log_py.git",
         "pip install git+https://github.com/Mythical-Github/cli_py.git",
-        "pip install git+https://github.com/Mythical-Github/unreal_engine_development_python_utilities.git",
-        "pip install git+https://github.com/Mythical-Github/python_window_management.git",
-        "pip install git+https://github.com/Mythical-Github/general_python_utilities.git"
+        "pip install git+https://github.com/Mythical-Github/ue_dev_py_utils.git",
+        "pip install git+https://github.com/Mythical-Github/win_man_py.git",
+        "pip install git+https://github.com/Mythical-Github/gen_py_utils.git"
     ]
 
     for command in commands:

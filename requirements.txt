@@ -14,5 +14,5 @@ pyrect==0.2.0
     # via pygetwindow
 screeninfo==0.8.1
     # via win-man-py
-ue-dev-py-utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils.git@f879b3813eb8cdff4238352b263f7030cb644670
+ue-dev-py-utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils.git@44378ff19079fc342225acd8253df9ed21d41713
 win-man-py @ git+https://github.com/Mythical-Github/win_man_py.git@58ed850459bf47bac0c96f6eeb1720cf3c19bc2e

@@ -1,9 +1,9 @@
 import settings
 import utilities
-from python_window_management import windows
+from win_man_py import win_man_py as windows
 from enums import ExecutionMode, ScriptStateType, get_enum_from_val
-from python_window_management.window_enums import WindowAction
-from python_logging import log
+from win_man_py.win_man_py import WindowAction
+from log_py import log_py as log
 
 
 def alt_exe_checks(script_state_type: ScriptStateType):

@@ -1,8 +1,8 @@
-from unreal_engine_development_python_utilities import unreal_dev_enums, unreal_dev_utils
+from ue_dev_py_utils import unreal_dev_enums, unreal_dev_utils
 from enums import  ExecutionMode, ScriptStateType
 import script_states
 import thread_engine_monitor
-from general_python_utilities import general_utils
+from gen_py_utils import gen_py_utils as general_utils
 import utilities
 
 

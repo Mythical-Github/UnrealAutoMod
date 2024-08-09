@@ -6,8 +6,8 @@ import subprocess
 import settings
 from enums import ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 from python_logging import log
-from general_python_utilities import general_utils
-from unreal_engine_development_python_utilities import unreal_dev_utils
+from gen_py_utils import gen_py_utils as general_utils
+from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
 
 
 def get_game_info_launch_type_enum_str_value() -> str:

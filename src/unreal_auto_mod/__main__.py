@@ -3,8 +3,8 @@ import __init__
 import sys
 from pathlib import Path
 
-from cli_py import cli
-from python_logging import log
+from cli_py import cli_py as cli
+from log_py import log_py as log
 
 
 if getattr(sys, 'frozen', False):

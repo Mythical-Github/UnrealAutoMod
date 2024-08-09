@@ -4,7 +4,7 @@ import subprocess
 
 import settings
 import utilities
-from python_logging import log
+from log_py import log_py as log
 
 
 def get_repak_version_str_from_engine_version() -> str:

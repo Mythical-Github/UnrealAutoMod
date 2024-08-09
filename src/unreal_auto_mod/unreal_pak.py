@@ -4,8 +4,8 @@ import shutil
 from alive_progress import alive_bar
 import packing
 import utilities
-from unreal_engine_development_python_utilities import unreal_dev_utils
-from general_python_utilities import general_utils
+from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
+from gen_py_utils import gen_py_utils as general_utils
 from enums import CompressionType
 
 

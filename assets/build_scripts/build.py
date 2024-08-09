@@ -8,7 +8,7 @@ else:
     SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 os.chdir(SCRIPT_DIR)
 
-src_dir = f'{os.path.dirname(os.path.dirname(SCRIPT_DIR))}/src'
+src_dir = f'{os.path.dirname(os.path.dirname(SCRIPT_DIR))}/src/unreal_auto_mod'
 
 base_path = Path(src_dir)
 files_to_include = [
@@ -41,7 +41,7 @@ pyinstaller_cmd = [
     '--noconfirm',
     '--onefile',
     '--console',
-    f"--icon={base_path.parent / 'assets/images/UnrealAutoModIcon.ico'}"
+    f"--icon={base_path.parent.parent / 'assets/images/UnrealAutoModIcon.ico'}"
 ]
 
 for file_path in files_to_include:

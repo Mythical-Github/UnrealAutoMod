@@ -3,11 +3,11 @@ import time
 
 import script_states
 import utilities
-from python_window_management import windows
+from win_man_py.win_man_py import windows
 from enums import ScriptStateType
-from python_logging import log
-from unreal_engine_development_python_utilities import unreal_dev_utils
-from general_python_utilities import general_utils
+from log_py import log_py as log
+from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
+from gen_py_utils import gen_py_utils as general_utils
 
 init_done = False
 

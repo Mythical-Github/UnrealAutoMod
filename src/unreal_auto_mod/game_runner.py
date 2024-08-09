@@ -2,7 +2,7 @@ import winreg
 
 import utilities
 import script_states
-from python_logging import log
+from log_py import log_py as log
 from enums import ScriptStateType, GameLaunchType, ExecutionMode
 
 

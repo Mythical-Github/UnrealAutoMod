@@ -8,7 +8,7 @@ import psutil
 import mods
 import enums
 
-from python_window_management.window_enums import WindowAction
+from win_man_py.win_man_enums import WindowAction
 
 start_time = time.time()
 

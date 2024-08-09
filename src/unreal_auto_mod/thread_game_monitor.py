@@ -3,10 +3,10 @@ import time
 
 import script_states
 import utilities
-from python_window_management import windows
+from win_man_py.win_man_py import windows
 from enums import ScriptStateType
-from python_logging import log
-from general_python_utilities import general_utils
+from log_py import log_py as log
+from gen_py_utils import gen_py_utils as general_utils
 
 
 found_process = False

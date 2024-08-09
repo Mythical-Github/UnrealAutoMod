@@ -3,7 +3,7 @@ import __init__
 import sys
 from pathlib import Path
 
-import cli_py.cli_py
+from cli_py import cli_py
 from log_py import log_py as log
 
 

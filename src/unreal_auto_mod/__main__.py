@@ -4,7 +4,6 @@ import sys
 from pathlib import Path
 
 import cli_py.cli_py
-import log_py
 from log_py import log_py as log
 
 

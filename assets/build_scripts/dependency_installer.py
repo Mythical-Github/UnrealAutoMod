@@ -12,6 +12,8 @@ def run_command(command):
         print(e.output, file=sys.stderr)
         print(e.stderr, file=sys.stderr)
 
+# UPDATE THIS LATER
+
 def main():
     commands = [
         "pip uninstall python_logging -y",

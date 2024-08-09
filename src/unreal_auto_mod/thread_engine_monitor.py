@@ -3,7 +3,7 @@ import time
 
 import script_states
 import utilities
-from win_man_py.win_man_py import windows
+import win_man_py as windows
 from enums import ScriptStateType
 from log_py import log_py as log
 from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils

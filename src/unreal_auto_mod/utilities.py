@@ -5,7 +5,7 @@ import subprocess
 
 import settings
 from enums import ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
-from python_logging import log
+from log_py import log_py as log
 from gen_py_utils import gen_py_utils as general_utils
 from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
 

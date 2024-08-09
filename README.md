@@ -35,7 +35,7 @@ For an in editor menu version check out [UnrealAutoModInEditor](https://github.c
 
 <h2>🛠️ Installation Steps:</h2>
 
-1. **Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest).**
+1. Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest).\
 You can keep the program anywhere you'd like.
 ###
 2. **Configure the default JSON file:**  
@@ -168,6 +168,15 @@ __main__.py settings.json test_mods_all
 ```
 __main__.py settings.json test_mods <mod_name> [<mod_name> ...]
 ```
+
+<h2>💻 Building UnrealAutoMod</h2>
+
+* To setup the virtual env, UnrealAutoMod uses uv, you must have a valid python and git install, for git, you may need your ssh keys setup
+* Download the Development.zip from the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest).
+* Unzip to wherever you'd like, and run the setup bat file
+* If you'd like to generate an exe release, run "UnrealAutoMod/assets/build_scripts/run_build_and_zip.py"
+* The exe release will end up in "UnrealAutoMod/assets/base"
+* To learn more about using uv's check out their [documentation](https://docs.astral.sh/uv/)
 
 <h2>💻 References</h2>
 

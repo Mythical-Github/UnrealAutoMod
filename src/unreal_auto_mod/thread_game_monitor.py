@@ -3,7 +3,7 @@ import time
 
 import script_states
 import utilities
-import win_man_py as windows
+from win_man_py import win_man_py
 from enums import ScriptStateType
 from log_py import log_py as log
 from gen_py_utils import gen_py_utils as general_utils
@@ -23,7 +23,7 @@ def game_monitor_thread_runner(tick_rate: float = 0.01):
 
 
 def get_game_window():
-    return windows.get_window_by_title(utilities.get_game_window_title())
+    return win_man_py.get_window_by_title(utilities.get_game_window_title())
 
 
 def game_monitor_thread_logic():

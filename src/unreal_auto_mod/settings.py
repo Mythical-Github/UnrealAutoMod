@@ -4,11 +4,12 @@ import time
 import json
 
 import psutil
+import win_man_py.win_man_enums
 
 import mods
 import enums
 
-from win_man_py.win_man_enums import WindowAction
+import win_man_py
 
 start_time = time.time()
 
@@ -355,7 +356,7 @@ def set_script_state_in_window_management_entry(settings_json: str, window_name:
     save_settings(pass_settings(settings_json))
 
 
-def set_window_state_in_window_management_entry(settings_json: str, window_name: str, window_state: WindowAction):
+def set_window_state_in_window_management_entry(settings_json: str, window_name: str, window_state: win_man_py.win_man_enums.WindowAction):
     for window_entry in settings["auto_move_windows"]:
         if window_entry['window_name'] == window_name:
             window_entry['window_behaviour'] = window_state.value
@@ -507,7 +508,7 @@ def add_process_kill_entry(settings_json: str, process_name: str, use_substring_
 
 
 def add_window_management_entry(settings_json: str, window_name: str, use_substring_check: bool,
-                                window_behaviour: WindowAction, script_state: enums.ScriptStateType,
+                                window_behaviour: win_man_py.win_man_enums.WindowAction, script_state: enums.ScriptStateType,
                                 monitor_index: int, resolution_x: int, resolution_y: int):
     new_entry = {
         "window_name": window_name,

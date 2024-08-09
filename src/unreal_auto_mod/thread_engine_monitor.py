@@ -1,9 +1,11 @@
 import threading
 import time
 
+
+
 import script_states
 import utilities
-import win_man_py as windows
+import win_man_py.win_man_py
 from enums import ScriptStateType
 from log_py import log_py as log
 from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
@@ -40,17 +42,17 @@ def engine_monitor_thread_logic():
 
     engine_window_name = unreal_dev_utils.get_engine_window_title(utilities.get_uproject_file())
     if not found_process:
-        engine_process_name = unreal_dev_utils.get_engine_process_name()
+        engine_process_name = unreal_dev_utils.get_engine_process_name(utilities.get_unreal_engine_dir())
         if general_utils.is_process_running(engine_process_name):
             log.log_message('Process: Found Engine Process')
             found_process = True
     elif not found_window:
-        if windows.does_window_exist(engine_window_name):
+        if win_man_py.win_man_py.does_window_exist(engine_window_name):
             log.log_message('Window: Engine Window Found')
             found_window = True
             script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
     elif not window_closed:
-        if not windows.does_window_exist(engine_window_name):
+        if not win_man_py.win_man_py.does_window_exist(engine_window_name):
             log.log_message('Window: Engine Window Closed')
             window_closed = True
             script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)

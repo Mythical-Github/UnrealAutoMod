@@ -1,4 +1,5 @@
 import win_man_py.win_man_enums
+import win_man_py.win_man_py
 import settings
 import utilities
 from win_man_py import win_man_py as windows
@@ -53,7 +54,7 @@ def window_checks(current_state: win_man_py.win_man_enums.WindowAction):
         settings_state = get_enum_from_val(ScriptStateType, window_settings['script_state'])
         if settings_state == current_state:
             title = window_settings['window_name']
-            windows_to_change = windows.get_windows_by_title(title)
+            windows_to_change = win_man_py.win_man_py.get_windows_by_title(title)
             for window_to_change in windows_to_change:
                 way_to_change_window = get_enum_from_val(win_man_py.win_man_enums.WindowAction, window_settings['window_behaviour'])
                 if way_to_change_window == win_man_py.win_man_enums.WindowAction.MAX:

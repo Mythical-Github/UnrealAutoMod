@@ -2,6 +2,10 @@
 
 set "UnrealAutoModDir=%~dp0/UnrealAutoMod"
 
+if not exist  "%~dp0/UnrealAutoMod" (
+     "%~dp0/UnrealAutoModDevSetup.bat"
+)
+
 cd /d %UnrealAutoModDir%
 
 set "build_py=%CD%/assets/build_scripts/run_build_and_zip.py"

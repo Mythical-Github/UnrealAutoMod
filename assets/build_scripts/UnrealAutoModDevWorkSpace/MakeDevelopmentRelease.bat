@@ -12,5 +12,3 @@ cd /d "%UnrealAutoModDir%"
 
 echo Creating zip file from %DevelopmentDirToZip% to %FinalZipLocation%
 powershell -Command "Compress-Archive -Path '%DevelopmentDirToZip%' -DestinationPath '%FinalZipLocation%' -Force"
-
-exit /b 0

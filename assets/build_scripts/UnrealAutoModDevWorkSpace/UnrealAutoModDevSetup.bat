@@ -22,9 +22,4 @@ set command=uv run "%base_dir%/src/unreal_auto_mod/__main__.py" test_mods_all -h
 
 :: Create and activate the virtual environment, then install requirements, then run the application, then pause
 uv venv
-.venv\Scripts\activate && uv pip install -r requirements.txt && %command% && pause
-
-pause
-
-:: Exit the script
-exit /b 0
+.venv\Scripts\activate && uv pip install -r requirements.txt && %command%

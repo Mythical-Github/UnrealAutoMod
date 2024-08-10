@@ -3,7 +3,7 @@
 set "UnrealAutoModDir=%~dp0/UnrealAutoMod"
 
 if not exist  "%~dp0/UnrealAutoMod" (
-     "%~dp0/UnrealAutoModDevSetup.bat"
+     call "%~dp0/UnrealAutoModDevSetup.bat"
 )
 
 cd /d %UnrealAutoModDir%
@@ -19,5 +19,3 @@ if exist "%built_release_after%" (
 )
 
 copy /Y "%built_release_before%" "%built_release_after%"
-
-exit /b 0

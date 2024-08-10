@@ -3,7 +3,7 @@
 
 cd %~dp0
 
-taskkill /f /im "UnrealAutoModCLI.exe" > nul
+taskkill /f /im "UnrealAutoModCLI.exe" > nul 2>&1
 
 set exe_file="%CD%\UnrealAutoModCLI.exe"
 set settings_json="%CD%\default\settings.json"

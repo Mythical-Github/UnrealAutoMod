@@ -11,7 +11,7 @@ pip install uv
 
 :: Remove the existing directory if it exists
 if not exist "%base_dir%" (
-    git clone https://github.com/Mythical-Github/UnrealAutoMod.git "%base_dir%"
+    git clone -b dev https://github.com/Mythical-Github/UnrealAutoMod.git "%base_dir%"
 )
 
 :: Change to the base directory

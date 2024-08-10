@@ -3,8 +3,9 @@
 cd /d %~dp0
 
 call MakeUnrealAutoModRelease.bat
-call MakeDevelopmentRelease.bat
 
-pause
+cd /d %~dp0
+
+call MakeDevelopmentRelease.bat
 
 exit /b 0

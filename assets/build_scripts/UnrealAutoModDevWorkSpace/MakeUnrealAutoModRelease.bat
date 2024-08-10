@@ -1,35 +1,19 @@
 @echo off
 
-cd "%~dp0/UnrealAutoMod"
+set "UnrealAutoModDir=%~dp0/UnrealAutoMod"
 
-setlocal
+cd /d %UnrealAutoModDir%
 
-set /p desc=Enter commit description: 
+set "build_py=%CD%/assets/build_scripts/run_build_and_zip.py"
+set "built_release_before=%CD%\assets\base\UnrealAutoMod.zip"
+set "built_release_after=%~dp0UnrealAutoMod.zip"
 
-git status --porcelain >nul 2>&1
-if %errorlevel% neq 0 (
-    echo No changes detected or not in a Git repository.
-    exit /b 1
+%build_py%
+
+if exist "%built_release_after%" (
+    del /q "%built_release_after%"
 )
 
-git checkout dev
-if %errorlevel% neq 0 (
-    echo Failed to switch to the dev branch.
-    exit /b 1
-)
+copy /Y "%built_release_before%" "%built_release_after%"
 
-git add .
-
-git commit -m "%desc%"
-if %errorlevel% neq 0 (
-    echo Commit failed.
-    exit /b 1
-)
-
-git push origin dev
-if %errorlevel% neq 0 (
-    echo Push failed.
-    exit /b 1
-)
-
-endlocal
+exit /b 0

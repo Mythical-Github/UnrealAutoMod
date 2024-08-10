@@ -29,7 +29,7 @@
 - [ ] Utility DLL, file io
 - [ ] Loose file copying / original game file tracker to alleviate loose modding issues
 - [ ] 
-- [ ] deal with concurrent running problems
 - [ ] better timers
 - [ ] UV / other dependency management, this exists, but clean it up
-- [ ] init py and other similar things, look into
+- [ ] init py centralized dependencies
+- [ ] individual virtual env scripts?

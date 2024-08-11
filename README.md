@@ -54,6 +54,7 @@ You can keep the program anywhere you'd like.
   
 
   ```
+   {
       {
       "mod_name": "MapKit",
       "pak_dir_structure": "~mods",
@@ -118,6 +119,7 @@ You can keep the program anywhere you'd like.
 
 ### Additional Notes
 
+* For JSON paths, use forward slashes (`/`) instead of backslashes (`\`). Make sure your paths match this format when editing the JSON file.
 * [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
 * [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/faq.md)
 
@@ -125,9 +127,6 @@ You can keep the program anywhere you'd like.
 
 4. **Run the application:**  
    Once everything is set up, you can proceed to the [Running Steps](#running-steps).
-
-**Notes:**
-- For JSON paths, use forward slashes (`/`) instead of backslashes (`\`). Make sure your paths match this format when editing the JSON file.
 
 <h2 id="running-steps">🏃 Running Steps:</h2>
 The release version, has some included bat files.<br>
@@ -174,8 +173,8 @@ __main__.py settings.json test_mods <mod_name> [<mod_name> ...]
 * To setup the virtual env, UnrealAutoMod uses [uv](https://github.com/astral-sh/uv), you must have a valid python and git install, for git, you may need your ssh keys setup
 * Download the Development.zip from the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest).
 * Unzip to wherever you'd like, and run the setup bat file
-* There are several bat files to help ease development
-* To learn more about using uv's check out their [documentation](https://docs.astral.sh/uv/)
+* There are several other bat files to help ease development
+* To learn more about using [uv](https://github.com/astral-sh/uv) check out the [documentation](https://docs.astral.sh/uv/)
 
 <h2>💻 References</h2>
 

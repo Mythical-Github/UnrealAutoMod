@@ -37,17 +37,32 @@ For an in editor menu version check out [UnrealAutoModInEditor](https://github.c
 
 1. Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest).\
 You can keep the program anywhere you'd like.
-###
-2. **Configure the default JSON file:**  
-   Most users will only need to edit a few settings. You can do this with a text editor. 
-   In the JSON file, you will typically need to update:
-   - The Unreal Engine `.uproject` file path
-   - The Unreal Engine directory
-   - The game's win64 executable path
-   - The Steam app ID (if using the steam launch method, opposed to the exe method)
-   - The window title override string (the launched game's window label)
 
-   After configuring these settings, you can proceed to configure the mod list. 
+### 2. **Configure the Default JSON File**
+
+Most users will only need to edit a few settings, which can be done with a text editor. In the JSON file, you typically need to update the following:
+
+- **Unreal Engine `.uproject` File Path**  
+  Specify the path to your Unreal Engine project file.
+
+- **Unreal Engine Directory**  
+  Define the directory where Unreal Engine is installed.
+
+- **Game's Win64 Executable Path**  
+  Set the path to the game's Win64 executable. Ensure that the path is valid:
+  - **Correct Example (x):**  
+    `"D:\SteamLibrary\steamapps\common\Zedfest\KevinSpel\Binaries\Win64\Zedfest.exe"`
+  - **Incorrect Example (y):**  
+    `"D:\SteamLibrary\steamapps\common\Zedfest\KevinSpel.exe"`
+
+- **Steam App ID**  
+  If using the Steam launch method (as opposed to the executable method), enter the Steam App ID.
+
+- **Window Title Override String**  
+  Specify the string for the launched game's window label.
+
+After configuring these settings, you can proceed to configure the mod list.
+
 ###
 3. **Configure the mod list:**  
    You can include any number of mod entries in the list.

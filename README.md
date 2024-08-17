@@ -50,9 +50,9 @@ Most users will only need to edit a few settings, which can be done with a text 
 
 - **Game's Win64 Executable Path**  
   Set the path to the game's Win64 executable. Ensure that the path is valid:
-  - **Correct Example (x):**  
+  - **Correct Example:**  
     `"D:\SteamLibrary\steamapps\common\Zedfest\KevinSpel\Binaries\Win64\Zedfest.exe"`
-  - **Incorrect Example (y):**  
+  - **Incorrect Example:**  
     `"D:\SteamLibrary\steamapps\common\Zedfest\KevinSpel.exe"`
 
 - **Steam App ID**  

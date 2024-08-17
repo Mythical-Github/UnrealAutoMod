@@ -16,7 +16,7 @@ grapheme==0.6.0
     # via alive-progress
 idna==3.7
     # via requests
-log-py @ git+https://github.com/Mythical-Github/log_py.git@4bc47040b7ccb284db9838e6139f073e483ec121
+log-py @ git+https://github.com/Mythical-Github/log_py.git@37c60d7827b62ffe4c074af1ac3be782ccfabf49
     # via
     #   cli-py
     #   win-man-py

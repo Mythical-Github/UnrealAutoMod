@@ -113,8 +113,16 @@ def package_uproject():
     run_proj_command(get_engine_pak_command())
 
 
+# def run_proj_command(command: str):
+#     utilities.run_app(command, working_dir=utilities.get_unreal_engine_dir())
+
+
 def run_proj_command(command: str):
-    utilities.run_app(command, working_dir=utilities.get_unreal_engine_dir())
+    command_parts = command.split(' ')
+    executable = command_parts[0]
+    args = command_parts[1:]
+    utilities.run_app(exe_path=executable, args=args, working_dir=utilities.get_unreal_engine_dir())
+
 
 
 def handle_uninstall_logic(packing_type: PackingType):
@@ -233,6 +241,13 @@ def make_pak_repak(mod_name: str):
 
     compression_type_str = utilities.get_mod_pak_info(mod_name)['compression_type']
     before_symlinked_dir = f'{utilities.get_working_dir()}/{mod_name}'
+
+    if not os.path.isdir(before_symlinked_dir) or not os.listdir(before_symlinked_dir):
+        import log_py.log_py
+        log_py.log_py.log_message(f'Error: {before_symlinked_dir}')
+        log_py.log_py.log_message(f'Error: does not exist or is empty, indicating a packaging and/or config issue')
+        raise FileNotFoundError()
+
 
     command = f'"{repak_utilities.get_package_path()}" pack "{before_symlinked_dir}" "{pak_dir}/{mod_name}.pak"'
     if not compression_type_str == 'None':

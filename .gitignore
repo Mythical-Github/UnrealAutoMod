@@ -8,3 +8,4 @@ assets/base/UnrealAutoMod.zip
 assets/build_scripts/__main__.spec
 /src/working_dir
 /assets/base/logs
+/src/unreal_auto_mod/working_dir

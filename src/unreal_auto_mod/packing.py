@@ -113,8 +113,16 @@ def package_uproject():
     run_proj_command(get_engine_pak_command())
 
 
+# def run_proj_command(command: str):
+#     utilities.run_app(command, working_dir=utilities.get_unreal_engine_dir())
+
+
 def run_proj_command(command: str):
-    utilities.run_app(command, working_dir=utilities.get_unreal_engine_dir())
+    command_parts = command.split(' ')
+    executable = command_parts[0]
+    args = command_parts[1:]
+    utilities.run_app(exe_path=executable, args=args, working_dir=utilities.get_unreal_engine_dir())
+
 
 
 def handle_uninstall_logic(packing_type: PackingType):

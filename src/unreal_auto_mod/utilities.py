@@ -283,10 +283,10 @@ def get_game_window_title() -> str:
 def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):
     if exec_mode == ExecutionMode.SYNC:
         command = exe_path
+        if working_dir:
+            command = f'"{working_dir}/{command}"'
         for arg in args:
             command = f'{command} {arg}'
-        if working_dir:
-            command = f'{working_dir}/{command}'
         log.log_message(f'Command: {command} running with the {exec_mode} enum')
         if working_dir:
             if os.path.isdir(working_dir):

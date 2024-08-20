@@ -10,6 +10,14 @@ from gen_py_utils import gen_py_utils as general_utils
 from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
 
 
+def get_is_using_repak_path_override() -> bool:
+    return settings.settings['repak_info']['override_default_repak_path']
+
+
+def get_repak_path_override() -> str:
+    return settings.settings['repak_info']['repak_path_override']
+
+
 def get_game_info_launch_type_enum_str_value() -> str:
     return settings.settings['game_info']['launch_type']
 

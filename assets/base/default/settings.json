@@ -19,7 +19,7 @@
     "unreal_engine_minor_version": "22"
   },
   "game_info": {
-    "game_exe_path": "D:/SteamLibrary/steamapps/common/Zedfest/KevinSpel/Binaries/Win64/Zedfest.exe",
+    "game_exe_path": "F:/SteamLibrary/steamapps/common/Zedfest/KevinSpel/Binaries/Win64/Zedfest.exe",
     "launch_type": "exe",
     "override_automatic_launcher_exe_finding": false,
     "game_launcher_exe": "C:/Program Files (x86)/Steam/steam.exe",
@@ -37,6 +37,8 @@
     "name": "Game"
   },
   "repak_info": {
+    "override_default_repak_path": false,
+    "repak_path_override": "C:/modding/unreal_engine/repak/wukong/repak.exe",
     "override_automatic_version_finding": false,
     "repak_version": "V8A"
   },

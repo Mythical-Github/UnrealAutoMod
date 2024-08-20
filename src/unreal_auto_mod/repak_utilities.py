@@ -139,9 +139,10 @@ def download_and_install_latest_version(repository='trumank/repak', install_path
 
 
 def get_package_path():
-    user_home = os.path.expanduser('~')
-    package_path = os.path.join(user_home, '.cargo', 'bin', 'repak.exe')
-    return package_path
+    if utilities.get_is_using_repak_path_override():
+        return utilities.get_repak_path_override()
+    else:
+        return os.path.join(os.path.expanduser('~'), '.cargo', 'bin', 'repak.exe')
 
-
-download_and_install_latest_version()
+if not utilities.get_is_using_repak_path_override():
+    download_and_install_latest_version()

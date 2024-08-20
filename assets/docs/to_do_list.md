@@ -33,3 +33,5 @@
 - [ ] UV / other dependency management, this exists, but clean it up
 - [ ] init py centralized dependencies
 - [ ] individual virtual env scripts?
+- [ ] Validation steps first, before running other stuff 
+- [ ] 

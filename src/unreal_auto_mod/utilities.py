@@ -132,7 +132,6 @@ def is_toggle_engine_during_testing_in_use() -> bool:
 
 def get_uproject_file() -> str:
     uproject_file = settings.settings['engine_info']['unreal_project_file']
-    general_utils.check_file_exists(uproject_file)
     return uproject_file
 
 

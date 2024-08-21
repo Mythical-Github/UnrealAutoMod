@@ -59,9 +59,41 @@ def init_settings(settings_json_path: str):
     return
 
 
+def check_file_exists(file_path: str) -> bool:
+    if os.path.exists(file_path):
+        return True
+    else:
+        raise FileNotFoundError(f'File "{file_path}" not found.')
+
+
+def init_checks():
+    import utilities
+    import log_py.log_py as log
+
+
+    check_file_exists(utilities.get_uproject_file())
+    log.log_message('Check: Uproject file exists')
+
+    check_file_exists(f'{utilities.get_unreal_engine_dir()}/Engine/Binaries/Win64/UE4Editor.exe')
+    log.log_message('Check: Unreal Engine exists')
+
+    if utilities.get_is_using_repak_path_override():
+        check_file_exists(utilities.get_repak_path_override())
+        log.log_message('Check: Repak exists')
+
+    if not utilities.get_skip_launching_game():
+        check_file_exists(utilities.get_game_exe_path())
+        log.log_message('Check: Game exists')
+
+
+    log.log_message('Check: Passed all init checks')
+
+
 def load_settings(settings_json: str):
+    
     if not init_settings_done:
         init_settings(settings_json)
+    init_checks()
     with open(settings_json, 'r') as file:
         return json.load(file)
 

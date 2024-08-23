@@ -88,7 +88,7 @@ def get_installed_version(executable_path):
 def download_and_install_latest_version(repository='trumank/repak', install_path=None):
     latest_version = get_latest_version_number(repository)
     if not latest_version:
-        log.log_message('Error: Could not retrieve the latest version number.')
+        log.log_message('Error: Could not retrieve the latest version number of Repak.')
         return
     
     if install_path is None:
@@ -97,10 +97,10 @@ def download_and_install_latest_version(repository='trumank/repak', install_path
     installed_version = get_installed_version(os.path.join(install_path, 'repak.exe'))
     
     if installed_version == latest_version:
-        log.log_message('The latest version is already installed.')
+        log.log_message('The latest version of Repak is already installed.')
         return
     
-    log.log_message(f'Updating to latest version {latest_version}...')
+    log.log_message(f'Updating Repak to the latest version {latest_version}...')
     log.log_message('Repak is from https://github.com/trumank/repak')
     log.log_message('and was worked on by https://github.com/trumank/repak/graphs/contributors')
     log.log_message('and is licensed here https://github.com/trumank/repak/blob/master/LICENSE-APACHE')

@@ -19,7 +19,7 @@
     "unreal_engine_minor_version": "22"
   },
   "game_info": {
-    "game_exe_path": "F:/SteamLibrary/steamapps/common/Zedfest/KevinSpel/Binaries/Win64/Zedfest.exe",
+    "game_exe_path": "D:/SteamLibrary/steamapps/common/Zedfest/KevinSpel/Binaries/Win64/Zedfest.exe",
     "launch_type": "exe",
     "override_automatic_launcher_exe_finding": false,
     "game_launcher_exe": "C:/Program Files (x86)/Steam/steam.exe",
@@ -99,13 +99,15 @@
       "pak_dir_structure": "~mods",
       "mod_name_dir_type": "Mods",
       "use_mod_name_dir_name_override": true,
-      "mod_name_dir_name_override": "ModEntry",
+      "mod_name_dir_name_override": "ModLoader",
       "pak_chunk_num": null,
       "packing_type": "repak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {
-        "asset_paths": [],
+        "asset_paths": [
+          "Content/Mods/ModEntry/BP_ModEntry"
+        ],
         "tree_paths": []
       }
     },

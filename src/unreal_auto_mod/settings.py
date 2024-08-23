@@ -69,12 +69,15 @@ def check_file_exists(file_path: str) -> bool:
 def init_checks():
     import utilities
     import log_py.log_py as log
-
+    import ue_dev_py_utils.ue_dev_py_utils as ue_dev_utils
 
     check_file_exists(utilities.get_uproject_file())
     log.log_message('Check: Uproject file exists')
-
-    check_file_exists(f'{utilities.get_unreal_engine_dir()}/Engine/Binaries/Win64/UE4Editor.exe')
+    
+    engine_str = 'UE4Editor'
+    if ue_dev_utils.is_game_ue5(utilities.get_unreal_engine_dir()):
+        engine_str = 'UnrealEditor'
+    check_file_exists(f'{utilities.get_unreal_engine_dir()}/Engine/Binaries/Win64/{engine_str}.exe')
     log.log_message('Check: Unreal Engine exists')
 
     if utilities.get_is_using_repak_path_override():
@@ -84,7 +87,6 @@ def init_checks():
     if not utilities.get_skip_launching_game():
         check_file_exists(utilities.get_game_exe_path())
         log.log_message('Check: Game exists')
-
 
     log.log_message('Check: Passed all init checks')
 

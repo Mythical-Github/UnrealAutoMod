@@ -10,6 +10,18 @@ from gen_py_utils import gen_py_utils as general_utils
 from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
 
 
+def is_unreal_pak_packing_enum_in_use():
+    is_in_use = False
+    for entry in get_mod_info_list():
+        if entry['packing_type'] == "unreal_pak":
+            is_in_use = True
+    return is_in_use
+
+
+def get_should_ship_uproject_steps():
+    return settings.settings['engine_info']['skip_uproject_steps']
+
+
 def get_is_using_repak_path_override() -> bool:
     return settings.settings['repak_info']['override_default_repak_path']
 
@@ -117,7 +129,10 @@ def custom_get_game_paks_dir() -> str:
     if get_is_using_alt_dir_name():
         return f'{alt_game_dir}/{get_alt_packing_dir_name()}/Content/Paks'
     else:
-        return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
+        if not get_should_ship_uproject_steps():
+            return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
+        else:
+            return f'{os.path.dirname(os.path.dirname(os.path.dirname(get_game_exe_path())))}/Content/Paks'
 
 
 def get_unreal_engine_dir() -> str:

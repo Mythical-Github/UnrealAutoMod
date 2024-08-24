@@ -66,19 +66,33 @@ def check_file_exists(file_path: str) -> bool:
         raise FileNotFoundError(f'File "{file_path}" not found.')
 
 
-def init_checks():
+def unreal_engine_check():
     import utilities
     import log_py.log_py as log
     import ue_dev_py_utils.ue_dev_py_utils as ue_dev_utils
 
-    check_file_exists(utilities.get_uproject_file())
-    log.log_message('Check: Uproject file exists')
+    should_do_check = True
+
+    if utilities.get_should_ship_uproject_steps():
+        if not utilities.is_unreal_pak_packing_enum_in_use():
+               should_do_check = False
+               
+    if should_do_check:
+        engine_str = 'UE4Editor'
+        if ue_dev_utils.is_game_ue5(utilities.get_unreal_engine_dir()):
+            engine_str = 'UnrealEditor'
+        check_file_exists(f'{utilities.get_unreal_engine_dir()}/Engine/Binaries/Win64/{engine_str}.exe')
+        log.log_message('Check: Unreal Engine exists')
+
+
+def init_checks():
+    import utilities
+    import log_py.log_py as log
+    if not utilities.get_should_ship_uproject_steps():
+        check_file_exists(utilities.get_uproject_file())
+        log.log_message('Check: Uproject file exists')
     
-    engine_str = 'UE4Editor'
-    if ue_dev_utils.is_game_ue5(utilities.get_unreal_engine_dir()):
-        engine_str = 'UnrealEditor'
-    check_file_exists(f'{utilities.get_unreal_engine_dir()}/Engine/Binaries/Win64/{engine_str}.exe')
-    log.log_message('Check: Unreal Engine exists')
+    unreal_engine_check()
 
     if utilities.get_is_using_repak_path_override():
         check_file_exists(utilities.get_repak_path_override())

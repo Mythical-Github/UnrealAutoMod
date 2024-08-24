@@ -5,8 +5,9 @@
     "window_title": "UnrealAutoMod Automation Script"
   },
   "engine_info": {
-    "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
-    "unreal_project_file": "C:/Users/Mythical/Documents/Github/ZedfestModdingKit/KevinSpel.uproject",
+    "skip_uproject_steps": true,
+    "unreal_engine_dir": null,
+    "unreal_project_file": null,
     "toggle_engine_during_testing": false,
     "resave_packages_and_fix_up_redirectors_before_engine_open": true,
     "engine_launch_args": [],

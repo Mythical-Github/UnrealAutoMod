@@ -1,94 +1,64 @@
-import win_man_py.win_man_enums
-import win_man_py.win_man_py
-import settings
+from __init__ import *
+
+import enums
 import utilities
-from win_man_py import win_man_py as windows
-from enums import ExecutionMode, ScriptStateType, get_enum_from_val
 import win_man_py
 from log_py import log_py as log
 
 
-def alt_exe_checks(script_state_type: ScriptStateType):
+def alt_exe_checks(script_state_type: enums.ScriptStateType):
     alt_exe_methods = utilities.get_alt_exe_methods()
     for alt_exe_method in alt_exe_methods:
         value = alt_exe_method['script_state']
-        exe_state = get_enum_from_val(ScriptStateType, value)
+        exe_state = enums.get_enum_from_val(enums.ScriptStateType, value)
         if exe_state == script_state_type:
             exe_path = alt_exe_method['alt_exe_path']
             exe_args = alt_exe_method['variable_args']
-            exe_exec_mode = get_enum_from_val(ExecutionMode, alt_exe_method['execution_mode'])
+            exe_exec_mode = enums.get_enum_from_val(enums.ExecutionMode, alt_exe_method['execution_mode'])
             utilities.run_app(exe_path, exe_exec_mode, exe_args)
-
-
-def is_script_state_used(state: ScriptStateType) -> bool:
-    if isinstance(settings.settings, dict):
-        if "process_kill_info" in settings.settings:
-            process_kill_info = settings.settings.get("process_kill_info", {})
-            if "processes" in process_kill_info:
-                for process in process_kill_info["processes"]:
-                    if isinstance(state, ScriptStateType):
-                        state = state.value
-                    if process.get("script_state") == state:
-                        return True
-
-        if "auto_move_windows" in settings.settings:
-            for window in utilities.get_auto_move_windows():
-                if isinstance(state, ScriptStateType):
-                    state = state.value
-                if window.get("script_state") == state:
-                    return True
-
-        if "alt_exe_methods" in settings.settings:
-            for method in utilities.get_alt_exe_methods():
-                if isinstance(state, ScriptStateType):
-                    state = state.value
-                if method.get("script_state") == state:
-                    return True
-
-    return False
 
 
 def window_checks(current_state: win_man_py.win_man_enums.WindowAction):
     window_settings_list = utilities.get_auto_move_windows()
     for window_settings in window_settings_list:
-        settings_state = get_enum_from_val(ScriptStateType, window_settings['script_state'])
+        settings_state = enums.get_enum_from_val(enums.ScriptStateType, window_settings['script_state'])
         if settings_state == current_state:
             title = window_settings['window_name']
             windows_to_change = win_man_py.win_man_py.get_windows_by_title(title)
             for window_to_change in windows_to_change:
-                way_to_change_window = get_enum_from_val(win_man_py.win_man_enums.WindowAction, window_settings['window_behaviour'])
+                way_to_change_window = enums.get_enum_from_val(win_man_py.win_man_enums.WindowAction, window_settings['window_behaviour'])
                 if way_to_change_window == win_man_py.win_man_enums.WindowAction.MAX:
-                    windows.maximize_window(window_to_change)
+                    win_man_py.win_man_py.maximize_window(window_to_change)
                 elif way_to_change_window == win_man_py.win_man_enums.WindowAction.MIN:
-                    windows.minimize_window(window_to_change)
+                    win_man_py.win_man_py.minimize_window(window_to_change)
                 elif way_to_change_window == win_man_py.win_man_enums.WindowAction.CLOSE:
-                    windows.close_window(window_to_change)
+                    win_man_py.win_man_py.close_window(window_to_change)
                 elif way_to_change_window == win_man_py.win_man_enums.WindowAction.MOVE:
-                    windows.move_window(window_to_change, window_settings)
+                    win_man_py.win_man_py.move_window(window_to_change, window_settings)
                 else:
                     log.log_message('Monitor: invalid window behaviour specified in settings')
 
 
-def routine_checks(state: ScriptStateType):
-    if not state == ScriptStateType.CONSTANT:
+def routine_checks(state: enums.ScriptStateType):
+    if not state == enums.ScriptStateType.CONSTANT:
         log.log_message(f'Routine Check: {state} is running')
-    if is_script_state_used(state):
+    if utilities.is_script_state_used(state):
         utilities.kill_processes(state)
         window_checks(state)
         alt_exe_checks(state)
-    if not state == ScriptStateType.CONSTANT:
+    if not state == enums.ScriptStateType.CONSTANT:
         log.log_message(f'Routine Check: {state} finished')
 
 
 class ScriptState():
     global script_state
 
-    def set_script_state(new_state: ScriptStateType):
+    def set_script_state(new_state: enums.ScriptStateType):
         global script_state
         script_state = new_state
         log.log_message(f'Script State: changed to {new_state}')
         # calling this on preinit causes problems so will avoid for now
-        if not new_state == ScriptStateType.PRE_INIT:
+        if not new_state == enums.ScriptStateType.PRE_INIT:
             routine_checks(new_state)
-            routine_checks(ScriptStateType.PRE_ALL)
-            routine_checks(ScriptStateType.POST_ALL)
+            routine_checks(enums.ScriptStateType.PRE_ALL)
+            routine_checks(enums.ScriptStateType.POST_ALL)

@@ -1,28 +1,27 @@
-import ue_dev_py_utils.ue_dev_py_utils
-import ue_dev_py_utils.ue_dev_py_enums
-from enums import  ExecutionMode, ScriptStateType
+from __init__ import *
+
+import enums
+import utilities
 import script_states
 import thread_engine_monitor
-from gen_py_utils import gen_py_utils as general_utils
-import utilities
 
 
 def open_game_engine():
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
+    script_states.ScriptState.set_script_state(enums.ScriptStateType.PRE_ENGINE_OPEN)
     command = ue_dev_py_utils.ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())
-    utilities.run_app(command, ExecutionMode.ASYNC, utilities.get_engine_launch_args())
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
+    utilities.run_app(command, enums.ExecutionMode.ASYNC, utilities.get_engine_launch_args())
+    script_states.ScriptState.set_script_state(enums.ScriptStateType.POST_ENGINE_OPEN)
 
 
 def close_game_engine():
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_CLOSE)
+    script_states.ScriptState.set_script_state(enums.ScriptStateType.PRE_ENGINE_CLOSE)
     if ue_dev_py_utils.ue_dev_py_utils.get_win_dir_type(utilities.get_unreal_engine_dir()) == ue_dev_py_utils.ue_dev_py_enums.PackagingDirType.WINDOWS_NO_EDITOR:
         game_engine_processes = general_utils.get_processes_by_substring('UE4Editor')
     else:
         game_engine_processes = general_utils.get_processes_by_substring('UnrealEditor')
     for process_info in game_engine_processes:
         general_utils.kill_process(process_info['name'])
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_CLOSE)
+    script_states.ScriptState.set_script_state(enums.ScriptStateType.POST_ENGINE_CLOSE)
 
 
 def fix_up_uproject_redirectors():

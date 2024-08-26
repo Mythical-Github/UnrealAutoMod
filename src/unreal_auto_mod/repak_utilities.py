@@ -1,10 +1,6 @@
-import os
-import requests
-import subprocess
+from __init__ import*
 
-import settings
 import utilities
-from log_py import log_py as log
 
 
 def get_repak_version_str_from_engine_version() -> str:
@@ -49,9 +45,9 @@ def get_repak_version_str_from_engine_version() -> str:
 
 def get_repak_pak_version_str() -> str:
     if utilities.get_is_overriding_automatic_version_finding():
-        repak_version_str = settings.settings['repak_info']['repak_version']
+        repak_version_str = utilities.get_repak_version_str()
     elif utilities.get_should_ship_uproject_steps():
-        repak_version_str = settings.settings['repak_info']['repak_version']
+        repak_version_str = utilities.get_repak_version_str()
     else:
         repak_version_str = get_repak_version_str_from_engine_version()
     return repak_version_str

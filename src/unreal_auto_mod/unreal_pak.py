@@ -1,12 +1,8 @@
-import os
-import shutil
+from __init__ import *
 
-from alive_progress import alive_bar
+import enums
 import packing
 import utilities
-from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
-from gen_py_utils import gen_py_utils as general_utils
-from enums import CompressionType
 
 
 def get_pak_dir_to_pack(mod_name: str):
@@ -32,9 +28,9 @@ def make_response_file(mod_name: str) -> str:
     return file_list_path
 
 
-def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
+def install_unreal_pak_mod(mod_name: str, compression_type: enums.CompressionType):
     move_files_for_packing(mod_name)
-    compression_str = CompressionType(compression_type).value
+    compression_str = enums.CompressionType(compression_type).value
     output_pak_dir = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
     if not os.path.isdir(output_pak_dir):
         os.makedirs(output_pak_dir)

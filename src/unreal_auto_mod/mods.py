@@ -1,15 +1,14 @@
+import enums
+import engine
+import packing
+import utilities
+import game_runner
+import script_states
+import thread_constant
+import thread_game_monitor
 
 
 def create_mods():
-    import enums
-    import engine
-    import packing
-    import utilities
-    import game_runner
-    import script_states
-    import thread_constant
-    import thread_game_monitor
-    
     script_states.ScriptState.set_script_state(enums.ScriptStateType.INIT)
     thread_constant.constant_thread()
     script_states.ScriptState.set_script_state(enums.ScriptStateType.POST_INIT)

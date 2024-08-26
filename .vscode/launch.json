@@ -10,10 +10,9 @@
       "args": [
         "${workspaceFolder}/assets/base/default/settings.json",
         "test_mods",
-        "CharacterLoader",
-        "GlamrockFreddyCharacter",
-        "TheBabyInYellowCharacter",
-        "TheNeighborCharacter"
+        "ModLoader_P",
+        "MapKit",
+        "ExampleLevel"
       ]
     },
     {

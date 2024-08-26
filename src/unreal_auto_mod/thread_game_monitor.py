@@ -1,8 +1,12 @@
-from __init__ import *
+import threading
+import time
 
-import enums
-import utilities
 import script_states
+import utilities
+from win_man_py import win_man_py
+from enums import ScriptStateType
+from log_py import log_py as log
+from gen_py_utils import gen_py_utils as general_utils
 
 
 found_process = False
@@ -19,7 +23,7 @@ def game_monitor_thread_runner(tick_rate: float = 0.01):
 
 
 def get_game_window():
-    return win_man_py.win_man_py.get_window_by_title(utilities.get_game_window_title())
+    return win_man_py.get_window_by_title(utilities.get_game_window_title())
 
 
 def game_monitor_thread_logic():
@@ -36,11 +40,11 @@ def game_monitor_thread_logic():
         if get_game_window():
             log.log_message('Window: Game Window Found')
             found_window = True
-            script_states.ScriptState.set_script_state(enums.ScriptStateType.POST_GAME_LAUNCH)
+            script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
     elif not window_closed:
         if not get_game_window():
             log.log_message('Window: Game Window Closed')
-            script_states.ScriptState.set_script_state(enums.ScriptStateType.POST_GAME_CLOSE)
+            script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_CLOSE)
             stop_game_monitor_thread()
             window_closed = True
 

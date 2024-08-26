@@ -1,7 +1,7 @@
-from __init__ import *
+from enum import Enum
 
 
-class PackingType(enum.Enum):
+class PackingType(Enum):
     """
     enum for how to treat packing mods
     """
@@ -11,7 +11,7 @@ class PackingType(enum.Enum):
     LOOSE = 'loose'
 
 
-class GameLaunchType(enum.Enum):
+class GameLaunchType(Enum):
     """
     enum for how to launch the game
     """
@@ -25,7 +25,7 @@ class GameLaunchType(enum.Enum):
     OTHER = 'other'
 
 
-class ScriptStateType(enum.Enum):
+class ScriptStateType(Enum):
     """
     enum for the various script states, used to fire off other functions
     at specific times
@@ -55,7 +55,7 @@ class ScriptStateType(enum.Enum):
     POST_ENGINE_CLOSE = 'post_engine_close'
 
 
-class ExecutionMode(enum.Enum):
+class ExecutionMode(Enum):
     """
     enum for how to execute various processes
     """
@@ -63,7 +63,7 @@ class ExecutionMode(enum.Enum):
     ASYNC = 'async'
 
 
-class CompressionType(enum.Enum):
+class CompressionType(Enum):
     """
     enum for the types of mod pak compression
     """
@@ -76,7 +76,7 @@ class CompressionType(enum.Enum):
     LZMA = 'Lzma'
 
 
-class UnrealModTreeType(enum.Enum):
+class UnrealModTreeType(Enum):
     """
     enum for the mod dir type in the unreal file system
     there are two main conventions used by communities
@@ -85,7 +85,7 @@ class UnrealModTreeType(enum.Enum):
     MODS = 'Mods'  # "Content/Mods/ModName"
 
 
-class FileFilterType(enum.Enum):
+class FileFilterType(Enum):
     """
     enum for how to include various files for mod creation functions
     """
@@ -93,7 +93,7 @@ class FileFilterType(enum.Enum):
     TREE_PATHS = 'tree_paths'  # Takes supplied dirs, and traverses it all, including every file
 
 
-def get_enum_from_val(enum: enum.Enum, value: str) -> enum.Enum:
+def get_enum_from_val(enum: Enum, value: str) -> Enum:
     """
     """
     for member in enum:

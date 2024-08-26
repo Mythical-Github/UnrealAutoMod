@@ -1,8 +1,9 @@
-from __init__ import *
+import winreg
 
-import enums
 import utilities
 import script_states
+from log_py import log_py as log
+from enums import ScriptStateType, GameLaunchType, ExecutionMode
 
 
 def get_steam_exe_location():
@@ -40,7 +41,7 @@ def get_epic_launcher_exe_location():
 
 
 def run_game_exe():
-    utilities.run_app(exe_path=utilities.get_game_exe_path(), exec_mode=enums.ExecutionMode.ASYNC, args=utilities.get_game_launch_params())
+    utilities.run_app(exe_path=utilities.get_game_exe_path(), exec_mode=ExecutionMode.ASYNC, args=utilities.get_game_launch_params())
 
 
 def run_game_steam():
@@ -54,16 +55,16 @@ def run_game_steam():
     new_params = utilities.get_game_launch_params()
     for param in new_params:
         launch_params.append(param)
-    utilities.run_app(exe_path=steam_exe, exec_mode=enums.ExecutionMode.ASYNC, args=launch_params)
+    utilities.run_app(exe_path=steam_exe, exec_mode=ExecutionMode.ASYNC, args=launch_params)
 
 
 def run_game():
     log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')
-    script_states.ScriptState.set_script_state(enums.ScriptStateType.PRE_GAME_LAUNCH)
-    launch_type = enums.GameLaunchType(utilities.get_game_info_launch_type_enum_str_value())
-    if launch_type == enums.GameLaunchType.EXE:
+    script_states.ScriptState.set_script_state(ScriptStateType.PRE_GAME_LAUNCH)
+    launch_type = GameLaunchType(utilities.get_game_info_launch_type_enum_str_value())
+    if launch_type == GameLaunchType.EXE:
         run_game_exe()
-    elif launch_type == enums.GameLaunchType.STEAM:
+    elif launch_type == GameLaunchType.STEAM:
         run_game_steam()
     # elif launch_type == game_launch_type.EPIC:
     #     pass

@@ -1,44 +1,13 @@
-from __init__ import *
-
-
-from enums import ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
-
-from log_py import log_py as log
-from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
-from gen_py_utils import gen_py_utils as general_utils
+import os
+import time
+import shutil
+import subprocess
 
 import settings
-
-def is_script_state_used(state: ScriptStateType) -> bool:
-    if isinstance(settings.settings, dict):
-        if "process_kill_info" in settings.settings:
-            process_kill_info = settings.settings.get("process_kill_info", {})
-            if "processes" in process_kill_info:
-                for process in process_kill_info["processes"]:
-                    if isinstance(state, ScriptStateType):
-                        state = state.value
-                    if process.get("script_state") == state:
-                        return True
-
-        if "auto_move_windows" in settings.settings:
-            for window in get_auto_move_windows():
-                if isinstance(state, ScriptStateType):
-                    state = state.value
-                if window.get("script_state") == state:
-                    return True
-
-        if "alt_exe_methods" in settings.settings:
-            for method in get_alt_exe_methods():
-                if isinstance(state, ScriptStateType):
-                    state = state.value
-                if method.get("script_state") == state:
-                    return True
-
-    return False
-
-
-def get_repak_version_str() -> str:
-    settings.settings['repak_info']['repak_version']
+from enums import ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
+from log_py import log_py as log
+from gen_py_utils import gen_py_utils as general_utils
+from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
 
 
 def is_unreal_pak_packing_enum_in_use():

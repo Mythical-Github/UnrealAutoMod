@@ -58,7 +58,6 @@ def init_settings(settings_json_path: str):
     init_settings_done = True
     settings_json = settings_json_path
     settings_json_dir = os.path.dirname(settings_json)
-    return
 
 
 def check_file_exists(file_path: str) -> bool:
@@ -651,121 +650,151 @@ def add_mod_pak_entry(settings_json: str, mod_name: str, pak_dir_structure: str,
     save_settings(pass_settings(settings_json))
 
 
-def open_stove():
+# add the stuff below this to the cli json if not already in there
+
+
+def open_stove(settings_json: str):
+    load_settings(settings_json)
     import utilities
-    if not os.path.isfile(utilities.get_stove_path()):
+    if not os.path.isfile(utilities.does_stove_exist()):
         utilities.install_stove()
-    utilities.run_app(utilities.get_stove_path(), enums.ExecutionMode.ASYNC)
+    utilities.run_app(utilities.get_stove_path(),)
 
 
-def open_spaghetti():
+def open_spaghetti(settings_json: str):
+    load_settings(settings_json)
     import utilities
     if not os.path.isfile(utilities.get_spaghetti_path()):
         utilities.install_spaghetti()
-    utilities.run_app(utilities.get_spaghetti_path(), enums.ExecutionMode.ASYNC)
+    utilities.run_app(utilities.get_spaghetti_path())
 
 
-def open_kismet_analyzer():
+def open_kismet_analyzer(settings_json: str):
+    load_settings(settings_json)
     import utilities
     # add shell stuff to run app later or something
     if not os.path.isfile(utilities.get_kismet_analyzer_path()):
         utilities.install_kismet_analyzer()
     import subprocess
-    subprocess.run([utilities.get_kismet_analyzer_path(), '-h'], shell=True)
+    kismet_analyzer_path = utilities.get_kismet_analyzer_path()
+    kismet_directory = os.path.dirname(kismet_analyzer_path)
+    command = f'cd /d "{kismet_directory}" && "{kismet_analyzer_path}" -h && set ka=kismet-analyzer.exe && cmd /k'
+    subprocess.run(command, shell=True)
 
 
-def open_ide():
+def open_ide(settings_json: str):
+    load_settings(settings_json)
     import utilities
     gen_utils.open_file_in_default(utilities.get_ide_path())
 
 
-def open_blender():
+def open_blender(settings_json: str):
+    load_settings(settings_json)
     import utilities
     gen_utils.open_file_in_default(utilities.get_blender_path())
 
 
-def open_uasset_gui():
+def open_uasset_gui(settings_json: str):
+    load_settings(settings_json)
     import utilities
     if not os.path.isfile(utilities.get_uasset_gui_path()):
         utilities.install_uasset_gui()
-    utilities.run_app(utilities.get_uasset_gui_path(), enums.ExecutionMode.ASYNC)
+    utilities.run_app(utilities.get_uasset_gui_path())
 
 
-def open_latest_log():
+def open_latest_log(settings_json: str):
+    load_settings(settings_json)
     import utilities
     file_to_open = f'{utilities.get_uproject_unreal_auto_mod_resources_dir()}/UnrealAutoMod/logs/latest.log'
     gen_utils.open_file_in_default(file_to_open)
 
 
-def open_settings_json():
+def open_settings_json(settings_json: str):
+    load_settings(settings_json)
     gen_utils.open_file_in_default(settings.settings_json)
 
 
-def run_game():
+def run_game(settings_json: str):
+    load_settings(settings_json)
     import game_runner
     game_runner.run_game()
 
 
-def open_downloads_dir():
+def open_downloads_dir(settings_json: str):
+    load_settings(settings_json)
     downloads_dir = f"{os.path.expanduser('~')}/Downloads"
     gen_utils.open_dir_in_file_browser(downloads_dir)
 
 
-def open_unreal_auto_mod_dir():
+def open_unreal_auto_mod_dir(settings_json: str):
+    load_settings(settings_json)
     import utilities
     gen_utils.open_dir_in_file_browser(utilities.get_uproject_unreal_auto_mod_dir())
 
 
-def open_game_dir():
+def open_game_dir(settings_json: str):
+    load_settings(settings_json)
     import utilities
     gen_utils.open_dir_in_file_browser(utilities.custom_get_game_dir())
 
 
-def open_game_binaries_dir():
+def open_game_binaries_dir(settings_json: str):
+    load_settings(settings_json)
     import utilities
     gen_utils.open_dir_in_file_browser(os.path.dirname(utilities.get_game_exe_path()))
 
 
-def open_game_paks_dir():
+def open_game_paks_dir(settings_json: str):
+    load_settings(settings_json)
     import utilities
     gen_utils.open_dir_in_file_browser(utilities.custom_get_game_paks_dir())
 
 
-def open_uproject_dir():
+def open_uproject_dir(settings_json: str):
+    load_settings(settings_json)
     import utilities
     gen_utils.open_dir_in_file_browser(utilities.get_uproject_dir())
 
 
-def open_umodel():
+def open_umodel(settings_json: str):
+    load_settings(settings_json)
     import utilities
-    if not os.path.isfile(utilities.get_umodel_path()):
+    if not os.path.isfile(utilities.does_umodel_exist()):
         utilities.install_umodel()
-    utilities.run_app(utilities.get_umodel_path(), exec_mode=enums.ExecutionMode.ASYNC)
+    # Sets dir, so it's the dir opened by default in umodel
+    os.chdir(os.path.dirname(utilities.custom_get_game_dir()))
+    utilities.run_app(utilities.get_umodel_path())
 
 
-def open_unreal_docs_website():
+def open_unreal_docs_website(settings_json: str):
+    load_settings(settings_json)
     gen_utils.open_website('https://dev.epicgames.com/documentation/en-us/unreal-engine/')
 
 
-def open_google_website():
+def open_google_website(settings_json: str):
+    load_settings(settings_json)
     gen_utils.open_website('https://www.google.com/')
 
 
-def open_youtube_website():
+def open_youtube_website(settings_json: str):
+    load_settings(settings_json)
     gen_utils.open_website('https://www.youtube.com/')
 
 
-def open_github_website():
+def open_github_website(settings_json: str):
+    load_settings(settings_json)
     gen_utils.open_website('https://github.com/')
 
 
-def open_persistent_mods_dir():
+def open_persistent_mods_dir(settings_json: str):
+    load_settings(settings_json)
     import utilities
     gen_utils.open_dir_in_file_browser(utilities.get_persistent_mods_dir())
 
 
-def open_fmodel():
+def open_fmodel(settings_json: str):
+    load_settings(settings_json)
     import utilities
     if not os.path.isfile(utilities.get_fmodel_path()):
         utilities.install_fmodel()
-    utilities.run_app(utilities.get_fmodel_path(), exec_mode=enums.ExecutionMode.ASYNC)
+    utilities.run_app(utilities.get_fmodel_path())

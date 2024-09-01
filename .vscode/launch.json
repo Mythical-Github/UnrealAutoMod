@@ -61,11 +61,66 @@
       "name": "open_fmodel",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/assets/build_scripts/dependency_installer.py",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
       "console": "integratedTerminal",
       "args": [
         "${workspaceFolder}/assets/base/default/settings.json",
         "open_fmodel"
+      ]
+    },
+    {
+      "name": "open_stove",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_stove"
+      ]
+    },
+    {
+      "name": "open_umodel",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_umodel"
+      ]
+    },
+    {
+      "name": "open_spaghetti",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_spaghetti"
+      ]
+    },
+    {
+      "name": "open_uasset_gui",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_uasset_gui"
+      ]
+    },
+    {
+      "name": "open_kismet_analyzer",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_kismet_analyzer"
       ]
     }
   ]

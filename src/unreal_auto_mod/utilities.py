@@ -15,9 +15,11 @@ def get_fmodel_path() -> str:
 
 
 def install_fmodel():
+    download_fmodel()
     zip_path = f'{get_working_dir()}/FModel.zip'
     install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/FModel'
     general_utils.unzip_zip(zip_path, install_dir)
+    print('got here')
 
 
 def download_fmodel():
@@ -31,13 +33,14 @@ def get_umodel_path() -> str:
 
 
 def install_umodel():
+    download_umodel()
     zip_path = f'{get_working_dir()}/umodel_win32.zip'
     install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/UModel'
     general_utils.unzip_zip(zip_path, install_dir)
 
 
 def download_umodel():
-    url = 'https://www.gildor.org/down/47/umodel/umodel_win32.zip'
+    url = 'https://cdn.discordapp.com/attachments/1070814622837379133/1279682786147700806/umodel_win32.zip?ex=66d554f7&is=66d40377&hm=779be2c90ba3a978e299a2501acb09beafec693d1d4f30ec153361fc4283ba9d&'
     download_path = f'{get_working_dir()}/umodel_win32.zip'
     general_utils.download_file(url, download_path)
 
@@ -47,9 +50,13 @@ def get_kismet_analyzer_path() -> str:
 
 
 def install_kismet_analyzer():
+    download_kismet_analyzer()
     zip_path = f'{get_working_dir()}/kismet-analyzer-ba3dad5-win-x64.zip'
     install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/kismet-analyzer'
-    general_utils.unzip_zip(zip_path, install_dir)
+    if not os.path.isdir(install_dir):
+        os.makedirs(install_dir)
+    general_utils.unzip_zip(zip_path, get_working_dir())
+    shutil.move(f'{get_working_dir()}/kismet-analyzer-ba3dad5-win-x64/kismet-analyzer.exe', f'{install_dir}/kismet-analyzer.exe')
 
 
 def download_kismet_analyzer():
@@ -71,6 +78,7 @@ def get_uasset_gui_path() -> str:
 
 
 def install_uasset_gui():
+    download_uasset_gui()
     exe_path = f'{get_working_dir()}/UAssetGUI.exe'
     install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/UAssetGUI'
     os.makedirs(install_dir, exist_ok=True)
@@ -105,9 +113,25 @@ def download_spaghetti():
     general_utils.download_file(url, download_path)
 
 
+def get_latest_stove_version():
+    import requests
+    api_url = "https://api.github.com/repos/bananaturtlesandwich/stove/releases/latest"
+    response = requests.get(api_url)
+    if response.status_code == 200:
+        latest_release = response.json()
+        return latest_release['tag_name']
+    return None
+
+
 def download_stove():
-    url = 'https://github.com/bananaturtlesandwich/stove/releases/latest/download/stove.exe'
-    download_path = f"{get_working_dir()}/stove.exe"
+    latest_version = get_latest_stove_version()
+    if latest_version:
+        url = f"https://github.com/bananaturtlesandwich/stove/releases/download/{latest_version}/stove.exe"
+    else:
+        # Fallback to a specific version if latest cannot be determined
+        url = "https://github.com/bananaturtlesandwich/stove/releases/download/0.13.1-alpha/stove.exe"
+    
+    download_path = f'{get_working_dir()}/stove.exe'
     general_utils.download_file(url, download_path)
 
 
@@ -128,6 +152,7 @@ def does_stove_exist() -> bool:
 
 
 def install_stove():
+    download_stove()
     exe_path = f'{get_working_dir()}/stove.exe'
     install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/stove'
     os.makedirs(install_dir, exist_ok=True)
@@ -135,6 +160,7 @@ def install_stove():
 
 
 def install_spaghetti():
+    download_spaghetti()
     exe_path = f'{get_working_dir()}/spaghetti.exe'
     install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/spaghetti'
     os.makedirs(install_dir, exist_ok=True)

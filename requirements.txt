@@ -10,7 +10,7 @@ charset-normalizer==3.3.2
 cli-py @ git+https://github.com/Mythical-Github/cli_py.git@1cf1c8edd0e0139009e6a05b0841e87a83df7ead
 colorama==0.4.6
     # via log-py
-gen-py-utils @ git+https://github.com/Mythical-Github/gen_py_utils.git@88660c809de631a65e4f808ddc53e70daadab3c3
+gen-py-utils @ git+https://github.com/Mythical-Github/gen_py_utils.git@4715c9d55f0b894ba863343dcda4e55e55d99fcd
     # via ue-dev-py-utils
 grapheme==0.6.0
     # via alive-progress

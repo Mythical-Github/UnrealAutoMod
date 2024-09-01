@@ -685,13 +685,13 @@ def open_kismet_analyzer(settings_json: str):
 def open_ide(settings_json: str):
     load_settings(settings_json)
     import utilities
-    gen_utils.open_file_in_default(utilities.get_ide_path())
+    utilities.run_app(utilities.get_ide_path())
 
 
 def open_blender(settings_json: str):
     load_settings(settings_json)
     import utilities
-    gen_utils.open_file_in_default(utilities.get_blender_path())
+    utilities.run_app(utilities.get_blender_path())
 
 
 def open_uasset_gui(settings_json: str):

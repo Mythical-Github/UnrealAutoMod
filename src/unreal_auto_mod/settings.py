@@ -10,6 +10,8 @@ import mods
 import enums
 
 import win_man_py
+import gen_py_utils.gen_py_utils as gen_utils
+
 
 start_time = time.time()
 
@@ -647,3 +649,123 @@ def add_mod_pak_entry(settings_json: str, mod_name: str, pak_dir_structure: str,
     }
     settings["mod_pak_info"].append(new_entry)
     save_settings(pass_settings(settings_json))
+
+
+def open_stove():
+    import utilities
+    if not os.path.isfile(utilities.get_stove_path()):
+        utilities.install_stove()
+    utilities.run_app(utilities.get_stove_path(), enums.ExecutionMode.ASYNC)
+
+
+def open_spaghetti():
+    import utilities
+    if not os.path.isfile(utilities.get_spaghetti_path()):
+        utilities.install_spaghetti()
+    utilities.run_app(utilities.get_spaghetti_path(), enums.ExecutionMode.ASYNC)
+
+
+def open_kismet_analyzer():
+    import utilities
+    # add shell stuff to run app later or something
+    if not os.path.isfile(utilities.get_kismet_analyzer_path()):
+        utilities.install_kismet_analyzer()
+    import subprocess
+    subprocess.run([utilities.get_kismet_analyzer_path(), '-h'], shell=True)
+
+
+def open_ide():
+    import utilities
+    gen_utils.open_file_in_default(utilities.get_ide_path())
+
+
+def open_blender():
+    import utilities
+    gen_utils.open_file_in_default(utilities.get_blender_path())
+
+
+def open_uasset_gui():
+    import utilities
+    if not os.path.isfile(utilities.get_uasset_gui_path()):
+        utilities.install_uasset_gui()
+    utilities.run_app(utilities.get_uasset_gui_path(), enums.ExecutionMode.ASYNC)
+
+
+def open_latest_log():
+    import utilities
+    file_to_open = f'{utilities.get_uproject_unreal_auto_mod_resources_dir()}/UnrealAutoMod/logs/latest.log'
+    gen_utils.open_file_in_default(file_to_open)
+
+
+def open_settings_json():
+    gen_utils.open_file_in_default(settings.settings_json)
+
+
+def run_game():
+    import game_runner
+    game_runner.run_game()
+
+
+def open_downloads_dir():
+    downloads_dir = f"{os.path.expanduser('~')}/Downloads"
+    gen_utils.open_dir_in_file_browser(downloads_dir)
+
+
+def open_unreal_auto_mod_dir():
+    import utilities
+    gen_utils.open_dir_in_file_browser(utilities.get_uproject_unreal_auto_mod_dir())
+
+
+def open_game_dir():
+    import utilities
+    gen_utils.open_dir_in_file_browser(utilities.custom_get_game_dir())
+
+
+def open_game_binaries_dir():
+    import utilities
+    gen_utils.open_dir_in_file_browser(os.path.dirname(utilities.get_game_exe_path()))
+
+
+def open_game_paks_dir():
+    import utilities
+    gen_utils.open_dir_in_file_browser(utilities.custom_get_game_paks_dir())
+
+
+def open_uproject_dir():
+    import utilities
+    gen_utils.open_dir_in_file_browser(utilities.get_uproject_dir())
+
+
+def open_umodel():
+    import utilities
+    if not os.path.isfile(utilities.get_umodel_path()):
+        utilities.install_umodel()
+    utilities.run_app(utilities.get_umodel_path(), exec_mode=enums.ExecutionMode.ASYNC)
+
+
+def open_unreal_docs_website():
+    gen_utils.open_website('https://dev.epicgames.com/documentation/en-us/unreal-engine/')
+
+
+def open_google_website():
+    gen_utils.open_website('https://www.google.com/')
+
+
+def open_youtube_website():
+    gen_utils.open_website('https://www.youtube.com/')
+
+
+def open_github_website():
+    gen_utils.open_website('https://github.com/')
+
+
+def open_persistent_mods_dir():
+    import utilities
+    gen_utils.open_dir_in_file_browser(utilities.get_persistent_mods_dir())
+
+
+def open_fmodel():
+    import utilities
+    if not os.path.isfile(utilities.get_fmodel_path()):
+        utilities.install_fmodel()
+    utilities.run_app(utilities.get_fmodel_path(), exec_mode=enums.ExecutionMode.ASYNC)

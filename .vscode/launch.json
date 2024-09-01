@@ -56,6 +56,17 @@
       "request": "launch",
       "program": "${workspaceFolder}/assets/build_scripts/dependency_installer.py",
       "console": "integratedTerminal"
+    },
+    {
+      "name": "open_fmodel",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/assets/build_scripts/dependency_installer.py",
+      "console": "integratedTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_fmodel"
+      ]
     }
   ]
 }

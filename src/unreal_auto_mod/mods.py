@@ -14,8 +14,8 @@ def create_mods():
     thread_constant.constant_thread()
     script_states.ScriptState.set_script_state(enums.ScriptStateType.POST_INIT)
     utilities.clean_working_dir()
-    packing.make_mods()
     engine.toggle_engine_off()
+    packing.make_mods()
     if not utilities.get_skip_launching_game():
         game_runner.run_game()
         thread_game_monitor.game_monitor_thread()

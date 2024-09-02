@@ -58,18 +58,8 @@ def run_game_steam():
     utilities.run_app(exe_path=steam_exe, exec_mode=ExecutionMode.ASYNC, args=launch_params)
 
 
-def print_imported_modules():
-    import sys
-    imported_modules = sys.modules.keys()
-    
-    print("Currently imported modules:")
-    for module in imported_modules:
-        print(module)
-
-
 def run_game():
     log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')
-    print_imported_modules()
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_GAME_LAUNCH)
     launch_type = GameLaunchType(utilities.get_game_info_launch_type_enum_str_value())
     if launch_type == GameLaunchType.EXE:

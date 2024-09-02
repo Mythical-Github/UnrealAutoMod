@@ -9,6 +9,7 @@ from gen_py_utils import gen_py_utils as general_utils
 import ue_dev_py_utils.ue_dev_py_utils
 from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
 import repak_utilities
+import log_py.log_py as log
 
 
 install_queue_types = []
@@ -78,8 +79,12 @@ def get_engine_pak_command() -> str:
         command = f'{command} {build_arg}'
     for arg in utilities.get_engine_cook_and_packaging_args():
         command = f'{command} {arg}'
-    if ue_dev_py_utils.ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir()):
+    is_game_iostore = ue_dev_py_utils.ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir())
+    if is_game_iostore:
         command = f'{command} -iostore'
+        log.log_message('Check: Game is iostore')
+    else:
+        log.log_message('Check: Game is not iostore')
     return command
 
 

@@ -29,7 +29,7 @@ pyrect==0.2.0
 requests==2.32.3
 screeninfo==0.8.1
     # via win-man-py
-ue-dev-py-utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils.git@c01007c2a6bdf70efae2c4ddbff7c314d97286e1
+ue-dev-py-utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils.git@b2dfe29453bc55a3bf4a78446d30f994bcbb4639
 urllib3==2.2.2
     # via requests
 win-man-py @ git+https://github.com/Mythical-Github/win_man_py.git@49c56a076b29cd74566c8e3e662c6e7a633a5ebe

@@ -10,7 +10,7 @@ charset-normalizer==3.3.2
 cli-py @ git+https://github.com/Mythical-Github/cli_py.git@1cf1c8edd0e0139009e6a05b0841e87a83df7ead
 colorama==0.4.6
     # via log-py
-gen-py-utils @ git+https://github.com/Mythical-Github/gen_py_utils.git@88660c809de631a65e4f808ddc53e70daadab3c3
+gen-py-utils @ git+https://github.com/Mythical-Github/gen_py_utils.git@4715c9d55f0b894ba863343dcda4e55e55d99fcd
     # via ue-dev-py-utils
 grapheme==0.6.0
     # via alive-progress
@@ -29,7 +29,7 @@ pyrect==0.2.0
 requests==2.32.3
 screeninfo==0.8.1
     # via win-man-py
-ue-dev-py-utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils.git@c01007c2a6bdf70efae2c4ddbff7c314d97286e1
+ue-dev-py-utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils.git@d4dffd17b38a232ca6527ef75461bdeaaf9d215a
 urllib3==2.2.2
     # via requests
 win-man-py @ git+https://github.com/Mythical-Github/win_man_py.git@49c56a076b29cd74566c8e3e662c6e7a633a5ebe

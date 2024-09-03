@@ -1,0 +1,6 @@
+{
+    "servers": [
+        {"title": "TestingMachine", "ip": "10.0.0.100", "port": 10000}
+    ],
+    "mods_dir": "D:/SteamLibrary/steamapps/common/Zedfest/KevinSpel/Content/Paks/Testing"
+}

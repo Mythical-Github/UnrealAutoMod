@@ -26,9 +26,12 @@ def get_mods_dir():
 
 
 def get_client():
-    return f'{SCRIPT_DIR}/__main__.exe'
-
-
+    if getattr(sys, 'frozen', False):
+       return f'{SCRIPT_DIR}/__main__.exe'
+    else:
+       return f'{SCRIPT_DIR}/__main__.py'
+    
+    
 def get_files_in_tree_dir_alt(root_dir):
     files_list = []
     for dirpath, dirnames, filenames in os.walk(root_dir):
@@ -41,7 +44,11 @@ def get_files_in_tree_dir_alt(root_dir):
 def send_command():
     executable = get_client()
     args = get_files_in_tree_dir_alt(get_mods_dir())
-    command = [executable] + args
+   
+    if getattr(sys, 'frozen', False):
+        command = [executable] + args
+    else:
+        command = ['python', executable] + args
     subprocess.run(command)
 
 

@@ -19,7 +19,6 @@ def install_fmodel():
     zip_path = f'{get_working_dir()}/FModel.zip'
     install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/FModel'
     general_utils.unzip_zip(zip_path, install_dir)
-    print('got here')
 
 
 def download_fmodel():

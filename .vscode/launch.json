@@ -122,6 +122,160 @@
         "${workspaceFolder}/assets/base/default/settings.json",
         "open_kismet_analyzer"
       ]
+    },
+    {
+      "name": "open_latest_log",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_latest_log"
+      ]
+    },
+    {
+      "name": "open_settings_json",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_settings_json"
+      ]
+    },
+    {
+      "name": "run_game",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "run_game"
+      ]
+    },
+    {
+      "name": "open_downloads_dir",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_downloads_dir"
+      ]
+    },
+    {
+      "name": "open_unreal_auto_mod_dir",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_unreal_auto_mod_dir"
+      ]
+    },
+    {
+      "name": "open_game_dir",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_game_dir"
+      ]
+    },
+    {
+      "name": "open_game_binaries_dir",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_game_binaries_dir"
+      ]
+    },
+    {
+      "name": "open_game_paks_dir",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_game_paks_dir"
+      ]
+    },
+    {
+      "name": "open_uproject_dir",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_uproject_dir"
+      ]
+    },
+    {
+      "name": "open_unreal_docs_website",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_unreal_docs_website"
+      ]
+    },
+    {
+      "name": "open_google_website",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_google_website"
+      ]
+    },
+    {
+      "name": "open_youtube_website",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_youtube_website"
+      ]
+    },
+    {
+      "name": "open_github_website",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_github_website"
+      ]
+    },
+    {
+      "name": "open_persistent_mods_dir",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/unreal_auto_mod/__main__.py",
+      "console": "externalTerminal",
+      "args": [
+        "${workspaceFolder}/assets/base/default/settings.json",
+        "open_persistent_mods_dir"
+      ]
     }
   ]
 }

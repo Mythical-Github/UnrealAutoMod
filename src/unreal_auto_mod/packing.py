@@ -88,6 +88,34 @@ def get_engine_pak_command() -> str:
     return command
 
 
+# def get_cook_project_command() -> str:
+#     command = (
+#         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
+#         f'-project="{utilities.get_uproject_file()}" '
+#         f'-noP4 '
+#         f'-cook '
+#         f'-iterate '
+#         f'-stage '
+#         f'-pak '
+#         f'-compressed'
+#     )
+#     if utilities.get_is_using_unversioned_cooked_content():
+#         unversioned_arg = '-unversionedcookedcontent'
+#         command = f'{command} {unversioned_arg}'
+#     if utilities.get_always_build_project() or not ue_dev_py_utils.ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
+#         build_arg = '-build'
+#         command = f'{command} {build_arg}'
+#     for arg in utilities.get_engine_cook_and_packaging_args():
+#         command = f'{command} {arg}'
+#     is_game_iostore = ue_dev_py_utils.ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir())
+#     if is_game_iostore:
+#         command = f'{command} -iostore'
+#         log.log_message('Check: Game is iostore')
+#     else:
+#         log.log_message('Check: Game is not iostore')
+#     return command
+
+
 def get_cook_project_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
@@ -210,11 +238,10 @@ def install_loose_mod(mod_name: str):
         _dir = os.path.dirname(after_file)
         if not os.path.isdir(_dir):
             os.makedirs(_dir)
-        if os.path.exists(after_file):
-            if not general_utils.get_do_files_have_same_hash(before_file, after_file):
+        if os.path.exists(before_file):
+            if os.path.isfile(before_file):
                 shutil.copyfile(before_file, after_file)
-        else:
-            shutil.copyfile(before_file, after_file)
+            
 
 
 def install_engine_mod(mod_name: str):
@@ -339,7 +366,6 @@ def get_mod_files_persistent_paths_for_loose_mods(mod_name: str) -> dict:
             file_path = os.path.join(root, file)
             relative_path = os.path.relpath(file_path, persistent_mod_dir)
             game_dir = utilities.custom_get_game_dir()
-            game_dir = os.path.dirname(game_dir)
             game_dir_path = os.path.join(game_dir, relative_path)
             file_dict[file_path] = game_dir_path
     return file_dict
@@ -351,7 +377,8 @@ def get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name: str) -> dict:
     for file in general_utils.get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = f'{cooked_game_name_mod_dir}/{relative_file_path}'
-        after_path = f'{os.path.dirname(utilities.custom_get_game_dir())}/Content/{utilities.get_unreal_mod_tree_type_str(mod_name)}/{utilities.get_mod_name_dir_name(mod_name)}/{relative_file_path}'
+        after_base = utilities.custom_get_game_dir()
+        after_path = f'{after_base}/Content/{utilities.get_unreal_mod_tree_type_str(mod_name)}/{utilities.get_mod_name_dir_name(mod_name)}/{relative_file_path}'
         file_dict[before_path] = after_path
     return file_dict
 

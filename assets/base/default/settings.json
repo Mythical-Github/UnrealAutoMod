@@ -5,10 +5,10 @@
     "window_title": "UnrealAutoMod Automation Script"
   },
   "engine_info": {
-    "skip_uproject_steps": false,
-    "unreal_engine_dir": "D:/unreal_engine_installs/UE_5.2",
-    "unreal_project_file": "C:/Users/Mythical/Documents/GitHub/LockdownProtocol/LockdownProtocol.uproject",
+    "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22 WithSpace",
+    "unreal_project_file": "C:/Users/Mythical/Documents/Github/ZedfestModdingKit WithSpace/KevinSpel.uproject",
     "toggle_engine_during_testing": false,
+    "skip_uproject_steps": false,
     "resave_packages_and_fix_up_redirectors_before_engine_open": true,
     "engine_launch_args": [],
     "engine_cook_and_packaging_args": [],
@@ -20,14 +20,14 @@
     "unreal_engine_minor_version": "22"
   },
   "game_info": {
-    "game_exe_path": "D:/SteamLibrary/steamapps/common/LOCKDOWN Protocol/LockdownProtocol/Binaries/Win64/LockdownProtocol-Win64-Shipping.exe",
-    "launch_type": "steam",
+    "game_exe_path": "D:/SteamLibrary/steamapps/common/Zedfest WithSpace/KevinSpel/Binaries/Win64/Zedfest.exe",
+    "launch_type": "exe",
     "override_automatic_launcher_exe_finding": false,
     "game_launcher_exe": "C:/Program Files (x86)/Steam/steam.exe",
-    "game_id": 2780980,
+    "game_id": 1037080,
     "skip_launching_game": false,
     "override_automatic_window_title_finding": true,
-    "window_title_override_string": "LOCKDOWN Protocol",
+    "window_title_override_string": "Zedfest",
     "launch_params": [
       "-fileopenlog",
       "-NOSPLASH"
@@ -61,7 +61,7 @@
   },
   "auto_move_windows": [
     {
-      "window_name": "UE4SS Debugging Tools",
+      "window_name": "UE4SS",
       "use_substring_check": true,
       "window_behaviour": "move",
       "script_state": "post_game_launch",
@@ -100,20 +100,49 @@
   },
   "mod_pak_info": [
     {
-      "mod_name": "ExampleLogicMod",
-      "pak_dir_structure": "LogicMods",
+      "mod_name": "ModLoader_P",
+      "pak_dir_structure": "~mods",
       "mod_name_dir_type": "Mods",
-      "use_mod_name_dir_name_override": false,
-      "mod_name_dir_name_override": null,
-      "pak_chunk_num": 1,
-      "packing_type": "engine",
+      "use_mod_name_dir_name_override": true,
+      "mod_name_dir_name_override": "ModEntry",
+      "pak_chunk_num": null,
+      "packing_type": "repak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {
-        "asset_paths": [ ],
+        "asset_paths": [],
+        "tree_paths": []
+      }
+    },
+    {
+      "mod_name": "MapKit",
+      "pak_dir_structure": "~mods",
+      "mod_name_dir_type": "Mods",
+      "use_mod_name_dir_name_override": false,
+      "mod_name_dir_name_override": null,
+      "pak_chunk_num": null,
+      "packing_type": "repak",
+      "compression_type": "Zlib",
+      "is_enabled": true,
+      "manually_specified_assets": {
+        "asset_paths": [],
+        "tree_paths": []
+      }
+    },
+    {
+      "mod_name": "ExampleLevel",
+      "pak_dir_structure": "~mods",
+      "mod_name_dir_type": "Mods",
+      "use_mod_name_dir_name_override": false,
+      "mod_name_dir_name_override": null,
+      "pak_chunk_num": null,
+      "packing_type": "repak",
+      "compression_type": "Zlib",
+      "is_enabled": true,
+      "manually_specified_assets": {
+        "asset_paths": [],
         "tree_paths": []
       }
     }
   ]
 }
-  

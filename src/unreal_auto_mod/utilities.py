@@ -39,7 +39,7 @@ def install_umodel():
 
 
 def download_umodel():
-    url = 'https://cdn.discordapp.com/attachments/1070814622837379133/1279682786147700806/umodel_win32.zip?ex=66d554f7&is=66d40377&hm=779be2c90ba3a978e299a2501acb09beafec693d1d4f30ec153361fc4283ba9d&'
+    url = 'https://github.com/Mythical-Github/UEViewer/releases/download/vStatic/umodel_win32.zip'
     download_path = f'{get_working_dir()}/umodel_win32.zip'
     general_utils.download_file(url, download_path)
 

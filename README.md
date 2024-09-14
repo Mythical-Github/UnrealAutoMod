@@ -9,7 +9,7 @@ For an in editor menu version check out [UnrealAutoModInEditor](https://github.c
 [![Project Screenshot](https://github.com/Mythical-Github/UnrealAutoMod/assets/4b65e3a3-ae7f-4881-bea4-e73191594587.png)](https://github.com/user-attachments/assets/76da1afc-9c30-4ec8-b27c-8c072e73f696)
 
 
-<h2>💪 Features</h2>
+<h2> id="features">💪 Features</h2>
 
 * Supports Unreal Engine versions: 4.0-5.4
 * Supports loose file modding (unreal assets, not in a mod archive, like a .pak)
@@ -33,7 +33,7 @@ For an in editor menu version check out [UnrealAutoModInEditor](https://github.c
 * Ability to run in the background, with no windows
 
 
-<h2>🛠️ Installation Steps:</h2>
+<h2> id="installation_steps">🛠️ Installation Steps:</h2>
 
 1. Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest).\
 You can keep the program anywhere you'd like.

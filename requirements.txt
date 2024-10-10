@@ -5,7 +5,7 @@ about-time==4.2.1
 alive-progress==3.1.5
 certifi==2024.8.30
     # via requests
-charset-normalizer==3.3.2
+charset-normalizer==3.4.0
     # via requests
 cli-py @ git+https://github.com/Mythical-Github/cli_py.git@1cf1c8edd0e0139009e6a05b0841e87a83df7ead
 colorama==0.4.6
@@ -14,7 +14,7 @@ gen-py-utils @ git+https://github.com/Mythical-Github/gen_py_utils.git@4715c9d55
     # via ue-dev-py-utils
 grapheme==0.6.0
     # via alive-progress
-idna==3.8
+idna==3.10
     # via requests
 log-py @ git+https://github.com/Mythical-Github/log_py.git@0efb15105da23f0f3052941f3498bd45e34f9a58
     # via
@@ -30,6 +30,6 @@ requests==2.32.3
 screeninfo==0.8.1
     # via win-man-py
 ue-dev-py-utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils.git@d4dffd17b38a232ca6527ef75461bdeaaf9d215a
-urllib3==2.2.2
+urllib3==2.2.3
     # via requests
 win-man-py @ git+https://github.com/Mythical-Github/win_man_py.git@49c56a076b29cd74566c8e3e662c6e7a633a5ebe

@@ -1,6 +1,6 @@
 <h1 id="title" align="left">UnrealAutoMod</h1>
 
-Easy To Use Command Line Modding Utility For Unreal Engine Games 4.0-5.4 <br>
+Easy To Use Command Line Modding Utility For Unreal Engine Games 4.0-5.5 <br>
 Automates creation, and placement, of mod archives, and other various actions. <br>
 For an in editor menu version check out [UnrealAutoModInEditor](https://github.com/Mythical-Github/UnrealAutoModInEditor)
 
@@ -11,7 +11,7 @@ For an in editor menu version check out [UnrealAutoModInEditor](https://github.c
 
 <h2 id="features">💪 Features</h2>
 
-* Supports Unreal Engine versions: 4.0-5.4
+* Supports Unreal Engine versions: 4.0-5.5
 * Supports loose file modding (unreal assets, not in a mod archive, like a .pak)
 * Supports modding iostore games
 * Automatic mod creation and placement

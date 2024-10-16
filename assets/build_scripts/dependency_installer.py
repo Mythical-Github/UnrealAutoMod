@@ -22,8 +22,10 @@ def main():
         "pip uninstall gen_py_utils -y",
         "pip uninstall pyjson5 -y",
         "pip uninstall alive_progress -y",
+        "pip uninstall pyinstaller -y"
         "pip install alive_progress",
         "pip install pyjson5",
+        "pip install pyinstaller",
         "pip install git+https://github.com/Mythical-Github/log_py.git",
         "pip install git+https://github.com/Mythical-Github/cli_py.git",
         "pip install git+https://github.com/Mythical-Github/ue_dev_py_utils.git",

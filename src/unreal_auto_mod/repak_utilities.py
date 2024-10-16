@@ -42,7 +42,8 @@ def get_repak_version_str_from_engine_version() -> str:
         "5.1": "V11",
         "5.2": "V11",
         "5.3": "V11",
-        "5.4": "V11"
+        "5.4": "V11",
+        "5.5": "V11"
     }
     return engine_version_to_repack_version[utilities.custom_get_unreal_engine_version(utilities.get_unreal_engine_dir())]
 

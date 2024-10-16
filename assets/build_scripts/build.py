@@ -41,6 +41,7 @@ pyinstaller_cmd = [
     '--collect-submodules "log_py"',
     '--collect-submodules "gen_py_utils"',
     '--collect-submodules "cli_py"',
+    '--collect-submodules "pyjson5"',
     '--noconfirm',
     '--onefile',
     '--console',

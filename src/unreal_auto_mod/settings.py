@@ -1,7 +1,7 @@
 import os
 import sys
 import time
-import json
+import pyjson5 as json
 
 import psutil
 import win_man_py.win_man_enums

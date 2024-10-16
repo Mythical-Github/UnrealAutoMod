@@ -1,7 +1,7 @@
 import os
 import sys
-import json
 import subprocess
+import pyjson5 as json
 
 
 if getattr(sys, 'frozen', False):

@@ -24,6 +24,7 @@ psutil==6.0.0
     # via gen-py-utils
 pygetwindow==0.0.9
     # via win-man-py
+pyjson5==1.6.7
 pyrect==0.2.0
     # via pygetwindow
 requests==2.32.3

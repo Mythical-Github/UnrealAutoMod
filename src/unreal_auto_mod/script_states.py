@@ -92,3 +92,4 @@ class ScriptState():
             routine_checks(new_state)
             routine_checks(ScriptStateType.PRE_ALL)
             routine_checks(ScriptStateType.POST_ALL)
+            log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')

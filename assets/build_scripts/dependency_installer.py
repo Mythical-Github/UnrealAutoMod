@@ -23,12 +23,12 @@ def main():
         "pip uninstall pyjson5 -y",
         "pip uninstall alive_progress -y",
         "pip install alive_progress",
+        "pip install pyjson5",
         "pip install git+https://github.com/Mythical-Github/log_py.git",
         "pip install git+https://github.com/Mythical-Github/cli_py.git",
         "pip install git+https://github.com/Mythical-Github/ue_dev_py_utils.git",
         "pip install git+https://github.com/Mythical-Github/win_man_py.git",
-        "pip install git+https://github.com/Mythical-Github/gen_py_utils.git",
-        "pip install git+https://github.com/Kijewski/pyjson5.git"
+        "pip install git+https://github.com/Mythical-Github/gen_py_utils.git"
     ]
 
     for command in commands:

@@ -1,9 +1,9 @@
 ﻿import os
 import sys
-import json
 import socket
 import platform
 import subprocess
+import pyjson5
 
 
 if getattr(sys, 'frozen', False):
@@ -16,7 +16,7 @@ SETTINGS_JSON = f'{SCRIPT_DIR}/settings.json'
 
 def load_settings(settings_file):
     with open(settings_file, 'r') as file:
-        settings = json.load(file)
+        settings = pyjson5.load(file)
     return settings
 
 

@@ -20,11 +20,15 @@ def main():
         "pip uninstall ue_dev_py_utils -y",
         "pip uninstall win_man_py -y",
         "pip uninstall gen_py_utils -y",
+        "pip uninstall pyjson5 -y",
+        "pip uninstall alive_progress -y",
+        "pip install alive_progress",
         "pip install git+https://github.com/Mythical-Github/log_py.git",
         "pip install git+https://github.com/Mythical-Github/cli_py.git",
         "pip install git+https://github.com/Mythical-Github/ue_dev_py_utils.git",
         "pip install git+https://github.com/Mythical-Github/win_man_py.git",
-        "pip install git+https://github.com/Mythical-Github/gen_py_utils.git"
+        "pip install git+https://github.com/Mythical-Github/gen_py_utils.git",
+        "pip install git+https://github.com/Kijewski/pyjson5.git"
     ]
 
     for command in commands:

@@ -21,4 +21,6 @@
 - [ ] check out rich for log parsing and colorization
 - [ ] update settings json fact to match newly added settings
 - [ ] example config with atleast 2 of each variant value
+- [ ] delete old unreal auto mod zips for build script
+- [ ] make build scripts auto build multiplayer components
 - [ ] 

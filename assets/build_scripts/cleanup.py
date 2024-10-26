@@ -20,7 +20,7 @@ f'{SCRIPT_DIR}/build',
 f'{SCRIPT_DIR}/__main__.spec',
 f'{BASE_DIR}/UnrealAutoMod',
 f'{BASE_DIR}/logs',
-f'{BASE_DIR}/UnrealAutoMod.zip'
+# f'{BASE_DIR}/UnrealAutoMod.zip'
 f''
 }
 

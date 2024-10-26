@@ -5,68 +5,19 @@
 - [ ] Run script again hotkey
 - [ ] Bring Unreal Engine to front hotkey
 - [ ] Bring game to front hotkey
-- [ ] Close all (game, engine, and instances of UAM)
-
-## Enhancements
-- [ ] Option to run with no window
+- [ ] Close all hotkey (game, engine, and instances of UAM)
 - [ ] Unversioned per mod instead of global
 - [ ] Engine pak making compression variants (different types, in one run), defaults to compressed currently
 - [ ] Mod Release Creator
 - [ ] Switch to `pathlib` from strings
-- [ ] Multiplayer component
 - [ ] Linux support
-- [ ] Better documentation
-
-## Later
-- [ ] Unit tests
-- [ ] More docstrings
-- [ ] Better type hints
-- [ ] GitHub Action pylinting
-- [ ] Utility DLL, pak management
-- [ ] Utility DLL, json manager
-- [ ] Utility DLL, file downloader
-- [ ] Utility DLL, sockets
-- [ ] Utility DLL, file io
 - [ ] Loose file copying / original game file tracker to alleviate loose modding issues
-- [ ] 
 - [ ] better timers
-- [ ] UV / other dependency management, this exists, but clean it up
-- [ ] init py centralized dependencies
-- [ ] individual virtual env scripts?
-- [ ] Validation steps first, before running other stuff 
-- [ ] some people are only making mods out of edited files, so no engine cooking is needed at times, account for this
-- [ ] sometimes people will not have internet, check for this when checking latest repak version
+- [ ] Validation steps first, before running other stuff
+- [ ] sometimes people will not have internet, account for this, example, with repak installer
 - [ ] performance profiler
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] use symlinks when possible to save time
+- [ ] if people mess up in editor their setup for chunking, end no pak chunk num pak is genned, error occurs, account for this
+- [ ] check out rich for log parsing and colorization
+- [ ] remove cli arguments that modify the json, app is not a json editor
 - [ ] 

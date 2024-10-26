@@ -19,5 +19,6 @@
 - [ ] use symlinks when possible to save time
 - [ ] if people mess up in editor their setup for chunking, end no pak chunk num pak is genned, error occurs, account for this
 - [ ] check out rich for log parsing and colorization
-- [ ] remove cli arguments that modify the json, app is not a json editor
+- [ ] update settings json fact to match newly added settings
+- [ ] example config with atleast 2 of each variant value
 - [ ] 

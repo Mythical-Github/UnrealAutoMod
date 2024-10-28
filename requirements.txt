@@ -2,7 +2,7 @@
 #    uv pip compile - -o requirements.txt
 about-time==4.2.1
     # via alive-progress
-alive-progress==3.1.5
+alive-progress==3.2.0
 certifi==2024.8.30
     # via requests
 charset-normalizer==3.4.0
@@ -20,7 +20,7 @@ log-py @ git+https://github.com/Mythical-Github/log_py.git@0efb15105da23f0f30529
     # via
     #   cli-py
     #   win-man-py
-psutil==6.0.0
+psutil==6.1.0
     # via gen-py-utils
 pygetwindow==0.0.9
     # via win-man-py
@@ -30,7 +30,7 @@ pyrect==0.2.0
 requests==2.32.3
 screeninfo==0.8.1
     # via win-man-py
-ue-dev-py-utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils.git@d4dffd17b38a232ca6527ef75461bdeaaf9d215a
+ue-dev-py-utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils.git@ce03ac428b55878e5da034319c87720384d48333
 urllib3==2.2.3
     # via requests
 win-man-py @ git+https://github.com/Mythical-Github/win_man_py.git@49c56a076b29cd74566c8e3e662c6e7a633a5ebe

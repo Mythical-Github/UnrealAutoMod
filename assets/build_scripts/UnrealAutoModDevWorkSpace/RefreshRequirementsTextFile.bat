@@ -20,7 +20,7 @@ set "c_six=uv pip install alive_progress"
 set "c_seven=uv pip install requests"
 set "c_eight=uv pip freeze | uv pip compile - -o requirements.txt"
 
-uv venv
+uv venv --python 3.13.0
 .venv\Scripts\activate && %c_one% && %c_two% && %c_three% && %c_four% && %c_five% && %c_new% && %c_six% && %c_seven% && %c_eight%
 
 pause

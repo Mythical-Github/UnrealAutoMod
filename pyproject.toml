@@ -24,11 +24,10 @@ classifiers = [
 dependencies = [
   "alive_progress",
   "pyjson5",
-  "log_py @ git+https://github.com/Mythical-Github/log_py",
-  "cli_py @ git+https://github.com/Mythical-Github/cli_py",
-  "ue_dev_py_utils @ git+https://github.com/Mythical-Github/ue_dev_py_utils",
-  "win_man_py @ git+https://github.com/Mythical-Github/win_man_py",
-  "gen_py_utils @ git+https://github.com/Mythical-Github/gen_py_utils",
+  "requests",
+  "psutil",
+  "pygetwindow",
+  "screeninfo"
 ]
 
 [project.urls]

@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from log_py import log_py as log
+from unreal_auto_mod import log_py as log
 
 
 def cli_logic(cli_info_dict):

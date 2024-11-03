@@ -8,8 +8,8 @@ from unreal_auto_mod import utilities
 from unreal_auto_mod import win_man_py
 from unreal_auto_mod.enums import ScriptStateType
 from unreal_auto_mod import log_py as log
-from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
-from gen_py_utils import gen_py_utils as general_utils
+from unreal_auto_mod import ue_dev_py_utils as unreal_dev_utils
+from unreal_auto_mod import gen_py_utils as general_utils
 
 init_done = False
 

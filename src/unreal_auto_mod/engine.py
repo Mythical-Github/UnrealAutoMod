@@ -1,22 +1,22 @@
-import ue_dev_py_utils.ue_dev_py_utils
-import ue_dev_py_utils.ue_dev_py_enums
+from unreal_auto_mod import ue_dev_py_utils
+from unreal_auto_mod import ue_dev_py_enums
 from unreal_auto_mod.enums import  ExecutionMode, ScriptStateType
 from unreal_auto_mod import script_states
 from unreal_auto_mod import thread_engine_monitor
-from gen_py_utils import gen_py_utils as general_utils
+from unreal_auto_mod import gen_py_utils as general_utils
 from unreal_auto_mod import utilities
 
 
 def open_game_engine():
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_OPEN)
-    command = ue_dev_py_utils.ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())
+    command = ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())
     utilities.run_app(command, ExecutionMode.ASYNC, utilities.get_engine_launch_args())
     script_states.ScriptState.set_script_state(ScriptStateType.POST_ENGINE_OPEN)
 
 
 def close_game_engine():
     script_states.ScriptState.set_script_state(ScriptStateType.PRE_ENGINE_CLOSE)
-    if ue_dev_py_utils.ue_dev_py_utils.get_win_dir_type(utilities.get_unreal_engine_dir()) == ue_dev_py_utils.ue_dev_py_enums.PackagingDirType.WINDOWS_NO_EDITOR:
+    if ue_dev_py_utils.get_win_dir_type(utilities.get_unreal_engine_dir()) == ue_dev_py_enums.PackagingDirType.WINDOWS_NO_EDITOR:
         game_engine_processes = general_utils.get_processes_by_substring('UE4Editor')
     else:
         game_engine_processes = general_utils.get_processes_by_substring('UnrealEditor')
@@ -28,7 +28,7 @@ def close_game_engine():
 def fix_up_uproject_redirectors():
     close_game_engine()
     arg = '-run=ResavePackages -fixupredirects'
-    command = f'"{ue_dev_py_utils.ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())}" "{utilities.get_uproject_file()}" {arg}'
+    command = f'"{ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())}" "{utilities.get_uproject_file()}" {arg}'
     utilities.run_app(command)
 
 

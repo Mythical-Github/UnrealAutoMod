@@ -4,7 +4,7 @@ import time
 import pyjson5 as json
 
 import psutil
-import gen_py_utils.gen_py_utils as gen_utils
+import unreal_auto_mod.gen_py_utils as gen_utils
 from unreal_auto_mod import mods
 
 start_time = time.time()
@@ -64,7 +64,7 @@ def check_file_exists(file_path: str) -> bool:
 def unreal_engine_check():
     from unreal_auto_mod import utilities
     from unreal_auto_mod import log_py as log
-    import ue_dev_py_utils.ue_dev_py_utils as ue_dev_utils
+    from unreal_auto_mod import ue_dev_py_utils as ue_dev_utils
 
     should_do_check = True
 

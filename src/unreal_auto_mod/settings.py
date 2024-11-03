@@ -82,7 +82,7 @@ def unreal_engine_check():
 
 
 def init_checks():
-    import utilities
+    from unreal_auto_mod import utilities
     from unreal_auto_mod import log_py as log
     if not utilities.get_should_ship_uproject_steps():
         check_file_exists(utilities.get_uproject_file())
@@ -102,7 +102,6 @@ def init_checks():
 
 
 def load_settings(settings_json: str):
-    
     if not init_settings_done:
         init_settings(settings_json)
     init_checks()

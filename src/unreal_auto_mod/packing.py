@@ -1,15 +1,15 @@
 import os
 import shutil
 from alive_progress import alive_bar
-import script_states
-import settings
-import unreal_pak
-import utilities
+from unreal_auto_mod import script_states
+from unreal_auto_mod import settings
+from unreal_auto_mod import unreal_pak
+from unreal_auto_mod import utilities
 from gen_py_utils import gen_py_utils as general_utils
 import ue_dev_py_utils.ue_dev_py_utils
-from enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
-import repak_utilities
-import log_py.log_py as log
+from unreal_auto_mod.enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
+from unreal_auto_mod import repak_utilities
+from unreal_auto_mod import log_py as log
 
 
 install_queue_types = []
@@ -275,9 +275,9 @@ def make_pak_repak(mod_name: str):
     before_symlinked_dir = f'{utilities.get_working_dir()}/{mod_name}'
 
     if not os.path.isdir(before_symlinked_dir) or not os.listdir(before_symlinked_dir):
-        import log_py.log_py
-        log_py.log_py.log_message(f'Error: {before_symlinked_dir}')
-        log_py.log_py.log_message(f'Error: does not exist or is empty, indicating a packaging and/or config issue')
+        from unreal_auto_mod import log_py as log
+        log.log_message(f'Error: {before_symlinked_dir}')
+        log.log_message(f'Error: does not exist or is empty, indicating a packaging and/or config issue')
         raise FileNotFoundError()
 
 

@@ -2,11 +2,11 @@ import os
 import shutil
 
 from alive_progress import alive_bar
-import packing
-import utilities
+from unreal_auto_mod import packing
+from unreal_auto_mod import utilities
 from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
 from gen_py_utils import gen_py_utils as general_utils
-from enums import CompressionType
+from unreal_auto_mod.enums import CompressionType
 
 
 def get_pak_dir_to_pack(mod_name: str):

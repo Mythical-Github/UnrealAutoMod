@@ -4,9 +4,8 @@ import time
 import pyjson5 as json
 
 import psutil
-# import gen_py_utils.gen_py_utils as gen_utils
-
-# from unreal_auto_mod import mods
+import gen_py_utils.gen_py_utils as gen_utils
+from unreal_auto_mod import mods
 
 start_time = time.time()
 
@@ -63,7 +62,7 @@ def check_file_exists(file_path: str) -> bool:
 
 
 def unreal_engine_check():
-    import utilities
+    from unreal_auto_mod import utilities
     from unreal_auto_mod import log_py as log
     import ue_dev_py_utils.ue_dev_py_utils as ue_dev_utils
 
@@ -136,7 +135,7 @@ def test_mods_all(settings_json: str):
 
 def open_stove(settings_json: str):
     load_settings(settings_json)
-    import utilities
+    from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.does_stove_exist()):
         utilities.install_stove()
     utilities.run_app(utilities.get_stove_path(),)
@@ -144,7 +143,7 @@ def open_stove(settings_json: str):
 
 def open_spaghetti(settings_json: str):
     load_settings(settings_json)
-    import utilities
+    from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.get_spaghetti_path()):
         utilities.install_spaghetti()
     utilities.run_app(utilities.get_spaghetti_path())
@@ -152,7 +151,7 @@ def open_spaghetti(settings_json: str):
 
 def open_kismet_analyzer(settings_json: str):
     load_settings(settings_json)
-    import utilities
+    from unreal_auto_mod import utilities
     # add shell stuff to run app later or something
     if not os.path.isfile(utilities.get_kismet_analyzer_path()):
         utilities.install_kismet_analyzer()
@@ -165,7 +164,7 @@ def open_kismet_analyzer(settings_json: str):
 
 def open_uasset_gui(settings_json: str):
     load_settings(settings_json)
-    import utilities
+    from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.get_uasset_gui_path()):
         utilities.install_uasset_gui()
     utilities.run_app(utilities.get_uasset_gui_path())
@@ -173,7 +172,7 @@ def open_uasset_gui(settings_json: str):
 
 def open_latest_log(settings_json: str):
     load_settings(settings_json)
-    import utilities
+    from unreal_auto_mod import utilities
     file_to_open = f'{utilities.get_uproject_unreal_auto_mod_resources_dir()}/UnrealAutoMod/logs/latest.log'
     gen_utils.open_file_in_default(file_to_open)
 
@@ -185,13 +184,13 @@ def open_settings_json(settings_json: str):
 
 def run_game(settings_json: str):
     load_settings(settings_json)
-    import game_runner
+    from unreal_auto_mod import game_runner
     game_runner.run_game()
 
 
 def open_umodel(settings_json: str):
     load_settings(settings_json)
-    import utilities
+    from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.does_umodel_exist()):
         utilities.install_umodel()
     # Sets dir, so it's the dir opened by default in umodel
@@ -201,7 +200,7 @@ def open_umodel(settings_json: str):
 
 def open_fmodel(settings_json: str):
     load_settings(settings_json)
-    import utilities
+    from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.get_fmodel_path()):
         utilities.install_fmodel()
     utilities.run_app(utilities.get_fmodel_path())

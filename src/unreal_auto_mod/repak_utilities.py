@@ -2,9 +2,9 @@ import os
 import requests
 import subprocess
 
-import settings
-import utilities
-from log_py import log_py as log
+from unreal_auto_mod import settings
+from unreal_auto_mod import utilities
+from unreal_auto_mod import log_py as log
 
 
 def get_repak_version_str_from_engine_version() -> str:

@@ -3,11 +3,11 @@ import time
 
 
 
-import script_states
-import utilities
-import win_man_py.win_man_py
-from enums import ScriptStateType
-from log_py import log_py as log
+from unreal_auto_mod import script_states
+from unreal_auto_mod import utilities
+from unreal_auto_mod import win_man_py
+from unreal_auto_mod.enums import ScriptStateType
+from unreal_auto_mod import log_py as log
 from ue_dev_py_utils import ue_dev_py_utils as unreal_dev_utils
 from gen_py_utils import gen_py_utils as general_utils
 

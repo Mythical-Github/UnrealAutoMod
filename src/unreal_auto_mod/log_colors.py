@@ -1,4 +1,4 @@
-{
+COLORS = {
     "theme_colors": {
         "Error": "\u001b[31;1m",
         "Warning": "\u001b[33;1m",

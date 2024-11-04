@@ -1,12 +1,12 @@
-import threading
 import time
+import threading
 
-import script_states
-import utilities
-from win_man_py import win_man_py
-from enums import ScriptStateType
-from log_py import log_py as log
-from gen_py_utils import gen_py_utils as general_utils
+from unreal_auto_mod import utilities
+from unreal_auto_mod import win_man_py
+from unreal_auto_mod import script_states
+from unreal_auto_mod import log_py as log
+from unreal_auto_mod.enums import ScriptStateType
+from unreal_auto_mod import gen_py_utils as general_utils
 
 
 found_process = False

@@ -1,0 +1,83 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "unreal_auto_mod"
+dynamic = ["version"]
+description = "Easy To Use Command Line Modding Utility For Unreal Engine Games 4.0-5.5"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+keywords = []
+authors = [
+  { name = "Mythical", email = "MythicalData@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "alive_progress",
+  "pyjson5",
+  "requests",
+  "psutil",
+  "pygetwindow",
+  "screeninfo",
+  "colorama"
+]
+
+[project.urls]
+Documentation = "https://github.com/Mythical-Github/UnrealAutoMod/blob/main/README.md"
+Issues = "https://github.com/Mythical-Github/UnrealAutoMod/issues"
+Source = "https://github.com/Mythical-Github/UnrealAutoMod"
+
+[project.scripts]
+UnrealAutoMod = "unreal_auto_mod.__main__:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/unreal_auto_mod/_version.py"
+
+[tool.hatch.env]
+requires = ["hatch-pip-compile"]
+
+[tool.hatch.envs.default]
+type = "pip-compile"
+path = ".venv"
+pip-compile-resolver = "uv"
+pip-compile-installer = "uv"
+
+[tool.hatch.envs.build]
+template = "build"
+installer = "uv"
+dependencies = [
+  "pyinstaller",
+]
+
+[tool.hatch.envs.build.scripts]
+exe = [
+  "pyinstaller --noconfirm --onefile --console --name UnrealAutoMod --icon=assets/images/UnrealAutoModIcon.ico src/unreal_auto_mod/__main__.py",
+]
+
+[tool.hatch.envs.scripts]
+template = "scripts"
+detached = true
+installer = "uv"
+
+[tool.hatch.envs.scripts.scripts]
+clean = "git clean -d -X --force"
+refresh-deps = [
+  "hatch env remove default",
+  "python -c \"import os; os.remove('requirements.txt')\"",
+  "hatch env create default",
+]

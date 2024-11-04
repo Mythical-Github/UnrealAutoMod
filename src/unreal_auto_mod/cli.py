@@ -1,5 +1,7 @@
-{
-    "module_name": "settings",
+from unreal_auto_mod import settings
+
+OPTIONS = {
+    "module": settings,
     "commands": {
         "test_mods": {
             "function_name": "test_mods",

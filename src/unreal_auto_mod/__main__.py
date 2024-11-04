@@ -1,10 +1,10 @@
-import __init__
-
 import sys
 from pathlib import Path
 
-from cli_py import cli_py
-from log_py import log_py as log
+from unreal_auto_mod import cli_py
+from unreal_auto_mod import log_py as log
+from unreal_auto_mod.cli import OPTIONS
+from unreal_auto_mod.log_colors import COLORS
 
 
 if getattr(sys, 'frozen', False):
@@ -12,12 +12,13 @@ if getattr(sys, 'frozen', False):
 else:
     script_dir = Path(__file__).resolve().parent
 
-
-if __name__ == "__main__":
+def main():
     try:
         log.set_log_base_dir(script_dir)
-        log.set_colors_json_path(f'{script_dir}/json/log_colors.json')
-        cli_py.set_json_location(f'{script_dir}/json/cli.json')
-        cli_py.cli_logic()
+        log.configure_logging(COLORS)
+        cli_py.cli_logic(OPTIONS)
     except Exception as error_message:
         log.log_message(str(error_message))
+
+if __name__ == "__main__":
+    main()

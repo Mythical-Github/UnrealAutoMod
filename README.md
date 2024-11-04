@@ -167,30 +167,6 @@ UnrealAutoModCLI.exe settings.json test_mods_all
 UnrealAutoModCLI.exe settings.json test_mods <mod_name> [<mod_name> ...]
 ```
 
-```
-__main__.py -h
-```
-
-```
-__main__.py command -h
-```
-
-```
-__main__.py settings.json test_mods_all
-```
-
-```
-__main__.py settings.json test_mods <mod_name> [<mod_name> ...]
-```
-
-<h2>💻 Building UnrealAutoMod</h2>
-
-* To setup the virtual env, UnrealAutoMod uses [uv](https://github.com/astral-sh/uv), you must have a valid python and git install, for git, you may need your ssh keys setup
-* Download the Development.zip from the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest).
-* Unzip to wherever you'd like, and run the setup bat file
-* There are several other bat files to help ease development
-* To learn more about using [uv](https://github.com/astral-sh/uv) check out the [documentation](https://docs.astral.sh/uv/)
-
 <h2>💻 References</h2>
 
 * [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/faq.md)
@@ -205,5 +181,3 @@ __main__.py settings.json test_mods <mod_name> [<mod_name> ...]
 <h2>🛡️ License:</h2>
 
 [![license](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)](LICENSE)
-
-

@@ -1,9 +1,9 @@
 import winreg
 
-import utilities
-import script_states
-from log_py import log_py as log
-from enums import ScriptStateType, GameLaunchType, ExecutionMode
+from unreal_auto_mod import utilities
+from unreal_auto_mod import script_states
+from unreal_auto_mod import log_py as log
+from unreal_auto_mod.enums import ScriptStateType, GameLaunchType, ExecutionMode
 
 
 def get_steam_exe_location():

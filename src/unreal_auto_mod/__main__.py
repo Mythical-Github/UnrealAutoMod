@@ -6,6 +6,7 @@ from unreal_auto_mod import log_py as log
 from unreal_auto_mod.cli import OPTIONS
 from unreal_auto_mod.log_colors import COLORS
 
+
 if getattr(sys, 'frozen', False):
     script_dir = Path(sys.executable).parent
 else:

@@ -27,7 +27,8 @@ dependencies = [
   "requests",
   "psutil",
   "pygetwindow",
-  "screeninfo"
+  "screeninfo",
+  "colorama"
 ]
 
 [project.urls]

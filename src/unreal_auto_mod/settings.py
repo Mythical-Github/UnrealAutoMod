@@ -1,11 +1,13 @@
 import os
 import sys
 import time
-import pyjson5 as json
 
 import psutil
-import unreal_auto_mod.gen_py_utils as gen_utils
+import pyjson5 as json
+
 from unreal_auto_mod import mods
+import unreal_auto_mod.gen_py_utils as gen_utils
+
 
 start_time = time.time()
 

@@ -2,7 +2,9 @@ import os
 import logging
 from datetime import datetime
 from shutil import get_terminal_size
+
 from colorama import Style, init
+
 
 init(autoreset=True)
 

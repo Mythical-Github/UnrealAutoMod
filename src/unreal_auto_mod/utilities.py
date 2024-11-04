@@ -4,10 +4,10 @@ import shutil
 import subprocess
 
 from unreal_auto_mod import settings
-from unreal_auto_mod.enums import ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 from unreal_auto_mod import log_py as log
 from unreal_auto_mod import gen_py_utils as general_utils
 from unreal_auto_mod import ue_dev_py_utils as unreal_dev_utils
+from unreal_auto_mod.enums import ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
 
 
 def get_fmodel_path() -> str:

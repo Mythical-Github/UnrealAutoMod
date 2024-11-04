@@ -1,9 +1,9 @@
-import threading
 import time
+import threading
 
 from unreal_auto_mod import script_states
-from unreal_auto_mod.enums import ScriptStateType
 from unreal_auto_mod import log_py as log
+from unreal_auto_mod.enums import ScriptStateType
 
 
 def constant_thread_runner(tick_rate: float = 0.01):

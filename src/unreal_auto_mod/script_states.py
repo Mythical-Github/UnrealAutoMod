@@ -1,10 +1,10 @@
-from unreal_auto_mod import win_man_enums
 from unreal_auto_mod import win_man_py
+from unreal_auto_mod import win_man_enums
+from unreal_auto_mod import log_py as log
 import unreal_auto_mod.settings as settings
 import unreal_auto_mod.utilities as utilities
 from unreal_auto_mod import win_man_py as windows
 from unreal_auto_mod.enums import ExecutionMode, ScriptStateType, get_enum_from_val
-from unreal_auto_mod import log_py as log
 
 
 def alt_exe_checks(script_state_type: ScriptStateType):

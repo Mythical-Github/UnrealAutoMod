@@ -2,8 +2,8 @@ import os
 import glob
 import zipfile
 import hashlib
-import requests
 
+import requests
 import psutil
 
 

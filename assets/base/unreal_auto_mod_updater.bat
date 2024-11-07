@@ -3,8 +3,8 @@ setlocal
 
 set "script_dir=%~dp0"
 set "backup_dir=%script_dir%backup"
-set "zip_url=https://github.com/Mythical-Github/UnrealAutoMod/releases/latest/download/UnrealAutoMod.zip"
-set "zip_file=%script_dir%UnrealAutoMod.zip"
+set "zip_url=https://github.com/Mythical-Github/unreal_auto_mod/releases/latest/download/unreal_auto_mod.zip"
+set "zip_file=%script_dir%unreal_auto_mod.zip"
 
 if exist "%backup_dir%" (
     echo Renaming existing backup directory to backup.bak

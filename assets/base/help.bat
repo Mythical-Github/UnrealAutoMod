@@ -4,7 +4,7 @@
 cd %~dp0
 
 
-set exe_file="%CD%\UnrealAutoModCLI.exe"
+set exe_file="%CD%\unreal_auto_mod.exe"
 set arg=test_mods
 set help_command_one=%exe_file%  -h
 set help_command_two=%exe_file% %arg% -h

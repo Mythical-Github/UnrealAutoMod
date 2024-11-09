@@ -171,7 +171,7 @@ unreal_auto_mod.exe settings.json test_mods <mod_name> [<mod_name> ...]
 
 * [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/faq.md)
 * [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/enums.md)
-* [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/settings_json.md)
+* [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/settings_json.md)
 * [Youtube Example Setup Reference](https://www.youtube.com/watch?v=6MUkUFhumo8)
 
 <h2>💻 Built with</h2>

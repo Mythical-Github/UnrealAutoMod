@@ -152,19 +152,19 @@ The program itself, supports various command line parameters.
 Here are some examples of how you would use it.
 
 ```
-UnrealAutoModCLI.exe -h
+unreal_auto_mod.exe -h
 ```
 
 ```
-UnrealAutoModCLI.exe command -h
+unreal_auto_mod.exe command -h
 ```
 
 ```
-UnrealAutoModCLI.exe settings.json test_mods_all
+unreal_auto_mod.exe settings.json test_mods_all
 ```
 
 ```
-UnrealAutoModCLI.exe settings.json test_mods <mod_name> [<mod_name> ...]
+unreal_auto_mod.exe settings.json test_mods <mod_name> [<mod_name> ...]
 ```
 
 <h2>💻 References</h2>

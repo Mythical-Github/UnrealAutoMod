@@ -2,9 +2,9 @@
 
 cd /d %~dp0
 
-set "py_project_dev_tools_exe=%CD%/py_project_dev_tools.exe"
+set "py_project_dev_tools_exe=%CD%\py_project_dev_tools.exe"
 
-set "toml=%CD%/../../pyproject.toml"
+set "toml=%CD%\..\..\pyproject.toml"
 
 "%py_project_dev_tools_exe%" setup_virtual_environment "%toml%"
 

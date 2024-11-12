@@ -4,11 +4,12 @@ cd /d %~dp0
 
 set "py_project_dev_tools_exe=%CD%/py_project_dev_tools.exe"
 
-set "toml=%CD%/../../pyproject.toml"
+set "toml=%CD%\..\..\pyproject.toml"
 
 "%py_project_dev_tools_exe%" make_exe_release "%toml%"
 
+set "dist_dir=%CD%\..\..\dist"
+
+start explorer "%dist_dir%"
+
 exit /b 0
-
-
-

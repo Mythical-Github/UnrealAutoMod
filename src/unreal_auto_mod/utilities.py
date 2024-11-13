@@ -11,29 +11,29 @@ from unreal_auto_mod.enums import ExecutionMode, ScriptStateType, CompressionTyp
 
 
 def get_fmodel_path() -> str:
-    return f'{get_uproject_unreal_auto_mod_resources_dir()}/FModel/FModel.exe'
+    return os.path.join(get_uproject_unreal_auto_mod_resources_dir(), 'Fmodel', 'Fmodel.exe')
 
 
 def install_fmodel():
     download_fmodel()
-    zip_path = f'{get_working_dir()}/FModel.zip'
-    install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/FModel'
+    zip_path = os.path.join(get_working_dir, 'Fmodel.zip')
+    install_dir = os.path.join(get_uproject_unreal_auto_mod_resources_dir(), 'Fmodel')
     general_utils.unzip_zip(zip_path, install_dir)
 
 
 def download_fmodel():
     url = 'https://github.com/4sval/FModel/releases/latest/download/FModel.zip'
-    download_path = f'{get_working_dir()}/FModel.zip'
+    download_path = os.path.join(get_working_dir, 'Fmodel.zip')
     general_utils.download_file(url, download_path)
 
 
 def get_umodel_path() -> str:
-    return f'{get_uproject_unreal_auto_mod_resources_dir()}/UModel/umodel_64.exe'
+    return os.path.join(get_uproject_unreal_auto_mod_resources_dir(), 'Umodel', 'umodel_64.exe')
 
 
 def install_umodel():
     download_umodel()
-    zip_path = f'{get_working_dir()}/umodel_win32.zip'
+    zip_path = os.path.join(get_working_dir, 'umodel_win32.zip')
     install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/UModel'
     general_utils.unzip_zip(zip_path, install_dir)
 

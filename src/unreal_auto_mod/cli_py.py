@@ -1,46 +1,51 @@
-import sys
+import argparse
 
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod.log_py import log_message
 
 
 def cli_logic(cli_data):
     commands_module = cli_data['module']
     cli_info_dict = cli_data['commands']
 
-    args = sys.argv[1:]
+    parser = argparse.ArgumentParser(description="Easy To Use Command Line Modding Utility For Unreal Engine Games 4.0-5.5")
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
-    def display_help():
-        log.log_message('Args:')
-        for key in cli_info_dict.keys():
-            log.log_message(f'Arg: {key}')
-        sys.exit()
+    for command, command_info in cli_info_dict.items():
+        subcommand_parser = subparsers.add_parser(command, help=f"Execute {command} command")
+        
+        arg_help_pairs = command_info.get('arg_help_pairs', [])
+        
+        for arg_entry in arg_help_pairs:
+            for arg_name, arg_data in arg_entry.items():
+                subcommand_parser.add_argument(
+                    f"--{arg_name}",
+                    type=str,
+                    help=arg_data["help"],
+                    required=arg_data["required"],
+                    nargs="+" if arg_data["use_nargs"] else None
+                )
 
-    if '-h' in args:
-        if len(args) == 1:
-            display_help()
-        elif len(args) >= 2 and args[1] == '-h':
-            arg = args[0]
-            if arg in cli_info_dict:
-                arg_help_pairs_list = cli_info_dict[arg].get('arg_help_pairs', [])
-                log.log_message('Args:')
-                for arg_help_dict in arg_help_pairs_list:
-                    arg_name, arg_help = list(arg_help_dict.items())[0]
-                    log.log_message(f'Arg: {arg_name}    Help: {arg_help}')
-            sys.exit()
+    args = parser.parse_args()
 
-    for entry in cli_info_dict.keys():
-        if entry in args:
-            function_name = cli_info_dict[entry]['function_name']
-            if function_name:
-                function = getattr(commands_module, function_name)
-                log.log_message(f'Function: {function_name} was called')
-                log.log_message('Args:')
-                cli_args = args[:]
-                cli_args.remove(entry)
-                for arg in cli_args:
-                    log.log_message(f'Arg: {arg}')
-                function(*cli_args)
-                sys.exit()
+    if args.command:
+        command_info = cli_info_dict.get(args.command)
+        if command_info:
+            function_name = command_info['function_name']
+            function = getattr(commands_module, function_name, None)
+            if function:
+                function_args = [
+                    getattr(args, arg_name, None)
+                    for arg_help_pair in command_info['arg_help_pairs']
+                    for arg_name in arg_help_pair.keys()
+                ]
 
-    log.log_message('Invalid argument or missing argument.')
-    display_help()
+                log_message(f"Function: {function_name} was called with args: {function_args}")
+                function(*function_args)
+            else:
+                log_message(f"Function {function_name} not found in {commands_module}.")
+        else:
+            log_message("Invalid command.")
+            parser.print_help()
+    else:
+        log_message("No command provided.")
+        parser.print_help()

@@ -1,3 +1,4 @@
+import os
 import winreg
 
 from unreal_auto_mod import utilities
@@ -11,7 +12,7 @@ def get_steam_exe_location():
         reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\WOW6432Node\Valve\Steam", 0, winreg.KEY_READ)
         install_path, _ = winreg.QueryValueEx(reg_key, "InstallPath")
         winreg.CloseKey(reg_key)
-        steam_exe_path = f"{install_path}\\steam.exe"
+        steam_exe_path = os.path.join(install_path, 'steam.exe')
         return steam_exe_path
     except FileNotFoundError:
         return "Steam: installation not found in the registry."
@@ -30,7 +31,7 @@ def get_epic_launcher_exe_location():
             display_name = winreg.QueryValueEx(sub_key, "DisplayName")[0]
             if "Epic Games Launcher" in display_name:
                 install_path, _ = winreg.QueryValueEx(sub_key, "InstallLocation")
-                epic_launcher_exe_path = f"{install_path}\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"
+                epic_launcher_exe_path = os.path.join(install_path, 'Portal', 'Binaries', 'Win32', 'EpicGamesLauncher.exe')
                 return epic_launcher_exe_path
         except FileNotFoundError:
             pass

@@ -218,7 +218,7 @@ def uninstall_pak_mod(mod_name: str):
     if ue_dev_py_utils.is_game_ue5(utilities.get_unreal_engine_dir()):
         extensions.extend(['ucas', 'utoc'])
     for extension in extensions:
-        file_path = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.{extension}'
+        file_path = os.path.join(utilities.custom_get_game_paks_dir(), utilities.get_pak_dir_structure(mod_name), f'{mod_name}.{extension}')
         if os.path.isfile(file_path):
             os.remove(file_path)
 

@@ -119,7 +119,7 @@ def pass_settings(settings_json: str):
     load_settings(settings_json)
 
 
-def test_mods(settings_json: str, *input_mod_names: str):
+def test_mods(settings_json: str, input_mod_names: str):
     load_settings(settings_json)
     global mod_names
     for mod_name in input_mod_names:

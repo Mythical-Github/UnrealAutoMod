@@ -308,6 +308,7 @@ def install_repak_mod(mod_name: str):
                 shutil.copy2(before_file, after_file)
             
             progress.update(task, advance=1)
+    make_pak_repak(mod_name)
 
 
 def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):

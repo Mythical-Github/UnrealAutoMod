@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger: Module",
+            "name": "test_mods_all",
             "type": "debugpy",
             "request": "launch",
             "module": "unreal_auto_mod",
@@ -13,6 +13,41 @@
                 "test_mods_all",
                 "--settings_json_path",
                 "${workspaceFolder}\\assets\\base\\default\\settings.json"
+            ]
+        },
+        {
+            "name": "test_mods",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "test_mods",
+                "--settings_json_path",
+                "${workspaceFolder}\\assets\\base\\default\\settings.json",
+                "--mod_names",
+                "ModLoader_P",
+                "MapKit",
+                "ExampleLevel"
+            ]
+        },
+        {
+            "name": "run_game",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "run_game",
+                "--settings_json_path",
+                "${workspaceFolder}\\assets\\base\\default\\settings.json"
+            ]
+        },
+        {
+            "name": "help",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "-h"
             ]
         }
     ]

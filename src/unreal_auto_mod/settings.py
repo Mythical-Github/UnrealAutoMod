@@ -186,8 +186,10 @@ def open_settings_json(settings_json: str):
 
 def run_game(settings_json: str):
     load_settings(settings_json)
+    from unreal_auto_mod import thread_game_monitor
     from unreal_auto_mod import game_runner
     game_runner.run_game()
+    thread_game_monitor.game_monitor_thread()
 
 
 def open_umodel(settings_json: str):

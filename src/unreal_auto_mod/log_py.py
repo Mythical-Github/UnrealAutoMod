@@ -103,5 +103,3 @@ def is_file_in_use(file_path):
     except IOError:
         return True
 
-
-configure_logging(LOG_INFO)

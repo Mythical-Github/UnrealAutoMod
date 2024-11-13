@@ -15,4 +15,3 @@ assets/build_scripts/__main__.spec
 /src/unreal_auto_mod/_version.py
 /assets/dev_tools/logs
 assets/base/unreal_auto_mod.exe
-/src/logs

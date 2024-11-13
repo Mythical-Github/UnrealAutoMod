@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from rich.progress import Progress
+from alive_progress import alive_bar
 
 from unreal_auto_mod import packing
 from unreal_auto_mod import utilities
@@ -52,9 +52,7 @@ def move_files_for_packing(mod_name: str):
     mod_files_dict = packing.get_mod_file_paths_for_manually_made_pak_mods(mod_name)
     mod_files_dict = utilities.filter_file_paths(mod_files_dict)
     
-    with Progress(transient=True) as progress:
-        task = progress.add_task(f"Copying files for {mod_name} mod...", total=len(mod_files_dict))
-        
+    with alive_bar(len(mod_files_dict), title=f'Progress Bar: Copying files for {mod_name} mod', bar='filling', spinner='waves2') as bar:
         for before_file, after_file in mod_files_dict.items():
             if os.path.exists(after_file):
                 if not general_utils.get_do_files_have_same_hash(before_file, after_file):
@@ -62,8 +60,6 @@ def move_files_for_packing(mod_name: str):
             else:
                 if not os.path.isdir(os.path.dirname(after_file)):
                     os.makedirs(os.path.dirname(after_file))
-            
             if os.path.isfile(before_file):
                 shutil.copy2(before_file, after_file)
-            
-            progress.update(task, advance=1)
+            bar()  

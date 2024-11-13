@@ -3,30 +3,31 @@ import logging
 from datetime import datetime
 from shutil import get_terminal_size
 
-from colorama import Style, init
+from rich.logging import RichHandler
+
+from unreal_auto_mod.console import console
+from unreal_auto_mod.log_info import LOG_INFO
 
 
-init(autoreset=True)
+FORMAT = "%(message)s"
 
-logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level="NOTSET",
+    format=FORMAT,
+    datefmt="[%X]",
+    handlers=[RichHandler(rich_tracebacks=True)]
+)
+
+logger = logging.getLogger("rich")
 
 log_base_dir = f'{os.getcwd()}/src'
-
-theme_colors = ''
-default_color = ''
-background_color = ''
 log_prefix = ''
 
 
 class FlushFileHandler(logging.FileHandler):
-    """Custom FileHandler that flushes after every write."""
     def emit(self, record):
         super().emit(record)
-        self.flush()  # Ensures log is written immediately
-
-
-def module_setup():
-    return
+        self.flush()
 
 
 def set_log_base_dir(base_dir: str):
@@ -35,14 +36,8 @@ def set_log_base_dir(base_dir: str):
 
 
 def configure_logging(colors_config):
-    global theme_colors
-    global default_color
-    global background_color
     global log_prefix
 
-    theme_colors = colors_config.get('theme_colors', {})
-    default_color = colors_config['default_color']
-    background_color = colors_config['background_color']
     log_prefix = colors_config['log_name_prefix']
 
     log_dir = os.path.join(log_base_dir, 'logs')
@@ -55,15 +50,7 @@ def configure_logging(colors_config):
 
     rename_latest_log(log_dir)
 
-    original_path = os.path.join(log_dir, 'latest.log')
-
-    global inter_log
-    inter_log = original_path
-
-    log_file = inter_log
-
-    # Use FlushFileHandler to ensure immediate writes
-    file_handler = FlushFileHandler(log_file)
+    file_handler = FlushFileHandler(os.path.join(log_dir, 'latest.log'))
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(logging.Formatter('%(message)s'))
 
@@ -72,19 +59,20 @@ def configure_logging(colors_config):
 
 
 def log_message(message: str):
-    logger.info(message)
-    color = default_color
-    for keyword, assigned_color in theme_colors.items():
-        if keyword in message:
-            color = assigned_color
-            break
+    color_options = LOG_INFO.get('theme_colors')
+    default_background_color = LOG_INFO.get('background_color')
+    default_background_color = f"rgb({default_background_color[0]},{default_background_color[1]},{default_background_color[2]})"
+
+    default_text_color = LOG_INFO.get('default_color')
+    default_text_color = f"rgb({default_text_color[0]},{default_text_color[1]},{default_text_color[2]})"
     terminal_width = get_terminal_size().columns
     padded_message = (message[:terminal_width] if len(message) > terminal_width else message.ljust(terminal_width))
-    print(f"{background_color}{color}{padded_message}{Style.RESET_ALL}")
-
-    # Ensure file is flushed and available immediately
-    if hasattr(logger.handlers[0], 'flush'):
-        logger.handlers[0].flush()
+    for keyword, color in color_options.items():
+        if keyword in padded_message:
+            rgb_color = f"rgb({color[0]},{color[1]},{color[2]})"
+            console.print((padded_message), style=f'{rgb_color} on {default_background_color}')
+            return
+    console.print(padded_message, style=f'{default_text_color} on {default_background_color}')
 
 
 def rename_latest_log(log_dir):
@@ -114,3 +102,6 @@ def is_file_in_use(file_path):
             return False
     except IOError:
         return True
+
+
+configure_logging(LOG_INFO)

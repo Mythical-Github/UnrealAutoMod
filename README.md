@@ -152,26 +152,26 @@ The program itself, supports various command line parameters.
 Here are some examples of how you would use it.
 
 ```
-UnrealAutoModCLI.exe -h
+unreal_auto_mod.exe -h
 ```
 
 ```
-UnrealAutoModCLI.exe command -h
+unreal_auto_mod.exe command -h
 ```
 
 ```
-UnrealAutoModCLI.exe settings.json test_mods_all
+unreal_auto_mod.exe settings.json test_mods_all
 ```
 
 ```
-UnrealAutoModCLI.exe settings.json test_mods <mod_name> [<mod_name> ...]
+unreal_auto_mod.exe settings.json test_mods <mod_name> [<mod_name> ...]
 ```
 
 <h2>💻 References</h2>
 
-* [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/faq.md)
-* [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/enums.md)
-* [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
+* [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/faq.md)
+* [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/enums.md)
+* [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/settings_json.md)
 * [Youtube Example Setup Reference](https://www.youtube.com/watch?v=6MUkUFhumo8)
 
 <h2>💻 Built with</h2>

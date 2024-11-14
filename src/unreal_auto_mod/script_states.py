@@ -62,7 +62,7 @@ def window_checks(current_state: win_man_enums.WindowAction):
                 elif way_to_change_window == win_man_enums.WindowAction.MOVE:
                     windows.move_window(window_to_change, window_settings)
                 else:
-                    log.log_message('Monitor: invalid window behaviour specified in settings')
+                    log.log_message('Monitor: invalid window behavior specified in settings')
 
 
 def routine_checks(state: ScriptStateType):

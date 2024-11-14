@@ -160,11 +160,11 @@ unreal_auto_mod.exe command -h
 ```
 
 ```
-unreal_auto_mod.exe settings.json test_mods_all
+unreal_auto_mod.exe test_mods_all --settings_json_path <settings_json_path>
 ```
 
 ```
-unreal_auto_mod.exe settings.json test_mods <mod_name> [<mod_name> ...]
+unreal_auto_mod.exe settings.json test_mods --settings_json_path <settings_json_path> --mod_names [<mod_name> ...]
 ```
 
 <h2>💻 References</h2>

@@ -1,5 +1,5 @@
-import os
 import logging
+import os
 from datetime import datetime
 from shutil import get_terminal_size
 
@@ -7,7 +7,6 @@ from rich.logging import RichHandler
 
 from unreal_auto_mod.console import console
 from unreal_auto_mod.log_info import LOG_INFO
-
 
 FORMAT = "%(message)s"
 
@@ -82,7 +81,7 @@ def rename_latest_log(log_dir):
             timestamp = datetime.now().strftime('%m_%d_%Y_%H%M_%S')
             new_name = f'{log_prefix}{timestamp}.log'
             new_log_path = os.path.join(log_dir, new_name)
-            
+
             counter = 1
             while os.path.isfile(new_log_path) or is_file_in_use(latest_log_path):
                 new_name = f'{log_prefix}{timestamp}_({counter}).log'
@@ -100,6 +99,6 @@ def is_file_in_use(file_path):
     try:
         with open(file_path, 'a'):
             return False
-    except IOError:
+    except OSError:
         return True
 

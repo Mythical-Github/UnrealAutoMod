@@ -5,9 +5,8 @@ import time
 import psutil
 import pyjson5 as json
 
-from unreal_auto_mod import mods
 import unreal_auto_mod.gen_py_utils as gen_utils
-
+from unreal_auto_mod import mods
 
 start_time = time.time()
 
@@ -32,7 +31,7 @@ def init_settings(settings_json_path: str):
     global settings_json
     global settings_json_dir
 
-    with open(settings_json_path, 'r') as file:
+    with open(settings_json_path) as file:
         settings = json.load(file)
     window_name = settings['general_info']['window_title']
     os.system(f'title {window_name}')
@@ -64,16 +63,16 @@ def check_file_exists(file_path: str) -> bool:
 
 
 def unreal_engine_check():
-    from unreal_auto_mod import utilities
     from unreal_auto_mod import log_py as log
     from unreal_auto_mod import ue_dev_py_utils as ue_dev_utils
+    from unreal_auto_mod import utilities
 
     should_do_check = True
 
     if utilities.get_should_ship_uproject_steps():
         if not utilities.is_unreal_pak_packing_enum_in_use():
                should_do_check = False
-               
+
     if should_do_check:
         engine_str = 'UE4Editor'
         if ue_dev_utils.is_game_ue5(utilities.get_unreal_engine_dir()):
@@ -83,12 +82,12 @@ def unreal_engine_check():
 
 
 def init_checks():
-    from unreal_auto_mod import utilities
     from unreal_auto_mod import log_py as log
+    from unreal_auto_mod import utilities
     if not utilities.get_should_ship_uproject_steps():
         check_file_exists(utilities.get_uproject_file())
         log.log_message('Check: Uproject file exists')
-    
+
     unreal_engine_check()
 
     if utilities.get_is_using_repak_path_override():
@@ -106,7 +105,7 @@ def load_settings(settings_json: str):
     if not init_settings_done:
         init_settings(settings_json)
     init_checks()
-    with open(settings_json, 'r') as file:
+    with open(settings_json) as file:
         return json.load(file)
 
 
@@ -161,7 +160,7 @@ def open_kismet_analyzer(settings_json: str):
     kismet_analyzer_path = utilities.get_kismet_analyzer_path()
     kismet_directory = os.path.dirname(kismet_analyzer_path)
     command = f'cd /d "{kismet_directory}" && "{kismet_analyzer_path}" -h && set ka=kismet-analyzer.exe && cmd /k'
-    subprocess.run(command, shell=True)
+    subprocess.run(command, shell=True, check=False)
 
 
 def open_uasset_gui(settings_json: str):
@@ -186,8 +185,7 @@ def open_settings_json(settings_json: str):
 
 def run_game(settings_json: str):
     load_settings(settings_json)
-    from unreal_auto_mod import thread_game_monitor
-    from unreal_auto_mod import game_runner
+    from unreal_auto_mod import game_runner, thread_game_monitor
     game_runner.run_game()
     thread_game_monitor.game_monitor_thread()
 

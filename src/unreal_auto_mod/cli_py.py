@@ -12,9 +12,9 @@ def cli_logic(cli_data):
 
     for command, command_info in cli_info_dict.items():
         subcommand_parser = subparsers.add_parser(command, help=f"Execute {command} command")
-        
+
         arg_help_pairs = command_info.get('arg_help_pairs', [])
-        
+
         for arg_entry in arg_help_pairs:
             for arg_name, arg_data in arg_entry.items():
                 subcommand_parser.add_argument(

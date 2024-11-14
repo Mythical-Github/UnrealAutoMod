@@ -1,5 +1,5 @@
-import os
 import json
+import os
 
 from unreal_auto_mod import gen_py_utils
 from unreal_auto_mod.ue_dev_py_enums import PackagingDirType
@@ -12,7 +12,7 @@ def get_game_process_name(input_game_exe_path: str) -> str:
 def get_unreal_engine_version(engine_path: str) -> str:
     version_file_path = f'{engine_path}/Engine/Build/Build.version'
     gen_py_utils.check_file_exists(version_file_path)
-    with open(version_file_path, 'r') as f:
+    with open(version_file_path) as f:
         version_info = json.load(f)
         unreal_engine_major_version = version_info.get('MajorVersion', 0)
         unreal_engine_minor_version = version_info.get('MinorVersion', 0)
@@ -31,9 +31,7 @@ def get_is_game_iostore(uproject_file_path: str, game_dir: str) -> bool:
     for file in all_files:
         file_extensions = gen_py_utils.get_file_extensions(file)
         for file_extension in file_extensions:
-            if file_extension == '.ucas':
-                is_game_iostore = True
-            elif file_extension == '.utoc':
+            if file_extension == '.ucas' or file_extension == '.utoc':
                 is_game_iostore = True
     return is_game_iostore
 

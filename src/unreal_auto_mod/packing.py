@@ -3,34 +3,28 @@ import shutil
 
 from rich.progress import Progress
 
-from unreal_auto_mod import settings
-from unreal_auto_mod import utilities
-from unreal_auto_mod import unreal_pak
-from unreal_auto_mod import script_states
-from unreal_auto_mod import log_py as log
-from unreal_auto_mod import repak_utilities
-from unreal_auto_mod import ue_dev_py_utils
 from unreal_auto_mod import gen_py_utils as general_utils
-from unreal_auto_mod.enums import PackingType, ScriptStateType, CompressionType, get_enum_from_val
-
+from unreal_auto_mod import log_py as log
+from unreal_auto_mod import repak_utilities, script_states, settings, ue_dev_py_utils, unreal_pak, utilities
+from unreal_auto_mod.enums import CompressionType, PackingType, ScriptStateType, get_enum_from_val
 
 install_queue_types = []
 uninstall_queue_types = []
 command_queue = []
 
 
-class PopulateQueueTypeCheckDicts():
+class PopulateQueueTypeCheckDicts:
     global install_queue_types
     global uninstall_queue_types
     for packing_type in list(PackingType):
         for mod_info in utilities.get_mod_info_list():
             if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
                 install_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
-                if not install_queue_type in install_queue_types:
+                if install_queue_type not in install_queue_types:
                     install_queue_types.append(install_queue_type)
             if not mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
                 uninstall_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
-                if not uninstall_queue_type in uninstall_queue_types:
+                if uninstall_queue_type not in uninstall_queue_types:
                     uninstall_queue_types.append(uninstall_queue_type)
 
 
@@ -177,7 +171,7 @@ def handle_install_logic(packing_type: PackingType):
     script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
     for command in command_queue:
         utilities.run_app(command)
-    
+
 
 
 def make_mods():
@@ -226,9 +220,8 @@ def uninstall_pak_mod(mod_name: str):
 def uninstall_mod(packing_type: PackingType, mod_name: str):
     if packing_type == PackingType.LOOSE:
         uninstall_loose_mod(mod_name)
-    else:
-        if packing_type in list(PackingType):
-            uninstall_pak_mod(mod_name)
+    elif packing_type in list(PackingType):
+        uninstall_pak_mod(mod_name)
 
 
 def install_loose_mod(mod_name: str):
@@ -243,7 +236,7 @@ def install_loose_mod(mod_name: str):
         if os.path.exists(before_file):
             if os.path.isfile(before_file):
                 shutil.copyfile(before_file, after_file)
-            
+
 
 
 def install_engine_mod(mod_name: str):
@@ -279,12 +272,12 @@ def make_pak_repak(mod_name: str):
     if not os.path.isdir(before_symlinked_dir) or not os.listdir(before_symlinked_dir):
         from unreal_auto_mod import log_py as log
         log.log_message(f'Error: {before_symlinked_dir}')
-        log.log_message(f'Error: does not exist or is empty, indicating a packaging and/or config issue')
-        raise FileNotFoundError()
+        log.log_message('Error: does not exist or is empty, indicating a packaging and/or config issue')
+        raise FileNotFoundError
 
 
     command = f'"{repak_utilities.get_package_path()}" pack "{before_symlinked_dir}" "{pak_dir}/{mod_name}.pak"'
-    if not compression_type_str == 'None':
+    if compression_type_str != 'None':
         command = f'{command} --compression {compression_type_str} --version {repak_utilities.get_repak_pak_version_str()}'
     if os.path.isfile(f'{pak_dir}/{mod_name}.pak'):
         os.remove(f'{pak_dir}/{mod_name}.pak')
@@ -294,10 +287,10 @@ def make_pak_repak(mod_name: str):
 def install_repak_mod(mod_name: str):
     mod_files_dict = get_mod_file_paths_for_manually_made_pak_mods(mod_name)
     mod_files_dict = utilities.filter_file_paths(mod_files_dict)
-    
+
     with Progress(transient=True) as progress:
         task = progress.add_task(f"Copying files for {mod_name} mod...", total=len(mod_files_dict))
-        
+
         for before_file, after_file in mod_files_dict.items():
             if os.path.exists(after_file):
                 if not general_utils.get_do_files_have_same_hash(before_file, after_file):
@@ -306,7 +299,7 @@ def install_repak_mod(mod_name: str):
                 os.makedirs(os.path.dirname(after_file))
             if os.path.isfile(before_file):
                 shutil.copy2(before_file, after_file)
-            
+
             progress.update(task, advance=1)
     make_pak_repak(mod_name)
 
@@ -411,7 +404,7 @@ def get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name: str) -> 
     if not utilities.get_should_ship_uproject_steps():
         cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
         mod_pak_info = get_mod_pak_entry(mod_name)
-        if not mod_pak_info['manually_specified_assets']['asset_paths'] is None:
+        if mod_pak_info['manually_specified_assets']['asset_paths'] is not None:
             for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
                 base_path = f'{cooked_uproject_dir}/{asset}'
                 for extension in general_utils.get_file_extensions(base_path):
@@ -426,7 +419,7 @@ def get_mod_file_paths_for_manually_made_pak_mods_tree_paths(mod_name: str) -> d
     if not utilities.get_should_ship_uproject_steps():
         cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
         mod_pak_info = get_mod_pak_entry(mod_name)
-        if not mod_pak_info['manually_specified_assets']['tree_paths'] is None:
+        if mod_pak_info['manually_specified_assets']['tree_paths'] is not None:
             for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
                 tree_path = f'{cooked_uproject_dir}/{tree}'
                 for entry in general_utils.get_files_in_tree(tree_path):

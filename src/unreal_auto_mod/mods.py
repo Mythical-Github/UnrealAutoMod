@@ -1,15 +1,17 @@
 
 
 def create_mods():
-    from unreal_auto_mod import enums
-    from unreal_auto_mod import engine
-    from unreal_auto_mod import packing
-    from unreal_auto_mod import utilities
-    from unreal_auto_mod import game_runner
-    from unreal_auto_mod import script_states
-    from unreal_auto_mod import thread_constant
-    from unreal_auto_mod import thread_game_monitor
-    
+    from unreal_auto_mod import (
+        engine,
+        enums,
+        game_runner,
+        packing,
+        script_states,
+        thread_constant,
+        thread_game_monitor,
+        utilities,
+    )
+
     script_states.ScriptState.set_script_state(enums.ScriptStateType.INIT)
     thread_constant.constant_thread()
     script_states.ScriptState.set_script_state(enums.ScriptStateType.POST_INIT)

@@ -283,7 +283,7 @@ def custom_get_game_dir():
 def custom_get_game_paks_dir() -> str:
     alt_game_dir = os.path.dirname(custom_get_game_dir())
     if get_is_using_alt_dir_name():
-        return f'{alt_game_dir}/{get_alt_packing_dir_name()}/Content/Paks'
+        return os.path.join(alt_game_dir, get_alt_packing_dir_name, 'Content', 'Paks')
     elif not get_should_ship_uproject_steps():
         return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
     else:

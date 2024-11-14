@@ -20,7 +20,7 @@ def get_unreal_engine_version(engine_path: str) -> str:
 
 
 def get_game_paks_dir(uproject_file_path: str, game_dir: str) -> str:
-    return f'{os.path.dirname(game_dir)}/{get_uproject_name(uproject_file_path)}/Content/Paks'
+    return os.path.join(os.path.dirname(game_dir), get_uproject_name(uproject_file_path), 'Content', 'Paks')
 
 
 def get_is_game_iostore(uproject_file_path: str, game_dir: str) -> bool:
@@ -41,7 +41,7 @@ def get_game_dir(game_exe_path: str):
 
 
 def get_game_content_dir(game_dir: str):
-    return f'{game_dir}/Content'
+    return os.path.join(game_dir, 'Content')
 
 
 def get_game_pak_folder_archives(uproject_file_path: str, game_dir: str) -> list:
@@ -75,7 +75,7 @@ def get_unreal_editor_exe_path(unreal_engine_dir: str) -> str:
         engine_path_suffix = 'UE4Editor.exe'
     else:
         engine_path_suffix = 'UnrealEditor.exe'
-    return f'{unreal_engine_dir}/Engine/Binaries/Win64/{engine_path_suffix}'
+    return os.path.join(unreal_engine_dir, 'Engine', 'Binaries', 'Win64', engine_path_suffix)
 
 
 def get_win_dir_str(unreal_engine_dir: str) -> str:
@@ -86,7 +86,10 @@ def get_win_dir_str(unreal_engine_dir: str) -> str:
 
 
 def get_cooked_uproject_dir(uproject_file_path: str, unreal_engine_dir: str) -> str:
-    return f'{get_uproject_dir(uproject_file_path)}/Saved/Cooked/{get_win_dir_str(unreal_engine_dir)}/{get_uproject_name(uproject_file_path)}'
+    uproject_dir = get_uproject_dir(uproject_file_path)
+    win_dir_name = get_win_dir_str(unreal_engine_dir)
+    uproject_name = get_uproject_name(uproject_file_path)
+    return os.path.join(uproject_dir, 'Saved', 'Cooked', win_dir_name, uproject_name)
 
 
 def get_uproject_name(uproject_file_path: str) -> str:
@@ -98,7 +101,8 @@ def get_uproject_dir(uproject_file_path: str) -> str:
 
 
 def get_saved_cooked_dir(uproject_file_path: str) -> str:
-    return f'{get_uproject_dir(uproject_file_path)}/Saved/Cooked'
+    uproject_dir = get_uproject_dir(uproject_file_path)
+    return os.path.join(uproject_dir, 'Saved', 'Cooked')
 
 
 def get_engine_window_title(uproject_file_path: str) -> str:
@@ -110,7 +114,9 @@ def get_engine_process_name(unreal_dir: str) -> str:
 
 
 def get_build_target_file_path(uproject_file_path: str) -> str:
-    return f'{get_uproject_dir(uproject_file_path)}/Binaries/Win64/{get_uproject_name(uproject_file_path)}.target'
+    uproject_dir = get_uproject_dir(uproject_file_path)
+    uproject_name = get_uproject_name(uproject_file_path)
+    return os.path.join(uproject_dir, 'Binaries', 'Win64', f'{uproject_name}.target')
 
 
 def has_build_target_been_built(uproject_file_path: str) -> bool:
@@ -118,7 +124,7 @@ def has_build_target_been_built(uproject_file_path: str) -> bool:
 
 
 def get_unreal_pak_exe_path(unreal_engine_dir: str) -> str:
-    return f'{unreal_engine_dir}/Engine/Binaries/Win64/UnrealPak.exe'
+    return os.path.join(unreal_engine_dir, 'Engine', 'Binaries', 'Win64', 'UnrealPak.exe')
 
 
 def get_game_window_title(input_game_exe_path: str) -> str:

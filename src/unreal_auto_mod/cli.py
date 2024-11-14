@@ -107,41 +107,6 @@ OPTIONS = {
                     "use_nargs": False
                 }}
             ]
-        },
-        "create_mod_releases": {
-            "function_name": "create_mod_releases",
-            "arg_help_pairs": [
-                {"settings_json_path": {
-                    "help": "Path to settings.json",
-                    "required": True,
-                    "use_nargs": False
-                }},
-                {"mod_names": {
-                    "help": "list of mod_names, strings",
-                    "required": True,
-                    "use_nargs": True
-                }},
-                {"output_directory": {
-                    "help": "the directory to output the mod archives in, defaults to unreal_auto_mod/releases",
-                    "required": False,
-                    "use_nargs": True
-                }}
-            ]
-        },
-        "create_mod_releases_all": {
-            "function_name": "create_mod_releases_all",
-            "arg_help_pairs": [
-                {"settings_json_path": {
-                    "help": "Path to settings.json",
-                    "required": True,
-                    "use_nargs": False
-                }},
-                {"output_directory": {
-                    "help": "the directory to output the mod archives in, defaults to unreal_auto_mod/releases",
-                    "required": False,
-                    "use_nargs": True
-                }}
-            ]
         }
     }
 }

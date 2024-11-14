@@ -410,7 +410,7 @@ def get_working_dir() -> str:
     if get_is_overriding_default_working_dir():
         working_dir = get_override_working_dir()
     else:
-        working_dir = f'{settings.SCRIPT_DIR}/working_dir'
+        working_dir = os.path.join(settings.SCRIPT_DIR, 'working_dir')
     if not os.path.isdir(working_dir):
         os.makedirs(working_dir)
     return working_dir

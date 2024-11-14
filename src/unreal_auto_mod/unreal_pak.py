@@ -51,8 +51,8 @@ def move_files_for_packing(mod_name: str):
     mod_files_dict = packing.get_mod_file_paths_for_manually_made_pak_mods(mod_name)
     mod_files_dict = utilities.filter_file_paths(mod_files_dict)
 
-    with Progress(transient=True) as progress:
-        task = progress.add_task(f"Copying files for {mod_name} mod...", total=len(mod_files_dict))
+    with Progress() as progress:
+        task = progress.add_task(f"[green]Progress Bar: Copying files for {mod_name} mod...", total=len(mod_files_dict))
 
         for before_file, after_file in mod_files_dict.items():
             if os.path.exists(after_file):

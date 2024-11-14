@@ -1,13 +1,12 @@
 import os
 import shutil
 
-from alive_progress import alive_bar
+from rich.progress import Progress
 
-from unreal_auto_mod import packing
-from unreal_auto_mod import utilities
-from unreal_auto_mod.enums import CompressionType
 from unreal_auto_mod import gen_py_utils as general_utils
+from unreal_auto_mod import packing, utilities
 from unreal_auto_mod import ue_dev_py_utils as unreal_dev_utils
+from unreal_auto_mod.enums import CompressionType
 
 
 def get_pak_dir_to_pack(mod_name: str):
@@ -43,7 +42,7 @@ def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
     pak_path = f'{output_pak_dir}/{mod_name}.pak'
     response_file = make_response_file(mod_name)
     command = f'{exe_path} "{pak_path}" -Create="{response_file}"'
-    if not compression_str == 'None':
+    if compression_str != 'None':
         command = f'{command} -compress -compressionformat={compression_str}'
     packing.command_queue.append(command)
 
@@ -51,15 +50,18 @@ def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
 def move_files_for_packing(mod_name: str):
     mod_files_dict = packing.get_mod_file_paths_for_manually_made_pak_mods(mod_name)
     mod_files_dict = utilities.filter_file_paths(mod_files_dict)
-    
-    with alive_bar(len(mod_files_dict), title=f'Progress Bar: Copying files for {mod_name} mod', bar='filling', spinner='waves2') as bar:
+
+    with Progress() as progress:
+        task = progress.add_task(f"[green]Copying files for {mod_name} mod...", total=len(mod_files_dict))
+
         for before_file, after_file in mod_files_dict.items():
             if os.path.exists(after_file):
                 if not general_utils.get_do_files_have_same_hash(before_file, after_file):
                     os.remove(after_file)
-            else:
-                if not os.path.isdir(os.path.dirname(after_file)):
-                    os.makedirs(os.path.dirname(after_file))
+            elif not os.path.isdir(os.path.dirname(after_file)):
+                os.makedirs(os.path.dirname(after_file))
+
             if os.path.isfile(before_file):
                 shutil.copy2(before_file, after_file)
-            bar()  
+
+            progress.update(task, advance=1)

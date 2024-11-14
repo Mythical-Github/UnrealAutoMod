@@ -1,10 +1,10 @@
-import os
 import glob
-import zipfile
 import hashlib
+import os
+import zipfile
 
-import requests
 import psutil
+import requests
 
 
 def unzip_zip(zip_path: str, output_location: str):

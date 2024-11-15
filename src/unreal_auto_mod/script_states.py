@@ -1,8 +1,5 @@
-from unreal_auto_mod import win_man_py
-from unreal_auto_mod import win_man_enums
 from unreal_auto_mod import log_py as log
-import unreal_auto_mod.settings as settings
-import unreal_auto_mod.utilities as utilities
+from unreal_auto_mod import settings, utilities, win_man_enums, win_man_py
 from unreal_auto_mod import win_man_py as windows
 from unreal_auto_mod.enums import ExecutionMode, ScriptStateType, get_enum_from_val
 
@@ -65,21 +62,21 @@ def window_checks(current_state: win_man_enums.WindowAction):
                 elif way_to_change_window == win_man_enums.WindowAction.MOVE:
                     windows.move_window(window_to_change, window_settings)
                 else:
-                    log.log_message('Monitor: invalid window behaviour specified in settings')
+                    log.log_message('Monitor: invalid window behavior specified in settings')
 
 
 def routine_checks(state: ScriptStateType):
-    if not state == ScriptStateType.CONSTANT:
+    if state != ScriptStateType.CONSTANT:
         log.log_message(f'Routine Check: {state} is running')
     if is_script_state_used(state):
         utilities.kill_processes(state)
         window_checks(state)
         alt_exe_checks(state)
-    if not state == ScriptStateType.CONSTANT:
+    if state != ScriptStateType.CONSTANT:
         log.log_message(f'Routine Check: {state} finished')
 
 
-class ScriptState():
+class ScriptState:
     global script_state
 
     def set_script_state(new_state: ScriptStateType):
@@ -87,7 +84,7 @@ class ScriptState():
         script_state = new_state
         log.log_message(f'Script State: changed to {new_state}')
         # calling this on preinit causes problems so will avoid for now
-        if not new_state == ScriptStateType.PRE_INIT:
+        if new_state != ScriptStateType.PRE_INIT:
             routine_checks(new_state)
             routine_checks(ScriptStateType.PRE_ALL)
             routine_checks(ScriptStateType.POST_ALL)

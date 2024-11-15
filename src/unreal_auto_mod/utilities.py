@@ -1,39 +1,39 @@
 import os
-import time
 import shutil
 import subprocess
+import time
 
-from unreal_auto_mod import settings
-from unreal_auto_mod import log_py as log
 from unreal_auto_mod import gen_py_utils as general_utils
+from unreal_auto_mod import log_py as log
+from unreal_auto_mod import settings
 from unreal_auto_mod import ue_dev_py_utils as unreal_dev_utils
-from unreal_auto_mod.enums import ExecutionMode, ScriptStateType, CompressionType, get_enum_from_val
+from unreal_auto_mod.enums import CompressionType, ExecutionMode, ScriptStateType, get_enum_from_val
 
 
 def get_fmodel_path() -> str:
-    return f'{get_uproject_unreal_auto_mod_resources_dir()}/FModel/FModel.exe'
+    return os.path.join(get_uproject_unreal_auto_mod_resources_dir(), 'Fmodel', 'Fmodel.exe')
 
 
 def install_fmodel():
     download_fmodel()
-    zip_path = f'{get_working_dir()}/FModel.zip'
-    install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/FModel'
+    zip_path = os.path.join(get_working_dir, 'Fmodel.zip')
+    install_dir = os.path.join(get_uproject_unreal_auto_mod_resources_dir(), 'Fmodel')
     general_utils.unzip_zip(zip_path, install_dir)
 
 
 def download_fmodel():
     url = 'https://github.com/4sval/FModel/releases/latest/download/FModel.zip'
-    download_path = f'{get_working_dir()}/FModel.zip'
+    download_path = os.path.join(get_working_dir, 'Fmodel.zip')
     general_utils.download_file(url, download_path)
 
 
 def get_umodel_path() -> str:
-    return f'{get_uproject_unreal_auto_mod_resources_dir()}/UModel/umodel_64.exe'
+    return os.path.join(get_uproject_unreal_auto_mod_resources_dir(), 'Umodel', 'umodel_64.exe')
 
 
 def install_umodel():
     download_umodel()
-    zip_path = f'{get_working_dir()}/umodel_win32.zip'
+    zip_path = os.path.join(get_working_dir, 'umodel_win32.zip')
     install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/UModel'
     general_utils.unzip_zip(zip_path, install_dir)
 
@@ -129,7 +129,7 @@ def download_stove():
     else:
         # Fallback to a specific version if latest cannot be determined
         url = "https://github.com/bananaturtlesandwich/stove/releases/download/0.13.1-alpha/stove.exe"
-    
+
     download_path = f'{get_working_dir()}/stove.exe'
     general_utils.download_file(url, download_path)
 
@@ -274,7 +274,7 @@ def custom_get_unreal_engine_version(engine_path: str) -> str:
         return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'
     else:
         return unreal_dev_utils.get_unreal_engine_version(engine_path)
-    
+
 
 def custom_get_game_dir():
     return unreal_dev_utils.get_game_dir(get_game_exe_path())
@@ -283,12 +283,11 @@ def custom_get_game_dir():
 def custom_get_game_paks_dir() -> str:
     alt_game_dir = os.path.dirname(custom_get_game_dir())
     if get_is_using_alt_dir_name():
-        return f'{alt_game_dir}/{get_alt_packing_dir_name()}/Content/Paks'
+        return os.path.join(alt_game_dir, get_alt_packing_dir_name, 'Content', 'Paks')
+    elif not get_should_ship_uproject_steps():
+        return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
     else:
-        if not get_should_ship_uproject_steps():
-            return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
-        else:
-            return f'{os.path.dirname(os.path.dirname(os.path.dirname(get_game_exe_path())))}/Content/Paks'
+        return f'{os.path.dirname(os.path.dirname(os.path.dirname(get_game_exe_path())))}/Content/Paks'
 
 
 def get_unreal_engine_dir() -> str:
@@ -411,7 +410,7 @@ def get_working_dir() -> str:
     if get_is_overriding_default_working_dir():
         working_dir = get_override_working_dir()
     else:
-        working_dir = f'{settings.SCRIPT_DIR}/working_dir'
+        working_dir = os.path.join(settings.SCRIPT_DIR, 'working_dir')
     if not os.path.isdir(working_dir):
         os.makedirs(working_dir)
     return working_dir
@@ -487,7 +486,7 @@ def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: 
                 os.chdir(working_dir)
 
         process = subprocess.Popen(command, cwd=working_dir, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True)
-        
+
         for line in iter(process.stdout.readline, ''):
             log.log_message(line.strip())
 

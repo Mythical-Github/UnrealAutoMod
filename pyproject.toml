@@ -22,13 +22,12 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
 ]
 dependencies = [
-  "alive_progress",
   "pyjson5",
   "requests",
   "psutil",
   "pygetwindow",
   "screeninfo",
-  "colorama"
+  "rich"
 ]
 
 [project.urls]

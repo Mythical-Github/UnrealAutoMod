@@ -6,6 +6,6 @@ set "py_project_dev_tools_exe=%CD%\py_project_dev_tools.exe"
 
 set "toml=%CD%\..\..\pyproject.toml"
 
-"%py_project_dev_tools_exe%" cleanup_repo "%toml%"
+"%py_project_dev_tools_exe%" cleanup_repo --project_toml_path "%toml%"
 
 exit /b 0

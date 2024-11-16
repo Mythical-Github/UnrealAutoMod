@@ -10,57 +10,78 @@ from unreal_auto_mod import ue_dev_py_utils as unreal_dev_utils
 from unreal_auto_mod.enums import CompressionType, ExecutionMode, ScriptStateType, get_enum_from_val
 
 
-def get_fmodel_path() -> str:
-    return os.path.join(get_uproject_unreal_auto_mod_resources_dir(), 'Fmodel', 'Fmodel.exe')
+def get_fmodel_path(output_directory: str) -> str:
+    return os.path.join(output_directory, 'Fmodel.exe')
 
 
-def install_fmodel():
+def install_fmodel(output_directory: str):
     download_fmodel()
-    zip_path = os.path.join(get_working_dir, 'Fmodel.zip')
-    install_dir = os.path.join(get_uproject_unreal_auto_mod_resources_dir(), 'Fmodel')
-    general_utils.unzip_zip(zip_path, install_dir)
+    zip_path = os.path.join(get_working_dir(), 'Fmodel.zip')
+    general_utils.unzip_zip(zip_path, output_directory)
+
+
+def install_umodel(output_directory: str):
+    download_umodel()
+    os.makedirs(output_directory, exist_ok=True)
+    zip_path = os.path.join(get_working_dir(), 'umodel_win32.zip')
+    general_utils.unzip_zip(zip_path, output_directory)
+
+
+def install_kismet_analyzer(output_directory: str):
+    os.makedirs(output_directory, exist_ok=True)
+    os.makedirs(get_working_dir(), exist_ok=True)
+    download_kismet_analyzer(get_working_dir())
+    zip_path = f'{get_working_dir()}/kismet-analyzer-3d06645-win-x64.zip'
+    general_utils.unzip_zip(zip_path, output_directory)
+    shutil.move(f'{output_directory}/kismet-analyzer.exe', f'{output_directory}/kismet-analyzer.exe')
+
+
+def install_uasset_gui(output_directory: str):
+    os.makedirs(output_directory, exist_ok=True)
+    download_uasset_gui(output_directory)
+    exe_path = f'{output_directory}/UAssetGUI.exe'
+    shutil.move(exe_path, f'{output_directory}/UAssetGUI.exe')
+
+
+def install_stove(output_directory: str):
+    os.makedirs(output_directory, exist_ok=True)
+    download_stove(output_directory)
+    exe_path = f'{output_directory}/stove.exe'
+    shutil.move(exe_path, f'{output_directory}/stove.exe')
+
+
+def install_spaghetti(output_directory: str):
+    os.makedirs(output_directory, exist_ok=True)
+    download_spaghetti(output_directory)
+    exe_path = f'{output_directory}/spaghetti.exe'
+    shutil.move(exe_path, f'{output_directory}/spaghetti.exe')
 
 
 def download_fmodel():
     url = 'https://github.com/4sval/FModel/releases/latest/download/FModel.zip'
-    download_path = os.path.join(get_working_dir, 'Fmodel.zip')
+    download_path = os.path.join(get_working_dir(), 'Fmodel.zip')
     general_utils.download_file(url, download_path)
 
 
-def get_umodel_path() -> str:
-    return os.path.join(get_uproject_unreal_auto_mod_resources_dir(), 'Umodel', 'umodel_64.exe')
-
-
-def install_umodel():
-    download_umodel()
-    zip_path = os.path.join(get_working_dir, 'umodel_win32.zip')
-    install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/UModel'
-    general_utils.unzip_zip(zip_path, install_dir)
+def get_umodel_path(output_directory: str) -> str:
+    path = os.path.join(output_directory,'umodel_64.exe')
+    return os.path.normpath(path)
 
 
 def download_umodel():
     url = 'https://github.com/Mythical-Github/UEViewer/releases/download/vStatic/umodel_win32.zip'
     download_path = f'{get_working_dir()}/umodel_win32.zip'
+
     general_utils.download_file(url, download_path)
 
 
-def get_kismet_analyzer_path() -> str:
-    return f'{get_uproject_unreal_auto_mod_resources_dir()}/kismet-analyzer/kismet-analyzer.exe'
+def get_kismet_analyzer_path(output_directory: str) -> str:
+    return f'{output_directory}/kismet-analyzer-3d06645-win-x64/kismet-analyzer.exe'
 
 
-def install_kismet_analyzer():
-    download_kismet_analyzer()
-    zip_path = f'{get_working_dir()}/kismet-analyzer-ba3dad5-win-x64.zip'
-    install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/kismet-analyzer'
-    if not os.path.isdir(install_dir):
-        os.makedirs(install_dir)
-    general_utils.unzip_zip(zip_path, get_working_dir())
-    shutil.move(f'{get_working_dir()}/kismet-analyzer-ba3dad5-win-x64/kismet-analyzer.exe', f'{install_dir}/kismet-analyzer.exe')
-
-
-def download_kismet_analyzer():
-    url = "https://github.com/trumank/kismet-analyzer/releases/download/latest/kismet-analyzer-ba3dad5-win-x64.zip"
-    download_path = f'{get_working_dir()}/kismet-analyzer-ba3dad5-win-x64.zip'
+def download_kismet_analyzer(output_directory: str):
+    url = "https://github.com/trumank/kismet-analyzer/releases/download/latest/kismet-analyzer-3d06645-win-x64.zip"
+    download_path = f'{output_directory}/kismet-analyzer-3d06645-win-x64.zip'
     general_utils.download_file(url, download_path)
 
 
@@ -72,26 +93,18 @@ def get_blender_path():
     return settings.settings['optionals']['blender_path']
 
 
-def get_uasset_gui_path() -> str:
-    return f'{get_uproject_unreal_auto_mod_resources_dir()}/UAssetGUI/UAssetGUI.exe'
+def get_uasset_gui_path(output_directory: str) -> str:
+    return f'{output_directory}/UAssetGUI.exe'
 
 
-def install_uasset_gui():
-    download_uasset_gui()
-    exe_path = f'{get_working_dir()}/UAssetGUI.exe'
-    install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/UAssetGUI'
-    os.makedirs(install_dir, exist_ok=True)
-    shutil.move(exe_path, f'{install_dir}/UAssetGUI.exe')
-
-
-def download_uasset_gui():
+def download_uasset_gui(output_directory: str):
     url = "https://github.com/atenfyr/UAssetGUI/releases/latest/download/UAssetGUI.exe"
-    download_path = f'{get_working_dir()}/UAssetGUI.exe'
+    download_path = f'{output_directory}/UAssetGUI.exe'
     general_utils.download_file(url, download_path)
 
 
-def does_umodel_exist() -> bool:
-    return os.path.isfile(get_umodel_path())
+def does_umodel_exist(output_directory: str) -> bool:
+    return os.path.isfile(get_umodel_path(output_directory))
 
 
 def does_fmodel_exist() -> bool:
@@ -106,9 +119,9 @@ def does_uasset_gui_exist() -> bool:
     return os.path.isfile(f"{get_uproject_unreal_auto_mod_resources_dir()}/UAssetGUI/UAssetGUI.exe")
 
 
-def download_spaghetti():
+def download_spaghetti(output_directory: str):
     url = 'https://github.com/bananaturtlesandwich/spaghetti/releases/latest/download/spaghetti.exe'
-    download_path = f"{get_working_dir()}/spaghetti.exe"
+    download_path = f"{output_directory}/spaghetti.exe"
     general_utils.download_file(url, download_path)
 
 
@@ -122,7 +135,7 @@ def get_latest_stove_version():
     return None
 
 
-def download_stove():
+def download_stove(output_directory: str):
     latest_version = get_latest_stove_version()
     if latest_version:
         url = f"https://github.com/bananaturtlesandwich/stove/releases/download/{latest_version}/stove.exe"
@@ -130,40 +143,24 @@ def download_stove():
         # Fallback to a specific version if latest cannot be determined
         url = "https://github.com/bananaturtlesandwich/stove/releases/download/0.13.1-alpha/stove.exe"
 
-    download_path = f'{get_working_dir()}/stove.exe'
+    download_path = f'{output_directory}/stove.exe'
     general_utils.download_file(url, download_path)
 
 
-def get_spaghetti_path() -> str:
-    return f"{get_uproject_unreal_auto_mod_resources_dir()}/spaghetti/spaghetti.exe"
+def get_spaghetti_path(output_directory: str) -> str:
+    return f"{output_directory}/spaghetti.exe"
 
 
 def does_spaghetti_exist() -> bool:
     return os.path.isfile(get_spaghetti_path())
 
 
-def get_stove_path() -> str:
-    return f"{get_uproject_unreal_auto_mod_resources_dir()}/stove/stove.exe"
+def get_stove_path(output_directory: str) -> str:
+    return f"{output_directory}/stove.exe"
 
 
-def does_stove_exist() -> bool:
-    return os.path.isfile(get_stove_path())
-
-
-def install_stove():
-    download_stove()
-    exe_path = f'{get_working_dir()}/stove.exe'
-    install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/stove'
-    os.makedirs(install_dir, exist_ok=True)
-    shutil.move(exe_path, f'{install_dir}/stove.exe')
-
-
-def install_spaghetti():
-    download_spaghetti()
-    exe_path = f'{get_working_dir()}/spaghetti.exe'
-    install_dir = f'{get_uproject_unreal_auto_mod_resources_dir()}/spaghetti'
-    os.makedirs(install_dir, exist_ok=True)
-    shutil.move(exe_path, f'{install_dir}/spaghetti.exe')
+def does_stove_exist(output_directory: str) -> bool:
+    return os.path.isfile(get_stove_path(output_directory))
 
 
 def is_unreal_pak_packing_enum_in_use():
@@ -406,13 +403,18 @@ def get_override_working_dir() -> str:
     return settings.settings['general_info']['working_dir']
 
 
+# def get_working_dir() -> str:
+#     if get_is_overriding_default_working_dir():
+#         working_dir = get_override_working_dir()
+#     else:
+#         working_dir = os.path.join(settings.SCRIPT_DIR, 'working_dir')
+#     os.makedirs(working_dir, exist_ok=True)
+#     return working_dir
+
+
 def get_working_dir() -> str:
-    if get_is_overriding_default_working_dir():
-        working_dir = get_override_working_dir()
-    else:
-        working_dir = os.path.join(settings.SCRIPT_DIR, 'working_dir')
-    if not os.path.isdir(working_dir):
-        os.makedirs(working_dir)
+    working_dir = os.path.join(settings.SCRIPT_DIR, 'working_dir')
+    os.makedirs(working_dir, exist_ok=True)
     return working_dir
 
 

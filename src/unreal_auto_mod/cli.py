@@ -49,63 +49,63 @@ OPTIONS = {
             ]
         },
         "install_uasset_gui": {
-            "function_name": "open_uasset_gui",
+            "function_name": "install_uasset_gui",
             "arg_help_pairs": [
-                {"settings_json_path": {
-                    "help": "Path to settings.json",
+                {"output_directory": {
+                    "help": "Path to the output directory you want the program installed to.",
                     "required": True,
                     "use_nargs": False
-                }}
+                }},
             ]
         },
         "install_kismet_analyzer": {
-            "function_name": "open_kismet_analyzer",
+            "function_name": "install_kismet_analyzer",
             "arg_help_pairs": [
-                {"settings_json_path": {
-                    "help": "Path to settings.json",
+                {"output_directory": {
+                    "help": "Path to the output directory you want the program installed to.",
                     "required": True,
                     "use_nargs": False
-                }}
+                }},
             ]
         },
         "install_stove": {
-            "function_name": "open_stove",
+            "function_name": "install_stove",
             "arg_help_pairs": [
-                {"settings_json_path": {
-                    "help": "Path to settings.json",
+                {"output_directory": {
+                    "help": "Path to the output directory you want the program installed to.",
                     "required": True,
                     "use_nargs": False
-                }}
+                }},
             ]
         },
         "install_umodel": {
-            "function_name": "open_umodel",
+            "function_name": "install_umodel",
             "arg_help_pairs": [
-                {"settings_json_path": {
-                    "help": "Path to settings.json",
+                {"output_directory": {
+                    "help": "Path to the output directory you want the program installed to.",
                     "required": True,
                     "use_nargs": False
-                }}
+                }},
             ]
         },
         "install_fmodel": {
-            "function_name": "open_fmodel",
+            "function_name": "install_fmodel",
             "arg_help_pairs": [
-                {"settings_json_path": {
-                    "help": "Path to settings.json",
+                {"output_directory": {
+                    "help": "Path to the output directory you want the program installed to.",
                     "required": True,
                     "use_nargs": False
-                }}
+                }},
             ]
         },
         "install_spaghetti": {
-            "function_name": "open_spaghetti",
+            "function_name": "install_spaghetti",
             "arg_help_pairs": [
-                {"settings_json_path": {
-                    "help": "Path to settings.json",
+                {"output_directory": {
+                    "help": "Path to the output directory you want the program installed to.",
                     "required": True,
                     "use_nargs": False
-                }}
+                }},
             ]
         }
     }

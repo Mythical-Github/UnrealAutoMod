@@ -134,41 +134,37 @@ def test_mods_all(settings_json: str):
     mods.create_mods()
 
 
-def open_stove(settings_json: str):
-    load_settings(settings_json)
+def install_stove(output_directory: str):
     from unreal_auto_mod import utilities
-    if not os.path.isfile(utilities.does_stove_exist()):
-        utilities.install_stove()
-    utilities.run_app(utilities.get_stove_path(),)
+    if not os.path.isfile(utilities.does_stove_exist(output_directory)):
+        utilities.install_stove(output_directory)
+    utilities.run_app(utilities.get_stove_path(output_directory))
 
 
-def open_spaghetti(settings_json: str):
-    load_settings(settings_json)
+def install_spaghetti(output_directory: str):
     from unreal_auto_mod import utilities
-    if not os.path.isfile(utilities.get_spaghetti_path()):
-        utilities.install_spaghetti()
-    utilities.run_app(utilities.get_spaghetti_path())
+    if not os.path.isfile(utilities.get_spaghetti_path(output_directory)):
+        utilities.install_spaghetti(output_directory)
+    utilities.run_app(utilities.get_spaghetti_path(output_directory))
 
 
-def open_kismet_analyzer(settings_json: str):
-    load_settings(settings_json)
+def install_kismet_analyzer(output_directory: str):
     from unreal_auto_mod import utilities
     # add shell stuff to run app later or something
-    if not os.path.isfile(utilities.get_kismet_analyzer_path()):
-        utilities.install_kismet_analyzer()
+    if not os.path.isfile(utilities.get_kismet_analyzer_path(output_directory)):
+        utilities.install_kismet_analyzer(output_directory)
     import subprocess
-    kismet_analyzer_path = utilities.get_kismet_analyzer_path()
+    kismet_analyzer_path = utilities.get_kismet_analyzer_path(output_directory)
     kismet_directory = os.path.dirname(kismet_analyzer_path)
     command = f'cd /d "{kismet_directory}" && "{kismet_analyzer_path}" -h && set ka=kismet-analyzer.exe && cmd /k'
     subprocess.run(command, shell=True, check=False)
 
 
-def open_uasset_gui(settings_json: str):
-    load_settings(settings_json)
+def install_uasset_gui(output_directory: str):
     from unreal_auto_mod import utilities
-    if not os.path.isfile(utilities.get_uasset_gui_path()):
-        utilities.install_uasset_gui()
-    utilities.run_app(utilities.get_uasset_gui_path())
+    if not os.path.isfile(utilities.get_uasset_gui_path(output_directory)):
+        utilities.install_uasset_gui(output_directory)
+    utilities.run_app(utilities.get_uasset_gui_path(output_directory))
 
 
 def open_latest_log(settings_json: str):
@@ -190,19 +186,18 @@ def run_game(settings_json: str):
     thread_game_monitor.game_monitor_thread()
 
 
-def open_umodel(settings_json: str):
-    load_settings(settings_json)
+def install_umodel(output_directory: str):
     from unreal_auto_mod import utilities
-    if not os.path.isfile(utilities.does_umodel_exist()):
-        utilities.install_umodel()
+    if not os.path.isfile(utilities.does_umodel_exist(output_directory)):
+        utilities.install_umodel(output_directory)
     # Sets dir, so it's the dir opened by default in umodel
-    os.chdir(os.path.dirname(utilities.custom_get_game_dir()))
-    utilities.run_app(utilities.get_umodel_path())
+    # os.chdir(os.path.dirname(utilities.custom_get_game_dir()))
+    test = utilities.get_umodel_path(output_directory)
+    utilities.run_app(test)
 
 
-def open_fmodel(settings_json: str):
-    load_settings(settings_json)
+def install_fmodel(output_directory: str):
     from unreal_auto_mod import utilities
-    if not os.path.isfile(utilities.get_fmodel_path()):
-        utilities.install_fmodel()
-    utilities.run_app(utilities.get_fmodel_path())
+    if not os.path.isfile(utilities.get_fmodel_path(output_directory)):
+        utilities.install_fmodel(output_directory)
+    utilities.run_app(utilities.get_fmodel_path(output_directory))

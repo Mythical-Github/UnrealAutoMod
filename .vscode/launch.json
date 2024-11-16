@@ -49,6 +49,72 @@
             "args": [
                 "-h"
             ]
+        },
+        {
+            "name": "install_umodel",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "install_umodel",
+                "--output_directory",
+                "${workspaceFolder}/dist/umodel"
+            ]
+        },
+        {
+            "name": "install_fmodel",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "install_fmodel",
+                "--output_directory",
+                "${workspaceFolder}/dist/fmodel"
+            ]
+        },
+        {
+            "name": "install_kismet_analyzer",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "install_kismet_analyzer",
+                "--output_directory",
+                "${workspaceFolder}/dist/kismet_analyzer"
+            ]
+        },
+        {
+            "name": "install_uasset_gui",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "install_uasset_gui",
+                "--output_directory",
+                "${workspaceFolder}/dist/uasset_gui"
+            ]
+        },
+        {
+            "name": "install_stove",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "install_stove",
+                "--output_directory",
+                "${workspaceFolder}/dist/stove"
+            ]
+        },
+        {
+            "name": "install_spaghetti",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "install_spaghetti",
+                "--output_directory",
+                "${workspaceFolder}/dist/spaghetti"
+            ]
         }
     ]
 }

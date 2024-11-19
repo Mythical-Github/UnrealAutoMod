@@ -4,6 +4,9 @@
     "working_dir": null, // no need to edit unless override_default_working_dir is true
     "window_title": "unreal_auto_mod automation script" // no need to change this unless you have an actual reason
   },
+  "git_info": {
+    "repo_path": "C:/Users/Mythical/Documents/GitHub/ZedfestModdingKit"
+  },
   "engine_info": {
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/ZedfestModdingKit/KevinSpel.uproject",

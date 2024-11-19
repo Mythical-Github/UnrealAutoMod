@@ -221,7 +221,20 @@ def build(settings_json: str):
 
 
 def cleanup(settings_json: str):
-    log_message('place_holder function called')
+    log_message('Cleaning up repo at:')
+    repo_dir = settings.settings['git_info']['repo_path']
+    log_message(f'"{repo_dir}"')
+    from utilities import run_app
+    exe = 'git'
+    args = [
+        'clean', 
+        '-d', 
+        '-X', 
+        '--force'
+    ] 
+    run_app(exe_path=exe, args=args, working_dir=repo_dir)
+    log_message('Cleaned up repo at:')
+    repo_dir = settings.settings['git_info']['repo_path']
 
 
 def upload_changes_to_repo(settings_json: str):

@@ -18,61 +18,61 @@ def cli_logic():
     sub_parser = parser.add_subparsers(dest='command')
 
 
-    build_parser = sub_parser.add_parser('build', help='Builds the uproject specified within the settings JSON')
+    build_parser = sub_parser.add_parser('build', help='Builds the uproject specified within the settings JSON', formatter_class=RichHelpFormatter)
     build_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    cook_parser = sub_parser.add_parser('cook', help='Cooks content for the uproject specified within the settings JSON')
+    cook_parser = sub_parser.add_parser('cook', help='Cooks content for the uproject specified within the settings JSON', formatter_class=RichHelpFormatter)
     cook_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    cleanup_parser = sub_parser.add_parser('cleanup', help='Cleans up the github repo specified within the settings JSON')
+    cleanup_parser = sub_parser.add_parser('cleanup', help='Cleans up the github repo specified within the settings JSON', formatter_class=RichHelpFormatter)
     cleanup_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    upload_changes_to_repo_parser = sub_parser.add_parser('upload_changes_to_repo', help='Uploads latest changes of the git project to the github repo and branch specified within the settings JSON')
+    upload_changes_to_repo_parser = sub_parser.add_parser('upload_changes_to_repo', help='Uploads latest changes of the git project to the github repo and branch specified within the settings JSON', formatter_class=RichHelpFormatter)
     upload_changes_to_repo_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    open_latest_log_parser = sub_parser.add_parser('open_latest_log', help='Open the latest log file')
+    open_latest_log_parser = sub_parser.add_parser('open_latest_log', help='Open the latest log file', formatter_class=RichHelpFormatter)
     open_latest_log_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    run_game_parser = sub_parser.add_parser('run_game', help='Run the game')
+    run_game_parser = sub_parser.add_parser('run_game', help='Run the game', formatter_class=RichHelpFormatter)
     run_game_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    test_mods_parser = sub_parser.add_parser('test_mods', help='Run tests for specific mods')
+    test_mods_parser = sub_parser.add_parser('test_mods', help='Run tests for specific mods', formatter_class=RichHelpFormatter)
     test_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
     test_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
 
-    test_mods_all_parser = sub_parser.add_parser('test_mods_all', help='Run tests for all mods within the specified settings JSON')
+    test_mods_all_parser = sub_parser.add_parser('test_mods_all', help='Run tests for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     test_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    create_mods_parser = sub_parser.add_parser('create_mods', help='Creates mods for the specified mod names')
+    create_mods_parser = sub_parser.add_parser('create_mods', help='Creates mods for the specified mod names', formatter_class=RichHelpFormatter)
     create_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
     create_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
 
-    create_mods_all_parser = sub_parser.add_parser('create_mods_all', help='Creates mods for all enabled mods within the specified settings JSON')
+    create_mods_all_parser = sub_parser.add_parser('create_mods_all', help='Creates mods for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     create_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    create_mod_releases_parser = sub_parser.add_parser('create_mod_releases', help='Create one or more mod releases')
+    create_mod_releases_parser = sub_parser.add_parser('create_mod_releases', help='Create one or more mod releases', formatter_class=RichHelpFormatter)
     create_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')
     create_mod_releases_parser.add_argument('mod_names', nargs='+', help='List of mod names')
 
-    create_mod_releases_all_parser = sub_parser.add_parser('create_mod_releases_all', help='Creates mod releases for all mods within the specified settings JSON')
+    create_mod_releases_all_parser = sub_parser.add_parser('create_mod_releases_all', help='Creates mod releases for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     create_mod_releases_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    install_fmodel_parser = sub_parser.add_parser('install_fmodel', help='Install Fmodel')
+    install_fmodel_parser = sub_parser.add_parser('install_fmodel', help='Install Fmodel', formatter_class=RichHelpFormatter)
     install_fmodel_parser.add_argument('output_directory', help='Path to the output directory')
 
-    install_umodel_parser = sub_parser.add_parser('install_umodel', help='Install Umodel')
+    install_umodel_parser = sub_parser.add_parser('install_umodel', help='Install Umodel', formatter_class=RichHelpFormatter)
     install_umodel_parser.add_argument('output_directory', help='Path to the output directory')
 
-    install_stove_parser = sub_parser.add_parser('install_stove', help='Install Stove')
+    install_stove_parser = sub_parser.add_parser('install_stove', help='Install Stove', formatter_class=RichHelpFormatter)
     install_stove_parser.add_argument('output_directory', help='Path to the output directory')
 
-    install_spaghetti_parser = sub_parser.add_parser('install_spaghetti', help='Install Spaghetti')
+    install_spaghetti_parser = sub_parser.add_parser('install_spaghetti', help='Install Spaghetti', formatter_class=RichHelpFormatter)
     install_spaghetti_parser.add_argument('output_directory', help='Path to the output directory')
 
-    install_uasset_gui_parser = sub_parser.add_parser('install_uasset_gui', help='Install UAssetGUI')
+    install_uasset_gui_parser = sub_parser.add_parser('install_uasset_gui', help='Install UAssetGUI', formatter_class=RichHelpFormatter)
     install_uasset_gui_parser.add_argument('output_directory', help='Path to the output directory')
 
-    install_kismet_analyzer_parser = sub_parser.add_parser('install_kismet_analyzer', help='Install Kismet Analyzer')
+    install_kismet_analyzer_parser = sub_parser.add_parser('install_kismet_analyzer', help='Install Kismet Analyzer', formatter_class=RichHelpFormatter)
     install_kismet_analyzer_parser.add_argument('output_directory', help='Path to the output directory')
 
 

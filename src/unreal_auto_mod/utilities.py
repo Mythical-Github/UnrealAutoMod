@@ -507,3 +507,7 @@ def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: 
 
 def get_running_time():
     return time.time() - settings.start_time
+
+
+def get_repo_path() -> str:
+    return settings.settings['git_info']['repo_path']

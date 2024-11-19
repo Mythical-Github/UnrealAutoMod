@@ -1,5 +1,5 @@
-import threading
 import time
+import threading
 
 from unreal_auto_mod import log_py as log
 from unreal_auto_mod import script_states
@@ -24,15 +24,26 @@ def start_constant_thread():
     constant_thread.start()
 
 
+# def constant_thread():
+#     if script_states.is_script_state_used(ScriptStateType.CONSTANT):
+#         start_constant_thread()
+#         log.log_message('Thread: Constant Thread Started')
+#     else:
+#         log.log_message('Thread: Constant Thread Ended')
+
+
 def constant_thread():
-    if script_states.is_script_state_used(ScriptStateType.CONSTANT):
-        start_constant_thread()
-        log.log_message('Thread: Constant Thread Started')
-    else:
-        log.log_message('Thread: Constant Thread Ended')
+    start_constant_thread()
+    log.log_message('Thread: Constant Thread Started')
+
+
+# def stop_constant_thread():
+#     if script_states.is_script_state_used(ScriptStateType.CONSTANT):
+#         global run_constant_thread
+#         run_constant_thread = False
 
 
 def stop_constant_thread():
-    if script_states.is_script_state_used(ScriptStateType.CONSTANT):
-        global run_constant_thread
-        run_constant_thread = False
+    global run_constant_thread
+    run_constant_thread = False
+    log.log_message('Thread: Constant Thread Ended')

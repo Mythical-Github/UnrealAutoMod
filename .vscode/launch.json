@@ -149,7 +149,6 @@
             "module": "unreal_auto_mod",
             "args": [
                 "install_fmodel",
-                "output_directory",
                 "${workspaceFolder}/dist/fmodel"
             ]
         },
@@ -160,7 +159,6 @@
             "module": "unreal_auto_mod",
             "args": [
                 "install_umodel",
-                "output_directory",
                 "${workspaceFolder}/dist/umodel"
             ]
         },
@@ -171,7 +169,6 @@
             "module": "unreal_auto_mod",
             "args": [
                 "install_stove",
-                "output_directory",
                 "${workspaceFolder}/dist/stove"
             ]
         },
@@ -182,7 +179,6 @@
             "module": "unreal_auto_mod",
             "args": [
                 "install_spaghetti",
-                "output_directory",
                 "${workspaceFolder}/dist/spaghetti"
             ]
         },
@@ -193,7 +189,6 @@
             "module": "unreal_auto_mod",
             "args": [
                 "install_uasset_gui",
-                "output_directory",
                 "${workspaceFolder}/dist/uasset_gui"
             ]
         },
@@ -204,7 +199,6 @@
             "module": "unreal_auto_mod",
             "args": [
                 "install_kismet_analyzer",
-                "output_directory",
                 "${workspaceFolder}/dist/kismet_analyzer"
             ]
         }

@@ -509,5 +509,5 @@ def get_running_time():
     return time.time() - settings.start_time
 
 
-def get_repo_path() -> str:
-    return settings.settings['git_info']['repo_path']
+def get_repo_paths() -> str:
+    return settings.settings['git_info']['repo_paths']

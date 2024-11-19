@@ -53,6 +53,21 @@ class ScriptStateType(Enum):
     POST_ENGINE_OPEN = 'post_engine_open'
     PRE_ENGINE_CLOSE = 'pre_engine_close'
     POST_ENGINE_CLOSE = 'post_engine_close'
+    PRE_CLEANUP = 'pre_cleanup'
+    POST_CLEANUP = 'post_cleanup'
+    PRE_CHANGES_UPLOAD = 'pre_changes_upload'
+    POST_CHANGES_UPLOAD = 'post_changes_upload'
+    PRE_BUILD_UPROJECT = 'pre_uproject_build'
+    POST_BUILD_UPROJECT = 'post_uproject_build'
+    PRE_CREATE_MOD_RELEASE = 'pre_create_mod_release'
+    POST_CREATE_MOD_RELEASE = 'post_create_mod_release'
+    PRE_CREATE_MOD_RELEASES = 'pre_create_mod_releases'
+    POST_CREATE_MOD_RELEASES = 'post_create_mod_releases'
+    PRE_CREATE_MOD = 'pre_create_mod'
+    POST_CREATE_MOD = 'post_create_mod'
+    PRE_CREATE_MODS = 'pre_create_mods'
+    POST_CREATE_MODS = 'post_create_mods'
+
 
 
 class ExecutionMode(Enum):

@@ -134,9 +134,9 @@ After configuring these settings, you can proceed to configure the mod list.
 
 ### Additional Notes
 
-* For JSON paths, use forward slashes (`/`) instead of backslashes (`\`). Make sure your paths match this format when editing the JSON file.
-* [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
-* [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/faq.md)
+- For JSON paths, use forward slashes (`/`) instead of backslashes (`\`). Make sure your paths match this format when editing the JSON file.
+- [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/settings_json.md)
+- [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/faq.md)
 
 ###
 

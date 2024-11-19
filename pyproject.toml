@@ -67,6 +67,7 @@ dependencies = [
 [tool.hatch.envs.build.scripts]
 exe = [
   "pyinstaller --noconfirm --onefile --console --name unreal_auto_mod --icon=assets/images/project_main_icon.ico src/unreal_auto_mod/__main__.py",
+  "pyinstaller --noconfirm --onefile --console --name unreal_auto_mod_background --icon=assets/images/project_main_icon.ico src/unreal_auto_mod/__main__.pyw"
 ]
 
 [tool.hatch.envs.scripts]

@@ -27,7 +27,8 @@ dependencies = [
   "psutil",
   "pygetwindow",
   "screeninfo",
-  "rich"
+  "rich",
+  "rich_argparse"
 ]
 
 [project.urls]

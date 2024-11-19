@@ -1,5 +1,7 @@
 import argparse
 
+from rich_argparse import RichHelpFormatter
+
 from unreal_auto_mod import settings
 
 
@@ -9,7 +11,8 @@ def cli_logic():
 
     parser = argparse.ArgumentParser(
         prog=parser_program_name,
-        description=parser_description
+        description=parser_description,
+        formatter_class=RichHelpFormatter
     )
 
     sub_parser = parser.add_subparsers(dest='command')

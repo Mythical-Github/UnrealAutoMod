@@ -6,6 +6,7 @@
 # - pyjson5
 # - requests
 # - rich
+# - rich-argparse
 # - screeninfo
 #
 
@@ -32,6 +33,10 @@ pyrect==0.2.0
 requests==2.32.3
     # via hatch.envs.default
 rich==13.9.4
+    # via
+    #   hatch.envs.default
+    #   rich-argparse
+rich-argparse==1.6.0
     # via hatch.envs.default
 screeninfo==0.8.1
     # via hatch.envs.default

@@ -2,7 +2,7 @@
   "general_info": {
     "override_default_working_dir": false, // generally best left to false
     "working_dir": null, // no need to edit unless override_default_working_dir is true
-    "window_title": "UnrealAutoMod Automation Script" // no need to change this unless you have an actual reason
+    "window_title": "unreal_auto_mod automation script" // no need to change this unless you have an actual reason
   },
   "engine_info": {
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
@@ -15,7 +15,7 @@
     "use_unversioned_cooked_content": true,
     "clear_uproject_saved_cooked_dir_before_tests": false, // essentially reforces cooking of content, even if iterate is on
     "always_build_project": false, // this forces a build on projects that have already been built every time, usually not needed
-    "override_automatic_version_finding": false, // if parsing the engine version from the engine install fails, you can use this and the below settings 
+    "override_automatic_version_finding": false, // if parsing the engine version from the engine install fails, you can use this and the below settings
     "unreal_engine_major_version": null, // not needed unless override_automatic_version_finding is true
     "unreal_engine_minor_version": null // not needed unless override_automatic_version_finding is true
   },
@@ -28,10 +28,7 @@
     "skip_launching_game": true, // this is for if you want to launch the game after the models have been created and installed
     "override_automatic_window_title_finding": true,
     "window_title_override_string": "Zedfest",
-    "launch_params": [
-      "-fileopenlog",
-      "-NOSPLASH"
-    ]
+    "launch_params": ["-fileopenlog", "-NOSPLASH"]
   },
   "alt_uproject_name_in_game_dir": {
     "use_alt_method": false,
@@ -120,4 +117,3 @@
     }
   ]
 }
-  

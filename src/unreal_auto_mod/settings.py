@@ -5,6 +5,7 @@ import time
 import psutil
 import pyjson5 as json
 
+from unreal_auto_mod.log_py import log_message
 import unreal_auto_mod.gen_py_utils as gen_utils
 from unreal_auto_mod import mods
 
@@ -201,3 +202,35 @@ def install_fmodel(output_directory: str):
     if not os.path.isfile(utilities.get_fmodel_path(output_directory)):
         utilities.install_fmodel(output_directory)
     utilities.run_app(utilities.get_fmodel_path(output_directory))
+
+
+def create_mod_releases(settings_json: str, mod_names: str):
+    log_message('place_holder function called')
+
+
+def create_mod_releases_all(settings_json: str):
+    log_message('place_holder function called')
+
+
+def cook(settings_json: str):
+    log_message('place_holder function called')
+
+
+def build(settings_json: str):
+    log_message('place_holder function called')
+
+
+def cleanup(settings_json: str):
+    log_message('place_holder function called')
+
+
+def upload_changes_to_repo(settings_json: str):
+    log_message('place_holder function called')
+
+
+def create_mods(settings_json: str, mod_names: str):
+    log_message('place_holder function called')
+
+
+def create_mods_all(settings_json: str):
+    log_message('place_holder function called')

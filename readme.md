@@ -8,35 +8,33 @@ For an in editor menu version check out [UnrealAutoModInEditor](https://github.c
 
 [![Project Screenshot](https://github.com/Mythical-Github/UnrealAutoMod/assets/4b65e3a3-ae7f-4881-bea4-e73191594587.png)](https://github.com/user-attachments/assets/76da1afc-9c30-4ec8-b27c-8c072e73f696)
 
-
 <h2 id="features">💪 Features</h2>
 
-* Supports Unreal Engine versions: 4.0-5.5
-* Supports loose file modding (unreal assets, not in a mod archive, like a .pak)
-* Supports modding iostore games
-* Automatic mod creation and placement
-* Automatic engine cooking, and packaging
-* Automatic game running
-* Automatic editor running
-* Event management system
-* Process management events
-* Window management events
-* Automatic script/exec running events
-* Supports creation of mod archives, through unreal_pak, repak, and engine made archives
-* Ability to add launch params to various script/exec running
-* Supports games with alternative packing structures (example game: Kingdom Hearts 3)
-* Supports packing edited files, through the persistent_files dir, or through the Event Management System
-* Easily configure what files end up in your final mod(s) and how with the Mod list within the config
-* Supports loading from json file, so you can have multiple projects easily
-* Logging
-* Colorful printouts
-* Ability to run in the background, with no windows
-
+- Supports Unreal Engine versions: 4.0-5.5
+- Supports loose file modding (unreal assets, not in a mod archive, like a .pak)
+- Supports modding iostore games
+- Automatic mod creation and placement
+- Automatic engine cooking, and packaging
+- Automatic game running
+- Automatic editor running
+- Event management system
+- Process management events
+- Window management events
+- Automatic script/exec running events
+- Supports creation of mod archives, through unreal_pak, repak, and engine made archives
+- Ability to add launch params to various script/exec running
+- Supports games with alternative packing structures (example game: Kingdom Hearts 3)
+- Supports packing edited files, through the persistent_files dir, or through the Event Management System
+- Easily configure what files end up in your final mod(s) and how with the Mod list within the config
+- Supports loading from json file, so you can have multiple projects easily
+- Logging
+- Colorful printouts
+- Ability to run in the background, with no windows
 
 <h2 id="installation_steps">🛠️ Installation Steps:</h2>
 
 1. Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest).\
-You can keep the program anywhere you'd like.
+   You can keep the program anywhere you'd like.
 
 ### 2. **Configure the Default JSON File**
 
@@ -50,6 +48,7 @@ Most users will only need to edit a few settings, which can be done with a text 
 
 - **Game's Win64 Executable Path**  
   Set the path to the game's Win64 executable. Ensure that the path is valid:
+
   - **Correct Example:**  
     `"D:\SteamLibrary\steamapps\common\Zedfest\KevinSpel\Binaries\Win64\Zedfest.exe"`
   - **Incorrect Example:**  
@@ -64,43 +63,43 @@ Most users will only need to edit a few settings, which can be done with a text 
 After configuring these settings, you can proceed to configure the mod list.
 
 ###
+
 3. **Configure the mod list:**  
    You can include any number of mod entries in the list.
-  
 
-  ```
-   {
-      {
-      "mod_name": "MapKit",
-      "pak_dir_structure": "~mods",
-      "mod_name_dir_type": "Mods",
-      "use_mod_name_dir_name_override": false,
-      "mod_name_dir_name_override": null,
-      "pak_chunk_num": null,
-      "packing_type": "repak",
-      "compression_type": "Zlib",
-      "is_enabled": true,
-      "manually_specified_assets": {
-        "asset_paths": [],
-        "tree_paths": []
-      }
-    },
+```
+ {
     {
-      "mod_name": "ExampleLevel",
-      "pak_dir_structure": "~mods",
-      "mod_name_dir_type": "Mods",
-      "use_mod_name_dir_name_override": false,
-      "mod_name_dir_name_override": null,
-      "pak_chunk_num": null,
-      "packing_type": "repak",
-      "compression_type": "Zlib",
-      "is_enabled": true,
-      "manually_specified_assets": {
-        "asset_paths": [],
-        "tree_paths": []
-      }
+    "mod_name": "MapKit",
+    "pak_dir_structure": "~mods",
+    "mod_name_dir_type": "Mods",
+    "use_mod_name_dir_name_override": false,
+    "mod_name_dir_name_override": null,
+    "pak_chunk_num": null,
+    "packing_type": "repak",
+    "compression_type": "Zlib",
+    "is_enabled": true,
+    "manually_specified_assets": {
+      "asset_paths": [],
+      "tree_paths": []
     }
-  ```
+  },
+  {
+    "mod_name": "ExampleLevel",
+    "pak_dir_structure": "~mods",
+    "mod_name_dir_type": "Mods",
+    "use_mod_name_dir_name_override": false,
+    "mod_name_dir_name_override": null,
+    "pak_chunk_num": null,
+    "packing_type": "repak",
+    "compression_type": "Zlib",
+    "is_enabled": true,
+    "manually_specified_assets": {
+      "asset_paths": [],
+      "tree_paths": []
+    }
+  }
+```
 
 ### Configuration Details
 
@@ -109,6 +108,7 @@ After configuring these settings, you can proceed to configure the mod list.
 - **`pak_dir_structure`**: Specifies the folder structure within the game's `Content/Paks/` directory. Common values are `~mods` and `LogicMods`.
 
 - **`mod_name_dir_type`**: Determines the built-in auto-include directory.
+
   - `Mods` will include files from `Game/Mods/ModName/`.
   - `CustomContent` will include files from `Game/CustomContent/ModName/`.
 
@@ -119,6 +119,7 @@ After configuring these settings, you can proceed to configure the mod list.
 - **`pak_chunk_num`**: Used only if you are using the engine packing enum. Set this to match what you configured inside Unreal Engine.
 
 - **`packing_type`**: Specifies the packing method:
+
   - `repak` for general use.
   - `engine` for iostore games.
   - `loose` for games using loose file modding.
@@ -134,9 +135,9 @@ After configuring these settings, you can proceed to configure the mod list.
 
 ### Additional Notes
 
-* For JSON paths, use forward slashes (`/`) instead of backslashes (`\`). Make sure your paths match this format when editing the JSON file.
-* [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
-* [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/faq.md)
+- For JSON paths, use forward slashes (`/`) instead of backslashes (`\`). Make sure your paths match this format when editing the JSON file.
+- [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/settings_json.md)
+- [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/assets/docs/faq.md)
 
 ###
 
@@ -169,14 +170,14 @@ unreal_auto_mod.exe settings.json test_mods --settings_json_path <settings_json_
 
 <h2>💻 References</h2>
 
-* [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/faq.md)
-* [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/enums.md)
-* [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/settings_json.md)
-* [Youtube Example Setup Reference](https://www.youtube.com/watch?v=6MUkUFhumo8)
+- [Faq](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/faq.md)
+- [Enums Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/enums.md)
+- [Settings Json Reference](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/docs/settings_json.md)
+- [Youtube Example Setup Reference](https://www.youtube.com/watch?v=6MUkUFhumo8)
 
 <h2>💻 Built with</h2>
 
-* Python
+- Python
 
 <h2>🛡️ License:</h2>
 

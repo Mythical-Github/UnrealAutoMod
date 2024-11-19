@@ -5,43 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "test_mods_all",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "unreal_auto_mod",
-            "args": [
-                "test_mods_all",
-                "--settings_json_path",
-                "${workspaceFolder}\\assets\\base\\default\\settings.json"
-            ]
-        },
-        {
-            "name": "test_mods",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "unreal_auto_mod",
-            "args": [
-                "test_mods",
-                "--settings_json_path",
-                "${workspaceFolder}\\assets\\base\\default\\settings.json",
-                "--mod_names",
-                "ModLoader_P",
-                "MapKit",
-                "ExampleLevel"
-            ]
-        },
-        {
-            "name": "run_game",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "unreal_auto_mod",
-            "args": [
-                "run_game",
-                "--settings_json_path",
-                "${workspaceFolder}\\assets\\base\\default\\settings.json"
-            ]
-        },
-        {
             "name": "help",
             "type": "debugpy",
             "request": "launch",
@@ -51,14 +14,132 @@
             ]
         },
         {
-            "name": "install_umodel",
+            "name": "build",
             "type": "debugpy",
             "request": "launch",
             "module": "unreal_auto_mod",
             "args": [
-                "install_umodel",
-                "--output_directory",
-                "${workspaceFolder}/dist/umodel"
+                "build",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "cook",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "cook",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "cleanup",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "cleanup",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "upload_changes_to_repo",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "upload_changes_to_repo",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "open_latest_log",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "open_latest_log",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "run_game",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "run_game",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "test_mods",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "test_mods",
+                "${workspaceFolder}/assets/base/default/settings.json",
+                "ModLoader_P",
+                "MapKit",
+                "ExampleLevel"
+            ]
+        },
+        {
+            "name": "test_mods_all",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "test_mods_all",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "create_mods",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "create_mods",
+                "${workspaceFolder}/assets/base/default/settings.json",
+                "ModLoader_P",
+                "MapKit",
+                "ExampleLevel"
+            ]
+        },
+        {
+            "name": "create_mods_all",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "create_mods_all",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "create_mod_releases",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "create_mod_releases",
+                "${workspaceFolder}/assets/base/default/settings.json",
+                "ModLoader_P",
+                "MapKit",
+                "ExampleLevel"
+            ]
+        },
+        {
+            "name": "create_mod_releases_all",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "create_mod_releases_all",
+                "${workspaceFolder}/assets/base/default/settings.json"
             ]
         },
         {
@@ -68,30 +149,19 @@
             "module": "unreal_auto_mod",
             "args": [
                 "install_fmodel",
-                "--output_directory",
+                "output_directory",
                 "${workspaceFolder}/dist/fmodel"
             ]
         },
         {
-            "name": "install_kismet_analyzer",
+            "name": "install_umodel",
             "type": "debugpy",
             "request": "launch",
             "module": "unreal_auto_mod",
             "args": [
-                "install_kismet_analyzer",
-                "--output_directory",
-                "${workspaceFolder}/dist/kismet_analyzer"
-            ]
-        },
-        {
-            "name": "install_uasset_gui",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "unreal_auto_mod",
-            "args": [
-                "install_uasset_gui",
-                "--output_directory",
-                "${workspaceFolder}/dist/uasset_gui"
+                "install_umodel",
+                "output_directory",
+                "${workspaceFolder}/dist/umodel"
             ]
         },
         {
@@ -101,7 +171,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "install_stove",
-                "--output_directory",
+                "output_directory",
                 "${workspaceFolder}/dist/stove"
             ]
         },
@@ -112,8 +182,30 @@
             "module": "unreal_auto_mod",
             "args": [
                 "install_spaghetti",
-                "--output_directory",
+                "output_directory",
                 "${workspaceFolder}/dist/spaghetti"
+            ]
+        },
+        {
+            "name": "install_uasset_gui",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "install_uasset_gui",
+                "output_directory",
+                "${workspaceFolder}/dist/uasset_gui"
+            ]
+        },
+        {
+            "name": "install_kismet_analyzer",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "install_kismet_analyzer",
+                "output_directory",
+                "${workspaceFolder}/dist/kismet_analyzer"
             ]
         }
     ]

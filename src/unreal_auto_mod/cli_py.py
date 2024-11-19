@@ -1,51 +1,137 @@
 import argparse
 
-from unreal_auto_mod.log_py import log_message
+from unreal_auto_mod import settings
 
 
-def cli_logic(cli_data):
-    commands_module = cli_data['module']
-    cli_info_dict = cli_data['commands']
+def cli_logic():
+    parser_description = 'Mod Build Tools/Automation scripts for Unreal Engine modding supports 4.0-5.5'
+    parser_program_name = 'unreal_auto_mod'
 
-    parser = argparse.ArgumentParser(description="Easy To Use Command Line Modding Utility For Unreal Engine Games 4.0-5.5")
-    subparsers = parser.add_subparsers(dest="command", help="Available commands")
+    parser = argparse.ArgumentParser(
+        prog=parser_program_name,
+        description=parser_description
+    )
 
-    for command, command_info in cli_info_dict.items():
-        subcommand_parser = subparsers.add_parser(command, help=f"Execute {command} command")
+    sub_parser = parser.add_subparsers(dest='command')
 
-        arg_help_pairs = command_info.get('arg_help_pairs', [])
 
-        for arg_entry in arg_help_pairs:
-            for arg_name, arg_data in arg_entry.items():
-                subcommand_parser.add_argument(
-                    f"--{arg_name}",
-                    type=str,
-                    help=arg_data["help"],
-                    required=arg_data["required"],
-                    nargs="+" if arg_data["use_nargs"] else None
-                )
+    build_parser = sub_parser.add_parser('build', help='Builds the uproject specified within the settings JSON')
+    build_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    cook_parser = sub_parser.add_parser('cook', help='Cooks content for the uproject specified within the settings JSON')
+    cook_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    cleanup_parser = sub_parser.add_parser('cleanup', help='Cleans up the github repo specified within the settings JSON')
+    cleanup_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    upload_changes_to_repo_parser = sub_parser.add_parser('upload_changes_to_repo', help='Uploads latest changes of the git project to the github repo and branch specified within the settings JSON')
+    upload_changes_to_repo_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    open_latest_log_parser = sub_parser.add_parser('open_latest_log', help='Open the latest log file')
+    open_latest_log_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    run_game_parser = sub_parser.add_parser('run_game', help='Run the game')
+    run_game_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    test_mods_parser = sub_parser.add_parser('test_mods', help='Run tests for specific mods')
+    test_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    test_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+
+    test_mods_all_parser = sub_parser.add_parser('test_mods_all', help='Run tests for all mods within the specified settings JSON')
+    test_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    create_mods_parser = sub_parser.add_parser('create_mods', help='Creates mods for the specified mod names')
+    create_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    create_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+
+    create_mods_all_parser = sub_parser.add_parser('create_mods_all', help='Creates mods for all enabled mods within the specified settings JSON')
+    create_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    create_mod_releases_parser = sub_parser.add_parser('create_mod_releases', help='Create one or more mod releases')
+    create_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    create_mod_releases_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+
+    create_mod_releases_all_parser = sub_parser.add_parser('create_mod_releases_all', help='Creates mod releases for all mods within the specified settings JSON')
+    create_mod_releases_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    install_fmodel_parser = sub_parser.add_parser('install_fmodel', help='Install Fmodel')
+    install_fmodel_parser.add_argument('output_directory', help='Path to the output directory')
+
+    install_umodel_parser = sub_parser.add_parser('install_umodel', help='Install Umodel')
+    install_umodel_parser.add_argument('output_directory', help='Path to the output directory')
+
+    install_stove_parser = sub_parser.add_parser('install_stove', help='Install Stove')
+    install_stove_parser.add_argument('output_directory', help='Path to the output directory')
+
+    install_spaghetti_parser = sub_parser.add_parser('install_spaghetti', help='Install Spaghetti')
+    install_spaghetti_parser.add_argument('output_directory', help='Path to the output directory')
+
+    install_uasset_gui_parser = sub_parser.add_parser('install_uasset_gui', help='Install UAssetGUI')
+    install_uasset_gui_parser.add_argument('output_directory', help='Path to the output directory')
+
+    install_kismet_analyzer_parser = sub_parser.add_parser('install_kismet_analyzer', help='Install Kismet Analyzer')
+    install_kismet_analyzer_parser.add_argument('output_directory', help='Path to the output directory')
+
 
     args = parser.parse_args()
 
-    if args.command:
-        command_info = cli_info_dict.get(args.command)
-        if command_info:
-            function_name = command_info['function_name']
-            function = getattr(commands_module, function_name, None)
-            if function:
-                function_args = [
-                    getattr(args, arg_name, None)
-                    for arg_help_pair in command_info['arg_help_pairs']
-                    for arg_name in arg_help_pair.keys()
-                ]
+    command_function_map = {
+        'build': settings.build,
+        'cook': settings.cook,
+        'cleanup': settings.cleanup,
+        'upload_changes_to_repo': settings.upload_changes_to_repo,
+        'open_latest_log': settings.open_latest_log,
+        'run_game': settings.run_game,
+        'test_mods': settings.test_mods,
+        'test_mods_all': settings.test_mods_all,
+        'create_mods_all': settings.create_mods_all,
+        'create_mod_releases': settings.create_mod_releases,
+        'create_mod_releases_all': settings.create_mod_releases_all,
+        'install_fmodel': settings.install_fmodel,
+        'install_umodel': settings.install_umodel,
+        'install_stove': settings.install_stove,
+        'install_spaghetti': settings.install_spaghetti,
+        'install_uasset_gui': settings.install_uasset_gui,
+        'install_kismet_analyzer': settings.install_kismet_analyzer
+    }
 
-                log_message(f"Function: {function_name} was called with args: {function_args}")
-                function(*function_args)
-            else:
-                log_message(f"Function {function_name} not found in {commands_module}.")
-        else:
-            log_message("Invalid command.")
-            parser.print_help()
+    if args.command in command_function_map:
+        if args.command == 'build':
+            command_function_map[args.command](args.settings_json)
+        elif args.command == 'cook':
+            command_function_map[args.command](args.settings_json)
+        elif args.command == 'cleanup':
+            command_function_map[args.command](args.settings_json)
+        elif args.command == 'upload_changes_to_repo':
+            command_function_map[args.command](args.settings_json)
+        elif args.command == 'open_latest_log':
+            command_function_map[args.command](args.settings_json)
+        elif args.command == 'run_game':
+            command_function_map[args.command](args.settings_json)
+        elif args.command == 'test_mods':
+            command_function_map[args.command](args.settings_json, args.mod_names)
+        elif args.command == 'test_mods_all':
+            command_function_map[args.command](args.settings_json)
+        elif args.command == 'create_mods':
+            command_function_map[args.command](args.settings_json, args.mod_names)
+        elif args.command == 'create_mods_all':
+            command_function_map[args.command](args.settings_json)
+        elif args.command == 'create_mod_releases':
+            command_function_map[args.command](args.settings_json, args.mod_names)
+        elif args.command == 'create_mod_releases_all':
+            command_function_map[args.command](args.output_directory)
+        elif args.command == 'install_fmodel':
+            command_function_map[args.command](args.output_directory)
+        elif args.command == 'install_umodel':
+            command_function_map[args.command](args.output_directory)
+        elif args.command == 'install_stove':
+            command_function_map[args.command](args.output_directory)
+        elif args.command == 'install_spaghetti':
+            command_function_map[args.command](args.output_directory)
+        elif args.command == 'install_uasset_gui':
+            command_function_map[args.command](args.output_directory)
+        elif args.command == 'install_kismet_analyzer':
+            command_function_map[args.command](args.output_directory)
     else:
-        log_message("No command provided.")
+        print(f'Unknown command: {args.command}')
         parser.print_help()

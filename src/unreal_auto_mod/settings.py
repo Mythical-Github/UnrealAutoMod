@@ -213,7 +213,11 @@ def create_mod_releases_all(settings_json: str):
 
 
 def cook(settings_json: str):
-    log_message('place_holder function called')
+    log_message('Content Cook Starting')
+    load_settings(settings_json)
+    from unreal_auto_mod.packing import cooking
+    cooking()
+    log_message('Content Cook Complete')
 
 
 def build(settings_json: str):
@@ -221,10 +225,10 @@ def build(settings_json: str):
 
 
 def cleanup(settings_json: str):
+    from unreal_auto_mod.enums import ExecutionMode
+    from unreal_auto_mod.utilities import run_app, get_repo_path
+    load_settings(settings_json)
     log_message('Cleaning up repo at:')
-    repo_dir = settings.settings['git_info']['repo_path']
-    log_message(f'"{repo_dir}"')
-    from utilities import run_app
     exe = 'git'
     args = [
         'clean', 
@@ -232,9 +236,8 @@ def cleanup(settings_json: str):
         '-X', 
         '--force'
     ] 
-    run_app(exe_path=exe, args=args, working_dir=repo_dir)
+    run_app(exe_path=exe, exec_mode=ExecutionMode.ASYNC, args=args, working_dir=get_repo_path())
     log_message('Cleaned up repo at:')
-    repo_dir = settings.settings['git_info']['repo_path']
 
 
 def upload_changes_to_repo(settings_json: str):

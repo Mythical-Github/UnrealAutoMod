@@ -1,6 +1,5 @@
 import os
 import sys
-import time
 
 import psutil
 import pyjson5 as json
@@ -9,7 +8,6 @@ from unreal_auto_mod.log_py import log_message
 import unreal_auto_mod.gen_py_utils as gen_utils
 from unreal_auto_mod import hook_states, mods
 
-start_time = time.time()
 
 settings = ''
 init_settings_done = False

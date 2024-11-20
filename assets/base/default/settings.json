@@ -16,6 +16,7 @@
     "engine_launch_args": [],
     "engine_cooking_args": [
       "-unversionedcookedcontent",
+      "-SkipCookingEditorContent",
       "-iterate",
       "-noP4"
     ],
@@ -24,10 +25,10 @@
     ],
     "engine_packaging_args": [
       "-unversionedcookedcontent",
+      "-SkipCookingEditorContent",
       "-iterate",
       "-noP4"
     ],
-    "always_build_project": false, // this forces a build on projects that have already been built every time, usually not needed
     "override_automatic_version_finding": false, // if parsing the engine version from the engine install fails, you can use this and the below settings
     "unreal_engine_major_version": null, // not needed unless override_automatic_version_finding is true
     "unreal_engine_minor_version": null // not needed unless override_automatic_version_finding is true

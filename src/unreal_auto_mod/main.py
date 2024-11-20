@@ -1,3 +1,6 @@
+import time
+start_time = time.time()
+
 import sys
 from pathlib import Path
 

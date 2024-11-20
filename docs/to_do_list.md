@@ -32,14 +32,10 @@ build script doesn't auto place all exes in the output dir only the main, not th
 for install apps, optional bool flag to open after install
 open uproject
 generate project files
-switch ue version inside of project
+switch ue version inside of uproject json
 
 fix github pages stuff
-script state cleanup, rename to hooks
+hook state cleanup
 update feature list in docs
 toggle engine logic needs to be rethought, saves memory and time but make optional and work on more stuff
 make tests/ways to test which combination of args and stuff for the uat running is fastest/best
-multiple cleanup types:
-full
-cooked content dirs
-cleanup build files

@@ -427,10 +427,6 @@ def get_auto_move_windows() -> dict:
     return settings.settings['auto_move_windows']
 
 
-def get_always_build_project() -> str:
-    return settings.settings['engine_info']['always_build_project']
-
-
 def get_engine_cooking_args() -> list:
     return settings.settings['engine_info']['engine_cooking_args']
 
@@ -502,7 +498,8 @@ def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: 
 
 
 def get_running_time():
-    return time.time() - settings.start_time
+    from unreal_auto_mod import main
+    return time.time() - main.start_time
 
 
 def get_cleanup_repo_path() -> str:

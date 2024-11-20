@@ -65,9 +65,8 @@ def get_engine_pak_command() -> str:
         f'-pak '
         f'-compressed'
     )
-    if utilities.get_always_build_project() or not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
-        build_arg = '-build'
-        command = f'{command} {build_arg}'
+    if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
+        command = f'{command} -build'
     for arg in utilities.get_engine_packaging_args():
         command = f'{command} {arg}'
     for arg in utilities.get_engine_cooking_args():
@@ -87,10 +86,9 @@ def get_cook_project_command() -> str:
         f'-project="{utilities.get_uproject_file()}" '
         f'-cook '
         f'-skipstage '
-        # f'-nocompileeditor '
         f'-nodebuginfo'
     )
-    if utilities.get_always_build_project() or not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
+    if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         build_arg = '-build'
         command = f'{command} {build_arg}'
     for arg in utilities.get_engine_packaging_args():

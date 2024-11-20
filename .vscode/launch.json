@@ -43,26 +43,29 @@
                 "${workspaceFolder}/assets/base/default/settings.json"
             ]
         },
-        {
-            "name": "upload_changes_to_repo",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "unreal_auto_mod",
-            "args": [
-                "upload_changes_to_repo",
-                "${workspaceFolder}/assets/base/default/settings.json"
-            ]
-        },
-        {
-            "name": "open_latest_log",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "unreal_auto_mod",
-            "args": [
-                "open_latest_log",
-                "${workspaceFolder}/assets/base/default/settings.json"
-            ]
-        },
+        // the ones below this work usually, but not when routed through vscode stuff
+        // {
+        //     "name": "upload_changes_to_repo",
+        //     "type": "debugpy",
+        //     "request": "launch",
+        //     "module": "unreal_auto_mod",
+        //     "subProcess": true,
+        //     "console": "externalTerminal",
+        //     "args": [
+        //         "upload_changes_to_repo",
+        //         "${workspaceFolder}/assets/base/default/settings.json"
+        //     ]
+        // },
+        // {
+        //     "name": "open_latest_log",
+        //     "type": "debugpy",
+        //     "request": "launch",
+        //     "module": "unreal_auto_mod",
+        //     "args": [
+        //         "open_latest_log",
+        //         "${workspaceFolder}/assets/base/default/settings.json"
+        //     ]
+        // },
         {
             "name": "run_game",
             "type": "debugpy",

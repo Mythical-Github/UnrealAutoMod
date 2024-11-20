@@ -32,7 +32,7 @@ def open_dir_in_file_browser(input_directory: str):
 
 
 def open_file_in_default(file_path: str):
-    os.system(f'start "{file_path}"')
+    os.startfile(file_path)
 
 
 def open_website(input_url: str):

@@ -98,6 +98,8 @@ def cli_logic():
         'install_kismet_analyzer': settings.install_kismet_analyzer
     }
 
+    settings.init_thread_system()
+    
     if args.command in command_function_map:
         if args.command == 'build':
             command_function_map[args.command](args.settings_json)
@@ -138,3 +140,5 @@ def cli_logic():
     else:
         print(f'Unknown command: {args.command}')
         parser.print_help()
+    
+    settings.close_thread_system()

@@ -510,4 +510,4 @@ def get_running_time():
 
 
 def get_repo_paths() -> str:
-    return settings.settings['git_info']['repo_paths']
+    return settings.settings['git_info']['cleanup_repo_paths']

@@ -5,9 +5,11 @@
     "window_title": "unreal_auto_mod automation script" // no need to change this unless you have an actual reason
   },
   "git_info": {
-    "repo_paths": [
+    "cleanup_repo_paths": [
       "C:/Users/Mythical/Documents/GitHub/ZedfestModdingKit"
-    ]
+    ],
+    "repo_path": "C:/Users/Mythical/Documents/GitHub/ZedfestModdingKit",
+    "repo_branch": "main"
   },
   "engine_info": {
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",

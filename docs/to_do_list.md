@@ -9,10 +9,9 @@
 - [ ] Close all hotkey (game, engine, and instances of UAM)
 - [ ] Unversioned per mod instead of global
 - [ ] Engine pak making compression variants (different types, in one run), defaults to compressed currently
-- [ ] Mod Release Creator
 - [ ] Switch to `pathlib` from strings
 - [ ] Loose file copying / original game file tracker to alleviate loose modding issues
-- [ ] Validation steps first, before running other stuff
+- [ ] Improve validation steps
 - [ ] sometimes people will not have internet, account for this, example, with repak installer
 - [ ] performance profiler
 - [ ] use symlinks when possible to save time
@@ -22,17 +21,25 @@
 - [ ] documentation github pages styling
 
   cli help replies and such are not colorized
-  test release
-  test mods
-  create release
-  cook
-  build
-  cleanup project
-  upload changes to repo  
-   create paks/loose file mods/other?
+  create mod releases
+  create mod releases all
+  create mods
+  create mods all
 
-open apps for the apps
+build script doesn't auto place all exes in the output dir only the main, not the background
+
+# later
+for install apps, optional bool flag to open after install
 open uproject
 generate project files
 switch ue version inside of project
 
+fix github pages stuff
+script state cleanup, rename to hooks
+update feature list in docs
+toggle engine logic needs to be rethought, saves memory and time but make optional and work on more stuff
+make tests/ways to test which combination of args and stuff for the uat running is fastest/best
+multiple cleanup types:
+full
+cooked content dirs
+cleanup build files

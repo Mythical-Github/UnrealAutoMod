@@ -215,10 +215,6 @@ def get_alt_exe_methods() -> list:
     return settings.settings['alt_exe_methods']
 
 
-def get_is_using_unversioned_cooked_content() -> bool:
-    return settings.settings['engine_info']['use_unversioned_cooked_content']
-
-
 def get_mod_info_list() -> list:
     return settings.settings['mod_pak_info']
 
@@ -443,8 +439,16 @@ def get_always_build_project() -> str:
     return settings.settings['engine_info']['always_build_project']
 
 
-def get_engine_cook_and_packaging_args() -> list:
-    return settings.settings['engine_info']['engine_cook_and_packaging_args']
+def get_engine_cooking_args() -> list:
+    return settings.settings['engine_info']['engine_cooking_args']
+
+
+def get_engine_packaging_args() -> list:
+    return settings.settings['engine_info']['engine_packaging_args']
+
+
+def get_engine_building_args() -> list:
+    return settings.settings['engine_info']['engine_building_args']
 
 
 def get_is_overriding_automatic_version_finding() -> bool:
@@ -509,5 +513,5 @@ def get_running_time():
     return time.time() - settings.start_time
 
 
-def get_repo_paths() -> str:
+def get_cleanup_repo_paths() -> str:
     return settings.settings['git_info']['cleanup_repo_paths']

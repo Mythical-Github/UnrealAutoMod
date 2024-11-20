@@ -60,20 +60,17 @@ def get_engine_pak_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
-        f'-noP4 '
         f'-cook '
-        f'-iterate '
         f'-stage '
         f'-pak '
         f'-compressed'
     )
-    if utilities.get_is_using_unversioned_cooked_content():
-        unversioned_arg = '-unversionedcookedcontent'
-        command = f'{command} {unversioned_arg}'
     if utilities.get_always_build_project() or not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         build_arg = '-build'
         command = f'{command} {build_arg}'
-    for arg in utilities.get_engine_cook_and_packaging_args():
+    for arg in utilities.get_engine_packaging_args():
+        command = f'{command} {arg}'
+    for arg in utilities.get_engine_cooking_args():
         command = f'{command} {arg}'
     is_game_iostore = ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir())
     if is_game_iostore:
@@ -84,52 +81,21 @@ def get_engine_pak_command() -> str:
     return command
 
 
-# def get_cook_project_command() -> str:
-#     command = (
-#         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
-#         f'-project="{utilities.get_uproject_file()}" '
-#         f'-noP4 '
-#         f'-cook '
-#         f'-iterate '
-#         f'-stage '
-#         f'-pak '
-#         f'-compressed'
-#     )
-#     if utilities.get_is_using_unversioned_cooked_content():
-#         unversioned_arg = '-unversionedcookedcontent'
-#         command = f'{command} {unversioned_arg}'
-#     if utilities.get_always_build_project() or not ue_dev_py_utils.ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
-#         build_arg = '-build'
-#         command = f'{command} {build_arg}'
-#     for arg in utilities.get_engine_cook_and_packaging_args():
-#         command = f'{command} {arg}'
-#     is_game_iostore = ue_dev_py_utils.ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir())
-#     if is_game_iostore:
-#         command = f'{command} -iostore'
-#         log.log_message('Check: Game is iostore')
-#     else:
-#         log.log_message('Check: Game is not iostore')
-#     return command
-
-
 def get_cook_project_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
-        f'-noP4 '
         f'-cook '
-        f'-iterate '
         f'-skipstage '
         # f'-nocompileeditor '
         f'-nodebuginfo'
     )
-    if utilities.get_is_using_unversioned_cooked_content():
-        unversioned_arg = '-unversionedcookedcontent'
-        command = f'{command} {unversioned_arg}'
     if utilities.get_always_build_project() or not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         build_arg = '-build'
         command = f'{command} {build_arg}'
-    for arg in utilities.get_engine_cook_and_packaging_args():
+    for arg in utilities.get_engine_packaging_args():
+        command = f'{command} {arg}'
+    for arg in utilities.get_engine_cooking_args():
         command = f'{command} {arg}'
     return command
 

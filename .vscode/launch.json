@@ -109,7 +109,9 @@
                 "${workspaceFolder}/assets/base/default/settings.json",
                 "ModLoader_P",
                 "MapKit",
-                "ExampleLevel"
+                "ExampleLevel",
+                "--output_directory",
+                "${workspaceFolder}/dist"
             ]
         },
         {
@@ -119,7 +121,9 @@
             "module": "unreal_auto_mod",
             "args": [
                 "create_mods_all",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/default/settings.json",
+                "--output_directory",
+                "${workspaceFolder}/dist"
             ]
         },
         {
@@ -132,7 +136,11 @@
                 "${workspaceFolder}/assets/base/default/settings.json",
                 "ModLoader_P",
                 "MapKit",
-                "ExampleLevel"
+                "ExampleLevel",
+                "--base_files_directory",
+                "${workspaceFolder}/assets/base/mod_packaging/releases",
+                "--output_directory",
+                "${workspaceFolder}/dist"
             ]
         },
         {
@@ -142,7 +150,11 @@
             "module": "unreal_auto_mod",
             "args": [
                 "create_mod_releases_all",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/default/settings.json",
+                "--base_files_directory",
+                "${workspaceFolder}/assets/base/mod_packaging/releases",
+                "--output_directory",
+                "${workspaceFolder}/dist"
             ]
         },
         {

@@ -220,9 +220,9 @@ def install_fmodel(output_directory: str):
 
 def cleanup(settings_json: str):
     from unreal_auto_mod.enums import ExecutionMode
-    from unreal_auto_mod.utilities import run_app, get_repo_paths
+    from unreal_auto_mod.utilities import run_app, get_cleanup_repo_paths
     load_settings(settings_json)
-    for repo_path in get_repo_paths():
+    for repo_path in get_cleanup_repo_paths():
         log_message(f'Cleaning up repo at: "{repo_path}"')
         exe = 'git'
         args = [
@@ -240,13 +240,10 @@ def get_solo_build_project_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
-        f'-noP4 '
-        f'-iterate '
         f'-skipstage '
-        f'-nodebuginfo'
+        f'-nodebuginfo '
+        f'-build'
     )
-    build_arg = '-build'
-    command = f'{command} {build_arg}'
     return command
 
 
@@ -322,15 +319,14 @@ def get_solo_cook_project_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
-        f'-noP4 '
         f'-cook '
-        f'-iterate '
+        # f'-SkipCookingEditorContent '
+        # f'-skippackage '
+        # f'-NoSign '
+        # f'-nocleanstage '
         f'-skipstage '
         f'-nodebuginfo'
     )
-    if utilities.get_is_using_unversioned_cooked_content():
-        unversioned_arg = '-unversionedcookedcontent'
-        command = f'{command} {unversioned_arg}'
     if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         build_arg = '-build'
         command = f'{command} {build_arg}'

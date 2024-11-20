@@ -18,8 +18,19 @@
     "toggle_engine_during_testing": false, // this is to save memory during the cooking process, and for games that don't allow unreal open at same time
     "resave_packages_and_fix_up_redirectors_before_engine_open": true, // can help prevent issues in larger projects, or ones where things have been moved a lot
     "engine_launch_args": [],
-    "engine_cook_and_packaging_args": [],
-    "use_unversioned_cooked_content": true,
+    "engine_cooking_args": [
+      "-unversionedcookedcontent",
+      "-iterate",
+      "noP4"
+    ],
+    "engine_building_args": [
+      "noP4"
+    ],
+    "engine_packaging_args": [
+      "-unversionedcookedcontent",
+      "-iterate",
+      "noP4"
+    ],
     "clear_uproject_saved_cooked_dir_before_tests": false, // essentially reforces cooking of content, even if iterate is on
     "always_build_project": false, // this forces a build on projects that have already been built every time, usually not needed
     "override_automatic_version_finding": false, // if parsing the engine version from the engine install fails, you can use this and the below settings
@@ -32,7 +43,7 @@
     "override_automatic_launcher_exe_finding": false, // for if somehow, the automatic steam/epic/etc... launcher finder fails, you can use this
     "game_launcher_exe": null, // no need to edit unless using above setting
     "game_id": null, // the launcher platform's game id, e.g. steam app id, epic app id, etc...
-    "skip_launching_game": true, // this is for if you want to launch the game after the models have been created and installed
+    "skip_launching_game": true, // this is for if you want to launch the game after the mods have been created and installed
     "override_automatic_window_title_finding": true,
     "window_title_override_string": "Zedfest",
     "launch_params": ["-fileopenlog", "-NOSPLASH"]

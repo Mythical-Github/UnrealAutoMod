@@ -109,7 +109,7 @@
 ## Alternative Executable Methods
 
 - **Example Entry**:
-    - **Script State**: `pre_game_launch`: `can be any of the ScriptStateType enums`
+    - **Hook State**: `pre_game_launch`: `can be any of the HookStateType enums`
     - **Alternative Executable Path**: `"C:/modding/unreal_engine/Umodel/umodel.exe"`
     - **Execution Mode**: `async`: `can be any of the UnrealModTreeType enums`
     - **Variable Args**: `[]`
@@ -122,14 +122,14 @@
 - **Processes to Kill**:
     - **Process Name**: `"Fmodel.exe"`
     - **Use Substring Check**: `false` (true/false)
-    - **Script State**: `all`: `can be any of the ScriptStateType enums`
+    - **Hook State**: `all`: `can be any of the HookStateType enums`
 
 ## Auto Move Windows
 
 - **Window Name**: `"UE4SS"`
     - **Use Substring Check**: `true` (true/false)
     - **Window Behaviour**: `move`: `can be any of the WindowAction enums`
-    - **Script State**: `post_game_launch`: `can be any of the ScriptStateType enums`
+    - **Hook State State**: `post_game_launch`: `can be any of the HookStateType enums`
     - **Monitor**: `1`
     - **Resolution**:
         - **X**: `1525`

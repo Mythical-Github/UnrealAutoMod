@@ -32,9 +32,9 @@ Enum for how to launch the game.
 - **UBISOFT**: 'ubisoft'
 - **OTHER**: 'other'
 
-### ScriptStateType
+### HookStateType
 
-Enum for the various script states, used to fire off other functions at specific times.
+Enum for the various hook states, used to fire off other functions at specific times.
 
 - **NONE**: 'none'
 - **PRE_ALL**: 'pre_all'

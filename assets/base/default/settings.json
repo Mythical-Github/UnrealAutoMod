@@ -5,9 +5,6 @@
     "window_title": "unreal_auto_mod automation script" // no need to change this unless you have an actual reason
   },
   "git_info": {
-    "cleanup_repo_paths": [
-      "C:/Users/Mythical/Documents/GitHub/ZedfestModdingKit"
-    ],
     "repo_path": "C:/Users/Mythical/Documents/GitHub/ZedfestModdingKit",
     "repo_branch": "main"
   },
@@ -16,22 +13,20 @@
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/ZedfestModdingKit/KevinSpel.uproject",
     "skip_uproject_steps": false, // this is for when you want to create paks, without a uproject, usually for edited asset mods
     "toggle_engine_during_testing": false, // this is to save memory during the cooking process, and for games that don't allow unreal open at same time
-    "resave_packages_and_fix_up_redirectors_before_engine_open": true, // can help prevent issues in larger projects, or ones where things have been moved a lot
     "engine_launch_args": [],
     "engine_cooking_args": [
       "-unversionedcookedcontent",
       "-iterate",
-      "noP4"
+      "-noP4"
     ],
     "engine_building_args": [
-      "noP4"
+      "-noP4"
     ],
     "engine_packaging_args": [
       "-unversionedcookedcontent",
       "-iterate",
-      "noP4"
+      "-noP4"
     ],
-    "clear_uproject_saved_cooked_dir_before_tests": false, // essentially reforces cooking of content, even if iterate is on
     "always_build_project": false, // this forces a build on projects that have already been built every time, usually not needed
     "override_automatic_version_finding": false, // if parsing the engine version from the engine install fails, you can use this and the below settings
     "unreal_engine_major_version": null, // not needed unless override_automatic_version_finding is true
@@ -65,12 +60,12 @@
       {
         "process_name": "Fmodel",
         "use_substring_check": true,
-        "script_state": "constant"
+        "hook_state": "constant"
       },
       {
         "process_name": "Umodel",
         "use_substring_check": true,
-        "script_state": "constant"
+        "hook_state": "constant"
       }
     ]
   },
@@ -79,7 +74,7 @@
       "window_name": "UE4SS",
       "use_substring_check": true,
       "window_behaviour": "move",
-      "script_state": "post_game_launch",
+      "hook_state": "post_game_launch",
       "monitor": 1,
       "resolution": {
         "x": 1525,

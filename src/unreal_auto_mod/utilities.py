@@ -7,7 +7,7 @@ from unreal_auto_mod import gen_py_utils as general_utils
 from unreal_auto_mod import log_py as log
 from unreal_auto_mod import settings
 from unreal_auto_mod import ue_dev_py_utils as unreal_dev_utils
-from unreal_auto_mod.enums import CompressionType, ExecutionMode, ScriptStateType, get_enum_from_val
+from unreal_auto_mod.enums import CompressionType, ExecutionMode, HookStateType, get_enum_from_val
 
 
 def get_fmodel_path(output_directory: str) -> str:
@@ -241,10 +241,10 @@ def get_process_to_kill_info_list() -> list:
     return settings.settings['process_kill_info']['processes']
 
 
-def kill_processes(state: ScriptStateType):
-    current_state = state.value if isinstance(state, ScriptStateType) else state
+def kill_processes(state: HookStateType):
+    current_state = state.value if isinstance(state, HookStateType) else state
     for process_info in get_process_to_kill_info_list():
-        target_state = process_info.get('script_state')
+        target_state = process_info.get('hook_state')
         if target_state == current_state:
             if process_info['use_substring_check']:
                 proc_name_substring = process_info['process_name']
@@ -387,10 +387,6 @@ def get_persistant_mod_files(mod_name: str) -> list:
     return general_utils.get_files_in_tree(get_persistant_mod_dir(mod_name))
 
 
-def get_fix_up_redirectors_before_engine_open() -> bool:
-    return settings.settings['engine_info']['resave_packages_and_fix_up_redirectors_before_engine_open']
-
-
 def get_is_overriding_default_working_dir() -> bool:
     return settings.settings['general_info']['override_default_working_dir']
 
@@ -421,10 +417,6 @@ def clean_working_dir():
             shutil.rmtree(working_dir)
         except Exception as e:
             log.log_message(f"Error: {e}")
-
-
-def get_clear_uproject_saved_cooked_dir_before_tests() -> bool:
-    return settings.settings['engine_info']['clear_uproject_saved_cooked_dir_before_tests']
 
 
 def get_skip_launching_game() -> bool:
@@ -513,5 +505,5 @@ def get_running_time():
     return time.time() - settings.start_time
 
 
-def get_cleanup_repo_paths() -> str:
-    return settings.settings['git_info']['cleanup_repo_paths']
+def get_cleanup_repo_path() -> str:
+    return settings.settings['git_info']['repo_path']

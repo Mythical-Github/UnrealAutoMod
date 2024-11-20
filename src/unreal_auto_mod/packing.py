@@ -3,10 +3,10 @@ import shutil
 
 from rich.progress import Progress
 
-from unreal_auto_mod import gen_py_utils as general_utils
+from unreal_auto_mod import gen_py_utils as general_utils, hook_states
 from unreal_auto_mod import log_py as log
-from unreal_auto_mod import repak_utilities, script_states, settings, ue_dev_py_utils, unreal_pak, utilities
-from unreal_auto_mod.enums import CompressionType, PackingType, ScriptStateType, get_enum_from_val
+from unreal_auto_mod import repak_utilities, settings, ue_dev_py_utils, unreal_pak, utilities
+from unreal_auto_mod.enums import CompressionType, PackingType, HookStateType, get_enum_from_val
 
 install_queue_types = []
 uninstall_queue_types = []
@@ -128,36 +128,32 @@ def handle_uninstall_logic(packing_type: PackingType):
 
 
 def handle_install_logic(packing_type: PackingType):
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_PAK_DIR_SETUP)
+    hook_states.HookState.set_hook_state(HookStateType.PRE_PAK_DIR_SETUP)
     for mod_pak_info in utilities.get_mod_info_list():
         if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
             if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
                 install_mod(packing_type, mod_pak_info['mod_name'],
                             get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_PAK_DIR_SETUP)
+    hook_states.HookState.set_hook_state(HookStateType.POST_PAK_DIR_SETUP)
     for command in command_queue:
         utilities.run_app(command)
 
 
 
 def make_mods():
-    if utilities.get_clear_uproject_saved_cooked_dir_before_tests():
-        cooked_dir = ue_dev_py_utils.get_saved_cooked_dir(utilities.get_uproject_file())
-        if os.path.isdir(cooked_dir):
-            shutil.rmtree(cooked_dir)
     cooking()
 
     global uninstall_queue_types
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_UNINSTALL)
+    hook_states.HookState.set_hook_state(HookStateType.PRE_MODS_UNINSTALL)
     for uninstall_queue_type in uninstall_queue_types:
         handle_uninstall_logic(uninstall_queue_type)
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_UNINSTALL)
+    hook_states.HookState.set_hook_state(HookStateType.POST_MODS_UNINSTALL)
 
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_MODS_INSTALL)
+    hook_states.HookState.set_hook_state(HookStateType.PRE_MODS_INSTALL)
     global install_queue_types
     for install_queue_type in install_queue_types:
         handle_install_logic(install_queue_type)
-    script_states.ScriptState.set_script_state(ScriptStateType.POST_MODS_INSTALL)
+    hook_states.HookState.set_hook_state(HookStateType.POST_MODS_INSTALL)
 
 
 def uninstall_loose_mod(mod_name: str):
@@ -283,12 +279,12 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
 
 def cooking():
     if not utilities.get_should_ship_uproject_steps():
-        script_states.ScriptState.set_script_state(ScriptStateType.PRE_COOKING)
+        hook_states.HookState.set_hook_state(HookStateType.PRE_COOKING)
         if PackingType.ENGINE not in install_queue_types:
             cook_uproject()
         else:
             package_uproject()
-        script_states.ScriptState.set_script_state(ScriptStateType.POST_COOKING)
+        hook_states.HookState.set_hook_state(HookStateType.POST_COOKING)
 
 
 def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:

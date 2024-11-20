@@ -1,10 +1,10 @@
 import threading
 import time
 
-from unreal_auto_mod import gen_py_utils as general_utils
+from unreal_auto_mod import gen_py_utils as general_utils, hook_states
 from unreal_auto_mod import log_py as log
-from unreal_auto_mod import script_states, utilities, win_man_py
-from unreal_auto_mod.enums import ScriptStateType
+from unreal_auto_mod import utilities, win_man_py
+from unreal_auto_mod.enums import HookStateType
 
 found_process = False
 found_window = False
@@ -37,11 +37,11 @@ def game_monitor_thread_logic():
         if get_game_window():
             log.log_message('Window: Game Window Found')
             found_window = True
-            script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_LAUNCH)
+            hook_states.HookState.set_hook_state(HookStateType.POST_GAME_LAUNCH)
     elif not window_closed:
         if not get_game_window():
             log.log_message('Window: Game Window Closed')
-            script_states.ScriptState.set_script_state(ScriptStateType.POST_GAME_CLOSE)
+            hook_states.HookState.set_hook_state(HookStateType.POST_GAME_CLOSE)
             stop_game_monitor_thread()
             window_closed = True
 

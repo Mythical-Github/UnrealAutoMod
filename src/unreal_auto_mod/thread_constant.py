@@ -2,8 +2,8 @@ import time
 import threading
 
 from unreal_auto_mod import log_py as log
-from unreal_auto_mod import script_states
-from unreal_auto_mod.enums import ScriptStateType
+from unreal_auto_mod import hook_states
+from unreal_auto_mod.enums import HookStateType
 
 
 def constant_thread_runner(tick_rate: float = 0.01):
@@ -13,7 +13,7 @@ def constant_thread_runner(tick_rate: float = 0.01):
 
 
 def constant_thread_logic():
-    script_states.routine_checks(ScriptStateType.CONSTANT)
+    hook_states.routine_checks(HookStateType.CONSTANT)
 
 
 def start_constant_thread():
@@ -24,23 +24,9 @@ def start_constant_thread():
     constant_thread.start()
 
 
-# def constant_thread():
-#     if script_states.is_script_state_used(ScriptStateType.CONSTANT):
-#         start_constant_thread()
-#         log.log_message('Thread: Constant Thread Started')
-#     else:
-#         log.log_message('Thread: Constant Thread Ended')
-
-
 def constant_thread():
     start_constant_thread()
     log.log_message('Thread: Constant Thread Started')
-
-
-# def stop_constant_thread():
-#     if script_states.is_script_state_used(ScriptStateType.CONSTANT):
-#         global run_constant_thread
-#         run_constant_thread = False
 
 
 def stop_constant_thread():

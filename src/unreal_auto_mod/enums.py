@@ -25,9 +25,9 @@ class GameLaunchType(Enum):
     OTHER = 'other'
 
 
-class ScriptStateType(Enum):
+class HookStateType(Enum):
     """
-    enum for the various script states, used to fire off other functions
+    enum for the various hook states, used to fire off other functions
     at specific times
     """
     NONE = 'none'

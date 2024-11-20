@@ -34,12 +34,32 @@
             ]
         },
         {
-            "name": "cleanup",
+            "name": "cleanup_full",
             "type": "debugpy",
             "request": "launch",
             "module": "unreal_auto_mod",
             "args": [
-                "cleanup",
+                "cleanup_full",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "cleanup_cooked",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "cleanup_cooked",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "cleanup_build",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "cleanup_build",
                 "${workspaceFolder}/assets/base/default/settings.json"
             ]
         },
@@ -155,6 +175,16 @@
                 "${workspaceFolder}/assets/base/mod_packaging/releases",
                 "--output_directory",
                 "${workspaceFolder}/dist"
+            ]
+        },
+        {
+            "name": "resave_packages_and_fix_up_redirectors",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "resave_packages_and_fix_up_redirectors",
+                "${workspaceFolder}/assets/base/default/settings.json"
             ]
         },
         {

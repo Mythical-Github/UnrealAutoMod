@@ -7,7 +7,7 @@ import pyjson5 as json
 
 from unreal_auto_mod.log_py import log_message
 import unreal_auto_mod.gen_py_utils as gen_utils
-from unreal_auto_mod import mods
+from unreal_auto_mod import hook_states, mods
 
 start_time = time.time()
 
@@ -122,12 +122,11 @@ def pass_settings(settings_json: str):
 def init_thread_system():
     from unreal_auto_mod import (
             enums,
-            script_states,
             thread_constant
         )
-    script_states.ScriptState.set_script_state(enums.ScriptStateType.INIT)
+    hook_states.HookState.set_hook_state(enums.HookStateType.INIT)
     thread_constant.constant_thread()
-    script_states.ScriptState.set_script_state(enums.ScriptStateType.POST_INIT)
+    hook_states.HookState.set_hook_state(enums.HookStateType.POST_INIT)
 
 
 def close_thread_system():
@@ -218,23 +217,6 @@ def install_fmodel(output_directory: str):
     utilities.run_app(utilities.get_fmodel_path(output_directory))
 
 
-def cleanup(settings_json: str):
-    from unreal_auto_mod.enums import ExecutionMode
-    from unreal_auto_mod.utilities import run_app, get_cleanup_repo_paths
-    load_settings(settings_json)
-    for repo_path in get_cleanup_repo_paths():
-        log_message(f'Cleaning up repo at: "{repo_path}"')
-        exe = 'git'
-        args = [
-            'clean', 
-            '-d', 
-            '-X', 
-            '--force'
-        ] 
-        run_app(exe_path=exe, exec_mode=ExecutionMode.ASYNC, args=args, working_dir=repo_path)
-        log_message(f'Cleaned up repo at: "{repo_path}"')
-
-
 def get_solo_build_project_command() -> str:
     from unreal_auto_mod import utilities
     command = (
@@ -304,14 +286,41 @@ def create_mods_all(settings_json: str):
     log_message('place_holder function called')
 
 
-def create_mod_releases(settings_json: str, mod_names: str):
+def create_mod_releases(settings_json: str, mod_names: str, base_files_directory: str, output_directory: str):
     load_settings(settings_json)
+    if base_files_directory == None:
+        base_files_directory = ''
+    if output_directory == None:
+        output_directory = ''
     log_message('place_holder function called')
 
 
-def create_mod_releases_all(settings_json: str):
+def create_mod_releases_all(settings_json: str, base_files_directory: str, output_directory: str):
     load_settings(settings_json)
+    if base_files_directory == None:
+        base_files_directory = ''
+    if output_directory == None:
+        output_directory = ''
     log_message('place_holder function called')
+
+
+# def get_solo_cook_project_command() -> str:
+#     from unreal_auto_mod import utilities
+
+#     command = (
+#         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
+#         f'-project="{utilities.get_uproject_file()}" '
+#         f'-cook '
+#         f'-targetplatform=WindowsNoEditor '
+#         f'-NoCompile '
+        # f'-SkipCookingEditorContent '
+        # f'-skippackage '
+        # f'-NoSign '
+        # f'-nocleanstage '
+        # f'-skipstage '
+        # f'-nodebuginfo'
+#     )
+#     return commandc
 
 
 def get_solo_cook_project_command() -> str:
@@ -320,29 +329,97 @@ def get_solo_cook_project_command() -> str:
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
         f'-cook '
-        # f'-SkipCookingEditorContent '
-        # f'-skippackage '
-        # f'-NoSign '
-        # f'-nocleanstage '
-        f'-skipstage '
-        f'-nodebuginfo'
     )
     if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         build_arg = '-build'
         command = f'{command} {build_arg}'
-    for arg in utilities.get_engine_cook_and_packaging_args():
+    for arg in utilities.get_engine_packaging_args():
+        command = f'{command} {arg}'
+    for arg in utilities.get_engine_cooking_args():
         command = f'{command} {arg}'
     return command
 
 
 def cook(settings_json: str):
-    log_message('place_holder function called')
     log_message('Content Cooking Starting')
     load_settings(settings_json)
     run_proj_build_command(get_solo_cook_project_command())
     log_message('Content Cook Complete')
 
 
-# def open_settings_json(settings_json: str):
-#     load_settings(settings_json)
-#     gen_utils.open_file_in_default(settings.settings_json)
+def resave_packages_and_fix_up_redirectors(settings_json: str):
+    load_settings(settings_json)
+    from unreal_auto_mod.engine import close_game_engine
+    from unreal_auto_mod import utilities, ue_dev_py_utils
+    close_game_engine()
+    arg = '-run=ResavePackages -fixupredirects'
+    command = f'"{ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())}" "{utilities.get_uproject_file()}" {arg}'
+    utilities.run_app(command)
+
+
+def cleanup_full(settings_json: str):
+    from unreal_auto_mod.enums import ExecutionMode
+    from unreal_auto_mod.utilities import run_app, get_cleanup_repo_path
+    load_settings(settings_json)
+    repo_path = get_cleanup_repo_path()
+    log_message(f'Cleaning up repo at: "{repo_path}"')
+    exe = 'git'
+    args = [
+        'clean', 
+        '-d', 
+        '-X', 
+        '--force'
+    ] 
+    run_app(exe_path=exe, exec_mode=ExecutionMode.ASYNC, args=args, working_dir=repo_path)
+    log_message(f'Cleaned up repo at: "{repo_path}"')
+
+
+def cleanup_cooked(settings_json: str):
+    import os
+    import shutil
+    from unreal_auto_mod.utilities import get_cleanup_repo_path
+    load_settings(settings_json)
+    repo_path = get_cleanup_repo_path()
+
+    log_message(f'Starting cleanup of Unreal Engine build directories in: "{repo_path}"')
+
+    build_dirs = [
+        'Cooked'
+    ]
+
+    for root, dirs, files in os.walk(repo_path):
+        for dir_name in dirs:
+            if dir_name in build_dirs:
+                full_path = os.path.normpath(os.path.join(root, dir_name))
+                try:
+                    shutil.rmtree(full_path)
+                    log_message(f'Removed directory: {full_path}')
+                except Exception as e:
+                    log_message(f"Failed to remove {full_path}: {e}")
+
+
+def cleanup_build(settings_json: str):
+    import os
+    import shutil
+    from unreal_auto_mod.utilities import get_cleanup_repo_path
+    load_settings(settings_json)
+    repo_path = get_cleanup_repo_path()
+
+    log_message(f'Starting cleanup of Unreal Engine build directories in: "{repo_path}"')
+
+    build_dirs = [
+        'Intermediate',
+        'DerivedDataCache',
+        'Build',
+        'Binaries',
+    ]
+
+    for root, dirs, files in os.walk(repo_path):
+        for dir_name in dirs:
+            if dir_name in build_dirs:
+                full_path = os.path.normpath(os.path.join(root, dir_name))
+                try:
+                    shutil.rmtree(full_path)
+                    log_message(f'Removed directory: {full_path}')
+                except Exception as e:
+                    log_message(f"Failed to remove {full_path}: {e}")

@@ -1,9 +1,9 @@
 import os
 import winreg
 
-from unreal_auto_mod import log_py as log
-from unreal_auto_mod import script_states, utilities
-from unreal_auto_mod.enums import ExecutionMode, GameLaunchType, ScriptStateType
+from unreal_auto_mod import hook_states, log_py as log
+from unreal_auto_mod import utilities
+from unreal_auto_mod.enums import ExecutionMode, GameLaunchType, HookStateType
 
 
 def get_steam_exe_location():
@@ -60,7 +60,7 @@ def run_game_steam():
 
 def run_game():
     log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')
-    script_states.ScriptState.set_script_state(ScriptStateType.PRE_GAME_LAUNCH)
+    hook_states.HookState.set_hook_state(HookStateType.PRE_GAME_LAUNCH)
     launch_type = GameLaunchType(utilities.get_game_info_launch_type_enum_str_value())
     if launch_type == GameLaunchType.EXE:
         run_game_exe()

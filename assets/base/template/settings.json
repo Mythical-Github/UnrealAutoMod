@@ -42,7 +42,10 @@
       "skip_launching_game": true, // this is for if you want to launch the game after the mods have been created and installed
       "override_automatic_window_title_finding": true,
       "window_title_override_string": "Zedfest",
-      "launch_params": ["-fileopenlog", "-NOSPLASH"]
+      "launch_params": [
+        "-fileopenlog", 
+        "-NOSPLASH"
+      ]
     },
     "alt_uproject_name_in_game_dir": {
       "use_alt_method": false,
@@ -54,8 +57,8 @@
       "override_automatic_version_finding": false,
       "repak_version": null
     },
-    "alt_exe_methods": [],
-    "process_kill_info": {
+    "exec_events": [],
+    "process_kill_events": {
       "auto_close_game": true,
       "processes": [
         {
@@ -70,7 +73,7 @@
         }
       ]
     },
-    "auto_move_windows": [
+    "window_management_events": [
       {
         "window_name": "UE4SS",
         "use_substring_check": true,
@@ -83,7 +86,7 @@
         }
       }
     ],
-    "mod_pak_info": [
+    "mods_info": [
       {
         "mod_name": "ModLoader_P",
         "pak_dir_structure": "~mods",

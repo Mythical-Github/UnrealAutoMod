@@ -34,7 +34,7 @@ def init_settings(settings_json_path: str):
         settings = json.load(file)
     window_name = settings['general_info']['window_title']
     os.system(f'title {window_name}')
-    auto_close_game = settings['process_kill_info']['auto_close_game']
+    auto_close_game = settings['process_kill_events']['auto_close_game']
     if auto_close_game:
         def is_process_running(process_name):
             for proc in psutil.process_iter():
@@ -146,7 +146,7 @@ def test_mods(settings_json: str, input_mod_names: str):
 def test_mods_all(settings_json: str):
     load_settings(settings_json)
     global mod_names
-    for entry in settings['mod_pak_info']:
+    for entry in settings['mods_info']:
         mod_names.append(entry['mod_name'])
     mods.create_mods()
 
@@ -274,53 +274,6 @@ def upload_changes_to_repo(settings_json: str):
     log_message("Changes committed and pushed successfully.")
 
 
-def create_mods(settings_json: str, mod_names: str):
-    load_settings(settings_json)
-    log_message('place_holder function called')
-
-
-def create_mods_all(settings_json: str):
-    load_settings(settings_json)
-    log_message('place_holder function called')
-
-
-def create_mod_releases(settings_json: str, mod_names: str, base_files_directory: str, output_directory: str):
-    load_settings(settings_json)
-    if base_files_directory == None:
-        base_files_directory = ''
-    if output_directory == None:
-        output_directory = ''
-    log_message('place_holder function called')
-
-
-def create_mod_releases_all(settings_json: str, base_files_directory: str, output_directory: str):
-    load_settings(settings_json)
-    if base_files_directory == None:
-        base_files_directory = ''
-    if output_directory == None:
-        output_directory = ''
-    log_message('place_holder function called')
-
-
-# def get_solo_cook_project_command() -> str:
-#     from unreal_auto_mod import utilities
-
-#     command = (
-#         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
-#         f'-project="{utilities.get_uproject_file()}" '
-#         f'-cook '
-#         f'-targetplatform=WindowsNoEditor '
-#         f'-NoCompile '
-        # f'-SkipCookingEditorContent '
-        # f'-skippackage '
-        # f'-NoSign '
-        # f'-nocleanstage '
-        # f'-skipstage '
-        # f'-nodebuginfo'
-#     )
-#     return commandc
-
-
 def get_solo_cook_project_command() -> str:
     from unreal_auto_mod import utilities, ue_dev_py_utils
     command = (
@@ -421,3 +374,41 @@ def cleanup_build(settings_json: str):
                     log_message(f'Removed directory: {full_path}')
                 except Exception as e:
                     log_message(f"Failed to remove {full_path}: {e}")
+
+
+def create_mods(settings_json: str, input_mod_names: str):
+    load_settings(settings_json)
+    from unreal_auto_mod.settings import mod_names
+    from unreal_auto_mod.utilities import get_mods_info_from_json
+    from unreal_auto_mod.packing import make_mods_two, populate_queue
+
+    for mod_name in input_mod_names:
+        mod_names.append(mod_name)
+    for entry in get_mods_info_from_json():
+        mod_names.append(entry['mod_name'])
+    populate_queue()
+    make_mods_two()
+
+
+def create_mods_all(settings_json: str):
+    load_settings(settings_json)
+    from unreal_auto_mod.settings import mod_names
+    from unreal_auto_mod.utilities import get_mods_info_from_json
+    from unreal_auto_mod.packing import make_mods_two, populate_queue
+
+    for entry in get_mods_info_from_json():
+        mod_names.append(entry['mod_name'])
+        print(entry['mod_name'])
+    populate_queue()
+    make_mods_two()
+
+
+def create_mod_releases(settings_json: str, mod_names: str, base_files_directory: str, output_directory: str):
+    load_settings(settings_json)
+    print(output_directory)
+    log_message('place_holder function called')
+
+
+def create_mod_releases_all(settings_json: str, base_files_directory: str, output_directory: str):
+    load_settings(settings_json)
+    log_message('place_holder function called')

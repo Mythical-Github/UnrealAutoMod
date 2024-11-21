@@ -13,11 +13,11 @@ uninstall_queue_types = []
 command_queue = []
 
 
-class PopulateQueueTypeCheckDicts:
+def populate_queue():
     global install_queue_types
     global uninstall_queue_types
     for packing_type in list(PackingType):
-        for mod_info in utilities.get_mod_info_list():
+        for mod_info in utilities.get_mods_info_from_json():
             if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
                 install_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
                 if install_queue_type not in install_queue_types:
@@ -28,29 +28,33 @@ class PopulateQueueTypeCheckDicts:
                     uninstall_queue_types.append(uninstall_queue_type)
 
 
+class PopulateQueueTypeCheckDicts:
+    populate_queue()
+
+
 def get_mod_packing_type(mod_name: str) -> PackingType:
-    for mod_pak_info in utilities.get_mod_pak_info_list():
-        if mod_name == mod_pak_info['mod_name']:
-            return get_enum_from_val(PackingType, mod_pak_info['packing_type'])
+    for mods_info in utilities.get_mods_info_from_json():
+        if mod_name == mods_info['mod_name']:
+            return get_enum_from_val(PackingType, mods_info['packing_type'])
     return None
 
 
 def get_is_mod_name_in_use(mod_name: str) -> bool:
-    for mod_pak_info in utilities.get_mod_pak_info_list():
-        if mod_name == mod_pak_info['mod_name']:
+    for mod_info in utilities.get_mods_info_from_json():
+        if mod_name == mod_info['mod_name']:
             return True
     return False
 
 
 def get_mod_pak_entry(mod_name: str) -> dict:
-    for info in utilities.get_mod_pak_info_list():
+    for info in utilities.get_mods_info_from_json():
         if info['mod_name'] == mod_name:
             return dict(info)
     return None
 
 
 def get_is_mod_installed(mod_name: str) -> bool:
-    for info in utilities.get_mod_pak_info_list():
+    for info in utilities.get_mods_info_from_json():
         if info['mod_name'] == mod_name:
             return True
     return False
@@ -119,19 +123,19 @@ def run_proj_command(command: str):
 
 
 def handle_uninstall_logic(packing_type: PackingType):
-    for mod_pak_info in utilities.get_mod_info_list():
-        if not mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
-            if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
-                uninstall_mod(packing_type, mod_pak_info['mod_name'])
+    for mod_info in utilities.get_mods_info_from_json():
+        if not mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
+            if get_enum_from_val(PackingType, mod_info['packing_type']) == packing_type:
+                uninstall_mod(packing_type, mod_info['mod_name'])
 
 
 def handle_install_logic(packing_type: PackingType):
     hook_states.HookState.set_hook_state(HookStateType.PRE_PAK_DIR_SETUP)
-    for mod_pak_info in utilities.get_mod_info_list():
-        if mod_pak_info['is_enabled'] and mod_pak_info['mod_name'] in settings.mod_names:
-            if get_enum_from_val(PackingType, mod_pak_info['packing_type']) == packing_type:
-                install_mod(packing_type, mod_pak_info['mod_name'],
-                            get_enum_from_val(CompressionType, mod_pak_info['compression_type']))
+    for mod_info in utilities.get_mods_info_from_json():
+        if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
+            if get_enum_from_val(PackingType, mod_info['packing_type']) == packing_type:
+                install_mod(packing_type, mod_info['mod_name'],
+                            get_enum_from_val(CompressionType, mod_info['compression_type']))
     hook_states.HookState.set_hook_state(HookStateType.POST_PAK_DIR_SETUP)
     for command in command_queue:
         utilities.run_app(command)
@@ -140,7 +144,10 @@ def handle_install_logic(packing_type: PackingType):
 
 def make_mods():
     cooking()
+    make_mods_two()
 
+
+def make_mods_two():
     global uninstall_queue_types
     hook_states.HookState.set_hook_state(HookStateType.PRE_MODS_UNINSTALL)
     for uninstall_queue_type in uninstall_queue_types:
@@ -201,7 +208,7 @@ def install_loose_mod(mod_name: str):
 
 def install_engine_mod(mod_name: str):
     mod_files = []
-    info = utilities.get_mod_pak_info(mod_name)
+    info = utilities.get_mods_info_dict(mod_name)
     pak_chunk_num = info['pak_chunk_num']
     prefix = f'{ue_dev_py_utils.get_uproject_dir(utilities.get_uproject_file())}/Saved/StagedBuilds/{ue_dev_py_utils.get_win_dir_str(utilities.get_unreal_engine_dir())}/{ue_dev_py_utils.get_uproject_name(utilities.get_uproject_file())}/Content/Paks/pakchunk{pak_chunk_num}-{ue_dev_py_utils.get_win_dir_str(utilities.get_unreal_engine_dir())}.'
     mod_files.append(prefix)
@@ -226,7 +233,7 @@ def make_pak_repak(mod_name: str):
         os.makedirs(pak_dir)
     os.chdir(pak_dir)
 
-    compression_type_str = utilities.get_mod_pak_info(mod_name)['compression_type']
+    compression_type_str = utilities.get_mods_info_dict(mod_name)['compression_type']
     before_symlinked_dir = f'{utilities.get_working_dir()}/{mod_name}'
 
     if not os.path.isdir(before_symlinked_dir) or not os.listdir(before_symlinked_dir):
@@ -288,8 +295,8 @@ def cooking():
 def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
     cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
-    mod_pak_info = get_mod_pak_entry(mod_name)
-    for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
+    mod_info = get_mod_pak_entry(mod_name)
+    for asset in mod_info['manually_specified_assets']['asset_paths']:
         base_path = f'{cooked_uproject_dir}/{asset}'
         for extension in general_utils.get_file_extensions(base_path):
             before_path = f'{base_path}{extension}'
@@ -301,8 +308,8 @@ def get_mod_files_asset_paths_for_loose_mods(mod_name: str) -> dict:
 def get_mod_files_tree_paths_for_loose_mods(mod_name: str) -> dict:
     file_dict = {}
     cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
-    mod_pak_info = get_mod_pak_entry(mod_name)
-    for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
+    mod_info = get_mod_pak_entry(mod_name)
+    for tree in mod_info['manually_specified_assets']['tree_paths']:
         tree_path = f'{cooked_uproject_dir}/{tree}'
         for entry in general_utils.get_files_in_tree(tree_path):
             if os.path.isfile(entry):
@@ -363,9 +370,9 @@ def get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name: str) -> 
     file_dict = {}
     if not utilities.get_should_ship_uproject_steps():
         cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
-        mod_pak_info = get_mod_pak_entry(mod_name)
-        if mod_pak_info['manually_specified_assets']['asset_paths'] is not None:
-            for asset in mod_pak_info['manually_specified_assets']['asset_paths']:
+        mod_info = get_mod_pak_entry(mod_name)
+        if mod_info['manually_specified_assets']['asset_paths'] is not None:
+            for asset in mod_info['manually_specified_assets']['asset_paths']:
                 base_path = f'{cooked_uproject_dir}/{asset}'
                 for extension in general_utils.get_file_extensions(base_path):
                     before_path = f'{base_path}{extension}'
@@ -378,9 +385,9 @@ def get_mod_file_paths_for_manually_made_pak_mods_tree_paths(mod_name: str) -> d
     file_dict = {}
     if not utilities.get_should_ship_uproject_steps():
         cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
-        mod_pak_info = get_mod_pak_entry(mod_name)
-        if mod_pak_info['manually_specified_assets']['tree_paths'] is not None:
-            for tree in mod_pak_info['manually_specified_assets']['tree_paths']:
+        mod_info = get_mod_pak_entry(mod_name)
+        if mod_info['manually_specified_assets']['tree_paths'] is not None:
+            for tree in mod_info['manually_specified_assets']['tree_paths']:
                 tree_path = f'{cooked_uproject_dir}/{tree}'
                 for entry in general_utils.get_files_in_tree(tree_path):
                     if os.path.isfile(entry):

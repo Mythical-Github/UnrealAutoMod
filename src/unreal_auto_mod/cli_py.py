@@ -1,8 +1,17 @@
+import os
+import sys
 import argparse
+from pathlib import Path
 
 from rich_argparse import RichHelpFormatter
 
 from unreal_auto_mod import settings
+
+
+if getattr(sys, 'frozen', False):
+    SCRIPT_DIR = Path(sys.executable).parent
+else:
+    SCRIPT_DIR = Path(__file__).resolve().parent
 
 
 def cli_logic():
@@ -56,16 +65,19 @@ def cli_logic():
     create_mods_all_parser = sub_parser.add_parser('create_mods_all', help='Creates mods for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     create_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
+    default_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'assets', 'base', 'mod_packaging', 'releases'))
+    default_output_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'dist'))
+    
     create_mod_releases_parser = sub_parser.add_parser('create_mod_releases', help='Create one or more mod releases', formatter_class=RichHelpFormatter)
     create_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')
     create_mod_releases_parser.add_argument('mod_names', nargs='+', help='List of mod names')
-    create_mod_releases_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release")
-    create_mod_releases_parser.add_argument('--output_directory', help='Path to the output directory')
+    create_mod_releases_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
+    create_mod_releases_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
 
     create_mod_releases_all_parser = sub_parser.add_parser('create_mod_releases_all', help='Creates mod releases for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     create_mod_releases_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
-    create_mod_releases_all_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release")
-    create_mod_releases_all_parser.add_argument('--output_directory', help='Path to the output directory')
+    create_mod_releases_all_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
+    create_mod_releases_all_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
 
     install_fmodel_parser = sub_parser.add_parser('install_fmodel', help='Install Fmodel', formatter_class=RichHelpFormatter)
     install_fmodel_parser.add_argument('output_directory', help='Path to the output directory')
@@ -102,6 +114,7 @@ def cli_logic():
         'run_game': settings.run_game,
         'test_mods': settings.test_mods,
         'test_mods_all': settings.test_mods_all,
+        'create_mods': settings.create_mods,
         'create_mods_all': settings.create_mods_all,
         'create_mod_releases': settings.create_mod_releases,
         'create_mod_releases_all': settings.create_mod_releases_all,

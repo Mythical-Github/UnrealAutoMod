@@ -16,15 +16,14 @@
 - [ ] performance profiler
 - [ ] use symlinks when possible to save time
 - [ ] if people mess up in editor their setup for chunking, end no pak chunk num pak is genned, error occurs, account for this
-- [ ] headless produces no logs, fix this (pyw)
 - [ ] multithreaded/processing command queues
 - [ ] documentation github pages styling
 
-  cli help replies and such are not colorized
-  create mod releases
-  create mod releases all
+
   create mods
   create mods all
+  create mod releases
+  create mod releases all
 
 build script doesn't auto place all exes in the output dir only the main, not the background
 
@@ -39,3 +38,4 @@ hook state cleanup
 update feature list in docs
 toggle engine logic needs to be rethought, saves memory and time but make optional and work on more stuff
 make tests/ways to test which combination of args and stuff for the uat running is fastest/best
+cli help replies and such are not colorized

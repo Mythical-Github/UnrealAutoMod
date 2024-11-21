@@ -4,38 +4,38 @@ from unreal_auto_mod import win_man_py as windows
 from unreal_auto_mod.enums import ExecutionMode, HookStateType, get_enum_from_val
 
 
-def alt_exe_checks(hook_state_type: HookStateType):
-    alt_exe_methods = utilities.get_alt_exe_methods()
-    for alt_exe_method in alt_exe_methods:
-        value = alt_exe_method['hook_state']
+def exec_events_checks(hook_state_type: HookStateType):
+    exec_events = utilities.get_exec_events()
+    for exec_event in exec_events:
+        value = exec_event['hook_state']
         exe_state = get_enum_from_val(HookStateType, value)
         if exe_state == hook_state_type:
-            exe_path = alt_exe_method['alt_exe_path']
-            exe_args = alt_exe_method['variable_args']
-            exe_exec_mode = get_enum_from_val(ExecutionMode, alt_exe_method['execution_mode'])
+            exe_path = exec_event['alt_exe_path']
+            exe_args = exec_event['variable_args']
+            exe_exec_mode = get_enum_from_val(ExecutionMode, exec_event['execution_mode'])
             utilities.run_app(exe_path, exe_exec_mode, exe_args)
 
 
 def is_hook_state_used(state: HookStateType) -> bool:
     if isinstance(settings.settings, dict):
-        if "process_kill_info" in settings.settings:
-            process_kill_info = settings.settings.get("process_kill_info", {})
-            if "processes" in process_kill_info:
-                for process in process_kill_info["processes"]:
+        if "process_kill_events" in settings.settings:
+            process_kill_events = settings.settings.get("process_kill_events", {})
+            if "processes" in process_kill_events:
+                for process in process_kill_events["processes"]:
                     if isinstance(state, HookStateType):
                         state = state.value
                     if process.get('hook_state') == state:
                         return True
 
-        if "auto_move_windows" in settings.settings:
-            for window in utilities.get_auto_move_windows():
+        if "window_management_events" in settings.settings:
+            for window in utilities.get_window_management_events():
                 if isinstance(state, HookStateType):
                     state = state.value
                 if window.get("hook_state") == state:
                     return True
 
-        if "alt_exe_methods" in settings.settings:
-            for method in utilities.get_alt_exe_methods():
+        if "exec_events" in settings.settings:
+            for method in utilities.get_exec_events():
                 if isinstance(state, HookStateType):
                     state = state.value
                 if method.get("hook_state") == state:
@@ -45,7 +45,7 @@ def is_hook_state_used(state: HookStateType) -> bool:
 
 
 def window_checks(current_state: win_man_enums.WindowAction):
-    window_settings_list = utilities.get_auto_move_windows()
+    window_settings_list = utilities.get_window_management_events()
     for window_settings in window_settings_list:
         settings_state = get_enum_from_val(HookStateType, window_settings['hook_state'])
         if settings_state == current_state:
@@ -71,7 +71,7 @@ def routine_checks(state: HookStateType):
     if is_hook_state_used(state):
         utilities.kill_processes(state)
         window_checks(state)
-        alt_exe_checks(state)
+        exec_events_checks(state)
     if state != HookStateType.CONSTANT:
         log.log_message(f'Routine Check: {state} finished')
 

@@ -49,7 +49,7 @@ You can add an entry to the alt exe entry list, and specify the path, when you w
 ---
 
 ### <a name="q3"></a>3. How to kill a process at a specific time?
-You can add an entry to the process kill list, with a name, to kill with exact title match or all containing, and a specific time.
+You can add an entry to the process kill events, with a name, to kill with exact title match or all containing, and a specific time.
 
 ---
 

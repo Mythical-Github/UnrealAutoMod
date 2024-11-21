@@ -106,7 +106,7 @@
     - **Description**: Version of Repak.
     - **Value**: `"V11"`
 
-## Alternative Executable Methods
+## Exec Events
 
 - **Example Entry**:
     - **Hook State**: `pre_game_launch`: `can be any of the HookStateType enums`
@@ -114,7 +114,7 @@
     - **Execution Mode**: `async`: `can be any of the UnrealModTreeType enums`
     - **Variable Args**: `[]`
 
-## Process Kill Info
+## Process Kill Events
 
 - **Auto Close Game**:
     - **Description**: Automatically close the game.

@@ -165,7 +165,7 @@ def does_stove_exist(output_directory: str) -> bool:
 
 def is_unreal_pak_packing_enum_in_use():
     is_in_use = False
-    for entry in get_mod_info_list():
+    for entry in get_mods_info_from_json():
         if entry['packing_type'] == "unreal_pak":
             is_in_use = True
     return is_in_use
@@ -203,20 +203,20 @@ def get_override_automatic_launcher_exe_finding() -> bool:
     return settings.settings['game_info']['override_automatic_launcher_exe_finding']
 
 
-def get_auto_move_windows():
-    return settings.settings["auto_move_windows"]
+def get_window_management_events():
+    return settings.settings["window_management_events"]
 
 
 def get_engine_launch_args() -> list:
     return settings.settings['engine_info']['engine_launch_args']
 
 
-def get_alt_exe_methods() -> list:
-    return settings.settings['alt_exe_methods']
+def get_exec_events() -> list:
+    return settings.settings['exec_events']
 
 
-def get_mod_info_list() -> list:
-    return settings.settings['mod_pak_info']
+def get_mods_info_from_json() -> list:
+    return settings.settings['mods_info']
 
 
 def get_game_exe_path() -> str:
@@ -237,13 +237,13 @@ def get_game_process_name():
     return unreal_dev_utils.get_game_process_name(get_game_exe_path())
 
 
-def get_process_to_kill_info_list() -> list:
-    return settings.settings['process_kill_info']['processes']
+def get_process_kill_events() -> list:
+    return settings.settings['process_kill_events']['processes']
 
 
 def kill_processes(state: HookStateType):
     current_state = state.value if isinstance(state, HookStateType) else state
-    for process_info in get_process_to_kill_info_list():
+    for process_info in get_process_kill_events():
         target_state = process_info.get('hook_state')
         if target_state == current_state:
             if process_info['use_substring_check']:
@@ -315,11 +315,11 @@ def get_persistent_mods_dir() -> str:
 
 
 def get_use_mod_name_dir_name_override(mod_name: str) -> bool:
-    return get_mod_pak_info(mod_name)['use_mod_name_dir_name_override']
+    return get_mods_info_dict(mod_name)['use_mod_name_dir_name_override']
 
 
 def get_mod_name_dir_name_override(mod_name: str) -> bool:
-    return get_mod_pak_info(mod_name)['mod_name_dir_name_override']
+    return get_mods_info_dict(mod_name)['mod_name_dir_name_override']
 
 
 def get_mod_name_dir_name(mod_name: str) -> str:
@@ -329,19 +329,15 @@ def get_mod_name_dir_name(mod_name: str) -> str:
         return mod_name
 
 
-def get_mod_pak_info_list() -> list:
-    return settings.settings['mod_pak_info']
-
-
 def get_pak_dir_structure(mod_name: str) -> str:
-    for info in get_mod_pak_info_list():
+    for info in get_mods_info_from_json():
         if info['mod_name'] == mod_name:
             return info['pak_dir_structure']
     return None
 
 
 def get_mod_compression_type(mod_name: str) -> CompressionType:
-    for info in get_mod_pak_info_list():
+    for info in get_mods_info_from_json():
         if info['mod_name'] == mod_name:
             compression_str = info['compression_type']
             return get_enum_from_val(CompressionType, compression_str)
@@ -349,21 +345,21 @@ def get_mod_compression_type(mod_name: str) -> CompressionType:
 
 
 def get_unreal_mod_tree_type_str(mod_name: str) -> str:
-    for info in get_mod_pak_info_list():
+    for info in get_mods_info_from_json():
         if info['mod_name'] == mod_name:
             return info['mod_name_dir_type']
     return None
 
 
-def get_mod_pak_info(mod_name: str) -> dict:
-    for info in get_mod_pak_info_list():
+def get_mods_info_dict(mod_name: str) -> dict:
+    for info in get_mods_info_from_json():
         if info['mod_name'] == mod_name:
             return dict(info)
     return None
 
 
 def is_mod_name_in_list(mod_name: str) -> bool:
-    for info in get_mod_pak_info_list():
+    for info in get_mods_info_from_json():
         if info['mod_name'] == mod_name:
             return True
     return False
@@ -423,8 +419,8 @@ def get_skip_launching_game() -> bool:
     return settings.settings['game_info']['skip_launching_game']
 
 
-def get_auto_move_windows() -> dict:
-    return settings.settings['auto_move_windows']
+def get_window_management_events() -> dict:
+    return settings.settings['window_management_events']
 
 
 def get_engine_cooking_args() -> list:

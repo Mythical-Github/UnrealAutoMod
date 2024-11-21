@@ -129,9 +129,7 @@
                 "${workspaceFolder}/assets/base/default/settings.json",
                 "ModLoader_P",
                 "MapKit",
-                "ExampleLevel",
-                "--output_directory",
-                "${workspaceFolder}/dist"
+                "ExampleLevel"
             ]
         },
         {
@@ -141,9 +139,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "create_mods_all",
-                "${workspaceFolder}/assets/base/default/settings.json",
-                "--output_directory",
-                "${workspaceFolder}/dist"
+                "${workspaceFolder}/assets/base/default/settings.json"
             ]
         },
         {

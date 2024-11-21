@@ -111,4 +111,4 @@ def get_repak_pak_version_str() -> str:
     return repak_version_str
 
 
-ensure_repak_installed()
+# ensure_repak_installed()

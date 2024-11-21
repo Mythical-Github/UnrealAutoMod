@@ -289,8 +289,8 @@ def get_unreal_engine_dir() -> str:
     return ue_dir
 
 
-def is_toggle_engine_during_testing_in_use() -> bool:
-    return settings.settings['engine_info']['toggle_engine_during_testing']
+def is_toggle_engine_during_cooking_in_use() -> bool:
+    return settings.settings['engine_info']['toggle_engine_during_cooking']
 
 
 def get_uproject_file() -> str:

@@ -95,3 +95,22 @@ BuildDerivedDataCache
 
 
 symlink main method
+
+
+Microsoft Windows [Version 10.0.19045.5131]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Mythical>D:\unreal_engine_installs\UE_4.22\Engine\Binaries\Win64\UnrealFrontend.exe -help
+
+C:\Users\Mythical>D:\unreal_engine_installs\UE_4.22\Engine\Binaries\Win64\BuildPatchTool.exe -help
+LogBuildPatchTool: Display: -help can be added with any mode selection to get extended information.
+LogBuildPatchTool: Display: Supported modes are:
+LogBuildPatchTool: Display:   -mode=PatchGeneration      Mode that generates patch data for the a new build.
+LogBuildPatchTool: Display:   -mode=ChunkDeltaOptimise   Mode that produces a more optimal chunked patch between two specific builds.
+LogBuildPatchTool: Display:   -mode=Compactify           Mode that can clean up unneeded patch data from a given cloud directory with redundant data.
+LogBuildPatchTool: Display:   -mode=Enumeration          Mode that outputs the paths to referenced patch data given a single manifest.
+LogBuildPatchTool: Display:   -mode=MergeManifests       Mode that can combine two manifest files to create a new one, primarily used to create hotfixes.
+LogBuildPatchTool: Display:   -mode=DiffManifests        Mode that can diff two manifests and outputs what chunks would need to be downloaded and some stats.
+LogBuildPatchTool: Display:   -mode=PackageChunks        Mode that packages data required for an installation into larger files which can be used as local sources for build patch installers.
+LogBuildPatchTool: Display:   -mode=VerifyChunks         Mode that allows you to verify the integrity of patch data. It will load chunk or chunkdb files to verify they are not corrupt.
+

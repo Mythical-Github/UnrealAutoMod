@@ -29,11 +29,11 @@ def fix_up_uproject_redirectors():
 
 
 def toggle_engine_off():
-    if utilities.is_toggle_engine_during_testing_in_use():
+    if utilities.is_toggle_engine_during_cooking_in_use():
         close_game_engine()
 
 
 def toggle_engine_on():
-    if utilities.is_toggle_engine_during_testing_in_use():
+    if utilities.is_toggle_engine_during_cooking_in_use():
         open_game_engine()
         thread_engine_monitor.engine_monitor_thread()

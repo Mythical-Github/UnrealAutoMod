@@ -12,7 +12,8 @@
     "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/ZedfestModdingKit/KevinSpel.uproject",
     "skip_uproject_steps": false, // this is for when you want to create paks, without a uproject, usually for edited asset mods
-    "toggle_engine_during_testing": false, // this is to save memory during the cooking process, and for games that don't allow unreal open at same time
+    "toggle_engine_during_cooking": false, // this is to save memory during the cooking process, and for games that don't allow unreal open at same time
+    "toggle_engine_on_game_run": false, // this is for games that don't allow unreal open at same time as the game
     "engine_launch_args": [],
     "engine_cooking_args": [
       "-cook",
@@ -99,7 +100,7 @@
       "use_mod_name_dir_name_override": true,
       "mod_name_dir_name_override": "ModEntry",
       "pak_chunk_num": null,
-      "packing_type": "repak",
+      "packing_type": "loose",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {
@@ -114,7 +115,7 @@
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
       "pak_chunk_num": null,
-      "packing_type": "repak",
+      "packing_type": "loose",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {
@@ -129,7 +130,7 @@
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
       "pak_chunk_num": null,
-      "packing_type": "repak",
+      "packing_type": "loose",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {

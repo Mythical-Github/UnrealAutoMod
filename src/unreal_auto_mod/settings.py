@@ -402,7 +402,32 @@ def create_mods_all(settings_json: str):
     make_mods_two()
 
 
+def make_archive_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
+    # get the installed pak files based on info from the json
+    # move into the base files folder keeping the dir structure
+    # zip into output dir
+    print('placeholder')
+    return
+
+
+def make_loose_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
+    # get files from saved coooked
+    # get files from persistent
+    # get files from specified dirs in manually specified asssets
+    # move them all into  the base files folder within a content folder
+    # zip into the output directory
+    print('placeholder')
+    return
+
+
 def create_mod_release(settings_json: str, mod_name: str, base_files_directory: str, output_directory: str):
+    load_settings(settings_json)
+    from unreal_auto_mod.utilities import get_mods_info_from_json
+    singular_mod_info = next((mod_info for mod_info in get_mods_info_from_json() if mod_info['mod_name'] == mod_name), '')
+    if singular_mod_info['packing_type'] == 'loose':
+        make_loose_mod_release(singular_mod_info, base_files_directory, output_directory)
+    else:
+        make_archive_mod_release(singular_mod_info, base_files_directory, output_directory)
     return
 
 

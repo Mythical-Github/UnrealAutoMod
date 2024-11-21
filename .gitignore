@@ -16,3 +16,4 @@ assets/build_scripts/__main__.spec
 /assets/dev_tools/logs
 assets/base/unreal_auto_mod.exe
 /src/logs
+assets/base/unreal_auto_mod_background.exe

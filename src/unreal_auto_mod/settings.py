@@ -220,11 +220,11 @@ def get_solo_build_project_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
-        f'-skipstage '
-        f'-nodebuginfo '
-        f'-build'
     )
+    for arg in utilities.get_engine_building_args():
+            command = f'{command} {arg}'
     return command
+    
 
 
 def run_proj_build_command(command: str):
@@ -279,7 +279,6 @@ def get_solo_cook_project_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
-        f'-cook '
     )
     if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         build_arg = '-build'
@@ -403,12 +402,18 @@ def create_mods_all(settings_json: str):
     make_mods_two()
 
 
+def create_mod_release(settings_json: str, mod_name: str, base_files_directory: str, output_directory: str):
+    return
+
+
 def create_mod_releases(settings_json: str, mod_names: str, base_files_directory: str, output_directory: str):
     load_settings(settings_json)
-    print(output_directory)
-    log_message('place_holder function called')
+    for mod_name in mod_names:
+        create_mod_release(settings_json, mod_name, base_files_directory, output_directory)
 
 
 def create_mod_releases_all(settings_json: str, base_files_directory: str, output_directory: str):
     load_settings(settings_json)
-    log_message('place_holder function called')
+    from unreal_auto_mod.utilities import get_mods_info_from_json
+    for entry in get_mods_info_from_json():
+        create_mod_release(settings_json, entry['mod_name'], base_files_directory, output_directory)

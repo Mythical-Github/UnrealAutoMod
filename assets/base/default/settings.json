@@ -15,15 +15,20 @@
     "toggle_engine_during_testing": false, // this is to save memory during the cooking process, and for games that don't allow unreal open at same time
     "engine_launch_args": [],
     "engine_cooking_args": [
+      "-cook",
       "-unversionedcookedcontent",
       "-SkipCookingEditorContent",
       "-iterate",
       "-noP4"
     ],
     "engine_building_args": [
+      "-build",
+      "-skipstage",
+      "-nodebuginfo",
       "-noP4"
     ],
     "engine_packaging_args": [
+      "-cook",
       "-unversionedcookedcontent",
       "-SkipCookingEditorContent",
       "-iterate",

@@ -8,24 +8,24 @@ from unreal_auto_mod import log_py as log
 from unreal_auto_mod import repak_utilities, settings, ue_dev_py_utils, unreal_pak, utilities
 from unreal_auto_mod.enums import CompressionType, PackingType, HookStateType, get_enum_from_val
 
+
 install_queue_types = []
 uninstall_queue_types = []
 command_queue = []
-
+has_populated_queue = False
 
 def populate_queue():
     global install_queue_types
     global uninstall_queue_types
-    for packing_type in list(PackingType):
-        for mod_info in utilities.get_mods_info_from_json():
-            if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
-                install_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
-                if install_queue_type not in install_queue_types:
-                    install_queue_types.append(install_queue_type)
-            if not mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
-                uninstall_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
-                if uninstall_queue_type not in uninstall_queue_types:
-                    uninstall_queue_types.append(uninstall_queue_type)
+    for mod_info in utilities.get_mods_info_from_json():
+        if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
+            install_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
+            if install_queue_type not in install_queue_types:
+                install_queue_types.append(install_queue_type)
+        if not mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
+            uninstall_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
+            if uninstall_queue_type not in uninstall_queue_types:
+                uninstall_queue_types.append(uninstall_queue_type)
 
 
 class PopulateQueueTypeCheckDicts:
@@ -64,7 +64,6 @@ def get_engine_pak_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
-        f'-cook '
         f'-stage '
         f'-pak '
         f'-compressed'
@@ -88,7 +87,6 @@ def get_cook_project_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
-        f'-cook '
         f'-skipstage '
         f'-nodebuginfo'
     )
@@ -108,10 +106,6 @@ def cook_uproject():
 
 def package_uproject():
     run_proj_command(get_engine_pak_command())
-
-
-# def run_proj_command(command: str):
-#     utilities.run_app(command, working_dir=utilities.get_unreal_engine_dir())
 
 
 def run_proj_command(command: str):

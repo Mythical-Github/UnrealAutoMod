@@ -462,6 +462,13 @@ def resync_dir_with_repo(settings_json: str):
     if not os.path.isdir(os.path.join(repo_path, '.git')):
         raise ValueError(f"The specified path '{repo_path}' is not a valid Git repository.")
 
+    args = [
+        'clean',
+        '-f',
+        '-d',
+        '-x'
+    ]
+    run_app(exe_path=exe, args=args)
 
     exe = 'git'
     args = [
@@ -469,14 +476,6 @@ def resync_dir_with_repo(settings_json: str):
         repo_path,
         'reset',
         '--hard'
-    ]
-    run_app(exe_path=exe, args=args)
-    
-    args = [
-        'clean',
-        '-d',
-        '-X',
-        '--force'
     ]
     run_app(exe_path=exe, args=args)
 

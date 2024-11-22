@@ -445,9 +445,9 @@ def create_mod_releases_all(settings_json: str, base_files_directory: str, outpu
         create_mod_release(settings_json, entry['mod_name'], base_files_directory, output_directory)
 
 
-def resync_dir_with_repo(repo_path: str):
-    from unreal_auto_mod.utilities import run_app, get_cleanup_repo_path
+def resync_dir_with_repo(settings_json: str):
     load_settings(settings_json)
+    from unreal_auto_mod.utilities import run_app, get_cleanup_repo_path
     repo_path = get_cleanup_repo_path()
     """
     Resyncs a directory tree with its repository by discarding local changes and cleaning untracked files.
@@ -473,10 +473,10 @@ def resync_dir_with_repo(repo_path: str):
     run_app(exe_path=exe, args=args)
     
     args = [
-        '-C',
-        repo_path,
         'clean',
-        '--fdx'
+        '-d',
+        '-X',
+        '--force'
     ]
     run_app(exe_path=exe, args=args)
 

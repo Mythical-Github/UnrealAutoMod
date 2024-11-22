@@ -76,5 +76,6 @@ def log_message(message: str):
     log_dir = os.path.join(log_base_dir, 'logs')
     log_path = os.path.join(log_dir, f'{log_prefix}latest.log')
 
-    with open(log_path, 'a') as log_file:
-        log_file.write(f"{padded_message}\n")
+    if os.path.isfile(log_path):
+        with open(log_path, 'a') as log_file:
+            log_file.write(f"{padded_message}\n")

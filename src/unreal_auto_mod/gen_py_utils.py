@@ -27,8 +27,7 @@ def open_dir_in_file_browser(input_directory: str):
     if not os.path.isdir(formatted_directory):
         print(f"Error: The directory '{formatted_directory}' does not exist.")
         return
-    command = f'start "" "{formatted_directory}"'
-    os.system(command)
+    os.startfile(formatted_directory)
 
 
 def open_file_in_default(file_path: str):
@@ -36,7 +35,9 @@ def open_file_in_default(file_path: str):
 
 
 def open_website(input_url: str):
-    os.system(f'start {input_url}')
+    import webbrowser
+
+    webbrowser.open(input_url)
 
 
 def check_file_exists(file_path: str) -> bool:
@@ -62,8 +63,12 @@ def is_process_running(process_name: str) -> bool:
 
 
 def kill_process(process_name: str):
-    if is_process_running(process_name):
-        os.system(f'taskkill /f /im {process_name}')
+    for proc in psutil.process_iter(['name']):
+        try:
+            if process_name.lower() == proc.info['name'].lower():
+                proc.terminate()
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
 
 
 def get_processes_by_substring(substring: str) -> list:

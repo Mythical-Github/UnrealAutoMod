@@ -72,7 +72,8 @@ def set_window_size(window: pygetwindow.Win32Window, width: int, height: int):
 
 
 def change_window_name(window_name: str):
-    os.system(f'title {window_name}')
+    import ctypes
+    ctypes.windll.kernel32.SetConsoleTitleW(window_name)
 
 
 def move_window(window: pygetwindow.Win32Window, window_settings: list):

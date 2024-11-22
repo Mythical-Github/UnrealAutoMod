@@ -33,7 +33,8 @@ def init_settings(settings_json_path: str):
     with open(settings_json_path) as file:
         settings = json.load(file)
     window_name = settings['general_info']['window_title']
-    os.system(f'title {window_name}')
+    import ctypes
+    ctypes.windll.kernel32.SetConsoleTitleW(window_name)
     auto_close_game = settings['process_kill_events']['auto_close_game']
     if auto_close_game:
         def is_process_running(process_name):
@@ -48,7 +49,12 @@ def init_settings(settings_json_path: str):
         process_name = settings['game_info']['game_exe_path']
         process_name = os.path.basename(process_name)
         if is_process_running(process_name):
-            os.system(f'taskkill /f /im {process_name}')
+            for proc in psutil.process_iter(process_name):
+                try:
+                    if process_name.lower() == proc.info['name'].lower():
+                        proc.terminate()
+                except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                    pass
     init_settings_done = True
     settings_json = settings_json_path
     settings_json_dir = os.path.dirname(settings_json)

@@ -196,7 +196,14 @@ def install_loose_mod(mod_name: str):
             os.makedirs(_dir)
         if os.path.exists(before_file):
             if os.path.isfile(before_file):
-                shutil.copyfile(before_file, after_file)
+                # testing
+
+                if os.path.isfile(after_file):
+                    os.remove(after_file)
+
+                # shutil.copyfile(before_file, after_file)
+
+                os.symlink(before_file, after_file)
 
 
 

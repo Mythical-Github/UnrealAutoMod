@@ -449,6 +449,7 @@ def resync_dir_with_repo(settings_json: str):
     load_settings(settings_json)
     from unreal_auto_mod.utilities import run_app, get_cleanup_repo_path
     repo_path = get_cleanup_repo_path()
+    repo_dir = os.path.dirname(repo_path)
     """
     Resyncs a directory tree with its repository by discarding local changes and cleaning untracked files.
     
@@ -462,21 +463,20 @@ def resync_dir_with_repo(settings_json: str):
     if not os.path.isdir(os.path.join(repo_path, '.git')):
         raise ValueError(f"The specified path '{repo_path}' is not a valid Git repository.")
 
+    exe = 'git'
+
     args = [
         'clean',
         '-f',
         '-d',
         '-x'
     ]
-    run_app(exe_path=exe, args=args)
+    run_app(exe_path=exe, args=args, working_dir=repo_dir)
 
-    exe = 'git'
     args = [
-        '-C',
-        repo_path,
         'reset',
         '--hard'
     ]
-    run_app(exe_path=exe, args=args)
+    run_app(exe_path=exe, args=args, working_dir=repo_dir)
 
     print(f"Successfully resynchronized the repository at '{repo_path}'.")

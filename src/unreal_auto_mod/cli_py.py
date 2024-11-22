@@ -1,12 +1,11 @@
+import argparse
 import os
 import sys
-import argparse
 from pathlib import Path
 
 from rich_argparse import RichHelpFormatter
 
 from unreal_auto_mod import settings
-
 
 if getattr(sys, 'frozen', False):
     SCRIPT_DIR = Path(sys.executable).parent
@@ -67,7 +66,7 @@ def cli_logic():
 
     default_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'assets', 'base', 'mod_packaging', 'releases'))
     default_output_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'dist'))
-    
+
     create_mod_releases_parser = sub_parser.add_parser('create_mod_releases', help='Create one or more mod releases', formatter_class=RichHelpFormatter)
     create_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')
     create_mod_releases_parser.add_argument('mod_names', nargs='+', help='List of mod names')
@@ -128,23 +127,9 @@ def cli_logic():
     }
 
     settings.init_thread_system()
-    
+
     if args.command in command_function_map:
-        if args.command == 'build':
-            command_function_map[args.command](args.settings_json)
-        elif args.command == 'cook':
-            command_function_map[args.command](args.settings_json)
-        elif args.command == 'cleanup_full':
-            command_function_map[args.command](args.settings_json)
-        elif args.command == 'cleanup_cooked':
-            command_function_map[args.command](args.settings_json)
-        elif args.command == 'cleanup_build':
-            command_function_map[args.command](args.settings_json)
-        elif args.command == 'upload_changes_to_repo':
-            command_function_map[args.command](args.settings_json)
-        elif args.command == 'open_latest_log':
-            command_function_map[args.command](args.settings_json)
-        elif args.command == 'run_game':
+        if args.command == 'build' or args.command == 'cook' or (args.command == 'cleanup_full' or args.command == 'cleanup_cooked') or (args.command == 'cleanup_build' or args.command == 'upload_changes_to_repo' or (args.command == 'open_latest_log' or args.command == 'run_game')):
             command_function_map[args.command](args.settings_json)
         elif args.command == 'test_mods':
             command_function_map[args.command](args.settings_json, args.mod_names)
@@ -160,20 +145,10 @@ def cli_logic():
             command_function_map[args.command](args.output_directory, args.base_files_directory, args.output_directory)
         elif args.command == 'resave_packages_and_fix_up_redirectors':
             command_function_map[args.command](args.settings_json)
-        elif args.command == 'install_fmodel':
-            command_function_map[args.command](args.output_directory)
-        elif args.command == 'install_umodel':
-            command_function_map[args.command](args.output_directory)
-        elif args.command == 'install_stove':
-            command_function_map[args.command](args.output_directory)
-        elif args.command == 'install_spaghetti':
-            command_function_map[args.command](args.output_directory)
-        elif args.command == 'install_uasset_gui':
-            command_function_map[args.command](args.output_directory)
-        elif args.command == 'install_kismet_analyzer':
+        elif args.command == 'install_fmodel' or args.command == 'install_umodel' or (args.command == 'install_stove' or args.command == 'install_spaghetti') or (args.command == 'install_uasset_gui' or args.command == 'install_kismet_analyzer'):
             command_function_map[args.command](args.output_directory)
     else:
         print(f'Unknown command: {args.command}')
         parser.print_help()
-    
+
     settings.close_thread_system()

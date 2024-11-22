@@ -1,4 +1,5 @@
 import time
+
 start_time = time.time()
 
 import sys
@@ -7,7 +8,6 @@ from pathlib import Path
 from unreal_auto_mod import cli_py
 from unreal_auto_mod import log_py as log
 from unreal_auto_mod.log_info import LOG_INFO
-
 
 if getattr(sys, 'frozen', False):
     SCRIPT_DIR = Path(sys.executable).parent

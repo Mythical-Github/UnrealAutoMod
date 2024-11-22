@@ -5,7 +5,6 @@ from shutil import get_terminal_size
 from unreal_auto_mod.console import console
 from unreal_auto_mod.log_info import LOG_INFO
 
-
 log_base_dir = f'{os.getcwd()}/src'
 log_prefix = ''
 
@@ -79,4 +78,3 @@ def log_message(message: str):
 
     with open(log_path, 'a') as log_file:
         log_file.write(f"{padded_message}\n")
- 

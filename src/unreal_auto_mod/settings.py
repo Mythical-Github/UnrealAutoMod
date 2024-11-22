@@ -4,10 +4,9 @@ import sys
 import psutil
 import pyjson5 as json
 
-from unreal_auto_mod.log_py import log_message
 import unreal_auto_mod.gen_py_utils as gen_utils
 from unreal_auto_mod import hook_states, mods
-
+from unreal_auto_mod.log_py import log_message
 
 settings = ''
 init_settings_done = False
@@ -124,10 +123,7 @@ def pass_settings(settings_json: str):
 
 
 def init_thread_system():
-    from unreal_auto_mod import (
-            enums,
-            thread_constant
-        )
+    from unreal_auto_mod import enums, thread_constant
     hook_states.HookState.set_hook_state(enums.HookStateType.INIT)
     thread_constant.constant_thread()
     hook_states.HookState.set_hook_state(enums.HookStateType.POST_INIT)
@@ -230,7 +226,7 @@ def get_solo_build_project_command() -> str:
     for arg in utilities.get_engine_building_args():
             command = f'{command} {arg}'
     return command
-    
+
 
 
 def run_proj_build_command(command: str):
@@ -281,7 +277,7 @@ def upload_changes_to_repo(settings_json: str):
 
 
 def get_solo_cook_project_command() -> str:
-    from unreal_auto_mod import utilities, ue_dev_py_utils
+    from unreal_auto_mod import ue_dev_py_utils, utilities
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
@@ -305,8 +301,8 @@ def cook(settings_json: str):
 
 def resave_packages_and_fix_up_redirectors(settings_json: str):
     load_settings(settings_json)
+    from unreal_auto_mod import ue_dev_py_utils, utilities
     from unreal_auto_mod.engine import close_game_engine
-    from unreal_auto_mod import utilities, ue_dev_py_utils
     close_game_engine()
     arg = '-run=ResavePackages -fixupredirects'
     command = f'"{ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())}" "{utilities.get_uproject_file()}" {arg}'
@@ -315,17 +311,17 @@ def resave_packages_and_fix_up_redirectors(settings_json: str):
 
 def cleanup_full(settings_json: str):
     from unreal_auto_mod.enums import ExecutionMode
-    from unreal_auto_mod.utilities import run_app, get_cleanup_repo_path
+    from unreal_auto_mod.utilities import get_cleanup_repo_path, run_app
     load_settings(settings_json)
     repo_path = get_cleanup_repo_path()
     log_message(f'Cleaning up repo at: "{repo_path}"')
     exe = 'git'
     args = [
-        'clean', 
-        '-d', 
-        '-X', 
+        'clean',
+        '-d',
+        '-X',
         '--force'
-    ] 
+    ]
     run_app(exe_path=exe, exec_mode=ExecutionMode.ASYNC, args=args, working_dir=repo_path)
     log_message(f'Cleaned up repo at: "{repo_path}"')
 
@@ -333,6 +329,7 @@ def cleanup_full(settings_json: str):
 def cleanup_cooked(settings_json: str):
     import os
     import shutil
+
     from unreal_auto_mod.utilities import get_cleanup_repo_path
     load_settings(settings_json)
     repo_path = get_cleanup_repo_path()
@@ -357,6 +354,7 @@ def cleanup_cooked(settings_json: str):
 def cleanup_build(settings_json: str):
     import os
     import shutil
+
     from unreal_auto_mod.utilities import get_cleanup_repo_path
     load_settings(settings_json)
     repo_path = get_cleanup_repo_path()
@@ -383,9 +381,9 @@ def cleanup_build(settings_json: str):
 
 def create_mods(settings_json: str, input_mod_names: str):
     load_settings(settings_json)
+    from unreal_auto_mod.packing import make_mods_two, populate_queue
     from unreal_auto_mod.settings import mod_names
     from unreal_auto_mod.utilities import get_mods_info_from_json
-    from unreal_auto_mod.packing import make_mods_two, populate_queue
 
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
@@ -397,9 +395,9 @@ def create_mods(settings_json: str, input_mod_names: str):
 
 def create_mods_all(settings_json: str):
     load_settings(settings_json)
+    from unreal_auto_mod.packing import make_mods_two, populate_queue
     from unreal_auto_mod.settings import mod_names
     from unreal_auto_mod.utilities import get_mods_info_from_json
-    from unreal_auto_mod.packing import make_mods_two, populate_queue
 
     for entry in get_mods_info_from_json():
         mod_names.append(entry['mod_name'])
@@ -413,7 +411,6 @@ def make_archive_mod_release(singular_mod_info: dict, base_files_directory: str,
     # move into the base files folder keeping the dir structure
     # zip into output dir
     print('placeholder')
-    return
 
 
 def make_loose_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
@@ -423,7 +420,6 @@ def make_loose_mod_release(singular_mod_info: dict, base_files_directory: str, o
     # move them all into  the base files folder within a content folder
     # zip into the output directory
     print('placeholder')
-    return
 
 
 def create_mod_release(settings_json: str, mod_name: str, base_files_directory: str, output_directory: str):
@@ -434,7 +430,6 @@ def create_mod_release(settings_json: str, mod_name: str, base_files_directory: 
         make_loose_mod_release(singular_mod_info, base_files_directory, output_directory)
     else:
         make_archive_mod_release(singular_mod_info, base_files_directory, output_directory)
-    return
 
 
 def create_mod_releases(settings_json: str, mod_names: str, base_files_directory: str, output_directory: str):

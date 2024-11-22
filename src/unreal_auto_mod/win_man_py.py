@@ -1,4 +1,3 @@
-import os
 
 import pygetwindow
 import screeninfo

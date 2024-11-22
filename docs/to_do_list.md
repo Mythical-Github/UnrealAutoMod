@@ -114,3 +114,7 @@ LogBuildPatchTool: Display:   -mode=DiffManifests        Mode that can diff two 
 LogBuildPatchTool: Display:   -mode=PackageChunks        Mode that packages data required for an installation into larger files which can be used as local sources for build patch installers.
 LogBuildPatchTool: Display:   -mode=VerifyChunks         Mode that allows you to verify the integrity of patch data. It will load chunk or chunkdb files to verify they are not corrupt.
 
+
+make it so engine made paks, unreal pak made paks and repak made paks all get moved into the base files dir for releases, then symlinked later on same for loose mods when applicable
+make sure uninstall and install work with this
+

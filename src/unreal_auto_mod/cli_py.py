@@ -13,6 +13,10 @@ else:
     SCRIPT_DIR = Path(__file__).resolve().parent
 
 
+    default_releases_dir = os.path.normpath(os.path.join(settings.settings_json_dir, 'mod_packaging', 'releases'))
+    default_output_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'dist'))
+
+
 def cli_logic():
     parser_description = 'Mod Build Tools/Automation scripts for Unreal Engine modding supports 4.0-5.5'
     parser_program_name = 'unreal_auto_mod'
@@ -63,9 +67,6 @@ def cli_logic():
 
     create_mods_all_parser = sub_parser.add_parser('create_mods_all', help='Creates mods for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     create_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
-
-    default_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'assets', 'base', 'mod_packaging', 'releases'))
-    default_output_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'dist'))
 
     create_mod_releases_parser = sub_parser.add_parser('create_mod_releases', help='Create one or more mod releases', formatter_class=RichHelpFormatter)
     create_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')

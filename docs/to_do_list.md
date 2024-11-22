@@ -20,17 +20,14 @@
 - [ ] documentation github pages styling
 
 
-  create mods
-  create mods all
-  create mod releases
-  create mod releases all
 
-build script doesn't auto place all exes in the output dir only the main, not the background
+
 
 # later
 for install apps, optional bool flag to open after install
 open uproject
 generate project files
+create uproject
 switch ue version inside of uproject json
 
 fix github pages stuff
@@ -93,10 +90,6 @@ Build
 BuildDerivedDataCache
 
 
-
-symlink main method
-
-
 Microsoft Windows [Version 10.0.19045.5131]
 (c) Microsoft Corporation. All rights reserved.
 
@@ -115,6 +108,16 @@ LogBuildPatchTool: Display:   -mode=PackageChunks        Mode that packages data
 LogBuildPatchTool: Display:   -mode=VerifyChunks         Mode that allows you to verify the integrity of patch data. It will load chunk or chunkdb files to verify they are not corrupt.
 
 
-make it so engine made paks, unreal pak made paks and repak made paks all get moved into the base files dir for releases, then symlinked later on same for loose mods when applicable
-make sure uninstall and install work with this
+install mods command takes a list of one or more mod names
+uninstall mods command takes a list of one or more mod names
+toggle mods being enabled/disabled commands, takes lin list and bool
+install a loose file mod loader option
+
+  create mods
+  create mods all
+  create mod releases
+  create mod releases all
+
+symlink main method
+package
 

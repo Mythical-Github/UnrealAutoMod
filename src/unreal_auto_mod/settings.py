@@ -142,7 +142,7 @@ def test_mods(settings_json: str, input_mod_names: str):
     global mod_names
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
-    mods.create_mods()
+    mods.create_mods(settings_json)
 
 
 def test_mods_all(settings_json: str):

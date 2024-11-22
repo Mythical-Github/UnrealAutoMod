@@ -127,8 +127,11 @@ def handle_install_logic(packing_type: PackingType):
     for mod_info in utilities.get_mods_info_from_json():
         if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
             if get_enum_from_val(PackingType, mod_info['packing_type']) == packing_type:
-                install_mod(packing_type, mod_info['mod_name'],
-                            get_enum_from_val(CompressionType, mod_info['compression_type']))
+                install_mod(
+                    packing_type, 
+                    mod_info['mod_name'],
+                    get_enum_from_val(CompressionType, mod_info['compression_type'])
+                )
     hook_states.HookState.set_hook_state(HookStateType.POST_PAK_DIR_SETUP)
     for command in command_queue:
         utilities.run_app(command)
@@ -190,19 +193,15 @@ def install_loose_mod(mod_name: str):
     for key in dict_keys:
         before_file = key
         after_file = mod_files[key]
-        _dir = os.path.dirname(after_file)
-        if not os.path.isdir(_dir):
-            os.makedirs(_dir)
+        os.makedirs(os.path.dirname(after_file), exist_ok=True)
         if os.path.exists(before_file):
-            if os.path.isfile(before_file):
-                # testing
-
-                if os.path.isfile(after_file):
-                    os.remove(after_file)
-
-                # shutil.copyfile(before_file, after_file)
-
-                os.symlink(before_file, after_file)
+            if os.path.islink(after_file):
+                os.unlink(after_file)
+            if os.path.isfile(after_file):
+                os.remove(after_file)
+        if os.path.isfile(before_file):
+            os.symlink(before_file, after_file)
+        
 
 
 
@@ -210,21 +209,25 @@ def install_engine_mod(mod_name: str):
     mod_files = []
     info = utilities.get_mods_info_dict(mod_name)
     pak_chunk_num = info['pak_chunk_num']
-    prefix = f'{ue_dev_py_utils.get_uproject_dir(utilities.get_uproject_file())}/Saved/StagedBuilds/{ue_dev_py_utils.get_win_dir_str(utilities.get_unreal_engine_dir())}/{ue_dev_py_utils.get_uproject_name(utilities.get_uproject_file())}/Content/Paks/pakchunk{pak_chunk_num}-{ue_dev_py_utils.get_win_dir_str(utilities.get_unreal_engine_dir())}.'
+    uproject_file = utilities.get_uproject_file()
+    uproject_dir = ue_dev_py_utils.get_uproject_dir(uproject_file)
+    win_dir_str = ue_dev_py_utils.get_win_dir_str(utilities.get_unreal_engine_dir())
+    uproject_name = ue_dev_py_utils.get_uproject_name(uproject_file)
+    prefix = f'{uproject_dir}/Saved/StagedBuilds/{win_dir_str}/{uproject_name}/Content/Paks/pakchunk{pak_chunk_num}-{win_dir_str}.'
     mod_files.append(prefix)
     for file in mod_files:
-        for suffix in ue_dev_py_utils.get_game_pak_folder_archives(utilities.get_uproject_file(), utilities.custom_get_game_dir()):
-            before_file = f'{file}{suffix}'
+        for suffix in ue_dev_py_utils.get_game_pak_folder_archives(uproject_file, utilities.custom_get_game_dir()):
             dir_engine_mod = f'{utilities.custom_get_game_dir()}/Content/Paks/{utilities.get_pak_dir_structure(mod_name)}'
             if not os.path.isdir(dir_engine_mod):
                 os.makedirs(dir_engine_mod)
+            before_file = f'{file}{suffix}'
             after_file = f'{dir_engine_mod}/{mod_name}.{suffix}'
-            if os.path.exists(after_file):
-                if not general_utils.get_do_files_have_same_hash(before_file, after_file):
-                    os.remove(after_file)
-                    shutil.copy2(before_file, after_file)
-            else:
-                shutil.copy2(before_file, after_file)
+            if os.path.islink(after_file):
+                os.unlink(after_file)
+            if os.path.isfile(after_file):
+                os.remove(after_file)
+            os.symlink(before_file, after_file)
+            # shutil.copy2(before_file, after_file)
 
 
 def make_pak_repak(mod_name: str):
@@ -242,13 +245,21 @@ def make_pak_repak(mod_name: str):
         log.log_message('Error: does not exist or is empty, indicating a packaging and/or config issue')
         raise FileNotFoundError
 
+    intermediate_pak_dir = f'{utilities.get_working_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
+    os.makedirs(intermediate_pak_dir, exist_ok=True)
+    intermediate_pak_file = f'{intermediate_pak_dir}/{mod_name}.pak'
 
-    command = f'"{repak_utilities.get_package_path()}" pack "{before_symlinked_dir}" "{pak_dir}/{mod_name}.pak"'
+    final_pak_location = f'{pak_dir}/{mod_name}.pak'
+
+    command = f'"{repak_utilities.get_package_path()}" pack "{before_symlinked_dir}" "{intermediate_pak_file}"'
     if compression_type_str != 'None':
         command = f'{command} --compression {compression_type_str} --version {repak_utilities.get_repak_pak_version_str()}'
-    if os.path.isfile(f'{pak_dir}/{mod_name}.pak'):
-        os.remove(f'{pak_dir}/{mod_name}.pak')
-    command_queue.append(command)
+    if os.path.islink(final_pak_location):
+        os.unlink(final_pak_location)
+    if os.path.isfile(final_pak_location):
+        os.remove(final_pak_location)
+    utilities.run_app(command)
+    os.symlink(intermediate_pak_file, final_pak_location)
 
 
 def install_repak_mod(mod_name: str):
@@ -260,7 +271,6 @@ def install_repak_mod(mod_name: str):
 
         for before_file, after_file in mod_files_dict.items():
             if os.path.exists(after_file):
-                if not general_utils.get_do_files_have_same_hash(before_file, after_file):
                     os.remove(after_file)
             if not os.path.isdir(os.path.dirname(after_file)):
                 os.makedirs(os.path.dirname(after_file))

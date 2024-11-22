@@ -21,13 +21,6 @@ def close_game_engine():
     hook_states.HookState.set_hook_state(HookStateType.POST_ENGINE_CLOSE)
 
 
-def fix_up_uproject_redirectors():
-    close_game_engine()
-    arg = '-run=ResavePackages -fixupredirects'
-    command = f'"{ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())}" "{utilities.get_uproject_file()}" {arg}'
-    utilities.run_app(command)
-
-
 def toggle_engine_off():
     if utilities.is_toggle_engine_during_cooking_in_use():
         close_game_engine()

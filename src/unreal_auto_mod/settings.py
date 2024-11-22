@@ -443,3 +443,41 @@ def create_mod_releases_all(settings_json: str, base_files_directory: str, outpu
     from unreal_auto_mod.utilities import get_mods_info_from_json
     for entry in get_mods_info_from_json():
         create_mod_release(settings_json, entry['mod_name'], base_files_directory, output_directory)
+
+
+def resync_dir_with_repo(repo_path: str):
+    from unreal_auto_mod.utilities import run_app, get_cleanup_repo_path
+    load_settings(settings_json)
+    repo_path = get_cleanup_repo_path()
+    """
+    Resyncs a directory tree with its repository by discarding local changes and cleaning untracked files.
+    
+    :param repo_path: The path to the root of the git repository.
+    """
+    repo_path = os.path.abspath(repo_path)
+    
+    if not os.path.isdir(repo_path):
+        raise FileNotFoundError(f"The specified path '{repo_path}' does not exist or is not a directory.")
+    
+    if not os.path.isdir(os.path.join(repo_path, '.git')):
+        raise ValueError(f"The specified path '{repo_path}' is not a valid Git repository.")
+
+
+    exe = 'git'
+    args = [
+        '-C',
+        repo_path,
+        'reset',
+        '--hard'
+    ]
+    run_app(exe_path=exe, args=args)
+    
+    args = [
+        '-C',
+        repo_path,
+        'clean',
+        '--fdx'
+    ]
+    run_app(exe_path=exe, args=args)
+
+    print(f"Successfully resynchronized the repository at '{repo_path}'.")

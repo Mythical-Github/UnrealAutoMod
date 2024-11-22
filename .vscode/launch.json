@@ -87,6 +87,16 @@
         //     ]
         // },
         {
+            "name": "resync_dir_with_repo",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "resync_dir_with_repo",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
             "name": "run_game",
             "type": "debugpy",
             "request": "launch",

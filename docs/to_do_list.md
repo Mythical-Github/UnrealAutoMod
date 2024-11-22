@@ -118,6 +118,13 @@ install a loose file mod loader option
   create mod releases
   create mod releases all
 
-symlink main method
 package
+
+more cleanup options, maybe branch sync
+list conflicts and or pak/mod files differ
+
+import subprocess
+import os
+
+one git clean is async rn?
 

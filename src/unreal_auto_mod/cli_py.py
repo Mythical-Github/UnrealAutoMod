@@ -48,6 +48,9 @@ def cli_logic():
     upload_changes_to_repo_parser = sub_parser.add_parser('upload_changes_to_repo', help='Uploads latest changes of the git project to the github repo and branch specified within the settings JSON', formatter_class=RichHelpFormatter)
     upload_changes_to_repo_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
+    resync_dir_with_repo_parser = sub_parser.add_parser('resync_dir_with_repo', help='Cleans up and resyncs a git project to the github repo and branch specified within the settings JSON', formatter_class=RichHelpFormatter)
+    resync_dir_with_repo_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
     open_latest_log_parser = sub_parser.add_parser('open_latest_log', help='Open the latest log file', formatter_class=RichHelpFormatter)
     open_latest_log_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
@@ -109,6 +112,7 @@ def cli_logic():
         'cleanup_full': settings.cleanup_full,
         'cleanup_cooked': settings.cleanup_cooked,
         'cleanup_build': settings.cleanup_build,
+        'resync_dir_with_repo': settings.resync_dir_with_repo,
         'upload_changes_to_repo': settings.upload_changes_to_repo,
         'open_latest_log': settings.open_latest_log,
         'run_game': settings.run_game,
@@ -148,6 +152,8 @@ def cli_logic():
             command_function_map[args.command](args.settings_json)
         elif args.command == 'install_fmodel' or args.command == 'install_umodel' or (args.command == 'install_stove' or args.command == 'install_spaghetti') or (args.command == 'install_uasset_gui' or args.command == 'install_kismet_analyzer'):
             command_function_map[args.command](args.output_directory)
+        elif args.command == 'resync_dir_with_repo':
+            command_function_map[args.command](args.settings_json)
     else:
         print(f'Unknown command: {args.command}')
         parser.print_help()

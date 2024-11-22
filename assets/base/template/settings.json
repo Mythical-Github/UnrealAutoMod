@@ -29,6 +29,8 @@
       "-noP4"
     ],
     "engine_packaging_args": [
+      "-stage",
+      "-pak",
       "-cook",
       "-unversionedcookedcontent",
       "-SkipCookingEditorContent",
@@ -65,7 +67,7 @@
   },
   "exec_events": [],
   "process_kill_events": {
-    "auto_close_game": true,
+    "auto_close_game": false,
     "processes": [
       {
         "process_name": "Fmodel",
@@ -99,8 +101,8 @@
       "mod_name_dir_type": "Mods",
       "use_mod_name_dir_name_override": true,
       "mod_name_dir_name_override": "ModEntry",
-      "pak_chunk_num": null,
-      "packing_type": "loose",
+      "pak_chunk_num": 1,
+      "packing_type": "repak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {
@@ -114,8 +116,8 @@
       "mod_name_dir_type": "Mods",
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
-      "pak_chunk_num": null,
-      "packing_type": "loose",
+      "pak_chunk_num": 2,
+      "packing_type": "repak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {
@@ -129,8 +131,8 @@
       "mod_name_dir_type": "Mods",
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
-      "pak_chunk_num": null,
-      "packing_type": "loose",
+      "pak_chunk_num": 3,
+      "packing_type": "repak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": {

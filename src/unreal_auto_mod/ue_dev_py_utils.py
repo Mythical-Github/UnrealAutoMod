@@ -129,3 +129,19 @@ def get_unreal_pak_exe_path(unreal_engine_dir: str) -> str:
 
 def get_game_window_title(input_game_exe_path: str) -> str:
     return os.path.splitext(get_game_process_name(input_game_exe_path))[0]
+
+
+def get_new_uproject_json_contents(
+        file_version: int = 3, 
+        engine_major_association: int = 4, 
+        engine_minor_association: int = 27,
+        category: str = 'Modding',
+        description: str = 'Uproject for modding, generated with unreal_auto_mod.'
+        ) -> str:
+    uproject_content = f'''{{
+  "FileVersion": "{file_version}",
+  "EngineAssociation": "{engine_major_association}.{engine_minor_association}",
+  "Category": "{category}",
+  "Description": "{description}"
+}}'''
+    return uproject_content

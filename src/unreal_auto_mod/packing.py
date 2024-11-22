@@ -63,15 +63,11 @@ def get_engine_pak_command() -> str:
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
         f'-project="{utilities.get_uproject_file()}" '
-        f'-stage '
-        f'-pak '
         f'-compressed'
     )
     if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         command = f'{command} -build'
     for arg in utilities.get_engine_packaging_args():
-        command = f'{command} {arg}'
-    for arg in utilities.get_engine_cooking_args():
         command = f'{command} {arg}'
     is_game_iostore = ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir())
     if is_game_iostore:
@@ -92,8 +88,6 @@ def get_cook_project_command() -> str:
     if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         build_arg = '-build'
         command = f'{command} {build_arg}'
-    for arg in utilities.get_engine_packaging_args():
-        command = f'{command} {arg}'
     for arg in utilities.get_engine_cooking_args():
         command = f'{command} {arg}'
     return command

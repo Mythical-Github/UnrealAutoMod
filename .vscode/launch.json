@@ -107,6 +107,16 @@
             ]
         },
         {
+            "name": "close_game",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "close_game",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
             "name": "test_mods",
             "type": "debugpy",
             "request": "launch",
@@ -150,6 +160,16 @@
             "args": [
                 "create_mods_all",
                 "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "generate_uproject",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "generate_uproject",
+                "${workspaceFolder}/dist/TestingGeneratedUproject/Testing.uproject"
             ]
         },
         {

@@ -63,12 +63,7 @@ def is_process_running(process_name: str) -> bool:
 
 
 def kill_process(process_name: str):
-    for proc in psutil.process_iter(['name']):
-        try:
-            if process_name.lower() == proc.info['name'].lower():
-                proc.terminate()
-        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-            pass
+    os.system(f'taskkill /f /im "{process_name}"')
 
 
 def get_processes_by_substring(substring: str) -> list:

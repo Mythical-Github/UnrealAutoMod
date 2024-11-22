@@ -29,6 +29,8 @@
       "-noP4"
     ],
     "engine_packaging_args": [
+      "-stage",
+      "-pak",
       "-cook",
       "-unversionedcookedcontent",
       "-SkipCookingEditorContent",
@@ -65,7 +67,7 @@
   },
   "exec_events": [],
   "process_kill_events": {
-    "auto_close_game": true,
+    "auto_close_game": false,
     "processes": [
       {
         "process_name": "Fmodel",

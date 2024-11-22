@@ -48,12 +48,7 @@ def init_settings(settings_json_path: str):
         process_name = settings['game_info']['game_exe_path']
         process_name = os.path.basename(process_name)
         if is_process_running(process_name):
-            for proc in psutil.process_iter(process_name):
-                try:
-                    if process_name.lower() == proc.info['name'].lower():
-                        proc.terminate()
-                except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-                    pass
+            os.system(f'taskkill /f /im "{process_name}"')
     init_settings_done = True
     settings_json = settings_json_path
     settings_json_dir = os.path.dirname(settings_json)
@@ -201,6 +196,13 @@ def run_game(settings_json: str):
     thread_game_monitor.game_monitor_thread()
 
 
+def close_game(settings_json: str):
+    load_settings(settings_json)
+    from unreal_auto_mod.utilities import get_game_exe_path
+    from unreal_auto_mod.gen_py_utils import kill_process
+    kill_process(os.path.basename(get_game_exe_path()))
+
+
 def install_umodel(output_directory: str):
     from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.does_umodel_exist(output_directory)):
@@ -285,8 +287,6 @@ def get_solo_cook_project_command() -> str:
     if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         build_arg = '-build'
         command = f'{command} {build_arg}'
-    for arg in utilities.get_engine_packaging_args():
-        command = f'{command} {arg}'
     for arg in utilities.get_engine_cooking_args():
         command = f'{command} {arg}'
     return command
@@ -480,3 +480,50 @@ def resync_dir_with_repo(settings_json: str):
     run_app(exe_path=exe, args=args, working_dir=repo_dir)
 
     print(f"Successfully resynchronized the repository at '{repo_path}'.")
+
+
+def generate_uproject(
+    project_file: str,
+    file_version: int = 3, 
+    engine_major_association: int = 4, 
+    engine_minor_association: int = 27,
+    category: str = 'Modding',
+    description: str = 'Uproject for modding, generated with unreal_auto_mod.',
+    ignore_safety_checks: bool = False
+) -> str:
+    from unreal_auto_mod.ue_dev_py_utils import get_new_uproject_json_contents
+
+    project_dir = os.path.dirname(project_file)
+    os.makedirs(project_dir, exist_ok=True)
+
+    if ignore_safety_checks == False:
+    # Validate file version
+        if file_version not in range(1, 4):
+            raise ValueError(f'Invalid file version: {file_version}. Valid values are 1-3.')
+
+        # Validate EngineMajorAssociation
+        if engine_major_association not in range(4, 6):  # Only 4-5 is valid
+            raise ValueError(f'Invalid EngineMajorAssociation: {engine_major_association}. Valid value is 4-5.')
+
+        # Validate EngineMinorAssociation
+        if engine_minor_association not in range(0, 28):  # Valid range is 0-27
+            raise ValueError(f'Invalid EngineMinorAssociation: {engine_minor_association}. Valid range is 0-27.')
+
+        # Ensure the directory is empty
+        project_dir = os.path.dirname(os.path.abspath(project_file))
+        if os.path.exists(project_dir) and os.listdir(project_dir):
+            raise FileExistsError(f'The directory "{project_dir}" is not empty. Cannot generate project here.')
+
+    # Generate the JSON content for the .uproject file
+    json_content = get_new_uproject_json_contents(
+        file_version, engine_major_association, engine_minor_association, category, description
+    )
+
+    # Write the .uproject file
+    try:
+        with open(project_file, 'w') as f:
+            f.write(json_content)  # Write the string content directly to the file
+    except IOError as e:
+        raise IOError(f"Failed to write to file '{project_file}': {e}")
+
+    return f"Successfully generated '{project_file}'."

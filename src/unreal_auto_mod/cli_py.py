@@ -57,6 +57,9 @@ def cli_logic():
     run_game_parser = sub_parser.add_parser('run_game', help='Run the game', formatter_class=RichHelpFormatter)
     run_game_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
+    close_game_parser = sub_parser.add_parser('close_game', help='Close the game', formatter_class=RichHelpFormatter)
+    close_game_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
     test_mods_parser = sub_parser.add_parser('test_mods', help='Run tests for specific mods', formatter_class=RichHelpFormatter)
     test_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
     test_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
@@ -82,6 +85,19 @@ def cli_logic():
     create_mod_releases_all_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
     create_mod_releases_all_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
 
+    generate_uproject_parser = sub_parser.add_parser('generate_uproject', help='Generates a uproject file at the specified location, using the given information', formatter_class=RichHelpFormatter)
+    generate_uproject_parser.add_argument('project_file', help='Path to generate the project file at')
+    generate_uproject_parser.add_argument('--file_version', help='Uproject file specification. Defaults to 3.', default=3)
+    generate_uproject_parser.add_argument('--engine_major_association', help='Major unreal engine version for the project. Example: the 4 in 4.27.', default=4)
+    generate_uproject_parser.add_argument('--engine_minor_association', help='Minor unreal engine version for the project. Example: the 27 in 4.27.', default=27)
+    generate_uproject_parser.add_argument('--category', help='Category for the uproject', default='Modding')
+    generate_uproject_parser.add_argument('--description', help='Description for the uproject', default='Uproject for modding, generated with unreal_auto_mod.')
+    generate_uproject_parser.add_argument('--ignore_safety_checks', help='wether or not to override the input checks for this command', default=False)
+
+    resave_packages_and_fix_up_redirectors_parser = sub_parser.add_parser('resave_packages_and_fix_up_redirectors', help='Resaves packages and fixes up redirectors for the project', formatter_class=RichHelpFormatter)
+    resave_packages_and_fix_up_redirectors_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+
     install_fmodel_parser = sub_parser.add_parser('install_fmodel', help='Install Fmodel', formatter_class=RichHelpFormatter)
     install_fmodel_parser.add_argument('output_directory', help='Path to the output directory')
 
@@ -100,9 +116,6 @@ def cli_logic():
     install_kismet_analyzer_parser = sub_parser.add_parser('install_kismet_analyzer', help='Install Kismet Analyzer', formatter_class=RichHelpFormatter)
     install_kismet_analyzer_parser.add_argument('output_directory', help='Path to the output directory')
 
-    resave_packages_and_fix_up_redirectors_parser = sub_parser.add_parser('resave_packages_and_fix_up_redirectors', help='Resaves packages and fixes up redirectors for the project', formatter_class=RichHelpFormatter)
-    resave_packages_and_fix_up_redirectors_parser.add_argument('settings_json', help='Path to the settings JSON file')
-
 
     args = parser.parse_args()
 
@@ -116,12 +129,14 @@ def cli_logic():
         'upload_changes_to_repo': settings.upload_changes_to_repo,
         'open_latest_log': settings.open_latest_log,
         'run_game': settings.run_game,
+        'close_game': settings.close_game,
         'test_mods': settings.test_mods,
         'test_mods_all': settings.test_mods_all,
         'create_mods': settings.create_mods,
         'create_mods_all': settings.create_mods_all,
         'create_mod_releases': settings.create_mod_releases,
         'create_mod_releases_all': settings.create_mod_releases_all,
+        'generate_uproject': settings.generate_uproject,
         'resave_packages_and_fix_up_redirectors': settings.resave_packages_and_fix_up_redirectors,
         'install_fmodel': settings.install_fmodel,
         'install_umodel': settings.install_umodel,
@@ -154,6 +169,18 @@ def cli_logic():
             command_function_map[args.command](args.output_directory)
         elif args.command == 'resync_dir_with_repo':
             command_function_map[args.command](args.settings_json)
+        elif args.command == 'close_game':
+            command_function_map[args.command](args.settings_json)
+        elif args.command == 'generate_uproject':
+            command_function_map[args.command](
+                args.project_file, 
+                args.file_version, 
+                args.engine_major_association, 
+                args.engine_minor_association,
+                args.category,
+                args.description,
+                args.ignore_safety_checks
+                )
     else:
         print(f'Unknown command: {args.command}')
         parser.print_help()

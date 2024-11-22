@@ -24,11 +24,6 @@
 
 
 # later
-for install apps, optional bool flag to open after install
-open uproject
-generate project files
-create uproject
-switch ue version inside of uproject json
 
 fix github pages stuff
 hook state cleanup
@@ -107,24 +102,25 @@ LogBuildPatchTool: Display:   -mode=DiffManifests        Mode that can diff two 
 LogBuildPatchTool: Display:   -mode=PackageChunks        Mode that packages data required for an installation into larger files which can be used as local sources for build patch installers.
 LogBuildPatchTool: Display:   -mode=VerifyChunks         Mode that allows you to verify the integrity of patch data. It will load chunk or chunkdb files to verify they are not corrupt.
 
+install a loose file mod loader option
 
+
+
+-----------------
+Current To Do: 
+
+create mods
+create mods all
+create mod releases
+create mod releases all
+package
+list conflicts and or pak/mod files differ
 install mods command takes a list of one or more mod names
 uninstall mods command takes a list of one or more mod names
 toggle mods being enabled/disabled commands, takes lin list and bool
-install a loose file mod loader option
 
-  create mods
-  create mods all
-  create mod releases
-  create mod releases all
-
-package
-
-more cleanup options, maybe branch sync
-list conflicts and or pak/mod files differ
-
-import subprocess
-import os
-
-one git clean is async rn?
-
+for install apps, optional bool flag to open after install
+generate project files for uproject
+open engine with uproject
+close engine
+switch ue version inside of uproject json

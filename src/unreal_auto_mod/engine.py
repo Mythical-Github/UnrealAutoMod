@@ -8,6 +8,7 @@ def open_game_engine():
     command = ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())
     utilities.run_app(command, ExecutionMode.ASYNC, utilities.get_engine_launch_args())
     hook_states.HookState.set_hook_state(HookStateType.POST_ENGINE_OPEN)
+    thread_engine_monitor.engine_monitor_thread()
 
 
 def close_game_engine():
@@ -29,4 +30,3 @@ def toggle_engine_off():
 def toggle_engine_on():
     if utilities.is_toggle_engine_during_cooking_in_use():
         open_game_engine()
-        thread_engine_monitor.engine_monitor_thread()

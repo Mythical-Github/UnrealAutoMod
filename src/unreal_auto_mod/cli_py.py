@@ -13,8 +13,8 @@ else:
     SCRIPT_DIR = Path(__file__).resolve().parent
 
 
-    default_releases_dir = os.path.normpath(os.path.join(settings.settings_json_dir, 'mod_packaging', 'releases'))
-    default_output_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'dist'))
+default_releases_dir = os.path.normpath(os.path.join(settings.settings_json_dir, 'mod_packaging', 'releases'))
+default_output_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'dist'))
 
 
 def cli_logic():
@@ -36,6 +36,9 @@ def cli_logic():
     cook_parser = sub_parser.add_parser('cook', help='Cooks content for the uproject specified within the settings JSON', formatter_class=RichHelpFormatter)
     cook_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
+    package_parser = sub_parser.add_parser('package', help='package content for the uproject specified within the settings JSON', formatter_class=RichHelpFormatter)
+    package_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
     cleanup_full_parser = sub_parser.add_parser('cleanup_full', help='Cleans up the github repo specified within the settings JSON', formatter_class=RichHelpFormatter)
     cleanup_full_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
@@ -54,11 +57,43 @@ def cli_logic():
     open_latest_log_parser = sub_parser.add_parser('open_latest_log', help='Open the latest log file', formatter_class=RichHelpFormatter)
     open_latest_log_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
+    enable_mods_parser = sub_parser.add_parser('enable_mods', help='Enable the given mod names in the provided settings JSON', formatter_class=RichHelpFormatter)
+    enable_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    enable_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+
+    disable_mods_parser = sub_parser.add_parser('disable_mods', help='Disable the given mod names in the provided settings JSON', formatter_class=RichHelpFormatter)
+    disable_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    disable_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+
+    add_mod_parser = sub_parser.add_parser('add_mod', help='Adds the given mod name in the provided settings JSON', formatter_class=RichHelpFormatter)
+    add_mod_parser.add_argument('settings_json', help='Path to the settings JSON file', type=str)
+    add_mod_parser.add_argument('mod_name', help='The name of the mod you want to add', type=str)
+    add_mod_parser.add_argument('packing_type', help='', choices=['unreal_pak', 'repak', 'engine', 'loose'])
+    add_mod_parser.add_argument('pak_dir_structure', help='', type=str)
+    add_mod_parser.add_argument('--mod_name_dir_type', help='', type=str, default='Mods')
+    add_mod_parser.add_argument('--use_mod_name_dir_name_override', help='', type=bool, default=False)
+    add_mod_parser.add_argument('--mod_name_dir_name_override', help='', type=str, default=None)
+    add_mod_parser.add_argument('--pak_chunk_num', help='', type=int, default=None)
+    add_mod_parser.add_argument('--compression_type', help='', default='')
+    add_mod_parser.add_argument('--is_enabled', help='', type=bool, default=True)
+    add_mod_parser.add_argument('--asset_paths', help='', type=list, default=[])
+    add_mod_parser.add_argument('--tree_paths', help='', type=list, default=[])
+
+    remove_mods_parser = sub_parser.add_parser('remove_mods', help='Removes the given mod names in the provided settings JSON', formatter_class=RichHelpFormatter)
+    remove_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    remove_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+
     run_game_parser = sub_parser.add_parser('run_game', help='Run the game', formatter_class=RichHelpFormatter)
     run_game_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
     close_game_parser = sub_parser.add_parser('close_game', help='Close the game', formatter_class=RichHelpFormatter)
     close_game_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    run_engine_parser = sub_parser.add_parser('run_engine', help='Run the engine', formatter_class=RichHelpFormatter)
+    run_engine_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    close_engine_parser = sub_parser.add_parser('close_engine', help='Close the engine', formatter_class=RichHelpFormatter)
+    close_engine_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
     test_mods_parser = sub_parser.add_parser('test_mods', help='Run tests for specific mods', formatter_class=RichHelpFormatter)
     test_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
@@ -97,24 +132,29 @@ def cli_logic():
     resave_packages_and_fix_up_redirectors_parser = sub_parser.add_parser('resave_packages_and_fix_up_redirectors', help='Resaves packages and fixes up redirectors for the project', formatter_class=RichHelpFormatter)
     resave_packages_and_fix_up_redirectors_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-
     install_fmodel_parser = sub_parser.add_parser('install_fmodel', help='Install Fmodel', formatter_class=RichHelpFormatter)
     install_fmodel_parser.add_argument('output_directory', help='Path to the output directory')
+    install_fmodel_parser.add_argument('--run_after_install', help='Should the installed program be ran after installation', default=False)
 
     install_umodel_parser = sub_parser.add_parser('install_umodel', help='Install Umodel', formatter_class=RichHelpFormatter)
     install_umodel_parser.add_argument('output_directory', help='Path to the output directory')
+    install_umodel_parser.add_argument('--run_after_install', help='Should the installed program be ran after installation', default=False)
 
     install_stove_parser = sub_parser.add_parser('install_stove', help='Install Stove', formatter_class=RichHelpFormatter)
     install_stove_parser.add_argument('output_directory', help='Path to the output directory')
+    install_stove_parser.add_argument('--run_after_install', help='Should the installed program be ran after installation', default=False)
 
     install_spaghetti_parser = sub_parser.add_parser('install_spaghetti', help='Install Spaghetti', formatter_class=RichHelpFormatter)
     install_spaghetti_parser.add_argument('output_directory', help='Path to the output directory')
+    install_spaghetti_parser.add_argument('--run_after_install', help='Should the installed program be ran after installation', default=False)
 
     install_uasset_gui_parser = sub_parser.add_parser('install_uasset_gui', help='Install UAssetGUI', formatter_class=RichHelpFormatter)
     install_uasset_gui_parser.add_argument('output_directory', help='Path to the output directory')
+    install_uasset_gui_parser.add_argument('--run_after_install', help='Should the installed program be ran after installation', default=False)
 
     install_kismet_analyzer_parser = sub_parser.add_parser('install_kismet_analyzer', help='Install Kismet Analyzer', formatter_class=RichHelpFormatter)
     install_kismet_analyzer_parser.add_argument('output_directory', help='Path to the output directory')
+    install_kismet_analyzer_parser.add_argument('--run_after_install', help='Should the installed program be ran after installation', default=False)
 
 
     args = parser.parse_args()
@@ -122,14 +162,21 @@ def cli_logic():
     command_function_map = {
         'build': settings.build,
         'cook': settings.cook,
+        'package': settings.package,
         'cleanup_full': settings.cleanup_full,
         'cleanup_cooked': settings.cleanup_cooked,
         'cleanup_build': settings.cleanup_build,
         'resync_dir_with_repo': settings.resync_dir_with_repo,
         'upload_changes_to_repo': settings.upload_changes_to_repo,
+        'enable_mods': settings.enable_mods,
+        'disable_mods': settings.disable_mods,
+        'add_mod': settings.add_mod,
+        'remove_mods': settings.remove_mods,
         'open_latest_log': settings.open_latest_log,
         'run_game': settings.run_game,
         'close_game': settings.close_game,
+        'run_engine': settings.run_engine,
+        'close_engine': settings.close_engine,
         'test_mods': settings.test_mods,
         'test_mods_all': settings.test_mods_all,
         'create_mods': settings.create_mods,
@@ -149,8 +196,50 @@ def cli_logic():
     settings.init_thread_system()
 
     if args.command in command_function_map:
-        if args.command == 'build' or args.command == 'cook' or (args.command == 'cleanup_full' or args.command == 'cleanup_cooked') or (args.command == 'cleanup_build' or args.command == 'upload_changes_to_repo' or (args.command == 'open_latest_log' or args.command == 'run_game')):
+        installer_commands = [
+            'install_fmodel',
+            'install_umodel',
+            'install_uasset_gui',
+            'install_kismet_analyzer',
+            'install_stove',
+            'install_spaghetti'
+        ]
+        settings_json_commands = [
+            'build',
+            'cook',
+            'cleanup_full',
+            'cleanup_cooked',
+            'cleanup_build',
+            'package',
+            'run_engine',
+            'close_engine',
+            'upload_changes_to_repo',
+            'open_latest_log',
+            'run_game'
+        ]
+        if args.command in settings_json_commands:
             command_function_map[args.command](args.settings_json)
+        elif args.command == 'enable_mods':
+            command_function_map[args.command](args.settings_json, args.mod_names)
+        elif args.command == 'disable_mods':
+            command_function_map[args.command](args.settings_json, args.mod_names)
+        elif args.command == 'add_mod':
+            command_function_map[args.command](
+                args.settings_json, 
+                args.mod_name, 
+                args.packing_type, 
+                args.pak_dir_structure, 
+                args.mod_name_dir_type,
+                args.use_mod_name_dir_name_override,
+                args.mod_name_dir_name_override,
+                args.pak_chunk_num,
+                args.compression_type,
+                args.is_enabled,
+                args.asset_paths,
+                args.tree_paths
+            )
+        elif args.command == 'remove_mods':
+            command_function_map[args.command](args.settings_json, args.mod_names)
         elif args.command == 'test_mods':
             command_function_map[args.command](args.settings_json, args.mod_names)
         elif args.command == 'test_mods_all':
@@ -160,13 +249,22 @@ def cli_logic():
         elif args.command == 'create_mods_all':
             command_function_map[args.command](args.settings_json)
         elif args.command == 'create_mod_releases':
-            command_function_map[args.command](args.settings_json, args.mod_names, args.base_files_directory, args.output_directory)
+            command_function_map[args.command](
+                args.settings_json, 
+                args.mod_names, 
+                args.base_files_directory, 
+                args.output_directory
+                )
         elif args.command == 'create_mod_releases_all':
-            command_function_map[args.command](args.output_directory, args.base_files_directory, args.output_directory)
+            command_function_map[args.command](
+                args.output_directory, 
+                args.base_files_directory, 
+                args.output_directory
+                )
         elif args.command == 'resave_packages_and_fix_up_redirectors':
             command_function_map[args.command](args.settings_json)
-        elif args.command == 'install_fmodel' or args.command == 'install_umodel' or (args.command == 'install_stove' or args.command == 'install_spaghetti') or (args.command == 'install_uasset_gui' or args.command == 'install_kismet_analyzer'):
-            command_function_map[args.command](args.output_directory)
+        elif args.command in installer_commands:
+            command_function_map[args.command](args.output_directory, args.run_after_install)
         elif args.command == 'resync_dir_with_repo':
             command_function_map[args.command](args.settings_json)
         elif args.command == 'close_game':
@@ -186,3 +284,6 @@ def cli_logic():
         parser.print_help()
 
     settings.close_thread_system()
+    from unreal_auto_mod import utilities
+    from unreal_auto_mod import log_py
+    log_py.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')

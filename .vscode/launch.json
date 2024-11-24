@@ -34,6 +34,16 @@
             ]
         },
         {
+            "name": "package",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "package",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
             "name": "cleanup_full",
             "type": "debugpy",
             "request": "launch",
@@ -76,6 +86,54 @@
         //         "${workspaceFolder}/assets/base/default/settings.json"
         //     ]
         // },
+        {
+            "name": "enable_mods",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "enable_mods",
+                "${workspaceFolder}/assets/base/default/settings.json",
+                "ExampleLevel"
+            ]
+        },
+            {
+            "name": "disable_mods",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "disable_mods",
+                "${workspaceFolder}/assets/base/default/settings.json",
+                "ModLoader_P",
+                "MapKit",
+                "ExampleLevel"
+            ]
+        },
+            {
+            "name": "add_mod",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "add_mod",
+                "${workspaceFolder}/assets/base/default/settings.json",
+                "TesNewModName",
+                "repak",
+                "~mods"
+            ]
+        },
+            {
+            "name": "remove_mods",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "remove_mods",
+                "${workspaceFolder}/assets/base/default/settings.json",
+                "ExampleLevel"
+            ]
+        },
         // {
         //     "name": "open_latest_log",
         //     "type": "debugpy",
@@ -113,6 +171,26 @@
             "module": "unreal_auto_mod",
             "args": [
                 "close_game",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "run_engine",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "run_engine",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "close_engine",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "close_engine",
                 "${workspaceFolder}/assets/base/default/settings.json"
             ]
         },

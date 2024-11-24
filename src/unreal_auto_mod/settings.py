@@ -148,37 +148,41 @@ def test_mods_all(settings_json: str):
     mods.create_mods()
 
 
-def install_stove(output_directory: str):
+def install_stove(output_directory: str, run_after_install: bool):
     from unreal_auto_mod import utilities
     if not utilities.does_stove_exist(output_directory):
         utilities.install_stove(output_directory)
-    utilities.run_app(utilities.get_stove_path(output_directory))
+    if run_after_install:
+        utilities.run_app(utilities.get_stove_path(output_directory))
 
 
-def install_spaghetti(output_directory: str):
+def install_spaghetti(output_directory: str, run_after_install: bool):
     from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.get_spaghetti_path(output_directory)):
         utilities.install_spaghetti(output_directory)
-    utilities.run_app(utilities.get_spaghetti_path(output_directory))
+    if run_after_install:
+        utilities.run_app(utilities.get_spaghetti_path(output_directory))
 
 
-def install_kismet_analyzer(output_directory: str):
+def install_kismet_analyzer(output_directory: str, run_after_install: bool):
     from unreal_auto_mod import utilities
     # add shell stuff to run app later or something
     if not os.path.isfile(utilities.get_kismet_analyzer_path(output_directory)):
         utilities.install_kismet_analyzer(output_directory)
-    import subprocess
-    kismet_analyzer_path = utilities.get_kismet_analyzer_path(output_directory)
-    kismet_directory = os.path.dirname(kismet_analyzer_path)
-    command = f'cd /d "{kismet_directory}" && "{kismet_analyzer_path}" -h && set ka=kismet-analyzer.exe && cmd /k'
-    subprocess.run(command, shell=True, check=False)
+    if run_after_install:
+        import subprocess
+        kismet_analyzer_path = utilities.get_kismet_analyzer_path(output_directory)
+        kismet_directory = os.path.dirname(kismet_analyzer_path)
+        command = f'cd /d "{kismet_directory}" && "{kismet_analyzer_path}" -h && set ka=kismet-analyzer.exe && cmd /k'
+        subprocess.run(command, shell=True, check=False)
 
 
-def install_uasset_gui(output_directory: str):
+def install_uasset_gui(output_directory: str, run_after_install: bool):
     from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.get_uasset_gui_path(output_directory)):
         utilities.install_uasset_gui(output_directory)
-    utilities.run_app(utilities.get_uasset_gui_path(output_directory))
+    if run_after_install:
+        utilities.run_app(utilities.get_uasset_gui_path(output_directory))
 
 
 def open_latest_log(settings_json: str):
@@ -203,20 +207,34 @@ def close_game(settings_json: str):
     kill_process(os.path.basename(get_game_exe_path()))
 
 
-def install_umodel(output_directory: str):
+def run_engine(settings_json: str):
+    load_settings(settings_json)
+    from unreal_auto_mod.engine import open_game_engine
+    open_game_engine()
+
+
+def close_engine(settings_json: str):
+    load_settings(settings_json)
+    from unreal_auto_mod.engine import close_game_engine
+    close_game_engine()
+
+
+def install_umodel(output_directory: str, run_after_install: bool):
     from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.does_umodel_exist(output_directory)):
         utilities.install_umodel(output_directory)
     # Sets dir, so it's the dir opened by default in umodel
     # os.chdir(os.path.dirname(utilities.custom_get_game_dir()))
-    utilities.run_app(utilities.get_umodel_path(output_directory))
+    if run_after_install:
+       utilities.run_app(utilities.get_umodel_path(output_directory))
 
 
-def install_fmodel(output_directory: str):
+def install_fmodel(output_directory: str, run_after_install: bool):
     from unreal_auto_mod import utilities
     if not os.path.isfile(utilities.get_fmodel_path(output_directory)):
         utilities.install_fmodel(output_directory)
-    utilities.run_app(utilities.get_fmodel_path(output_directory))
+    if run_after_install:
+        utilities.run_app(utilities.get_fmodel_path(output_directory))
 
 
 def get_solo_build_project_command() -> str:
@@ -278,6 +296,158 @@ def upload_changes_to_repo(settings_json: str):
     log_message("Changes committed and pushed successfully.")
 
 
+def enable_mods(settings_json: str, mod_names: list):
+    try:
+        with open(settings_json, "r", encoding="utf-8") as file:
+            settings = json.load(file)
+
+        mods_enabled = False
+
+        for mod in settings.get("mods_info", []):
+            if mod["mod_name"] in mod_names:
+                if not mod["is_enabled"]:
+                    mod["is_enabled"] = True
+                    mods_enabled = True
+                    log_message(f"Mod '{mod['mod_name']}' has been enabled.")
+                else:
+                    log_message(f"Mod '{mod['mod_name']}' is already enabled.")
+
+        if mods_enabled:
+            updated_json_str = json.dumps(settings, indent=4, ensure_ascii=False, separators=(',', ': '))
+
+            with open(settings_json, "w", encoding="utf-8") as file:
+                file.write(updated_json_str)
+
+            log_message(f"Mods successfully enabled in '{settings_json}'.")
+        else:
+            log_message(f"No mods were enabled because all specified mods were already enabled.")
+    
+    except json.JSONDecodeError:
+        log_message(f"Error decoding JSON from file '{settings_json}'. Please check the file format.")
+    except Exception as e:
+        log_message(f"An error occurred: {e}")
+    
+
+def disable_mods(settings_json: str, mod_names: list):
+    try:
+        with open(settings_json, "r", encoding="utf-8") as file:
+            settings = json.load(file)
+
+        mods_disabled = False
+
+        for mod in settings.get("mods_info", []):
+            if mod["mod_name"] in mod_names:
+                if mod["is_enabled"]:
+                    mod["is_enabled"] = False
+                    mods_disabled = True
+                    log_message(f"Mod '{mod['mod_name']}' has been disabled.")
+                else:
+                    log_message(f"Mod '{mod['mod_name']}' is already disabled.")
+
+        if mods_disabled:
+            updated_json_str = json.dumps(settings, indent=4, ensure_ascii=False, separators=(',', ': '))
+
+            with open(settings_json, "w", encoding="utf-8") as file:
+                file.write(updated_json_str)
+
+            log_message(f"Mods successfully disabled in '{settings_json}'.")
+        else:
+            log_message(f"No mods were disabled because all specified mods were already disabled.")
+    
+    except json.JSONDecodeError:
+        log_message(f"Error decoding JSON from file '{settings_json}'. Please check the file format.")
+    except Exception as e:
+        log_message(f"An error occurred: {e}")
+    
+    
+def add_mod(
+        settings_json: str, 
+        mod_name: str, 
+        packing_type: str, 
+        pak_dir_structure: str,
+        mod_name_dir_type: str,
+        use_mod_name_dir_name_override: str,
+        mod_name_dir_name_override: str,
+        pak_chunk_num: int,
+        compression_type: str,
+        is_enabled: bool,
+        asset_paths: list,
+        tree_paths: list
+    ):
+    try:
+        with open(settings_json, "r") as file:
+            settings = json.load(file)
+
+        new_mod = {
+            "mod_name": mod_name,
+            "pak_dir_structure": pak_dir_structure,
+            "mod_name_dir_type": mod_name_dir_type,
+            "use_mod_name_dir_name_override": use_mod_name_dir_name_override,
+            "mod_name_dir_name_override": mod_name_dir_name_override,
+            "pak_chunk_num": pak_chunk_num,
+            "packing_type": packing_type,
+            "compression_type": compression_type,
+            "is_enabled": is_enabled,
+            "manually_specified_assets": {
+                "asset_paths": asset_paths,
+                "tree_paths": tree_paths
+            }
+        }
+
+        if "mods_info" not in settings:
+            settings["mods_info"] = []
+
+        existing_mod = next((mod for mod in settings["mods_info"] if mod["mod_name"] == mod_name), None)
+        if existing_mod:
+            log_message(f"Mod '{mod_name}' already exists. Updating its data.")
+            settings["mods_info"].remove(existing_mod)
+
+        settings["mods_info"].append(new_mod)
+
+        settings = json.dumps(settings, indent=4)
+
+        with open(settings_json, "w") as file:
+            file.write(settings)
+
+        log_message(f"Mod '{mod_name}' successfully added/updated in '{settings_json}'.")
+    except json.JSONDecodeError:
+        log_message(f"Error decoding JSON from file '{settings_json}'. Please check the file format.")
+    except Exception as e:
+        log_message(f"An error occurred: {e}")
+    
+    
+def remove_mods(settings_json: str, mod_names: list):
+    try:
+        with open(settings_json, "r", encoding="utf-8") as file:
+            settings = json.load(file)
+
+        mods_removed = False
+
+        mods_info = settings.get("mods_info", [])
+        mods_info = [mod for mod in mods_info if mod["mod_name"] not in mod_names]
+
+        if len(mods_info) < len(settings.get("mods_info", [])):
+            mods_removed = True
+            log_message(f"Mods {', '.join(mod_names)} have been removed.")
+        else:
+            log_message(f"No mods were removed because none of the specified mods were found.")
+
+        settings["mods_info"] = mods_info
+
+        if mods_removed:
+            updated_json_str = json.dumps(settings, indent=4, ensure_ascii=False, separators=(',', ': '))
+
+            with open(settings_json, "w", encoding="utf-8") as file:
+                file.write(updated_json_str)
+
+            log_message(f"Mods successfully removed from '{settings_json}'.")
+    
+    except json.JSONDecodeError:
+        log_message(f"Error decoding JSON from file '{settings_json}'. Please check the file format.")
+    except Exception as e:
+        log_message(f"An error occurred: {e}")
+
+
 def get_solo_cook_project_command() -> str:
     from unreal_auto_mod import ue_dev_py_utils, utilities
     command = (
@@ -297,6 +467,42 @@ def cook(settings_json: str):
     load_settings(settings_json)
     run_proj_build_command(get_solo_cook_project_command())
     log_message('Content Cook Complete')
+
+
+def get_solo_package_command() -> str:
+    from unreal_auto_mod import utilities, ue_dev_py_utils, log_py
+    command = (
+        f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
+        f'-project="{utilities.get_uproject_file()}" '
+        f'-compressed'
+    )
+    # technically it shouldn't auto build itself, since this is not a auto run sequence but used in an explicit command
+    # if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
+    #     command = f'{command} -build'
+    for arg in utilities.get_engine_packaging_args():
+        command = f'{command} {arg}'
+    is_game_iostore = ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir())
+    if is_game_iostore:
+        command = f'{command} -iostore'
+        log_py.log_message('Check: Game is iostore')
+    else:
+        log_py.log_message('Check: Game is not iostore')
+    return command
+
+
+def package(settings_json: str):    
+    load_settings(settings_json)
+    from unreal_auto_mod.settings import mod_names
+    from unreal_auto_mod.utilities import get_mods_info_from_json
+    from unreal_auto_mod.packing import make_mods_two, populate_queue
+
+    for entry in get_mods_info_from_json():
+        mod_names.append(entry['mod_name'])
+    log_message('Packaging Starting')
+    run_proj_build_command(get_solo_package_command())
+    populate_queue()
+    make_mods_two()
+    log_message('Packaging Complete')
 
 
 def resave_packages_and_fix_up_redirectors(settings_json: str):
@@ -322,7 +528,7 @@ def cleanup_full(settings_json: str):
         '-X',
         '--force'
     ]
-    run_app(exe_path=exe, exec_mode=ExecutionMode.ASYNC, args=args, working_dir=repo_path)
+    run_app(exe_path=exe, args=args, working_dir=repo_path)
     log_message(f'Cleaned up repo at: "{repo_path}"')
 
 
@@ -416,7 +622,7 @@ def make_archive_mod_release(singular_mod_info: dict, base_files_directory: str,
 def make_loose_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
     # get files from saved coooked
     # get files from persistent
-    # get files from specified dirs in manually specified asssets
+    # get files from specified dirs and assets in manually specified list
     # move them all into  the base files folder within a content folder
     # zip into the output directory
     print('placeholder')

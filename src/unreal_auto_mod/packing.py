@@ -67,7 +67,7 @@ def get_engine_pak_command() -> str:
     )
     if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         command = f'{command} -build'
-    for arg in utilities.get_engine_packaging_args():
+    for arg in utilities._packaging_args():
         command = f'{command} {arg}'
     is_game_iostore = ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir())
     if is_game_iostore:

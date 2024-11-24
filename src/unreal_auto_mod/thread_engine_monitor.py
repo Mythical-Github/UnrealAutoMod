@@ -43,12 +43,12 @@ def engine_monitor_thread_logic():
             log.log_message('Process: Found Engine Process')
             found_process = True
     elif not found_window:
-        if win_man_py.win_man_py.does_window_exist(engine_window_name):
+        if win_man_py.does_window_exist(engine_window_name):
             log.log_message('Window: Engine Window Found')
             found_window = True
             hook_states.HookState.set_hook_state(HookStateType.POST_ENGINE_OPEN)
     elif not window_closed:
-        if not win_man_py.win_man_py.does_window_exist(engine_window_name):
+        if not win_man_py.does_window_exist(engine_window_name):
             log.log_message('Window: Engine Window Closed')
             window_closed = True
             hook_states.HookState.set_hook_state(HookStateType.POST_ENGINE_CLOSE)

@@ -119,9 +119,9 @@ def pass_settings(settings_json: str):
 
 def init_thread_system():
     from unreal_auto_mod import enums, thread_constant
-    hook_states.HookState.set_hook_state(enums.HookStateType.INIT)
+    hook_states.set_hook_state(enums.HookStateType.INIT)
     thread_constant.constant_thread()
-    hook_states.HookState.set_hook_state(enums.HookStateType.POST_INIT)
+    hook_states.set_hook_state(enums.HookStateType.POST_INIT)
 
 
 def close_thread_system():
@@ -137,14 +137,18 @@ def test_mods(settings_json: str, input_mod_names: str):
     global mod_names
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
+    from unreal_auto_mod.packing import populate_queue
+    populate_queue()
     mods.create_mods(settings_json)
 
 
 def test_mods_all(settings_json: str):
     load_settings(settings_json)
+    from unreal_auto_mod.packing import populate_queue
     global mod_names
     for entry in settings['mods_info']:
         mod_names.append(entry['mod_name'])
+    populate_queue()
     mods.create_mods()
 
 
@@ -246,7 +250,6 @@ def get_solo_build_project_command() -> str:
     for arg in utilities.get_engine_building_args():
             command = f'{command} {arg}'
     return command
-
 
 
 def run_proj_build_command(command: str):

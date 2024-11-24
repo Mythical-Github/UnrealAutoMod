@@ -39,6 +39,9 @@ CLI commands to add:
 - [ ] generate project files for uproject
 - [ ] clean up hook states and add any missing states
 - [ ] update documentation
+- [ ] create plugin command
+- [ ] remove plugin command
+- [ ] logs relative to settings.json, symlink latest one used by exe next to exe
 
 ## Maybes:
 - [ ] UE4SS Installer

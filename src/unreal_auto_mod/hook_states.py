@@ -1,7 +1,10 @@
 from unreal_auto_mod import log_py as log
-from unreal_auto_mod import settings, utilities, win_man_enums, win_man_py
 from unreal_auto_mod import win_man_py as windows
+from unreal_auto_mod import settings, utilities, win_man_enums, win_man_py
 from unreal_auto_mod.enums import ExecutionMode, HookStateType, get_enum_from_val
+
+
+hook_state = None
 
 
 def exec_events_checks(hook_state_type: HookStateType):
@@ -76,16 +79,13 @@ def routine_checks(state: HookStateType):
         log.log_message(f'Routine Check: {state} finished')
 
 
-class HookState:
+def set_hook_state(new_state: HookStateType):
     global hook_state
-
-    def set_hook_state(new_state: HookStateType):
-        global hook_state
-        hook_state = new_state
-        log.log_message(f'Hook State: changed to {new_state}')
-        # calling this on preinit causes problems so will avoid for now
-        if new_state != HookStateType.PRE_INIT:
-            routine_checks(new_state)
-            routine_checks(HookStateType.PRE_ALL)
-            routine_checks(HookStateType.POST_ALL)
-            log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')
+    hook_state = new_state
+    log.log_message(f'Hook State: changed to {new_state}')
+    # calling this on preinit causes problems so will avoid for now
+    if new_state != HookStateType.PRE_INIT:
+        routine_checks(new_state)
+        routine_checks(HookStateType.PRE_ALL)
+        routine_checks(HookStateType.POST_ALL)
+        log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')

@@ -60,7 +60,7 @@ def run_game_steam():
 
 def run_game():
     log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')
-    hook_states.HookState.set_hook_state(HookStateType.PRE_GAME_LAUNCH)
+    hook_states.set_hook_state(HookStateType.PRE_GAME_LAUNCH)
     launch_type = GameLaunchType(utilities.get_game_info_launch_type_enum_str_value())
     if launch_type == GameLaunchType.EXE:
         run_game_exe()

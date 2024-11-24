@@ -4,22 +4,22 @@ from unreal_auto_mod.enums import ExecutionMode, HookStateType
 
 
 def open_game_engine():
-    hook_states.HookState.set_hook_state(HookStateType.PRE_ENGINE_OPEN)
+    hook_states.set_hook_state(HookStateType.PRE_ENGINE_OPEN)
     command = ue_dev_py_utils.get_unreal_editor_exe_path(utilities.get_unreal_engine_dir())
     utilities.run_app(command, ExecutionMode.ASYNC, utilities.get_engine_launch_args())
-    hook_states.HookState.set_hook_state(HookStateType.POST_ENGINE_OPEN)
+    hook_states.set_hook_state(HookStateType.POST_ENGINE_OPEN)
     thread_engine_monitor.engine_monitor_thread()
 
 
 def close_game_engine():
-    hook_states.HookState.set_hook_state(HookStateType.PRE_ENGINE_CLOSE)
+    hook_states.set_hook_state(HookStateType.PRE_ENGINE_CLOSE)
     if ue_dev_py_utils.get_win_dir_type(utilities.get_unreal_engine_dir()) == ue_dev_py_enums.PackagingDirType.WINDOWS_NO_EDITOR:
         game_engine_processes = general_utils.get_processes_by_substring('UE4Editor')
     else:
         game_engine_processes = general_utils.get_processes_by_substring('UnrealEditor')
     for process_info in game_engine_processes:
         general_utils.kill_process(process_info['name'])
-    hook_states.HookState.set_hook_state(HookStateType.POST_ENGINE_CLOSE)
+    hook_states.set_hook_state(HookStateType.POST_ENGINE_CLOSE)
 
 
 def toggle_engine_off():

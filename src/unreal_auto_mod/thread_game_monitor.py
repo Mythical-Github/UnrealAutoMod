@@ -37,11 +37,11 @@ def game_monitor_thread_logic():
         if get_game_window():
             log.log_message('Window: Game Window Found')
             found_window = True
-            hook_states.HookState.set_hook_state(HookStateType.POST_GAME_LAUNCH)
+            hook_states.set_hook_state(HookStateType.POST_GAME_LAUNCH)
     elif not window_closed:
         if not get_game_window():
             log.log_message('Window: Game Window Closed')
-            hook_states.HookState.set_hook_state(HookStateType.POST_GAME_CLOSE)
+            hook_states.set_hook_state(HookStateType.POST_GAME_CLOSE)
             stop_game_monitor_thread()
             window_closed = True
 

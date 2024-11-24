@@ -3,8 +3,8 @@ import subprocess
 
 import requests
 
-from unreal_auto_mod import log_py as log
-from unreal_auto_mod import settings, utilities
+from unreal_auto_mod import log_py as log, main_logic
+from unreal_auto_mod import utilities
 
 
 def get_package_path():
@@ -50,6 +50,16 @@ def download_and_install_latest_version(repository='trumank/repak', install_path
         with open(script_path, 'wb') as file:
             file.write(script_response.content)
 
+        # test later the below function works
+        # from unreal_auto_mod import utilities
+        # exe = 'powershell.exe'
+        # args = [
+        #     '-ExecutionPolicy',
+        #     'Bypass',
+        #     '-File',
+        #     'script_path'
+        # ]
+        # utilities.run_app(exe_path=exe, args=args)
         subprocess.run(['powershell.exe', '-ExecutionPolicy', 'Bypass', '-File', script_path], check=True)
 
         log.log_message('Repak CLI installed successfully.')
@@ -105,7 +115,7 @@ def get_repak_version_str_from_engine_version() -> str:
 
 def get_repak_pak_version_str() -> str:
     if utilities.get_is_overriding_automatic_version_finding() or utilities.get_should_ship_uproject_steps():
-        repak_version_str = settings.settings['repak_info']['repak_version']
+        repak_version_str = main_logic.settings['repak_info']['repak_version']
     else:
         repak_version_str = get_repak_version_str_from_engine_version()
     return repak_version_str

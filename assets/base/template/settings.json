@@ -15,6 +15,7 @@
     "toggle_engine_during_cooking": false,
     "toggle_engine_on_game_run": false,
     "engine_launch_args": [],
+    "engine_cooking_command": "BuildCookRun",
     "engine_cooking_args": [
       "-cook",
       "-unversionedcookedcontent",
@@ -22,7 +23,14 @@
       "-iterate",
       "-noP4"
     ],
-    "engine_building_args": ["-build", "-skipstage", "-nodebuginfo", "-noP4"],
+    "engine_building_command": "BuildCookRun",
+    "engine_building_args": [
+      "-build", 
+      "-skipstage", 
+      "-nodebuginfo", 
+      "-noP4"
+    ],
+    "engine_packaging_command": "BuildCookRun",
     "engine_packaging_args": [
       "-stage",
       "-pak",
@@ -45,7 +53,9 @@
     "skip_launching_game": true,
     "override_automatic_window_title_finding": true,
     "window_title_override_string": "Zedfest",
-    "launch_params": ["-fileopenlog", "-NOSPLASH"]
+    "launch_params": [
+      "-fileopenlog", 
+      "-NOSPLASH"]
   },
   "alt_uproject_name_in_game_dir": { "use_alt_method": false, "name": null },
   "repak_info": {
@@ -88,7 +98,7 @@
       "use_mod_name_dir_name_override": true,
       "mod_name_dir_name_override": "ModEntry",
       "pak_chunk_num": 1,
-      "packing_type": "repak",
+      "packing_type": "engine",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": { "asset_paths": [], "tree_paths": [] }
@@ -100,7 +110,7 @@
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
       "pak_chunk_num": 2,
-      "packing_type": "repak",
+      "packing_type": "engine",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": { "asset_paths": [], "tree_paths": [] }
@@ -112,7 +122,7 @@
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
       "pak_chunk_num": 3,
-      "packing_type": "repak",
+      "packing_type": "engine",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": { "asset_paths": [], "tree_paths": [] }

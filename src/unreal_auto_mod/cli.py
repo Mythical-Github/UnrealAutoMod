@@ -1,11 +1,12 @@
-import argparse
 import os
 import sys
+import argparse
 from pathlib import Path
 
 from rich_argparse import RichHelpFormatter
 
-from unreal_auto_mod import settings
+from unreal_auto_mod import main_logic
+
 
 if getattr(sys, 'frozen', False):
     SCRIPT_DIR = Path(sys.executable).parent
@@ -13,7 +14,7 @@ else:
     SCRIPT_DIR = Path(__file__).resolve().parent
 
 
-default_releases_dir = os.path.normpath(os.path.join(settings.settings_json_dir, 'mod_packaging', 'releases'))
+default_releases_dir = os.path.normpath(os.path.join(main_logic.settings_json_dir, 'mod_packaging', 'releases'))
 default_output_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'dist'))
 
 
@@ -160,40 +161,40 @@ def cli_logic():
     args = parser.parse_args()
 
     command_function_map = {
-        'build': settings.build,
-        'cook': settings.cook,
-        'package': settings.package,
-        'cleanup_full': settings.cleanup_full,
-        'cleanup_cooked': settings.cleanup_cooked,
-        'cleanup_build': settings.cleanup_build,
-        'resync_dir_with_repo': settings.resync_dir_with_repo,
-        'upload_changes_to_repo': settings.upload_changes_to_repo,
-        'enable_mods': settings.enable_mods,
-        'disable_mods': settings.disable_mods,
-        'add_mod': settings.add_mod,
-        'remove_mods': settings.remove_mods,
-        'open_latest_log': settings.open_latest_log,
-        'run_game': settings.run_game,
-        'close_game': settings.close_game,
-        'run_engine': settings.run_engine,
-        'close_engine': settings.close_engine,
-        'test_mods': settings.test_mods,
-        'test_mods_all': settings.test_mods_all,
-        'create_mods': settings.create_mods,
-        'create_mods_all': settings.create_mods_all,
-        'create_mod_releases': settings.create_mod_releases,
-        'create_mod_releases_all': settings.create_mod_releases_all,
-        'generate_uproject': settings.generate_uproject,
-        'resave_packages_and_fix_up_redirectors': settings.resave_packages_and_fix_up_redirectors,
-        'install_fmodel': settings.install_fmodel,
-        'install_umodel': settings.install_umodel,
-        'install_stove': settings.install_stove,
-        'install_spaghetti': settings.install_spaghetti,
-        'install_uasset_gui': settings.install_uasset_gui,
-        'install_kismet_analyzer': settings.install_kismet_analyzer
+        'build': main_logic.build,
+        'cook': main_logic.cook,
+        'package': main_logic.package,
+        'cleanup_full': main_logic.cleanup_full,
+        'cleanup_cooked': main_logic.cleanup_cooked,
+        'cleanup_build': main_logic.cleanup_build,
+        'resync_dir_with_repo': main_logic.resync_dir_with_repo,
+        'upload_changes_to_repo': main_logic.upload_changes_to_repo,
+        'enable_mods': main_logic.enable_mods,
+        'disable_mods': main_logic.disable_mods,
+        'add_mod': main_logic.add_mod,
+        'remove_mods': main_logic.remove_mods,
+        'open_latest_log': main_logic.open_latest_log,
+        'run_game': main_logic.run_game,
+        'close_game': main_logic.close_game,
+        'run_engine': main_logic.run_engine,
+        'close_engine': main_logic.close_engine,
+        'test_mods': main_logic.test_mods,
+        'test_mods_all': main_logic.test_mods_all,
+        'create_mods': main_logic.create_mods,
+        'create_mods_all': main_logic.create_mods_all,
+        'create_mod_releases': main_logic.create_mod_releases,
+        'create_mod_releases_all': main_logic.create_mod_releases_all,
+        'generate_uproject': main_logic.generate_uproject,
+        'resave_packages_and_fix_up_redirectors': main_logic.resave_packages_and_fix_up_redirectors,
+        'install_fmodel': main_logic.install_fmodel,
+        'install_umodel': main_logic.install_umodel,
+        'install_stove': main_logic.install_stove,
+        'install_spaghetti': main_logic.install_spaghetti,
+        'install_uasset_gui': main_logic.install_uasset_gui,
+        'install_kismet_analyzer': main_logic.install_kismet_analyzer
     }
 
-    settings.init_thread_system()
+    main_logic.init_thread_system()
 
     if args.command in command_function_map:
         installer_commands = [
@@ -283,7 +284,7 @@ def cli_logic():
         print(f'Unknown command: {args.command}')
         parser.print_help()
 
-    settings.close_thread_system()
+    main_logic.close_thread_system()
     from unreal_auto_mod import utilities
     from unreal_auto_mod import log_py
     log_py.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')

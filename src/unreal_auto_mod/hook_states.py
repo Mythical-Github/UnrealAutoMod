@@ -1,6 +1,6 @@
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import log_py as log, main_logic
 from unreal_auto_mod import win_man_py as windows
-from unreal_auto_mod import settings, utilities, win_man_enums, win_man_py
+from unreal_auto_mod import utilities, win_man_enums, win_man_py
 from unreal_auto_mod.enums import ExecutionMode, HookStateType, get_enum_from_val
 
 
@@ -20,9 +20,9 @@ def exec_events_checks(hook_state_type: HookStateType):
 
 
 def is_hook_state_used(state: HookStateType) -> bool:
-    if isinstance(settings.settings, dict):
-        if "process_kill_events" in settings.settings:
-            process_kill_events = settings.settings.get("process_kill_events", {})
+    if isinstance(main_logic.settings, dict):
+        if "process_kill_events" in main_logic.settings:
+            process_kill_events = main_logic.settings.get("process_kill_events", {})
             if "processes" in process_kill_events:
                 for process in process_kill_events["processes"]:
                     if isinstance(state, HookStateType):
@@ -30,14 +30,14 @@ def is_hook_state_used(state: HookStateType) -> bool:
                     if process.get('hook_state') == state:
                         return True
 
-        if "window_management_events" in settings.settings:
+        if "window_management_events" in main_logic.settings:
             for window in utilities.get_window_management_events():
                 if isinstance(state, HookStateType):
                     state = state.value
                 if window.get("hook_state") == state:
                     return True
 
-        if "exec_events" in settings.settings:
+        if "exec_events" in main_logic.settings:
             for method in utilities.get_exec_events():
                 if isinstance(state, HookStateType):
                     state = state.value

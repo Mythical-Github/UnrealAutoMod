@@ -5,7 +5,7 @@ import time
 
 from unreal_auto_mod import gen_py_utils as general_utils
 from unreal_auto_mod import log_py as log
-from unreal_auto_mod import settings
+from unreal_auto_mod import main_logic
 from unreal_auto_mod import ue_dev_py_utils as unreal_dev_utils
 from unreal_auto_mod.enums import CompressionType, ExecutionMode, HookStateType, get_enum_from_val
 
@@ -86,11 +86,11 @@ def download_kismet_analyzer(output_directory: str):
 
 
 def get_ide_path():
-    return settings.settings['optionals']['ide_path']
+    return main_logic.settings['optionals']['ide_path']
 
 
 def get_blender_path():
-    return settings.settings['optionals']['blender_path']
+    return main_logic.settings['optionals']['blender_path']
 
 
 def get_uasset_gui_path(output_directory: str) -> str:
@@ -172,65 +172,65 @@ def is_unreal_pak_packing_enum_in_use():
 
 
 def get_should_ship_uproject_steps():
-    return settings.settings['engine_info']['skip_uproject_steps']
+    return main_logic.settings['engine_info']['skip_uproject_steps']
 
 
 def get_is_using_repak_path_override() -> bool:
-    return settings.settings['repak_info']['override_default_repak_path']
+    return main_logic.settings['repak_info']['override_default_repak_path']
 
 
 def get_repak_path_override() -> str:
-    return settings.settings['repak_info']['repak_path_override']
+    return main_logic.settings['repak_info']['repak_path_override']
 
 
 def get_game_info_launch_type_enum_str_value() -> str:
-    return settings.settings['game_info']['launch_type']
+    return main_logic.settings['game_info']['launch_type']
 
 
 def get_game_id() -> int:
-    return settings.settings['game_info']['game_id']
+    return main_logic.settings['game_info']['game_id']
 
 
 def get_game_launcher_exe_path() -> str:
-    return settings.settings['game_info']['game_launcher_exe']
+    return main_logic.settings['game_info']['game_launcher_exe']
 
 
 def get_game_launch_params() -> list:
-    return settings.settings['game_info']['launch_params']
+    return main_logic.settings['game_info']['launch_params']
 
 
 def get_override_automatic_launcher_exe_finding() -> bool:
-    return settings.settings['game_info']['override_automatic_launcher_exe_finding']
+    return main_logic.settings['game_info']['override_automatic_launcher_exe_finding']
 
 
 def get_window_management_events():
-    return settings.settings["window_management_events"]
+    return main_logic.settings["window_management_events"]
 
 
 def get_engine_launch_args() -> list:
-    return settings.settings['engine_info']['engine_launch_args']
+    return main_logic.settings['engine_info']['engine_launch_args']
 
 
 def get_exec_events() -> list:
-    return settings.settings['exec_events']
+    return main_logic.settings['exec_events']
 
 
 def get_mods_info_from_json() -> list:
-    return settings.settings['mods_info']
+    return main_logic.settings['mods_info']
 
 
 def get_game_exe_path() -> str:
-    game_exe_path = settings.settings['game_info']['game_exe_path']
+    game_exe_path = main_logic.settings['game_info']['game_exe_path']
     general_utils.check_file_exists(game_exe_path)
     return game_exe_path
 
 
 def get_is_using_alt_dir_name() -> bool:
-    return settings.settings['alt_uproject_name_in_game_dir']['use_alt_method']
+    return main_logic.settings['alt_uproject_name_in_game_dir']['use_alt_method']
 
 
 def get_alt_packing_dir_name() -> str:
-    return settings.settings['alt_uproject_name_in_game_dir']['name']
+    return main_logic.settings['alt_uproject_name_in_game_dir']['name']
 
 
 def get_game_process_name():
@@ -238,7 +238,7 @@ def get_game_process_name():
 
 
 def get_process_kill_events() -> list:
-    return settings.settings['process_kill_events']['processes']
+    return main_logic.settings['process_kill_events']['processes']
 
 
 def kill_processes(state: HookStateType):
@@ -257,13 +257,13 @@ def kill_processes(state: HookStateType):
 
 
 def get_override_automatic_version_finding() -> bool:
-    return settings.settings['engine_info']['override_automatic_version_finding']
+    return main_logic.settings['engine_info']['override_automatic_version_finding']
 
 
 def custom_get_unreal_engine_version(engine_path: str) -> str:
     if get_override_automatic_version_finding():
-        unreal_engine_major_version = settings.settings['engine_info']['unreal_engine_major_version']
-        unreal_engine_minor_version = settings.settings['engine_info']['unreal_engine_minor_version']
+        unreal_engine_major_version = main_logic.settings['engine_info']['unreal_engine_major_version']
+        unreal_engine_minor_version = main_logic.settings['engine_info']['unreal_engine_minor_version']
         return f'{unreal_engine_major_version}.{unreal_engine_minor_version}'
     else:
         return unreal_dev_utils.get_unreal_engine_version(engine_path)
@@ -284,17 +284,17 @@ def custom_get_game_paks_dir() -> str:
 
 
 def get_unreal_engine_dir() -> str:
-    ue_dir = settings.settings['engine_info']['unreal_engine_dir']
+    ue_dir = main_logic.settings['engine_info']['unreal_engine_dir']
     general_utils.check_file_exists(ue_dir)
     return ue_dir
 
 
 def is_toggle_engine_during_cooking_in_use() -> bool:
-    return settings.settings['engine_info']['toggle_engine_during_cooking']
+    return main_logic.settings['engine_info']['toggle_engine_during_cooking']
 
 
 def get_uproject_file() -> str:
-    uproject_file = settings.settings['engine_info']['unreal_project_file']
+    uproject_file = main_logic.settings['engine_info']['unreal_project_file']
     return uproject_file
 
 
@@ -311,7 +311,7 @@ def get_uproject_unreal_auto_mod_resources_dir():
 
 
 def get_persistent_mods_dir() -> str:
-    return f'{settings.settings_json_dir}/mod_packaging/persistent_files'
+    return f'{main_logic.settings_json_dir}/mod_packaging/persistent_files'
 
 
 def get_use_mod_name_dir_name_override(mod_name: str) -> bool:
@@ -376,7 +376,7 @@ def get_mod_name_dir_files(mod_name: str) -> list:
 
 
 def get_persistant_mod_dir(mod_name: str) -> str:
-    return f'{settings.settings_json_dir}/mod_packaging/persistent_files/{mod_name}'
+    return f'{main_logic.settings_json_dir}/mod_packaging/persistent_files/{mod_name}'
 
 
 def get_persistant_mod_files(mod_name: str) -> list:
@@ -384,11 +384,11 @@ def get_persistant_mod_files(mod_name: str) -> list:
 
 
 def get_is_overriding_default_working_dir() -> bool:
-    return settings.settings['general_info']['override_default_working_dir']
+    return main_logic.settings['general_info']['override_default_working_dir']
 
 
 def get_override_working_dir() -> str:
-    return settings.settings['general_info']['working_dir']
+    return main_logic.settings['general_info']['working_dir']
 
 
 # def get_working_dir() -> str:
@@ -401,7 +401,7 @@ def get_override_working_dir() -> str:
 
 
 def get_working_dir() -> str:
-    working_dir = os.path.join(settings.SCRIPT_DIR, 'working_dir')
+    working_dir = os.path.join(main_logic.SCRIPT_DIR, 'working_dir')
     os.makedirs(working_dir, exist_ok=True)
     return working_dir
 
@@ -416,35 +416,35 @@ def clean_working_dir():
 
 
 def get_skip_launching_game() -> bool:
-    return settings.settings['game_info']['skip_launching_game']
+    return main_logic.settings['game_info']['skip_launching_game']
 
 
 def get_window_management_events() -> dict:
-    return settings.settings['window_management_events']
+    return main_logic.settings['window_management_events']
 
 
 def get_engine_cooking_args() -> list:
-    return settings.settings['engine_info']['engine_cooking_args']
+    return main_logic.settings['engine_info']['engine_cooking_args']
 
 
 def get_engine_packaging_args() -> list:
-    return settings.settings['engine_info']['engine_packaging_args']
+    return main_logic.settings['engine_info']['engine_packaging_args']
 
 
 def get_engine_building_args() -> list:
-    return settings.settings['engine_info']['engine_building_args']
+    return main_logic.settings['engine_info']['engine_building_args']
 
 
 def get_is_overriding_automatic_version_finding() -> bool:
-    return settings.settings['repak_info']['override_automatic_version_finding']
+    return main_logic.settings['repak_info']['override_automatic_version_finding']
 
 
 def get_override_automatic_window_title_finding() -> bool:
-    return settings.settings['game_info']['override_automatic_window_title_finding']
+    return main_logic.settings['game_info']['override_automatic_window_title_finding']
 
 
 def get_window_title_override_string() -> str:
-    return settings.settings['game_info']['window_title_override_string']
+    return main_logic.settings['game_info']['window_title_override_string']
 
 
 def filter_file_paths(paths_dict: dict) -> dict:
@@ -466,8 +466,9 @@ def get_game_window_title() -> str:
 def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):
     if exec_mode == ExecutionMode.SYNC:
         command = exe_path
-        if working_dir:
-            command = f'"{working_dir}/{command}"'
+        # check this can really be commented out
+        # if working_dir and not working_dir == None:
+        #     command = f'"{working_dir}/{command}"'
         for arg in args:
             command = f'{command} {arg}'
         log.log_message(f'Command: {command} running with the {exec_mode} enum')
@@ -499,4 +500,16 @@ def get_running_time():
 
 
 def get_cleanup_repo_path() -> str:
-    return settings.settings['git_info']['repo_path']
+    return main_logic.settings['git_info']['repo_path']
+
+
+def get_unreal_engine_building_main_command() -> str:
+    return main_logic.settings['engine_info']['engine_building_command']
+
+
+def get_unreal_engine_cooking_main_command() -> str:
+    return main_logic.settings['engine_info']['engine_cooking_command']
+
+
+def get_unreal_engine_packaging_main_command() -> str:
+    return main_logic.settings['engine_info']['engine_packaging_command']

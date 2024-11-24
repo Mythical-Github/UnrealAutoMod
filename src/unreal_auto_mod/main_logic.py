@@ -244,7 +244,7 @@ def install_fmodel(output_directory: str, run_after_install: bool):
 def get_solo_build_project_command() -> str:
     from unreal_auto_mod import utilities
     command = (
-        f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
+        f'Engine\\Build\\BatchFiles\\RunUAT.bat {utilities.get_unreal_engine_building_main_command()} '
         f'-project="{utilities.get_uproject_file()}" '
     )
     for arg in utilities.get_engine_building_args():
@@ -454,7 +454,7 @@ def remove_mods(settings_json: str, mod_names: list):
 def get_solo_cook_project_command() -> str:
     from unreal_auto_mod import ue_dev_py_utils, utilities
     command = (
-        f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
+        f'Engine\\Build\\BatchFiles\\RunUAT.bat {utilities.get_unreal_engine_cooking_main_command()} '
         f'-project="{utilities.get_uproject_file()}" '
     )
     if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
@@ -475,7 +475,7 @@ def cook(settings_json: str):
 def get_solo_package_command() -> str:
     from unreal_auto_mod import utilities, ue_dev_py_utils, log_py
     command = (
-        f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
+        f'Engine\\Build\\BatchFiles\\RunUAT.bat {utilities.get_unreal_engine_packaging_main_command()} '
         f'-project="{utilities.get_uproject_file()}" '
         f'-compressed'
     )
@@ -495,7 +495,7 @@ def get_solo_package_command() -> str:
 
 def package(settings_json: str):    
     load_settings(settings_json)
-    from unreal_auto_mod.settings import mod_names
+    from unreal_auto_mod.main_logic import mod_names
     from unreal_auto_mod.utilities import get_mods_info_from_json
     from unreal_auto_mod.packing import make_mods_two, populate_queue
 
@@ -531,7 +531,7 @@ def cleanup_full(settings_json: str):
         '-X',
         '--force'
     ]
-    run_app(exe_path=exe, args=args, working_dir=repo_path)
+    run_app(exe_path=exe, exec_mode=ExecutionMode.ASYNC, args=args, working_dir=repo_path)
     log_message(f'Cleaned up repo at: "{repo_path}"')
 
 
@@ -591,7 +591,7 @@ def cleanup_build(settings_json: str):
 def create_mods(settings_json: str, input_mod_names: str):
     load_settings(settings_json)
     from unreal_auto_mod.packing import make_mods_two, populate_queue
-    from unreal_auto_mod.settings import mod_names
+    from unreal_auto_mod.main_logic import mod_names
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for mod_name in input_mod_names:
@@ -605,7 +605,7 @@ def create_mods(settings_json: str, input_mod_names: str):
 def create_mods_all(settings_json: str):
     load_settings(settings_json)
     from unreal_auto_mod.packing import make_mods_two, populate_queue
-    from unreal_auto_mod.settings import mod_names
+    from unreal_auto_mod.main_logic import mod_names
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for entry in get_mods_info_from_json():
@@ -615,7 +615,21 @@ def create_mods_all(settings_json: str):
     make_mods_two()
 
 
-def make_archive_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
+def make_unreal_pak_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
+    # get the installed pak files based on info from the json
+    # move into the base files folder keeping the dir structure
+    # zip into output dir
+    print('placeholder')
+
+
+def make_repak_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
+    # get the installed pak files based on info from the json
+    # move into the base files folder keeping the dir structure
+    # zip into output dir
+    print('placeholder')
+
+
+def make_engine_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
     # get the installed pak files based on info from the json
     # move into the base files folder keeping the dir structure
     # zip into output dir
@@ -635,10 +649,14 @@ def create_mod_release(settings_json: str, mod_name: str, base_files_directory: 
     load_settings(settings_json)
     from unreal_auto_mod.utilities import get_mods_info_from_json
     singular_mod_info = next((mod_info for mod_info in get_mods_info_from_json() if mod_info['mod_name'] == mod_name), '')
-    if singular_mod_info['packing_type'] == 'loose':
+    if singular_mod_info['packing_type'] == 'unreal_pak':
+        make_unreal_pak_mod_release(singular_mod_info, base_files_directory, output_directory)
+    elif singular_mod_info['packing_type'] == 'repak':
+        make_repak_mod_release(singular_mod_info, base_files_directory, output_directory)
+    elif singular_mod_info['packing_type'] == 'engine':
+        make_engine_mod_release(singular_mod_info, base_files_directory, output_directory)
+    elif singular_mod_info['packing_type'] == 'loose':
         make_loose_mod_release(singular_mod_info, base_files_directory, output_directory)
-    else:
-        make_archive_mod_release(singular_mod_info, base_files_directory, output_directory)
 
 
 def create_mod_releases(settings_json: str, mod_names: str, base_files_directory: str, output_directory: str):

@@ -41,7 +41,10 @@ CLI commands to add:
 - [ ] update documentation
 - [ ] create plugin command
 - [ ] remove plugin command
+- [ ] enable plugin command
+- [ ] disable plugin command
 - [ ] logs relative to settings.json, symlink latest one used by exe next to exe
+- [ ] non engine iostore
 
 ## Maybes:
 - [ ] UE4SS Installer

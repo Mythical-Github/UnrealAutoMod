@@ -3,8 +3,8 @@ import shutil
 
 from rich.progress import Progress
 
-from unreal_auto_mod import gen_py_utils as general_utils
-from unreal_auto_mod import hook_states, repak_utilities, settings, ue_dev_py_utils, unreal_pak, utilities
+from unreal_auto_mod import gen_py_utils as general_utils, main_logic
+from unreal_auto_mod import hook_states, repak_utilities, ue_dev_py_utils, unreal_pak, utilities
 from unreal_auto_mod import log_py as log
 from unreal_auto_mod.enums import CompressionType, HookStateType, PackingType, get_enum_from_val
 
@@ -17,11 +17,11 @@ def populate_queue():
     global install_queue_types
     global uninstall_queue_types
     for mod_info in utilities.get_mods_info_from_json():
-        if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
+        if mod_info['is_enabled'] and mod_info['mod_name'] in main_logic.mod_names:
             install_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
             if install_queue_type not in install_queue_types:
                 install_queue_types.append(install_queue_type)
-        if not mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
+        if not mod_info['is_enabled'] and mod_info['mod_name'] in main_logic.mod_names:
             uninstall_queue_type = get_enum_from_val(PackingType, mod_info['packing_type'])
             if uninstall_queue_type not in uninstall_queue_types:
                 uninstall_queue_types.append(uninstall_queue_type)
@@ -56,8 +56,9 @@ def get_is_mod_installed(mod_name: str) -> bool:
 
 
 def get_engine_pak_command() -> str:
+    from unreal_auto_mod.utilities import get_unreal_engine_packaging_main_command
     command = (
-        f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
+        f'Engine\\Build\\BatchFiles\\RunUAT.bat {get_unreal_engine_packaging_main_command()} '
         f'-project="{utilities.get_uproject_file()}" '
         f'-compressed'
     )
@@ -75,8 +76,9 @@ def get_engine_pak_command() -> str:
 
 
 def get_cook_project_command() -> str:
+    from unreal_auto_mod.utilities import get_unreal_engine_cooking_main_command
     command = (
-        f'Engine\\Build\\BatchFiles\\RunUAT.bat BuildCookRun '
+        f'Engine\\Build\\BatchFiles\\RunUAT.bat {get_unreal_engine_cooking_main_command()} '
         f'-project="{utilities.get_uproject_file()}" '
         f'-skipstage '
         f'-nodebuginfo'
@@ -107,7 +109,7 @@ def run_proj_command(command: str):
 
 def handle_uninstall_logic(packing_type: PackingType):
     for mod_info in utilities.get_mods_info_from_json():
-        if not mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
+        if not mod_info['is_enabled'] and mod_info['mod_name'] in main_logic.mod_names:
             if get_enum_from_val(PackingType, mod_info['packing_type']) == packing_type:
                 uninstall_mod(packing_type, mod_info['mod_name'])
 
@@ -115,7 +117,7 @@ def handle_uninstall_logic(packing_type: PackingType):
 def handle_install_logic(packing_type: PackingType):
     hook_states.set_hook_state(HookStateType.PRE_PAK_DIR_SETUP)
     for mod_info in utilities.get_mods_info_from_json():
-        if mod_info['is_enabled'] and mod_info['mod_name'] in settings.mod_names:
+        if mod_info['is_enabled'] and mod_info['mod_name'] in main_logic.mod_names:
             if get_enum_from_val(PackingType, mod_info['packing_type']) == packing_type:
                 install_mod(
                     packing_type, 

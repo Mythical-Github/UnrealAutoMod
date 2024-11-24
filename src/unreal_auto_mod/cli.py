@@ -1,12 +1,11 @@
+import argparse
 import os
 import sys
-import argparse
 from pathlib import Path
 
 from rich_argparse import RichHelpFormatter
 
 from unreal_auto_mod import main_logic
-
 
 if getattr(sys, 'frozen', False):
     SCRIPT_DIR = Path(sys.executable).parent
@@ -220,16 +219,14 @@ def cli_logic():
         ]
         if args.command in settings_json_commands:
             command_function_map[args.command](args.settings_json)
-        elif args.command == 'enable_mods':
-            command_function_map[args.command](args.settings_json, args.mod_names)
-        elif args.command == 'disable_mods':
+        elif args.command == 'enable_mods' or args.command == 'disable_mods':
             command_function_map[args.command](args.settings_json, args.mod_names)
         elif args.command == 'add_mod':
             command_function_map[args.command](
-                args.settings_json, 
-                args.mod_name, 
-                args.packing_type, 
-                args.pak_dir_structure, 
+                args.settings_json,
+                args.mod_name,
+                args.packing_type,
+                args.pak_dir_structure,
                 args.mod_name_dir_type,
                 args.use_mod_name_dir_name_override,
                 args.mod_name_dir_name_override,
@@ -239,9 +236,7 @@ def cli_logic():
                 args.asset_paths,
                 args.tree_paths
             )
-        elif args.command == 'remove_mods':
-            command_function_map[args.command](args.settings_json, args.mod_names)
-        elif args.command == 'test_mods':
+        elif args.command == 'remove_mods' or args.command == 'test_mods':
             command_function_map[args.command](args.settings_json, args.mod_names)
         elif args.command == 'test_mods_all':
             command_function_map[args.command](args.settings_json)
@@ -251,30 +246,28 @@ def cli_logic():
             command_function_map[args.command](args.settings_json)
         elif args.command == 'create_mod_releases':
             command_function_map[args.command](
-                args.settings_json, 
-                args.mod_names, 
-                args.base_files_directory, 
+                args.settings_json,
+                args.mod_names,
+                args.base_files_directory,
                 args.output_directory
                 )
         elif args.command == 'create_mod_releases_all':
             command_function_map[args.command](
-                args.output_directory, 
-                args.base_files_directory, 
+                args.output_directory,
+                args.base_files_directory,
                 args.output_directory
                 )
         elif args.command == 'resave_packages_and_fix_up_redirectors':
             command_function_map[args.command](args.settings_json)
         elif args.command in installer_commands:
             command_function_map[args.command](args.output_directory, args.run_after_install)
-        elif args.command == 'resync_dir_with_repo':
-            command_function_map[args.command](args.settings_json)
-        elif args.command == 'close_game':
+        elif args.command == 'resync_dir_with_repo' or args.command == 'close_game':
             command_function_map[args.command](args.settings_json)
         elif args.command == 'generate_uproject':
             command_function_map[args.command](
-                args.project_file, 
-                args.file_version, 
-                args.engine_major_association, 
+                args.project_file,
+                args.file_version,
+                args.engine_major_association,
                 args.engine_minor_association,
                 args.category,
                 args.description,
@@ -285,6 +278,5 @@ def cli_logic():
         parser.print_help()
 
     main_logic.close_thread_system()
-    from unreal_auto_mod import utilities
-    from unreal_auto_mod import log_py
+    from unreal_auto_mod import log_py, utilities
     log_py.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')

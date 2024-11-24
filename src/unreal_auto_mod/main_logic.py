@@ -206,8 +206,8 @@ def run_game(settings_json: str):
 
 def close_game(settings_json: str):
     load_settings(settings_json)
-    from unreal_auto_mod.utilities import get_game_exe_path
     from unreal_auto_mod.gen_py_utils import kill_process
+    from unreal_auto_mod.utilities import get_game_exe_path
     kill_process(os.path.basename(get_game_exe_path()))
 
 
@@ -301,7 +301,7 @@ def upload_changes_to_repo(settings_json: str):
 
 def enable_mods(settings_json: str, mod_names: list):
     try:
-        with open(settings_json, "r", encoding="utf-8") as file:
+        with open(settings_json, encoding="utf-8") as file:
             settings = json.load(file)
 
         mods_enabled = False
@@ -323,17 +323,17 @@ def enable_mods(settings_json: str, mod_names: list):
 
             log_message(f"Mods successfully enabled in '{settings_json}'.")
         else:
-            log_message(f"No mods were enabled because all specified mods were already enabled.")
-    
+            log_message("No mods were enabled because all specified mods were already enabled.")
+
     except json.JSONDecodeError:
         log_message(f"Error decoding JSON from file '{settings_json}'. Please check the file format.")
     except Exception as e:
         log_message(f"An error occurred: {e}")
-    
+
 
 def disable_mods(settings_json: str, mod_names: list):
     try:
-        with open(settings_json, "r", encoding="utf-8") as file:
+        with open(settings_json, encoding="utf-8") as file:
             settings = json.load(file)
 
         mods_disabled = False
@@ -355,18 +355,18 @@ def disable_mods(settings_json: str, mod_names: list):
 
             log_message(f"Mods successfully disabled in '{settings_json}'.")
         else:
-            log_message(f"No mods were disabled because all specified mods were already disabled.")
-    
+            log_message("No mods were disabled because all specified mods were already disabled.")
+
     except json.JSONDecodeError:
         log_message(f"Error decoding JSON from file '{settings_json}'. Please check the file format.")
     except Exception as e:
         log_message(f"An error occurred: {e}")
-    
-    
+
+
 def add_mod(
-        settings_json: str, 
-        mod_name: str, 
-        packing_type: str, 
+        settings_json: str,
+        mod_name: str,
+        packing_type: str,
         pak_dir_structure: str,
         mod_name_dir_type: str,
         use_mod_name_dir_name_override: str,
@@ -378,7 +378,7 @@ def add_mod(
         tree_paths: list
     ):
     try:
-        with open(settings_json, "r") as file:
+        with open(settings_json) as file:
             settings = json.load(file)
 
         new_mod = {
@@ -417,11 +417,11 @@ def add_mod(
         log_message(f"Error decoding JSON from file '{settings_json}'. Please check the file format.")
     except Exception as e:
         log_message(f"An error occurred: {e}")
-    
-    
+
+
 def remove_mods(settings_json: str, mod_names: list):
     try:
-        with open(settings_json, "r", encoding="utf-8") as file:
+        with open(settings_json, encoding="utf-8") as file:
             settings = json.load(file)
 
         mods_removed = False
@@ -433,7 +433,7 @@ def remove_mods(settings_json: str, mod_names: list):
             mods_removed = True
             log_message(f"Mods {', '.join(mod_names)} have been removed.")
         else:
-            log_message(f"No mods were removed because none of the specified mods were found.")
+            log_message("No mods were removed because none of the specified mods were found.")
 
         settings["mods_info"] = mods_info
 
@@ -444,7 +444,7 @@ def remove_mods(settings_json: str, mod_names: list):
                 file.write(updated_json_str)
 
             log_message(f"Mods successfully removed from '{settings_json}'.")
-    
+
     except json.JSONDecodeError:
         log_message(f"Error decoding JSON from file '{settings_json}'. Please check the file format.")
     except Exception as e:
@@ -473,7 +473,7 @@ def cook(settings_json: str):
 
 
 def get_solo_package_command() -> str:
-    from unreal_auto_mod import utilities, ue_dev_py_utils, log_py
+    from unreal_auto_mod import log_py, ue_dev_py_utils, utilities
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat {utilities.get_unreal_engine_packaging_main_command()} '
         f'-project="{utilities.get_uproject_file()}" '
@@ -493,11 +493,11 @@ def get_solo_package_command() -> str:
     return command
 
 
-def package(settings_json: str):    
+def package(settings_json: str):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
-    from unreal_auto_mod.utilities import get_mods_info_from_json
     from unreal_auto_mod.packing import make_mods_two, populate_queue
+    from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for entry in get_mods_info_from_json():
         mod_names.append(entry['mod_name'])
@@ -590,8 +590,8 @@ def cleanup_build(settings_json: str):
 
 def create_mods(settings_json: str, input_mod_names: str):
     load_settings(settings_json)
-    from unreal_auto_mod.packing import make_mods_two, populate_queue
     from unreal_auto_mod.main_logic import mod_names
+    from unreal_auto_mod.packing import make_mods_two, populate_queue
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for mod_name in input_mod_names:
@@ -604,8 +604,8 @@ def create_mods(settings_json: str, input_mod_names: str):
 
 def create_mods_all(settings_json: str):
     load_settings(settings_json)
-    from unreal_auto_mod.packing import make_mods_two, populate_queue
     from unreal_auto_mod.main_logic import mod_names
+    from unreal_auto_mod.packing import make_mods_two, populate_queue
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for entry in get_mods_info_from_json():
@@ -674,7 +674,7 @@ def create_mod_releases_all(settings_json: str, base_files_directory: str, outpu
 
 def resync_dir_with_repo(settings_json: str):
     load_settings(settings_json)
-    from unreal_auto_mod.utilities import run_app, get_cleanup_repo_path
+    from unreal_auto_mod.utilities import get_cleanup_repo_path, run_app
     repo_path = get_cleanup_repo_path()
     repo_dir = os.path.dirname(repo_path)
     """
@@ -683,10 +683,10 @@ def resync_dir_with_repo(settings_json: str):
     :param repo_path: The path to the root of the git repository.
     """
     repo_path = os.path.abspath(repo_path)
-    
+
     if not os.path.isdir(repo_path):
         raise FileNotFoundError(f"The specified path '{repo_path}' does not exist or is not a directory.")
-    
+
     if not os.path.isdir(os.path.join(repo_path, '.git')):
         raise ValueError(f"The specified path '{repo_path}' is not a valid Git repository.")
 
@@ -711,8 +711,8 @@ def resync_dir_with_repo(settings_json: str):
 
 def generate_uproject(
     project_file: str,
-    file_version: int = 3, 
-    engine_major_association: int = 4, 
+    file_version: int = 3,
+    engine_major_association: int = 4,
     engine_minor_association: int = 27,
     category: str = 'Modding',
     description: str = 'Uproject for modding, generated with unreal_auto_mod.',
@@ -733,7 +733,7 @@ def generate_uproject(
             raise ValueError(f'Invalid EngineMajorAssociation: {engine_major_association}. Valid value is 4-5.')
 
         # Validate EngineMinorAssociation
-        if engine_minor_association not in range(0, 28):  # Valid range is 0-27
+        if engine_minor_association not in range(28):  # Valid range is 0-27
             raise ValueError(f'Invalid EngineMinorAssociation: {engine_minor_association}. Valid range is 0-27.')
 
         # Ensure the directory is empty
@@ -750,7 +750,7 @@ def generate_uproject(
     try:
         with open(project_file, 'w') as f:
             f.write(json_content)  # Write the string content directly to the file
-    except IOError as e:
-        raise IOError(f"Failed to write to file '{project_file}': {e}")
+    except OSError as e:
+        raise OSError(f"Failed to write to file '{project_file}': {e}")
 
     return f"Successfully generated '{project_file}'."

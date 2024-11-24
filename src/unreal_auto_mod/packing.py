@@ -3,8 +3,8 @@ import shutil
 
 from rich.progress import Progress
 
-from unreal_auto_mod import gen_py_utils as general_utils, main_logic
-from unreal_auto_mod import hook_states, repak_utilities, ue_dev_py_utils, unreal_pak, utilities
+from unreal_auto_mod import gen_py_utils as general_utils
+from unreal_auto_mod import hook_states, main_logic, repak_utilities, ue_dev_py_utils, unreal_pak, utilities
 from unreal_auto_mod import log_py as log
 from unreal_auto_mod.enums import CompressionType, HookStateType, PackingType, get_enum_from_val
 
@@ -120,7 +120,7 @@ def handle_install_logic(packing_type: PackingType):
         if mod_info['is_enabled'] and mod_info['mod_name'] in main_logic.mod_names:
             if get_enum_from_val(PackingType, mod_info['packing_type']) == packing_type:
                 install_mod(
-                    packing_type, 
+                    packing_type,
                     mod_info['mod_name'],
                     get_enum_from_val(CompressionType, mod_info['compression_type'])
                 )
@@ -193,7 +193,7 @@ def install_loose_mod(mod_name: str):
                 os.remove(after_file)
         if os.path.isfile(before_file):
             os.symlink(before_file, after_file)
-        
+
 
 
 

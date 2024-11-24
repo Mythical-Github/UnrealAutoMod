@@ -132,8 +132,8 @@ def get_game_window_title(input_game_exe_path: str) -> str:
 
 
 def get_new_uproject_json_contents(
-        file_version: int = 3, 
-        engine_major_association: int = 4, 
+        file_version: int = 3,
+        engine_major_association: int = 4,
         engine_minor_association: int = 27,
         category: str = 'Modding',
         description: str = 'Uproject for modding, generated with unreal_auto_mod.'

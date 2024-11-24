@@ -3,8 +3,8 @@ import subprocess
 
 import requests
 
-from unreal_auto_mod import log_py as log, main_logic
-from unreal_auto_mod import utilities
+from unreal_auto_mod import log_py as log
+from unreal_auto_mod import main_logic, utilities
 
 
 def get_package_path():

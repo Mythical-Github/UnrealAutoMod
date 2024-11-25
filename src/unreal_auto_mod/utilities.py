@@ -4,7 +4,7 @@ import subprocess
 import time
 
 from unreal_auto_mod import gen_py_utils as general_utils
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import log as log
 from unreal_auto_mod import main_logic
 from unreal_auto_mod import ue_dev_py_utils as unreal_dev_utils
 from unreal_auto_mod.enums import CompressionType, ExecutionMode, HookStateType, get_enum_from_val

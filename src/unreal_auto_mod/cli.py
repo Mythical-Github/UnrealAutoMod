@@ -5,7 +5,7 @@ from pathlib import Path
 
 from rich_argparse import RichHelpFormatter
 
-from unreal_auto_mod import main_logic
+from unreal_auto_mod import log, main_logic
 
 if getattr(sys, 'frozen', False):
     SCRIPT_DIR = Path(sys.executable).parent
@@ -278,5 +278,5 @@ def cli_logic():
         parser.print_help()
 
     main_logic.close_thread_system()
-    from unreal_auto_mod import log_py, utilities
-    log_py.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')
+    from unreal_auto_mod import utilities
+    log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')

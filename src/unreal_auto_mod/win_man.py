@@ -2,7 +2,7 @@
 import pygetwindow
 import screeninfo
 
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import log as log
 
 
 def does_window_exist(window_title: str, use_substring_check: bool = False) -> bool:

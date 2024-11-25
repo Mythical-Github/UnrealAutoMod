@@ -108,6 +108,25 @@ class FileFilterType(Enum):
     TREE_PATHS = 'tree_paths'  # Takes supplied dirs, and traverses it all, including every file
 
 
+class WindowAction(Enum):
+    """
+    enum for how to treat handling windows
+    """
+    NONE = 'none'
+    MIN = 'min'
+    MAX = 'max'
+    MOVE = 'move'
+    CLOSE = 'close'
+
+
+class PackagingDirType(Enum):
+    """
+    enum for the directory type for packaging, it changes based on ue version
+    """
+    WINDOWS = 'windows'
+    WINDOWS_NO_EDITOR = 'windows_no_editor'
+
+
 def get_enum_from_val(enum: Enum, value: str) -> Enum:
     """
     """

@@ -1,7 +1,9 @@
-from unreal_auto_mod import log_py as log
-from unreal_auto_mod import main_logic, utilities, win_man_enums, win_man_py
-from unreal_auto_mod import win_man_py as windows
+from unreal_auto_mod import win_man
+from unreal_auto_mod import main_logic, utilities
+from unreal_auto_mod.enums import WindowAction
+from unreal_auto_mod import win_man as windows
 from unreal_auto_mod.enums import ExecutionMode, HookStateType, get_enum_from_val
+from unreal_auto_mod import log as log
 
 hook_state = None
 
@@ -46,22 +48,22 @@ def is_hook_state_used(state: HookStateType) -> bool:
     return False
 
 
-def window_checks(current_state: win_man_enums.WindowAction):
+def window_checks(current_state: WindowAction):
     window_settings_list = utilities.get_window_management_events()
     for window_settings in window_settings_list:
         settings_state = get_enum_from_val(HookStateType, window_settings['hook_state'])
         if settings_state == current_state:
             title = window_settings['window_name']
-            windows_to_change = win_man_py.get_windows_by_title(title)
+            windows_to_change = win_man.get_windows_by_title(title)
             for window_to_change in windows_to_change:
-                way_to_change_window = get_enum_from_val(win_man_enums.WindowAction, window_settings['window_behaviour'])
-                if way_to_change_window == win_man_enums.WindowAction.MAX:
+                way_to_change_window = get_enum_from_val(WindowAction, window_settings['window_behaviour'])
+                if way_to_change_window == WindowAction.MAX:
                     windows.maximize_window(window_to_change)
-                elif way_to_change_window == win_man_enums.WindowAction.MIN:
+                elif way_to_change_window == WindowAction.MIN:
                     windows.minimize_window(window_to_change)
-                elif way_to_change_window == win_man_enums.WindowAction.CLOSE:
+                elif way_to_change_window == WindowAction.CLOSE:
                     windows.close_window(window_to_change)
-                elif way_to_change_window == win_man_enums.WindowAction.MOVE:
+                elif way_to_change_window == WindowAction.MOVE:
                     windows.move_window(window_to_change, window_settings)
                 else:
                     log.log_message('Monitor: invalid window behavior specified in settings')

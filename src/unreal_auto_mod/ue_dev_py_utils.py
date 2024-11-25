@@ -2,7 +2,7 @@ import json
 import os
 
 from unreal_auto_mod import gen_py_utils
-from unreal_auto_mod.ue_dev_py_enums import PackagingDirType
+from unreal_auto_mod.enums import PackagingDirType
 
 
 def get_game_process_name(input_game_exe_path: str) -> str:

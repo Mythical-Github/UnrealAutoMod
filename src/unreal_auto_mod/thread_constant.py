@@ -2,7 +2,7 @@ import threading
 import time
 
 from unreal_auto_mod import hook_states
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import log as log
 from unreal_auto_mod.enums import HookStateType
 
 

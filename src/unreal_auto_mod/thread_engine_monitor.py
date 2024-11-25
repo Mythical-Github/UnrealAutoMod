@@ -1,9 +1,9 @@
 import threading
 import time
 
-from unreal_auto_mod import gen_py_utils as general_utils
-from unreal_auto_mod import hook_states, utilities, win_man_py
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import gen_py_utils as general_utils, win_man
+from unreal_auto_mod import hook_states, utilities
+from unreal_auto_mod import log as log
 from unreal_auto_mod import ue_dev_py_utils as unreal_dev_utils
 from unreal_auto_mod.enums import HookStateType
 
@@ -43,12 +43,12 @@ def engine_monitor_thread_logic():
             log.log_message('Process: Found Engine Process')
             found_process = True
     elif not found_window:
-        if win_man_py.does_window_exist(engine_window_name):
+        if win_man.does_window_exist(engine_window_name):
             log.log_message('Window: Engine Window Found')
             found_window = True
             hook_states.set_hook_state(HookStateType.POST_ENGINE_OPEN)
     elif not window_closed:
-        if not win_man_py.does_window_exist(engine_window_name):
+        if not win_man.does_window_exist(engine_window_name):
             log.log_message('Window: Engine Window Closed')
             window_closed = True
             hook_states.set_hook_state(HookStateType.POST_ENGINE_CLOSE)

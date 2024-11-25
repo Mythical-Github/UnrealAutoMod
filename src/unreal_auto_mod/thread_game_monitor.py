@@ -1,9 +1,9 @@
 import threading
 import time
 
-from unreal_auto_mod import gen_py_utils as general_utils
-from unreal_auto_mod import hook_states, utilities, win_man_py
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import gen_py_utils as general_utils, win_man
+from unreal_auto_mod import hook_states, utilities
+from unreal_auto_mod import log as log
 from unreal_auto_mod.enums import HookStateType
 
 found_process = False
@@ -20,7 +20,7 @@ def game_monitor_thread_runner(tick_rate: float = 0.01):
 
 
 def get_game_window():
-    return win_man_py.get_window_by_title(utilities.get_game_window_title())
+    return win_man.get_window_by_title(utilities.get_game_window_title())
 
 
 def game_monitor_thread_logic():

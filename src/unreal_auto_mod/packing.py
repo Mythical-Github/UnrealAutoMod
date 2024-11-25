@@ -5,7 +5,7 @@ from rich.progress import Progress
 
 from unreal_auto_mod import gen_py_utils as general_utils
 from unreal_auto_mod import hook_states, main_logic, repak_utilities, ue_dev_py_utils, unreal_pak, utilities
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import log as log
 from unreal_auto_mod.enums import CompressionType, HookStateType, PackingType, get_enum_from_val
 
 install_queue_types = []
@@ -129,13 +129,8 @@ def handle_install_logic(packing_type: PackingType):
         utilities.run_app(command)
 
 
-
-def make_mods():
-    cooking()
-    make_mods_two()
-
-
-def make_mods_two():
+def generate_mods():
+    populate_queue()
     global uninstall_queue_types
     hook_states.set_hook_state(HookStateType.PRE_MODS_UNINSTALL)
     for uninstall_queue_type in uninstall_queue_types:
@@ -232,7 +227,7 @@ def make_pak_repak(mod_name: str):
     before_symlinked_dir = f'{utilities.get_working_dir()}/{mod_name}'
 
     if not os.path.isdir(before_symlinked_dir) or not os.listdir(before_symlinked_dir):
-        from unreal_auto_mod import log_py as log
+        from unreal_auto_mod import log as log
         log.log_message(f'Error: {before_symlinked_dir}')
         log.log_message('Error: does not exist or is empty, indicating a packaging and/or config issue')
         raise FileNotFoundError

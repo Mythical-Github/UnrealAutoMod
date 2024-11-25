@@ -3,7 +3,7 @@ import subprocess
 
 import requests
 
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import log as log
 from unreal_auto_mod import main_logic, utilities
 
 

@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 from unreal_auto_mod import cli
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import log as log
 from unreal_auto_mod.log_info import LOG_INFO
 
 if getattr(sys, 'frozen', False):

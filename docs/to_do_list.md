@@ -4,14 +4,17 @@
 
 Things to fix:
 Kismet Analyzer Installer
+Repak Installer
 
 CLI commands to add:
-    create_mod_releases // dummied already -
-    create_mod_releases_all // dummied already -
+- [ ] create_mod_releases // dummied already -
+- [ ] create_mod_releases_all // dummied already -
+- [ ] cleanup game dir tree
+- [ ] game dir file tracker generator
+
 
 ## Eventually:
 
-- [ ] cleanup game dir tree
 - [ ] switch_uproject_engine_version
 - [ ] change_uproject_name
 - [ ] Close game hotkey
@@ -31,6 +34,7 @@ CLI commands to add:
 - [ ] cli help replies and such are not colorized like the rest of the program
 - [ ] add bug reports section
 - [ ] add contributions section
+- [ ] add suggestions/feature requests section
 - [ ] add socials section like discords
 - [ ] unit/project tests
 - [ ] rethink toggle engine logic

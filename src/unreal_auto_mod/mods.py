@@ -9,7 +9,8 @@ def create_mods():
         utilities,
     )
     engine.toggle_engine_off()
-    packing.make_mods()
+    packing.cooking()
+    packing.generate_mods()
     if not utilities.get_skip_launching_game():
         game_runner.run_game()
         thread_game_monitor.game_monitor_thread()

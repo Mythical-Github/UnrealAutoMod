@@ -2,7 +2,7 @@ import os
 import winreg
 
 from unreal_auto_mod import hook_states, utilities
-from unreal_auto_mod import log_py as log
+from unreal_auto_mod import log as log
 from unreal_auto_mod.enums import ExecutionMode, GameLaunchType, HookStateType
 
 

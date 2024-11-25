@@ -1,6 +1,6 @@
 from unreal_auto_mod import gen_py_utils as general_utils
-from unreal_auto_mod import hook_states, thread_engine_monitor, ue_dev_py_enums, ue_dev_py_utils, utilities
-from unreal_auto_mod.enums import ExecutionMode, HookStateType
+from unreal_auto_mod import hook_states, thread_engine_monitor, ue_dev_py_utils, utilities
+from unreal_auto_mod.enums import ExecutionMode, HookStateType, PackagingDirType
 
 
 def open_game_engine():
@@ -13,7 +13,7 @@ def open_game_engine():
 
 def close_game_engine():
     hook_states.set_hook_state(HookStateType.PRE_ENGINE_CLOSE)
-    if ue_dev_py_utils.get_win_dir_type(utilities.get_unreal_engine_dir()) == ue_dev_py_enums.PackagingDirType.WINDOWS_NO_EDITOR:
+    if ue_dev_py_utils.get_win_dir_type(utilities.get_unreal_engine_dir()) == PackagingDirType.WINDOWS_NO_EDITOR:
         game_engine_processes = general_utils.get_processes_by_substring('UE4Editor')
     else:
         game_engine_processes = general_utils.get_processes_by_substring('UnrealEditor')

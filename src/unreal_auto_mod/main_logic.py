@@ -5,8 +5,8 @@ import psutil
 import pyjson5 as json
 
 import unreal_auto_mod.gen_py_utils as gen_utils
-from unreal_auto_mod import hook_states, mods
-from unreal_auto_mod.log_py import log_message
+from unreal_auto_mod import hook_states, log, mods
+from unreal_auto_mod.log import log_message
 
 settings = ''
 init_settings_done = False
@@ -62,7 +62,7 @@ def check_file_exists(file_path: str) -> bool:
 
 
 def unreal_engine_check():
-    from unreal_auto_mod import log_py as log
+    from unreal_auto_mod import log as log
     from unreal_auto_mod import ue_dev_py_utils as ue_dev_utils
     from unreal_auto_mod import utilities
 
@@ -81,7 +81,7 @@ def unreal_engine_check():
 
 
 def init_checks():
-    from unreal_auto_mod import log_py as log
+    from unreal_auto_mod import log as log
     from unreal_auto_mod import utilities
     if not utilities.get_should_ship_uproject_steps():
         check_file_exists(utilities.get_uproject_file())
@@ -137,18 +137,14 @@ def test_mods(settings_json: str, input_mod_names: str):
     global mod_names
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
-    from unreal_auto_mod.packing import populate_queue
-    populate_queue()
-    mods.create_mods(settings_json)
+    mods.create_mods()
 
 
 def test_mods_all(settings_json: str):
     load_settings(settings_json)
-    from unreal_auto_mod.packing import populate_queue
     global mod_names
     for entry in settings['mods_info']:
         mod_names.append(entry['mod_name'])
-    populate_queue()
     mods.create_mods()
 
 
@@ -473,7 +469,7 @@ def cook(settings_json: str):
 
 
 def get_solo_package_command() -> str:
-    from unreal_auto_mod import log_py, ue_dev_py_utils, utilities
+    from unreal_auto_mod import ue_dev_py_utils, utilities
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat {utilities.get_unreal_engine_packaging_main_command()} '
         f'-project="{utilities.get_uproject_file()}" '
@@ -487,24 +483,23 @@ def get_solo_package_command() -> str:
     is_game_iostore = ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir())
     if is_game_iostore:
         command = f'{command} -iostore'
-        log_py.log_message('Check: Game is iostore')
+        log.log_message('Check: Game is iostore')
     else:
-        log_py.log_message('Check: Game is not iostore')
+        log.log_message('Check: Game is not iostore')
     return command
 
 
 def package(settings_json: str):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
-    from unreal_auto_mod.packing import make_mods_two, populate_queue
+    from unreal_auto_mod.packing import generate_mods, populate_queue
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for entry in get_mods_info_from_json():
         mod_names.append(entry['mod_name'])
     log_message('Packaging Starting')
     run_proj_build_command(get_solo_package_command())
-    populate_queue()
-    make_mods_two()
+    generate_mods()
     log_message('Packaging Complete')
 
 
@@ -591,28 +586,26 @@ def cleanup_build(settings_json: str):
 def create_mods(settings_json: str, input_mod_names: str):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
-    from unreal_auto_mod.packing import make_mods_two, populate_queue
+    from unreal_auto_mod.packing import generate_mods, populate_queue
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
     for entry in get_mods_info_from_json():
         mod_names.append(entry['mod_name'])
-    populate_queue()
-    make_mods_two()
+    generate_mods()
 
 
 def create_mods_all(settings_json: str):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
-    from unreal_auto_mod.packing import make_mods_two, populate_queue
+    from unreal_auto_mod.packing import generate_mods, populate_queue
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for entry in get_mods_info_from_json():
         mod_names.append(entry['mod_name'])
         print(entry['mod_name'])
-    populate_queue()
-    make_mods_two()
+    generate_mods()
 
 
 def make_unreal_pak_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):

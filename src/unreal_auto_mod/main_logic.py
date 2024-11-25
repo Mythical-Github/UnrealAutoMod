@@ -221,7 +221,7 @@ def close_engine(settings_json: str):
 
 def install_umodel(output_directory: str, run_after_install: bool):
     from unreal_auto_mod import utilities
-    if not os.path.isfile(utilities.does_umodel_exist(output_directory)):
+    if not utilities.does_umodel_exist(output_directory):
         utilities.install_umodel(output_directory)
     # Sets dir, so it's the dir opened by default in umodel
     # os.chdir(os.path.dirname(utilities.custom_get_game_dir()))
@@ -583,6 +583,22 @@ def cleanup_build(settings_json: str):
                     log_message(f"Failed to remove {full_path}: {e}")
 
 
+def cleanup_game(settings_json: str):
+    load_settings(settings_json)
+    from unreal_auto_mod import utilities
+    game_directory = os.path.dirname(utilities.custom_get_game_dir())
+    file_list_json = os.path.join(settings_json_dir, 'game_file_list.json')
+    delete_unlisted_files(game_directory, file_list_json)
+
+
+def generate_game_file_list_json(settings_json: str):
+    load_settings(settings_json)
+    from unreal_auto_mod import utilities
+    game_directory = os.path.dirname(utilities.custom_get_game_dir())
+    file_list_json = os.path.join(settings_json_dir, 'game_file_list.json')
+    generate_file_paths_json(game_directory, file_list_json)
+
+
 def create_mods(settings_json: str, input_mod_names: str):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
@@ -742,8 +758,56 @@ def generate_uproject(
     # Write the .uproject file
     try:
         with open(project_file, 'w') as f:
-            f.write(json_content)  # Write the string content directly to the file
+            f.write(json_content)
     except OSError as e:
         raise OSError(f"Failed to write to file '{project_file}': {e}")
 
     return f"Successfully generated '{project_file}'."
+
+
+def save_json_to_file(json_string, file_path):
+    try:
+        parsed_json = json.loads(json_string)
+
+        with open(file_path, "w") as file:
+            json.dump(parsed_json, file, indent=4)
+
+        print(f"JSON data successfully saved to {file_path}")
+    except json.JSONDecodeError as e:
+        print(f"Invalid JSON string: {e}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+def generate_file_paths_json(dir_path, output_json):
+    all_file_paths = []
+
+    for root, _, files in os.walk(dir_path):
+        for file in files:
+            full_path = os.path.join(root, file)
+            all_file_paths.append(full_path)
+
+    json_string = json.dumps(all_file_paths)
+
+    with open(output_json, "w", encoding="utf-8") as json_file:
+        json_file.write(json_string)
+
+    print(f"JSON file with all file paths created at: {output_json}")
+
+
+def delete_unlisted_files(dir_path, json_file):
+    try:
+        with open(json_file, "r") as file:
+            allowed_files = set(json.load(file))
+
+        for root, _, files in os.walk(dir_path):
+            for file in files:
+                full_path = os.path.join(root, file)
+                if full_path not in allowed_files:
+                    os.remove(full_path)
+                    print(f"Deleted: {full_path}")
+
+        print("Cleanup complete. All unlisted files have been removed.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+

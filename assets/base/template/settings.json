@@ -9,7 +9,7 @@
     "repo_branch": "main"
   },
   "engine_info": {
-    "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.22",
+    "unreal_engine_dir": "C:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/ZedfestModdingKit/KevinSpel.uproject",
     "skip_uproject_steps": false,
     "toggle_engine_during_cooking": false,
@@ -45,7 +45,7 @@
     "unreal_engine_minor_version": null
   },
   "game_info": {
-    "game_exe_path": "D:/SteamLibrary/steamapps/common/Zedfest/KevinSpel/Binaries/Win64/Zedfest.exe",
+    "game_exe_path": "C:/Program Files (x86)/Steam/steamapps/common/Zedfest/KevinSpel/Binaries/Win64/Zedfest.exe",
     "launch_type": "exe",
     "override_automatic_launcher_exe_finding": false,
     "game_launcher_exe": null,
@@ -110,7 +110,7 @@
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
       "pak_chunk_num": 2,
-      "packing_type": "engine",
+      "packing_type": "repak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": { "asset_paths": [], "tree_paths": [] }
@@ -122,7 +122,7 @@
       "use_mod_name_dir_name_override": false,
       "mod_name_dir_name_override": null,
       "pak_chunk_num": 3,
-      "packing_type": "engine",
+      "packing_type": "unreal_pak",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": { "asset_paths": [], "tree_paths": [] }

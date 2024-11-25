@@ -18,6 +18,7 @@ default_output_releases_dir = os.path.normpath(os.path.join(SCRIPT_DIR, 'dist'))
 
 
 def cli_logic():
+    enable_vt100()
     parser_description = 'Mod Build Tools/Automation scripts for Unreal Engine modding supports 4.0-5.5'
     parser_program_name = 'unreal_auto_mod'
 
@@ -47,6 +48,20 @@ def cli_logic():
 
     cleanup_build_parser = sub_parser.add_parser('cleanup_build', help='Cleans up the directories made from building of the github repo specified within the settings JSON', formatter_class=RichHelpFormatter)
     cleanup_build_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    cleanup_game_parser = sub_parser.add_parser('cleanup_game', help='Cleans up the specified directory, deleting all files not specified within the file list JSON, to generate one use the generate_file_list_json command', formatter_class=RichHelpFormatter)
+    cleanup_game_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    generate_game_file_list_json_parser = sub_parser.add_parser('generate_game_file_list_json', help='Generates a JSON file containing all of the files in the game directory, from the game exe specified within the settings JSON', formatter_class=RichHelpFormatter)
+    generate_game_file_list_json_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    # cleanup_game_parser = sub_parser.add_parser('cleanup_game', help='Cleans up the specified directory, deleting all files not specified within the provided, file list JSON', formatter_class=RichHelpFormatter)
+    # cleanup_game_parser.add_argument('file_list_json', help='Path to the file list JSON file, usually created from the generate_file_list_json command')
+    # cleanup_game_parser.add_argument('game_directory', help='Path to the game directory tree you want to cleanup')
+
+    # generate_file_list_json_parser = sub_parser.add_parser('generate_file_list_json', help='Generates a JSON file containing all of the files in the specified directory tree, for use with other commands', formatter_class=RichHelpFormatter)
+    # generate_file_list_json_parser.add_argument('directory', help='Path to the game directory tree you want to cleanup')
+    # generate_file_list_json_parser.add_argument('output_json', help='Path to the output JSON file')
 
     upload_changes_to_repo_parser = sub_parser.add_parser('upload_changes_to_repo', help='Uploads latest changes of the git project to the github repo and branch specified within the settings JSON', formatter_class=RichHelpFormatter)
     upload_changes_to_repo_parser.add_argument('settings_json', help='Path to the settings JSON file')
@@ -166,6 +181,8 @@ def cli_logic():
         'cleanup_full': main_logic.cleanup_full,
         'cleanup_cooked': main_logic.cleanup_cooked,
         'cleanup_build': main_logic.cleanup_build,
+        'cleanup_game': main_logic.cleanup_game,
+        'generate_game_file_list_json': main_logic.generate_game_file_list_json,
         'resync_dir_with_repo': main_logic.resync_dir_with_repo,
         'upload_changes_to_repo': main_logic.upload_changes_to_repo,
         'enable_mods': main_logic.enable_mods,
@@ -210,17 +227,33 @@ def cli_logic():
             'cleanup_full',
             'cleanup_cooked',
             'cleanup_build',
+            'cleanup_game',
+            'generate_game_file_list_json',
             'package',
             'run_engine',
             'close_engine',
             'upload_changes_to_repo',
             'open_latest_log',
-            'run_game'
+            'run_game',
+            'close_game',
+            'resave_packages_and_fix_up_redirectors',
+            'resync_dir_with_repo',
+            'test_mods_all',
+            'create_mods_all'
         ]
         if args.command in settings_json_commands:
             command_function_map[args.command](args.settings_json)
+
+        elif args.command in installer_commands:
+            command_function_map[args.command](args.output_directory, args.run_after_install)
+
         elif args.command == 'enable_mods' or args.command == 'disable_mods':
             command_function_map[args.command](args.settings_json, args.mod_names)
+        elif args.command == 'remove_mods' or args.command == 'test_mods':
+            command_function_map[args.command](args.settings_json, args.mod_names)
+        elif args.command == 'create_mods':
+            command_function_map[args.command](args.settings_json, args.mod_names)
+
         elif args.command == 'add_mod':
             command_function_map[args.command](
                 args.settings_json,
@@ -236,14 +269,7 @@ def cli_logic():
                 args.asset_paths,
                 args.tree_paths
             )
-        elif args.command == 'remove_mods' or args.command == 'test_mods':
-            command_function_map[args.command](args.settings_json, args.mod_names)
-        elif args.command == 'test_mods_all':
-            command_function_map[args.command](args.settings_json)
-        elif args.command == 'create_mods':
-            command_function_map[args.command](args.settings_json, args.mod_names)
-        elif args.command == 'create_mods_all':
-            command_function_map[args.command](args.settings_json)
+
         elif args.command == 'create_mod_releases':
             command_function_map[args.command](
                 args.settings_json,
@@ -251,18 +277,14 @@ def cli_logic():
                 args.base_files_directory,
                 args.output_directory
                 )
+            
         elif args.command == 'create_mod_releases_all':
             command_function_map[args.command](
                 args.output_directory,
                 args.base_files_directory,
                 args.output_directory
                 )
-        elif args.command == 'resave_packages_and_fix_up_redirectors':
-            command_function_map[args.command](args.settings_json)
-        elif args.command in installer_commands:
-            command_function_map[args.command](args.output_directory, args.run_after_install)
-        elif args.command == 'resync_dir_with_repo' or args.command == 'close_game':
-            command_function_map[args.command](args.settings_json)
+            
         elif args.command == 'generate_uproject':
             command_function_map[args.command](
                 args.project_file,
@@ -280,3 +302,12 @@ def cli_logic():
     main_logic.close_thread_system()
     from unreal_auto_mod import utilities
     log.log_message(f'Timer: Time since script execution: {utilities.get_running_time()}')
+
+
+def enable_vt100():
+    """Enable VT100 escape codes in the Windows Command Prompt."""
+    # Check if VT100 is already enabled
+    query_command = 'reg query HKCU\\Console /v VirtualTerminalLevel 2>nul'
+    result = os.popen(query_command).read()
+    if "0x1" not in result:  # If not enabled, set the registry key
+        os.system('reg add HKCU\\Console /v VirtualTerminalLevel /t REG_DWORD /d 1 /f >nul')

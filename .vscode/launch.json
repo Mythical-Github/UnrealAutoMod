@@ -73,6 +73,26 @@
                 "${workspaceFolder}/assets/base/default/settings.json"
             ]
         },
+        {
+            "name": "cleanup_game",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "cleanup_game",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
+        {
+            "name": "generate_game_file_list_json",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "generate_game_file_list_json",
+                "${workspaceFolder}/assets/base/default/settings.json"
+            ]
+        },
         // the ones below this work usually, but not when routed through vscode stuff
         // {
         //     "name": "upload_changes_to_repo",

@@ -1,6 +1,5 @@
 @echo off
 
-
 cd %~dp0
 
 cd ..
@@ -16,6 +15,5 @@ rem echo %command%
 %command%
 
 rem pause
-
 
 exit /b

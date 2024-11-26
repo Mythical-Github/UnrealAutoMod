@@ -624,34 +624,163 @@ def create_mods_all(settings_json: str):
     generate_mods()
 
 
+def zip_directory_tree(input_dir, output_dir, zip_name="archive.zip"):
+    import zipfile
+
+    os.makedirs(output_dir, exist_ok=True)
+
+    zip_path = os.path.join(output_dir, zip_name)
+
+    with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(input_dir):
+            for file in files:
+                file_path = os.path.join(root, file)
+                arcname = os.path.relpath(file_path, input_dir)
+                zipf.write(file_path, arcname)
+
+    print(f"Directory tree zipped successfully: {zip_path}")
+
+
 def make_unreal_pak_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
-    # get the installed pak files based on info from the json
-    # move into the base files folder keeping the dir structure
-    # zip into output dir
-    print('placeholder')
+    import shutil
+    from unreal_auto_mod import utilities
+    mod_name = singular_mod_info['mod_name']
+    before_pak_file = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.pak'
+    final_pak_file = f'{base_files_directory}/{mod_name}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.pak'
+    if os.path.isfile(final_pak_file):
+        os.remove(final_pak_file)
+    print(os.path.dirname(final_pak_file))
+    os.makedirs(os.path.dirname(final_pak_file), exist_ok=True)
+    shutil.copyfile(before_pak_file, final_pak_file)
+    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')      
 
 
 def make_repak_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
-    # get the installed pak files based on info from the json
-    # move into the base files folder keeping the dir structure
-    # zip into output dir
-    print('placeholder')
+    import shutil
+    from unreal_auto_mod import utilities
+    mod_name = singular_mod_info['mod_name']
+    before_pak_file = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.pak'
+    final_pak_file = f'{base_files_directory}/{mod_name}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.pak'
+    if os.path.isfile(final_pak_file):
+        os.remove(final_pak_file)
+    print(os.path.dirname(final_pak_file))
+    os.makedirs(os.path.dirname(final_pak_file), exist_ok=True)
+    shutil.copyfile(before_pak_file, final_pak_file)
+    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')    
 
 
 def make_engine_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
-    # get the installed pak files based on info from the json
-    # move into the base files folder keeping the dir structure
-    # zip into output dir
-    print('placeholder')
+    import shutil
+    from unreal_auto_mod import ue_dev_py_utils, utilities
+    mod_name = singular_mod_info['mod_name']
+    uproject_file = utilities.get_uproject_file()
+    mod_files = []
+    pak_chunk_num = singular_mod_info['pak_chunk_num']
+    uproject_file = utilities.get_uproject_file()
+    uproject_dir = ue_dev_py_utils.get_uproject_dir(uproject_file)
+    win_dir_str = ue_dev_py_utils.get_win_dir_str(utilities.get_unreal_engine_dir())
+    uproject_name = ue_dev_py_utils.get_uproject_name(uproject_file)
+    prefix = f'{uproject_dir}/Saved/StagedBuilds/{win_dir_str}/{uproject_name}/Content/Paks/pakchunk{pak_chunk_num}-{win_dir_str}.'
+    mod_files.append(prefix)
+    for file in mod_files:
+        for suffix in ue_dev_py_utils.get_game_pak_folder_archives(uproject_file, utilities.custom_get_game_dir()):
+            dir_engine_mod = f'{utilities.custom_get_game_dir()}/Content/Paks/{utilities.get_pak_dir_structure(mod_name)}'
+            os.makedirs(dir_engine_mod, exist_ok=True)
+            before_file = f'{file}{suffix}'
+            after_file = f'{base_files_directory}/{mod_name}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.{suffix}'
+            if os.path.isfile(after_file):
+                os.remove(after_file)
+            os.makedirs(os.path.dirname(after_file), exist_ok=True)
+            shutil.copyfile(before_file, after_file)
+    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip') 
+
+
+def get_mod_files_asset_paths_for_loose_mods(mod_name: str, base_files_directory: str) -> dict:
+    from unreal_auto_mod import ue_dev_py_utils, utilities, gen_py_utils, packing
+    file_dict = {}
+    cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
+    mod_info = packing.get_mod_pak_entry(mod_name)
+    for asset in mod_info['manually_specified_assets']['asset_paths']:
+        base_path = f'{cooked_uproject_dir}/{asset}'
+        for extension in gen_py_utils.general_utils.get_file_extensions(base_path):
+            before_path = f'{base_path}{extension}'
+            after_path = f'{base_files_directory}/{mod_name}/mod_files/{asset}{extension}'
+            file_dict[before_path] = after_path
+    return file_dict
+
+
+def get_mod_files_tree_paths_for_loose_mods(mod_name: str, base_files_directory: str) -> dict:
+    from unreal_auto_mod import ue_dev_py_utils, utilities, gen_py_utils, packing
+    file_dict = {}
+    cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
+    mod_info = packing.get_mod_pak_entry(mod_name)
+    for tree in mod_info['manually_specified_assets']['tree_paths']:
+        tree_path = f'{cooked_uproject_dir}/{tree}'
+        for entry in gen_py_utils.get_files_in_tree(tree_path):
+            if os.path.isfile(entry):
+                base_entry = os.path.splitext(entry)[0]
+                for extension in gen_py_utils.get_file_extensions_two(entry):
+                    before_path = f'{base_entry}{extension}'
+                    relative_path = os.path.relpath(base_entry, cooked_uproject_dir)
+                    after_path = f'{base_files_directory}/{mod_name}/mod_files/{relative_path}{extension}'
+                    file_dict[before_path] = after_path
+    return file_dict
+
+
+def get_mod_files_persistent_paths_for_loose_mods(mod_name: str, base_files_directory: str) -> dict:
+    from unreal_auto_mod import utilities
+    file_dict = {}
+    persistent_mod_dir = utilities.get_persistant_mod_dir(mod_name)
+
+    for root, _, files in os.walk(persistent_mod_dir):
+        for file in files:
+            file_path = os.path.join(root, file)
+            relative_path = os.path.relpath(file_path, persistent_mod_dir)
+            after_path = f'{base_files_directory}/{mod_name}/mod_files/{relative_path}'
+            file_dict[file_path] = after_path
+    return file_dict
+
+
+def get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name: str, base_files_directory: str) -> dict:
+    from unreal_auto_mod import ue_dev_py_utils, utilities, gen_py_utils
+    file_dict = {}
+    cooked_game_name_mod_dir = f'{ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())}/Content/{utilities.get_unreal_mod_tree_type_str(mod_name)}/{utilities.get_mod_name_dir_name(mod_name)}'
+    
+    for file in gen_py_utils.get_files_in_tree(cooked_game_name_mod_dir):
+        relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
+        before_path = os.path.abspath(file)
+        after_path = f'{base_files_directory}/{mod_name}/mod_files/{relative_file_path}'
+        file_dict[before_path] = after_path
+    return file_dict
+
+
+def get_mod_paths_for_loose_mods(mod_name: str, base_files_directory: str) -> dict:
+    file_dict = {}
+    file_dict.update(get_mod_files_asset_paths_for_loose_mods(mod_name, base_files_directory))
+    file_dict.update(get_mod_files_tree_paths_for_loose_mods(mod_name, base_files_directory))
+    file_dict.update(get_mod_files_persistent_paths_for_loose_mods(mod_name, base_files_directory))
+    file_dict.update(get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name, base_files_directory))
+
+    return file_dict
 
 
 def make_loose_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
-    # get files from saved coooked
-    # get files from persistent
-    # get files from specified dirs and assets in manually specified list
-    # move them all into  the base files folder within a content folder
-    # zip into the output directory
-    print('placeholder')
+    import shutil
+    mod_name = singular_mod_info['mod_name']
+    mod_files = get_mod_paths_for_loose_mods(mod_name, base_files_directory)
+    dict_keys = mod_files.keys()
+    for key in dict_keys:
+        before_file = key
+        after_file = mod_files[key]
+        os.makedirs(os.path.dirname(after_file), exist_ok=True)
+        if os.path.exists(before_file):
+            if os.path.islink(after_file):
+                os.unlink(after_file)
+            if os.path.isfile(after_file):
+                os.remove(after_file)
+        if os.path.isfile(before_file):
+            shutil.copy(before_file, after_file)
+    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')
 
 
 def create_mod_release(settings_json: str, mod_name: str, base_files_directory: str, output_directory: str):

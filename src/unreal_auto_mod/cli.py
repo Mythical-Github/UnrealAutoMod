@@ -280,7 +280,7 @@ def cli_logic():
             
         elif args.command == 'create_mod_releases_all':
             command_function_map[args.command](
-                args.output_directory,
+                args.settings_json,
                 args.base_files_directory,
                 args.output_directory
                 )

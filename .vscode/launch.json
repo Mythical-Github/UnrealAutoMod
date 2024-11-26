@@ -282,7 +282,7 @@
                 "MapKit",
                 "ExampleLevel",
                 "--base_files_directory",
-                "${workspaceFolder}/assets/base/mod_packaging/releases",
+                "${workspaceFolder}/assets/base/default/mod_packaging/releases",
                 "--output_directory",
                 "${workspaceFolder}/dist"
             ]
@@ -296,7 +296,7 @@
                 "create_mod_releases_all",
                 "${workspaceFolder}/assets/base/default/settings.json",
                 "--base_files_directory",
-                "${workspaceFolder}/assets/base/mod_packaging/releases",
+                "${workspaceFolder}/assets/base/default/mod_packaging/releases",
                 "--output_directory",
                 "${workspaceFolder}/dist"
             ]

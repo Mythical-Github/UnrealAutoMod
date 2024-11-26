@@ -17,3 +17,6 @@ assets/build_scripts/__main__.spec
 assets/base/unreal_auto_mod.exe
 /src/logs
 assets/base/unreal_auto_mod_background.exe
+/assets/base/default/mod_packaging/releases/ExampleLevel/mod_files
+/assets/base/default/mod_packaging/releases/MapKit/mod_files
+/assets/base/default/mod_packaging/releases/ModLoader_P/mod_files

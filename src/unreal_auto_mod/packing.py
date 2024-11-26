@@ -190,8 +190,6 @@ def install_loose_mod(mod_name: str):
             os.symlink(before_file, after_file)
 
 
-
-
 def install_engine_mod(mod_name: str):
     mod_files = []
     info = utilities.get_mods_info_dict(mod_name)
@@ -214,7 +212,6 @@ def install_engine_mod(mod_name: str):
             if os.path.isfile(after_file):
                 os.remove(after_file)
             os.symlink(before_file, after_file)
-            # shutil.copy2(before_file, after_file)
 
 
 def make_pak_repak(mod_name: str):

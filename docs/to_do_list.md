@@ -8,12 +8,9 @@ Kismet Analyzer Installer
 Repak Installer
 
 
-CLI commands to add:
-- [ ] create_mod_releases // dummied already -
-- [ ] create_mod_releases_all // dummied already -
-
-
 ## To Do:
+- [ ] make a list of things to test for, so no need to worry about 1 change breaking any features
+- [ ] unit/project tests
 - [ ] Close game hotkey
 - [ ] Run script again hotkey
 - [ ] Bring Unreal Engine to front hotkey
@@ -27,7 +24,6 @@ CLI commands to add:
 - [ ] if people mess up in editor their setup for chunking, end no pak chunk num pak is genned, error occurs, account for this
 - [ ] multithreaded/processing command queues
 - [ ] cli help replies and such are not colorized like the rest of the program
-- [ ] unit/project tests
 - [ ] rethink toggle engine logic
 - [ ] validate settings json, json values, and input values better
 - [ ] more error handling and print outs

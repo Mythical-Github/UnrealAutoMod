@@ -1,8 +1,8 @@
 import threading
 import time
 
-from unreal_auto_mod import gen_py_utils as general_utils, win_man
-from unreal_auto_mod import hook_states, utilities
+from unreal_auto_mod import gen_py_utils as general_utils
+from unreal_auto_mod import hook_states, utilities, win_man
 from unreal_auto_mod import log as log
 from unreal_auto_mod.enums import HookStateType
 

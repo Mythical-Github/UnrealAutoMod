@@ -59,14 +59,14 @@ class HookStateType(Enum):
     POST_CHANGES_UPLOAD = 'post_changes_upload'
     PRE_BUILD_UPROJECT = 'pre_uproject_build'
     POST_BUILD_UPROJECT = 'post_uproject_build'
-    PRE_CREATE_MOD_RELEASE = 'pre_create_mod_release'
-    POST_CREATE_MOD_RELEASE = 'post_create_mod_release'
-    PRE_CREATE_MOD_RELEASES = 'pre_create_mod_releases'
-    POST_CREATE_MOD_RELEASES = 'post_create_mod_releases'
-    PRE_CREATE_MOD = 'pre_create_mod'
-    POST_CREATE_MOD = 'post_create_mod'
-    PRE_CREATE_MODS = 'pre_create_mods'
-    POST_CREATE_MODS = 'post_create_mods'
+    PRE_GENERATE_MOD_RELEASE = 'pre_generate_mod_release'
+    POST_GENERATE_MOD_RELEASE = 'post_generate_mod_release'
+    PRE_GENERATE_MOD_RELEASES = 'pre_generate_mod_releases'
+    POST_GENERATE_MOD_RELEASES = 'post_generate_mod_releases'
+    PRE_GENERATE_MOD = 'pre_generate_mod'
+    POST_GENERATE_MOD = 'post_generate_mod'
+    PRE_GENERATE_MODS = 'pre_generate_mods'
+    POST_GENERATE_MODS = 'post_generate_mods'
 
 
 

@@ -50,14 +50,13 @@
     "override_automatic_launcher_exe_finding": false,
     "game_launcher_exe": null,
     "game_id": null,
-    "skip_launching_game": true,
     "override_automatic_window_title_finding": true,
-    "window_title_override_string": "Zedfest",
+    "window_title_override": "Zedfest",
     "launch_params": [
       "-fileopenlog", 
       "-NOSPLASH"]
   },
-  "alt_uproject_name_in_game_dir": { "use_alt_method": false, "name": null },
+  "packaging_uproject_name": { "use_override": false, "name": null },
   "repak_info": {
     "override_default_repak_path": false,
     "repak_path_override": null,

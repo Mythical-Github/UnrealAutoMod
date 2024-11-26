@@ -1,9 +1,7 @@
-from unreal_auto_mod import win_man
-from unreal_auto_mod import main_logic, utilities
-from unreal_auto_mod.enums import WindowAction
-from unreal_auto_mod import win_man as windows
-from unreal_auto_mod.enums import ExecutionMode, HookStateType, get_enum_from_val
 from unreal_auto_mod import log as log
+from unreal_auto_mod import main_logic, utilities, win_man
+from unreal_auto_mod import win_man as windows
+from unreal_auto_mod.enums import ExecutionMode, HookStateType, WindowAction, get_enum_from_val
 
 hook_state = None
 

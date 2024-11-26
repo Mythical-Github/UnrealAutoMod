@@ -33,7 +33,7 @@ def install_kismet_analyzer(output_directory: str):
     download_kismet_analyzer(get_working_dir())
     zip_path = f'{get_working_dir()}/kismet-analyzer-3d06645-win-x64.zip'
     general_utils.unzip_zip(zip_path, output_directory)
-    shutil.move(f'{output_directory}/kismet-analyzer.exe', f'{output_directory}/kismet-analyzer.exe')
+    shutil.move(f'{output_directory}/kismet-analyzer-3d06645-win-x64/kismet-analyzer.exe', f'{output_directory}/kismet-analyzer.exe')
 
 
 def install_uasset_gui(output_directory: str):
@@ -226,11 +226,11 @@ def get_game_exe_path() -> str:
 
 
 def get_is_using_alt_dir_name() -> bool:
-    return main_logic.settings['alt_uproject_name_in_game_dir']['use_alt_method']
+    return main_logic.settings['packaging_uproject_name']['use_override']
 
 
 def get_alt_packing_dir_name() -> str:
-    return main_logic.settings['alt_uproject_name_in_game_dir']['name']
+    return main_logic.settings['packaging_uproject_name']['name']
 
 
 def get_game_process_name():
@@ -415,10 +415,6 @@ def clean_working_dir():
             log.log_message(f"Error: {e}")
 
 
-def get_skip_launching_game() -> bool:
-    return main_logic.settings['game_info']['skip_launching_game']
-
-
 def get_window_management_events() -> dict:
     return main_logic.settings['window_management_events']
 
@@ -443,8 +439,8 @@ def get_override_automatic_window_title_finding() -> bool:
     return main_logic.settings['game_info']['override_automatic_window_title_finding']
 
 
-def get_window_title_override_string() -> str:
-    return main_logic.settings['game_info']['window_title_override_string']
+def get_window_title_override() -> str:
+    return main_logic.settings['game_info']['window_title_override']
 
 
 def filter_file_paths(paths_dict: dict) -> dict:
@@ -458,7 +454,7 @@ def filter_file_paths(paths_dict: dict) -> dict:
 
 def get_game_window_title() -> str:
     if get_override_automatic_window_title_finding():
-        return get_window_title_override_string()
+        return get_window_title_override()
     else:
         unreal_dev_utils.get_game_process_name(get_game_exe_path())
 

@@ -20,7 +20,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "build",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -30,7 +30,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "cook",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -40,7 +40,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "package",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -50,7 +50,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "cleanup_full",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -60,7 +60,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "cleanup_cooked",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -70,7 +70,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "cleanup_build",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -80,7 +80,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "cleanup_game",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -90,7 +90,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "generate_game_file_list_json",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         // the ones below this work usually, but not when routed through vscode stuff
@@ -103,7 +103,7 @@
         //     "console": "externalTerminal",
         //     "args": [
         //         "upload_changes_to_repo",
-        //         "${workspaceFolder}/assets/base/default/settings.json"
+        //         "${workspaceFolder}/assets/base/presets/default/settings.json"
         //     ]
         // },
         {
@@ -113,7 +113,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "enable_mods",
-                "${workspaceFolder}/assets/base/default/settings.json",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "ExampleLevel"
             ]
         },
@@ -124,7 +124,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "disable_mods",
-                "${workspaceFolder}/assets/base/default/settings.json",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "ModLoader_P",
                 "MapKit",
                 "ExampleLevel"
@@ -137,7 +137,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "add_mod",
-                "${workspaceFolder}/assets/base/default/settings.json",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "TesNewModName",
                 "repak",
                 "~mods"
@@ -150,7 +150,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "remove_mods",
-                "${workspaceFolder}/assets/base/default/settings.json",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "ExampleLevel"
             ]
         },
@@ -161,7 +161,7 @@
         //     "module": "unreal_auto_mod",
         //     "args": [
         //         "open_latest_log",
-        //         "${workspaceFolder}/assets/base/default/settings.json"
+        //         "${workspaceFolder}/assets/base/presets/default/settings.json"
         //     ]
         // },
         {
@@ -171,7 +171,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "resync_dir_with_repo",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -181,7 +181,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "run_game",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -191,7 +191,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "close_game",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -201,7 +201,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "run_engine",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -211,7 +211,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "close_engine",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -221,7 +221,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "test_mods",
-                "${workspaceFolder}/assets/base/default/settings.json",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "ModLoader_P",
                 "MapKit",
                 "ExampleLevel"
@@ -234,30 +234,30 @@
             "module": "unreal_auto_mod",
             "args": [
                 "test_mods_all",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
-            "name": "create_mods",
+            "name": "generate_mods",
             "type": "debugpy",
             "request": "launch",
             "module": "unreal_auto_mod",
             "args": [
-                "create_mods",
-                "${workspaceFolder}/assets/base/default/settings.json",
+                "generate_mods",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "ModLoader_P",
                 "MapKit",
                 "ExampleLevel"
             ]
         },
         {
-            "name": "create_mods_all",
+            "name": "generate_mods_all",
             "type": "debugpy",
             "request": "launch",
             "module": "unreal_auto_mod",
             "args": [
-                "create_mods_all",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "generate_mods_all",
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {
@@ -271,32 +271,32 @@
             ]
         },
         {
-            "name": "create_mod_releases",
+            "name": "generate_mod_releases",
             "type": "debugpy",
             "request": "launch",
             "module": "unreal_auto_mod",
             "args": [
-                "create_mod_releases",
-                "${workspaceFolder}/assets/base/default/settings.json",
+                "generate_mod_releases",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "ModLoader_P",
                 "MapKit",
                 "ExampleLevel",
                 "--base_files_directory",
-                "${workspaceFolder}/assets/base/default/mod_packaging/releases",
+                "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
                 "--output_directory",
                 "${workspaceFolder}/dist"
             ]
         },
         {
-            "name": "create_mod_releases_all",
+            "name": "generate_mod_releases_all",
             "type": "debugpy",
             "request": "launch",
             "module": "unreal_auto_mod",
             "args": [
-                "create_mod_releases_all",
-                "${workspaceFolder}/assets/base/default/settings.json",
+                "generate_mod_releases_all",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "--base_files_directory",
-                "${workspaceFolder}/assets/base/default/mod_packaging/releases",
+                "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
                 "--output_directory",
                 "${workspaceFolder}/dist"
             ]
@@ -308,7 +308,7 @@
             "module": "unreal_auto_mod",
             "args": [
                 "resave_packages_and_fix_up_redirectors",
-                "${workspaceFolder}/assets/base/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json"
             ]
         },
         {

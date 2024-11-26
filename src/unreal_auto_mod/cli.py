@@ -117,23 +117,23 @@ def cli_logic():
     test_mods_all_parser = sub_parser.add_parser('test_mods_all', help='Run tests for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     test_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    create_mods_parser = sub_parser.add_parser('create_mods', help='Creates mods for the specified mod names', formatter_class=RichHelpFormatter)
-    create_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
-    create_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+    generate_mods_parser = sub_parser.add_parser('generate_mods', help='Generates mods for the specified mod names', formatter_class=RichHelpFormatter)
+    generate_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    generate_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
 
-    create_mods_all_parser = sub_parser.add_parser('create_mods_all', help='Creates mods for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
-    create_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    generate_mods_all_parser = sub_parser.add_parser('generate_mods_all', help='Generates mods for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
+    generate_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    create_mod_releases_parser = sub_parser.add_parser('create_mod_releases', help='Create one or more mod releases', formatter_class=RichHelpFormatter)
-    create_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')
-    create_mod_releases_parser.add_argument('mod_names', nargs='+', help='List of mod names')
-    create_mod_releases_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
-    create_mod_releases_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
+    generate_mod_releases_parser = sub_parser.add_parser('generate_mod_releases', help='Generate one or more mod releases', formatter_class=RichHelpFormatter)
+    generate_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    generate_mod_releases_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+    generate_mod_releases_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
+    generate_mod_releases_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
 
-    create_mod_releases_all_parser = sub_parser.add_parser('create_mod_releases_all', help='Creates mod releases for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
-    create_mod_releases_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
-    create_mod_releases_all_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
-    create_mod_releases_all_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
+    generate_mod_releases_all_parser = sub_parser.add_parser('generate_mod_releases_all', help='Generate mod releases for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
+    generate_mod_releases_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    generate_mod_releases_all_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
+    generate_mod_releases_all_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
 
     generate_uproject_parser = sub_parser.add_parser('generate_uproject', help='Generates a uproject file at the specified location, using the given information', formatter_class=RichHelpFormatter)
     generate_uproject_parser.add_argument('project_file', help='Path to generate the project file at')
@@ -196,10 +196,10 @@ def cli_logic():
         'close_engine': main_logic.close_engine,
         'test_mods': main_logic.test_mods,
         'test_mods_all': main_logic.test_mods_all,
-        'create_mods': main_logic.create_mods,
-        'create_mods_all': main_logic.create_mods_all,
-        'create_mod_releases': main_logic.create_mod_releases,
-        'create_mod_releases_all': main_logic.create_mod_releases_all,
+        'generate_mods': main_logic.generate_mods,
+        'generate_mods_all': main_logic.generate_mods_all,
+        'generate_mod_releases': main_logic.generate_mod_releases,
+        'generate_mod_releases_all': main_logic.generate_mod_releases_all,
         'generate_uproject': main_logic.generate_uproject,
         'resave_packages_and_fix_up_redirectors': main_logic.resave_packages_and_fix_up_redirectors,
         'install_fmodel': main_logic.install_fmodel,
@@ -239,7 +239,7 @@ def cli_logic():
             'resave_packages_and_fix_up_redirectors',
             'resync_dir_with_repo',
             'test_mods_all',
-            'create_mods_all'
+            'generate_mods_all'
         ]
         if args.command in settings_json_commands:
             command_function_map[args.command](args.settings_json)
@@ -247,11 +247,7 @@ def cli_logic():
         elif args.command in installer_commands:
             command_function_map[args.command](args.output_directory, args.run_after_install)
 
-        elif args.command == 'enable_mods' or args.command == 'disable_mods':
-            command_function_map[args.command](args.settings_json, args.mod_names)
-        elif args.command == 'remove_mods' or args.command == 'test_mods':
-            command_function_map[args.command](args.settings_json, args.mod_names)
-        elif args.command == 'create_mods':
+        elif args.command == 'enable_mods' or args.command == 'disable_mods' or (args.command == 'remove_mods' or args.command == 'test_mods') or args.command == 'generate_mods':
             command_function_map[args.command](args.settings_json, args.mod_names)
 
         elif args.command == 'add_mod':
@@ -270,21 +266,21 @@ def cli_logic():
                 args.tree_paths
             )
 
-        elif args.command == 'create_mod_releases':
+        elif args.command == 'generate_mod_releases':
             command_function_map[args.command](
                 args.settings_json,
                 args.mod_names,
                 args.base_files_directory,
                 args.output_directory
                 )
-            
-        elif args.command == 'create_mod_releases_all':
+
+        elif args.command == 'generate_mod_releases_all':
             command_function_map[args.command](
                 args.settings_json,
                 args.base_files_directory,
                 args.output_directory
                 )
-            
+
         elif args.command == 'generate_uproject':
             command_function_map[args.command](
                 args.project_file,

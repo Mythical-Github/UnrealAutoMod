@@ -93,9 +93,8 @@ def init_checks():
         check_file_exists(utilities.get_repak_path_override())
         log.log_message('Check: Repak exists')
 
-    if not utilities.get_skip_launching_game():
-        check_file_exists(utilities.get_game_exe_path())
-        log.log_message('Check: Game exists')
+    check_file_exists(utilities.get_game_exe_path())
+    log.log_message('Check: Game exists')
 
     log.log_message('Check: Passed all init checks')
 
@@ -137,7 +136,7 @@ def test_mods(settings_json: str, input_mod_names: str):
     global mod_names
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
-    mods.create_mods()
+    mods.generate_mods()
 
 
 def test_mods_all(settings_json: str):
@@ -145,7 +144,7 @@ def test_mods_all(settings_json: str):
     global mod_names
     for entry in settings['mods_info']:
         mod_names.append(entry['mod_name'])
-    mods.create_mods()
+    mods.generate_mods()
 
 
 def install_stove(output_directory: str, run_after_install: bool):
@@ -492,7 +491,7 @@ def get_solo_package_command() -> str:
 def package(settings_json: str):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
-    from unreal_auto_mod.packing import generate_mods, populate_queue
+    from unreal_auto_mod.packing import generate_mods
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for entry in get_mods_info_from_json():
@@ -599,10 +598,10 @@ def generate_game_file_list_json(settings_json: str):
     generate_file_paths_json(game_directory, file_list_json)
 
 
-def create_mods(settings_json: str, input_mod_names: str):
+def generate_mods(settings_json: str, input_mod_names: str):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
-    from unreal_auto_mod.packing import generate_mods, populate_queue
+    from unreal_auto_mod.packing import generate_mods
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for mod_name in input_mod_names:
@@ -612,10 +611,10 @@ def create_mods(settings_json: str, input_mod_names: str):
     generate_mods()
 
 
-def create_mods_all(settings_json: str):
+def generate_mods_all(settings_json: str):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
-    from unreal_auto_mod.packing import generate_mods, populate_queue
+    from unreal_auto_mod.packing import generate_mods
     from unreal_auto_mod.utilities import get_mods_info_from_json
 
     for entry in get_mods_info_from_json():
@@ -643,6 +642,7 @@ def zip_directory_tree(input_dir, output_dir, zip_name="archive.zip"):
 
 def make_unreal_pak_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
     import shutil
+
     from unreal_auto_mod import utilities
     mod_name = singular_mod_info['mod_name']
     before_pak_file = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.pak'
@@ -652,11 +652,12 @@ def make_unreal_pak_mod_release(singular_mod_info: dict, base_files_directory: s
     print(os.path.dirname(final_pak_file))
     os.makedirs(os.path.dirname(final_pak_file), exist_ok=True)
     shutil.copyfile(before_pak_file, final_pak_file)
-    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')      
+    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')
 
 
 def make_repak_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
     import shutil
+
     from unreal_auto_mod import utilities
     mod_name = singular_mod_info['mod_name']
     before_pak_file = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.pak'
@@ -666,11 +667,12 @@ def make_repak_mod_release(singular_mod_info: dict, base_files_directory: str, o
     print(os.path.dirname(final_pak_file))
     os.makedirs(os.path.dirname(final_pak_file), exist_ok=True)
     shutil.copyfile(before_pak_file, final_pak_file)
-    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')    
+    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')
 
 
 def make_engine_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
     import shutil
+
     from unreal_auto_mod import ue_dev_py_utils, utilities
     mod_name = singular_mod_info['mod_name']
     uproject_file = utilities.get_uproject_file()
@@ -692,11 +694,11 @@ def make_engine_mod_release(singular_mod_info: dict, base_files_directory: str, 
                 os.remove(after_file)
             os.makedirs(os.path.dirname(after_file), exist_ok=True)
             shutil.copyfile(before_file, after_file)
-    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip') 
+    zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')
 
 
 def get_mod_files_asset_paths_for_loose_mods(mod_name: str, base_files_directory: str) -> dict:
-    from unreal_auto_mod import ue_dev_py_utils, utilities, gen_py_utils, packing
+    from unreal_auto_mod import gen_py_utils, packing, ue_dev_py_utils, utilities
     file_dict = {}
     cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
     mod_info = packing.get_mod_pak_entry(mod_name)
@@ -710,7 +712,7 @@ def get_mod_files_asset_paths_for_loose_mods(mod_name: str, base_files_directory
 
 
 def get_mod_files_tree_paths_for_loose_mods(mod_name: str, base_files_directory: str) -> dict:
-    from unreal_auto_mod import ue_dev_py_utils, utilities, gen_py_utils, packing
+    from unreal_auto_mod import gen_py_utils, packing, ue_dev_py_utils, utilities
     file_dict = {}
     cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
     mod_info = packing.get_mod_pak_entry(mod_name)
@@ -742,10 +744,10 @@ def get_mod_files_persistent_paths_for_loose_mods(mod_name: str, base_files_dire
 
 
 def get_mod_files_mod_name_dir_paths_for_loose_mods(mod_name: str, base_files_directory: str) -> dict:
-    from unreal_auto_mod import ue_dev_py_utils, utilities, gen_py_utils
+    from unreal_auto_mod import gen_py_utils, ue_dev_py_utils, utilities
     file_dict = {}
     cooked_game_name_mod_dir = f'{ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())}/Content/{utilities.get_unreal_mod_tree_type_str(mod_name)}/{utilities.get_mod_name_dir_name(mod_name)}'
-    
+
     for file in gen_py_utils.get_files_in_tree(cooked_game_name_mod_dir):
         relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)
         before_path = os.path.abspath(file)
@@ -783,7 +785,7 @@ def make_loose_mod_release(singular_mod_info: dict, base_files_directory: str, o
     zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')
 
 
-def create_mod_release(settings_json: str, mod_name: str, base_files_directory: str, output_directory: str):
+def generate_mod_release(settings_json: str, mod_name: str, base_files_directory: str, output_directory: str):
     load_settings(settings_json)
     from unreal_auto_mod.utilities import get_mods_info_from_json
     singular_mod_info = next((mod_info for mod_info in get_mods_info_from_json() if mod_info['mod_name'] == mod_name), '')
@@ -797,17 +799,17 @@ def create_mod_release(settings_json: str, mod_name: str, base_files_directory: 
         make_loose_mod_release(singular_mod_info, base_files_directory, output_directory)
 
 
-def create_mod_releases(settings_json: str, mod_names: str, base_files_directory: str, output_directory: str):
+def generate_mod_releases(settings_json: str, mod_names: str, base_files_directory: str, output_directory: str):
     load_settings(settings_json)
     for mod_name in mod_names:
-        create_mod_release(settings_json, mod_name, base_files_directory, output_directory)
+        generate_mod_release(settings_json, mod_name, base_files_directory, output_directory)
 
 
-def create_mod_releases_all(settings_json: str, base_files_directory: str, output_directory: str):
+def generate_mod_releases_all(settings_json: str, base_files_directory: str, output_directory: str):
     load_settings(settings_json)
     from unreal_auto_mod.utilities import get_mods_info_from_json
     for entry in get_mods_info_from_json():
-        create_mod_release(settings_json, entry['mod_name'], base_files_directory, output_directory)
+        generate_mod_release(settings_json, entry['mod_name'], base_files_directory, output_directory)
 
 
 def resync_dir_with_repo(settings_json: str):
@@ -926,7 +928,7 @@ def generate_file_paths_json(dir_path, output_json):
 
 def delete_unlisted_files(dir_path, json_file):
     try:
-        with open(json_file, "r") as file:
+        with open(json_file) as file:
             allowed_files = set(json.load(file))
 
         for root, _, files in os.walk(dir_path):

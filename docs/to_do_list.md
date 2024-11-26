@@ -1,14 +1,16 @@
 # UnrealAutoMod To-Do List
 
 
-## Current To Do: 
-
-Things to fix:
-Kismet Analyzer Installer
-Repak Installer
+## Current To Do:
+- [ ] finish new user scripts
 
 
 ## To Do:
+- [ ] full run command
+- [ ] change_uproject_name
+- [ ] switch_uproject_engine_version, json ue, ue versions in ue, ueproject
+- [ ] generic file list/cleanup tree commands
+- [ ] diff game and file list, and backup diff, so later on can cleanup game list and restore from backup
 - [ ] make a list of things to test for, so no need to worry about 1 change breaking any features
 - [ ] unit/project tests
 - [ ] Close game hotkey
@@ -32,22 +34,12 @@ Repak Installer
 
 
 ## Commands:
-- [ ] change_uproject_name
-- [ ] diff game and file list, and backup diff, so later on can cleanup game list and restore from backup
-- [ ] generic file list/cleanup tree commands
-- [ ] full run command or something, maybe test_mods_all/test_mods alias with slight rework
-- [ ] switch_uproject_engine_version
 - [ ] create plugin command
 - [ ] remove plugin command
 - [ ] enable plugin command
 - [ ] disable plugin command
 - [ ] generate project files for uproject
 - [ ] Mod Conflict Checker
-
-
-## Maybes:
-- [ ] UE4SS Installer
-- [ ] Loose File Loader Installer
 - [ ] unpack/repack game/mods
 - [ ] get game engine version command
 - [ ] list game/mod contents
@@ -61,3 +53,8 @@ Repak Installer
 - [ ] add socials section like discords
 - [ ] documentation github pages styling
 - [ ] update feature list in docs
+
+
+## Maybes:
+- [ ] UE4SS Installer
+- [ ] Loose File Loader Installer

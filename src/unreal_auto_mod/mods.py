@@ -1,17 +1,10 @@
 
 
-def create_mods():
-    from unreal_auto_mod import (
-        engine,
-        game_runner,
-        packing,
-        thread_game_monitor,
-        utilities,
-    )
+def generate_mods():
+    from unreal_auto_mod import engine, game_runner, packing, thread_game_monitor
     engine.toggle_engine_off()
     packing.cooking()
     packing.generate_mods()
-    if not utilities.get_skip_launching_game():
-        game_runner.run_game()
-        thread_game_monitor.game_monitor_thread()
-        engine.toggle_engine_on()
+    game_runner.run_game()
+    thread_game_monitor.game_monitor_thread()
+    engine.toggle_engine_on()

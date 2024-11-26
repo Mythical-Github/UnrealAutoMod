@@ -2,7 +2,9 @@
 
 
 ## Current To Do:
-- [ ] finish new user scripts
+- [ ]  gen mod releases all 
+- [ ]  unreal auto mod updater 
+- [ ]  resync_dir_with_repo
 
 
 ## To Do:

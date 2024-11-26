@@ -513,6 +513,8 @@ def resave_packages_and_fix_up_redirectors(settings_json: str):
 
 
 def cleanup_full(settings_json: str):
+    import shutil
+    from unreal_auto_mod import utilities
     from unreal_auto_mod.enums import ExecutionMode
     from unreal_auto_mod.utilities import get_cleanup_repo_path, run_app
     load_settings(settings_json)
@@ -527,6 +529,14 @@ def cleanup_full(settings_json: str):
     ]
     run_app(exe_path=exe, exec_mode=ExecutionMode.ASYNC, args=args, working_dir=repo_path)
     log_message(f'Cleaned up repo at: "{repo_path}"')
+
+    dist_dir = f'{SCRIPT_DIR}/dist'
+    shutil.rmtree(dist_dir)
+    log_message(f'Cleaned up dist dir at: "{dist_dir}"')
+    
+    working_dir = utilities.get_working_dir()
+    shutil.rmtree(working_dir)
+    log_message(f'Cleaned up working dir at: "{working_dir}"')
 
 
 def cleanup_cooked(settings_json: str):
@@ -816,7 +826,6 @@ def resync_dir_with_repo(settings_json: str):
     load_settings(settings_json)
     from unreal_auto_mod.utilities import get_cleanup_repo_path, run_app
     repo_path = get_cleanup_repo_path()
-    repo_dir = os.path.dirname(repo_path)
     """
     Resyncs a directory tree with its repository by discarding local changes and cleaning untracked files.
     
@@ -838,13 +847,13 @@ def resync_dir_with_repo(settings_json: str):
         '-d',
         '-x'
     ]
-    run_app(exe_path=exe, args=args, working_dir=repo_dir)
+    run_app(exe_path=exe, args=args, working_dir=repo_path)
 
     args = [
         'reset',
         '--hard'
     ]
-    run_app(exe_path=exe, args=args, working_dir=repo_dir)
+    run_app(exe_path=exe, args=args, working_dir=repo_path)
 
     print(f"Successfully resynchronized the repository at '{repo_path}'.")
 

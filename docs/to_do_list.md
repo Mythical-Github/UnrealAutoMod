@@ -3,8 +3,7 @@
 
 ## Current To Do:
 - [ ]  gen mod releases all 
-- [ ]  unreal auto mod updater 
-- [ ]  resync_dir_with_repo
+- [ ]  unreal auto mod updater
 
 
 ## To Do:

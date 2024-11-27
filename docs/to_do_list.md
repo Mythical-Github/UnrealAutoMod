@@ -1,8 +1,11 @@
 # UnrealAutoMod To-Do List
 
 
-## To Do:
+## Current To Do:
 - [ ] full run command
+
+
+## To Do:
 - [ ] change_uproject_name
 - [ ] switch_uproject_engine_version, json ue, ue versions in ue, ueproject
 - [ ] generic file list/cleanup tree commands

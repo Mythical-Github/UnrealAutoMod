@@ -1,11 +1,6 @@
 # UnrealAutoMod To-Do List
 
 
-## Current To Do:
-- [ ]  gen mod releases all 
-- [ ]  unreal auto mod updater
-
-
 ## To Do:
 - [ ] full run command
 - [ ] change_uproject_name

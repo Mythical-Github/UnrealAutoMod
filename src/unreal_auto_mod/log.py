@@ -56,7 +56,7 @@ def is_file_in_use(file_path):
 
 
 def log_message(message: str):
-    color_options = LOG_INFO.get('theme_colors')
+    color_options = LOG_INFO.get('theme_colors', {})
     default_background_color = LOG_INFO.get('background_color')
     default_background_color = f"rgb({default_background_color[0]},{default_background_color[1]},{default_background_color[2]})"
 
@@ -76,6 +76,26 @@ def log_message(message: str):
     log_dir = os.path.join(log_base_dir, 'logs')
     log_path = os.path.join(log_dir, f'{log_prefix}latest.log')
 
-    if os.path.isfile(log_path):
+    if not os.path.isdir(log_dir):
+        os.makedirs(log_dir)
+
+    if not os.path.isfile(log_path):
+        try:
+            with open(log_path, 'w') as log_file:
+                log_file.write("")
+        except IOError as e:
+            error_color = LOG_INFO.get('error_color', (255, 0, 0))
+            error_color = f"rgb({error_color[0]},{error_color[1]},{error_color[2]})"
+            console.print(f"Failed to create log file: {e}", style=f'{error_color} on {default_background_color}')
+            return
+
+    try:
         with open(log_path, 'a') as log_file:
             log_file.write(f"{padded_message}\n")
+    except IOError as e:
+        error_color = LOG_INFO.get('error_color', (255, 0, 0))
+        error_color = f"rgb({error_color[0]},{error_color[1]},{error_color[2]})"
+        console.print(f"Failed to write to log file: {e}", style=f'{error_color} on {default_background_color}')
+
+
+

@@ -66,3 +66,63 @@ Build
 BuildDerivedDataCache
 
 ------------------------------------------------------------------------------------------------
+plugins need uplugin
+plugins need icon file
+
+	{
+	    "FileVersion" : 3,
+	    "Version" : 1,
+	    "VersionName" : "1.0",
+	    "FriendlyName" : "UObject Example Plugin",
+	    "Description" : "An example of a plugin which declares its own UObject type.  This can be used as a starting point when creating your own plugin.",
+	    "Category" : "Examples",
+	    "CreatedBy" : "Epic Games, Inc.",
+	    "CreatedByURL" : "http://epicgames.com",
+	    "DocsURL" : "",
+	    "MarketplaceURL" : "",
+	    "SupportURL" : "",
+	    "EnabledByDefault" : true,
+	    "CanContainContent" : false,
+	    "IsBetaVersion" : false,
+	    "Installed" : false,
+	    "Modules" :
+	    [
+	        {
+	            "Name" : "UObjectPlugin",
+	            "Type" : "Developer",
+	            "LoadingPhase" : "Default"
+	        }
+	    ]
+	}
+
+    The descriptor file is a JSON-formatted list of variables from the FPluginDescriptor type. There is one additional field, "FileVersion", which is the only required field in the structure. "FileVersion" gives the version of the Plugin descriptor file, and should usually set to the highest version that is allowed by the Engine (currently, this is "3"). Because this version applies to the format of the Plugin Descriptor File, and not the Plugin itself, we do not expect that it will change very frequently, and it should not change with subsequent releases of your Plugin. For maximum compatibility with older versions of the Engine, you can use an older version number, but this is not recommended.
+
+    https://dev.epicgames.com/documentation/en-us/unreal-engine/plugins-in-unreal-engine
+
+
+Engine:
+    [Unreal Engine Root Directory]/Engine/Plugins/[Plugin Name]/
+
+Uproject:
+    [Project Root Directory]/Plugins/[Plugin Name]/
+
+"You can also organize Plugins into subdirectories under the base Plugins folder. The engine will scan all of your sub-folders under the base Plugins folder for Plugins to load, but it will never scan subdirectories beneath a Plugin that has already been found."
+
+"Plugins that do not have a Source folder are ignored by the project generator and will not appear in your C++ project files, but they will still be loaded at start-up as long as binary files exist."
+
+"At present, Plugin configuration files are not packaged with projects. This may be supported in the future, but currently requires manually copying the files to the project's Config folder."
+
+
+For Plugins that contain code, the "Modules" field in the descriptor file will contain at least one entry. An example entry follows:
+
+{
+    "Name" : "UObjectPlugin",
+    "Type" : "Developer"
+    "LoadingPhase" : "Default"
+}
+
+Each entry requires the "Name" and "Type" fields. "Name" is the unique name of the Plugin Module that will be loaded with the Plugin. At runtime, the Engine will expect appropriate Plugin binaries to exist in the Plugin's "Binaries" folder with the specified Module name. For Modules that have a Source directory, a matching ".Build.cs" file much exist within the Module's subfolder tree. "Type" sets the type of Module. Valid options are Runtime, RuntimeNoCommandlet, Developer, Editor, EditorNoCommandlet, and Program. This type determines which types of applications can load the Module. For example, some plugins may include modules that should only load when the Editor is running. Runtime modules will be loaded in all cases, even in shipped games. Developer modules will only be loaded in development runtime or Editor builds, but never in shipping builds. Editor modules will only be loaded when the editor is starting up. Your Plugin can use a combination of modules of different types.
+
+Along with the descriptor file, Plugins need an icon to display in the Editor's Plugin Browser. The image should be a 128x128 .png file called "Icon128.png" and kept in the Plugin's "/Resources/" directory.
+
+

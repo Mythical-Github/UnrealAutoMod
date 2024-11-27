@@ -531,11 +531,13 @@ def cleanup_full(settings_json: str):
     log_message(f'Cleaned up repo at: "{repo_path}"')
 
     dist_dir = f'{SCRIPT_DIR}/dist'
-    shutil.rmtree(dist_dir)
+    if os.path.isdir(dist_dir):
+        shutil.rmtree(dist_dir)
     log_message(f'Cleaned up dist dir at: "{dist_dir}"')
     
     working_dir = utilities.get_working_dir()
-    shutil.rmtree(working_dir)
+    if os.path.isdir(working_dir):
+        shutil.rmtree(working_dir)
     log_message(f'Cleaned up working dir at: "{working_dir}"')
 
 

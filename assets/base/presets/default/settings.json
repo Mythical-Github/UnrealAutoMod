@@ -12,10 +12,6 @@
     "unreal_engine_dir": "C:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/ZedfestModdingKit/KevinSpel.uproject",
     "skip_uproject_steps": false,
-    "toggle_engine_during_cooking": false,
-    "toggle_engine_during_building": false,
-    "toggle_engine_during_packaging": false,
-    "toggle_engine_on_game_run": false,
     "engine_launch_args": [],
     "engine_cooking_command": "BuildCookRun",
     "engine_cooking_args": [
@@ -40,7 +36,8 @@
       "-unversionedcookedcontent",
       "-SkipCookingEditorContent",
       "-iterate",
-      "-noP4"
+      "-noP4",
+      "-compressed"
     ],
     "override_automatic_version_finding": false,
     "unreal_engine_major_version": null,
@@ -98,8 +95,8 @@
       "mod_name_dir_type": "Mods",
       "use_mod_name_dir_name_override": true,
       "mod_name_dir_name_override": "ModEntry",
-      "pak_chunk_num": 1,
-      "packing_type": "repak",
+      "pak_chunk_num": 10,
+      "packing_type": "engine",
       "compression_type": "Zlib",
       "is_enabled": true,
       "manually_specified_assets": { "asset_paths": [], "tree_paths": [] }

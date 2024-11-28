@@ -59,8 +59,7 @@ def get_engine_pak_command() -> str:
     from unreal_auto_mod.utilities import get_unreal_engine_packaging_main_command
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat {get_unreal_engine_packaging_main_command()} '
-        f'-project="{utilities.get_uproject_file()}" '
-        f'-compressed'
+        f'-project="{utilities.get_uproject_file()}"'
     )
     if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
         command = f'{command} -build'
@@ -206,6 +205,10 @@ def install_engine_mod(mod_name: str):
             if not os.path.isdir(dir_engine_mod):
                 os.makedirs(dir_engine_mod)
             before_file = f'{file}{suffix}'
+            if not os.path.isfile(before_file):
+                error_message = f'Error: The engine did not generate a pak and/or ucas/utoc for your specified chink id, this indicates an engine, project, or settings.json configuration issue.'
+                log.log_message(error_message)
+                raise FileNotFoundError('The engine did not generate a pak and/or ucas/utoc for your specified chink id, this indicates an engine, project, or settings.json configuration issue.')
             after_file = f'{dir_engine_mod}/{mod_name}.{suffix}'
             if os.path.islink(after_file):
                 os.unlink(after_file)
@@ -277,7 +280,7 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
 
 
 def cooking():
-    if not utilities.get_should_ship_uproject_steps():
+    if not utilities.get_should_skip_uproject_steps():
         hook_states.set_hook_state(HookStateType.PRE_COOKING)
         if PackingType.ENGINE not in install_queue_types:
             cook_uproject()
@@ -362,7 +365,7 @@ def get_game_mod_file_paths(mod_name: str) -> list:
 
 def get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name: str) -> dict:
     file_dict = {}
-    if not utilities.get_should_ship_uproject_steps():
+    if not utilities.get_should_skip_uproject_steps():
         cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
         mod_info = get_mod_pak_entry(mod_name)
         if mod_info['manually_specified_assets']['asset_paths'] is not None:
@@ -377,7 +380,7 @@ def get_mod_file_paths_for_manually_made_pak_mods_asset_paths(mod_name: str) -> 
 
 def get_mod_file_paths_for_manually_made_pak_mods_tree_paths(mod_name: str) -> dict:
     file_dict = {}
-    if not utilities.get_should_ship_uproject_steps():
+    if not utilities.get_should_skip_uproject_steps():
         cooked_uproject_dir = ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())
         mod_info = get_mod_pak_entry(mod_name)
         if mod_info['manually_specified_assets']['tree_paths'] is not None:
@@ -411,7 +414,7 @@ def get_mod_file_paths_for_manually_made_pak_mods_persistent_paths(mod_name: str
 
 def get_mod_file_paths_for_manually_made_pak_mods_mod_name_dir_paths(mod_name: str) -> dict:
     file_dict = {}
-    if not utilities.get_should_ship_uproject_steps():
+    if not utilities.get_should_skip_uproject_steps():
         cooked_game_name_mod_dir = f'{ue_dev_py_utils.get_cooked_uproject_dir(utilities.get_uproject_file(), utilities.get_unreal_engine_dir())}/Content/{utilities.get_unreal_mod_tree_type_str(mod_name)}/{utilities.get_mod_name_dir_name(mod_name)}'
         for file in general_utils.get_files_in_tree(cooked_game_name_mod_dir):
             relative_file_path = os.path.relpath(file, cooked_game_name_mod_dir)

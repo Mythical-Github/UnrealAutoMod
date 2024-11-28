@@ -30,7 +30,9 @@
             "module": "unreal_auto_mod",
             "args": [
                 "cook",
-                "${workspaceFolder}/assets/base/presets/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
+                "--toggle_engine",
+                "true"
             ]
         },
         {

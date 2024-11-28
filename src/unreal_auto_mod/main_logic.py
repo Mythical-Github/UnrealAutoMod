@@ -68,7 +68,7 @@ def unreal_engine_check():
 
     should_do_check = True
 
-    if utilities.get_should_ship_uproject_steps():
+    if utilities.get_should_skip_uproject_steps():
         if not utilities.is_unreal_pak_packing_enum_in_use():
                should_do_check = False
 
@@ -105,7 +105,7 @@ def game_launcher_exe_override_check():
 def init_checks():
     from unreal_auto_mod import log as log
     from unreal_auto_mod import utilities
-    if not utilities.get_should_ship_uproject_steps():
+    if not utilities.get_should_skip_uproject_steps():
         check_file_exists(utilities.get_uproject_file())
         log.log_message('Check: Uproject file exists')
 
@@ -156,20 +156,30 @@ def close_thread_system():
 # all things below this should be functions that correspond to cli logic
 
 
-def test_mods(settings_json: str, input_mod_names: str):
+def test_mods(settings_json: str, input_mod_names: str, toggle_engine: bool):
     load_settings(settings_json)
+    from unreal_auto_mod import engine
+    if toggle_engine:
+        engine.toggle_engine_off()
     global mod_names
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
     mods.generate_mods()
+    if toggle_engine:
+        engine.toggle_engine_on()
 
 
-def test_mods_all(settings_json: str):
+def test_mods_all(settings_json: str, toggle_engine: bool):
     load_settings(settings_json)
+    from unreal_auto_mod import engine
+    if toggle_engine:
+        engine.toggle_engine_off()
     global mod_names
     for entry in settings['mods_info']:
         mod_names.append(entry['mod_name'])
     mods.generate_mods()
+    if toggle_engine:
+        engine.toggle_engine_on()
 
 
 def install_stove(output_directory: str, run_after_install: bool):
@@ -217,11 +227,16 @@ def open_latest_log(settings_json: str):
     gen_utils.open_file_in_default(file_to_open)
 
 
-def run_game(settings_json: str):
+def run_game(settings_json: str, toggle_engine: bool):
     load_settings(settings_json)
+    from unreal_auto_mod import engine
+    if toggle_engine:
+        engine.toggle_engine_off()
     from unreal_auto_mod import game_runner, thread_game_monitor
     game_runner.run_game()
     thread_game_monitor.game_monitor_thread()
+    if toggle_engine:
+        engine.toggle_engine_on()
 
 
 def close_game(settings_json: str):
@@ -280,11 +295,16 @@ def run_proj_build_command(command: str):
     utilities.run_app(exe_path=executable, args=args, working_dir=utilities.get_unreal_engine_dir())
 
 
-def build(settings_json: str):
+def build(settings_json: str, toggle_engine: bool):
     load_settings(settings_json)
+    from unreal_auto_mod import engine
+    if toggle_engine:
+        engine.toggle_engine_off()
     log_message('Project Building Starting')
     run_proj_build_command(get_solo_build_project_command())
     log_message('Project Building Complete')
+    if toggle_engine:
+        engine.toggle_engine_on()
 
 
 def upload_changes_to_repo(settings_json: str):
@@ -485,19 +505,23 @@ def get_solo_cook_project_command() -> str:
     return command
 
 
-def cook(settings_json: str):
-    log_message('Content Cooking Starting')
+def cook(settings_json: str, toggle_engine: bool):
     load_settings(settings_json)
+    from unreal_auto_mod import engine
+    if toggle_engine:
+        engine.toggle_engine_off()
+    log_message('Content Cooking Starting')
     run_proj_build_command(get_solo_cook_project_command())
     log_message('Content Cook Complete')
+    if toggle_engine:
+        engine.toggle_engine_on()
 
 
 def get_solo_package_command() -> str:
     from unreal_auto_mod import ue_dev_py_utils, utilities
     command = (
         f'Engine\\Build\\BatchFiles\\RunUAT.bat {utilities.get_unreal_engine_packaging_main_command()} '
-        f'-project="{utilities.get_uproject_file()}" '
-        f'-compressed'
+        f'-project="{utilities.get_uproject_file()}"'
     )
     # technically it shouldn't auto build itself, since this is not a auto run sequence but used in an explicit command
     # if not ue_dev_py_utils.has_build_target_been_built(utilities.get_uproject_file()):
@@ -513,18 +537,23 @@ def get_solo_package_command() -> str:
     return command
 
 
-def package(settings_json: str):
+def package(settings_json: str, toggle_engine: bool):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
     from unreal_auto_mod.packing import generate_mods
     from unreal_auto_mod.utilities import get_mods_info_from_json
+    from unreal_auto_mod import engine
 
+    if toggle_engine:
+        engine.toggle_engine_off()
     for entry in get_mods_info_from_json():
         mod_names.append(entry['mod_name'])
     log_message('Packaging Starting')
     run_proj_build_command(get_solo_package_command())
     generate_mods()
     log_message('Packaging Complete')
+    if toggle_engine:
+        engine.toggle_engine_on()
 
 
 def resave_packages_and_fix_up_redirectors(settings_json: str):
@@ -656,7 +685,7 @@ def generate_mods_all(settings_json: str):
 
     for entry in get_mods_info_from_json():
         mod_names.append(entry['mod_name'])
-        print(entry['mod_name'])
+        log_message(entry['mod_name'])
     generate_mods()
 
 
@@ -674,7 +703,7 @@ def zip_directory_tree(input_dir, output_dir, zip_name="archive.zip"):
                 arcname = os.path.relpath(file_path, input_dir)
                 zipf.write(file_path, arcname)
 
-    print(f"Directory tree zipped successfully: {zip_path}")
+    log_message(f"Directory tree zipped successfully: {zip_path}")
 
 
 def make_unreal_pak_mod_release(singular_mod_info: dict, base_files_directory: str, output_directory: str):
@@ -686,7 +715,7 @@ def make_unreal_pak_mod_release(singular_mod_info: dict, base_files_directory: s
     final_pak_file = f'{base_files_directory}/{mod_name}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.pak'
     if os.path.isfile(final_pak_file):
         os.remove(final_pak_file)
-    print(os.path.dirname(final_pak_file))
+    log_message(os.path.dirname(final_pak_file))
     os.makedirs(os.path.dirname(final_pak_file), exist_ok=True)
     shutil.copyfile(before_pak_file, final_pak_file)
     zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')
@@ -701,7 +730,7 @@ def make_repak_mod_release(singular_mod_info: dict, base_files_directory: str, o
     final_pak_file = f'{base_files_directory}/{mod_name}/{utilities.get_pak_dir_structure(mod_name)}/{mod_name}.pak'
     if os.path.isfile(final_pak_file):
         os.remove(final_pak_file)
-    print(os.path.dirname(final_pak_file))
+    log_message(os.path.dirname(final_pak_file))
     os.makedirs(os.path.dirname(final_pak_file), exist_ok=True)
     shutil.copyfile(before_pak_file, final_pak_file)
     zip_directory_tree(input_dir=f'{base_files_directory}/{mod_name}', output_dir=output_directory, zip_name=f'{mod_name}.zip')
@@ -882,7 +911,7 @@ def resync_dir_with_repo(settings_json: str):
     ]
     run_app(exe_path=exe, args=args, working_dir=repo_path)
 
-    print(f"Successfully resynchronized the repository at '{repo_path}'.")
+    log_message(f"Successfully resynchronized the repository at '{repo_path}'.")
 
 
 def generate_uproject(
@@ -939,11 +968,11 @@ def save_json_to_file(json_string, file_path):
         with open(file_path, "w") as file:
             json.dump(parsed_json, file, indent=4)
 
-        print(f"JSON data successfully saved to {file_path}")
+        log_message(f"JSON data successfully saved to {file_path}")
     except json.JSONDecodeError as e:
-        print(f"Invalid JSON string: {e}")
+        log_message(f"Invalid JSON string: {e}")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        log_message(f"An error occurred: {e}")
 
 
 def generate_file_paths_json(dir_path, output_json):
@@ -959,7 +988,7 @@ def generate_file_paths_json(dir_path, output_json):
     with open(output_json, "w", encoding="utf-8") as json_file:
         json_file.write(json_string)
 
-    print(f"JSON file with all file paths created at: {output_json}")
+    log_message(f"JSON file with all file paths created at: {output_json}")
 
 
 def delete_unlisted_files(dir_path, json_file):
@@ -972,11 +1001,11 @@ def delete_unlisted_files(dir_path, json_file):
                 full_path = os.path.join(root, file)
                 if full_path not in allowed_files:
                     os.remove(full_path)
-                    print(f"Deleted: {full_path}")
+                    log_message(f"Deleted: {full_path}")
 
-        print("Cleanup complete. All unlisted files have been removed.")
+        log_message("Cleanup complete. All unlisted files have been removed.")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        log_message(f"An error occurred: {e}")
 
 
 

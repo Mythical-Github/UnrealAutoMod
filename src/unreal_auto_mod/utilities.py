@@ -171,7 +171,7 @@ def is_unreal_pak_packing_enum_in_use():
     return is_in_use
 
 
-def get_should_ship_uproject_steps():
+def get_should_skip_uproject_steps():
     return main_logic.settings['engine_info']['skip_uproject_steps']
 
 
@@ -277,7 +277,7 @@ def custom_get_game_paks_dir() -> str:
     alt_game_dir = os.path.dirname(custom_get_game_dir())
     if get_is_using_alt_dir_name():
         return os.path.join(alt_game_dir, get_alt_packing_dir_name, 'Content', 'Paks')
-    elif not get_should_ship_uproject_steps():
+    elif not get_should_skip_uproject_steps():
         return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
     else:
         return f'{os.path.dirname(os.path.dirname(os.path.dirname(get_game_exe_path())))}/Content/Paks'
@@ -287,10 +287,6 @@ def get_unreal_engine_dir() -> str:
     ue_dir = main_logic.settings['engine_info']['unreal_engine_dir']
     general_utils.check_file_exists(ue_dir)
     return ue_dir
-
-
-def is_toggle_engine_during_cooking_in_use() -> bool:
-    return main_logic.settings['engine_info']['toggle_engine_during_cooking']
 
 
 def get_uproject_file() -> str:
@@ -512,5 +508,4 @@ def get_unreal_engine_packaging_main_command() -> str:
 
 
 def get_git_info_repo_path() -> str:
-    print('test')
     return main_logic.settings['git_info']['repo_path']

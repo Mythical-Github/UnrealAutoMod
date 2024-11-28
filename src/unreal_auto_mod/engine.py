@@ -23,10 +23,8 @@ def close_game_engine():
 
 
 def toggle_engine_off():
-    if utilities.is_toggle_engine_during_cooking_in_use():
-        close_game_engine()
+    close_game_engine()
 
 
 def toggle_engine_on():
-    if utilities.is_toggle_engine_during_cooking_in_use():
-        open_game_engine()
+    open_game_engine()

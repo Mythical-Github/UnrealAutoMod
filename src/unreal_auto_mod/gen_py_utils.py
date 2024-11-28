@@ -23,9 +23,10 @@ def download_file(url: str, download_path: str):
 
 
 def open_dir_in_file_browser(input_directory: str):
+    from unreal_auto_mod.log import log_message
     formatted_directory = os.path.abspath(input_directory)
     if not os.path.isdir(formatted_directory):
-        print(f"Error: The directory '{formatted_directory}' does not exist.")
+        log_message(f"Error: The directory '{formatted_directory}' does not exist.")
         return
     os.startfile(formatted_directory)
 

@@ -33,12 +33,15 @@ def cli_logic():
 
     build_parser = sub_parser.add_parser('build', help='Builds the uproject specified within the settings JSON', formatter_class=RichHelpFormatter)
     build_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    build_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
 
     cook_parser = sub_parser.add_parser('cook', help='Cooks content for the uproject specified within the settings JSON', formatter_class=RichHelpFormatter)
     cook_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    cook_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
 
     package_parser = sub_parser.add_parser('package', help='package content for the uproject specified within the settings JSON', formatter_class=RichHelpFormatter)
     package_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    package_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
 
     cleanup_full_parser = sub_parser.add_parser('cleanup_full', help='Cleans up the github repo specified within the settings JSON', formatter_class=RichHelpFormatter)
     cleanup_full_parser.add_argument('settings_json', help='Path to the settings JSON file')
@@ -100,6 +103,7 @@ def cli_logic():
 
     run_game_parser = sub_parser.add_parser('run_game', help='Run the game', formatter_class=RichHelpFormatter)
     run_game_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    run_game_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
 
     close_game_parser = sub_parser.add_parser('close_game', help='Close the game', formatter_class=RichHelpFormatter)
     close_game_parser.add_argument('settings_json', help='Path to the settings JSON file')
@@ -113,9 +117,11 @@ def cli_logic():
     test_mods_parser = sub_parser.add_parser('test_mods', help='Run tests for specific mods', formatter_class=RichHelpFormatter)
     test_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
     test_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+    test_mods_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
 
     test_mods_all_parser = sub_parser.add_parser('test_mods_all', help='Run tests for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     test_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    test_mods_all_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
 
     generate_mods_parser = sub_parser.add_parser('generate_mods', help='Generates mods for the specified mod names', formatter_class=RichHelpFormatter)
     generate_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
@@ -225,27 +231,32 @@ def cli_logic():
             'install_spaghetti'
         ]
         settings_json_commands = [
-            'build',
-            'cook',
             'cleanup_full',
             'cleanup_cooked',
             'cleanup_build',
             'cleanup_game',
             'generate_game_file_list_json',
-            'package',
             'run_engine',
             'close_engine',
             'upload_changes_to_repo',
             'open_latest_log',
-            'run_game',
             'close_game',
             'resave_packages_and_fix_up_redirectors',
             'resync_dir_with_repo',
-            'test_mods_all',
             'generate_mods_all'
+        ]
+        settings_and_toggle_commands = [
+            'build',
+            'cook',
+            'package',
+            'run_game',
+            'test_mods_all',
         ]
         if args.command in settings_json_commands:
             command_function_map[args.command](args.settings_json)
+
+        elif args.command in settings_and_toggle_commands:
+            command_function_map[args.command](args.settings_json, args.toggle_engine)
 
         elif args.command == 'close_programs':
             command_function_map[args.command](args.exe_names)
@@ -253,8 +264,11 @@ def cli_logic():
         elif args.command in installer_commands:
             command_function_map[args.command](args.output_directory, args.run_after_install)
 
-        elif args.command == 'enable_mods' or args.command == 'disable_mods' or (args.command == 'remove_mods' or args.command == 'test_mods') or args.command == 'generate_mods':
+        elif args.command == 'enable_mods' or args.command == 'disable_mods' or args.command == 'remove_mods' or args.command == 'generate_mods':
             command_function_map[args.command](args.settings_json, args.mod_names)
+
+        elif args.command == 'test_mods':
+            command_function_map[args.command](args.settings_json, args.mod_names, args.toggle_engine)
 
         elif args.command == 'add_mod':
             command_function_map[args.command](
@@ -298,7 +312,7 @@ def cli_logic():
                 args.ignore_safety_checks
                 )
     else:
-        print(f'Unknown command: {args.command}')
+        log.log_message(f'Unknown command: {args.command}')
         parser.print_help()
 
     main_logic.close_thread_system()

@@ -12,10 +12,6 @@
     "unreal_engine_dir": "C:/unreal_engine_installs/UE_4.22",
     "unreal_project_file": "C:/Users/Mythical/Documents/Github/ZedfestModdingKit/KevinSpel.uproject",
     "skip_uproject_steps": false,
-    "toggle_engine_during_cooking": false,
-    "toggle_engine_during_building": false,
-    "toggle_engine_during_packaging": false,
-    "toggle_engine_on_game_run": false,
     "engine_launch_args": [],
     "engine_cooking_command": "BuildCookRun",
     "engine_cooking_args": [

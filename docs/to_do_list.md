@@ -2,6 +2,7 @@
 
 
 ## Current To Do:
+- [ ] sometimes things need a delay or double run for subsequent runs recently all of a sudden fix this
 - [ ] full run command
 - [ ] sometimes people will not have internet, account for this, example, with repak installer
 - [ ] more robust create uproject options
@@ -11,13 +12,11 @@
 - [ ] disable plugin command
 - [ ] edit uproject, json, and uplugin commands
 - [ ] generic file list/cleanup tree commands
-- [ ] if people mess up in editor their setup for chunking, end no pak chunk num pak is genned, error occurs, account for this
-- [ ] rethink toggle engine logic
 - [ ] generate uproject from win 64 exe
- 
 
 
 ## To Do:
+- [ ] deal with skip_uproject_steps
 - [ ] diff game and file list, and backup diff, so later on can cleanup game list and restore from backup
 - [ ] make a list of things to test for, so no need to worry about 1 change breaking any features
 - [ ] unit/project tests
@@ -44,6 +43,7 @@
 - [ ] add socials section like discords
 - [ ] documentation github pages styling
 - [ ] update feature list in docs
+- [ ] make a list of tested games that work
 
 
 ## Maybes:

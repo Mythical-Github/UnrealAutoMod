@@ -80,6 +80,28 @@ def unreal_engine_check():
         log.log_message('Check: Unreal Engine exists')
 
 
+def game_exe_check():
+    from unreal_auto_mod import utilities
+    check_file_exists(utilities.get_game_exe_path())
+
+
+def git_info_check():
+    from unreal_auto_mod.utilities import get_git_info_repo_path
+
+    git_repo_path = get_git_info_repo_path()
+    if git_repo_path == None or git_repo_path == '':
+        return
+
+    check_file_exists(git_repo_path)
+
+
+
+def game_launcher_exe_override_check():
+    from unreal_auto_mod import utilities
+    if utilities.get_override_automatic_launcher_exe_finding():
+        check_file_exists(utilities.get_game_launcher_exe_path())
+
+
 def init_checks():
     from unreal_auto_mod import log as log
     from unreal_auto_mod import utilities
@@ -88,6 +110,9 @@ def init_checks():
         log.log_message('Check: Uproject file exists')
 
     unreal_engine_check()
+    game_launcher_exe_override_check()
+    git_info_check()
+    game_exe_check()
 
     if utilities.get_is_using_repak_path_override():
         check_file_exists(utilities.get_repak_path_override())
@@ -953,3 +978,28 @@ def delete_unlisted_files(dir_path, json_file):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+
+
+
+
+def close_programs(exe_names: list[str]):
+    import psutil
+
+    results = {}
+
+    for exe_name in exe_names:
+        found = False
+        for proc in psutil.process_iter(['pid', 'name']):
+            try:
+                if proc.info['name'] and proc.info['name'].lower() == exe_name.lower():
+                    proc.terminate()
+                    proc.wait(timeout=5)
+                    found = True
+                    results[exe_name] = "Closed"
+                    break
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.TimeoutExpired):
+                pass
+        if not found:
+            results[exe_name] = "Not Found"
+    
+    return results

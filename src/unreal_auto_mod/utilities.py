@@ -509,3 +509,8 @@ def get_unreal_engine_cooking_main_command() -> str:
 
 def get_unreal_engine_packaging_main_command() -> str:
     return main_logic.settings['engine_info']['engine_packaging_command']
+
+
+def get_git_info_repo_path() -> str:
+    print('test')
+    return main_logic.settings['git_info']['repo_path']

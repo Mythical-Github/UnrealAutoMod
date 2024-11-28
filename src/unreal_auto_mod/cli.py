@@ -171,6 +171,8 @@ def cli_logic():
     install_kismet_analyzer_parser.add_argument('output_directory', help='Path to the output directory')
     install_kismet_analyzer_parser.add_argument('--run_after_install', help='Should the installed program be ran after installation', default=False)
 
+    close_programs_parser = sub_parser.add_parser('close_programs', help='Closes all programs with the exe names provided', formatter_class=RichHelpFormatter)
+    close_programs_parser.add_argument('exe_names', nargs='+', help='List of exe names')
 
     args = parser.parse_args()
 
@@ -207,7 +209,8 @@ def cli_logic():
         'install_stove': main_logic.install_stove,
         'install_spaghetti': main_logic.install_spaghetti,
         'install_uasset_gui': main_logic.install_uasset_gui,
-        'install_kismet_analyzer': main_logic.install_kismet_analyzer
+        'install_kismet_analyzer': main_logic.install_kismet_analyzer,
+        'close_programs': main_logic.close_programs
     }
 
     main_logic.init_thread_system()
@@ -243,6 +246,9 @@ def cli_logic():
         ]
         if args.command in settings_json_commands:
             command_function_map[args.command](args.settings_json)
+
+        elif args.command == 'close_programs':
+            command_function_map[args.command](args.exe_names)
 
         elif args.command in installer_commands:
             command_function_map[args.command](args.output_directory, args.run_after_install)

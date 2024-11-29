@@ -34,8 +34,9 @@ def rename_latest_log(log_dir):
             new_name = f'{log_prefix}{timestamp}.log'
             new_log_path = os.path.join(log_dir, new_name)
 
+            # Ensure the new log file name is unique
             counter = 1
-            while os.path.isfile(new_log_path) or is_file_in_use(latest_log_path):
+            while os.path.isfile(new_log_path):
                 new_name = f'{log_prefix}{timestamp}_({counter}).log'
                 new_log_path = os.path.join(log_dir, new_name)
                 counter += 1
@@ -45,14 +46,6 @@ def rename_latest_log(log_dir):
         except PermissionError as e:
             log_message(f"Error renaming log file: {e}")
             return
-
-
-def is_file_in_use(file_path):
-    try:
-        with open(file_path, 'a'):
-            return False
-    except OSError:
-        return True
 
 
 def log_message(message: str):
@@ -96,6 +89,3 @@ def log_message(message: str):
         error_color = LOG_INFO.get('error_color', (255, 0, 0))
         error_color = f"rgb({error_color[0]},{error_color[1]},{error_color[2]})"
         console.print(f"Failed to write to log file: {e}", style=f'{error_color} on {default_background_color}')
-
-
-

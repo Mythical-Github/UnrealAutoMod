@@ -280,6 +280,7 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
 
 
 def cooking():
+    populate_queue()
     if not utilities.get_should_skip_uproject_steps():
         hook_states.set_hook_state(HookStateType.PRE_COOKING)
         if PackingType.ENGINE not in install_queue_types:

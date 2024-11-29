@@ -2,7 +2,6 @@
 
 
 ## Current To Do:
-- [ ] sometimes things need a delay or double run for subsequent runs recently all of a sudden fix this
 - [ ] full run command
 - [ ] sometimes people will not have internet, account for this, example, with repak installer
 - [ ] more robust create uproject options
@@ -12,11 +11,10 @@
 - [ ] disable plugin command
 - [ ] edit uproject, json, and uplugin commands
 - [ ] generic file list/cleanup tree commands
-- [ ] generate uproject from win 64 exe
+- [ ] deal with skip_uproject_steps
 
 
 ## To Do:
-- [ ] deal with skip_uproject_steps
 - [ ] diff game and file list, and backup diff, so later on can cleanup game list and restore from backup
 - [ ] make a list of things to test for, so no need to worry about 1 change breaking any features
 - [ ] unit/project tests
@@ -33,6 +31,7 @@
 - [ ] more error handling and print outs
 - [ ] clean up hook states and add any missing states
 - [ ] non engine iostore
+- [ ] generate uproject from win 64 exe
 
 
 ## Documentation:

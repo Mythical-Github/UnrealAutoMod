@@ -95,7 +95,7 @@
       "mod_name_dir_type": "Mods",
       "use_mod_name_dir_name_override": true,
       "mod_name_dir_name_override": "ModEntry",
-      "pak_chunk_num": 10,
+      "pak_chunk_num": 1,
       "packing_type": "engine",
       "compression_type": "Zlib",
       "is_enabled": true,

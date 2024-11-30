@@ -1,10 +1,11 @@
-import glob
-import hashlib
 import os
+import glob
 import zipfile
+import hashlib
 
 import psutil
 import requests
+from requests.exceptions import HTTPError, RequestException
 
 
 def unzip_zip(zip_path: str, output_location: str):
@@ -14,12 +15,27 @@ def unzip_zip(zip_path: str, output_location: str):
 
 
 def download_file(url: str, download_path: str):
-    response = requests.get(url, stream=True)
-    if response.status_code == 200:
+    try:
+        response = requests.get(url, stream=True, timeout=10)
+        response.raise_for_status()
+
+        os.makedirs(os.path.dirname(download_path), exist_ok=True)
+
         with open(download_path, 'wb') as f:
             for chunk in response.iter_content(chunk_size=8192):
                 if chunk:
                     f.write(chunk)
+
+        print(f"Download completed: {download_path}")
+
+    except HTTPError as http_err:
+        print(f"HTTP error occurred while downloading {url}: {http_err}")
+    except RequestException as req_err:
+        print(f"Request error occurred while downloading {url}: {req_err}")
+    except IOError as io_err:
+        print(f"File I/O error occurred while saving to {download_path}: {io_err}")
+    except Exception as err:
+        print(f"An unexpected error occurred: {err}")
 
 
 def open_dir_in_file_browser(input_directory: str):

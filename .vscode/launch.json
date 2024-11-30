@@ -240,6 +240,37 @@
             ]
         },
         {
+            "name": "full_run",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "full_run",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
+                "ModLoader_P",
+                "MapKit",
+                "ExampleLevel",
+                "--base_files_directory",
+                "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
+                "--output_directory",
+                "${workspaceFolder}/dist"
+            ]
+        },
+        {
+            "name": "full_run_all",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "full_run_all",
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
+                "--base_files_directory",
+                "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
+                "--output_directory",
+                "${workspaceFolder}/dist"
+            ]
+        },
+        {
             "name": "generate_mods",
             "type": "debugpy",
             "request": "launch",
@@ -314,6 +345,16 @@
             ]
         },
         {
+            "name": "close_programs",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "close_programs",
+                "Zedfest.exe"
+            ]
+        },
+        {
             "name": "install_fmodel",
             "type": "debugpy",
             "request": "launch",
@@ -371,16 +412,6 @@
             "args": [
                 "install_kismet_analyzer",
                 "${workspaceFolder}/dist/kismet_analyzer"
-            ]
-        },
-        {
-            "name": "close_programs",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "unreal_auto_mod",
-            "args": [
-                "close_programs",
-                "Zedfest.exe"
             ]
         }
     ]

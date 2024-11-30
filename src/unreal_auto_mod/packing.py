@@ -206,9 +206,9 @@ def install_engine_mod(mod_name: str):
                 os.makedirs(dir_engine_mod)
             before_file = f'{file}{suffix}'
             if not os.path.isfile(before_file):
-                error_message = f'Error: The engine did not generate a pak and/or ucas/utoc for your specified chink id, this indicates an engine, project, or settings.json configuration issue.'
+                error_message = f'Error: The engine did not generate a pak and/or ucas/utoc for your specified chunk id, this indicates an engine, project, or settings.json configuration issue.'
                 log.log_message(error_message)
-                raise FileNotFoundError('The engine did not generate a pak and/or ucas/utoc for your specified chink id, this indicates an engine, project, or settings.json configuration issue.')
+                raise FileNotFoundError('The engine did not generate a pak and/or ucas/utoc for your specified chunk id, this indicates an engine, project, or settings.json configuration issue.')
             after_file = f'{dir_engine_mod}/{mod_name}.{suffix}'
             if os.path.islink(after_file):
                 os.unlink(after_file)

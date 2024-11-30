@@ -2,21 +2,21 @@
 
 
 ## Current To Do:
-- [ ] full run command
-- [ ] sometimes people will not have internet, account for this, example, with repak installer
-- [ ] more robust create uproject options
+- [ ] add plugins/modules/remove plugins/modules to uproject/uplugin
+- [ ] generic file list/cleanup tree commands
+- [ ] more robust create uproject options, add plugins dict and modules dict
 - [ ] create plugin command
 - [ ] remove plugin command
 - [ ] enable plugin command
 - [ ] disable plugin command
-- [ ] edit uproject, json, and uplugin commands
-- [ ] generic file list/cleanup tree commands
-- [ ] deal with skip_uproject_steps
+- [ ] generic json editor command
 
 
 ## To Do:
+- [ ] uproject, uplugin, engine ini edits, for popular things, maybe also generic
+- [ ] deal with skip_uproject_steps
 - [ ] diff game and file list, and backup diff, so later on can cleanup game list and restore from backup
-- [ ] make a list of things to test for, so no need to worry about 1 change breaking any features
+- [ ] make a list of things to test for, so no nee d to worry about 1 change breaking any features
 - [ ] unit/project tests
 - [ ] Close game hotkey
 - [ ] Run script again hotkey

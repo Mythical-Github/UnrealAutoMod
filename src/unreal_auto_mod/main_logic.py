@@ -182,6 +182,36 @@ def test_mods_all(settings_json: str, toggle_engine: bool):
         engine.toggle_engine_on()
 
 
+def full_run(settings_json: str, input_mod_names: str, toggle_engine: bool, base_files_directory: str, output_directory: str):
+    load_settings(settings_json)
+    from unreal_auto_mod import engine, packing
+    if toggle_engine:
+        engine.toggle_engine_off()
+    global mod_names
+    for mod_name in input_mod_names:
+        mod_names.append(mod_name)
+    packing.cooking()
+    generate_mods(settings_json, input_mod_names)
+    generate_mod_releases(settings_json, input_mod_names, base_files_directory, output_directory)
+    if toggle_engine:
+        engine.toggle_engine_on()
+
+
+def full_run_all(settings_json: str, toggle_engine: bool, base_files_directory: str, output_directory: str):
+    load_settings(settings_json)
+    from unreal_auto_mod import engine, packing
+    if toggle_engine:
+        engine.toggle_engine_off()
+    global mod_names
+    for entry in settings['mods_info']:
+        mod_names.append(entry['mod_name'])
+    packing.cooking()
+    generate_mods_all(settings_json)
+    generate_mod_releases_all(settings_json, base_files_directory, output_directory)
+    if toggle_engine:
+        engine.toggle_engine_on()
+
+
 def install_stove(output_directory: str, run_after_install: bool):
     from unreal_auto_mod import utilities
     if not utilities.does_stove_exist(output_directory):

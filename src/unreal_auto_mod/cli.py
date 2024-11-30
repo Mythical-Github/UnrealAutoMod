@@ -43,6 +43,46 @@ def cli_logic():
     package_parser.add_argument('settings_json', help='Path to the settings JSON file')
     package_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
 
+    test_mods_parser = sub_parser.add_parser('test_mods', help='Run tests for specific mods', formatter_class=RichHelpFormatter)
+    test_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    test_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+    test_mods_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
+
+    test_mods_all_parser = sub_parser.add_parser('test_mods_all', help='Run tests for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
+    test_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    test_mods_all_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
+
+    full_run_parser = sub_parser.add_parser('full_run', help='Builds, Cooks, Packages, Generates Mods, and Generates Mod Releases for the specified mod names.', formatter_class=RichHelpFormatter)
+    full_run_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    full_run_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+    full_run_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
+    full_run_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
+    full_run_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
+
+    full_run_all_parser = sub_parser.add_parser('full_run_all', help='Builds, Cooks, Packages, Generates Mods, and Generates Mod Releases for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
+    full_run_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    full_run_all_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
+    full_run_all_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
+    full_run_all_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
+
+    generate_mods_parser = sub_parser.add_parser('generate_mods', help='Generates mods for the specified mod names', formatter_class=RichHelpFormatter)
+    generate_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    generate_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+
+    generate_mods_all_parser = sub_parser.add_parser('generate_mods_all', help='Generates mods for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
+    generate_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    generate_mod_releases_parser = sub_parser.add_parser('generate_mod_releases', help='Generate one or more mod releases', formatter_class=RichHelpFormatter)
+    generate_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    generate_mod_releases_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+    generate_mod_releases_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
+    generate_mod_releases_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
+
+    generate_mod_releases_all_parser = sub_parser.add_parser('generate_mod_releases_all', help='Generate mod releases for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
+    generate_mod_releases_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    generate_mod_releases_all_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
+    generate_mod_releases_all_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
+
     cleanup_full_parser = sub_parser.add_parser('cleanup_full', help='Cleans up the github repo specified within the settings JSON', formatter_class=RichHelpFormatter)
     cleanup_full_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
@@ -114,33 +154,6 @@ def cli_logic():
     close_engine_parser = sub_parser.add_parser('close_engine', help='Close the engine', formatter_class=RichHelpFormatter)
     close_engine_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
-    test_mods_parser = sub_parser.add_parser('test_mods', help='Run tests for specific mods', formatter_class=RichHelpFormatter)
-    test_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
-    test_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
-    test_mods_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
-
-    test_mods_all_parser = sub_parser.add_parser('test_mods_all', help='Run tests for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
-    test_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
-    test_mods_all_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
-
-    generate_mods_parser = sub_parser.add_parser('generate_mods', help='Generates mods for the specified mod names', formatter_class=RichHelpFormatter)
-    generate_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
-    generate_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
-
-    generate_mods_all_parser = sub_parser.add_parser('generate_mods_all', help='Generates mods for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
-    generate_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
-
-    generate_mod_releases_parser = sub_parser.add_parser('generate_mod_releases', help='Generate one or more mod releases', formatter_class=RichHelpFormatter)
-    generate_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')
-    generate_mod_releases_parser.add_argument('mod_names', nargs='+', help='List of mod names')
-    generate_mod_releases_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
-    generate_mod_releases_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
-
-    generate_mod_releases_all_parser = sub_parser.add_parser('generate_mod_releases_all', help='Generate mod releases for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
-    generate_mod_releases_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
-    generate_mod_releases_all_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
-    generate_mod_releases_all_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
-
     generate_uproject_parser = sub_parser.add_parser('generate_uproject', help='Generates a uproject file at the specified location, using the given information', formatter_class=RichHelpFormatter)
     generate_uproject_parser.add_argument('project_file', help='Path to generate the project file at')
     generate_uproject_parser.add_argument('--file_version', help='Uproject file specification. Defaults to 3.', default=3)
@@ -148,10 +161,15 @@ def cli_logic():
     generate_uproject_parser.add_argument('--engine_minor_association', help='Minor unreal engine version for the project. Example: the 27 in 4.27.', default=27)
     generate_uproject_parser.add_argument('--category', help='Category for the uproject', default='Modding')
     generate_uproject_parser.add_argument('--description', help='Description for the uproject', default='Uproject for modding, generated with unreal_auto_mod.')
+    generate_uproject_parser.add_argument('--modules', help='', default={})
+    generate_uproject_parser.add_argument('--plugins', help='', default={})
     generate_uproject_parser.add_argument('--ignore_safety_checks', help='wether or not to override the input checks for this command', default=False)
 
     resave_packages_and_fix_up_redirectors_parser = sub_parser.add_parser('resave_packages_and_fix_up_redirectors', help='Resaves packages and fixes up redirectors for the project', formatter_class=RichHelpFormatter)
     resave_packages_and_fix_up_redirectors_parser.add_argument('settings_json', help='Path to the settings JSON file')
+
+    close_programs_parser = sub_parser.add_parser('close_programs', help='Closes all programs with the exe names provided', formatter_class=RichHelpFormatter)
+    close_programs_parser.add_argument('exe_names', nargs='+', help='List of exe names')
 
     install_fmodel_parser = sub_parser.add_parser('install_fmodel', help='Install Fmodel', formatter_class=RichHelpFormatter)
     install_fmodel_parser.add_argument('output_directory', help='Path to the output directory')
@@ -177,10 +195,8 @@ def cli_logic():
     install_kismet_analyzer_parser.add_argument('output_directory', help='Path to the output directory')
     install_kismet_analyzer_parser.add_argument('--run_after_install', help='Should the installed program be ran after installation', default=False)
 
-    close_programs_parser = sub_parser.add_parser('close_programs', help='Closes all programs with the exe names provided', formatter_class=RichHelpFormatter)
-    close_programs_parser.add_argument('exe_names', nargs='+', help='List of exe names')
-
     args = parser.parse_args()
+
 
     command_function_map = {
         'build': main_logic.build,
@@ -204,6 +220,8 @@ def cli_logic():
         'close_engine': main_logic.close_engine,
         'test_mods': main_logic.test_mods,
         'test_mods_all': main_logic.test_mods_all,
+        'full_run': main_logic.full_run,
+        'full_run_all': main_logic.full_run_all,
         'generate_mods': main_logic.generate_mods,
         'generate_mods_all': main_logic.generate_mods_all,
         'generate_mod_releases': main_logic.generate_mod_releases,
@@ -250,19 +268,26 @@ def cli_logic():
             'cook',
             'package',
             'run_game',
-            'test_mods_all',
+            'test_mods_all'
         ]
-        if args.command in settings_json_commands:
+
+        if args.command in installer_commands:
+            command_function_map[args.command](args.output_directory, args.run_after_install)
+
+        elif args.command in settings_json_commands:
             command_function_map[args.command](args.settings_json)
 
         elif args.command in settings_and_toggle_commands:
             command_function_map[args.command](args.settings_json, args.toggle_engine)
 
+        if args.command == 'full_run':
+            command_function_map[args.command](args.settings_json, args.mod_names, args.toggle_engine, args.base_files_directory, args.output_directory)
+            
+        if args.command == 'full_run_all':
+            command_function_map[args.command](args.settings_json, args.toggle_engine, args.base_files_directory, args.output_directory)
+
         elif args.command == 'close_programs':
             command_function_map[args.command](args.exe_names)
-
-        elif args.command in installer_commands:
-            command_function_map[args.command](args.output_directory, args.run_after_install)
 
         elif args.command == 'enable_mods' or args.command == 'disable_mods' or args.command == 'remove_mods' or args.command == 'generate_mods':
             command_function_map[args.command](args.settings_json, args.mod_names)

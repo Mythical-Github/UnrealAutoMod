@@ -135,16 +135,30 @@ def get_latest_stove_version():
     return None
 
 
-def download_stove(output_directory: str):
-    latest_version = get_latest_stove_version()
-    if latest_version:
-        url = f"https://github.com/bananaturtlesandwich/stove/releases/download/{latest_version}/stove.exe"
-    else:
-        # Fallback to a specific version if latest cannot be determined
-        url = "https://github.com/bananaturtlesandwich/stove/releases/download/0.13.1-alpha/stove.exe"
+def get_latest_stove_version():
+    import requests
+    from requests.exceptions import HTTPError, RequestException
+    try:
+        api_url = "https://api.github.com/repos/bananaturtlesandwich/stove/releases/latest"
+        
+        # Attempt to fetch the latest release information
+        response = requests.get(api_url, timeout=10)
+        response.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
 
-    download_path = f'{output_directory}/stove.exe'
-    general_utils.download_file(url, download_path)
+        # Parse the JSON response
+        latest_release = response.json()
+        return latest_release.get('tag_name')  # Use .get() to avoid KeyError if 'tag_name' is missing
+
+    except HTTPError as http_err:
+        print(f"HTTP error occurred while accessing {api_url}: {http_err}")
+    except RequestException as req_err:
+        print(f"Request error occurred while accessing {api_url}: {req_err}")
+    except ValueError as val_err:
+        print(f"JSON parsing error: {val_err}")  # Catches invalid JSON
+    except Exception as err:
+        print(f"An unexpected error occurred: {err}")
+
+    return None  # Return None in case of failure
 
 
 def get_spaghetti_path(output_directory: str) -> str:

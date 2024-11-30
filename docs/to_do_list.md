@@ -2,17 +2,21 @@
 
 
 ## Current To Do:
-- [ ] add plugins/modules/remove plugins/modules to uproject/uplugin
+create plugin command
+remove plugin command
+enable plugin command
+disabled plugin command
+add module to uplugin, uproject
+remove modules from uplugin or uproject
+add plugin to uproject, uplugin
+remove plugins from uproject, uplugin
+
 - [ ] generic file list/cleanup tree commands
-- [ ] more robust create uproject options, add plugins dict and modules dict
-- [ ] create plugin command
-- [ ] remove plugin command
-- [ ] enable plugin command
-- [ ] disable plugin command
+
+
+## To Do: 
+- [ ] custom auto script
 - [ ] generic json editor command
-
-
-## To Do:
 - [ ] uproject, uplugin, engine ini edits, for popular things, maybe also generic
 - [ ] deal with skip_uproject_steps
 - [ ] diff game and file list, and backup diff, so later on can cleanup game list and restore from backup
@@ -32,6 +36,7 @@
 - [ ] clean up hook states and add any missing states
 - [ ] non engine iostore
 - [ ] generate uproject from win 64 exe
+- [ ] reorganize queue
 
 
 ## Documentation:

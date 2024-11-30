@@ -2,6 +2,76 @@
 
 Below this is just a bunch of information, not very well organized for checking out at a later time
 
+
+https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Projects/FModuleDescriptor
+https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Projects/FProjectDescriptor
+https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Projects/FPluginDescriptor
+https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-build-tool-target-reference
+https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-automation-tool-for-unreal-engine
+https://dev.epicgames.com/documentation/en-us/unreal-engine/buildgraph-script-tasks-reference-for-unreal-engine#pakfile
+https://dev.epicgames.com/documentation/en-us/unreal-engine/create-an-automation-project-in-unreal-engine#addcodetoanautomationscript
+
+
+
+
+ 	TArray< FModuleDescriptor > 	Modules 	List of all modules associated with this project
+Public variable 	TArray< FPluginReferenceDescriptor >
+
+
+ 	
+
+FModuleDescriptor ( const FName InName,
+EHostType::Type InType,
+ELoadingPhase::Type InLoadingPhase
+)
+
+	namespace EHostType  
+	{  
+	    enum Type  
+	    {  
+	        Runtime,  
+	        RuntimeNoCommandlet,  
+	        RuntimeAndProgram,  
+	        CookedOnly,  
+	        UncookedOnly,  
+	        Developer,  
+	        DeveloperTool,  
+	        Editor,  
+	        EditorNoCommandlet,  
+	        EditorAndProgram,  
+	        Program,  
+	        ServerOnly,  
+	        ClientOnly,  
+	        ClientOnlyNoCommandlet,  
+	        Max,  
+	    }  
+	}  
+
+ 		namespace ELoadingPhase  
+	{  
+	    enum Type  
+	    {  
+	        EarliestPossible,  
+	        PostConfigInit,  
+	        PostSplashScreen,  
+	        PreEarlyLoadingScreen,  
+	        PreLoadingScreen,  
+	        PreDefault,  
+	        Default,  
+	        PostDefault,  
+	        PostEngineInit,  
+	        None,  
+	        Max,  
+	    }  
+	}  
+
+FPluginReferenceDescriptor ( const FString& InName,
+bool bInEnabled
+)
+
+
+
+
 Automation Help:
 
 Executes scripted commands

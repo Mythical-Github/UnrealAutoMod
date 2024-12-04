@@ -98,6 +98,14 @@ def cli_logic():
     generate_game_file_list_json_parser = sub_parser.add_parser('generate_game_file_list_json', help='Generates a JSON file containing all of the files in the game directory, from the game exe specified within the settings JSON', formatter_class=RichHelpFormatter)
     generate_game_file_list_json_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
+    cleanup_from_file_list_parser = sub_parser.add_parser('cleanup_from_file_list', help='Cleans up the specified directory, deleting all files not specified within the file list JSON, to generate one use the generate_file_list command', formatter_class=RichHelpFormatter)
+    cleanup_from_file_list_parser.add_argument('file_list', help='Path to the file list you want to clean from, generate one using the generate_file_list command')
+    cleanup_from_file_list_parser.add_argument('directory', help='Path to the directory tree to cleanup, it will delete all files that are not in the specified file list')
+
+    generate_file_list_parser = sub_parser.add_parser('generate_file_list', help='Generates a JSON file containing all of the files in the specified directory', formatter_class=RichHelpFormatter)
+    generate_file_list_parser.add_argument('directory', help='Path to the directory tree you want to generate the file list from')
+    generate_file_list_parser.add_argument('file_list', help='Path to the output file, the file is json format')
+
     # cleanup_game_parser = sub_parser.add_parser('cleanup_game', help='Cleans up the specified directory, deleting all files not specified within the provided, file list JSON', formatter_class=RichHelpFormatter)
     # cleanup_game_parser.add_argument('file_list_json', help='Path to the file list JSON file, usually created from the generate_file_list_json command')
     # cleanup_game_parser.add_argument('game_directory', help='Path to the game directory tree you want to cleanup')
@@ -165,6 +173,80 @@ def cli_logic():
     generate_uproject_parser.add_argument('--plugins', help='', default={})
     generate_uproject_parser.add_argument('--ignore_safety_checks', help='wether or not to override the input checks for this command', default=False)
 
+    host_types = [
+        'Runtime',
+        'RuntimeNoCommandlet',
+        'RuntimeAndProgram',
+        'CookedOnly',
+        'UncookedOnly',
+        'Developer',
+        'DeveloperTool',
+	    'Editor',
+	    'EditorNoCommandlet',
+	    'EditorAndProgram',
+	    'Program',
+	    'ServerOnly',
+	    'ClientOnly',
+	    'ClientOnlyNoCommandlet',
+	    'Max'
+    ]
+
+    loading_phases = [
+	    'EarliestPossible',
+	    'PostConfigInit',
+	    'PostSplashScreen',
+	    'PreEarlyLoadingScreen',
+	    'PreLoadingScreen',
+	    'PreDefault',
+	    'Default',
+	    'PostDefault',
+	    'PostEngineInit',
+	    'None',
+	    'Max'
+    ]
+
+    add_module_to_descriptor_parser = sub_parser.add_parser('add_module_to_descriptor', help='adds the specified module entry to the descriptor file, overwriting if it already exists', formatter_class=RichHelpFormatter)
+    add_module_to_descriptor_parser.add_argument('descriptor_file', help='Path to the descriptor file to add the module to')
+    add_module_to_descriptor_parser.add_argument('module_name', help='Name of the module to add')
+    add_module_to_descriptor_parser.add_argument('--host_type', choices= host_types, help='The host type to use', default='DeveloperTool')
+    add_module_to_descriptor_parser.add_argument('--loading_phase', choices= loading_phases, help='The loading phase to use', default='Default')
+
+    add_plugin_to_descriptor_parser = sub_parser.add_parser('add_plugin_to_descriptor', help='adds the specified plugin entry to the descriptor file, overwriting if it already exists', formatter_class=RichHelpFormatter)
+    add_plugin_to_descriptor_parser.add_argument('descriptor_file', help='Path to the descriptor file to add the plugin to')
+    add_plugin_to_descriptor_parser.add_argument('plugin_name', help='Name of the plugin to add')
+    add_plugin_to_descriptor_parser.add_argument('--is_enabled', help='Wether or not Enabled is ticked for the plugin entry', default=True)
+
+    remove_modules_from_descriptor_parser = sub_parser.add_parser('remove_modules_from_descriptor', help='Removes the module name entries in the provided descriptor file if they exist', formatter_class=RichHelpFormatter)
+    remove_modules_from_descriptor_parser.add_argument('descriptor_file', help='Path to the descriptor file to remove the modules from')
+    remove_modules_from_descriptor_parser.add_argument('module_names', help='List of one or more module names to remove from the descriptor file', nargs='+')
+
+    remove_plugins_from_descriptor_parser = sub_parser.add_parser('remove_plugins_from_descriptor', help='Removes the plugin name entries in the provided descriptor file if they exist', formatter_class=RichHelpFormatter)
+    remove_plugins_from_descriptor_parser.add_argument('project_file', help='Path to the descriptor file to remove the plugins from')
+    remove_plugins_from_descriptor_parser.add_argument('plugin_names', help='List of one or more plugin names to remove from the descriptor file', nargs='+')
+
+    generate_uplugin_parser = sub_parser.add_parser('generate_uplugin', help='Generates a uplugin in a directory, within the specified directory with the given settings')
+    generate_uplugin_parser.add_argument('plugins_directory', help='Path to the plugins directory, mainly for use with Uproject plugins folder, and engine plugins folder')
+    generate_uplugin_parser.add_argument('plugin_name', type=str)
+    generate_uplugin_parser.add_argument('--can_contain_content', default=True, type=bool)
+    generate_uplugin_parser.add_argument('--is_installed', default=True, type=bool)
+    generate_uplugin_parser.add_argument('--is_hidden', default=False, type=bool)
+    generate_uplugin_parser.add_argument('--no_code', default=False, type=bool)
+    generate_uplugin_parser.add_argument('--category', default='Modding', type=str)
+    generate_uplugin_parser.add_argument('--created_by', default='', type=str)
+    generate_uplugin_parser.add_argument('--created_by_url', default='', type=str)
+    generate_uplugin_parser.add_argument('--description', default='', type=str)
+    generate_uplugin_parser.add_argument('--docs_url', default='', type=str)
+    generate_uplugin_parser.add_argument('--editor_custom_virtual_path', default='', type=str)
+    generate_uplugin_parser.add_argument('--enabled_by_default', default=True, type=str)
+    generate_uplugin_parser.add_argument('--engine_major_version', default=4, type=int)
+    generate_uplugin_parser.add_argument('--engine_minor_version', default=27, type=int)
+    generate_uplugin_parser.add_argument('--support_url', default='', type=str)
+    generate_uplugin_parser.add_argument('--version', default=1.0, type=float)
+    generate_uplugin_parser.add_argument('--version_name', default='', type=str)
+
+    remove_uplugins_parser = sub_parser.add_parser('remove_uplugins', help='Deletes all files in for the specified uplugin paths', formatter_class=RichHelpFormatter)
+    remove_uplugins_parser.add_argument('uplugin_paths', help='Path to the one or more uplugins to delete', default=[], nargs='+')   
+
     resave_packages_and_fix_up_redirectors_parser = sub_parser.add_parser('resave_packages_and_fix_up_redirectors', help='Resaves packages and fixes up redirectors for the project', formatter_class=RichHelpFormatter)
     resave_packages_and_fix_up_redirectors_parser.add_argument('settings_json', help='Path to the settings JSON file')
 
@@ -207,6 +289,8 @@ def cli_logic():
         'cleanup_build': main_logic.cleanup_build,
         'cleanup_game': main_logic.cleanup_game,
         'generate_game_file_list_json': main_logic.generate_game_file_list_json,
+        'cleanup_from_file_list': main_logic.cleanup_from_file_list,
+        'generate_file_list': main_logic.generate_file_list,
         'resync_dir_with_repo': main_logic.resync_dir_with_repo,
         'upload_changes_to_repo': main_logic.upload_changes_to_repo,
         'enable_mods': main_logic.enable_mods,
@@ -227,6 +311,12 @@ def cli_logic():
         'generate_mod_releases': main_logic.generate_mod_releases,
         'generate_mod_releases_all': main_logic.generate_mod_releases_all,
         'generate_uproject': main_logic.generate_uproject,
+        'add_module_to_descriptor': main_logic.add_module_to_descriptor,
+        'add_plugin_to_descriptor': main_logic.add_plugin_to_descriptor,
+        'remove_modules_from_descriptor': main_logic.remove_modules_from_descriptor,
+        'remove_plugins_from_descriptor': main_logic.remove_plugins_from_descriptor,
+        'generate_uplugin': main_logic.generate_uplugin,
+        'remove_uplugins': main_logic.remove_uplugins,
         'resave_packages_and_fix_up_redirectors': main_logic.resave_packages_and_fix_up_redirectors,
         'install_fmodel': main_logic.install_fmodel,
         'install_umodel': main_logic.install_umodel,
@@ -281,10 +371,27 @@ def cli_logic():
             command_function_map[args.command](args.settings_json, args.toggle_engine)
 
         if args.command == 'full_run':
-            command_function_map[args.command](args.settings_json, args.mod_names, args.toggle_engine, args.base_files_directory, args.output_directory)
+            command_function_map[args.command](
+                args.settings_json, 
+                args.mod_names, 
+                args.toggle_engine, 
+                args.base_files_directory, 
+                args.output_directory
+            )
             
         if args.command == 'full_run_all':
-            command_function_map[args.command](args.settings_json, args.toggle_engine, args.base_files_directory, args.output_directory)
+            command_function_map[args.command](
+                args.settings_json, 
+                args.toggle_engine, 
+                args.base_files_directory, 
+                args.output_directory
+            )
+
+        elif args.command == 'cleanup_from_file_list':
+            command_function_map[args.command](args.file_list, args.directory)
+
+        elif args.command == 'generate_file_list':
+            command_function_map[args.command](args.directory, args.file_list)
 
         elif args.command == 'close_programs':
             command_function_map[args.command](args.exe_names)
@@ -336,6 +443,59 @@ def cli_logic():
                 args.description,
                 args.ignore_safety_checks
                 )
+
+        elif args.command == 'add_module_to_descriptor':
+            command_function_map[args.command](
+                args.descriptor_file,
+                args.module_name,
+                args.host_type,
+                args.loading_phase
+                )
+
+        elif args.command == 'add_plugin_to_descriptor':
+            command_function_map[args.command](
+                args.descriptor_file,
+                args.plugin_name,
+                args.is_enabled
+                )
+
+        elif args.command == 'remove_modules_from_descriptor':
+            command_function_map[args.command](
+                args.descriptor_file,
+                args.module_names
+                )
+
+        elif args.command == 'remove_plugins_from_descriptor':
+            command_function_map[args.command](
+                args.descriptor_file,
+                args.plugin_names
+                )
+
+        elif args.command == 'generate_uplugin':
+            command_function_map[args.command](
+                args.plugins_directory,
+                args.plugin_name,
+                args.can_contain_content,
+                args.is_installed,
+                args.is_hidden,
+                args.no_code,
+                args.category,
+                args.created_by,
+                args.created_by_url,
+                args.description,
+                args.docs_url,
+                args.editor_custom_virtual_path,
+                args.enabled_by_default,
+                args.engine_major_version,
+                args.engine_minor_version,
+                args.support_url,
+                args.version,
+                args.version_name
+            )
+
+        elif args.command == 'remove_uplugins':
+            command_function_map[args.command](args.uplugin_paths)
+
     else:
         log.log_message(f'Unknown command: {args.command}')
         parser.print_help()

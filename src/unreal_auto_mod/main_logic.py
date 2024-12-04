@@ -2,7 +2,7 @@ import os
 import sys
 
 import psutil
-import pyjson5 as json
+import json
 
 import unreal_auto_mod.gen_py_utils as gen_utils
 from unreal_auto_mod import hook_states, log, mods
@@ -694,6 +694,14 @@ def generate_game_file_list_json(settings_json: str):
     generate_file_paths_json(game_directory, file_list_json)
 
 
+def cleanup_from_file_list(file_list: str, directory: str):
+    delete_unlisted_files(directory, file_list)
+
+
+def generate_file_list(directory: str, file_list: str):
+    generate_file_paths_json(directory, file_list)
+
+
 def generate_mods(settings_json: str, input_mod_names: str):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
@@ -991,6 +999,173 @@ def generate_uproject(
     return f"Successfully generated '{project_file}'."
 
 
+def add_module_to_descriptor(descriptor_file: str, module_name: str, host_type: str, loading_phase: str):
+    if not os.path.isfile(descriptor_file):
+        raise FileNotFoundError(f"The file '{descriptor_file}' does not exist.")
+
+    try:
+        with open(descriptor_file, 'r') as file:
+            uproject_data = json.load(file)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Failed to parse JSON from '{descriptor_file}': {e}")
+
+    module_entry = {
+        "Name": module_name,
+        "Type": host_type,
+        "LoadingPhase": loading_phase
+    }
+
+    if "Modules" not in uproject_data:
+        uproject_data["Modules"] = []
+
+    uproject_data["Modules"] = [
+        module for module in uproject_data["Modules"] if module.get("Name") != module_name
+    ] + [module_entry]
+
+    updated_data = json.dumps(uproject_data, indent=4)
+    try:
+        with open(descriptor_file, 'w') as file:
+            file.write(updated_data)
+    except IOError as e:
+        raise IOError(f"Failed to write to '{descriptor_file}': {e}")
+
+
+def add_plugin_to_descriptor(descriptor_file: str, plugin_name: str, is_enabled: bool):
+    print('test')
+    if not os.path.isfile(descriptor_file):
+        raise FileNotFoundError(f"The file '{descriptor_file}' does not exist.")
+
+    try:
+        with open(descriptor_file, 'r') as file:
+            uproject_data = json.load(file)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Failed to parse JSON from '{descriptor_file}': {e}")
+
+    plugin_entry = {
+        "Name": plugin_name,
+        "Enabled": is_enabled
+    }
+
+    if "Plugins" not in uproject_data:
+        uproject_data["Plugins"] = []
+
+    uproject_data["Plugins"] = [
+        plugin for plugin in uproject_data["Plugins"] if plugin.get("Name") != plugin_name
+    ] + [plugin_entry]
+
+    updated_data = json.dumps(uproject_data, indent=4)
+    try:
+        with open(descriptor_file, 'w') as file:
+            file.write(updated_data)
+    except IOError as e:
+        raise IOError(f"Failed to write to '{descriptor_file}': {e}")
+
+
+def remove_modules_from_descriptor(descriptor_file: str, module_names: list):
+    if not os.path.isfile(descriptor_file):
+        raise FileNotFoundError(f"The file '{descriptor_file}' does not exist.")
+
+    with open(descriptor_file, 'r') as file:
+        uproject_data = json.load(file)
+
+    if "Modules" in uproject_data:
+        uproject_data["Modules"] = [
+            module for module in uproject_data["Modules"]
+            if module["Name"] not in module_names
+        ]
+
+    merged_data = json.dumps(uproject_data, indent=4)
+
+    with open(descriptor_file, 'w') as file:
+        file.write(merged_data)
+
+
+def remove_plugins_from_descriptor(descriptor_file: str, plugin_names: list):
+    if not os.path.isfile(descriptor_file):
+        raise FileNotFoundError(f"The file '{descriptor_file}' does not exist.")
+
+    with open(descriptor_file, 'r') as file:
+        uproject_data = json.load(file)
+
+    if "Plugins" in uproject_data:
+        uproject_data["Plugins"] = [
+            plugin for plugin in uproject_data["Plugins"]
+            if plugin["Name"] not in plugin_names
+        ]
+
+    merged_data = json.dumps(uproject_data, indent=4)
+
+    with open(descriptor_file, 'w') as file:
+        file.write(merged_data)
+
+
+def generate_uplugin(
+    plugins_directory: str,
+    plugin_name: str,
+    can_contain_content: bool,
+    is_installed: bool,
+    is_hidden: bool,
+    no_code: bool,
+    category: str,
+    created_by: str,
+    created_by_url: str,
+    description: str,
+    docs_url: str,
+    editor_custom_virtual_path: str,
+    enabled_by_default: bool,
+    engine_major_version: int,
+    engine_minor_version: int,
+    support_url: str,
+    version: float,
+    version_name: str
+):
+    os.makedirs(plugins_directory, exist_ok=True)
+
+    plugin_data = {
+        "FileVersion": 3,
+        "Version": version,
+        "VersionName": version_name,
+        "FriendlyName": plugin_name,
+        "Description": description,
+        "Category": category,
+        "CreatedBy": created_by,
+        "CreatedByURL": created_by_url,
+        "DocsURL": docs_url,
+        "MarketplaceURL": "",
+        "SupportURL": support_url,
+        "EngineVersion": f"{engine_major_version}.{engine_minor_version}",
+        "EnabledByDefault": enabled_by_default,
+        "CanContainContent": can_contain_content,
+        "IsBetaVersion": False,
+        "IsExperimentalVersion": False,
+        "Installed": is_installed,
+        "Hidden": is_hidden,
+        "NoCode": no_code,
+        "Modules": [],
+        "Plugins": []
+    }
+
+    if editor_custom_virtual_path:
+        plugin_data["EditorCustomVirtualPath"] = editor_custom_virtual_path
+
+    plugin_data_string = json.dumps(plugin_data, indent=4)
+
+    plugin_file_path = os.path.join(plugins_directory, plugin_name, f"{plugin_name}.uplugin")
+
+    with open(plugin_file_path, 'w') as plugin_file:
+        plugin_file.write(plugin_data_string)
+
+    log_message(f"Plugin '{plugin_name}' generated successfully at {plugin_file_path}.")
+
+
+def remove_uplugins(uplugin_paths: list):
+    import shutil
+    for uplugin_path in uplugin_paths:
+        uplugin_dir = os.path.dirname(uplugin_path)
+        if os.path.isdir(uplugin_dir):
+            shutil.rmtree(uplugin_dir)
+
+
 def save_json_to_file(json_string, file_path):
     try:
         parsed_json = json.loads(json_string)
@@ -1014,7 +1189,7 @@ def generate_file_paths_json(dir_path, output_json):
             all_file_paths.append(full_path)
 
     json_string = json.dumps(all_file_paths)
-
+    os.makedirs(os.path.dirname(output_json), exist_ok=True)
     with open(output_json, "w", encoding="utf-8") as json_file:
         json_file.write(json_string)
 
@@ -1041,7 +1216,7 @@ def delete_unlisted_files(dir_path, json_file):
 
 
 
-def close_programs(exe_names: list[str]):
+def close_programs(exe_names: list):
     import psutil
 
     results = {}

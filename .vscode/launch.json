@@ -109,6 +109,28 @@
         //     ]
         // },
         {
+            "name": "cleanup_from_file_list",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "cleanup_from_file_list",
+                "${workspaceFolder}/dist/test_file_list.json",
+                "${workspaceFolder}/assets/images"
+            ]
+        },
+            {
+            "name": "generate_file_list",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "generate_file_list",
+                "${workspaceFolder}/assets/images",
+                "${workspaceFolder}/dist/test_file_list.json"
+            ]
+        },
+            {
             "name": "enable_mods",
             "type": "debugpy",
             "request": "launch",
@@ -119,7 +141,7 @@
                 "ExampleLevel"
             ]
         },
-            {
+        {
             "name": "disable_mods",
             "type": "debugpy",
             "request": "launch",
@@ -132,7 +154,7 @@
                 "ExampleLevel"
             ]
         },
-            {
+        {
             "name": "add_mod",
             "type": "debugpy",
             "request": "launch",
@@ -145,7 +167,7 @@
                 "~mods"
             ]
         },
-            {
+        {
             "name": "remove_mods",
             "type": "debugpy",
             "request": "launch",
@@ -253,7 +275,7 @@
                 "--base_files_directory",
                 "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
                 "--output_directory",
-                "${workspaceFolder}/dist"
+                "${workspaceFolder}/dist/releases"
             ]
         },
         {
@@ -267,7 +289,7 @@
                 "--base_files_directory",
                 "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
                 "--output_directory",
-                "${workspaceFolder}/dist"
+                "${workspaceFolder}/dist/releases"
             ]
         },
         {
@@ -304,6 +326,75 @@
             ]
         },
         {
+            "name": "add_module_to_descriptor",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "add_module_to_descriptor",
+                "${workspaceFolder}/dist/TestingGeneratedUproject/Testing.uproject",
+                "test_module_name",
+                "--host_type",
+                "Editor",
+                "--loading_phase",
+                "Default"
+            ]
+        },
+        {
+            "name": "add_plugin_to_descriptor",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "add_plugin_to_descriptor",
+                "${workspaceFolder}/dist/TestingGeneratedUproject/Testing.uproject",
+                "test_plugin_name"
+            ]
+        },
+        {
+            "name": "remove_modules_from_descriptor",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "remove_modules_from_descriptor",
+                "${workspaceFolder}/dist/TestingGeneratedUproject/Testing.uproject",
+                "test_module_name"
+            ]
+        },
+        {
+            "name": "remove_plugins_from_descriptor",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "remove_plugins_from_descriptor",
+                "${workspaceFolder}/dist/TestingGeneratedUproject/Testing.uproject",
+                "test_plugin_name"
+            ]
+        },
+        {
+            "name": "generate_uplugin",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "generate_uplugin",
+                "${workspaceFolder}/dist/TestingGeneratedUproject/Plugins",
+                "test_plugin_name"
+            ]
+        },
+        {
+            "name": "remove_uplugins",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "unreal_auto_mod",
+            "args": [
+                "remove_uplugins",
+                "${workspaceFolder}/dist/TestingGeneratedUproject/Plugins/test_plugin_name.uplugin"
+            ]
+        },
+        {
             "name": "generate_mod_releases",
             "type": "debugpy",
             "request": "launch",
@@ -317,7 +408,7 @@
                 "--base_files_directory",
                 "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
                 "--output_directory",
-                "${workspaceFolder}/dist"
+                "${workspaceFolder}/dist/releases"
             ]
         },
         {
@@ -331,7 +422,7 @@
                 "--base_files_directory",
                 "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
                 "--output_directory",
-                "${workspaceFolder}/dist"
+                "${workspaceFolder}/dist/releases"
             ]
         },
         {

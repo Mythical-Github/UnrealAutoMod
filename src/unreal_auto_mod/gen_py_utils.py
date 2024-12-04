@@ -6,6 +6,7 @@ import hashlib
 import psutil
 import requests
 from requests.exceptions import HTTPError, RequestException
+from unreal_auto_mod.log import log_message
 
 
 def unzip_zip(zip_path: str, output_location: str):
@@ -26,16 +27,16 @@ def download_file(url: str, download_path: str):
                 if chunk:
                     f.write(chunk)
 
-        print(f"Download completed: {download_path}")
+        log_message(f"Download completed: {download_path}")
 
     except HTTPError as http_err:
-        print(f"HTTP error occurred while downloading {url}: {http_err}")
+        log_message(f"HTTP error occurred while downloading {url}: {http_err}")
     except RequestException as req_err:
-        print(f"Request error occurred while downloading {url}: {req_err}")
+        log_message(f"Request error occurred while downloading {url}: {req_err}")
     except IOError as io_err:
-        print(f"File I/O error occurred while saving to {download_path}: {io_err}")
+        log_message(f"File I/O error occurred while saving to {download_path}: {io_err}")
     except Exception as err:
-        print(f"An unexpected error occurred: {err}")
+        log_message(f"An unexpected error occurred: {err}")
 
 
 def open_dir_in_file_browser(input_directory: str):

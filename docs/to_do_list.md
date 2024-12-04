@@ -3,7 +3,6 @@
 
 ## Current To Do:
 - [ ] non engine iostore
-- [ ] deal with skip_uproject_steps
 - [ ] clean up hook states and add any missing states
  
 

@@ -68,9 +68,8 @@ def unreal_engine_check():
 
     should_do_check = True
 
-    if utilities.get_should_skip_uproject_steps():
-        if not utilities.is_unreal_pak_packing_enum_in_use():
-               should_do_check = False
+    if not utilities.is_unreal_pak_packing_enum_in_use() or utilities.is_engine_packing_enum_in_use():
+           should_do_check = False
 
     if should_do_check:
         engine_str = 'UE4Editor'
@@ -102,13 +101,19 @@ def game_launcher_exe_override_check():
         check_file_exists(utilities.get_game_launcher_exe_path())
 
 
+def uproject_check():
+    from unreal_auto_mod import utilities
+    uproject_file = utilities.get_uproject_file()
+    if uproject_file:
+        check_file_exists(uproject_file)
+        log.log_message('Check: Uproject file exists')
+
+
 def init_checks():
     from unreal_auto_mod import log as log
     from unreal_auto_mod import utilities
-    if not utilities.get_should_skip_uproject_steps():
-        check_file_exists(utilities.get_uproject_file())
-        log.log_message('Check: Uproject file exists')
 
+    uproject_check()
     unreal_engine_check()
     game_launcher_exe_override_check()
     git_info_check()

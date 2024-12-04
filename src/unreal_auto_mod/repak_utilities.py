@@ -116,7 +116,7 @@ def get_repak_version_str_from_engine_version() -> str:
 def get_repak_pak_version_str() -> str:
     # the below code is because we either derive the version from the engine version
     # if not using engine, it can't be derived from the engine, so we need to manually specify
-    if utilities.get_is_overriding_automatic_version_finding() or utilities.get_should_skip_uproject_steps():
+    if utilities.get_is_overriding_automatic_version_finding():
         repak_version_str = main_logic.settings['repak_info']['repak_version']
     else:
         repak_version_str = get_repak_version_str_from_engine_version()

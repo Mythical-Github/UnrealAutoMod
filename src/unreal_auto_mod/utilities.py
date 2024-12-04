@@ -177,16 +177,36 @@ def does_stove_exist(output_directory: str) -> bool:
     return os.path.isfile(get_stove_path(output_directory))
 
 
+def is_repak_packing_enum_in_use():
+    is_in_use = False
+    for entry in get_mods_info_from_json():
+        if entry['packing_type'] == "repak":
+            is_in_use = True
+    return is_in_use
+
+
+def is_loose_packing_enum_in_use():
+    is_in_use = False
+    for entry in get_mods_info_from_json():
+        if entry['packing_type'] == "loose":
+            is_in_use = True
+    return is_in_use
+
+
+def is_engine_packing_enum_in_use():
+    is_in_use = False
+    for entry in get_mods_info_from_json():
+        if entry['packing_type'] == "engine":
+            is_in_use = True
+    return is_in_use
+
+
 def is_unreal_pak_packing_enum_in_use():
     is_in_use = False
     for entry in get_mods_info_from_json():
         if entry['packing_type'] == "unreal_pak":
             is_in_use = True
     return is_in_use
-
-
-def get_should_skip_uproject_steps():
-    return main_logic.settings['engine_info']['skip_uproject_steps']
 
 
 def get_is_using_repak_path_override() -> bool:
@@ -287,14 +307,22 @@ def custom_get_game_dir():
     return unreal_dev_utils.get_game_dir(get_game_exe_path())
 
 
+# def custom_get_game_paks_dir() -> str:
+#     alt_game_dir = os.path.dirname(custom_get_game_dir())
+#     if get_is_using_alt_dir_name():
+#         return os.path.join(alt_game_dir, get_alt_packing_dir_name, 'Content', 'Paks')
+#     elif not get_should_skip_uproject_steps():
+#         return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
+#     else:
+#         return f'{os.path.dirname(os.path.dirname(os.path.dirname(get_game_exe_path())))}/Content/Paks'
+
+
 def custom_get_game_paks_dir() -> str:
     alt_game_dir = os.path.dirname(custom_get_game_dir())
     if get_is_using_alt_dir_name():
         return os.path.join(alt_game_dir, get_alt_packing_dir_name, 'Content', 'Paks')
-    elif not get_should_skip_uproject_steps():
-        return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
     else:
-        return f'{os.path.dirname(os.path.dirname(os.path.dirname(get_game_exe_path())))}/Content/Paks'
+        return unreal_dev_utils.get_game_paks_dir(get_uproject_file(), custom_get_game_dir())
 
 
 def get_unreal_engine_dir() -> str:

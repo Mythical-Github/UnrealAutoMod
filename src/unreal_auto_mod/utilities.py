@@ -150,13 +150,13 @@ def get_latest_stove_version():
         return latest_release.get('tag_name')  # Use .get() to avoid KeyError if 'tag_name' is missing
 
     except HTTPError as http_err:
-        print(f"HTTP error occurred while accessing {api_url}: {http_err}")
+        log.log_message(f"HTTP error occurred while accessing {api_url}: {http_err}")
     except RequestException as req_err:
-        print(f"Request error occurred while accessing {api_url}: {req_err}")
+        log.log_message(f"Request error occurred while accessing {api_url}: {req_err}")
     except ValueError as val_err:
-        print(f"JSON parsing error: {val_err}")  # Catches invalid JSON
+        log.log_message(f"JSON parsing error: {val_err}")  # Catches invalid JSON
     except Exception as err:
-        print(f"An unexpected error occurred: {err}")
+        log.log_message(f"An unexpected error occurred: {err}")
 
     return None  # Return None in case of failure
 

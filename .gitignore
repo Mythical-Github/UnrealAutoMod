@@ -23,3 +23,5 @@ assets/base/unreal_auto_mod_background.exe
 /assets/base/presets/default/mod_packaging/releases/MapKit/~mods
 /assets/base/presets/default/mod_packaging/releases/ModLoader_P/~mods
 /assets/base/presets/default/mod_packaging/releases/ExampleLevel/~mods
+/assets/base/presets/default/mod_packaging/releases/TestMod
+/assets/base/presets/default/mod_packaging/persistent_files/TestMod

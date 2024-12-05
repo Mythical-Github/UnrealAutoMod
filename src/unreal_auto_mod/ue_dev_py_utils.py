@@ -61,6 +61,13 @@ def get_win_dir_type(unreal_engine_dir: str) -> PackagingDirType:
     else:
         return PackagingDirType.WINDOWS_NO_EDITOR
 
+def get_editor_cmd_path(unreal_engine_dir: str) -> str:
+    if get_win_dir_type(unreal_engine_dir) == PackagingDirType.WINDOWS_NO_EDITOR:
+        engine_path_suffix = 'UE4Editor-Cmd.exe'
+    else:
+        engine_path_suffix = 'UnrealEditor-Cmd.exe'
+    return f'{unreal_engine_dir}/Engine/Binaries/Win64/{engine_path_suffix}'
+
 
 def is_game_ue5(unreal_engine_dir: str) -> bool:
     return get_win_dir_type(unreal_engine_dir) == PackagingDirType.WINDOWS

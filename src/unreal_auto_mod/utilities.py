@@ -497,7 +497,13 @@ def get_game_window_title() -> str:
         unreal_dev_utils.get_game_process_name(get_game_exe_path())
 
 
-def run_app(exe_path: str, exec_mode: ExecutionMode = ExecutionMode.SYNC, args: list = [], working_dir: str = None):
+def run_app(
+        exe_path: str, 
+        exec_mode: ExecutionMode = ExecutionMode.SYNC, 
+        args: list = [],
+        working_dir: str = None
+    ):
+    
     if exec_mode == ExecutionMode.SYNC:
         command = exe_path
         # check this can really be commented out

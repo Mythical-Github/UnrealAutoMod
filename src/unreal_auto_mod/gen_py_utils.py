@@ -58,11 +58,25 @@ def open_website(input_url: str):
     webbrowser.open(input_url)
 
 
+def check_directory_exists(dir_path: str) -> bool:
+    if os.path.isdir(dir_path):
+        return True
+    else:
+        raise NotADirectoryError(f'Check: "{dir_path}" directory not found.')
+
+
 def check_file_exists(file_path: str) -> bool:
     if os.path.exists(file_path):
         return True
     else:
-        raise FileNotFoundError(f'Settings file "{file_path}" not found.')
+        raise FileNotFoundError(f'Check: "{file_path}" file not found.')
+
+
+# def check_file_exists(file_path: str) -> bool:
+#     if os.path.isfile(file_path):
+#         return True
+#     else:
+#         raise FileNotFoundError(f'Check: "{file_path}" file not found.')
 
 
 def get_process_name(exe_path: str) -> str:

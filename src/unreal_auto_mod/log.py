@@ -1,6 +1,9 @@
 import os
+import textwrap
 from datetime import datetime
 from shutil import get_terminal_size
+
+
 
 from unreal_auto_mod.console import console
 from unreal_auto_mod.log_info import LOG_INFO
@@ -46,7 +49,7 @@ def rename_latest_log(log_dir):
         except PermissionError as e:
             log_message(f"Error renaming log file: {e}")
             return
-
+        
 
 def log_message(message: str):
     color_options = LOG_INFO.get('theme_colors', {})
@@ -55,16 +58,17 @@ def log_message(message: str):
 
     default_text_color = LOG_INFO.get('default_color')
     default_text_color = f"rgb({default_text_color[0]},{default_text_color[1]},{default_text_color[2]})"
+
     terminal_width = get_terminal_size().columns
-    padded_message = (message[:terminal_width] if len(message) > terminal_width else message.ljust(terminal_width))
+    wrapped_message = textwrap.fill(message, width=terminal_width)
 
     for keyword, color in color_options.items():
-        if keyword in padded_message:
+        if keyword in message:
             rgb_color = f"rgb({color[0]},{color[1]},{color[2]})"
-            console.print(padded_message, style=f'{rgb_color} on {default_background_color}')
+            console.print(wrapped_message, style=f'{rgb_color} on {default_background_color}')
             break
     else:
-        console.print(padded_message, style=f'{default_text_color} on {default_background_color}')
+        console.print(wrapped_message, style=f'{default_text_color} on {default_background_color}')
 
     log_dir = os.path.join(log_base_dir, 'logs')
     log_path = os.path.join(log_dir, f'{log_prefix}latest.log')
@@ -84,7 +88,7 @@ def log_message(message: str):
 
     try:
         with open(log_path, 'a') as log_file:
-            log_file.write(f"{padded_message}\n")
+            log_file.write(f"{message}\n")
     except IOError as e:
         error_color = LOG_INFO.get('error_color', (255, 0, 0))
         error_color = f"rgb({error_color[0]},{error_color[1]},{error_color[2]})"

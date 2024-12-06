@@ -19,10 +19,7 @@
           "-unversionedcookedcontent",
           "-SkipCookingEditorContent",
           "-iterate",
-          "-noP4",
-          "-stage",
-          "-archive",
-          "-manifests"
+          "-noP4"
       ],
       "engine_building_command": "BuildCookRun",
       "engine_building_args": [

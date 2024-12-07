@@ -1,0 +1,105 @@
+﻿Log file open, 12/07/24 00:45:31
+LogPlatformFile: Not using cached read wrapper
+LogTaskGraph: Started task graph with 4 named threads and 18 total threads with 1 sets of task threads.
+LogPluginManager: Mounting plugin PlatformCrypto
+LogInit: Build: ++UE4+Release-4.26-CL-15973114
+LogInit: Engine Version: 4.26.2-15973114+++UE4+Release-4.26
+LogInit: Compatible Engine Version: 4.26.0-14830424+++UE4+Release-4.26
+LogInit: Net CL: 14830424
+LogInit: OS: Windows 10 (Release 2009) (), CPU: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz, GPU: Intel(R) UHD Graphics
+LogInit: Compiled (64-bit): Apr 12 2021 06:59:08
+LogInit: Compiled with Visual C++: 19.24.28315.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.26
+LogInit: Command Line:  C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.pak -create="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\PakList_pakchunk1-WindowsNoEditor.txt" -cryptokeys=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json -order=C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log -patchpaddingalign=2048 -platform=Windows -multiprocess -abslog="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\UnrealPak-pakchunk1-WindowsNoEditor-2024.12.07-00.45.31.txt"
+LogInit: Base Directory: D:/unreal_engine_installs/UE_4.26/Engine/Binaries/Win64/
+LogInit: Allocator: TBB
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 29
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 4
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 40
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 37
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 3
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 4
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 44
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 12
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 3
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 15
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 43
+LogDevObjectVersion:   FortniteRelease (E7086368-6B23-4C58-8439-1B7016265E91): 1
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 10
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 10
+LogDevObjectVersion:   Dev-Physics-Ext (35F94A83-E258-406C-A318-09F59610247C): 40
+LogDevObjectVersion:   Dev-PhysicsMaterial-Chaos (B68FC16E-8B1B-42E2-B453-215C058844FE): 1
+LogDevObjectVersion:   Dev-CineCamera (B2E18506-4273-CFC2-A54E-F4BB758BBA07): 1
+LogDevObjectVersion:   Dev-VirtualProduction (64F58936-FD1B-42BA-BA96-7289D5D0FA4E): 1
+LogDevObjectVersion:   Dev-MediaFramework (6F0ED827-A609-4895-9C91-998D90180EA4): 2
+LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+LogConfig: Applying CVar settings from Section [ConsoleVariables] File [../../../Engine/Programs/UnrealPak/Saved/Config/Windows/Engine.ini]
+[2024.12.07-05.45.32:551][  0]LogInit: Computer: DESKTOP-H8M04FC
+[2024.12.07-05.45.32:551][  0]LogInit: User: Mythical
+[2024.12.07-05.45.32:551][  0]LogInit: CPU Page size=4096, Cores=8
+[2024.12.07-05.45.32:551][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2024.12.07-05.45.32:551][  0]LogMemory: Memory total: Physical=15.7GB (16GB approx)
+[2024.12.07-05.45.32:551][  0]LogMemory: Platform Memory Stats for Windows
+[2024.12.07-05.45.32:551][  0]LogMemory: Process Physical Memory: 27.77 MB used, 27.77 MB peak
+[2024.12.07-05.45.32:551][  0]LogMemory: Process Virtual Memory: 69.95 MB used, 69.95 MB peak
+[2024.12.07-05.45.32:551][  0]LogMemory: Physical Memory: 9956.80 MB used,  6128.70 MB free, 16085.50 MB total
+[2024.12.07-05.45.32:551][  0]LogMemory: Virtual Memory: 134201520.00 MB used,  16207.88 MB free, 134217728.00 MB total
+[2024.12.07-05.45.32:552][  0]LogInit: Using OS detected language ().
+[2024.12.07-05.45.32:552][  0]LogInit: Using OS detected locale ().
+[2024.12.07-05.45.32:554][  0]LogTextLocalizationManager: No localization for '' exists, so 'en' will be used for the language.
+[2024.12.07-05.45.32:555][  0]LogTextLocalizationManager: No localization for '' exists, so 'en' will be used for the locale.
+[2024.12.07-05.45.32:556][  0]LogInit: Using OS detected language ().
+[2024.12.07-05.45.32:556][  0]LogInit: Using OS detected locale ().
+[2024.12.07-05.45.32:556][  0]LogTextLocalizationManager: No localization for '' exists, so 'en' will be used for the language.
+[2024.12.07-05.45.32:556][  0]LogTextLocalizationManager: No localization for '' exists, so 'en' will be used for the locale.
+[2024.12.07-05.45.32:556][  0]LogTextLocalizationManager: Compacting localization data took   0.45ms
+[2024.12.07-05.45.32:558][  0]LogPakFile: Display: Parsing crypto keys from a crypto key cache file
+[2024.12.07-05.45.32:559][  0]LogPakFile: Engine only spawned 14 worker threads, bumping up to 15!
+[2024.12.07-05.45.32:563][  0]LogPakFile: Display: Loading response file C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\PakList_pakchunk1-WindowsNoEditor.txt
+[2024.12.07-05.45.32:563][  0]LogPakFile: Display: Added 0 entries to add to pak file.
+[2024.12.07-05.45.32:563][  0]LogPakFile: Display: Loading pak order file C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log...
+[2024.12.07-05.45.32:564][  0]LogPakFile: Display: Finished loading pak order file C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log.
+[2024.12.07-05.45.32:564][  0]LogPakFile: Display: Collecting files to add to pak file...
+[2024.12.07-05.45.32:564][  0]LogPakFile: Display: Collected 0 files in 0.00s.
+[2024.12.07-05.45.32:565][  0]LogPakFile: Display: Creating pak C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.pak.
+[2024.12.07-05.45.32:589][  0]LogDerivedDataCache: Unable to find inner node Boot for hierarchical cache Hierarchy.
+[2024.12.07-05.45.32:589][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file ../../../Engine/Programs/UnrealPak/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2024.12.07-05.45.32:589][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+[2024.12.07-05.45.32:589][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file ../../../Engine/Programs/UnrealPak/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2024.12.07-05.45.32:589][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+[2024.12.07-05.45.32:608][  0]LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+[2024.12.07-05.45.32:609][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2024.12.07-05.45.32:609][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchical cache Hierarchy.
+[2024.12.07-05.45.32:609][  0]LogDerivedDataCache: Skipping speed test to C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache. Assuming local performance
+[2024.12.07-05.45.32:609][  0]LogDerivedDataCache: Display: Performance to C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.00ms. RandomReadSpeed=999.00MBs, RandomWriteSpeed=999.00MBs. Assigned SpeedClass 'Local'
+[2024.12.07-05.45.32:609][  0]LogDerivedDataCache: Using Local data cache path C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2024.12.07-05.45.32:609][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2024.12.07-05.45.32:609][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchical cache Hierarchy.
+[2024.12.07-05.45.32:611][  0]LogPakFile: Display: Added 0 files, 339 bytes total, time 0.05s.
+[2024.12.07-05.45.32:611][  0]LogPakFile: Display: PrimaryIndex size: 106 bytes
+[2024.12.07-05.45.32:611][  0]LogPakFile: Display: PathHashIndex size: 8 bytes
+[2024.12.07-05.45.32:611][  0]LogPakFile: Display: FullDirectoryIndex size: 4 bytes
+[2024.12.07-05.45.32:611][  0]LogPakFile: Display: Encryption - DISABLED
+[2024.12.07-05.45.32:611][  0]LogPakFile: Display: Unreal pak executed in 0.054357 seconds
+[2024.12.07-05.45.32:617][  0]LogExit: Preparing to exit.
+[2024.12.07-05.45.32:618][  0]LogModuleManager: Shutting down and abandoning module DerivedDataCache (12)
+[2024.12.07-05.45.33:110][  0]LogModuleManager: Shutting down and abandoning module PlatformCryptoOpenSSL (10)
+[2024.12.07-05.45.33:110][  0]LogModuleManager: Shutting down and abandoning module PlatformCryptoTypes (8)
+[2024.12.07-05.45.33:110][  0]LogModuleManager: Shutting down and abandoning module PlatformCrypto (6)
+[2024.12.07-05.45.33:110][  0]LogModuleManager: Shutting down and abandoning module PakFile (4)
+[2024.12.07-05.45.33:110][  0]LogModuleManager: Shutting down and abandoning module RSA (3)
+[2024.12.07-05.45.33:111][  0]LogExit: Exiting.
+[2024.12.07-05.45.33:123][  0]Log file closed, 12/07/24 00:45:33

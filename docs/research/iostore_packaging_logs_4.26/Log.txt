@@ -1,0 +1,807 @@
+Automation.ParseCommandLine: Parsing command line: -ScriptsForProject=C:/Users/Mythical/Documents/GitHub/RoboQuest/RoboQuest.uproject BuildCookRun -nocompileeditor -installed -nop4 -project=C:/Users/Mythical/Documents/GitHub/RoboQuest/RoboQuest.uproject -cook -stage -archive -archivedirectory=C:/Users/Mythical/Downloads/Output -package -ue4exe=D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\UE4Editor-Cmd.exe -ddc=InstalledDerivedDataBackendGraph -iostore -pak -iostore -prereqs -nodebuginfo -manifests -targetplatform=Win64 -clientconfig=Development -utf8output
+Automation.Process: Setting up command environment.
+InternalUtils.SafeFileExists: SafeFileExists D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationTool.exe=True
+InternalUtils.GetEnvironmentVariable: GetEnvironmentVariable uebp_LOCAL_ROOT=
+InternalUtils.GetEnvironmentVariable: GetEnvironmentVariable uebp_LOCAL_ROOT=
+InternalUtils.GetEnvironmentVariable: GetEnvironmentVariable uebp_EngineSavedFolder=
+CommandUtils.SetEnvVar: SetEnvVar uebp_EngineSavedFolder=D:/unreal_engine_installs/UE_4.26/Engine/Programs/AutomationTool/Saved
+InternalUtils.GetEnvironmentVariable: GetEnvironmentVariable uebp_EngineSavedFolder=D:/unreal_engine_installs/UE_4.26/Engine/Programs/AutomationTool/Saved
+InternalUtils.GetEnvironmentVariable: GetEnvironmentVariable uebp_CSVFile=
+InternalUtils.GetEnvironmentVariable: GetEnvironmentVariable uebp_LogFolder=
+InternalUtils.GetEnvironmentVariable: GetEnvironmentVariable uebp_LOCAL_ROOT=D:/unreal_engine_installs/UE_4.26
+CommandUtils.SetEnvVar: SetEnvVar uebp_LogFolder=C:/Users/Mythical/AppData/Roaming/Unreal Engine/AutomationTool/Logs/D+unreal_engine_installs+UE_4.26
+InternalUtils.GetEnvironmentVariable: GetEnvironmentVariable uebp_FinalLogFolder=
+CommandUtils.SetEnvVar: SetEnvVar uebp_FinalLogFolder=C:/Users/Mythical/AppData/Roaming/Unreal Engine/AutomationTool/Logs/D+unreal_engine_installs+UE_4.26
+InternalUtils.SafeFileExists: SafeFileExists C:\WINDOWS\system32\robocopy.exe=True
+InternalUtils.SafeFileExists: SafeFileExists C:\WINDOWS\system32\mount.exe=False
+InternalUtils.SafeFileExists: SafeFileExists C:\WINDOWS\Sysnative\mount.exe=False
+InternalUtils.SafeFileExists: SafeFileExists C:\WINDOWS\system32\cmd.exe=True
+CommandUtils.SetEnvVar: SetEnvVar MallocNanoZone=0
+InternalUtils.GetEnvironmentVariable: GetEnvironmentVariable uebp_UATChildInstance=0
+WindowsPlatform.FindVisualStudioInstallations: Found Visual Studio installation: C:\Program Files\Microsoft Visual Studio\2022\Community (Product=Microsoft.VisualStudio.Product.Community, Version=17.11.35219.272)
+WindowsPlatformFactory.RegisterBuildPlatforms: UnrealBuildTool.WindowsPlatformSDK using manually installed SDK
+ScriptCompiler.FindAndCompileAllScripts: Found 16 project files in 0.400s
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\AllDesktop\AllDesktop.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\Android\Android.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\AutomationUtils\AutomationUtils.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\BuildGraph\BuildGraph.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\Gauntlet\Gauntlet.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\HoloLens\HoloLens.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\IOS\IOS.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\Linux\Linux.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\Localization\Localization.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\Lumin\Lumin.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\Mac\Mac.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\OneSkyLocalization\OneSkyLocalization.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\Scripts\AutomationScripts.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\TVOS\TVOS.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\Win\Win.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts:   D:\unreal_engine_installs\UE_4.26\Engine\Source\Programs\AutomationTool\XLocLocalization\XLocLocalization.Automation.csproj
+ScriptCompiler.FindAndCompileAllScripts: Parsed project files in 0.030s
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\AllDesktop\AllDesktop.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\Android\Android.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationUtils.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\BuildGraph.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\Gauntlet.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\HoloLens\HoloLens.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\IOS\IOS.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\Linux\Linux.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\Localization.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\Lumin\Lumin.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\Mac\Mac.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\OneSkyLocalization.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\AutomationScripts.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\TVOS\TVOS.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\Win.Automation.dll
+ScriptCompiler.LoadAutomationAssemblies: Loading script DLL: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\DotNET\AutomationScripts\XLocLocalization.Automation.dll
+ScriptCompiler.FindAndCompileAllScripts: Loaded assemblies in 0.121s
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+BuildCookRun.SetupParams: Setting up ProjectParams for C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'LuminPlatformFeatures' due to unsupported platform in plugin descriptor
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'MagicLeapMedia' due to unsupported platform in plugin descriptor
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'OnlineSubsystemGooglePlay' due to unsupported platform in plugin descriptor
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'OnlineSubsystemIOS' due to unsupported platform in plugin descriptor
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'PostSplashScreen' due to unsupported platform in plugin descriptor
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'LuminPlatformFeatures' due to unsupported platform in plugin descriptor
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'MagicLeapMedia' due to unsupported platform in plugin descriptor
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'OnlineSubsystemGooglePlay' due to unsupported platform in plugin descriptor
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'OnlineSubsystemIOS' due to unsupported platform in plugin descriptor
+ProjectUtils.ConfigureEnabledPluginForTarget: Ignoring plugin 'PostSplashScreen' due to unsupported platform in plugin descriptor
+ProjectParams.ValidateAndLog: Project Params **************
+ProjectParams.ValidateAndLog: AdditionalServerMapParams=
+ProjectParams.ValidateAndLog: Archive=True
+ProjectParams.ValidateAndLog: ArchiveMetaData=False
+ProjectParams.ValidateAndLog: CreateAppBundle=True
+ProjectParams.ValidateAndLog: BaseArchiveDirectory=C:\Users\Mythical\Downloads\Output
+ProjectParams.ValidateAndLog: BaseStageDirectory=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds
+ProjectParams.ValidateAndLog: Build=False
+ProjectParams.ValidateAndLog: SkipBuildClient=False
+ProjectParams.ValidateAndLog: SkipBuildEditor=False
+ProjectParams.ValidateAndLog: Cook=True
+ProjectParams.ValidateAndLog: Clean=
+ProjectParams.ValidateAndLog: Client=False
+ProjectParams.ValidateAndLog: ClientConfigsToBuild=Development
+ProjectParams.ValidateAndLog: ClientCookedTargets=UE4Game
+ProjectParams.ValidateAndLog: ClientTargetPlatform=Win64
+ProjectParams.ValidateAndLog: Compressed=False
+ProjectParams.ValidateAndLog: AdditionalPakOptions=
+ProjectParams.ValidateAndLog: AdditionalIoStoreOptions=
+ProjectParams.ValidateAndLog: CookOnTheFly=False
+ProjectParams.ValidateAndLog: CookOnTheFlyStreaming=False
+ProjectParams.ValidateAndLog: UnversionedCookedContent=True
+ProjectParams.ValidateAndLog: SkipCookingEditorContent=False
+ProjectParams.ValidateAndLog: NumCookersToSpawn=0
+ProjectParams.ValidateAndLog: GeneratePatch=False
+ProjectParams.ValidateAndLog: AddPatchLevel=False
+ProjectParams.ValidateAndLog: StageBaseReleasePaks=False
+ProjectParams.ValidateAndLog: GenerateRemaster=False
+ProjectParams.ValidateAndLog: DiscVersion=
+ProjectParams.ValidateAndLog: CreateReleaseVersion=
+ProjectParams.ValidateAndLog: BasedOnReleaseVersion=
+ProjectParams.ValidateAndLog: DLCFile=
+ProjectParams.ValidateAndLog: DLCIncludeEngineContent=False
+ProjectParams.ValidateAndLog: DLCPakPluginFile=False
+ProjectParams.ValidateAndLog: DiffCookedContentPath=
+ProjectParams.ValidateAndLog: AdditionalCookerOptions=
+ProjectParams.ValidateAndLog: DedicatedServer=False
+ProjectParams.ValidateAndLog: DirectoriesToCook=
+ProjectParams.ValidateAndLog: DDCGraph=InstalledDerivedDataBackendGraph
+ProjectParams.ValidateAndLog: CulturesToCook=<Not Specified> (Use Defaults)
+ProjectParams.ValidateAndLog: EditorTargets=
+ProjectParams.ValidateAndLog: Foreign=False
+ProjectParams.ValidateAndLog: IsCodeBasedProject=False
+ProjectParams.ValidateAndLog: IsProgramTarget=False
+ProjectParams.ValidateAndLog: IterativeCooking=False
+ProjectParams.ValidateAndLog: IterateSharedCookedBuild=
+ProjectParams.ValidateAndLog: IterateSharedBuildUsePrecompiledExe=False
+ProjectParams.ValidateAndLog: CookAll=False
+ProjectParams.ValidateAndLog: CookPartialGC=False
+ProjectParams.ValidateAndLog: CookInEditor=False
+ProjectParams.ValidateAndLog: CookMapsOnly=False
+ProjectParams.ValidateAndLog: Deploy=False
+ProjectParams.ValidateAndLog: IterativeDeploy=False
+ProjectParams.ValidateAndLog: FastCook=False
+ProjectParams.ValidateAndLog: LogWindow=False
+ProjectParams.ValidateAndLog: Manifests=True
+ProjectParams.ValidateAndLog: MapToRun=
+ProjectParams.ValidateAndLog: NoClient=False
+ProjectParams.ValidateAndLog: NumClients=0
+ProjectParams.ValidateAndLog: NoDebugInfo=True
+ProjectParams.ValidateAndLog: SeparateDebugInfo=False
+ProjectParams.ValidateAndLog: MapFile=False
+ProjectParams.ValidateAndLog: NoCleanStage=False
+ProjectParams.ValidateAndLog: NoXGE=False
+ProjectParams.ValidateAndLog: MapsToCook=
+ProjectParams.ValidateAndLog: MapIniSectionsToCook=
+ProjectParams.ValidateAndLog: Pak=True
+ProjectParams.ValidateAndLog: IgnorePaksFromDifferentCookSource=False
+ProjectParams.ValidateAndLog: IoStore=True
+ProjectParams.ValidateAndLog: SkipIoStore=False
+ProjectParams.ValidateAndLog: SkipPackage=False
+ProjectParams.ValidateAndLog: Package=True
+ProjectParams.ValidateAndLog: ForcePackageData=False
+ProjectParams.ValidateAndLog: NullRHI=False
+ProjectParams.ValidateAndLog: FakeClient=False
+ProjectParams.ValidateAndLog: EditorTest=False
+ProjectParams.ValidateAndLog: RunAutomationTests=False
+ProjectParams.ValidateAndLog: RunAutomationTest=
+ProjectParams.ValidateAndLog: RunTimeoutSeconds=0
+ProjectParams.ValidateAndLog: CrashIndex=0
+ProjectParams.ValidateAndLog: ProgramTargets=
+ProjectParams.ValidateAndLog: ProjectPlatformBinariesPaths=[Win64, D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64]
+ProjectParams.ValidateAndLog: ProjectExePaths=[Win64, D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\UE4Game.exe]
+ProjectParams.ValidateAndLog: Distribution=False
+ProjectParams.ValidateAndLog: Prebuilt=False
+ProjectParams.ValidateAndLog: Prereqs=True
+ProjectParams.ValidateAndLog: AppLocalDirectory=
+ProjectParams.ValidateAndLog: NoBootstrapExe=False
+ProjectParams.ValidateAndLog: RawProjectPath=C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject
+ProjectParams.ValidateAndLog: Run=False
+ProjectParams.ValidateAndLog: ServerConfigsToBuild=Development
+ProjectParams.ValidateAndLog: ServerCookedTargets=
+ProjectParams.ValidateAndLog: ServerTargetPlatform=Win64
+ProjectParams.ValidateAndLog: ShortProjectName=RoboQuest
+ProjectParams.ValidateAndLog: SignedPak=False
+ProjectParams.ValidateAndLog: SignPak=
+ProjectParams.ValidateAndLog: SkipCook=False
+ProjectParams.ValidateAndLog: SkipCookOnTheFly=False
+ProjectParams.ValidateAndLog: SkipPak=False
+ProjectParams.ValidateAndLog: PrePak=False
+ProjectParams.ValidateAndLog: SkipStage=False
+ProjectParams.ValidateAndLog: Stage=True
+ProjectParams.ValidateAndLog: bTreatNonShippingBinariesAsDebugFiles=False
+ProjectParams.ValidateAndLog: bUseExtraFlavor=False
+ProjectParams.ValidateAndLog: NativizeAssets=False
+ProjectParams.ValidateAndLog: StageDirectoryParam=
+ProjectParams.ValidateAndLog: AdditionalPackageOptions=
+ProjectParams.ValidateAndLog: Project Params **************
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+Project.Cook: ********** COOK COMMAND STARTED **********
+InternalUtils.SafeFileExists: SafeFileExists D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\UE4Editor-Cmd.exe=True
+CommandUtils.RunCommandlet: Running UE4Editor Cook for project C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject
+CommandUtils.RunCommandlet: Commandlet log file is D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\Cook-2024.12.07-00.45.20.txt
+InternalUtils.SafeFileExists: SafeFileExists D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\UE4Editor-Cmd.exe=True
+CommandUtils.Run: Running: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\UE4Editor-Cmd.exe C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject -run=Cook  -TargetPlatform=WindowsNoEditor -fileopenlog -ddc=InstalledDerivedDataBackendGraph -unversioned -manifests -abslog=D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\Cook-2024.12.07-00.45.20.txt -stdout -CrashForUAT -unattended -NoLogTimes  -UTF8Output
+ProcessResult.StdOut:   LogInit: Display: Running engine for game: RoboQuest
+ProcessResult.StdOut:   LogHAL: Display: Platform has ~ 16 GB [16866865152 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'AllDesktop'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTC'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXT'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'AndroidClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTCClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXTClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2Client'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_Multi'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_MultiClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Linux'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxNoEditor'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxServer'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64NoEditor'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64Client'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64Server'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Lumin'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LuminClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacNoEditor'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Mac'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacServer'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsNoEditor'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Windows'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsServer'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Building Assets For WindowsNoEditor
+ProcessResult.StdOut:   LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+ProcessResult.StdOut:   LogShaderCompilers: Display: Using Local Shader Compiler.
+ProcessResult.StdOut:   LogDerivedDataCache: Display: Max Cache Size: 512 MB
+ProcessResult.StdOut:   LogDerivedDataCache: Display: Loaded Boot cache: C:/Users/Mythical/AppData/Local/UnrealEngine/4.26/DerivedDataCache/Boot.ddc
+ProcessResult.StdOut:   LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+ProcessResult.StdOut:   LogDerivedDataCache: Display: Performance to C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.05ms. RandomReadSpeed=518.05MBs, RandomWriteSpeed=160.91MBs. Assigned SpeedClass 'Local'
+ProcessResult.StdOut:   LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+ProcessResult.StdOut:   LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+ProcessResult.StdOut:   LogCook: Display: CookSettings for Memory: MemoryMaxUsedVirtual 0MiB, MemoryMaxUsedPhysical 16384MiB, MemoryMinFreeVirtual 0MiB, MemoryMinFreePhysical 1024MiB
+ProcessResult.StdOut:   LogCook: Display: Mobile HDR setting 1
+ProcessResult.StdOut:   LogCook: Display: Creating asset registry
+ProcessResult.StdOut:   LogCook: Display: Discovering localized assets for cultures: en
+ProcessResult.StdOut:   LogCook: Display: Unable to read previous cook inisettings for platform WindowsNoEditor invalidating cook
+ProcessResult.StdOut:   LogCook: Display: Clearing all cooked content for platform WindowsNoEditor
+ProcessResult.StdOut:   LogCook: Display: Sandbox cleanup took 0.027 seconds for platforms WindowsNoEditor
+ProcessResult.StdOut:   LogCook: Display: Cooked packages 0 Packages Remain 47 Total 47
+ProcessResult.StdOut:   LogCook: Display: Cook Diagnostics: OpenFileHandles=163, VirtualMemory=431MiB
+ProcessResult.StdOut:   LogSavePackage: Warning: A dependency 'PrimaryAssetLabel /Script/Engine.Default__PrimaryAssetLabel' of 'PrimaryAssetLabel /Game/Mods/TestMod/DA_TestMod.DA_TestMod' was filtered, but is mandatory. This indicates a problem with editor only stripping. We will keep the dependency anyway (1).
+ProcessResult.StdOut:   LogCook: Display: Cooked packages 194 Packages Remain 0 Total 194
+ProcessResult.StdOut:   LogCook: Display: Cook Diagnostics: OpenFileHandles=196, VirtualMemory=559MiB
+ProcessResult.StdOut:   LogCook: Display: Finishing up...
+ProcessResult.StdOut:   LogCook: Display: Saving BulkData manifest(s)...
+ProcessResult.StdOut:   LogCook: Display: Done saving BulkData manifest(s)
+ProcessResult.StdOut:   LogBlueprintCodeGen: Display: Nativization Summary - AnimBP:
+ProcessResult.StdOut:   LogBlueprintCodeGen: Display: Name, Children, Non-empty Functions (Empty Functions), Variables, FunctionUsage, VariableUsage
+ProcessResult.StdOut:   LogBlueprintCodeGen: Display: Nativization Summary - Shared Variables From Graph: 0
+ProcessResult.StdOut:   LogAssetRegistryGenerator: Display: Looking for game openorder in dir C:/Users/Mythical/Documents/GitHub/RoboQuest/Build/WindowsNoEditor/FileOpenOrder/GameOpenOrder.log
+ProcessResult.StdOut:   LogAssetRegistryGenerator: Display: Saving asset registry.
+ProcessResult.StdOut:   LogAssetRegistryGenerator: Display: Generated asset registry num assets 191, size is 81.30kb
+ProcessResult.StdOut:   LogAssetRegistryGenerator: Display: Done saving asset registry.
+ProcessResult.StdOut:   LogCook: Display: Cook by the book total time in tick 0.475559s total time 2.935266
+ProcessResult.StdOut:   LogCook: Display: Peak Used virtual 570 MiB Peak Used physical 618 MiB
+ProcessResult.StdOut:   LogCook: Display: Hierarchy Timer Information:
+ProcessResult.StdOut:   LogCook: Display:   Root: 0.000s (0)
+ProcessResult.StdOut:   LogCook: Display:     CleanSandbox: 0.027s (1)
+ProcessResult.StdOut:   LogCook: Display:       ProcessingAccessedStrings: 0.007s (1)
+ProcessResult.StdOut:   LogCook: Display:     CollectFilesToCook: 0.273s (1)
+ProcessResult.StdOut:   LogCook: Display:       CookModificationDelegate: 0.000s (1)
+ProcessResult.StdOut:   LogCook: Display:     GenerateLongPackageName: 0.000s (1)
+ProcessResult.StdOut:   LogCook: Display:     TickCookOnTheSide: 0.476s (4)
+ProcessResult.StdOut:   LogCook: Display:       PostLoadPackageFixup: 0.001s (278)
+ProcessResult.StdOut:   LogCook: Display:       LoadPackageForCooking: 0.054s (194)
+ProcessResult.StdOut:   LogCook: Display:       SavingPackages: 0.419s (30)
+ProcessResult.StdOut:   LogCook: Display:         BeginPackageCacheForCookedPlatformData: 0.000s (5)
+ProcessResult.StdOut:   LogCook: Display:         PrecachePlatformDataForNextPackage: 0.202s (192)
+ProcessResult.StdOut:   LogCook: Display:           BeginPackageCacheForCookedPlatformData: 0.202s (189)
+ProcessResult.StdOut:   LogCook: Display:         SaveCookedPackage: 0.211s (194)
+ProcessResult.StdOut:   LogCook: Display:           GEditorSavePackage: 0.207s (194)
+ProcessResult.StdOut:   LogCook: Display:             ConvertingBlueprints: 0.001s (194)
+ProcessResult.StdOut:   LogCook: Display:             VerifyCanCookPackage: 0.001s (191)
+ProcessResult.StdOut:   LogCook: Display:         ClearAllCachedCookedPlatformData: 0.002s (194)
+ProcessResult.StdOut:   LogCook: Display:     FinalizePackageStore: 0.001s (1)
+ProcessResult.StdOut:   LogCook: Display:     GeneratingBlueprintAssets: 0.002s (1)
+ProcessResult.StdOut:   LogCook: Display:     SavingCurrentIniSettings: 0.022s (1)
+ProcessResult.StdOut:   LogCook: Display:       ProcessingAccessedStrings: 0.005s (1)
+ProcessResult.StdOut:   LogCook: Display:     SavingAssetRegistry: 0.034s (1)
+ProcessResult.StdOut:   LogCook: Display:       BuildChunkManifest: 0.008s (1)
+ProcessResult.StdOut:   LogCook: Display:       SaveManifests: 0.013s (1)
+ProcessResult.StdOut:   LogCook: Display:       SaveRealAssetRegistry: 0.011s (1)
+ProcessResult.StdOut:   LogCook: Display:       WriteCookerOpenOrder: 0.001s (1)
+ProcessResult.StdOut:   LogCook: Display: Done!
+ProcessResult.StdOut:   LogSavePackage: Display: Took 0.000651s to verify the EDL loading graph.
+ProcessResult.StdOut:   LogCookCommandlet: Display: Misc Cook Stats
+ProcessResult.StdOut:   LogCookCommandlet: Display: ===============
+ProcessResult.StdOut:   LogCookCommandlet: Display: NiagaraShader.Misc
+ProcessResult.StdOut:   LogCookCommandlet: Display:     ShadersCompiled=0
+ProcessResult.StdOut:   LogCookCommandlet: Display: ShaderCompiler
+ProcessResult.StdOut:   LogCookCommandlet: Display:     BlockingTimeSec=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:     AsyncCompileTimeSec=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:     GlobalBeginCompileShaderTimeSec=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:     GlobalBeginCompileShaderCalls=0
+ProcessResult.StdOut:   LogCookCommandlet: Display:     ProcessAsyncResultsTimeSec=0.000085
+ProcessResult.StdOut:   LogCookCommandlet: Display: GlobalShader.Misc
+ProcessResult.StdOut:   LogCookCommandlet: Display:     ShadersCompiled=0
+ProcessResult.StdOut:   LogCookCommandlet: Display: MeshMaterial.Misc
+ProcessResult.StdOut:   LogCookCommandlet: Display:     ShadersCompiled=0
+ProcessResult.StdOut:   LogCookCommandlet: Display: MaterialShader.Misc
+ProcessResult.StdOut:   LogCookCommandlet: Display:     ShadersCompiled=0
+ProcessResult.StdOut:   LogCookCommandlet: Display: Package.Load
+ProcessResult.StdOut:   LogCookCommandlet: Display:     NumPreloadedDependencies=8
+ProcessResult.StdOut:   LogCookCommandlet: Display:     NumInlineLoads=4
+ProcessResult.StdOut:   LogCookCommandlet: Display:     NumPackagesLoaded=147
+ProcessResult.StdOut:   LogCookCommandlet: Display:     LoadPackageTimeSec=0.541898
+ProcessResult.StdOut:   LogCookCommandlet: Display: CookOnTheFlyServer
+ProcessResult.StdOut:   LogCookCommandlet: Display:     PeakRequestQueueSize=28
+ProcessResult.StdOut:   LogCookCommandlet: Display:     PeakLoadQueueSize=161
+ProcessResult.StdOut:   LogCookCommandlet: Display:     PeakSaveQueueSize=153
+ProcessResult.StdOut:   LogCookCommandlet: Display: Package.Save
+ProcessResult.StdOut:   LogCookCommandlet: Display:     NumPackagesSaved=194
+ProcessResult.StdOut:   LogCookCommandlet: Display:     SavePackageTimeSec=0.202914
+ProcessResult.StdOut:   LogCookCommandlet: Display:     TagPackageExportsPresaveTimeSec=0.020375
+ProcessResult.StdOut:   LogCookCommandlet: Display:     TagPackageExportsTimeSec=0.005661
+ProcessResult.StdOut:   LogCookCommandlet: Display:     FullyLoadLoadersTimeSec=0.000067
+ProcessResult.StdOut:   LogCookCommandlet: Display:     ResetLoadersTimeSec=0.000619
+ProcessResult.StdOut:   LogCookCommandlet: Display:     TagPackageExportsGetObjectsWithOuter=0.000639
+ProcessResult.StdOut:   LogCookCommandlet: Display:     TagPackageExportsGetObjectsWithMarks=0.000104
+ProcessResult.StdOut:   LogCookCommandlet: Display:     SerializeImportsTimeSec=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:     SortExportsSeekfreeInnerTimeSec=0.037574
+ProcessResult.StdOut:   LogCookCommandlet: Display:     SerializeExportsTimeSec=0.089747
+ProcessResult.StdOut:   LogCookCommandlet: Display:     SerializeBulkDataTimeSec=0.002651
+ProcessResult.StdOut:   LogCookCommandlet: Display:     AsyncWriteTimeSec=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:     MBWritten=57.357307
+ProcessResult.StdOut:   LogCookCommandlet: Display: Package.DifferentPackagesSizeMBPerAsset
+ProcessResult.StdOut:   LogCookCommandlet: Display: Package.NumberOfDifferencesInPackagesPerAsset
+ProcessResult.StdOut:   LogCookCommandlet: Display: Package.PackageDifferencesSizeMBPerAsset
+ProcessResult.StdOut:   LogCookCommandlet: Display: Package.DiffTotal
+ProcessResult.StdOut:   LogCookCommandlet: Display:     NumberOfDifferentPackages=0
+ProcessResult.StdOut:   LogCookCommandlet: Display:     DifferentPackagesSizeMB=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:     NumberOfDifferencesInPackages=0
+ProcessResult.StdOut:   LogCookCommandlet: Display:     PackageDifferencesSizeMB=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display: UnversionedProperties
+ProcessResult.StdOut:   LogCookCommandlet: Display:     SavedStructs=0
+ProcessResult.StdOut:   LogCookCommandlet: Display:     SavedMB=0
+ProcessResult.StdOut:   LogCookCommandlet: Display:     EquivalentTaggedMB=0
+ProcessResult.StdOut:   LogCookCommandlet: Display:     CompressionRatio=-nan(ind)
+ProcessResult.StdOut:   LogCookCommandlet: Display:     BitfieldWasteKB=0
+ProcessResult.StdOut:   LogCookCommandlet: Display:
+ProcessResult.StdOut:   LogCookCommandlet: Display: Cook Profile
+ProcessResult.StdOut:   LogCookCommandlet: Display: ============
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0.CookWallTimeSec=8.741393
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 0.StartupWallTimeSec=5.798191
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1.CookByTheBookTimeSec=2.941453
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 0.StartCookByTheBookTimeSec=2.370632
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 0. 0.GameCookModificationDelegateTimeSec=0.000035
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 1.TickCookOnTheSideTimeSec=0.568113
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 1. 0.TickCookOnTheSideLoadPackagesTimeSec=0.053859
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 1. 1.TickCookOnTheSideSaveCookedPackageTimeSec=0.211204
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 1. 1. 0.TickCookOnTheSideResolveRedirectorsTimeSec=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 1. 2.TickCookOnTheSideBeginPackageCacheForCookedPlatformDataTimeSec=0.202412
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 1. 3.TickCookOnTheSideFinishPackageCacheForCookedPlatformDataTimeSec=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 2.TickLoopGCTimeSec=0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 3.TickLoopRecompileShaderRequestsTimeSec=0.000008
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 4.TickLoopShaderProcessAsyncResultsTimeSec=0.000007
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 5.TickLoopProcessDeferredCommandsTimeSec=0.000011
+ProcessResult.StdOut:   LogCookCommandlet: Display:  0. 1. 6.TickLoopTickCommandletStatsTimeSec=0.000002
+ProcessResult.StdOut:   LogCookCommandlet: Display:
+ProcessResult.StdOut:   LogCookCommandlet: Display: DDC Summary Stats
+ProcessResult.StdOut:   LogCookCommandlet: Display: =================
+ProcessResult.StdOut:   LogCookCommandlet: Display: TotalGetHits    =       473
+ProcessResult.StdOut:   LogCookCommandlet: Display: TotalGets       =       473
+ProcessResult.StdOut:   LogCookCommandlet: Display: TotalGetHitPct  =  1.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display: LocalGetHitPct  =  0.471459
+ProcessResult.StdOut:   LogCookCommandlet: Display: SharedGetHitPct =  0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display: OtherGetHitPct  =  0.528541
+ProcessResult.StdOut:   LogCookCommandlet: Display: GetMissPct      =  0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display: TotalPutHits    =         0
+ProcessResult.StdOut:   LogCookCommandlet: Display: TotalPuts       =         0
+ProcessResult.StdOut:   LogCookCommandlet: Display: TotalPutHitPct  =  0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display: PutMissPct      =  0.000000
+ProcessResult.StdOut:   LogCookCommandlet: Display:
+ProcessResult.StdOut:   LogCookCommandlet: Display: DDC Resource Stats
+ProcessResult.StdOut:   LogCookCommandlet: Display: =======================================================================================================
+ProcessResult.StdOut:   LogCookCommandlet: Display: Asset Type                          Total Time (Sec)  GameThread Time (Sec)  Assets Built  MB Processed
+ProcessResult.StdOut:   LogCookCommandlet: Display: ----------------------------------  ----------------  ---------------------  ------------  ------------
+ProcessResult.StdOut:   LogCookCommandlet: Display: MaterialShader                                  0.16                   0.16             0          4.78
+ProcessResult.StdOut:   LogCookCommandlet: Display: Texture (Streaming)                             0.05                   0.00             0          9.61
+ProcessResult.StdOut:   LogCookCommandlet: Display: GlobalShader                                    0.02                   0.02             0          6.56
+ProcessResult.StdOut:   LogCookCommandlet: Display: StaticMesh                                      0.01                   0.01             0          0.74
+ProcessResult.StdOut:   LogCookCommandlet: Display: PhysX (BodySetup)                               0.00                   0.00             0          0.48
+ProcessResult.StdOut:   LogCookCommandlet: Display: NavCollision                                    0.00                   0.00             0          0.02
+ProcessResult.StdOut:   LogCookCommandlet: Display: Texture (Inline)                                0.00                   0.00             0         38.04
+ProcessResult.StdOut:   LogCookCommandlet: Display: DistanceField                                   0.00                   0.00             0          0.00
+ProcessResult.StdOut:   LogInit: Display:
+ProcessResult.StdOut:   LogInit: Display: Warning/Error Summary (Unique only)
+ProcessResult.StdOut:   LogInit: Display: -----------------------------------
+ProcessResult.StdOut:   LogInit: Display: LogSavePackage: Warning: A dependency 'PrimaryAssetLabel /Script/Engine.Default__PrimaryAssetLabel' of 'PrimaryAssetLabel /Game/Mods/TestMod/DA_TestMod.DA_TestMod' was filtered, but is mandatory. This indicates a problem with editor only stripping. We will keep the dependency anyway (1).
+ProcessResult.StdOut:   LogInit: Display:
+ProcessResult.StdOut:   LogInit: Display: Success - 0 error(s), 1 warning(s)
+ProcessResult.StdOut:   LogInit: Display:
+ProcessResult.StdOut:   
+ProcessResult.StdOut:   Execution of commandlet took:  2.96 seconds
+ProcessResult.StdOut:   LogShaderCompilers: Display: Shaders left to compile 0
+ProcessResult.StdOut:   LogHttp: Display: cleaning up 0 outstanding Http requests.
+ProcessResult.StdOut:   LogContentStreaming: Display: There are 1 unreleased StreamingManagers
+CommandUtils.Run: Took 10.8882175s to run UE4Editor-Cmd.exe, ExitCode=0
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\Cook-2024.12.07-00.45.31.txt
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\Cook-2024.12.07-00.45.20.txt C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\Cook-2024.12.07-00.45.31.txt
+InternalUtils.SafeDeleteFile: SafeDeleteFile D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\Cook-2024.12.07-00.45.20.txt
+Project.Cook: ********** COOK COMMAND COMPLETED **********
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+Project.CopyBuildToStagingDirectory: ********** STAGE COMMAND STARTED **********
+Project.LogDeploymentContext: Deployment Context **************
+Project.LogDeploymentContext: ProjectFile = C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject
+Project.LogDeploymentContext: ArchiveDir = C:\Users\Mythical\Downloads\Output\WindowsNoEditor
+Project.LogDeploymentContext: IsCodeBasedUprojectFile = False
+Project.LogDeploymentContext: DedicatedServer = False
+Project.LogDeploymentContext: Stage = True
+Project.LogDeploymentContext: StageTargetPlatform = Win64
+Project.LogDeploymentContext: InputRootDir = D:\unreal_engine_installs\UE_4.26
+Project.LogDeploymentContext: InputProjectDir = C:\Users\Mythical\Documents\GitHub\RoboQuest
+Project.LogDeploymentContext: PlatformDir = Win64
+Project.LogDeploymentContext: StagedOutputDir = C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+Project.LogDeploymentContext: ShortProjectName = RoboQuest
+Project.LogDeploymentContext: ProjectArgForCommandLines = ../../../RoboQuest/RoboQuest.uproject
+Project.LogDeploymentContext: RunRootDir = C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+Project.LogDeploymentContext: RunProjectDir = C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest
+Project.LogDeploymentContext: PakFileInternalRoot = ../../../
+Project.LogDeploymentContext: PlatformUsesChunkManifests = True
+Project.LogDeploymentContext: End Deployment Context **************
+Project.CreateStagingManifest: Creating Staging Manifest...
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\BootstrapPackagedGame-Win64-Shipping.exe C:\Users\Mythical\Documents\GitHub\RoboQuest\Intermediate\Staging\RoboQuest.exe
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseEditor.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseEditorKeyBindings.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseEditorPerProjectUserSettings.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseEditorSettings.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseLightmass.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\BasePakFileRules.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\Category.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\Editor.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\EditorTutorials.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\Engine.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\Keywords.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\PortableObjectExport.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\PortableObjectImport.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\PropertyNames.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\RepairData.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\ToolTips.ini
+Project.StageConfigFiles: Excluding config file D:\unreal_engine_installs\UE_4.26\Engine\Config\Localization\WordCount.ini
+Project.StageConfigFiles: Excluding config file C:\Users\Mythical\Documents\GitHub\RoboQuest\Config\DefaultEditor.ini
+Project.CleanStagingDirectory: Cleaning Stage Directory: C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+InternalUtils.SafeDeleteDirectory: SafeDeleteDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+InternalUtils.RecursivelyDeleteDirectory: RecursivelyDeleteDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+InternalUtils.SafeDeleteEmptyDirectory: SafeDeleteEmptyDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\TmpPackaging\WindowsNoEditor\pakchunklist.txt=True
+Project.CreatePaksUsingChunkManifests: Creating pak using streaming install manifests.
+InternalUtils.SafeWriteAllLines: SafeWriteAllLines C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\PrePak_WindowsNoEditor_NonUFSFiles.txt
+InternalUtils.SafeWriteAllLines: SafeWriteAllLines C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\PrePak_WindowsNoEditor_NonUFSFilesDebug.txt
+InternalUtils.SafeWriteAllLines: SafeWriteAllLines C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\PrePak_WindowsNoEditor_UFSFiles.txt
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\TmpPackaging\WindowsNoEditor\pakchunklist.txt=True
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\Base.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\Base.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseCompat.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseCompat.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseDeviceProfiles.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseDeviceProfiles.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseEngine.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseEngine.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseGame.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseGame.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseGameUserSettings.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseGameUserSettings.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseHardware.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseHardware.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseInput.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseInput.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseInstallBundle.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseInstallBundle.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseRuntimeOptions.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseRuntimeOptions.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\BaseScalability.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\BaseScalability.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\ConsoleVariables.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\ConsoleVariables.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\Layouts\DefaultLayout.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\Layouts\DefaultLayout.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\Windows\BaseWindowsEngine.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\Windows\BaseWindowsEngine.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\Windows\DataDrivenPlatformInfo.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\Windows\DataDrivenPlatformInfo.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\Windows\WindowsEngine.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\Windows\WindowsEngine.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Config\Windows\WindowsGame.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Config\Windows\WindowsGame.ini
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Config\DefaultEngine.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\RoboQuest\Config\DefaultEngine.ini
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Config\DefaultGame.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\RoboQuest\Config\DefaultGame.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\2D\Paper2D\Config\BasePaper2D.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\2D\Paper2D\Config\BasePaper2D.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\Enterprise\VariantManagerContent\Config\BaseVariantManagerContent.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\Enterprise\VariantManagerContent\Config\BaseVariantManagerContent.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\FX\Niagara\Config\BaseNiagara.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\FX\Niagara\Config\BaseNiagara.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\Experimental\MotoSynth\Config\BaseMotoSynth.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\Experimental\MotoSynth\Config\BaseMotoSynth.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\Lumin\MagicLeap\Config\BaseMagicLeap.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\MagicLeap\MagicLeap\Config\BaseMagicLeap.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\Lumin\MagicLeapLightEstimation\Config\BaseMagicLeapLightEstimation.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\MagicLeap\MagicLeapLightEstimation\Config\BaseMagicLeapLightEstimation.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Config\Localization\OnlineSubsystem.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\Online\OnlineSubsystem\Config\Localization\OnlineSubsystem.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\Online\OnlineSubsystemUtils\Config\Localization\OnlineSubsystemUtils.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\Online\OnlineSubsystemUtils\Config\Localization\OnlineSubsystemUtils.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\Runtime\Oculus\OculusVR\Config\BaseOculusVR.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\Runtime\Oculus\OculusVR\Config\BaseOculusVR.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\Runtime\PhysXVehicles\Config\BasePhysXVehicles.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\Runtime\PhysXVehicles\Config\BasePhysXVehicles.ini
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Plugins\Runtime\Synthesis\Config\BaseSynthesis.ini C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Temp\Win64\Engine\Plugins\Runtime\Synthesis\Config\BaseSynthesis.ini
+InternalUtils.SafeReadAllLines: SafeReadAllLines C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\TmpPackaging\WindowsNoEditor\pakchunklist.txt
+Project.CreatePaksUsingChunkManifests: Reading chunk list file C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\TmpPackaging\WindowsNoEditor\pakchunklist.txt which contains 2 entries
+InternalUtils.SafeReadAllLines: SafeReadAllLines C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\TmpPackaging\WindowsNoEditor\pakchunk0.txt
+Project.CreatePaksUsingChunkManifests: Reading chunk manifest C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\TmpPackaging\WindowsNoEditor\pakchunk0.txt which contains 188 entries
+InternalUtils.SafeReadAllLines: SafeReadAllLines C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\TmpPackaging\WindowsNoEditor\pakchunk1.txt
+Project.CreatePaksUsingChunkManifests: Reading chunk manifest C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\TmpPackaging\WindowsNoEditor\pakchunk1.txt which contains 3 entries
+Project.CreatePaksUsingChunkManifests: Creating Pak files utilizing 16 cores
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\GameOpenOrder.log=False
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\Win64\FileOpenOrder\GameOpenOrder.log=False
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log=True
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\EditorOpenOrder.log=True
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\GameOpenOrder.log=False
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\Win64\FileOpenOrder\GameOpenOrder.log=False
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log=True
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\EditorOpenOrder.log=True
+Project.RunUnrealPakInParallel: Executing 2 UnrealPak commands...
+Project.RunUnrealPakInParallel: Waiting for child processes to complete (2/2)
+Project.RunUnrealPakInParallel: Output from: C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.pak -create="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\PakList_pakchunk0-WindowsNoEditor.txt" -cryptokeys=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json -order=C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log -patchpaddingalign=2048 -platform=Windows  -multiprocess -abslog="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\UnrealPak-pakchunk0-WindowsNoEditor-2024.12.07-00.45.31.txt"
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Parsing crypto keys from a crypto key cache file
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Loading response file C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\PakList_pakchunk0-WindowsNoEditor.txt
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Added 1086 entries to add to pak file.
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Loading pak order file C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log...
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Finished loading pak order file C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log.
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Collecting files to add to pak file...
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Collected 1086 files in 0.01s.
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Creating pak C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.pak.
+Project.RunUnrealPakInParallel:   LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+Project.RunUnrealPakInParallel:   LogDerivedDataCache: Display: Performance to C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.00ms. RandomReadSpeed=999.00MBs, RandomWriteSpeed=999.00MBs. Assigned SpeedClass 'Local'
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Added 1086 files, 24155835 bytes total, time 0.43s.
+Project.RunUnrealPakInParallel:   LogPakFile: Display: PrimaryIndex size: 13146 bytes
+Project.RunUnrealPakInParallel:   LogPakFile: Display: PathHashIndex size: 35227 bytes
+Project.RunUnrealPakInParallel:   LogPakFile: Display: FullDirectoryIndex size: 32072 bytes
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Encryption - DISABLED
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Unreal pak executed in 0.468443 seconds
+Project.RunUnrealPakInParallel: UnrealPak terminated with exit code 0
+Project.RunUnrealPakInParallel: Output from: C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.pak -create="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\PakList_pakchunk1-WindowsNoEditor.txt" -cryptokeys=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json -order=C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log -patchpaddingalign=2048 -platform=Windows  -multiprocess -abslog="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\UnrealPak-pakchunk1-WindowsNoEditor-2024.12.07-00.45.31.txt"
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Parsing crypto keys from a crypto key cache file
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Loading response file C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\PakList_pakchunk1-WindowsNoEditor.txt
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Added 0 entries to add to pak file.
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Loading pak order file C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log...
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Finished loading pak order file C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log.
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Collecting files to add to pak file...
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Collected 0 files in 0.00s.
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Creating pak C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.pak.
+Project.RunUnrealPakInParallel:   LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+Project.RunUnrealPakInParallel:   LogDerivedDataCache: Display: Performance to C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.00ms. RandomReadSpeed=999.00MBs, RandomWriteSpeed=999.00MBs. Assigned SpeedClass 'Local'
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Added 0 files, 339 bytes total, time 0.05s.
+Project.RunUnrealPakInParallel:   LogPakFile: Display: PrimaryIndex size: 106 bytes
+Project.RunUnrealPakInParallel:   LogPakFile: Display: PathHashIndex size: 8 bytes
+Project.RunUnrealPakInParallel:   LogPakFile: Display: FullDirectoryIndex size: 4 bytes
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Encryption - DISABLED
+Project.RunUnrealPakInParallel:   LogPakFile: Display: Unreal pak executed in 0.054357 seconds
+Project.RunUnrealPakInParallel: UnrealPak terminated with exit code 0
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\Win64\FileOpenOrder\GameOpenOrder.log=False
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\Win64\FileOpenOrder\CookerOpenOrder.log=False
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\GameOpenOrder.log=False
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log=True
+Project.RunIoStore: Running IoStore commandlet with arguments: -CreateGlobalContainer=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\global.utoc -CookedDirectory=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor -Commands="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\IoStoreCommands.txt" -CookerOrder=C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log -patchpaddingalign=2048   -cryptokeys=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json  -TargetPlatform=WindowsNoEditor
+CommandUtils.RunCommandlet: Running UE4Editor IoStore for project C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject
+CommandUtils.RunCommandlet: Commandlet log file is D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\IoStore-2024.12.07-00.45.33.txt
+InternalUtils.SafeFileExists: SafeFileExists D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\UE4Editor-Cmd.exe=True
+CommandUtils.Run: Running: D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\UE4Editor-Cmd.exe C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject -run=IoStore -CreateGlobalContainer=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\global.utoc -CookedDirectory=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor -Commands="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\IoStoreCommands.txt" -CookerOrder=C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log -patchpaddingalign=2048   -cryptokeys=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json  -TargetPlatform=WindowsNoEditor -abslog=D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\IoStore-2024.12.07-00.45.33.txt -stdout -CrashForUAT -unattended -NoLogTimes  -UTF8Output
+ProcessResult.StdOut:   LogInit: Display: Running engine for game: RoboQuest
+ProcessResult.StdOut:   LogHAL: Display: Platform has ~ 16 GB [16866865152 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'AllDesktop'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTC'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXT'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'AndroidClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTCClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXTClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2Client'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_Multi'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_MultiClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Linux'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxNoEditor'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxServer'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64NoEditor'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64Client'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64Server'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Lumin'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'LuminClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacNoEditor'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Mac'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacServer'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsNoEditor'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'Windows'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsClient'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsServer'
+ProcessResult.StdOut:   LogTargetPlatformManager: Display: Building Assets For WindowsNoEditor
+ProcessResult.StdOut:   LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+ProcessResult.StdOut:   LogShaderCompilers: Display: Using Local Shader Compiler.
+ProcessResult.StdOut:   LogDerivedDataCache: Display: Max Cache Size: 512 MB
+ProcessResult.StdOut:   LogDerivedDataCache: Display: Loaded Boot cache: C:/Users/Mythical/AppData/Local/UnrealEngine/4.26/DerivedDataCache/Boot.ddc
+ProcessResult.StdOut:   LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+ProcessResult.StdOut:   LogDerivedDataCache: Display: Performance to C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.03ms. RandomReadSpeed=1548.45MBs, RandomWriteSpeed=220.05MBs. Assigned SpeedClass 'Local'
+ProcessResult.StdOut:   LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+ProcessResult.StdOut:   LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+ProcessResult.StdOut:   LogIoStore: Display: ==================== IoStore Utils ====================
+ProcessResult.StdOut:   LogIoStore: Display: Parsing crypto keys from a crypto key cache file 'C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json'
+ProcessResult.StdOut:   LogIoStore: Display: Parsed '0' crypto keys from 'C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json'
+ProcessResult.StdOut:   LogIoStore: Display: Container signing - DISABLED
+ProcessResult.StdOut:   LogIoStore: Display: Directory index - ENABLED
+ProcessResult.StdOut:   LogIoStore: Display: Using memory mapping alignment '16384'
+ProcessResult.StdOut:   LogIoStore: Display: Using compression block size '65536'
+ProcessResult.StdOut:   LogIoStore: Display: Using compression block alignment '0'
+ProcessResult.StdOut:   LogIoStore: Display: Using command list file: 'C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\IoStoreCommands.txt'
+ProcessResult.StdOut:   LogIoStore: Display: Using target platform 'WindowsNoEditor'
+ProcessResult.StdOut:   LogIoStore: Display: Searching for cooked assets in folder 'C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor'
+ProcessResult.StdOut:   LogIoStore: Display: Found '401' files
+ProcessResult.StdOut:   LogIoStore: Display: Loaded Bulk Data manifest 'C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor/RoboQuest/Metadata/BulkDataInfo.ubulkmanifest'
+ProcessResult.StdOut:   LogIoStore: Display: Creating container targets...
+ProcessResult.StdOut:   LogIoStore: Display: Parsing packages...
+ProcessResult.StdOut:   LogIoStore: Display: Reading package assets...
+ProcessResult.StdOut:   LogIoStore: Display: Parsing package assets...
+ProcessResult.StdOut:   LogIoStore: Display: Parsing 0/191: 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Cooked/WindowsNoEditor/Engine/Content/EngineResources/DefaultTextureCube.uasset'
+ProcessResult.StdOut:   LogIoStore: Display: Creating global script objects...
+ProcessResult.StdOut:   LogIoStore: Display: Creating global imports and exports...
+ProcessResult.StdOut:   LogIoStore: Display: Converting export map import indices...
+ProcessResult.StdOut:   LogIoStore: Display: Conforming localized packages...
+ProcessResult.StdOut:   LogIoStore: Display: Adding localized import packages...
+ProcessResult.StdOut:   LogIoStore: Display: Conforming localized imports...
+ProcessResult.StdOut:   LogIoStore: Display: Adding preload dependencies...
+ProcessResult.StdOut:   LogIoStore: Display: Building bundles...
+ProcessResult.StdOut:   LogIoStore: Display: Finalizing name maps...
+ProcessResult.StdOut:   LogIoStore: Display: Finalizing package headers...
+ProcessResult.StdOut:   LogIoStore: Display: Calculating hashes
+ProcessResult.StdOut:   LogIoStore: Display: Creating disk layout...
+ProcessResult.StdOut:   LogIoStore: Display: Ordered 0/191 packages using game open order
+ProcessResult.StdOut:   LogIoStore: Display: Ordered 186/191 packages using cooker open order
+ProcessResult.StdOut:   LogIoStore: Display: Ordered 5 packages using fallback bundle order
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk0: 0/207 modified entries (0.000000MB)
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk0: 207/207 added entries (52.765480MB)
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk1: 0/3 modified entries (0.000000MB)
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk1: 3/3 added entries (0.010768MB)
+ProcessResult.StdOut:   LogIoStore: Display: Serializing container(s)...
+ProcessResult.StdOut:   LogIoStore: Display: Finalizing initial load...
+ProcessResult.StdOut:   LogIoStore: Display: Serializing global meta data
+ProcessResult.StdOut:   LogIoStore: Display: Saving global name map to container file
+ProcessResult.StdOut:   LogIoStore: Display: Calculating stats...
+ProcessResult.StdOut:   LogIoStore: Display: --------------------------------------------------- IoDispatcher --------------------------------------------------------
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: Container                           Flags   TOC Size (KB)     TOC Entries       Size (MB)           Compressed (MB)
+ProcessResult.StdOut:   LogIoStore: Display: -------------------------------------------------------------------------------------------------------------------------
+ProcessResult.StdOut:   LogIoStore: Display: global                            -/-/-/-            0.49               3            1.00                         -
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk0-WindowsNoEditor         -/-/-/I           33.45             208           62.94                         -
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk1-WindowsNoEditor         -/-/-/I            0.60               4            0.25                         -
+ProcessResult.StdOut:   LogIoStore: Display: TOTAL                                               34.53             215           64.19                         -
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: ** Flags: (C)ompressed / (E)ncrypted / (S)igned) / (I)ndexed) **
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: Compression block padding:     0.00 MB
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: -------------------------------------------- Container Directory Index --------------------------------------------------
+ProcessResult.StdOut:   LogIoStore: Display: Container                            Size (KB)
+ProcessResult.StdOut:   LogIoStore: Display: global                                    0.00
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk0-WindowsNoEditor                10.33
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk1-WindowsNoEditor                 0.20
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: --------------------------------------------------- PackageStore (KB) ---------------------------------------------------
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: Container                                Store Size             Packages            Localized
+ProcessResult.StdOut:   LogIoStore: Display: -------------------------------------------------------------------------------------------------------------------------
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk0                                         7                  188                    0
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk1                                         0                    3                    0
+ProcessResult.StdOut:   LogIoStore: Display: TOTAL                                             7                  191                    0
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: --------------------------------------------------- PackageHeader (KB) --------------------------------------------------
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: Container                             Header       Summary         Graph     ImportMap     ExportMap       NameMap
+ProcessResult.StdOut:   LogIoStore: Display: -------------------------------------------------------------------------------------------------------------------------
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk0                                196            12             3             8            20           153
+ProcessResult.StdOut:   LogIoStore: Display: pakchunk1                                  6             0             0             0             1             4
+ProcessResult.StdOut:   LogIoStore: Display: TOTAL                                    201            12             3             8            21           157
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: Input:     42.97 MB UExp
+ProcessResult.StdOut:   LogIoStore: Display: Input:      0.24 MB UAsset
+ProcessResult.StdOut:   LogIoStore: Display: Input:      0.04 MB FPackageFileSummary
+ProcessResult.StdOut:   LogIoStore: Display: Input:       191 Packages
+ProcessResult.StdOut:   LogIoStore: Display: Input:       125 Imported package entries
+ProcessResult.StdOut:   LogIoStore: Display: Input:       134 Packages without imports
+ProcessResult.StdOut:   LogIoStore: Display: Input:      6233 Name map entries
+ProcessResult.StdOut:   LogIoStore: Display: Input:      1138 PreloadDependencies entries
+ProcessResult.StdOut:   LogIoStore: Display: Input:      1058 ImportMap entries
+ProcessResult.StdOut:   LogIoStore: Display: Input:       302 ExportMap entries
+ProcessResult.StdOut:   LogIoStore: Display: Input:       227 Public exports
+ProcessResult.StdOut:   LogIoStore: Display:
+ProcessResult.StdOut:   LogIoStore: Display: Output:      193 Export bundles
+ProcessResult.StdOut:   LogIoStore: Display: Output:      604 Export bundle entries
+ProcessResult.StdOut:   LogIoStore: Display: Output:      125 Export bundle arcs
+ProcessResult.StdOut:   LogIoStore: Display: Output:    15889 Public runtime script objects
+ProcessResult.StdOut:   LogIoStore: Display: Output:     0.96 MB InitialLoadData
+ProcessResult.StdOut:   LogInit: Display:
+ProcessResult.StdOut:   LogInit: Display: Success - 0 error(s), 0 warning(s)
+ProcessResult.StdOut:   LogInit: Display:
+ProcessResult.StdOut:   
+ProcessResult.StdOut:   Execution of commandlet took:  0.29 seconds
+ProcessResult.StdOut:   LogShaderCompilers: Display: Shaders left to compile 0
+ProcessResult.StdOut:   LogHttp: Display: cleaning up 0 outstanding Http requests.
+ProcessResult.StdOut:   LogContentStreaming: Display: There are 1 unreleased StreamingManagers
+CommandUtils.Run: Took 7.0312489s to run UE4Editor-Cmd.exe, ExitCode=0
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\IoStore-2024.12.07-00.45.40.txt
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\IoStore-2024.12.07-00.45.33.txt C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\IoStore-2024.12.07-00.45.40.txt
+InternalUtils.SafeDeleteFile: SafeDeleteFile D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\IoStore-2024.12.07-00.45.33.txt
+InternalUtils.SafeWriteAllLines: SafeWriteAllLines C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\FinalCopy_UFSFiles.txt
+InternalUtils.SafeWriteAllLines: SafeWriteAllLines C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\FinalCopy_NonUFSFiles.txt
+InternalUtils.SafeWriteAllLines: SafeWriteAllLines C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\FinalCopy_NonUFSFilesDebug.txt
+Project.CopyManifestFilesToStageDir: Copying NonUFSFiles to staging directory: C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Manifest_NonUFSFiles_Win64.txt
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\Win64
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\UE4Game.exe C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\Win64\UE4Game.exe
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\Win64\turbojpeg.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\Win64\turbojpeg.dll
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Extras\Redist\en-us
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Extras\Redist\en-us\UE4PrereqSetup_x64.exe C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Extras\Redist\en-us\UE4PrereqSetup_x64.exe
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Oculus\OVRPlugin\OVRPlugin\Win64
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\Oculus\OVRPlugin\OVRPlugin\Win64\OVRPlugin.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Oculus\OVRPlugin\OVRPlugin\Win64\OVRPlugin.dll
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\DbgHelp
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\DbgHelp\dbghelp.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\DbgHelp\dbghelp.dll
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PxFoundationPROFILE_x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PxFoundationPROFILE_x64.dll
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PxPvdSDKPROFILE_x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PxPvdSDKPROFILE_x64.dll
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PhysX3PROFILE_x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PhysX3PROFILE_x64.dll
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PhysX3CookingPROFILE_x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PhysX3CookingPROFILE_x64.dll
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PhysX3CommonPROFILE_x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\PhysX3CommonPROFILE_x64.dll
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\APEX_ClothingPROFILE_x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\APEX_ClothingPROFILE_x64.dll
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\APEX_LegacyPROFILE_x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\APEX_LegacyPROFILE_x64.dll
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\ApexFrameworkPROFILE_x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\ApexFrameworkPROFILE_x64.dll
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\NvClothPROFILE_x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\PhysX3\Win64\VS2015\NvClothPROFILE_x64.dll
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Ogg\Win64\VS2015
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\Ogg\Win64\VS2015\libogg_64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Ogg\Win64\VS2015\libogg_64.dll
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Vorbis\Win64\VS2015
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\Vorbis\Win64\VS2015\libvorbis_64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Vorbis\Win64\VS2015\libvorbis_64.dll
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\Vorbis\Win64\VS2015\libvorbisfile_64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Vorbis\Win64\VS2015\libvorbisfile_64.dll
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\NVIDIA\NVaftermath\Win64
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\NVIDIA\NVaftermath\Win64\GFSDK_Aftermath_Lib.x64.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\NVIDIA\NVaftermath\Win64\GFSDK_Aftermath_Lib.x64.dll
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\OpenVR\OpenVRv1_5_17\Win64
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\OpenVR\OpenVRv1_5_17\Win64\openvr_api.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\OpenVR\OpenVRv1_5_17\Win64\openvr_api.dll
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Windows\WinPixEventRuntime\x64
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\Windows\WinPixEventRuntime\x64\WinPixEventRuntime.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Windows\WinPixEventRuntime\x64\WinPixEventRuntime.dll
+InternalUtils.SafeCreateDirectory: SafeCreateDirectory C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Windows\XAudio2_9\x64
+InternalUtils.SafeCopyFile: SafeCopyFile D:\unreal_engine_installs\UE_4.26\Engine\Binaries\ThirdParty\Windows\XAudio2_9\x64\xaudio2_9redist.dll C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Engine\Binaries\ThirdParty\Windows\XAudio2_9\x64\xaudio2_9redist.dll
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Intermediate\Staging\RoboQuest.exe C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest.exe
+InternalUtils.SafeWriteAllLines: SafeWriteAllLines C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Manifest_NonUFSFiles_Win64.txt
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Manifest_NonUFSFiles_Win64.txt C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\Manifest_NonUFSFiles_Win64.txt
+Project.CopyBuildToStagingDirectory: ********** STAGE COMMAND COMPLETED **********
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+Project.LogDeploymentContext: Deployment Context **************
+Project.LogDeploymentContext: ProjectFile = C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject
+Project.LogDeploymentContext: ArchiveDir = C:\Users\Mythical\Downloads\Output\WindowsNoEditor
+Project.LogDeploymentContext: IsCodeBasedUprojectFile = False
+Project.LogDeploymentContext: DedicatedServer = False
+Project.LogDeploymentContext: Stage = True
+Project.LogDeploymentContext: StageTargetPlatform = Win64
+Project.LogDeploymentContext: InputRootDir = D:\unreal_engine_installs\UE_4.26
+Project.LogDeploymentContext: InputProjectDir = C:\Users\Mythical\Documents\GitHub\RoboQuest
+Project.LogDeploymentContext: PlatformDir = Win64
+Project.LogDeploymentContext: StagedOutputDir = C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+Project.LogDeploymentContext: ShortProjectName = RoboQuest
+Project.LogDeploymentContext: ProjectArgForCommandLines = ../../../RoboQuest/RoboQuest.uproject
+Project.LogDeploymentContext: RunRootDir = C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+Project.LogDeploymentContext: RunProjectDir = C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest
+Project.LogDeploymentContext: PakFileInternalRoot = ../../../
+Project.LogDeploymentContext: PlatformUsesChunkManifests = True
+Project.LogDeploymentContext: End Deployment Context **************
+Project.Package: ********** PACKAGE COMMAND STARTED **********
+Project.Package: ********** PACKAGE COMMAND COMPLETED **********
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+Project.Archive: ********** ARCHIVE COMMAND STARTED **********
+Project.Archive: Archiving to C:/Users/Mythical/Downloads/Output
+Project.LogDeploymentContext: Deployment Context **************
+Project.LogDeploymentContext: ProjectFile = C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject
+Project.LogDeploymentContext: ArchiveDir = C:\Users\Mythical\Downloads\Output\WindowsNoEditor
+Project.LogDeploymentContext: IsCodeBasedUprojectFile = False
+Project.LogDeploymentContext: DedicatedServer = False
+Project.LogDeploymentContext: Stage = True
+Project.LogDeploymentContext: StageTargetPlatform = Win64
+Project.LogDeploymentContext: InputRootDir = D:\unreal_engine_installs\UE_4.26
+Project.LogDeploymentContext: InputProjectDir = C:\Users\Mythical\Documents\GitHub\RoboQuest
+Project.LogDeploymentContext: PlatformDir = Win64
+Project.LogDeploymentContext: StagedOutputDir = C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+Project.LogDeploymentContext: ShortProjectName = RoboQuest
+Project.LogDeploymentContext: ProjectArgForCommandLines = ../../../RoboQuest/RoboQuest.uproject
+Project.LogDeploymentContext: RunRootDir = C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor
+Project.LogDeploymentContext: RunProjectDir = C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest
+Project.LogDeploymentContext: PakFileInternalRoot = ../../../
+Project.LogDeploymentContext: PlatformUsesChunkManifests = True
+Project.LogDeploymentContext: End Deployment Context **************
+InternalUtils.SafeFindFiles: SafeFindFiles C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor * True
+InternalUtils.FindFiles: FindFiles C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor * True
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\Manifest_NonUFSFiles_Win64.txt
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\Manifest_NonUFSFiles_Win64.txt C:\Users\Mythical\Downloads\Output\WindowsNoEditor\Manifest_NonUFSFiles_Win64.txt
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest.exe
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest.exe C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest.exe
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\global.ucas
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\global.ucas C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\global.ucas
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\global.utoc
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\global.utoc C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\global.utoc
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.pak
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.pak C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.pak
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.ucas
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.ucas C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.ucas
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.utoc
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.utoc C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk0-WindowsNoEditor.utoc
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.pak
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.pak C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.pak
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.ucas
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.ucas C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.ucas
+InternalUtils.SafeDeleteFile: SafeDeleteFile C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.utoc
+InternalUtils.SafeCopyFile: SafeCopyFile C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.utoc C:\Users\Mythical\Downloads\Output\WindowsNoEditor\RoboQuest\Content\Paks\pakchunk1-WindowsNoEditor.utoc
+Project.Archive: ********** ARCHIVE COMMAND COMPLETED **********
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+InternalUtils.SafeFileExists: SafeFileExists C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject=True
+Automation.Execute: BUILD SUCCESSFUL
+Program.Main: AutomationTool exiting with ExitCode=0 (Success)

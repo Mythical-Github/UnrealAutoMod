@@ -94,7 +94,7 @@ def cook_uproject():
     run_proj_command(get_cook_project_command())
 
 
-def package_uproject():
+def package_uproject_non_iostore():
     run_proj_command(get_engine_pak_command())
 
 
@@ -279,13 +279,30 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
         unreal_pak.install_unreal_pak_mod(mod_name, compression_type)
 
 
+def package_project_iostore():
+    return
+
+
+# for if you are just repacking an ini for an iostore game and don't need a ucas or utoc for example
+# actually implement this later on
+def does_iostore_game_need_utoc_ucas() -> bool:
+    needs_more_than_pak = True
+    return needs_more_than_pak
+
+
 def cooking():
     populate_queue()
     hook_states.set_hook_state(HookStateType.PRE_COOKING)
-    if PackingType.ENGINE not in install_queue_types:
-        cook_uproject()
+    if ue_dev_py_utils.get_is_game_iostore():
+        if does_iostore_game_need_utoc_ucas:
+            package_project_iostore()
+        else:
+            cook_uproject()
+    elif PackingType.ENGINE in install_queue_types:
+        package_uproject_non_iostore()
     else:
-        package_uproject()
+        cook_uproject()
+        
     hook_states.set_hook_state(HookStateType.POST_COOKING)
 
 

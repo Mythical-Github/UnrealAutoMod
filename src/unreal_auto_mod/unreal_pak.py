@@ -26,6 +26,8 @@ def make_response_file(mod_name: str) -> str:
         for root, _, files in os.walk(dir_to_pack):
             for file_name in files:
                 absolute_path = os.path.join(root, file_name)
+                if not os.path.isfile:
+                    raise FileNotFoundError(f'The following file could not be found "{absolute_path}"')
                 relative_path = os.path.relpath(root, dir_to_pack).replace("\\", "/")
                 mount_point = f'../../../{relative_path}/'
                 # file.write(f'"{absolute_path}" "{mount_point}"\n')
@@ -82,12 +84,9 @@ def make_iostore_unreal_pak_mod_checks(
 
 
 def make_iostore_unreal_pak_mod(mod_name: str, final_pak_file: str):
-        from time import sleep
-        print('got here')
-        sleep(9)
         
         exe = unreal_dev_utils.get_editor_cmd_path(utilities.get_unreal_engine_dir())
-        global_utoc_path = f'{utilities.get_uproject_dir()}/Saved/StagedBuilds/WindowsNoEditor/RoboQuest/Content/Paks/global.utoc'
+        global_utoc_path = f'{utilities.get_uproject_dir()}/Saved/Cooked/WindowsNoEditor/RoboQuest/Content/Paks/global.utoc'
         cooked_content_dir = f'{utilities.get_uproject_dir()}/Saved/Cooked/WindowsNoEditor'
         
         commands_txt_content = get_iostore_commands_file_contents(mod_name, final_pak_file)

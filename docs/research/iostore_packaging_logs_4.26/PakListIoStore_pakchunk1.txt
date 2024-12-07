@@ -1,0 +1,3 @@
+﻿"C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Content\Mods\TestMod\DA_TestMod.uasset" "../../../RoboQuest/Content/Mods/TestMod/DA_TestMod.uasset"
+"C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Content\Mods\TestMod\ModActor.uasset" "../../../RoboQuest/Content/Mods/TestMod/ModActor.uasset"
+"C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Content\Mods\TestMod\ModRoot\BP_TestMod.uasset" "../../../RoboQuest/Content/Mods/TestMod/ModRoot/BP_TestMod.uasset"

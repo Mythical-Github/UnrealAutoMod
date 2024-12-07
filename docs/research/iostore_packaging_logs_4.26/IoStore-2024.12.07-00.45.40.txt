@@ -1,0 +1,1406 @@
+﻿Log file open, 12/07/24 00:45:34
+LogPluginManager: Mounting plugin MeshPainting
+LogPluginManager: Mounting plugin XGEController
+LogPluginManager: Mounting plugin Paper2D
+LogPluginManager: Mounting plugin AISupport
+LogPluginManager: Mounting plugin LightPropagationVolume
+LogPluginManager: Mounting plugin CameraShakePreviewer
+LogPluginManager: Mounting plugin AnimationSharing
+LogPluginManager: Mounting plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting plugin CLionSourceCodeAccess
+LogPluginManager: Mounting plugin GitSourceControl
+LogPluginManager: Mounting plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting plugin NullSourceCodeAccess
+LogPluginManager: Mounting plugin PerforceSourceControl
+LogPluginManager: Mounting plugin DatasmithContent
+LogPluginManager: Mounting plugin PlasticSourceControl
+LogPluginManager: Mounting plugin PluginUtils
+LogPluginManager: Mounting plugin SubversionSourceControl
+LogPluginManager: Mounting plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting plugin UObjectPlugin
+LogPluginManager: Mounting plugin RiderSourceCodeAccess
+LogPluginManager: Mounting plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting plugin PropertyAccessNode
+LogPluginManager: Mounting plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting plugin VariantManagerContent
+LogPluginManager: Mounting plugin Niagara
+LogPluginManager: Mounting plugin AlembicImporter
+LogPluginManager: Mounting plugin AutomationUtils
+LogPluginManager: Mounting plugin BackChannel
+LogPluginManager: Mounting plugin ChaosCloth
+LogPluginManager: Mounting plugin ChaosClothEditor
+LogPluginManager: Mounting plugin ChaosNiagara
+LogPluginManager: Mounting plugin ChaosSolverPlugin
+LogPluginManager: Mounting plugin ChaosEditor
+LogPluginManager: Mounting plugin CharacterAI
+LogPluginManager: Mounting plugin GeometryCache
+LogPluginManager: Mounting plugin GeometryCollectionPlugin
+LogPluginManager: Mounting plugin GeometryProcessing
+LogPluginManager: Mounting plugin MotoSynth
+LogPluginManager: Mounting plugin PlanarCut
+LogPluginManager: Mounting plugin PlatformCrypto
+LogPluginManager: Mounting plugin ProxyLODPlugin
+LogPluginManager: Mounting plugin SkeletalReduction
+LogPluginManager: Mounting plugin LuminPlatformFeatures
+LogPluginManager: Mounting plugin MagicLeap
+LogPluginManager: Mounting plugin MagicLeapLightEstimation
+LogPluginManager: Mounting plugin MagicLeapMedia
+LogPluginManager: Mounting plugin MagicLeapPassableWorld
+LogPluginManager: Mounting plugin MLSDK
+LogPluginManager: Mounting plugin AndroidMedia
+LogPluginManager: Mounting plugin AvfMedia
+LogPluginManager: Mounting plugin ImgMedia
+LogPluginManager: Mounting plugin MediaCompositing
+LogPluginManager: Mounting plugin UdpMessaging
+LogPluginManager: Mounting plugin TcpMessaging
+LogPluginManager: Mounting plugin MediaPlayerEditor
+LogPluginManager: Mounting plugin ActorSequence
+LogPluginManager: Mounting plugin LevelSequenceEditor
+LogPluginManager: Mounting plugin WmfMedia
+LogPluginManager: Mounting plugin MatineeToLevelSequence
+LogPluginManager: Mounting plugin WebMMedia
+LogPluginManager: Mounting plugin TemplateSequence
+LogPluginManager: Mounting plugin LauncherChunkInstaller
+LogPluginManager: Mounting plugin OnlineSubsystem
+LogPluginManager: Mounting plugin ActorLayerUtilities
+LogPluginManager: Mounting plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting plugin AndroidMoviePlayer
+LogPluginManager: Mounting plugin AndroidPermission
+LogPluginManager: Mounting plugin OnlineSubsystemNull
+LogPluginManager: Mounting plugin OnlineSubsystemUtils
+LogPluginManager: Mounting plugin AppleImageUtils
+LogPluginManager: Mounting plugin AppleMoviePlayer
+LogPluginManager: Mounting plugin ArchVisCharacter
+LogPluginManager: Mounting plugin AssetTags
+LogPluginManager: Mounting plugin AudioCapture
+LogPluginManager: Mounting plugin AudioSynesthesia
+LogPluginManager: Mounting plugin CableComponent
+LogPluginManager: Mounting plugin CustomMeshComponent
+LogPluginManager: Mounting plugin ChunkDownloader
+LogPluginManager: Mounting plugin EditableMesh
+LogPluginManager: Mounting plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting plugin GoogleCloudMessaging
+LogPluginManager: Mounting plugin GooglePAD
+LogPluginManager: Mounting plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting plugin LocationServicesBPLibrary
+LogPluginManager: Mounting plugin MobilePatchingUtils
+LogPluginManager: Mounting plugin PhysXVehicles
+LogPluginManager: Mounting plugin PostSplashScreen
+LogPluginManager: Mounting plugin ProceduralMeshComponent
+LogPluginManager: Mounting plugin PropertyAccessEditor
+LogPluginManager: Mounting plugin RuntimePhysXCooking
+LogPluginManager: Mounting plugin SignificanceManager
+LogPluginManager: Mounting plugin SoundFields
+LogPluginManager: Mounting plugin Synthesis
+LogPluginManager: Mounting plugin WebMMoviePlayer
+LogPluginManager: Mounting plugin WindowsMoviePlayer
+LogPluginManager: Mounting plugin ScreenshotTools
+LogPluginManager: Mounting plugin AssetManagerEditor
+LogPluginManager: Mounting plugin EnvironmentQueryEditor
+LogPluginManager: Mounting plugin CryptoKeys
+LogPluginManager: Mounting plugin CurveEditorTools
+LogPluginManager: Mounting plugin DataValidation
+LogPluginManager: Mounting plugin FacialAnimation
+LogPluginManager: Mounting plugin GameplayTagsEditor
+LogPluginManager: Mounting plugin GeometryMode
+LogPluginManager: Mounting plugin MacGraphicsSwitching
+LogPluginManager: Mounting plugin MaterialAnalyzer
+LogPluginManager: Mounting plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting plugin PluginBrowser
+LogPluginManager: Mounting plugin SpeedTreeImporter
+LogPluginManager: Mounting plugin OnlineSubsystemIOS
+LogPluginManager: Mounting plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting plugin OculusVR
+LogPluginManager: Mounting plugin SteamVR
+LogPluginManager: Mounting plugin ContentBrowserAssetDataSource
+LogPluginManager: Mounting plugin ContentBrowserClassDataSource
+LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+LogInit: Using libcurl 7.55.1-DEV
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.1.1
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogOnline: OSS: Creating online subsystem instance for: NULL
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for module [NULL]
+LogInit: Build: ++UE4+Release-4.26-CL-15973114
+LogInit: Engine Version: 4.26.2-15973114+++UE4+Release-4.26
+LogInit: Compatible Engine Version: 4.26.0-14830424+++UE4+Release-4.26
+LogInit: Net CL: 14830424
+LogInit: OS: Windows 10 (Release 2009) (), CPU: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz, GPU: Intel(R) UHD Graphics
+LogInit: Compiled (64-bit): Apr 12 2021 06:14:10
+LogInit: Compiled with Visual C++: 19.24.28315.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.26
+LogInit: Command Line:  C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject -run=IoStore -CreateGlobalContainer=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\global.utoc -CookedDirectory=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor -Commands="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\IoStoreCommands.txt" -CookerOrder=C:\Users\Mythical\Documents\GitHub\RoboQuest\Build\WindowsNoEditor\FileOpenOrder\CookerOpenOrder.log -patchpaddingalign=2048 -cryptokeys=C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json -TargetPlatform=WindowsNoEditor -abslog=D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\IoStore-2024.12.07-00.45.33.txt -stdout -CrashForUAT -unattended -NoLogTimes -UTF8Output
+LogInit: Base Directory: D:/unreal_engine_installs/UE_4.26/Engine/Binaries/Win64/
+LogInit: Allocator: TBB
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 29
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 4
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 40
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 37
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 3
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 4
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 44
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 12
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 3
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 15
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 43
+LogDevObjectVersion:   FortniteRelease (E7086368-6B23-4C58-8439-1B7016265E91): 1
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 10
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 10
+LogDevObjectVersion:   Dev-Physics-Ext (35F94A83-E258-406C-A318-09F59610247C): 40
+LogDevObjectVersion:   Dev-PhysicsMaterial-Chaos (B68FC16E-8B1B-42E2-B453-215C058844FE): 1
+LogDevObjectVersion:   Dev-CineCamera (B2E18506-4273-CFC2-A54E-F4BB758BBA07): 1
+LogDevObjectVersion:   Dev-VirtualProduction (64F58936-FD1B-42BA-BA96-7289D5D0FA4E): 1
+LogDevObjectVersion:   Dev-MediaFramework (6F0ED827-A609-4895-9C91-998D90180EA4): 2
+LogInit: Presizing for max 25165824 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Setting CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+LogConfig: Setting CVar [[s.AsyncLoadingThreadEnabled:0]]
+LogConfig: Setting CVar [[s.EventDrivenLoaderEnabled:1]]
+LogConfig: Setting CVar [[s.WarnIfTimeLimitExceeded:0]]
+LogConfig: Setting CVar [[s.TimeLimitExceededMultiplier:1.5]]
+LogConfig: Setting CVar [[s.TimeLimitExceededMinTime:0.005]]
+LogConfig: Setting CVar [[s.UseBackgroundLevelStreaming:1]]
+LogConfig: Setting CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+LogConfig: Setting CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+LogConfig: Setting CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+LogConfig: Setting CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+LogConfig: Setting CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+LogConfig: Setting CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+LogConfig: Setting CVar [[s.FlushStreamingOnExit:1]]
+LogInit: Object subsystem initialized
+LogConfig: Setting CVar [[con.DebugEarlyDefault:1]]
+LogConfig: Setting CVar [[r.setres:1280x720]]
+LogConfig: Setting CVar [[con.DebugEarlyDefault:1]]
+LogConfig: Setting CVar [[r.setres:1280x720]]
+LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Setting CVar [[r.GPUCrashDebugging:0]]
+LogConfig: Setting CVar [[r.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange:1]]
+LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Setting CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+LogConfig: Setting CVar [[s.AsyncLoadingThreadEnabled:0]]
+LogConfig: Setting CVar [[s.EventDrivenLoaderEnabled:1]]
+LogConfig: Setting CVar [[s.WarnIfTimeLimitExceeded:0]]
+LogConfig: Setting CVar [[s.TimeLimitExceededMultiplier:1.5]]
+LogConfig: Setting CVar [[s.TimeLimitExceededMinTime:0.005]]
+LogConfig: Setting CVar [[s.UseBackgroundLevelStreaming:1]]
+LogConfig: Setting CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+LogConfig: Setting CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+LogConfig: Setting CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+LogConfig: Setting CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+LogConfig: Setting CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+LogConfig: Setting CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+LogConfig: Setting CVar [[s.FlushStreamingOnExit:1]]
+LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Setting CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+LogConfig: Setting CVar [[gc.SizeOfPermanentObjectPool:0]]
+LogConfig: Setting CVar [[gc.FlushStreamingOnGC:0]]
+LogConfig: Setting CVar [[gc.NumRetriesBeforeForcingGC:10]]
+LogConfig: Setting CVar [[gc.AllowParallelGC:1]]
+LogConfig: Setting CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+LogConfig: Setting CVar [[gc.MaxObjectsInEditor:25165824]]
+LogConfig: Setting CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+LogConfig: Setting CVar [[gc.CreateGCClusters:1]]
+LogConfig: Setting CVar [[gc.MinGCClusterSize:5]]
+LogConfig: Setting CVar [[gc.ActorClusteringEnabled:0]]
+LogConfig: Setting CVar [[gc.BlueprintClusteringEnabled:0]]
+LogConfig: Setting CVar [[gc.UseDisregardForGCOnDedicatedServers:0]]
+LogConfig: Setting CVar [[gc.MultithreadedDestructionEnabled:1]]
+LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+LogConfig: Setting CVar [[r.ShadowQuality:5]]
+LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+LogConfig: Setting CVar [[r.AOQuality:2]]
+LogConfig: Setting CVar [[r.VolumetricFog:1]]
+LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+LogConfig: Setting CVar [[r.BloomQuality:5]]
+LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+LogConfig: Applying CVar settings from Section [TextureQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+LogConfig: Setting CVar [[r.VT.MaxAnisotropy:8]]
+LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+LogConfig: Setting CVar [[r.RefractionQuality:2]]
+LogConfig: Setting CVar [[r.SSR.Quality:3]]
+LogConfig: Setting CVar [[r.SSR.HalfResSceneColor:0]]
+LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+LogConfig: Setting CVar [[r.DetailMode:2]]
+LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+LogConfig: Setting CVar [[r.AnisotropicMaterials:1]]
+LogConfig: Setting CVar [[r.SSS.Scale:1]]
+LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+LogConfig: Setting CVar [[r.SSS.Quality:1]]
+LogConfig: Setting CVar [[r.SSS.HalfRes:0]]
+LogConfig: Setting CVar [[r.SSGI.Quality:3]]
+LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque:1 ; Always have FastSkyLUT 1 in this case to avoid wrong sky]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.SampleCountMaxPerSlice:4]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.DepthResolution:16.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT:1]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMin:4.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMax:128.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.SampleCountMin:4.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.SampleCountMax:128.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.TransmittanceLUT.UseSmallFormat:0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.TransmittanceLUT.SampleCount:10.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.MultiScatteringLUT.SampleCount:15.0]]
+LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+LogConfig: Applying CVar settings from Section [ShadingQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.HairStrands.SkyLighting.IntegrationType:2]]
+LogConfig: Setting CVar [[r.HairStrands.SkyAO.SampleCount:4]]
+LogConfig: Setting CVar [[r.HairStrands.Visibility.MSAA.SamplePerPixel:4]]
+LogInit: Selected Device Profile: [Windows]
+LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+LogHAL: Display: Platform has ~ 16 GB [16866865152 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+LogInit: Going up to parent DeviceProfile []
+LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+LogConfig: Setting CVar [[r.ShadowQuality:5]]
+LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+LogConfig: Setting CVar [[r.AOQuality:2]]
+LogConfig: Setting CVar [[r.VolumetricFog:1]]
+LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+LogConfig: Setting CVar [[r.BloomQuality:5]]
+LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+LogConfig: Applying CVar settings from Section [TextureQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+LogConfig: Setting CVar [[r.VT.MaxAnisotropy:8]]
+LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+LogConfig: Setting CVar [[r.RefractionQuality:2]]
+LogConfig: Setting CVar [[r.SSR.Quality:3]]
+LogConfig: Setting CVar [[r.SSR.HalfResSceneColor:0]]
+LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+LogConfig: Setting CVar [[r.DetailMode:2]]
+LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+LogConfig: Setting CVar [[r.AnisotropicMaterials:1]]
+LogConfig: Setting CVar [[r.SSS.Scale:1]]
+LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+LogConfig: Setting CVar [[r.SSS.Quality:1]]
+LogConfig: Setting CVar [[r.SSS.HalfRes:0]]
+LogConfig: Setting CVar [[r.SSGI.Quality:3]]
+LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque:1 ; Always have FastSkyLUT 1 in this case to avoid wrong sky]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.SampleCountMaxPerSlice:4]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.DepthResolution:16.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT:1]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMin:4.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMax:128.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.SampleCountMin:4.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.SampleCountMax:128.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.TransmittanceLUT.UseSmallFormat:0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.TransmittanceLUT.SampleCount:10.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.MultiScatteringLUT.SampleCount:15.0]]
+LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+LogConfig: Applying CVar settings from Section [ShadingQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.HairStrands.SkyLighting.IntegrationType:2]]
+LogConfig: Setting CVar [[r.HairStrands.SkyAO.SampleCount:4]]
+LogConfig: Setting CVar [[r.HairStrands.Visibility.MSAA.SamplePerPixel:4]]
+LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+LogConfig: Setting CVar [[net.UseAdaptiveNetUpdateFrequency:0]]
+LogConfig: Setting CVar [[p.chaos.AllowCreatePhysxBodies:1]]
+LogConfig: Setting CVar [[fx.SkipVectorVMBackendOptimizations:1]]
+LogConfig: Applying CVar settings from Section [ConsoleVariables] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Applying CVar settings from Section [ConsoleVariables] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Editor.ini]
+LogInit: Computer: DESKTOP-H8M04FC
+LogInit: User: Mythical
+LogInit: CPU Page size=4096, Cores=8
+LogInit: High frequency timer resolution =10.000000 MHz
+LogMemory: Memory total: Physical=15.7GB (16GB approx)
+LogMemory: Platform Memory Stats for Windows
+LogMemory: Process Physical Memory: 137.93 MB used, 137.93 MB peak
+LogMemory: Process Virtual Memory: 113.81 MB used, 113.81 MB peak
+LogMemory: Physical Memory: 10028.21 MB used,  6057.28 MB free, 16085.50 MB total
+LogMemory: Virtual Memory: 134201568.00 MB used,  16163.53 MB free, 134217728.00 MB total
+LogWindows: WindowsPlatformFeatures enabled
+LogInit: Physics initialised using underlying interface: PhysX
+LogInit: Using OS detected language (en-US).
+LogInit: Using OS detected locale (en-US).
+LogTextLocalizationManager: No specific localization for 'en-US' exists, so the 'en' localization will be used.
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'AllDesktop'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTC'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXT'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'AndroidClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTCClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXTClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2Client'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_Multi'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_MultiClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Linux'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxNoEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxServer'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64NoEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64Client'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64Server'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Lumin'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LuminClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacNoEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Mac'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacServer'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsNoEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Windows'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsServer'
+LogTargetPlatformManager: Display: Building Assets For WindowsNoEditor
+LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+LogRendererCore: Ray tracing is disabled. Reason: r.RayTracing=0.
+LogShaderCompilers: Guid format shader working directory is 4 characters bigger than the processId version (C:/Users/Mythical/Documents/GitHub/RoboQuest/Intermediate/Shaders/WorkingDirectory/13924/).
+LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/Mythical/AppData/Local/Temp/UnrealShaderWorkingDir/D70CCD0448FABF478324479BBBB0F5BD/'.
+LogShaderCompilers: Cannot use XGE Shader Compiler as Incredibuild is not installed on this machine.
+LogShaderCompilers: Display: Using Local Shader Compiler.
+LogDerivedDataCache: Display: Max Cache Size: 512 MB
+LogDerivedDataCache: Loaded boot cache 0.05s 77MB C:/Users/Mythical/AppData/Local/UnrealEngine/4.26/DerivedDataCache/Boot.ddc.
+LogDerivedDataCache: Display: Loaded Boot cache: C:/Users/Mythical/AppData/Local/UnrealEngine/4.26/DerivedDataCache/Boot.ddc
+LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file C:/Users/Mythical/Documents/GitHub/RoboQuest/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file C:/Users/Mythical/Documents/GitHub/RoboQuest/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchical cache Hierarchy.
+LogDerivedDataCache: Speed tests for C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache took 0.01 seconds
+LogDerivedDataCache: Display: Performance to C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.03ms. RandomReadSpeed=1548.45MBs, RandomWriteSpeed=220.05MBs. Assigned SpeedClass 'Local'
+LogDerivedDataCache: Using Local data cache path C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+LogDerivedDataCache: Unable to find inner node Shared for hierarchical cache Hierarchy.
+LogAssetRegistry: FAssetRegistry took 0.0018 seconds to start up
+LogInit: Selected Device Profile: [Windows]
+LogInit: Active device profile: [000001C4CFDADB00][000001C4B8AF8180 49] Windows
+LogInit: Profiles: [000001C4CFDADB00][000001C4B8AF8180 49] Windows, [000001C4CFD91D00][000001C4D09E2300 49] WindowsNoEditor, [000001C4CFDADF00][000001C4D09E6480 49] WindowsServer, [000001C4CFD92000][000001C4D09EA600 49] WindowsClient, [000001C4CFDACE00][000001C4D09EE780 49] IOS, [000001C4CFD92F00][000001C4D09F2900 49] iPadAir, [000001C4CFDAF000][000001C4D09F6A80 49] iPadAir2, [000001C4CFD2EB00][000001C4D0A04D40 49] IPadPro, [000001C4CFD2EC00][000001C4D09FAD80 49] iPadAir3, [000001C4CFDAD200][000001C4D0A0EF00 49] iPadAir4, [000001C4CFD2E800][000001C4D0A13080 49] iPadMini2, [000001C4CFDAF100][000001C4D0A17200 49] iPadMini3, [000001C4CFD2D800][000001C4D0A1B380 49] iPadMini4, [000001C4CFDAEA00][000001C4B8AFD4C0 49] iPadMini5, [000001C4CFD82400][000001C4D0A23700 49] iPhone6, [000001C4CFD82500][000001C4D0A1F740 49] iPodTouch6, [000001C4CFD90200][000001C4D0A2F9C0 49] iPhone7, [000001C4CFD90500][000001C4D0A27A00 49] iPodTouch7, [000001C4CFD83C00][000001C4D0A33B80 49] iPhone5S, [000001C4CFD93700][000001C4D0A37D00 49] iPhone6Plus, [000001C4CFD81600][000001C4D0A3A1C0 49] iPhone6S, [000001C4CFD93C00][000001C4D0A3E340 49] iPhone6SPlus, [000001C4CFD80700][000001C4D0A424C0 49] iPhone7Plus, [000001C4CFD91100][000001C4D0A46640 49] iPhoneSE, [000001C4CFD83400][000001C4D0A4A7C0 49] iPhone8, [000001C4CFD93800][000001C4D0A4E940 49] iPhone8Plus, [000001C4CFD80500][000001C4D0A52AC0 49] iPhoneX, [000001C4CFD92400][000001C4D0A56C40 49] iPhoneXS, [000001C4CFD83100][000001C4D0A5ADC0 49] iPhoneXSMax, [000001C4CFD91500][000001C4D0A5EF40 49] iPhoneXR, [000001C4CFD80D00][000001C4D0A630C0 49] iPhone11, [000001C4CFD92D00][000001C4D0A67240 49] iPhone11Pro, [000001C4CFD83200][000001C4D0A6B3C0 49] iPhone11ProMax, [000001C4CFD93200][000001C4D0A6F540 49] iPhoneSE2, [000001C4CFD83300][000001C4D0A2B680 49] iPhone12Mini, [000001C4CFD90100][000001C4D0A737C0 49] iPhone12, [000001C4CFD82C00][000001C4D0A77900 49] iPhone12Pro, [000001C4CFD91F00][000001C4D0A7FA80 49] iPhone12ProMax, [000001C4CFDACA00][000001C4D0A83C00 49] iPadPro105, [000001C4CFD81800][000001C4D0A860C0 49] iPadPro129, [000001C4CFDAED00][000001C4D0A8A240 49] iPadPro97, [000001C4CFD80E00][000001C4D0A8E3C0 49] iPadPro2_129, [000001C4CFDAD900][000001C4D0A92540 49] iPad5, [000001C4CFD82E00][000001C4D0A966C0 49] iPad6, [000001C4CFDAE500][000001C4D0A9A840 49] iPad7, [000001C4CFD92E00][000001C4D0A9E9C0 49] iPad8, [000001C4CFDAC700][000001C4D0AA2B40 49] iPadPro11, [000001C4CFD93B00][000001C4D0AA6CC0 49] iPadPro2_11, [000001C4CFDAF900][000001C4D0AAAE40 49] iPadPro3_129, [000001C4CFD90300][000001C4D0AAEFC0 49] iPadPro4_129, [000001C4CFDAC400][000001C4D0AB3140 49] AppleTV, [000001C4CFD93000][000001C4D0AB72C0 49] AppleTV4K, [000001C4CFDAE700][000001C4D0ABB440 49] TVOS, [000001C4CFD93300][000001C4D0ABF5C0 49] Mac, [000001C4CFDADD00][000001C4D0A7B700 49] MacClient, [000001C4CFD92300][000001C4D0AC3840 49] MacNoEditor, [000001C4CFDAD600][000001C4D0AC7980 49] MacServer, [000001C4CFD93D00][000001C4D0ACBAC0 49] Linux, [000001C4CFDADE00][000001C4D0AD3C40 49] LinuxAArch64, [000001C4CFD92900][000001C4D0AD6100 49] LinuxNoEditor, [000001C4CFDAEB00][000001C4D0ADA280 49] LinuxAArch64NoEditor, [000001C4CFD91A00][000001C4D0ADE400 49] LinuxClient, [000001C4CFDAFF00][000001C4D0AE2580 49] LinuxAArch64Client, [000001C4CFD90900][000001C4D0AE6700 49] LinuxServer, [000001C4CFDAE300][000001C4D0AEA880 49] LinuxAArch64Server, [000001C4CFD90F00][000001C4D0AEEA00 49] Android, [000001C4CFDAD800][000001C4D0AF2B80 49] Android_Low, [000001C4CFD92800][000001C4D0AF6D00 49] Android_Mid, [000001C4CFDAE800][000001C4D0AFAE80 49] Android_High, [000001C4CFD92500][000001C4D0B11000 49] Android_Default, [000001C4CFDAE100][000001C4D0B15180 49] Android_Adreno4xx, [000001C4CFD92C00][000001C4D0B19300 49] Android_Adreno5xx_Low, [000001C4CFDAE400][000001C4D0B1D480 49] Android_Adreno5xx, [000001C4CFD93E00][000001C4D0B21600 49] Android_Adreno6xx, [000001C4CFDAFB00][000001C4D0ACF740 49] Android_Adreno6xx_Vulkan, [000001C4CFD90B00][000001C4D0B25880 49] Android_Mali_T6xx, [000001C4CFDAD100][000001C4D0B299C0 49] Android_Mali_T7xx, [000001C4CFD93900][000001C4D0B2DB00 49] Android_Mali_T8xx, [000001C4CFDAD500][000001C4D0B35C80 49] Android_Mali_G71, [000001C4CFD91300][000001C4D0B38140 49] Android_Mali_G72, [000001C4CFDADC00][000001C4D0B3C2C0 49] Android_Mali_G72_Vulkan, [000001C4CFD91900][000001C4D0B40440 49] Android_Mali_G76, [000001C4CFDACD00][000001C4D0B445C0 49] Android_Mali_G76_Vulkan, [000001C4CFD91600][000001C4D0B48740 49] Android_Mali_G77, [000001C4CFDAC500][000001C4D0B4C8C0 49] Android_Mali_G77_Vulkan, [000001C4CFD92B00][000001C4D0B50A40 49] Android_Vulkan_SM5, [000001C4CFDAD000][000001C4D0B54BC0 49] Android_PowerVR_G6xxx, [000001C4CFD90400][000001C4D0B58D40 49] Android_PowerVR_GT7xxx, [000001C4CFD2DE00][000001C4D0B5CEC0 49] Android_PowerVR_GE8xxx, [000001C4CFD80F00][000001C4D0B61040 49] Android_PowerVR_GM9xxx, [000001C4CFD2C800][000001C4D0B651C0 49] Android_PowerVR_GM9xxx_Vulkan, [000001C4CFD83600][000001C4D0B69340 49] Android_TegraK1, [000001C4CFD2C100][000001C4D0B6D4C0 49] Android_Unknown_Vulkan, [000001C4CFD81300][000001C4D0B71640 49] Lumin, [000001C4CFD2F200][000001C4D0B757C0 49] Lumin_Desktop, [000001C4CFD82D00][000001C4D0B31900 49] HoloLens, 
+LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+LogMeshReduction: Using SimplygonMeshReduction for automatic skeletal mesh reduction
+LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+LogMeshReduction: No distributed automatic mesh merging module available
+LogMeshMerging: No distributed automatic mesh merging module available
+LogNetVersion: RoboQuest 1.0.0, NetCL: 14830424, EngineNetVer: 16, GameNetVer: 0 (Checksum: 648196727)
+LogHMD: PokeAHoleMaterial loaded successfully
+LogPackageLocalizationCache: Processed 22 localized package path(s) for 1 prioritized culture(s) in 0.035047 seconds
+LogCollectionManager: Loaded 0 collections in 0.001155 seconds
+LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Collections/' took 0.00s
+LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Content/Developers/Mythical/Collections/' took 0.00s
+LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Content/Collections/' took 0.00s
+LogCollectionManager: Fixed up redirectors for 0 collections in 0.000002 seconds (updated 0 objects)
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+LogUProjectInfo: Found projects:
+LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+LogOcInput: OculusInput pre-init called
+LogWindows: Failed to load 'OVRPlugin.dll' (GetLastError=126)
+LogWindows: File 'OVRPlugin.dll' does not exist
+LogUObjectArray: 20707 objects as part of root set at end of initial load.
+LogUObjectAllocator: 5601040 out of 0 bytes used by permanent object pool.
+LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+LogInit: Executing Class /Script/UnrealEd.IoStoreCommandlet
+LogInit: Initializing Editor Engine...
+LogEngine: Initializing Engine...
+LogStats: UGameplayTagsManager::InitializeManager -  0.000 s
+LogInit: Initializing FReadOnlyCVARCache
+LogAIModule: Creating AISystem for world Untitled
+LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+LogDerivedDataCache: Saved boot cache 0.05s 77MB C:/Users/Mythical/AppData/Local/UnrealEngine/4.26/DerivedDataCache/Boot.ddc.
+LogInit: Texture streaming: Disabled
+LogInit: Initializing Editor Engine Completed
+BlueprintLog: New page: Editor Load
+LogIoStore: Display: ==================== IoStore Utils ====================
+LogIoStore: Display: Parsing crypto keys from a crypto key cache file 'C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json'
+LogIoStore: Display: Parsed '0' crypto keys from 'C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json'
+LogIoStore: Display: Container signing - DISABLED
+LogIoStore: Display: Directory index - ENABLED
+LogIoStore: Display: Using memory mapping alignment '16384'
+LogIoStore: Display: Using compression block size '65536'
+LogIoStore: Display: Using compression block alignment '0'
+LogIoStore: Display: Using command list file: 'C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_4.26\IoStoreCommands.txt'
+LogIoStore: Display: Using target platform 'WindowsNoEditor'
+LogIoStore: Display: Searching for cooked assets in folder 'C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor'
+LogIoStore: Display: Found '401' files
+LogIoStore: Display: Loaded Bulk Data manifest 'C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor/RoboQuest/Metadata/BulkDataInfo.ubulkmanifest'
+LogIoStore: Display: Creating container targets...
+LogIoStore: Display: Parsing packages...
+LogIoStore: Display: Reading package assets...
+LogIoStore: Display: Parsing package assets...
+LogIoStore: Display: Parsing 0/191: 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Cooked/WindowsNoEditor/Engine/Content/EngineResources/DefaultTextureCube.uasset'
+LogIoStore: Display: Creating global script objects...
+LogIoStore: Skipping script object: MetaData /Script/CoreUObject.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/InputCore.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/SlateCore.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Slate.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MaterialShaderQualitySettings.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/NetCore.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AssetRegistry.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/EngineSettings.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/PacketHandler.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MeshDescription.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/StaticMeshDescription.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/DeveloperSettings.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/PhysicsCore.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AudioExtensions.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/PropertyAccess.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ClothingSystemRuntimeInterface.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/JsonUtilities.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ToolMenus.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/LiveLinkInterface.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Engine.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__Info:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__AtmosphericFog:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__AtmosphericFog:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__ReflectionCapture:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__ReflectionCapture:CaptureOffset (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__BoxReflectionCapture:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__BoxReflectionCapture:CaptureOffset (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__Character:Arrow (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__DecalActor:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__DecalActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__DirectionalLight:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__Emitter:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__Emitter:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__ExponentialHeightFog:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__GameNetworkManager:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__GameSession:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__SpotLight:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__GeneratedMeshAreaLight:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__LightmassPortal:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__MaterialInstanceActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__MatineeActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: SceneComponent /Script/Engine.Default__MatineeActorCameraAnim:SceneComp (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__MatineeActorCameraAnim:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BrushComponent /Script/Engine.Default__MeshMergeCullingVolume:BrushComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__NavigationObjectBase:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__NavigationObjectBase:Sprite2 (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__Note:Arrow (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__Note:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__PhysicsThruster:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__PlanarReflection:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__PlaneReflectionCapture:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__PlaneReflectionCapture:CaptureOffset (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__PlayerStart:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__PlayerStart:Sprite2 (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__PlayerStart:Arrow (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__PlayerStartPIE:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__PlayerStartPIE:Sprite2 (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__PlayerStartPIE:Arrow (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__RadialForceActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BoxComponent /Script/Engine.Default__RuntimeVirtualTextureVolume:Bounds (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__ServerStatReplicator:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__SkyAtmosphere:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__SkyAtmosphere:ArrowComponent (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__SkyLight:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__SphereReflectionCapture:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__SphereReflectionCapture:CaptureOffset (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__TargetPoint:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__TargetPoint:Arrow (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__TextRenderActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__TriggerBase:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__TriggerBox:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__TriggerCapsule:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__TriggerSphere:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__VectorFieldVolume:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__VolumetricCloud:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Engine.Default__WindDirectionalSource:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Engine.Default__WindDirectionalSource:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/GameplayTags.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/NavigationSystem.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BillboardComponent /Script/NavigationSystem.Default__NavSystemConfigOverride:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/InteractiveToolsFramework.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__InteractiveGizmo:GizmoInputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__AxisAngleGizmo:GizmoInputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__AxisPositionGizmo:GizmoInputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__InteractiveTool:InputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__SingleSelectionTool:InputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__MeshSurfacePointTool:InputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__BaseBrushTool:InputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__BrushStampIndicator:GizmoInputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__ClickDragTool:InputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__InputRouter:InputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__IntervalGizmo:GizmoInputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__MultiSelectionTool:InputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__PlanePositionGizmo:GizmoInputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__SingleClickTool:InputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: InputBehaviorSet /Script/InteractiveToolsFramework.Default__TransformGizmo:GizmoInputBehaviors (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ClothingSystemRuntimeCommon.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ClothingSystemRuntimeNv.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MovieSceneCapture.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MovieSceneTools.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/BlueprintGraph.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AssetTools.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MRMesh.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AugmentedReality.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BillboardComponent /Script/AugmentedReality.Default__ARSkyLight:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/HeadMountedDisplay.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/UMG.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: ArrowComponent /Script/UMG.Default__WidgetInteractionComponent:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/Localization.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: LocalizationTarget /Script/Localization.Default__LocalizationSettings:EngineLocalizationTargetSet.LocalizationTarget_0 (!RF_Public)
+LogIoStore: Skipping script object: LocalizationTarget /Script/Localization.Default__LocalizationSettings:EngineLocalizationTargetSet.LocalizationTarget_1 (!RF_Public)
+LogIoStore: Skipping script object: LocalizationTarget /Script/Localization.Default__LocalizationSettings:EngineLocalizationTargetSet.LocalizationTarget_2 (!RF_Public)
+LogIoStore: Skipping script object: LocalizationTarget /Script/Localization.Default__LocalizationSettings:EngineLocalizationTargetSet.LocalizationTarget_3 (!RF_Public)
+LogIoStore: Skipping script object: LocalizationTarget /Script/Localization.Default__LocalizationSettings:EngineLocalizationTargetSet.LocalizationTarget_4 (!RF_Public)
+LogIoStore: Skipping script object: LocalizationTarget /Script/Localization.Default__LocalizationSettings:EngineLocalizationTargetSet.LocalizationTarget_5 (!RF_Public)
+LogIoStore: Skipping script object: LocalizationTarget /Script/Localization.Default__LocalizationSettings:EngineLocalizationTargetSet.LocalizationTarget_6 (!RF_Public)
+LogIoStore: Skipping script object: LocalizationTarget /Script/Localization.Default__LocalizationSettings:ProjectLocalizationTargetSet.LocalizationTarget_0 (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MaterialBaking.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/CinematicCamera.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: StaticMeshComponent /Script/CinematicCamera.Default__CameraRig_Crane:PreviewMesh_CraneBase (Excluded for target platform)
+LogIoStore: Skipping script object: StaticMeshComponent /Script/CinematicCamera.Default__CameraRig_Crane:PreviewMesh_CraneArm (Excluded for target platform)
+LogIoStore: Skipping script object: StaticMeshComponent /Script/CinematicCamera.Default__CameraRig_Crane:PreviewMesh_CraneMount (Excluded for target platform)
+LogIoStore: Skipping script object: StaticMeshComponent /Script/CinematicCamera.Default__CameraRig_Crane:PreviewMesh_CraneCounterWeight (Excluded for target platform)
+LogIoStore: Skipping script object: StaticMeshComponent /Script/CinematicCamera.Default__CameraRig_Rail:PreviewMesh_Mount (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/SourceControl.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AnimGraph.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MovieScene.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MovieSceneNodeGroupCollection /Script/MovieScene.Default__MovieScene:NodeGroupCollection (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/MovieSceneTracks.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AnimationCore.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AnimGraphRuntime.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/TimeManagement.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AudioMixer.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MediaAssets.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/LevelSequence.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BillboardComponent /Script/LevelSequence.Default__LevelSequenceActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: MediaPlayer /Script/LevelSequence.Default__LevelSequenceMediaController:MediaComponent.MediaPlayer (!RF_Public)
+LogIoStore: Skipping script object: MediaTexture /Script/LevelSequence.Default__LevelSequenceMediaController:MediaComponent.MediaTexture (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Foliage.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ImageWriteQueue.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Landscape.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BillboardComponent /Script/Landscape.Default__LandscapeGizmoActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: LandscapeGizmoRenderComponent /Script/Landscape.Default__LandscapeGizmoActiveActor:GizmoRendererComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/MoviePlayer.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/BuildPatchServices.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/LinuxTargetPlatform.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MacTargetPlatform.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/GameplayDebugger.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/GameplayTasks.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AIModule.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_CheckGameplayTagsOnActor:ActorToCheck_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_ConeCheck:ConeOrigin_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTDecorator_ConeCheck:ConeOrigin_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_ConeCheck:ConeDirection_Object_1 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTDecorator_ConeCheck:ConeDirection_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_ConeCheck:Observed_Object_2 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTDecorator_ConeCheck:Observed_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_DoesPathExist:BlackboardKeyA_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTDecorator_DoesPathExist:BlackboardKeyA_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_DoesPathExist:BlackboardKeyB_Object_1 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTDecorator_DoesPathExist:BlackboardKeyB_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_IsAtLocation:BlackboardKey_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTDecorator_IsAtLocation:BlackboardKey_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_IsBBEntryOfClass:BlackboardKey_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_KeepInCone:ConeOrigin_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTDecorator_KeepInCone:ConeOrigin_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTDecorator_KeepInCone:Observed_Object_1 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTDecorator_KeepInCone:Observed_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTService_DefaultFocus:BlackboardKey_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTService_DefaultFocus:BlackboardKey_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTService_RunEQS:BlackboardKey_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTService_RunEQS:BlackboardKey_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTTask_MoveTo:BlackboardKey_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTTask_MoveTo:BlackboardKey_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTTask_MoveDirectlyToward:BlackboardKey_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTTask_MoveDirectlyToward:BlackboardKey_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTTask_RotateToFaceBBEntry:BlackboardKey_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Vector /Script/AIModule.Default__BTTask_RotateToFaceBBEntry:BlackboardKey_Vector (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Rotator /Script/AIModule.Default__BTTask_RotateToFaceBBEntry:BlackboardKey_Rotator (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Object /Script/AIModule.Default__BTTask_RunEQSQuery:EQSQueryBlackboardKey_Object_0 (!RF_Public)
+LogIoStore: Skipping script object: BlackboardKeyType_Float /Script/AIModule.Default__BTTask_WaitBlackboardTime:BlackboardKey_Float (!RF_Public)
+LogIoStore: Skipping script object: ArrowComponent /Script/AIModule.Default__EQSTestingPawn:Arrow (Excluded for target platform)
+LogIoStore: Skipping script object: EQSRenderingComponent /Script/AIModule.Default__EQSTestingPawn:EQSRender (Excluded for target platform)
+LogIoStore: Skipping script object: NavLinkRenderingComponent /Script/AIModule.Default__NavLinkProxy:EdRenderComp (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/AIModule.Default__NavLinkProxy:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/VariantManagerContent.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/DatasmithContent.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/NiagaraCore.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/NiagaraShader.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ChaosCloth.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapPrivileges.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeap.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BodySetup /Script/MagicLeap.Default__MagicLeapMeshTrackerComponent:BoundingVolume.BodySetup_0 (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/OnlineSubsystem.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/OnlineSubsystemUtils.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/OnlineBlueprintSupport.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/OculusHMD.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ProceduralMeshComponent.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/SteamVR.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/SteamVRInputDevice.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/WindowsTargetPlatform.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AudioPlatformConfiguration.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Chaos.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MaterialUtilities.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MediaUtils.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ImageWrapper.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/VectorVM.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/EngineMessages.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/PropertyPath.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/WidgetCarousel.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/BlueprintNativeCodeGen.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Renderer.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/LaunchDaemonMessages.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/SourceCodeAccess.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/SlateReflector.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/UMGEditor.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AutomationController.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/FunctionalTesting.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: FuncTestRenderingComponent /Script/FunctionalTesting.Default__FunctionalTest:RenderComp (Excluded for target platform)
+LogIoStore: Skipping script object: TextRenderComponent /Script/FunctionalTesting.Default__FunctionalTest:TestName (Excluded for target platform)
+LogIoStore: Skipping script object: FuncTestRenderingComponent /Script/FunctionalTesting.Default__FunctionalAITest:RenderComp (Excluded for target platform)
+LogIoStore: Skipping script object: TextRenderComponent /Script/FunctionalTesting.Default__FunctionalAITest:TestName (Excluded for target platform)
+LogIoStore: Skipping script object: FuncTestRenderingComponent /Script/FunctionalTesting.Default__ScreenshotFunctionalTestBase:RenderComp (Excluded for target platform)
+LogIoStore: Skipping script object: TextRenderComponent /Script/FunctionalTesting.Default__ScreenshotFunctionalTestBase:TestName (Excluded for target platform)
+LogIoStore: Skipping script object: FuncTestRenderingComponent /Script/FunctionalTesting.Default__FunctionalUIScreenshotTest:RenderComp (Excluded for target platform)
+LogIoStore: Skipping script object: TextRenderComponent /Script/FunctionalTesting.Default__FunctionalUIScreenshotTest:TestName (Excluded for target platform)
+LogIoStore: Skipping script object: FuncTestRenderingComponent /Script/FunctionalTesting.Default__ScreenshotFunctionalTest:RenderComp (Excluded for target platform)
+LogIoStore: Skipping script object: TextRenderComponent /Script/FunctionalTesting.Default__ScreenshotFunctionalTest:TestName (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/AutomationMessages.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AIGraph.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/GameplayTasksEditor.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Overlay.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Paper2D.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: ArrowComponent /Script/Paper2D.Default__PaperCharacter:Arrow (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/LightPropagationVolumeRuntime.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/SignificanceManager.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AnimationSharing.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/PropertyAccessNode.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Niagara.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BillboardComponent /Script/Niagara.Default__NiagaraActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Niagara.Default__NiagaraActor:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: BillboardComponent /Script/Niagara.Default__NiagaraPreviewGrid:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: ArrowComponent /Script/Niagara.Default__NiagaraPreviewGrid:ArrowComponent0 (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/NiagaraAnimNotifies.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapPlanes.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BodySetup /Script/MagicLeapPlanes.Default__MagicLeapPlanesComponent:SearchVolume.BodySetup_0 (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapLightEstimation.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapARPin.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BodySetup /Script/MagicLeapARPin.Default__MagicLeapARPinComponent:SearchVolume.BodySetup_0 (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapImageTracker.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapAR.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapController.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/EyeTracker.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapEyeTracker.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapHandTracking.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapIdentity.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapSecureStorage.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapHandMeshing.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/UdpMessaging.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Serialization.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/TcpMessaging.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ActorSequence.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MovieSceneNodeGroupCollection /Script/ActorSequence.Default__ActorSequence:MovieScene.NodeGroupCollection (Excluded for target platform)
+LogIoStore: Skipping script object: MovieSceneNodeGroupCollection /Script/ActorSequence.Default__ActorSequenceComponent:Sequence.MovieScene.NodeGroupCollection (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/AudioAnalyzer.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AudioSynesthesia.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/LocationServicesBPLibrary.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/PhysXVehicles.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/PhysXVehiclesEditor.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/SoundFields.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AssetManagerEditor.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/EnvironmentQueryEditor.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/FacialAnimation.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/GameplayTagsEditor.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/UObjectPlugin.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/GeometryCache.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AutomationUtils.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ChaosSolverEngine.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BillboardComponent /Script/ChaosSolverEngine.Default__ChaosSolverActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/FieldSystemEngine.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ChaosNiagara.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/GeometryCollectionEngine.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: BillboardComponent /Script/GeometryCollectionEngine.Default__GeometryCollectionDebugDrawActor:Sprite (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/GeometryCacheTracks.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/GeometryCollectionTracks.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MotoSynth.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapAudio.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MagicLeapSharedWorld.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MediaCompositing.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/TemplateSequence.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ActorLayerUtilities.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AndroidPermission.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AppleImageUtils.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AppleImageUtilsBlueprintSupport.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ArchVisCharacter.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: ArrowComponent /Script/ArchVisCharacter.Default__ArchVisCharacter:Arrow (Excluded for target platform)
+LogIoStore: Skipping script object: MetaData /Script/AssetTags.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AudioCapture.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/CableComponent.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/CustomMeshComponent.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/EditableMesh.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/GooglePAD.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/MobilePatchingUtils.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/Synthesis.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/OculusMR.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/OculusInput.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AndroidRuntimeSettings.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/AITestSuite.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/LiveCoding.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/ImgMedia.PackageMetaData (!RF_Public)
+LogIoStore: Skipping script object: MetaData /Script/SteamVREditor.PackageMetaData (!RF_Public)
+LogIoStore: Display: Creating global imports and exports...
+LogIoStore: Display: Converting export map import indices...
+LogIoStore: Display: Conforming localized packages...
+LogIoStore: Display: Adding localized import packages...
+LogIoStore: Display: Conforming localized imports...
+LogIoStore: Display: Adding preload dependencies...
+LogIoStore: Display: Building bundles...
+LogIoStore: Display: Finalizing name maps...
+LogIoStore: Display: Finalizing package headers...
+LogIoStore: Display: Calculating hashes
+LogIoStore: Display: Creating disk layout...
+LogIoStore: Display: Ordered 0/191 packages using game open order
+LogIoStore: Display: Ordered 186/191 packages using cooker open order
+LogIoStore: Display: Ordered 5 packages using fallback bundle order
+LogIoStore: Display: pakchunk0: 0/207 modified entries (0.000000MB)
+LogIoStore: Display: pakchunk0: 207/207 added entries (52.765480MB)
+LogIoStore: Display: pakchunk1: 0/3 modified entries (0.000000MB)
+LogIoStore: Display: pakchunk1: 3/3 added entries (0.010768MB)
+LogIoStore: Display: Serializing container(s)...
+LogIoStore: Display: Finalizing initial load...
+LogIoStore: Display: Serializing global meta data
+LogIoStore: Display: Saving global name map to container file
+LogIoStore: Display: Calculating stats...
+LogIoStore: Display: --------------------------------------------------- IoDispatcher --------------------------------------------------------
+LogIoStore: Display: 
+LogIoStore: Display: Container                           Flags   TOC Size (KB)     TOC Entries       Size (MB)           Compressed (MB)
+LogIoStore: Display: -------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: global                            -/-/-/-            0.49               3            1.00                         -
+LogIoStore: Display: pakchunk0-WindowsNoEditor         -/-/-/I           33.45             208           62.94                         -
+LogIoStore: Display: pakchunk1-WindowsNoEditor         -/-/-/I            0.60               4            0.25                         -
+LogIoStore: Display: TOTAL                                               34.53             215           64.19                         -
+LogIoStore: Display: 
+LogIoStore: Display: ** Flags: (C)ompressed / (E)ncrypted / (S)igned) / (I)ndexed) **
+LogIoStore: Display: 
+LogIoStore: Display: Compression block padding:     0.00 MB
+LogIoStore: Display: 
+LogIoStore: Display: -------------------------------------------- Container Directory Index --------------------------------------------------
+LogIoStore: Display: Container                            Size (KB)
+LogIoStore: Display: global                                    0.00
+LogIoStore: Display: pakchunk0-WindowsNoEditor                10.33
+LogIoStore: Display: pakchunk1-WindowsNoEditor                 0.20
+LogIoStore: Display: 
+LogIoStore: Display: 
+LogIoStore: Display: --------------------------------------------------- PackageStore (KB) ---------------------------------------------------
+LogIoStore: Display: 
+LogIoStore: Display: Container                                Store Size             Packages            Localized
+LogIoStore: Display: -------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: pakchunk0                                         7                  188                    0
+LogIoStore: Display: pakchunk1                                         0                    3                    0
+LogIoStore: Display: TOTAL                                             7                  191                    0
+LogIoStore: Display: 
+LogIoStore: Display: 
+LogIoStore: Display: --------------------------------------------------- PackageHeader (KB) --------------------------------------------------
+LogIoStore: Display: 
+LogIoStore: Display: Container                             Header       Summary         Graph     ImportMap     ExportMap       NameMap
+LogIoStore: Display: -------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: pakchunk0                                196            12             3             8            20           153
+LogIoStore: Display: pakchunk1                                  6             0             0             0             1             4
+LogIoStore: Display: TOTAL                                    201            12             3             8            21           157
+LogIoStore: Display: 
+LogIoStore: Display: 
+LogIoStore: Display: Input:     42.97 MB UExp
+LogIoStore: Display: Input:      0.24 MB UAsset
+LogIoStore: Display: Input:      0.04 MB FPackageFileSummary
+LogIoStore: Display: Input:       191 Packages
+LogIoStore: Display: Input:       125 Imported package entries
+LogIoStore: Display: Input:       134 Packages without imports
+LogIoStore: Display: Input:      6233 Name map entries
+LogIoStore: Display: Input:      1138 PreloadDependencies entries
+LogIoStore: Display: Input:      1058 ImportMap entries
+LogIoStore: Display: Input:       302 ExportMap entries
+LogIoStore: Display: Input:       227 Public exports
+LogIoStore: Display: 
+LogIoStore: Display: Output:      193 Export bundles
+LogIoStore: Display: Output:      604 Export bundle entries
+LogIoStore: Display: Output:      125 Export bundle arcs
+LogIoStore: Display: Output:    15889 Public runtime script objects
+LogIoStore: Display: Output:     0.96 MB InitialLoadData
+LogCore: Engine exit requested (reason: Commandlet IoStoreCommandlet_0 finished execution (result 0))
+LogInit: Display: 
+LogInit: Display: Success - 0 error(s), 0 warning(s)
+LogInit: Display: 
+Execution of commandlet took:  0.29 seconds
+LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)
+LogExit: Preparing to exit.
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDADB00] Windows
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDADA00] Default__DeviceProfile
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD91D00] WindowsNoEditor
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDADF00] WindowsServer
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92000] WindowsClient
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDACE00] IOS
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92F00] iPadAir
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAF000] iPadAir2
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD2EB00] IPadPro
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD2EC00] iPadAir3
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAD200] iPadAir4
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD2E800] iPadMini2
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAF100] iPadMini3
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD2D800] iPadMini4
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAEA00] iPadMini5
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD82400] iPhone6
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD82500] iPodTouch6
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD90200] iPhone7
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD90500] iPodTouch7
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD83C00] iPhone5S
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93700] iPhone6Plus
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD81600] iPhone6S
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93C00] iPhone6SPlus
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD80700] iPhone7Plus
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD91100] iPhoneSE
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD83400] iPhone8
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93800] iPhone8Plus
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD80500] iPhoneX
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92400] iPhoneXS
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD83100] iPhoneXSMax
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD91500] iPhoneXR
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD80D00] iPhone11
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92D00] iPhone11Pro
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD83200] iPhone11ProMax
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93200] iPhoneSE2
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD83300] iPhone12Mini
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD90100] iPhone12
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD82C00] iPhone12Pro
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD91F00] iPhone12ProMax
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDACA00] iPadPro105
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD81800] iPadPro129
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAED00] iPadPro97
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD80E00] iPadPro2_129
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAD900] iPad5
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD82E00] iPad6
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAE500] iPad7
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92E00] iPad8
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAC700] iPadPro11
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93B00] iPadPro2_11
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAF900] iPadPro3_129
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD90300] iPadPro4_129
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAC400] AppleTV
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93000] AppleTV4K
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAE700] TVOS
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93300] Mac
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDADD00] MacClient
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92300] MacNoEditor
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAD600] MacServer
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93D00] Linux
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDADE00] LinuxAArch64
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92900] LinuxNoEditor
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAEB00] LinuxAArch64NoEditor
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD91A00] LinuxClient
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAFF00] LinuxAArch64Client
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD90900] LinuxServer
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAE300] LinuxAArch64Server
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD90F00] Android
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAD800] Android_Low
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92800] Android_Mid
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAE800] Android_High
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92500] Android_Default
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAE100] Android_Adreno4xx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92C00] Android_Adreno5xx_Low
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAE400] Android_Adreno5xx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93E00] Android_Adreno6xx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAFB00] Android_Adreno6xx_Vulkan
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD90B00] Android_Mali_T6xx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAD100] Android_Mali_T7xx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD93900] Android_Mali_T8xx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAD500] Android_Mali_G71
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD91300] Android_Mali_G72
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDADC00] Android_Mali_G72_Vulkan
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD91900] Android_Mali_G76
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDACD00] Android_Mali_G76_Vulkan
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD91600] Android_Mali_G77
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAC500] Android_Mali_G77_Vulkan
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD92B00] Android_Vulkan_SM5
+LogDeviceProfile: Device profile begin destroy: [000001C4CFDAD000] Android_PowerVR_G6xxx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD90400] Android_PowerVR_GT7xxx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD2DE00] Android_PowerVR_GE8xxx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD80F00] Android_PowerVR_GM9xxx
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD2C800] Android_PowerVR_GM9xxx_Vulkan
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD83600] Android_TegraK1
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD2C100] Android_Unknown_Vulkan
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD81300] Lumin
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD2F200] Lumin_Desktop
+LogDeviceProfile: Device profile begin destroy: [000001C4CFD82D00] HoloLens
+LogDemo: Cleaned up 0 splitscreen connections with owner deletion
+LogWorld: UWorld::CleanupWorld for None, bSessionEnded=true, bCleanupResources=true
+LogExit: Editor shut down
+LogExit: Object subsystem successfully closed.
+LogShaderCompilers: Display: Shaders left to compile 0
+LogModuleManager: Shutting down and abandoning module SteamVREditor (656)
+LogModuleManager: Shutting down and abandoning module OculusMR (654)
+LogModuleManager: Shutting down and abandoning module TextureAlignMode (652)
+LogModuleManager: Shutting down and abandoning module BspMode (650)
+LogModuleManager: Shutting down and abandoning module GeometryMode (648)
+LogModuleManager: Shutting down and abandoning module GooglePADEditor (646)
+LogModuleManager: Shutting down and abandoning module AudioCaptureEditor (644)
+LogModuleManager: Shutting down and abandoning module TemplateSequenceEditor (642)
+LogModuleManager: Shutting down and abandoning module WebMMediaFactory (640)
+LogModuleManager: Shutting down and abandoning module WebMMediaEditor (638)
+LogModuleManager: Shutting down and abandoning module MatineeToLevelSequence (636)
+LogModuleManager: Shutting down and abandoning module WmfMediaFactory (634)
+LogModuleManager: Shutting down and abandoning module WmfMediaEditor (632)
+LogModuleManager: Shutting down and abandoning module LevelSequenceEditor (630)
+LogModuleManager: Shutting down and abandoning module ActorSequenceEditor (628)
+LogModuleManager: Shutting down and abandoning module Kismet (627)
+LogModuleManager: Shutting down and abandoning module KismetWidgets (626)
+LogModuleManager: Shutting down and abandoning module MediaPlayerEditor (622)
+LogModuleManager: Shutting down and abandoning module MediaCompositingEditor (620)
+LogModuleManager: Shutting down and abandoning module SequenceRecorder (619)
+LogModuleManager: Shutting down and abandoning module Persona (618)
+LogModuleManager: Shutting down and abandoning module AdvancedPreviewScene (617)
+LogModuleManager: Shutting down and abandoning module AnimGraph (615)
+LogModuleManager: Shutting down and abandoning module ImgMediaFactory (610)
+LogModuleManager: Shutting down and abandoning module ImgMediaEditor (608)
+LogModuleManager: Shutting down and abandoning module AvfMediaFactory (606)
+LogModuleManager: Shutting down and abandoning module AvfMediaEditor (604)
+LogModuleManager: Shutting down and abandoning module AndroidMediaFactory (602)
+LogModuleManager: Shutting down and abandoning module AndroidMediaEditor (600)
+LogModuleManager: Shutting down and abandoning module MagicLeapMediaEditor (598)
+LogModuleManager: Shutting down and abandoning module PlanarCut (596)
+LogModuleManager: Shutting down and abandoning module CharacterAI (594)
+LogModuleManager: Shutting down and abandoning module CameraShakePreviewer (592)
+LogModuleManager: Shutting down and abandoning module SmartSnapping (590)
+LogModuleManager: Shutting down and abandoning module MeshPaint (588)
+LogModuleManager: Shutting down and abandoning module VirtualTexturingEditor (586)
+LogModuleManager: Shutting down and abandoning module FoliageEdit (584)
+LogModuleManager: Shutting down and abandoning module LandscapeEditor (582)
+LogModuleManager: Shutting down and abandoning module MeshPaintMode (580)
+LogModuleManager: Shutting down and abandoning module SceneDepthPickerMode (578)
+LogModuleManager: Shutting down and abandoning module ActorPickerMode (576)
+LogModuleManager: Shutting down and abandoning module PlacementMode (574)
+LogModuleManager: Shutting down and abandoning module LiveCoding (572)
+LogModuleManager: Shutting down and abandoning module LevelSequence (570)
+LogModuleManager: Shutting down and abandoning module MovieSceneTracks (568)
+LogModuleManager: Shutting down and abandoning module MovieScene (566)
+LogModuleManager: Shutting down and abandoning module StreamingPauseRendering (564)
+LogModuleManager: Shutting down and abandoning module ImageWriteQueue (562)
+LogModuleManager: Shutting down and abandoning module AIModule (560)
+LogModuleManager: Shutting down and abandoning module GameplayDebugger (559)
+LogModuleManager: Shutting down and abandoning module AITestSuite (557)
+LogModuleManager: Shutting down and abandoning module NavigationSystem (555)
+LogModuleManager: Shutting down and abandoning module AudioSynesthesiaEditor (552)
+LogModuleManager: Shutting down and abandoning module ContentBrowserClassDataSource (550)
+LogModuleManager: Shutting down and abandoning module ContentBrowserAssetDataSource (548)
+LogModuleManager: Shutting down and abandoning module ToolMenus (547)
+LogModuleManager: Shutting down and abandoning module OculusEditor (544)
+LogModuleManager: Shutting down and abandoning module OculusInput (542)
+LogModuleManager: Shutting down and abandoning module SpeedTreeImporter (540)
+LogModuleManager: Shutting down and abandoning module PluginBrowser (538)
+LogModuleManager: Shutting down and abandoning module MobileLauncherProfileWizard (536)
+LogModuleManager: Shutting down and abandoning module MaterialAnalyzer (534)
+LogModuleManager: Shutting down and abandoning module CurveEditorTools (532)
+LogModuleManager: Shutting down and abandoning module CryptoKeysOpenSSL (530)
+LogModuleManager: Shutting down and abandoning module CryptoKeys (528)
+LogModuleManager: Shutting down and abandoning module ScreenshotTools (526)
+LogModuleManager: Shutting down and abandoning module SynthesisEditor (524)
+LogModuleManager: Shutting down and abandoning module Synthesis (522)
+LogModuleManager: Shutting down and abandoning module ProceduralMeshComponentEditor (520)
+LogModuleManager: Shutting down and abandoning module ProceduralMeshComponent (518)
+LogModuleManager: Shutting down and abandoning module MobilePatchingUtils (516)
+LogModuleManager: Shutting down and abandoning module GooglePAD (514)
+LogModuleManager: Shutting down and abandoning module EditableMesh (512)
+LogModuleManager: Shutting down and abandoning module CustomMeshComponent (510)
+LogModuleManager: Shutting down and abandoning module CableComponent (508)
+LogModuleManager: Shutting down and abandoning module AudioCapture (506)
+LogModuleManager: Shutting down and abandoning module AudioCaptureRtAudio (505)
+LogModuleManager: Shutting down and abandoning module AssetTags (502)
+LogModuleManager: Shutting down and abandoning module ArchVisCharacter (500)
+LogModuleManager: Shutting down and abandoning module AppleImageUtilsBlueprintSupport (498)
+LogModuleManager: Shutting down and abandoning module AppleImageUtils (496)
+LogModuleManager: Shutting down and abandoning module AndroidPermission (494)
+LogModuleManager: Shutting down and abandoning module ActorLayerUtilitiesEditor (492)
+LogModuleManager: Shutting down and abandoning module ActorLayerUtilities (490)
+LogModuleManager: Shutting down and abandoning module TemplateSequence (488)
+LogModuleManager: Shutting down and abandoning module MediaCompositing (486)
+LogModuleManager: Shutting down and abandoning module MagicLeapSharedWorld (484)
+LogModuleManager: Shutting down and abandoning module MagicLeapLightEstimation (482)
+LogModuleManager: Shutting down and abandoning module MagicLeapHelperVulkan (480)
+LogModuleManager: Shutting down and abandoning module MagicLeapHelperOpenGL (478)
+LogModuleManager: Shutting down and abandoning module MagicLeapAudio (476)
+LogModuleManager: Shutting down and abandoning module MotoSynthEditor (474)
+LogModuleManager: Shutting down and abandoning module MotoSynth (472)
+LogModuleManager: Shutting down and abandoning module MeshConversion (470)
+LogModuleManager: Shutting down and abandoning module DynamicMesh (468)
+LogModuleManager: Shutting down and abandoning module GeometryAlgorithms (466)
+LogModuleManager: Shutting down and abandoning module GeometricObjects (464)
+LogModuleManager: Shutting down and abandoning module GeometryCollectionTracks (462)
+LogModuleManager: Shutting down and abandoning module GeometryCollectionSequencer (461)
+LogModuleManager: Shutting down and abandoning module GeometryCollectionEditor (458)
+LogModuleManager: Shutting down and abandoning module GeometryCacheTracks (456)
+LogModuleManager: Shutting down and abandoning module GeometryCacheStreamer (454)
+LogModuleManager: Shutting down and abandoning module GeometryCacheSequencer (452)
+LogModuleManager: Shutting down and abandoning module FractureEditor (450)
+LogModuleManager: Shutting down and abandoning module ChaosSolverEditor (448)
+LogModuleManager: Shutting down and abandoning module ChaosNiagara (446)
+LogModuleManager: Shutting down and abandoning module FieldSystemEngine (445)
+LogModuleManager: Shutting down and abandoning module ChaosClothEditor (442)
+LogModuleManager: Shutting down and abandoning module AutomationUtilsEditor (440)
+LogModuleManager: Shutting down and abandoning module AutomationUtils (438)
+LogModuleManager: Shutting down and abandoning module AlembicImporter (436)
+LogModuleManager: Shutting down and abandoning module AlembicLibrary (435)
+LogModuleManager: Shutting down and abandoning module GeometryCache (434)
+LogModuleManager: Shutting down and abandoning module GeometryCacheEd (433)
+LogModuleManager: Shutting down and abandoning module NiagaraEditorWidgets (428)
+LogModuleManager: Shutting down and abandoning module VariantManagerContentEditor (426)
+LogModuleManager: Shutting down and abandoning module VisualStudioSourceCodeAccess (424)
+LogModuleManager: Shutting down and abandoning module UObjectPlugin (422)
+LogModuleManager: Shutting down and abandoning module VisualStudioCodeSourceCodeAccess (420)
+LogModuleManager: Shutting down and abandoning module SubversionSourceControl (418)
+LogModuleManager: Shutting down and abandoning module PluginUtils (416)
+LogModuleManager: Shutting down and abandoning module PlasticSourceControl (414)
+LogModuleManager: Shutting down and abandoning module DatasmithContentEditor (412)
+LogModuleManager: Shutting down and abandoning module PerforceSourceControl (410)
+LogModuleManager: Shutting down and abandoning module GitSourceControl (408)
+LogModuleManager: Shutting down and abandoning module SourceControl (407)
+LogModuleManager: Shutting down and abandoning module CLionSourceCodeAccess (404)
+LogModuleManager: Shutting down and abandoning module AnimationSharingEd (402)
+LogModuleManager: Shutting down and abandoning module LightPropagationVolumeEditor (400)
+LogModuleManager: Shutting down and abandoning module PaperTiledImporter (398)
+LogModuleManager: Shutting down and abandoning module PaperSpriteSheetImporter (396)
+LogModuleManager: Shutting down and abandoning module Paper2DEditor (394)
+LogModuleManager: Shutting down and abandoning module MeshPaintingToolset (392)
+LogModuleManager: Shutting down and abandoning module MeshPaintEditorMode (390)
+LogModuleManager: Shutting down and abandoning module GameplayTagsEditor (388)
+LogModuleManager: Shutting down and abandoning module FacialAnimationEditor (386)
+LogModuleManager: Shutting down and abandoning module FacialAnimation (384)
+LogModuleManager: Shutting down and abandoning module DataValidation (382)
+LogModuleManager: Shutting down and abandoning module EnvironmentQueryEditor (380)
+LogModuleManager: Shutting down and abandoning module AssetManagerEditor (378)
+LogModuleManager: Shutting down and abandoning module TreeMap (377)
+LogModuleManager: Shutting down and abandoning module SoundFields (374)
+LogModuleManager: Shutting down and abandoning module SignificanceManager (372)
+LogModuleManager: Shutting down and abandoning module RuntimePhysXCooking (370)
+LogModuleManager: Shutting down and abandoning module PropertyAccessEditor (368)
+LogModuleManager: Shutting down and abandoning module PhysXVehiclesEditor (366)
+LogModuleManager: Shutting down and abandoning module LocationServicesBPLibrary (362)
+LogModuleManager: Shutting down and abandoning module AudioSynesthesia (360)
+LogModuleManager: Shutting down and abandoning module AudioSynesthesiaCore (358)
+LogModuleManager: Shutting down and abandoning module ActorSequence (356)
+LogModuleManager: Shutting down and abandoning module TcpMessaging (354)
+LogModuleManager: Shutting down and abandoning module UdpMessaging (352)
+LogModuleManager: Shutting down and abandoning module MagicLeapARPin (350)
+LogModuleManager: Shutting down and abandoning module MagicLeapHandMeshing (348)
+LogModuleManager: Shutting down and abandoning module MagicLeapSecureStorage (346)
+LogModuleManager: Shutting down and abandoning module MagicLeapPrivileges (344)
+LogModuleManager: Shutting down and abandoning module MagicLeapPlanes (342)
+LogMagicLeapPlanes: Planes tracker already destroyed.
+LogModuleManager: Shutting down and abandoning module MagicLeapImageTracker (340)
+LogModuleManager: Shutting down and abandoning module MagicLeapIdentity (338)
+LogModuleManager: Shutting down and abandoning module MagicLeapHandTracking (336)
+LogModuleManager: Shutting down and abandoning module MagicLeapEyeTracker (334)
+LogModuleManager: Shutting down and abandoning module MagicLeapController (332)
+LogModuleManager: Shutting down and abandoning module MagicLeapARPinImpl (330)
+LogModuleManager: Shutting down and abandoning module MagicLeapAR (328)
+LogModuleManager: Shutting down and abandoning module AugmentedReality (327)
+LogModuleManager: Shutting down and abandoning module NiagaraAnimNotifies (324)
+LogModuleManager: Shutting down and abandoning module Niagara (322)
+LogModuleManager: Shutting down and abandoning module SignalProcessing (321)
+LogModuleManager: Shutting down and abandoning module NiagaraEditor (319)
+LogModuleManager: Shutting down and abandoning module NiagaraCore (316)
+LogModuleManager: Shutting down and abandoning module PropertyAccessNode (314)
+LogModuleManager: Shutting down and abandoning module AnimationSharing (312)
+LogModuleManager: Shutting down and abandoning module LightPropagationVolumeRuntime (310)
+LogModuleManager: Shutting down and abandoning module Paper2D (308)
+LogModuleManager: Shutting down and abandoning module NetworkReplayStreaming (306)
+LogModuleManager: Shutting down and abandoning module PacketHandler (304)
+LogModuleManager: Shutting down and abandoning module ClothingSystemEditor (302)
+LogModuleManager: Shutting down and abandoning module ClothingSystemRuntimeNv (300)
+LogModuleManager: Shutting down and abandoning module MediaAssets (298)
+LogModuleManager: Shutting down and abandoning module Overlay (296)
+LogModuleManager: Shutting down and abandoning module OverlayEditor (295)
+LogModuleManager: Shutting down and abandoning module Blutility (292)
+LogModuleManager: Shutting down and abandoning module LevelEditor (291)
+LogModuleManager: Shutting down and abandoning module PixelInspectorModule (290)
+LogModuleManager: Shutting down and abandoning module CommonMenuExtensions (288)
+LogModuleManager: Shutting down and abandoning module MainFrame (286)
+LogModuleManager: Shutting down and abandoning module HotReload (285)
+LogModuleManager: Shutting down and abandoning module ContentBrowser (281)
+LogModuleManager: Shutting down and abandoning module CollectionManager (280)
+LogModuleManager: Shutting down and abandoning module ContentBrowserData (278)
+LogModuleManager: Shutting down and abandoning module IntroTutorials (274)
+LogModuleManager: Shutting down and abandoning module VREditor (272)
+LogModuleManager: Shutting down and abandoning module StringTableEditor (270)
+LogModuleManager: Shutting down and abandoning module GameplayTasksEditor (268)
+LogModuleManager: Shutting down and abandoning module BehaviorTreeEditor (266)
+LogModuleManager: Shutting down and abandoning module FunctionalTesting (264)
+LogModuleManager: Shutting down and abandoning module CollisionAnalyzer (262)
+LogModuleManager: Shutting down and abandoning module WorkspaceMenuStructure (261)
+LogModuleManager: Shutting down and abandoning module UMG (258)
+LogModuleManager: Shutting down and abandoning module UMGEditor (257)
+LogModuleManager: Shutting down and abandoning module MessageLog (255)
+LogModuleManager: Shutting down and abandoning module SlateReflector (250)
+LogModuleManager: Shutting down and abandoning module Slate (248)
+LogModuleManager: Shutting down and abandoning module SlateCore (246)
+LogModuleManager: Shutting down and abandoning module LandscapeEditorUtilities (244)
+LogModuleManager: Shutting down and abandoning module UnrealEd (242)
+LogModuleManager: Shutting down and abandoning module MRMesh (240)
+LogModuleManager: Shutting down and abandoning module SourceCodeAccess (238)
+LogModuleManager: Shutting down and abandoning module HeadMountedDisplay (236)
+LogModuleManager: Shutting down and abandoning module XAudio2 (234)
+LogModuleManager: Shutting down and abandoning module Networking (232)
+LogModuleManager: Shutting down and abandoning module Core (230)
+LogModuleManager: Shutting down and abandoning module MaterialEditor (228)
+LogModuleManager: Shutting down and abandoning module Settings (227)
+LogModuleManager: Shutting down and abandoning module MovieSceneTools (224)
+LogModuleManager: Shutting down and abandoning module CurveEditor (223)
+LogModuleManager: Shutting down and abandoning module Sequencer (221)
+LogModuleManager: Shutting down and abandoning module EditorStyle (220)
+LogModuleManager: Shutting down and abandoning module KismetCompiler (216)
+LogModuleManager: Shutting down and abandoning module MeshBuilder (214)
+LogModuleManager: Shutting down and abandoning module MeshUtilities (212)
+LogModuleManager: Shutting down and abandoning module MeshMergeUtilities (211)
+LogModuleManager: Shutting down and abandoning module MeshReductionInterface (210)
+LogModuleManager: Shutting down and abandoning module MeshBoneReduction (209)
+LogModuleManager: Shutting down and abandoning module SkeletalMeshReduction (207)
+LogModuleManager: Shutting down and abandoning module ProxyLODMeshReduction (205)
+LogModuleManager: Shutting down and abandoning module QuadricMeshReduction (203)
+LogModuleManager: Shutting down and abandoning module MaterialBaking (199)
+LogModuleManager: Shutting down and abandoning module DirectoryWatcher (195)
+LogModuleManager: Shutting down and abandoning module NullInstallBundleManager (192)
+LogModuleManager: Shutting down and abandoning module DerivedDataCache (190)
+LogModuleManager: Shutting down and abandoning module TargetPlatform (188)
+LogModuleManager: Shutting down and abandoning module VulkanShaderFormat (187)
+LogModuleManager: Shutting down and abandoning module ShaderFormatVectorVM (185)
+LogModuleManager: Shutting down and abandoning module ShaderFormatOpenGL (183)
+LogModuleManager: Shutting down and abandoning module ShaderFormatD3D (181)
+LogModuleManager: Shutting down and abandoning module MetalShaderFormat (179)
+LogModuleManager: Shutting down and abandoning module TextureFormatUncompressed (177)
+LogModuleManager: Shutting down and abandoning module TextureFormatPVR (175)
+LogModuleManager: Shutting down and abandoning module TextureFormatETC2 (173)
+LogModuleManager: Shutting down and abandoning module TextureFormatDXT (171)
+LogModuleManager: Shutting down and abandoning module TextureFormatIntelISPCTexComp (169)
+LogModuleManager: Shutting down and abandoning module TextureFormatASTC (167)
+LogModuleManager: Shutting down and abandoning module ImageWrapper (166)
+LogModuleManager: Shutting down and abandoning module AudioFormatOpus (163)
+LogModuleManager: Shutting down and abandoning module AudioFormatOgg (161)
+LogModuleManager: Shutting down and abandoning module AudioFormatADPCM (159)
+LogModuleManager: Shutting down and abandoning module WindowsServerTargetPlatform (157)
+LogModuleManager: Shutting down and abandoning module WindowsClientTargetPlatform (155)
+LogModuleManager: Shutting down and abandoning module WindowsTargetPlatform (153)
+LogModuleManager: Shutting down and abandoning module WindowsNoEditorTargetPlatform (151)
+LogModuleManager: Shutting down and abandoning module TVOSTargetPlatform (149)
+LogModuleManager: Shutting down and abandoning module MacServerTargetPlatform (147)
+LogModuleManager: Shutting down and abandoning module MacClientTargetPlatform (145)
+LogModuleManager: Shutting down and abandoning module MacTargetPlatform (143)
+LogModuleManager: Shutting down and abandoning module MacNoEditorTargetPlatform (141)
+LogModuleManager: Shutting down and abandoning module LuminTargetPlatform (139)
+LogModuleManager: Shutting down and abandoning module LinuxAArch64ServerTargetPlatform (137)
+LogModuleManager: Shutting down and abandoning module LinuxAArch64ClientTargetPlatform (135)
+LogModuleManager: Shutting down and abandoning module LinuxAArch64NoEditorTargetPlatform (133)
+LogModuleManager: Shutting down and abandoning module LinuxServerTargetPlatform (131)
+LogModuleManager: Shutting down and abandoning module LinuxClientTargetPlatform (129)
+LogModuleManager: Shutting down and abandoning module LinuxNoEditorTargetPlatform (127)
+LogModuleManager: Shutting down and abandoning module LinuxTargetPlatform (125)
+LogModuleManager: Shutting down and abandoning module Messaging (123)
+LogModuleManager: Shutting down and abandoning module IOSTargetPlatform (121)
+LogModuleManager: Shutting down and abandoning module AndroidTargetPlatform (119)
+LogModuleManager: Shutting down and abandoning module AllDesktopTargetPlatform (117)
+LogModuleManager: Shutting down and abandoning module NullDrv (114)
+LogModuleManager: Shutting down and abandoning module PhysXCooking (112)
+LogModuleManager: Shutting down and abandoning module Chaos (110)
+LogModuleManager: Shutting down and abandoning module WindowsPlatformFeatures (108)
+LogModuleManager: Shutting down and abandoning module GameplayMediaEncoder (107)
+LogModuleManager: Shutting down and abandoning module AVEncoder (106)
+LogModuleManager: Shutting down and abandoning module ExampleDeviceProfileSelector (102)
+LogModuleManager: Shutting down and abandoning module SteamVRInputDevice (100)
+LogModuleManager: Shutting down and abandoning module SteamVRInput (98)
+LogModuleManager: Shutting down and abandoning module SteamVR (96)
+LogHMD: Freeing OpenVRDLLHandle.
+LogModuleManager: Shutting down and abandoning module OculusHMD (94)
+LogModuleManager: Shutting down and abandoning module ChunkDownloader (92)
+LogModuleManager: Shutting down and abandoning module OnlineBlueprintSupport (90)
+LogModuleManager: Shutting down and abandoning module OnlineSubsystem (86)
+LogModuleManager: Shutting down and abandoning module XMPP (81)
+LogModuleManager: Shutting down and abandoning module WebSockets (80)
+LogModuleManager: Shutting down and abandoning module HTTP (77)
+LogHttp: Display: cleaning up 0 outstanding Http requests.
+LogModuleManager: Shutting down and abandoning module SSL (76)
+LogModuleManager: Shutting down and abandoning module LauncherChunkInstaller (72)
+LogModuleManager: Shutting down and abandoning module WmfMedia (70)
+LogModuleManager: Shutting down and abandoning module Media (69)
+LogModuleManager: Shutting down and abandoning module MediaInfo (68)
+LogModuleManager: Shutting down and abandoning module ExrReaderGpu (64)
+LogModuleManager: Shutting down and abandoning module MLSDK (62)
+LogModuleManager: Shutting down and abandoning module MagicLeap (60)
+LogModuleManager: Shutting down and abandoning module ChaosCloth (58)
+LogModuleManager: Shutting down and abandoning module NiagaraVertexFactories (56)
+LogModuleManager: Shutting down and abandoning module NiagaraShader (54)
+LogModuleManager: Shutting down and abandoning module VariantManagerContent (52)
+LogModuleManager: Shutting down and abandoning module DatasmithContent (50)
+LogModuleManager: Shutting down and abandoning module AISupportModule (48)
+LogModuleManager: Shutting down and abandoning module PlatformCryptoOpenSSL (46)
+LogModuleManager: Shutting down and abandoning module PlatformCryptoTypes (44)
+LogModuleManager: Shutting down and abandoning module PlatformCrypto (42)
+LogModuleManager: Shutting down and abandoning module XGEController (40)
+LogModuleManager: Shutting down and abandoning module AnimationModifiers (38)
+LogModuleManager: Shutting down and abandoning module AudioEditor (36)
+LogModuleManager: Shutting down and abandoning module PropertyEditor (35)
+LogModuleManager: Shutting down and abandoning module TextureCompressor (32)
+LogModuleManager: Shutting down and abandoning module RenderCore (30)
+LogModuleManager: Shutting down and abandoning module Landscape (28)
+LogModuleManager: Shutting down and abandoning module SlateRHIRenderer (26)
+LogModuleManager: Shutting down and abandoning module OpenGLDrv (24)
+LogModuleManager: Shutting down and abandoning module D3D11RHI (22)
+LogModuleManager: Shutting down and abandoning module AnimGraphRuntime (20)
+LogModuleManager: Shutting down and abandoning module Renderer (18)
+LogModuleManager: Shutting down and abandoning module Engine (16)
+LogModuleManager: Shutting down and abandoning module CoreUObject (14)
+LogModuleManager: Shutting down and abandoning module NetworkFile (12)
+LogModuleManager: Shutting down and abandoning module CookedIterativeFile (10)
+LogModuleManager: Shutting down and abandoning module StreamingFile (8)
+LogModuleManager: Shutting down and abandoning module SandboxFile (6)
+LogModuleManager: Shutting down and abandoning module PakFile (4)
+LogModuleManager: Shutting down and abandoning module RSA (3)
+LogContentStreaming: Display: There are 1 unreleased StreamingManagers
+LogExit: Exiting.
+Log file closed, 12/07/24 00:45:39

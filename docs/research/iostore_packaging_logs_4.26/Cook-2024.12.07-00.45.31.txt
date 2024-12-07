@@ -1,0 +1,1213 @@
+﻿Log file open, 12/07/24 00:45:21
+LogPluginManager: Mounting plugin MeshPainting
+LogPluginManager: Mounting plugin XGEController
+LogPluginManager: Mounting plugin Paper2D
+LogPluginManager: Mounting plugin CameraShakePreviewer
+LogPluginManager: Mounting plugin LightPropagationVolume
+LogPluginManager: Mounting plugin AISupport
+LogPluginManager: Mounting plugin AnimationSharing
+LogPluginManager: Mounting plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting plugin CLionSourceCodeAccess
+LogPluginManager: Mounting plugin GitSourceControl
+LogPluginManager: Mounting plugin NullSourceCodeAccess
+LogPluginManager: Mounting plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting plugin PlasticSourceControl
+LogPluginManager: Mounting plugin PerforceSourceControl
+LogPluginManager: Mounting plugin PluginUtils
+LogPluginManager: Mounting plugin PropertyAccessNode
+LogPluginManager: Mounting plugin RiderSourceCodeAccess
+LogPluginManager: Mounting plugin SubversionSourceControl
+LogPluginManager: Mounting plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting plugin UObjectPlugin
+LogPluginManager: Mounting plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting plugin AlembicImporter
+LogPluginManager: Mounting plugin BackChannel
+LogPluginManager: Mounting plugin AutomationUtils
+LogPluginManager: Mounting plugin ChaosClothEditor
+LogPluginManager: Mounting plugin ChaosCloth
+LogPluginManager: Mounting plugin ChaosSolverPlugin
+LogPluginManager: Mounting plugin ChaosNiagara
+LogPluginManager: Mounting plugin ChaosEditor
+LogPluginManager: Mounting plugin CharacterAI
+LogPluginManager: Mounting plugin AssetManagerEditor
+LogPluginManager: Mounting plugin GeometryCache
+LogPluginManager: Mounting plugin CurveEditorTools
+LogPluginManager: Mounting plugin CryptoKeys
+LogPluginManager: Mounting plugin DataValidation
+LogPluginManager: Mounting plugin GeometryCollectionPlugin
+LogPluginManager: Mounting plugin FacialAnimation
+LogPluginManager: Mounting plugin GeometryProcessing
+LogPluginManager: Mounting plugin GameplayTagsEditor
+LogPluginManager: Mounting plugin GeometryMode
+LogPluginManager: Mounting plugin MaterialAnalyzer
+LogPluginManager: Mounting plugin MacGraphicsSwitching
+LogPluginManager: Mounting plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting plugin PluginBrowser
+LogPluginManager: Mounting plugin SpeedTreeImporter
+LogPluginManager: Mounting plugin MotoSynth
+LogPluginManager: Mounting plugin PlanarCut
+LogPluginManager: Mounting plugin PlatformCrypto
+LogPluginManager: Mounting plugin ProxyLODPlugin
+LogPluginManager: Mounting plugin SkeletalReduction
+LogPluginManager: Mounting plugin DatasmithContent
+LogPluginManager: Mounting plugin Niagara
+LogPluginManager: Mounting plugin MagicLeap
+LogPluginManager: Mounting plugin VariantManagerContent
+LogPluginManager: Mounting plugin LuminPlatformFeatures
+LogPluginManager: Mounting plugin AndroidMedia
+LogPluginManager: Mounting plugin MagicLeapLightEstimation
+LogPluginManager: Mounting plugin MagicLeapMedia
+LogPluginManager: Mounting plugin AvfMedia
+LogPluginManager: Mounting plugin MagicLeapPassableWorld
+LogPluginManager: Mounting plugin MLSDK
+LogPluginManager: Mounting plugin ImgMedia
+LogPluginManager: Mounting plugin MediaCompositing
+LogPluginManager: Mounting plugin MediaPlayerEditor
+LogPluginManager: Mounting plugin WebMMedia
+LogPluginManager: Mounting plugin WmfMedia
+LogPluginManager: Mounting plugin UdpMessaging
+LogPluginManager: Mounting plugin ActorSequence
+LogPluginManager: Mounting plugin TcpMessaging
+LogPluginManager: Mounting plugin LevelSequenceEditor
+LogPluginManager: Mounting plugin MatineeToLevelSequence
+LogPluginManager: Mounting plugin TemplateSequence
+LogPluginManager: Mounting plugin OnlineSubsystem
+LogPluginManager: Mounting plugin ActorLayerUtilities
+LogPluginManager: Mounting plugin OnlineSubsystemNull
+LogPluginManager: Mounting plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting plugin OnlineSubsystemUtils
+LogPluginManager: Mounting plugin AndroidPermission
+LogPluginManager: Mounting plugin AppleImageUtils
+LogPluginManager: Mounting plugin AndroidMoviePlayer
+LogPluginManager: Mounting plugin AppleMoviePlayer
+LogPluginManager: Mounting plugin ArchVisCharacter
+LogPluginManager: Mounting plugin AssetTags
+LogPluginManager: Mounting plugin AudioCapture
+LogPluginManager: Mounting plugin AudioSynesthesia
+LogPluginManager: Mounting plugin CableComponent
+LogPluginManager: Mounting plugin ChunkDownloader
+LogPluginManager: Mounting plugin CustomMeshComponent
+LogPluginManager: Mounting plugin EditableMesh
+LogPluginManager: Mounting plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting plugin GooglePAD
+LogPluginManager: Mounting plugin GoogleCloudMessaging
+LogPluginManager: Mounting plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting plugin LocationServicesBPLibrary
+LogPluginManager: Mounting plugin LauncherChunkInstaller
+LogPluginManager: Mounting plugin MobilePatchingUtils
+LogPluginManager: Mounting plugin PhysXVehicles
+LogPluginManager: Mounting plugin PostSplashScreen
+LogPluginManager: Mounting plugin PropertyAccessEditor
+LogPluginManager: Mounting plugin ProceduralMeshComponent
+LogPluginManager: Mounting plugin RuntimePhysXCooking
+LogPluginManager: Mounting plugin SignificanceManager
+LogPluginManager: Mounting plugin SoundFields
+LogPluginManager: Mounting plugin Synthesis
+LogPluginManager: Mounting plugin WebMMoviePlayer
+LogPluginManager: Mounting plugin WindowsMoviePlayer
+LogPluginManager: Mounting plugin ScreenshotTools
+LogPluginManager: Mounting plugin EnvironmentQueryEditor
+LogPluginManager: Mounting plugin ContentBrowserAssetDataSource
+LogPluginManager: Mounting plugin ContentBrowserClassDataSource
+LogPluginManager: Mounting plugin OnlineSubsystemIOS
+LogPluginManager: Mounting plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting plugin OculusVR
+LogPluginManager: Mounting plugin SteamVR
+LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+LogInit: Using libcurl 7.55.1-DEV
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.1.1
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogOnline: OSS: Creating online subsystem instance for: NULL
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for module [NULL]
+LogInit: Build: ++UE4+Release-4.26-CL-15973114
+LogInit: Engine Version: 4.26.2-15973114+++UE4+Release-4.26
+LogInit: Compatible Engine Version: 4.26.0-14830424+++UE4+Release-4.26
+LogInit: Net CL: 14830424
+LogInit: OS: Windows 10 (Release 2009) (), CPU: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz, GPU: Intel(R) UHD Graphics
+LogInit: Compiled (64-bit): Apr 12 2021 06:14:10
+LogInit: Compiled with Visual C++: 19.24.28315.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.26
+LogInit: Command Line:  C:\Users\Mythical\Documents\GitHub\RoboQuest\RoboQuest.uproject -run=Cook -TargetPlatform=WindowsNoEditor -fileopenlog -ddc=InstalledDerivedDataBackendGraph -unversioned -manifests -abslog=D:\unreal_engine_installs\UE_4.26\Engine\Programs\AutomationTool\Saved\Cook-2024.12.07-00.45.20.txt -stdout -CrashForUAT -unattended -NoLogTimes -UTF8Output
+LogInit: Base Directory: D:/unreal_engine_installs/UE_4.26/Engine/Binaries/Win64/
+LogInit: Allocator: TBB
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 29
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 4
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 40
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 37
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 3
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 4
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 44
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 12
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 3
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 15
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 43
+LogDevObjectVersion:   FortniteRelease (E7086368-6B23-4C58-8439-1B7016265E91): 1
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 10
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 10
+LogDevObjectVersion:   Dev-Physics-Ext (35F94A83-E258-406C-A318-09F59610247C): 40
+LogDevObjectVersion:   Dev-PhysicsMaterial-Chaos (B68FC16E-8B1B-42E2-B453-215C058844FE): 1
+LogDevObjectVersion:   Dev-CineCamera (B2E18506-4273-CFC2-A54E-F4BB758BBA07): 1
+LogDevObjectVersion:   Dev-VirtualProduction (64F58936-FD1B-42BA-BA96-7289D5D0FA4E): 1
+LogDevObjectVersion:   Dev-MediaFramework (6F0ED827-A609-4895-9C91-998D90180EA4): 2
+LogInit: Presizing for max 25165824 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Setting CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+LogConfig: Setting CVar [[s.AsyncLoadingThreadEnabled:0]]
+LogConfig: Setting CVar [[s.EventDrivenLoaderEnabled:1]]
+LogConfig: Setting CVar [[s.WarnIfTimeLimitExceeded:0]]
+LogConfig: Setting CVar [[s.TimeLimitExceededMultiplier:1.5]]
+LogConfig: Setting CVar [[s.TimeLimitExceededMinTime:0.005]]
+LogConfig: Setting CVar [[s.UseBackgroundLevelStreaming:1]]
+LogConfig: Setting CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+LogConfig: Setting CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+LogConfig: Setting CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+LogConfig: Setting CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+LogConfig: Setting CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+LogConfig: Setting CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+LogConfig: Setting CVar [[s.FlushStreamingOnExit:1]]
+LogInit: Object subsystem initialized
+LogConfig: Setting CVar [[con.DebugEarlyDefault:1]]
+LogConfig: Setting CVar [[r.setres:1280x720]]
+LogConfig: Setting CVar [[con.DebugEarlyDefault:1]]
+LogConfig: Setting CVar [[r.setres:1280x720]]
+LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Setting CVar [[r.GPUCrashDebugging:0]]
+LogConfig: Setting CVar [[r.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange:1]]
+LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Setting CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+LogConfig: Setting CVar [[s.AsyncLoadingThreadEnabled:0]]
+LogConfig: Setting CVar [[s.EventDrivenLoaderEnabled:1]]
+LogConfig: Setting CVar [[s.WarnIfTimeLimitExceeded:0]]
+LogConfig: Setting CVar [[s.TimeLimitExceededMultiplier:1.5]]
+LogConfig: Setting CVar [[s.TimeLimitExceededMinTime:0.005]]
+LogConfig: Setting CVar [[s.UseBackgroundLevelStreaming:1]]
+LogConfig: Setting CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+LogConfig: Setting CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+LogConfig: Setting CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+LogConfig: Setting CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+LogConfig: Setting CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+LogConfig: Setting CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+LogConfig: Setting CVar [[s.FlushStreamingOnExit:1]]
+LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Setting CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+LogConfig: Setting CVar [[gc.SizeOfPermanentObjectPool:0]]
+LogConfig: Setting CVar [[gc.FlushStreamingOnGC:0]]
+LogConfig: Setting CVar [[gc.NumRetriesBeforeForcingGC:10]]
+LogConfig: Setting CVar [[gc.AllowParallelGC:1]]
+LogConfig: Setting CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+LogConfig: Setting CVar [[gc.MaxObjectsInEditor:25165824]]
+LogConfig: Setting CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+LogConfig: Setting CVar [[gc.CreateGCClusters:1]]
+LogConfig: Setting CVar [[gc.MinGCClusterSize:5]]
+LogConfig: Setting CVar [[gc.ActorClusteringEnabled:0]]
+LogConfig: Setting CVar [[gc.BlueprintClusteringEnabled:0]]
+LogConfig: Setting CVar [[gc.UseDisregardForGCOnDedicatedServers:0]]
+LogConfig: Setting CVar [[gc.MultithreadedDestructionEnabled:1]]
+LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+LogConfig: Setting CVar [[r.ShadowQuality:5]]
+LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+LogConfig: Setting CVar [[r.AOQuality:2]]
+LogConfig: Setting CVar [[r.VolumetricFog:1]]
+LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+LogConfig: Setting CVar [[r.BloomQuality:5]]
+LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+LogConfig: Applying CVar settings from Section [TextureQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+LogConfig: Setting CVar [[r.VT.MaxAnisotropy:8]]
+LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+LogConfig: Setting CVar [[r.RefractionQuality:2]]
+LogConfig: Setting CVar [[r.SSR.Quality:3]]
+LogConfig: Setting CVar [[r.SSR.HalfResSceneColor:0]]
+LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+LogConfig: Setting CVar [[r.DetailMode:2]]
+LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+LogConfig: Setting CVar [[r.AnisotropicMaterials:1]]
+LogConfig: Setting CVar [[r.SSS.Scale:1]]
+LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+LogConfig: Setting CVar [[r.SSS.Quality:1]]
+LogConfig: Setting CVar [[r.SSS.HalfRes:0]]
+LogConfig: Setting CVar [[r.SSGI.Quality:3]]
+LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque:1 ; Always have FastSkyLUT 1 in this case to avoid wrong sky]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.SampleCountMaxPerSlice:4]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.DepthResolution:16.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT:1]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMin:4.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMax:128.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.SampleCountMin:4.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.SampleCountMax:128.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.TransmittanceLUT.UseSmallFormat:0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.TransmittanceLUT.SampleCount:10.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.MultiScatteringLUT.SampleCount:15.0]]
+LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+LogConfig: Applying CVar settings from Section [ShadingQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.HairStrands.SkyLighting.IntegrationType:2]]
+LogConfig: Setting CVar [[r.HairStrands.SkyAO.SampleCount:4]]
+LogConfig: Setting CVar [[r.HairStrands.Visibility.MSAA.SamplePerPixel:4]]
+LogInit: Selected Device Profile: [Windows]
+LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+LogHAL: Display: Platform has ~ 16 GB [16866865152 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+LogInit: Going up to parent DeviceProfile []
+LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+LogConfig: Setting CVar [[r.ShadowQuality:5]]
+LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+LogConfig: Setting CVar [[r.AOQuality:2]]
+LogConfig: Setting CVar [[r.VolumetricFog:1]]
+LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+LogConfig: Setting CVar [[r.BloomQuality:5]]
+LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+LogConfig: Applying CVar settings from Section [TextureQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+LogConfig: Setting CVar [[r.VT.MaxAnisotropy:8]]
+LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+LogConfig: Setting CVar [[r.RefractionQuality:2]]
+LogConfig: Setting CVar [[r.SSR.Quality:3]]
+LogConfig: Setting CVar [[r.SSR.HalfResSceneColor:0]]
+LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+LogConfig: Setting CVar [[r.DetailMode:2]]
+LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+LogConfig: Setting CVar [[r.AnisotropicMaterials:1]]
+LogConfig: Setting CVar [[r.SSS.Scale:1]]
+LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+LogConfig: Setting CVar [[r.SSS.Quality:1]]
+LogConfig: Setting CVar [[r.SSS.HalfRes:0]]
+LogConfig: Setting CVar [[r.SSGI.Quality:3]]
+LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque:1 ; Always have FastSkyLUT 1 in this case to avoid wrong sky]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.SampleCountMaxPerSlice:4]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.AerialPerspectiveLUT.DepthResolution:16.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT:1]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMin:4.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.FastSkyLUT.SampleCountMax:128.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.SampleCountMin:4.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.SampleCountMax:128.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.TransmittanceLUT.UseSmallFormat:0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.TransmittanceLUT.SampleCount:10.0]]
+LogConfig: Setting CVar [[r.SkyAtmosphere.MultiScatteringLUT.SampleCount:15.0]]
+LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+LogConfig: Applying CVar settings from Section [ShadingQuality@3] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Scalability.ini]
+LogConfig: Setting CVar [[r.HairStrands.SkyLighting.IntegrationType:2]]
+LogConfig: Setting CVar [[r.HairStrands.SkyAO.SampleCount:4]]
+LogConfig: Setting CVar [[r.HairStrands.Visibility.MSAA.SamplePerPixel:4]]
+LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+LogConfig: Setting CVar [[net.UseAdaptiveNetUpdateFrequency:0]]
+LogConfig: Setting CVar [[p.chaos.AllowCreatePhysxBodies:1]]
+LogConfig: Setting CVar [[fx.SkipVectorVMBackendOptimizations:1]]
+LogConfig: Applying CVar settings from Section [ConsoleVariables] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Engine.ini]
+LogConfig: Applying CVar settings from Section [ConsoleVariables] File [C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Config/Windows/Editor.ini]
+LogInit: Computer: DESKTOP-H8M04FC
+LogInit: User: Mythical
+LogInit: CPU Page size=4096, Cores=8
+LogInit: High frequency timer resolution =10.000000 MHz
+LogMemory: Memory total: Physical=15.7GB (16GB approx)
+LogMemory: Platform Memory Stats for Windows
+LogMemory: Process Physical Memory: 138.14 MB used, 138.14 MB peak
+LogMemory: Process Virtual Memory: 113.89 MB used, 113.89 MB peak
+LogMemory: Physical Memory: 10055.02 MB used,  6030.48 MB free, 16085.50 MB total
+LogMemory: Virtual Memory: 134201672.00 MB used,  16056.82 MB free, 134217728.00 MB total
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'AllDesktop'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTC'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXT'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'AndroidClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTCClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXTClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2Client'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_Multi'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_MultiClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Linux'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxNoEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxServer'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64NoEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64Client'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxAArch64Server'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Lumin'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'LuminClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacNoEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Mac'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'MacServer'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsNoEditor'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'Windows'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsClient'
+LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsServer'
+LogTargetPlatformManager: Display: Building Assets For WindowsNoEditor
+LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+LogWindows: WindowsPlatformFeatures enabled
+LogInit: Physics initialised using underlying interface: PhysX
+LogInit: Using OS detected language (en-US).
+LogInit: Using OS detected locale (en-US).
+LogTextLocalizationManager: No specific localization for 'en-US' exists, so the 'en' localization will be used.
+LogRendererCore: Ray tracing is disabled. Reason: r.RayTracing=0.
+LogShaderCompilers: Guid format shader working directory is 4 characters bigger than the processId version (C:/Users/Mythical/Documents/GitHub/RoboQuest/Intermediate/Shaders/WorkingDirectory/22876/).
+LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/Mythical/AppData/Local/Temp/UnrealShaderWorkingDir/2B6C7F564A23A6FF6D5E1F96B56B572D/'.
+LogShaderCompilers: Cannot use XGE Shader Compiler as Incredibuild is not installed on this machine.
+LogShaderCompilers: Display: Using Local Shader Compiler.
+LogDerivedDataCache: Display: Max Cache Size: 512 MB
+LogDerivedDataCache: Loaded boot cache 0.06s 77MB C:/Users/Mythical/AppData/Local/UnrealEngine/4.26/DerivedDataCache/Boot.ddc.
+LogDerivedDataCache: Display: Loaded Boot cache: C:/Users/Mythical/AppData/Local/UnrealEngine/4.26/DerivedDataCache/Boot.ddc
+LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file C:/Users/Mythical/Documents/GitHub/RoboQuest/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file C:/Users/Mythical/Documents/GitHub/RoboQuest/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchical cache Hierarchy.
+LogDerivedDataCache: Speed tests for C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache took 0.01 seconds
+LogDerivedDataCache: Display: Performance to C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.05ms. RandomReadSpeed=518.05MBs, RandomWriteSpeed=160.91MBs. Assigned SpeedClass 'Local'
+LogDerivedDataCache: Using Local data cache path C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+LogDerivedDataCache: Unable to find inner node Shared for hierarchical cache Hierarchy.
+LogAssetRegistry: FAssetRegistry took 0.0020 seconds to start up
+LogInit: Selected Device Profile: [Windows]
+LogInit: Active device profile: [0000021881EFA200][00000218FE9002C0 49] Windows
+LogInit: Profiles: [0000021881EFA200][00000218FE9002C0 49] Windows, [0000021881E9EC00][00000218FFDE0440 49] WindowsNoEditor, [0000021881EF9100][00000218FFDE45C0 49] WindowsServer, [0000021881E9FC00][00000218FFDE8740 49] WindowsClient, [0000021881EF8200][00000218FFDEC8C0 49] IOS, [0000021881E9CB00][00000218FFDF0A40 49] iPadAir, [0000021881EFAF00][00000218FFDF4BC0 49] iPadAir2, [0000021881E46500][00000218FFE02E80 49] IPadPro, [0000021881E46600][00000218FFDF8EC0 49] iPadAir3, [0000021881E9CF00][00000218FFE0D040 49] iPadAir4, [0000021881E47E00][00000218FFE111C0 49] iPadMini2, [0000021881E9C500][00000218FFE15340 49] iPadMini3, [0000021881E45400][00000218FFDD7480 49] iPadMini4, [0000021881E9D800][00000218FFE195C0 49] iPadMini5, [0000021881E6DE00][00000218FFE21800 49] iPhone6, [0000021881E6DF00][00000218FFE1D840 49] iPodTouch6, [0000021881E45B00][00000218FFE2DB00 49] iPhone7, [0000021881E45A00][00000218FFE29B40 49] iPodTouch7, [0000021881E6F600][00000218FFE31CC0 49] iPhone5S, [0000021881E45E00][00000218FFE34180 49] iPhone6Plus, [0000021881E6D600][00000218FFE38300 49] iPhone6S, [0000021881E44E00][00000218FFE3C480 49] iPhone6SPlus, [0000021881E6C700][00000218FFE40600 49] iPhone7Plus, [0000021881E44A00][00000218FFE44780 49] iPhoneSE, [0000021881E6EE00][00000218FFE48900 49] iPhone8, [0000021881E47200][00000218FFE4CA80 49] iPhone8Plus, [0000021881E6C500][0000021882000C00 49] iPhoneX, [0000021881E46800][0000021882004D80 49] iPhoneXS, [0000021881E6EB00][0000021882008F00 49] iPhoneXSMax, [0000021881E47000][000002188200D080 49] iPhoneXR, [0000021881E6CD00][0000021882011200 49] iPhone11, [0000021881E46C00][0000021882015380 49] iPhone11Pro, [0000021881E6EC00][00000218FFE254C0 49] iPhone11ProMax, [0000021881E45C00][0000021882019600 49] iPhoneSE2, [0000021881E6ED00][000002188201D740 49] iPhone12Mini, [0000021881E47B00][0000021882021880 49] iPhone12, [0000021881E6E600][0000021882029A00 49] iPhone12Pro, [0000021881E47C00][000002188202DB80 49] iPhone12ProMax, [0000021881EF9000][0000021882031D00 49] iPadPro105, [0000021881E6F500][00000218820341C0 49] iPadPro129, [0000021881EF9F00][0000021882038340 49] iPadPro97, [0000021881E6D400][000002188203C4C0 49] iPadPro2_129, [0000021881E44300][0000021882040640 49] iPad5, [0000021881E6E700][00000218820447C0 49] iPad6, [0000021881E44F00][0000021882048940 49] iPad7, [0000021881E6FC00][000002188204CAC0 49] iPad8, [0000021881E46400][0000021882050C40 49] iPadPro11, [0000021881E6CC00][0000021882054DC0 49] iPadPro2_11, [0000021881E46000][0000021882058F40 49] iPadPro3_129, [0000021881E6FB00][000002188205D0C0 49] iPadPro4_129, [0000021881E46D00][0000021882061240 49] AppleTV, [0000021881E6E800][00000218820653C0 49] AppleTV4K, [0000021881E47400][0000021882025500 49] TVOS, [0000021881E6D800][0000021882069640 49] Mac, [0000021881E47A00][000002188206D780 49] MacClient, [0000021881E6E100][00000218820718C0 49] MacNoEditor, [0000021881E44C00][0000021882079A40 49] MacServer, [0000021881E6F200][000002188207DBC0 49] Linux, [0000021881E45200][0000021882081D40 49] LinuxAArch64, [0000021881E6C800][0000021882084200 49] LinuxNoEditor, [0000021881E45000][0000021882088380 49] LinuxAArch64NoEditor, [0000021881E6D500][000002188208C500 49] LinuxClient, [0000021881E47F00][0000021882090680 49] LinuxAArch64Client, [0000021881E6E200][0000021882094800 49] LinuxServer, [0000021881E46900][0000021882098980 49] LinuxAArch64Server, [0000021881E6CA00][000002188209CB00 49] Android, [0000021881E44700][00000218820A0C80 49] Android_Low, [0000021881E6C200][00000218820A4E00 49] Android_Mid, [0000021881E44600][00000218820A8F80 49] Android_High, [0000021881E6DC00][00000218820AD100 49] Android_Default, [0000021881E45800][00000218820B1280 49] Android_Adreno4xx, [0000021881E6C900][00000218820B5400 49] Android_Adreno5xx_Low, [0000021881E47100][00000218820B9580 49] Android_Adreno5xx, [0000021881E6E400][00000218820756C0 49] Android_Adreno6xx, [0000021881E46A00][00000218820BD800 49] Android_Adreno6xx_Vulkan, [0000021881E6DB00][00000218820C1940 49] Android_Mali_T6xx, [0000021881E45900][00000218820C9AC0 49] Android_Mali_T7xx, [0000021881E6D700][00000218820CDC40 49] Android_Mali_T8xx, [0000021881E47900][00000218820D0100 49] Android_Mali_G71, [0000021881E6C400][00000218820D4280 49] Android_Mali_G72, [0000021881E46100][00000218820D8400 49] Android_Mali_G72_Vulkan, [0000021881E6C100][00000218820DC580 49] Android_Mali_G76, [0000021881E44200][00000218820E0700 49] Android_Mali_G76_Vulkan, [0000021881E6DD00][00000218820E4880 49] Android_Mali_G77, [0000021881E9CA00][00000218820E8A00 49] Android_Mali_G77_Vulkan, [0000021881EFB700][00000218820ECB80 49] Android_Vulkan_SM5, [0000021881E9E200][00000218820F0D00 49] Android_PowerVR_G6xxx, [0000021881EFA700][00000218820F4E80 49] Android_PowerVR_GT7xxx, [0000021881E9C200][00000218820F9000 49] Android_PowerVR_GE8xxx, [0000021881EF9400][00000218820FD180 49] Android_PowerVR_GM9xxx, [0000021881E9CE00][0000021882101300 49] Android_PowerVR_GM9xxx_Vulkan, [0000021881EF8B00][0000021882105480 49] Android_TegraK1, [0000021881E9E100][0000021882109600 49] Android_Unknown_Vulkan, [0000021881EF8300][00000218820C5740 49] Lumin, [0000021881E9D000][000002188210D880 49] Lumin_Desktop, [0000021881EF8600][00000218821119C0 49] HoloLens, 
+LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+LogMeshReduction: Using SimplygonMeshReduction for automatic skeletal mesh reduction
+LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+LogMeshReduction: No distributed automatic mesh merging module available
+LogMeshMerging: No distributed automatic mesh merging module available
+LogNetVersion: RoboQuest 1.0.0, NetCL: 14830424, EngineNetVer: 16, GameNetVer: 0 (Checksum: 648196727)
+LogHMD: PokeAHoleMaterial loaded successfully
+LogPackageLocalizationCache: Processed 22 localized package path(s) for 1 prioritized culture(s) in 0.036784 seconds
+LogCollectionManager: Loaded 0 collections in 0.001290 seconds
+LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Saved/Collections/' took 0.00s
+LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Content/Developers/Mythical/Collections/' took 0.00s
+LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Content/Collections/' took 0.00s
+LogCollectionManager: Fixed up redirectors for 0 collections in 0.000002 seconds (updated 0 objects)
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+LogUProjectInfo: Found projects:
+LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+LogOcInput: OculusInput pre-init called
+LogWindows: Failed to load 'OVRPlugin.dll' (GetLastError=126)
+LogWindows: File 'OVRPlugin.dll' does not exist
+LogUObjectArray: 20707 objects as part of root set at end of initial load.
+LogUObjectAllocator: 5601040 out of 0 bytes used by permanent object pool.
+LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+LogInit: Executing Class /Script/UnrealEd.CookCommandlet
+LogInit: Initializing Editor Engine...
+LogEngine: Initializing Engine...
+LogStats: UGameplayTagsManager::InitializeManager -  0.000 s
+LogInit: Initializing FReadOnlyCVARCache
+LogAIModule: Creating AISystem for world Untitled
+LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+LogDerivedDataCache: Saved boot cache 0.06s 77MB C:/Users/Mythical/AppData/Local/UnrealEngine/4.26/DerivedDataCache/Boot.ddc.
+LogInit: Texture streaming: Disabled
+LogInit: Initializing Editor Engine Completed
+BlueprintLog: New page: Editor Load
+LogCook: Display: CookSettings for Memory: MemoryMaxUsedVirtual 0MiB, MemoryMaxUsedPhysical 16384MiB, MemoryMinFreeVirtual 0MiB, MemoryMinFreePhysical 1024MiB
+LogCook: Display: Mobile HDR setting 1
+LogCook: Display: Creating asset registry
+LogCook: Display: Discovering localized assets for cultures: en
+LogCook: Display: Unable to read previous cook inisettings for platform WindowsNoEditor invalidating cook
+LogCook: Display: Clearing all cooked content for platform WindowsNoEditor
+LogCook: Display: Sandbox cleanup took 0.027 seconds for platforms WindowsNoEditor
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/2D/Paper2D/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/ChaosClothEditor/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/ChaosNiagara/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/ChaosSolverPlugin/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/GeometryCollectionPlugin/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/GeometryProcessing/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Enterprise/DatasmithContent/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/MotoSynth/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/FX/Niagara/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Lumin/MagicLeap/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Editor/GeometryMode/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Lumin/MagicLeapPassableWorld/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Media/MediaCompositing/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/AudioSynesthesia/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/PostSplashScreen/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/Synthesis/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Developer/AnimationSharing/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/Oculus/OculusVR/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/Steam/SteamVR/Content/*.uasset'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: 'C:/Users/Mythical/Documents/GitHub/RoboQuest/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/2D/Paper2D/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/ChaosClothEditor/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/ChaosNiagara/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/ChaosSolverPlugin/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/GeometryCollectionPlugin/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/GeometryProcessing/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Enterprise/DatasmithContent/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Experimental/MotoSynth/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/FX/Niagara/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Lumin/MagicLeap/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Editor/GeometryMode/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Lumin/MagicLeapPassableWorld/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Media/MediaCompositing/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/AudioSynesthesia/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/PostSplashScreen/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/Synthesis/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Developer/AnimationSharing/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/Oculus/OculusVR/Content/*.umap'
+LogPackageUtilities: Searching using wildcard: '../../../Engine/Plugins/Runtime/Steam/SteamVR/Content/*.umap'
+LogCook: Display: Cooked packages 0 Packages Remain 47 Total 47
+LogCook: Display: Cook Diagnostics: OpenFileHandles=163, VirtualMemory=431MiB
+LogSavePackage: Warning: A dependency 'PrimaryAssetLabel /Script/Engine.Default__PrimaryAssetLabel' of 'PrimaryAssetLabel /Game/Mods/TestMod/DA_TestMod.DA_TestMod' was filtered, but is mandatory. This indicates a problem with editor only stripping. We will keep the dependency anyway (1).
+LogModelComponent: Model /Engine/Maps/Entry.Entry:PersistentLevel.ModelComponent_4 has elements that reference missing vertices. MaxVertex=3, NumModelVertices=0
+LogModelComponent: Model /Engine/Maps/Entry.Entry:PersistentLevel.ModelComponent_5 has elements that reference missing vertices. MaxVertex=7, NumModelVertices=0
+LogModelComponent: Model /Engine/Maps/Entry.Entry:PersistentLevel.ModelComponent_5 has elements that reference missing vertices. MaxVertex=11, NumModelVertices=0
+LogModelComponent: Model /Engine/Maps/Entry.Entry:PersistentLevel.ModelComponent_5 has elements that reference missing vertices. MaxVertex=19, NumModelVertices=0
+LogModelComponent: Model /Engine/Maps/Entry.Entry:PersistentLevel.ModelComponent_6 has elements that reference missing vertices. MaxVertex=15, NumModelVertices=0
+LogModelComponent: Model /Engine/Maps/Entry.Entry:PersistentLevel.ModelComponent_7 has elements that reference missing vertices. MaxVertex=23, NumModelVertices=0
+LogAIModule: Creating AISystem for world Entry
+LogWorld: UWorld::CleanupWorld for Entry, bSessionEnded=true, bCleanupResources=true
+LogCook: Display: Cooked packages 194 Packages Remain 0 Total 194
+LogCook: Display: Cook Diagnostics: OpenFileHandles=196, VirtualMemory=559MiB
+LogCook: Display: Finishing up...
+LogCook: Display: Saving BulkData manifest(s)...
+LogCook: Display: Done saving BulkData manifest(s)
+LogBlueprintCodeGen: Display: Nativization Summary - AnimBP:
+LogBlueprintCodeGen: Display: Name, Children, Non-empty Functions (Empty Functions), Variables, FunctionUsage, VariableUsage
+LogBlueprintCodeGen: Display: Nativization Summary - Shared Variables From Graph: 0
+LogAssetRegistryGenerator: Starting FixupPackageDependenciesForChunks...
+LogAssetRegistryGenerator: Chunk: 0, Started with 188 packages, Final after dependency resolve: 188
+LogAssetRegistryGenerator: Chunk: 1, Started with 3 packages, Final after dependency resolve: 3
+LogStats: ... FixupPackageDependenciesForChunks complete. -  0.002 s
+LogAssetRegistryGenerator: Display: Looking for game openorder in dir C:/Users/Mythical/Documents/GitHub/RoboQuest/Build/WindowsNoEditor/FileOpenOrder/GameOpenOrder.log
+LogAssetRegistryGenerator: Display: Saving asset registry.
+LogAssetRegistryGenerator: Display: Generated asset registry num assets 191, size is 81.30kb
+LogAssetRegistryGenerator: Display: Done saving asset registry.
+LogCook: Display: Cook by the book total time in tick 0.475559s total time 2.935266
+LogCook: Display: Peak Used virtual 570 MiB Peak Used physical 618 MiB
+LogCook: Display: Hierarchy Timer Information:
+LogCook: Display:   Root: 0.000s (0)
+LogCook: Display:     CleanSandbox: 0.027s (1)
+LogCook: Display:       ProcessingAccessedStrings: 0.007s (1)
+LogCook: Display:     CollectFilesToCook: 0.273s (1)
+LogCook: Display:       CookModificationDelegate: 0.000s (1)
+LogCook: Display:     GenerateLongPackageName: 0.000s (1)
+LogCook: Display:     TickCookOnTheSide: 0.476s (4)
+LogCook: Display:       PostLoadPackageFixup: 0.001s (278)
+LogCook: Display:       LoadPackageForCooking: 0.054s (194)
+LogCook: Display:       SavingPackages: 0.419s (30)
+LogCook: Display:         BeginPackageCacheForCookedPlatformData: 0.000s (5)
+LogCook: Display:         PrecachePlatformDataForNextPackage: 0.202s (192)
+LogCook: Display:           BeginPackageCacheForCookedPlatformData: 0.202s (189)
+LogCook: Display:         SaveCookedPackage: 0.211s (194)
+LogCook: Display:           GEditorSavePackage: 0.207s (194)
+LogCook: Display:             ConvertingBlueprints: 0.001s (194)
+LogCook: Display:             VerifyCanCookPackage: 0.001s (191)
+LogCook: Display:         ClearAllCachedCookedPlatformData: 0.002s (194)
+LogCook: Display:     FinalizePackageStore: 0.001s (1)
+LogCook: Display:     GeneratingBlueprintAssets: 0.002s (1)
+LogCook: Display:     SavingCurrentIniSettings: 0.022s (1)
+LogCook: Display:       ProcessingAccessedStrings: 0.005s (1)
+LogCook: Display:     SavingAssetRegistry: 0.034s (1)
+LogCook: Display:       BuildChunkManifest: 0.008s (1)
+LogCook: Display:       SaveManifests: 0.013s (1)
+LogCook: Display:       SaveRealAssetRegistry: 0.011s (1)
+LogCook: Display:       WriteCookerOpenOrder: 0.001s (1)
+LogCook: Display: Done!
+LogSavePackage: Display: Took 0.000651s to verify the EDL loading graph.
+LogCookCommandlet: Display: Misc Cook Stats
+LogCookCommandlet: Display: ===============
+LogCookCommandlet: Display: NiagaraShader.Misc
+LogCookCommandlet: Display:     ShadersCompiled=0
+LogCookCommandlet: Display: ShaderCompiler
+LogCookCommandlet: Display:     BlockingTimeSec=0.000000
+LogCookCommandlet: Display:     AsyncCompileTimeSec=0.000000
+LogCookCommandlet: Display:     GlobalBeginCompileShaderTimeSec=0.000000
+LogCookCommandlet: Display:     GlobalBeginCompileShaderCalls=0
+LogCookCommandlet: Display:     ProcessAsyncResultsTimeSec=0.000085
+LogCookCommandlet: Display: GlobalShader.Misc
+LogCookCommandlet: Display:     ShadersCompiled=0
+LogCookCommandlet: Display: MeshMaterial.Misc
+LogCookCommandlet: Display:     ShadersCompiled=0
+LogCookCommandlet: Display: MaterialShader.Misc
+LogCookCommandlet: Display:     ShadersCompiled=0
+LogCookCommandlet: Display: Package.Load
+LogCookCommandlet: Display:     NumPreloadedDependencies=8
+LogCookCommandlet: Display:     NumInlineLoads=4
+LogCookCommandlet: Display:     NumPackagesLoaded=147
+LogCookCommandlet: Display:     LoadPackageTimeSec=0.541898
+LogCookCommandlet: Display: CookOnTheFlyServer
+LogCookCommandlet: Display:     PeakRequestQueueSize=28
+LogCookCommandlet: Display:     PeakLoadQueueSize=161
+LogCookCommandlet: Display:     PeakSaveQueueSize=153
+LogCookCommandlet: Display: Package.Save
+LogCookCommandlet: Display:     NumPackagesSaved=194
+LogCookCommandlet: Display:     SavePackageTimeSec=0.202914
+LogCookCommandlet: Display:     TagPackageExportsPresaveTimeSec=0.020375
+LogCookCommandlet: Display:     TagPackageExportsTimeSec=0.005661
+LogCookCommandlet: Display:     FullyLoadLoadersTimeSec=0.000067
+LogCookCommandlet: Display:     ResetLoadersTimeSec=0.000619
+LogCookCommandlet: Display:     TagPackageExportsGetObjectsWithOuter=0.000639
+LogCookCommandlet: Display:     TagPackageExportsGetObjectsWithMarks=0.000104
+LogCookCommandlet: Display:     SerializeImportsTimeSec=0.000000
+LogCookCommandlet: Display:     SortExportsSeekfreeInnerTimeSec=0.037574
+LogCookCommandlet: Display:     SerializeExportsTimeSec=0.089747
+LogCookCommandlet: Display:     SerializeBulkDataTimeSec=0.002651
+LogCookCommandlet: Display:     AsyncWriteTimeSec=0.000000
+LogCookCommandlet: Display:     MBWritten=57.357307
+LogCookCommandlet: Display: Package.DifferentPackagesSizeMBPerAsset
+LogCookCommandlet: Display: Package.NumberOfDifferencesInPackagesPerAsset
+LogCookCommandlet: Display: Package.PackageDifferencesSizeMBPerAsset
+LogCookCommandlet: Display: Package.DiffTotal
+LogCookCommandlet: Display:     NumberOfDifferentPackages=0
+LogCookCommandlet: Display:     DifferentPackagesSizeMB=0.000000
+LogCookCommandlet: Display:     NumberOfDifferencesInPackages=0
+LogCookCommandlet: Display:     PackageDifferencesSizeMB=0.000000
+LogCookCommandlet: Display: UnversionedProperties
+LogCookCommandlet: Display:     SavedStructs=0
+LogCookCommandlet: Display:     SavedMB=0
+LogCookCommandlet: Display:     EquivalentTaggedMB=0
+LogCookCommandlet: Display:     CompressionRatio=-nan(ind)
+LogCookCommandlet: Display:     BitfieldWasteKB=0
+LogCookCommandlet: Display: 
+LogCookCommandlet: Display: Cook Profile
+LogCookCommandlet: Display: ============
+LogCookCommandlet: Display:  0.CookWallTimeSec=8.741393
+LogCookCommandlet: Display:  0. 0.StartupWallTimeSec=5.798191
+LogCookCommandlet: Display:  0. 1.CookByTheBookTimeSec=2.941453
+LogCookCommandlet: Display:  0. 1. 0.StartCookByTheBookTimeSec=2.370632
+LogCookCommandlet: Display:  0. 1. 0. 0.GameCookModificationDelegateTimeSec=0.000035
+LogCookCommandlet: Display:  0. 1. 1.TickCookOnTheSideTimeSec=0.568113
+LogCookCommandlet: Display:  0. 1. 1. 0.TickCookOnTheSideLoadPackagesTimeSec=0.053859
+LogCookCommandlet: Display:  0. 1. 1. 1.TickCookOnTheSideSaveCookedPackageTimeSec=0.211204
+LogCookCommandlet: Display:  0. 1. 1. 1. 0.TickCookOnTheSideResolveRedirectorsTimeSec=0.000000
+LogCookCommandlet: Display:  0. 1. 1. 2.TickCookOnTheSideBeginPackageCacheForCookedPlatformDataTimeSec=0.202412
+LogCookCommandlet: Display:  0. 1. 1. 3.TickCookOnTheSideFinishPackageCacheForCookedPlatformDataTimeSec=0.000000
+LogCookCommandlet: Display:  0. 1. 2.TickLoopGCTimeSec=0.000000
+LogCookCommandlet: Display:  0. 1. 3.TickLoopRecompileShaderRequestsTimeSec=0.000008
+LogCookCommandlet: Display:  0. 1. 4.TickLoopShaderProcessAsyncResultsTimeSec=0.000007
+LogCookCommandlet: Display:  0. 1. 5.TickLoopProcessDeferredCommandsTimeSec=0.000011
+LogCookCommandlet: Display:  0. 1. 6.TickLoopTickCommandletStatsTimeSec=0.000002
+LogCookCommandlet: Display: 
+LogCookCommandlet: Display: DDC Summary Stats
+LogCookCommandlet: Display: =================
+LogCookCommandlet: Display: TotalGetHits    =       473
+LogCookCommandlet: Display: TotalGets       =       473
+LogCookCommandlet: Display: TotalGetHitPct  =  1.000000
+LogCookCommandlet: Display: LocalGetHitPct  =  0.471459
+LogCookCommandlet: Display: SharedGetHitPct =  0.000000
+LogCookCommandlet: Display: OtherGetHitPct  =  0.528541
+LogCookCommandlet: Display: GetMissPct      =  0.000000
+LogCookCommandlet: Display: TotalPutHits    =         0
+LogCookCommandlet: Display: TotalPuts       =         0
+LogCookCommandlet: Display: TotalPutHitPct  =  0.000000
+LogCookCommandlet: Display: PutMissPct      =  0.000000
+LogCookCommandlet: Display: 
+LogCookCommandlet: Display: DDC Resource Stats
+LogCookCommandlet: Display: =======================================================================================================
+LogCookCommandlet: Display: Asset Type                          Total Time (Sec)  GameThread Time (Sec)  Assets Built  MB Processed
+LogCookCommandlet: Display: ----------------------------------  ----------------  ---------------------  ------------  ------------
+LogCookCommandlet: Display: MaterialShader                                  0.16                   0.16             0          4.78
+LogCookCommandlet: Display: Texture (Streaming)                             0.05                   0.00             0          9.61
+LogCookCommandlet: Display: GlobalShader                                    0.02                   0.02             0          6.56
+LogCookCommandlet: Display: StaticMesh                                      0.01                   0.01             0          0.74
+LogCookCommandlet: Display: PhysX (BodySetup)                               0.00                   0.00             0          0.48
+LogCookCommandlet: Display: NavCollision                                    0.00                   0.00             0          0.02
+LogCookCommandlet: Display: Texture (Inline)                                0.00                   0.00             0         38.04
+LogCookCommandlet: Display: DistanceField                                   0.00                   0.00             0          0.00
+LogCore: Engine exit requested (reason: Commandlet CookCommandlet_0 finished execution (result 0))
+LogInit: Display: 
+LogInit: Display: Warning/Error Summary (Unique only)
+LogInit: Display: -----------------------------------
+LogInit: Display: LogSavePackage: Warning: A dependency 'PrimaryAssetLabel /Script/Engine.Default__PrimaryAssetLabel' of 'PrimaryAssetLabel /Game/Mods/TestMod/DA_TestMod.DA_TestMod' was filtered, but is mandatory. This indicates a problem with editor only stripping. We will keep the dependency anyway (1).
+LogInit: Display: 
+LogInit: Display: Success - 0 error(s), 1 warning(s)
+LogInit: Display: 
+Execution of commandlet took:  2.96 seconds
+LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)
+LogExit: Preparing to exit.
+LogDeviceProfile: Device profile begin destroy: [0000021881EFA200] Windows
+LogDeviceProfile: Device profile begin destroy: [0000021881EFA300] Default__DeviceProfile
+LogDeviceProfile: Device profile begin destroy: [0000021881E9EC00] WindowsNoEditor
+LogDeviceProfile: Device profile begin destroy: [0000021881EF9100] WindowsServer
+LogDeviceProfile: Device profile begin destroy: [0000021881E9FC00] WindowsClient
+LogDeviceProfile: Device profile begin destroy: [0000021881EF8200] IOS
+LogDeviceProfile: Device profile begin destroy: [0000021881E9CB00] iPadAir
+LogDeviceProfile: Device profile begin destroy: [0000021881EFAF00] iPadAir2
+LogDeviceProfile: Device profile begin destroy: [0000021881E46500] IPadPro
+LogDeviceProfile: Device profile begin destroy: [0000021881E46600] iPadAir3
+LogDeviceProfile: Device profile begin destroy: [0000021881E9CF00] iPadAir4
+LogDeviceProfile: Device profile begin destroy: [0000021881E47E00] iPadMini2
+LogDeviceProfile: Device profile begin destroy: [0000021881E9C500] iPadMini3
+LogDeviceProfile: Device profile begin destroy: [0000021881E45400] iPadMini4
+LogDeviceProfile: Device profile begin destroy: [0000021881E9D800] iPadMini5
+LogDeviceProfile: Device profile begin destroy: [0000021881E6DE00] iPhone6
+LogDeviceProfile: Device profile begin destroy: [0000021881E6DF00] iPodTouch6
+LogDeviceProfile: Device profile begin destroy: [0000021881E45B00] iPhone7
+LogDeviceProfile: Device profile begin destroy: [0000021881E45A00] iPodTouch7
+LogDeviceProfile: Device profile begin destroy: [0000021881E6F600] iPhone5S
+LogDeviceProfile: Device profile begin destroy: [0000021881E45E00] iPhone6Plus
+LogDeviceProfile: Device profile begin destroy: [0000021881E6D600] iPhone6S
+LogDeviceProfile: Device profile begin destroy: [0000021881E44E00] iPhone6SPlus
+LogDeviceProfile: Device profile begin destroy: [0000021881E6C700] iPhone7Plus
+LogDeviceProfile: Device profile begin destroy: [0000021881E44A00] iPhoneSE
+LogDeviceProfile: Device profile begin destroy: [0000021881E6EE00] iPhone8
+LogDeviceProfile: Device profile begin destroy: [0000021881E47200] iPhone8Plus
+LogDeviceProfile: Device profile begin destroy: [0000021881E6C500] iPhoneX
+LogDeviceProfile: Device profile begin destroy: [0000021881E46800] iPhoneXS
+LogDeviceProfile: Device profile begin destroy: [0000021881E6EB00] iPhoneXSMax
+LogDeviceProfile: Device profile begin destroy: [0000021881E47000] iPhoneXR
+LogDeviceProfile: Device profile begin destroy: [0000021881E6CD00] iPhone11
+LogDeviceProfile: Device profile begin destroy: [0000021881E46C00] iPhone11Pro
+LogDeviceProfile: Device profile begin destroy: [0000021881E6EC00] iPhone11ProMax
+LogDeviceProfile: Device profile begin destroy: [0000021881E45C00] iPhoneSE2
+LogDeviceProfile: Device profile begin destroy: [0000021881E6ED00] iPhone12Mini
+LogDeviceProfile: Device profile begin destroy: [0000021881E47B00] iPhone12
+LogDeviceProfile: Device profile begin destroy: [0000021881E6E600] iPhone12Pro
+LogDeviceProfile: Device profile begin destroy: [0000021881E47C00] iPhone12ProMax
+LogDeviceProfile: Device profile begin destroy: [0000021881EF9000] iPadPro105
+LogDeviceProfile: Device profile begin destroy: [0000021881E6F500] iPadPro129
+LogDeviceProfile: Device profile begin destroy: [0000021881EF9F00] iPadPro97
+LogDeviceProfile: Device profile begin destroy: [0000021881E6D400] iPadPro2_129
+LogDeviceProfile: Device profile begin destroy: [0000021881E44300] iPad5
+LogDeviceProfile: Device profile begin destroy: [0000021881E6E700] iPad6
+LogDeviceProfile: Device profile begin destroy: [0000021881E44F00] iPad7
+LogDeviceProfile: Device profile begin destroy: [0000021881E6FC00] iPad8
+LogDeviceProfile: Device profile begin destroy: [0000021881E46400] iPadPro11
+LogDeviceProfile: Device profile begin destroy: [0000021881E6CC00] iPadPro2_11
+LogDeviceProfile: Device profile begin destroy: [0000021881E46000] iPadPro3_129
+LogDeviceProfile: Device profile begin destroy: [0000021881E6FB00] iPadPro4_129
+LogDeviceProfile: Device profile begin destroy: [0000021881E46D00] AppleTV
+LogDeviceProfile: Device profile begin destroy: [0000021881E6E800] AppleTV4K
+LogDeviceProfile: Device profile begin destroy: [0000021881E47400] TVOS
+LogDeviceProfile: Device profile begin destroy: [0000021881E6D800] Mac
+LogDeviceProfile: Device profile begin destroy: [0000021881E47A00] MacClient
+LogDeviceProfile: Device profile begin destroy: [0000021881E6E100] MacNoEditor
+LogDeviceProfile: Device profile begin destroy: [0000021881E44C00] MacServer
+LogDeviceProfile: Device profile begin destroy: [0000021881E6F200] Linux
+LogDeviceProfile: Device profile begin destroy: [0000021881E45200] LinuxAArch64
+LogDeviceProfile: Device profile begin destroy: [0000021881E6C800] LinuxNoEditor
+LogDeviceProfile: Device profile begin destroy: [0000021881E45000] LinuxAArch64NoEditor
+LogDeviceProfile: Device profile begin destroy: [0000021881E6D500] LinuxClient
+LogDeviceProfile: Device profile begin destroy: [0000021881E47F00] LinuxAArch64Client
+LogDeviceProfile: Device profile begin destroy: [0000021881E6E200] LinuxServer
+LogDeviceProfile: Device profile begin destroy: [0000021881E46900] LinuxAArch64Server
+LogDeviceProfile: Device profile begin destroy: [0000021881E6CA00] Android
+LogDeviceProfile: Device profile begin destroy: [0000021881E44700] Android_Low
+LogDeviceProfile: Device profile begin destroy: [0000021881E6C200] Android_Mid
+LogDeviceProfile: Device profile begin destroy: [0000021881E44600] Android_High
+LogDeviceProfile: Device profile begin destroy: [0000021881E6DC00] Android_Default
+LogDeviceProfile: Device profile begin destroy: [0000021881E45800] Android_Adreno4xx
+LogDeviceProfile: Device profile begin destroy: [0000021881E6C900] Android_Adreno5xx_Low
+LogDeviceProfile: Device profile begin destroy: [0000021881E47100] Android_Adreno5xx
+LogDeviceProfile: Device profile begin destroy: [0000021881E6E400] Android_Adreno6xx
+LogDeviceProfile: Device profile begin destroy: [0000021881E46A00] Android_Adreno6xx_Vulkan
+LogDeviceProfile: Device profile begin destroy: [0000021881E6DB00] Android_Mali_T6xx
+LogDeviceProfile: Device profile begin destroy: [0000021881E45900] Android_Mali_T7xx
+LogDeviceProfile: Device profile begin destroy: [0000021881E6D700] Android_Mali_T8xx
+LogDeviceProfile: Device profile begin destroy: [0000021881E47900] Android_Mali_G71
+LogDeviceProfile: Device profile begin destroy: [0000021881E6C400] Android_Mali_G72
+LogDeviceProfile: Device profile begin destroy: [0000021881E46100] Android_Mali_G72_Vulkan
+LogDeviceProfile: Device profile begin destroy: [0000021881E6C100] Android_Mali_G76
+LogDeviceProfile: Device profile begin destroy: [0000021881E44200] Android_Mali_G76_Vulkan
+LogDeviceProfile: Device profile begin destroy: [0000021881E6DD00] Android_Mali_G77
+LogDeviceProfile: Device profile begin destroy: [0000021881E9CA00] Android_Mali_G77_Vulkan
+LogDeviceProfile: Device profile begin destroy: [0000021881EFB700] Android_Vulkan_SM5
+LogDeviceProfile: Device profile begin destroy: [0000021881E9E200] Android_PowerVR_G6xxx
+LogDeviceProfile: Device profile begin destroy: [0000021881EFA700] Android_PowerVR_GT7xxx
+LogDeviceProfile: Device profile begin destroy: [0000021881E9C200] Android_PowerVR_GE8xxx
+LogDeviceProfile: Device profile begin destroy: [0000021881EF9400] Android_PowerVR_GM9xxx
+LogDeviceProfile: Device profile begin destroy: [0000021881E9CE00] Android_PowerVR_GM9xxx_Vulkan
+LogDeviceProfile: Device profile begin destroy: [0000021881EF8B00] Android_TegraK1
+LogDeviceProfile: Device profile begin destroy: [0000021881E9E100] Android_Unknown_Vulkan
+LogDeviceProfile: Device profile begin destroy: [0000021881EF8300] Lumin
+LogDeviceProfile: Device profile begin destroy: [0000021881E9D000] Lumin_Desktop
+LogDeviceProfile: Device profile begin destroy: [0000021881EF8600] HoloLens
+LogDemo: Cleaned up 0 splitscreen connections with owner deletion
+LogWorld: UWorld::CleanupWorld for None, bSessionEnded=true, bCleanupResources=true
+LogExit: Editor shut down
+LogExit: Object subsystem successfully closed.
+LogShaderCompilers: Display: Shaders left to compile 0
+LogModuleManager: Shutting down and abandoning module BlueprintCompilerCppBackend (660)
+LogModuleManager: Shutting down and abandoning module SteamVREditor (656)
+LogModuleManager: Shutting down and abandoning module OculusMR (654)
+LogModuleManager: Shutting down and abandoning module GooglePADEditor (652)
+LogModuleManager: Shutting down and abandoning module AudioCaptureEditor (650)
+LogModuleManager: Shutting down and abandoning module TemplateSequenceEditor (648)
+LogModuleManager: Shutting down and abandoning module MatineeToLevelSequence (646)
+LogModuleManager: Shutting down and abandoning module LevelSequenceEditor (644)
+LogModuleManager: Shutting down and abandoning module ActorSequenceEditor (642)
+LogModuleManager: Shutting down and abandoning module Kismet (641)
+LogModuleManager: Shutting down and abandoning module KismetWidgets (640)
+LogModuleManager: Shutting down and abandoning module WmfMediaFactory (636)
+LogModuleManager: Shutting down and abandoning module WmfMediaEditor (634)
+LogModuleManager: Shutting down and abandoning module WebMMediaFactory (632)
+LogModuleManager: Shutting down and abandoning module WebMMediaEditor (630)
+LogModuleManager: Shutting down and abandoning module MediaPlayerEditor (628)
+LogModuleManager: Shutting down and abandoning module MediaCompositingEditor (626)
+LogModuleManager: Shutting down and abandoning module SequenceRecorder (625)
+LogModuleManager: Shutting down and abandoning module Persona (624)
+LogModuleManager: Shutting down and abandoning module AdvancedPreviewScene (623)
+LogModuleManager: Shutting down and abandoning module AnimGraph (621)
+LogModuleManager: Shutting down and abandoning module ImgMediaFactory (616)
+LogModuleManager: Shutting down and abandoning module ImgMediaEditor (614)
+LogModuleManager: Shutting down and abandoning module AvfMediaFactory (612)
+LogModuleManager: Shutting down and abandoning module AvfMediaEditor (610)
+LogModuleManager: Shutting down and abandoning module MagicLeapMediaEditor (608)
+LogModuleManager: Shutting down and abandoning module AndroidMediaFactory (606)
+LogModuleManager: Shutting down and abandoning module AndroidMediaEditor (604)
+LogModuleManager: Shutting down and abandoning module PlanarCut (602)
+LogModuleManager: Shutting down and abandoning module TextureAlignMode (600)
+LogModuleManager: Shutting down and abandoning module BspMode (598)
+LogModuleManager: Shutting down and abandoning module GeometryMode (596)
+LogModuleManager: Shutting down and abandoning module CharacterAI (594)
+LogModuleManager: Shutting down and abandoning module CameraShakePreviewer (592)
+LogModuleManager: Shutting down and abandoning module SmartSnapping (590)
+LogModuleManager: Shutting down and abandoning module MeshPaint (588)
+LogModuleManager: Shutting down and abandoning module VirtualTexturingEditor (586)
+LogModuleManager: Shutting down and abandoning module FoliageEdit (584)
+LogModuleManager: Shutting down and abandoning module LandscapeEditor (582)
+LogModuleManager: Shutting down and abandoning module MeshPaintMode (580)
+LogModuleManager: Shutting down and abandoning module SceneDepthPickerMode (578)
+LogModuleManager: Shutting down and abandoning module ActorPickerMode (576)
+LogModuleManager: Shutting down and abandoning module PlacementMode (574)
+LogModuleManager: Shutting down and abandoning module LiveCoding (572)
+LogModuleManager: Shutting down and abandoning module LevelSequence (570)
+LogModuleManager: Shutting down and abandoning module MovieSceneTracks (568)
+LogModuleManager: Shutting down and abandoning module MovieScene (566)
+LogModuleManager: Shutting down and abandoning module StreamingPauseRendering (564)
+LogModuleManager: Shutting down and abandoning module ImageWriteQueue (562)
+LogModuleManager: Shutting down and abandoning module AIModule (560)
+LogModuleManager: Shutting down and abandoning module GameplayDebugger (559)
+LogModuleManager: Shutting down and abandoning module AITestSuite (557)
+LogModuleManager: Shutting down and abandoning module NavigationSystem (555)
+LogModuleManager: Shutting down and abandoning module AudioSynesthesiaEditor (552)
+LogModuleManager: Shutting down and abandoning module OculusEditor (550)
+LogModuleManager: Shutting down and abandoning module OculusInput (548)
+LogModuleManager: Shutting down and abandoning module ContentBrowserClassDataSource (546)
+LogModuleManager: Shutting down and abandoning module ContentBrowserAssetDataSource (544)
+LogModuleManager: Shutting down and abandoning module ToolMenus (543)
+LogModuleManager: Shutting down and abandoning module ScreenshotTools (540)
+LogModuleManager: Shutting down and abandoning module SynthesisEditor (538)
+LogModuleManager: Shutting down and abandoning module Synthesis (536)
+LogModuleManager: Shutting down and abandoning module ProceduralMeshComponentEditor (534)
+LogModuleManager: Shutting down and abandoning module ProceduralMeshComponent (532)
+LogModuleManager: Shutting down and abandoning module MobilePatchingUtils (530)
+LogModuleManager: Shutting down and abandoning module GooglePAD (528)
+LogModuleManager: Shutting down and abandoning module EditableMesh (526)
+LogModuleManager: Shutting down and abandoning module CustomMeshComponent (524)
+LogModuleManager: Shutting down and abandoning module CableComponent (522)
+LogModuleManager: Shutting down and abandoning module AudioCapture (520)
+LogModuleManager: Shutting down and abandoning module AudioCaptureRtAudio (519)
+LogModuleManager: Shutting down and abandoning module AssetTags (516)
+LogModuleManager: Shutting down and abandoning module ArchVisCharacter (514)
+LogModuleManager: Shutting down and abandoning module AppleImageUtilsBlueprintSupport (512)
+LogModuleManager: Shutting down and abandoning module AppleImageUtils (510)
+LogModuleManager: Shutting down and abandoning module AndroidPermission (508)
+LogModuleManager: Shutting down and abandoning module ActorLayerUtilitiesEditor (506)
+LogModuleManager: Shutting down and abandoning module ActorLayerUtilities (504)
+LogModuleManager: Shutting down and abandoning module TemplateSequence (502)
+LogModuleManager: Shutting down and abandoning module MediaCompositing (500)
+LogModuleManager: Shutting down and abandoning module MagicLeapSharedWorld (498)
+LogModuleManager: Shutting down and abandoning module MagicLeapLightEstimation (496)
+LogModuleManager: Shutting down and abandoning module VariantManagerContentEditor (494)
+LogModuleManager: Shutting down and abandoning module MagicLeapHelperVulkan (492)
+LogModuleManager: Shutting down and abandoning module MagicLeapHelperOpenGL (490)
+LogModuleManager: Shutting down and abandoning module MagicLeapAudio (488)
+LogModuleManager: Shutting down and abandoning module NiagaraEditorWidgets (486)
+LogModuleManager: Shutting down and abandoning module DatasmithContentEditor (484)
+LogModuleManager: Shutting down and abandoning module MotoSynthEditor (482)
+LogModuleManager: Shutting down and abandoning module MotoSynth (480)
+LogModuleManager: Shutting down and abandoning module SpeedTreeImporter (478)
+LogModuleManager: Shutting down and abandoning module PluginBrowser (476)
+LogModuleManager: Shutting down and abandoning module MobileLauncherProfileWizard (474)
+LogModuleManager: Shutting down and abandoning module MaterialAnalyzer (472)
+LogModuleManager: Shutting down and abandoning module MeshConversion (470)
+LogModuleManager: Shutting down and abandoning module DynamicMesh (468)
+LogModuleManager: Shutting down and abandoning module GeometryAlgorithms (466)
+LogModuleManager: Shutting down and abandoning module GeometricObjects (464)
+LogModuleManager: Shutting down and abandoning module GeometryCollectionTracks (462)
+LogModuleManager: Shutting down and abandoning module GeometryCollectionSequencer (461)
+LogModuleManager: Shutting down and abandoning module GeometryCollectionEditor (458)
+LogModuleManager: Shutting down and abandoning module CryptoKeysOpenSSL (456)
+LogModuleManager: Shutting down and abandoning module CryptoKeys (454)
+LogModuleManager: Shutting down and abandoning module CurveEditorTools (452)
+LogModuleManager: Shutting down and abandoning module GeometryCacheTracks (450)
+LogModuleManager: Shutting down and abandoning module GeometryCacheStreamer (448)
+LogModuleManager: Shutting down and abandoning module GeometryCacheSequencer (446)
+LogModuleManager: Shutting down and abandoning module FractureEditor (444)
+LogModuleManager: Shutting down and abandoning module ChaosNiagara (442)
+LogModuleManager: Shutting down and abandoning module ChaosSolverEditor (440)
+LogModuleManager: Shutting down and abandoning module FieldSystemEngine (439)
+LogModuleManager: Shutting down and abandoning module ChaosClothEditor (436)
+LogModuleManager: Shutting down and abandoning module AutomationUtilsEditor (434)
+LogModuleManager: Shutting down and abandoning module AutomationUtils (432)
+LogModuleManager: Shutting down and abandoning module AlembicImporter (430)
+LogModuleManager: Shutting down and abandoning module AlembicLibrary (429)
+LogModuleManager: Shutting down and abandoning module GeometryCache (428)
+LogModuleManager: Shutting down and abandoning module GeometryCacheEd (427)
+LogModuleManager: Shutting down and abandoning module UObjectPlugin (422)
+LogModuleManager: Shutting down and abandoning module VisualStudioSourceCodeAccess (420)
+LogModuleManager: Shutting down and abandoning module VisualStudioCodeSourceCodeAccess (418)
+LogModuleManager: Shutting down and abandoning module SubversionSourceControl (416)
+LogModuleManager: Shutting down and abandoning module PluginUtils (414)
+LogModuleManager: Shutting down and abandoning module PerforceSourceControl (412)
+LogModuleManager: Shutting down and abandoning module PlasticSourceControl (410)
+LogModuleManager: Shutting down and abandoning module GitSourceControl (408)
+LogModuleManager: Shutting down and abandoning module SourceControl (407)
+LogModuleManager: Shutting down and abandoning module CLionSourceCodeAccess (404)
+LogModuleManager: Shutting down and abandoning module AnimationSharingEd (402)
+LogModuleManager: Shutting down and abandoning module LightPropagationVolumeEditor (400)
+LogModuleManager: Shutting down and abandoning module PaperTiledImporter (398)
+LogModuleManager: Shutting down and abandoning module PaperSpriteSheetImporter (396)
+LogModuleManager: Shutting down and abandoning module Paper2DEditor (394)
+LogModuleManager: Shutting down and abandoning module MeshPaintingToolset (392)
+LogModuleManager: Shutting down and abandoning module MeshPaintEditorMode (390)
+LogModuleManager: Shutting down and abandoning module EnvironmentQueryEditor (388)
+LogModuleManager: Shutting down and abandoning module SoundFields (386)
+LogModuleManager: Shutting down and abandoning module SignificanceManager (384)
+LogModuleManager: Shutting down and abandoning module RuntimePhysXCooking (382)
+LogModuleManager: Shutting down and abandoning module PropertyAccessEditor (380)
+LogModuleManager: Shutting down and abandoning module PhysXVehiclesEditor (378)
+LogModuleManager: Shutting down and abandoning module LocationServicesBPLibrary (374)
+LogModuleManager: Shutting down and abandoning module AudioSynesthesia (372)
+LogModuleManager: Shutting down and abandoning module AudioSynesthesiaCore (370)
+LogModuleManager: Shutting down and abandoning module TcpMessaging (368)
+LogModuleManager: Shutting down and abandoning module ActorSequence (366)
+LogModuleManager: Shutting down and abandoning module UdpMessaging (364)
+LogModuleManager: Shutting down and abandoning module MagicLeapARPin (362)
+LogModuleManager: Shutting down and abandoning module MagicLeapHandMeshing (360)
+LogModuleManager: Shutting down and abandoning module MagicLeapSecureStorage (358)
+LogModuleManager: Shutting down and abandoning module MagicLeapPrivileges (356)
+LogModuleManager: Shutting down and abandoning module MagicLeapPlanes (354)
+LogMagicLeapPlanes: Planes tracker already destroyed.
+LogModuleManager: Shutting down and abandoning module MagicLeapImageTracker (352)
+LogModuleManager: Shutting down and abandoning module MagicLeapIdentity (350)
+LogModuleManager: Shutting down and abandoning module MagicLeapHandTracking (348)
+LogModuleManager: Shutting down and abandoning module MagicLeapEyeTracker (346)
+LogModuleManager: Shutting down and abandoning module MagicLeapController (344)
+LogModuleManager: Shutting down and abandoning module MagicLeapARPinImpl (342)
+LogModuleManager: Shutting down and abandoning module MagicLeapAR (340)
+LogModuleManager: Shutting down and abandoning module AugmentedReality (339)
+LogModuleManager: Shutting down and abandoning module NiagaraAnimNotifies (336)
+LogModuleManager: Shutting down and abandoning module Niagara (334)
+LogModuleManager: Shutting down and abandoning module SignalProcessing (333)
+LogModuleManager: Shutting down and abandoning module NiagaraEditor (331)
+LogModuleManager: Shutting down and abandoning module NiagaraCore (328)
+LogModuleManager: Shutting down and abandoning module GameplayTagsEditor (326)
+LogModuleManager: Shutting down and abandoning module FacialAnimationEditor (324)
+LogModuleManager: Shutting down and abandoning module FacialAnimation (322)
+LogModuleManager: Shutting down and abandoning module DataValidation (320)
+LogModuleManager: Shutting down and abandoning module AssetManagerEditor (318)
+LogModuleManager: Shutting down and abandoning module TreeMap (317)
+LogModuleManager: Shutting down and abandoning module PropertyAccessNode (314)
+LogModuleManager: Shutting down and abandoning module AnimationSharing (312)
+LogModuleManager: Shutting down and abandoning module LightPropagationVolumeRuntime (310)
+LogModuleManager: Shutting down and abandoning module Paper2D (308)
+LogModuleManager: Shutting down and abandoning module NetworkReplayStreaming (306)
+LogModuleManager: Shutting down and abandoning module PacketHandler (304)
+LogModuleManager: Shutting down and abandoning module ClothingSystemEditor (302)
+LogModuleManager: Shutting down and abandoning module ClothingSystemRuntimeNv (300)
+LogModuleManager: Shutting down and abandoning module MediaAssets (298)
+LogModuleManager: Shutting down and abandoning module Overlay (296)
+LogModuleManager: Shutting down and abandoning module OverlayEditor (295)
+LogModuleManager: Shutting down and abandoning module Blutility (292)
+LogModuleManager: Shutting down and abandoning module LevelEditor (291)
+LogModuleManager: Shutting down and abandoning module PixelInspectorModule (290)
+LogModuleManager: Shutting down and abandoning module CommonMenuExtensions (288)
+LogModuleManager: Shutting down and abandoning module MainFrame (286)
+LogModuleManager: Shutting down and abandoning module HotReload (285)
+LogModuleManager: Shutting down and abandoning module ContentBrowser (281)
+LogModuleManager: Shutting down and abandoning module CollectionManager (280)
+LogModuleManager: Shutting down and abandoning module ContentBrowserData (278)
+LogModuleManager: Shutting down and abandoning module IntroTutorials (274)
+LogModuleManager: Shutting down and abandoning module VREditor (272)
+LogModuleManager: Shutting down and abandoning module StringTableEditor (270)
+LogModuleManager: Shutting down and abandoning module GameplayTasksEditor (268)
+LogModuleManager: Shutting down and abandoning module BehaviorTreeEditor (266)
+LogModuleManager: Shutting down and abandoning module FunctionalTesting (264)
+LogModuleManager: Shutting down and abandoning module CollisionAnalyzer (262)
+LogModuleManager: Shutting down and abandoning module WorkspaceMenuStructure (261)
+LogModuleManager: Shutting down and abandoning module UMG (258)
+LogModuleManager: Shutting down and abandoning module UMGEditor (257)
+LogModuleManager: Shutting down and abandoning module MessageLog (255)
+LogModuleManager: Shutting down and abandoning module SlateReflector (250)
+LogModuleManager: Shutting down and abandoning module Slate (248)
+LogModuleManager: Shutting down and abandoning module SlateCore (246)
+LogModuleManager: Shutting down and abandoning module LandscapeEditorUtilities (244)
+LogModuleManager: Shutting down and abandoning module UnrealEd (242)
+LogModuleManager: Shutting down and abandoning module MRMesh (240)
+LogModuleManager: Shutting down and abandoning module SourceCodeAccess (238)
+LogModuleManager: Shutting down and abandoning module HeadMountedDisplay (236)
+LogModuleManager: Shutting down and abandoning module XAudio2 (234)
+LogModuleManager: Shutting down and abandoning module Networking (232)
+LogModuleManager: Shutting down and abandoning module Core (230)
+LogModuleManager: Shutting down and abandoning module MaterialEditor (228)
+LogModuleManager: Shutting down and abandoning module Settings (227)
+LogModuleManager: Shutting down and abandoning module MovieSceneTools (224)
+LogModuleManager: Shutting down and abandoning module CurveEditor (223)
+LogModuleManager: Shutting down and abandoning module Sequencer (221)
+LogModuleManager: Shutting down and abandoning module EditorStyle (220)
+LogModuleManager: Shutting down and abandoning module KismetCompiler (216)
+LogModuleManager: Shutting down and abandoning module MeshBuilder (214)
+LogModuleManager: Shutting down and abandoning module MeshUtilities (212)
+LogModuleManager: Shutting down and abandoning module MeshMergeUtilities (211)
+LogModuleManager: Shutting down and abandoning module MeshReductionInterface (210)
+LogModuleManager: Shutting down and abandoning module MeshBoneReduction (209)
+LogModuleManager: Shutting down and abandoning module SkeletalMeshReduction (207)
+LogModuleManager: Shutting down and abandoning module ProxyLODMeshReduction (205)
+LogModuleManager: Shutting down and abandoning module QuadricMeshReduction (203)
+LogModuleManager: Shutting down and abandoning module MaterialBaking (199)
+LogModuleManager: Shutting down and abandoning module DirectoryWatcher (195)
+LogModuleManager: Shutting down and abandoning module NullInstallBundleManager (192)
+LogModuleManager: Shutting down and abandoning module DerivedDataCache (190)
+LogModuleManager: Shutting down and abandoning module NullDrv (188)
+LogModuleManager: Shutting down and abandoning module PhysXCooking (186)
+LogModuleManager: Shutting down and abandoning module Chaos (184)
+LogModuleManager: Shutting down and abandoning module WindowsPlatformFeatures (182)
+LogModuleManager: Shutting down and abandoning module GameplayMediaEncoder (181)
+LogModuleManager: Shutting down and abandoning module AVEncoder (180)
+LogModuleManager: Shutting down and abandoning module TargetPlatform (176)
+LogModuleManager: Shutting down and abandoning module VulkanShaderFormat (175)
+LogModuleManager: Shutting down and abandoning module ShaderFormatVectorVM (173)
+LogModuleManager: Shutting down and abandoning module ShaderFormatOpenGL (171)
+LogModuleManager: Shutting down and abandoning module ShaderFormatD3D (169)
+LogModuleManager: Shutting down and abandoning module MetalShaderFormat (167)
+LogModuleManager: Shutting down and abandoning module TextureFormatUncompressed (165)
+LogModuleManager: Shutting down and abandoning module TextureFormatPVR (163)
+LogModuleManager: Shutting down and abandoning module TextureFormatETC2 (161)
+LogModuleManager: Shutting down and abandoning module TextureFormatDXT (159)
+LogModuleManager: Shutting down and abandoning module TextureFormatIntelISPCTexComp (157)
+LogModuleManager: Shutting down and abandoning module TextureFormatASTC (155)
+LogModuleManager: Shutting down and abandoning module ImageWrapper (154)
+LogModuleManager: Shutting down and abandoning module AudioFormatOpus (151)
+LogModuleManager: Shutting down and abandoning module AudioFormatOgg (149)
+LogModuleManager: Shutting down and abandoning module AudioFormatADPCM (147)
+LogModuleManager: Shutting down and abandoning module WindowsServerTargetPlatform (145)
+LogModuleManager: Shutting down and abandoning module WindowsClientTargetPlatform (143)
+LogModuleManager: Shutting down and abandoning module WindowsTargetPlatform (141)
+LogModuleManager: Shutting down and abandoning module WindowsNoEditorTargetPlatform (139)
+LogModuleManager: Shutting down and abandoning module TVOSTargetPlatform (137)
+LogModuleManager: Shutting down and abandoning module MacServerTargetPlatform (135)
+LogModuleManager: Shutting down and abandoning module MacClientTargetPlatform (133)
+LogModuleManager: Shutting down and abandoning module MacTargetPlatform (131)
+LogModuleManager: Shutting down and abandoning module MacNoEditorTargetPlatform (129)
+LogModuleManager: Shutting down and abandoning module LuminTargetPlatform (127)
+LogModuleManager: Shutting down and abandoning module LinuxAArch64ServerTargetPlatform (125)
+LogModuleManager: Shutting down and abandoning module LinuxAArch64ClientTargetPlatform (123)
+LogModuleManager: Shutting down and abandoning module LinuxAArch64NoEditorTargetPlatform (121)
+LogModuleManager: Shutting down and abandoning module LinuxServerTargetPlatform (119)
+LogModuleManager: Shutting down and abandoning module LinuxClientTargetPlatform (117)
+LogModuleManager: Shutting down and abandoning module LinuxNoEditorTargetPlatform (115)
+LogModuleManager: Shutting down and abandoning module LinuxTargetPlatform (113)
+LogModuleManager: Shutting down and abandoning module Messaging (111)
+LogModuleManager: Shutting down and abandoning module IOSTargetPlatform (109)
+LogModuleManager: Shutting down and abandoning module AndroidTargetPlatform (107)
+LogModuleManager: Shutting down and abandoning module AllDesktopTargetPlatform (105)
+LogModuleManager: Shutting down and abandoning module ExampleDeviceProfileSelector (102)
+LogModuleManager: Shutting down and abandoning module SteamVRInputDevice (100)
+LogModuleManager: Shutting down and abandoning module SteamVRInput (98)
+LogModuleManager: Shutting down and abandoning module SteamVR (96)
+LogHMD: Freeing OpenVRDLLHandle.
+LogModuleManager: Shutting down and abandoning module OculusHMD (94)
+LogModuleManager: Shutting down and abandoning module LauncherChunkInstaller (92)
+LogModuleManager: Shutting down and abandoning module ChunkDownloader (90)
+LogModuleManager: Shutting down and abandoning module OnlineBlueprintSupport (88)
+LogModuleManager: Shutting down and abandoning module OnlineSubsystem (84)
+LogModuleManager: Shutting down and abandoning module XMPP (79)
+LogModuleManager: Shutting down and abandoning module WebSockets (78)
+LogModuleManager: Shutting down and abandoning module HTTP (75)
+LogHttp: Display: cleaning up 0 outstanding Http requests.
+LogModuleManager: Shutting down and abandoning module SSL (74)
+LogModuleManager: Shutting down and abandoning module WmfMedia (70)
+LogModuleManager: Shutting down and abandoning module Media (69)
+LogModuleManager: Shutting down and abandoning module MediaInfo (68)
+LogModuleManager: Shutting down and abandoning module ExrReaderGpu (64)
+LogModuleManager: Shutting down and abandoning module MLSDK (62)
+LogModuleManager: Shutting down and abandoning module VariantManagerContent (60)
+LogModuleManager: Shutting down and abandoning module MagicLeap (58)
+LogModuleManager: Shutting down and abandoning module NiagaraVertexFactories (56)
+LogModuleManager: Shutting down and abandoning module NiagaraShader (54)
+LogModuleManager: Shutting down and abandoning module DatasmithContent (52)
+LogModuleManager: Shutting down and abandoning module ChaosCloth (50)
+LogModuleManager: Shutting down and abandoning module AISupportModule (48)
+LogModuleManager: Shutting down and abandoning module PlatformCryptoOpenSSL (46)
+LogModuleManager: Shutting down and abandoning module PlatformCryptoTypes (44)
+LogModuleManager: Shutting down and abandoning module PlatformCrypto (42)
+LogModuleManager: Shutting down and abandoning module XGEController (40)
+LogModuleManager: Shutting down and abandoning module AnimationModifiers (38)
+LogModuleManager: Shutting down and abandoning module AudioEditor (36)
+LogModuleManager: Shutting down and abandoning module PropertyEditor (35)
+LogModuleManager: Shutting down and abandoning module TextureCompressor (32)
+LogModuleManager: Shutting down and abandoning module RenderCore (30)
+LogModuleManager: Shutting down and abandoning module Landscape (28)
+LogModuleManager: Shutting down and abandoning module SlateRHIRenderer (26)
+LogModuleManager: Shutting down and abandoning module OpenGLDrv (24)
+LogModuleManager: Shutting down and abandoning module D3D11RHI (22)
+LogModuleManager: Shutting down and abandoning module AnimGraphRuntime (20)
+LogModuleManager: Shutting down and abandoning module Renderer (18)
+LogModuleManager: Shutting down and abandoning module Engine (16)
+LogModuleManager: Shutting down and abandoning module CoreUObject (14)
+LogModuleManager: Shutting down and abandoning module NetworkFile (12)
+LogModuleManager: Shutting down and abandoning module CookedIterativeFile (10)
+LogModuleManager: Shutting down and abandoning module StreamingFile (8)
+LogModuleManager: Shutting down and abandoning module SandboxFile (6)
+LogModuleManager: Shutting down and abandoning module PakFile (4)
+LogModuleManager: Shutting down and abandoning module RSA (3)
+LogContentStreaming: Display: There are 1 unreleased StreamingManagers
+LogExit: Exiting.
+Log file closed, 12/07/24 00:45:30

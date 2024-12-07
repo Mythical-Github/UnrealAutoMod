@@ -83,6 +83,11 @@ def make_iostore_unreal_pak_mod_checks(
         gen_py_utils.check_file_exists(commands_txt_path)
 
 
+# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json"
+# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest"
+# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\global.utoc"
+
+
 def make_iostore_unreal_pak_mod(mod_name: str, final_pak_file: str):
         
         exe = unreal_dev_utils.get_editor_cmd_path(utilities.get_unreal_engine_dir())

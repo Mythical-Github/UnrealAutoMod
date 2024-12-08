@@ -293,7 +293,7 @@ def does_iostore_game_need_utoc_ucas() -> bool:
 def cooking():
     populate_queue()
     hook_states.set_hook_state(HookStateType.PRE_COOKING)
-    if ue_dev_py_utils.get_is_game_iostore():
+    if ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir()):
         if does_iostore_game_need_utoc_ucas:
             package_project_iostore()
         else:

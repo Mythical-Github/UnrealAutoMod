@@ -1,6 +1,7 @@
 Automation.ParseCommandLine: Parsing command line: 
 -ScriptsForProject=C:/Users/Mythical/Documents/GitHub/RoboQuest/RoboQuest.uproject 
-BuildCookRun -nocompileeditor 
+BuildCookRun 
+-nocompileeditor 
 -installed 
 -nop4 
 -project=C:/Users/Mythical/Documents/GitHub/RoboQuest/RoboQuest.uproject 

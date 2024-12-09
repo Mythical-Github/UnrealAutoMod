@@ -22,53 +22,34 @@ def get_pak_dir_to_pack(mod_name: str) -> str:
 def make_response_file(mod_name: str) -> str:
     file_list_path = os.path.join(utilities.get_working_dir(), f'{mod_name}_filelist.txt')
     dir_to_pack = get_pak_dir_to_pack(mod_name)
+    processed_base_paths = set()
+
     with open(file_list_path, "w") as file:
         for root, _, files in os.walk(dir_to_pack):
             for file_name in files:
                 absolute_path = os.path.join(root, file_name)
-                if not os.path.isfile:
-                    raise FileNotFoundError(f'The following file could not be found "{absolute_path}"')
+                if not os.path.isfile(absolute_path):
+                    raise FileNotFoundError(f'The following file could not be found: "{absolute_path}"')
+                
+                base_path = os.path.splitext(absolute_path)[0]
+                if base_path in processed_base_paths:
+                    continue
+                
+                processed_base_paths.add(base_path)
+                
                 relative_path = os.path.relpath(root, dir_to_pack).replace("\\", "/")
                 mount_point = f'../../../{relative_path}/'
-                # file.write(f'"{absolute_path}" "{mount_point}"\n')
                 file.write(f'"{os.path.normpath(absolute_path)}" "{mount_point}"\n')
     return file_list_path
 
 
-# def make_response_file(mod_name: str) -> str:
-#     file_list_path = os.path.normpath(os.path.join(utilities.get_working_dir(), f'{mod_name}_filelist.txt'))
-    
-#     file_list_content = r'''
-# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Content\Mods\TestMod\DA_TestMod.uasset" "../../../RoboQuest/Content/Mods/TestMod/"
-# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Content\Mods\TestMod\DA_TestMod.uexp" "../../../RoboQuest/Content/Mods/TestMod/"
-# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Content\Mods\TestMod\ModActor.uasset" "../../../RoboQuest/Content/Mods/TestMod/"
-# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Content\Mods\TestMod\ModActor.uexp" "../../../RoboQuest/Content/Mods/TestMod/"
-# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Content\Mods\TestMod\ModRoot\BP_TestMod.uasset" "../../../RoboQuest/Content/Mods/TestMod/ModRoot/"
-# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Content\Mods\TestMod\ModRoot\BP_TestMod.uexp" "../../../RoboQuest/Content/Mods/TestMod/ModRoot/"
-# '''
-
-#     os.makedirs(os.path.dirname(file_list_path), exist_ok=True)
-#     with open(file_list_path, "w") as file:
-#         file.write(file_list_content)
-
-#     return file_list_path
-
-    
-
-
 def get_iostore_commands_file_contents(mod_name: str, final_pak_file: str) -> str:
-    chunk_utoc_path = f'{os.path.dirname(final_pak_file)}/{mod_name}-WindowsNoEditor.utoc'  # this can be different depending on ue4/5 or not deal with this later
+    chunk_utoc_path = f'{os.path.dirname(final_pak_file)}/{mod_name}.utoc'  # this can be different depending on ue4/5 or not deal with this later
     container_name = mod_name
     response_file = make_response_file(mod_name)
-    commands_file_content = f'''-Output={os.path.normpath(chunk_utoc_path)}-ContainerName={container_name} -ResponseFile="{os.path.normpath(response_file)}"'''
+    commands_file_content = f'''-Output={os.path.normpath(chunk_utoc_path)} -ContainerName={container_name} -ResponseFile="{os.path.normpath(response_file)}"'''
     print(commands_file_content)
     return commands_file_content
-
-
-
-    # global_utoc_path = f'{SCRIPT_DIR}/assets/iostore_packaging/global.utoc'
-    # cooked_content_dir = f'{utilities.get_working_dir()}/{mod_name}'
-    # crypto_keys_json = f'{SCRIPT_DIR}/assets/iostore_packaging/Crypto.json'
 
 
 def make_iostore_unreal_pak_mod_checks(
@@ -83,23 +64,22 @@ def make_iostore_unreal_pak_mod_checks(
         gen_py_utils.check_file_exists(commands_txt_path)
 
 
-# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest\Metadata\Crypto.json"
-# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\Cooked\WindowsNoEditor\RoboQuest"
-# "C:\Users\Mythical\Documents\GitHub\RoboQuest\Saved\StagedBuilds\WindowsNoEditor\RoboQuest\Content\Paks\global.utoc"
-
-
 def make_iostore_unreal_pak_mod(mod_name: str, final_pak_file: str):
-        
-        exe = unreal_dev_utils.get_editor_cmd_path(utilities.get_unreal_engine_dir())
-        global_utoc_path = f'{utilities.get_uproject_dir()}/Saved/Cooked/WindowsNoEditor/RoboQuest/Content/Paks/global.utoc'
-        cooked_content_dir = f'{utilities.get_uproject_dir()}/Saved/Cooked/WindowsNoEditor'
+        unreal_engine_dir = utilities.get_unreal_engine_dir()
+        exe = unreal_dev_utils.get_editor_cmd_path(unreal_engine_dir)
+        ue_win_dir_str = unreal_dev_utils.get_win_dir_str(unreal_engine_dir)
+        uproject_name = os.path.splitext(os.path.basename(utilities.get_uproject_file()))[0]
+        print(uproject_name)
+        global_utoc_path = f'{utilities.get_uproject_dir()}/Saved/StagedBuilds/{ue_win_dir_str}/{uproject_name}/Content/Paks/global.utoc'
+        cooked_content_dir = f'{utilities.get_working_dir()}/{mod_name}'
         
         commands_txt_content = get_iostore_commands_file_contents(mod_name, final_pak_file)
         commands_txt_path = f'{utilities.get_working_dir()}/iostore_packaging/{mod_name}_commands_list.txt'
         os.makedirs(os.path.dirname(commands_txt_path), exist_ok=True)
         with open(commands_txt_path, 'w') as file:
             file.write(commands_txt_content)
-        crypto_keys_json = f'{utilities.get_uproject_dir()}/Saved/StagedBuilds/WindowsNoEditor/RoboQuest/Metadata/Crypto.json'
+            
+        crypto_keys_json = f'{utilities.get_uproject_dir()}/Saved/Cooked/{ue_win_dir_str}/{uproject_name}/Metadata/Crypto.json'
 
         make_iostore_unreal_pak_mod_checks(cooked_content_dir, global_utoc_path, crypto_keys_json, commands_txt_path)
 
@@ -109,18 +89,20 @@ def make_iostore_unreal_pak_mod(mod_name: str, final_pak_file: str):
         args = [
             utilities.get_uproject_file(),
             '-run=IoStore',
-            f'-CreateGlobalContainer={global_utoc_path}',
-            f'-CookedDirectory={cooked_content_dir}',
+            f'-CreateGlobalContainer="{os.path.normpath(global_utoc_path)}"',
+            f'-CookedDirectory="{os.path.normpath(cooked_content_dir)}"',
             f'-Commands="{os.path.normpath(commands_txt_path)}"',
-            f'-patchpaddingalign={default_engine_patch_padding_alignment}',
-            f'-cryptokeys={crypto_keys_json}',
-            f'-TargetPlatform={platform_string}',
-            f'-abslog="{iostore_txt_location}"',
-            f'-stdout',
-            f'-CrashForUAT',
-            f'-unattended',
-            f'-NoLogTimes',
-            f'-UTF8Output'
+            # f'-CookerOrder="{os.path.normpath(cooker_order_file)}"',
+            # f'-patchpaddingalign={default_engine_patch_padding_alignment}',
+            '-NoDirectoryIndex',
+            # f'-cryptokeys="{os.path.normpath(crypto_keys_json)}"',
+            f'-TargetPlatform={platform_string}'
+            # f'-abslog="{iostore_txt_location}"',
+            # f'-stdout',
+            # f'-CrashForUAT',
+            # f'-unattended',
+            # f'-NoLogTimes',
+            # f'-UTF8Output'
         ]
         utilities.run_app(exe_path=exe, args=args)
 

@@ -280,7 +280,37 @@ def install_mod(packing_type: PackingType, mod_name: str, compression_type: Comp
 
 
 def package_project_iostore():
-    return
+    main_exec = f'{utilities.get_unreal_engine_dir()}/Engine/Build/BatchFiles/RunUAT.bat'
+    uproject_path = utilities.get_uproject_file()
+    editor_cmd_exe_path = ue_dev_py_utils.get_editor_cmd_path(utilities.get_unreal_engine_dir())
+    archive_directory = f'{utilities.get_working_dir()}/iostore_packaging/output'
+    target_platform = 'Win64'
+    client_config = 'Development'
+    args = [
+        f'-ScriptsForProject={uproject_path}',
+        'BuildCookRun',
+        '-nocompileeditor',
+        '-installed',
+        '-nop4',
+        f'-project={uproject_path}',
+        '-cook',
+        '-stage',
+        '-archive',
+        f'-archivedirectory={archive_directory}',
+        '-package',
+        f'-ue4exe={editor_cmd_exe_path}',
+        '-ddc=InstalledDerivedDataBackendGraph',
+        '-iostore',
+        '-pak',
+        '-iostore',
+        '-prereqs',
+        '-nodebuginfo',
+        '-manifests',
+        f'-targetplatform={target_platform}',
+        f'-clientconfig={client_config}',
+        '-utf8output'
+    ]
+    utilities.run_app(exe_path=main_exec, args=args, working_dir=utilities.get_unreal_engine_dir())
 
 
 # for if you are just repacking an ini for an iostore game and don't need a ucas or utoc for example
@@ -294,8 +324,10 @@ def cooking():
     populate_queue()
     hook_states.set_hook_state(HookStateType.PRE_COOKING)
     if ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir()):
-        if does_iostore_game_need_utoc_ucas:
+        if does_iostore_game_need_utoc_ucas():
             package_project_iostore()
+            print('test')
+            print('test')
         else:
             cook_uproject()
     elif PackingType.ENGINE in install_queue_types:

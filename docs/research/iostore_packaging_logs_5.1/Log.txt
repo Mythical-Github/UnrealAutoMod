@@ -1,0 +1,129 @@
+
+
+Starting AutomationTool... (automation tool exe is running here)
+Parsing command line: 
+-ScriptsForProject=C:/Users/Mythical/Documents/GitHub/MythForce/MythForce.uproject 
+Turnkey 
+-command=VerifySdk 
+-platform=Win64 
+-UpdateIfNeeded 
+-EditorIO 
+-EditorIOPort=55789 
+-project=C:/Users/Mythical/Documents/GitHub/MythForce/MythForce.uproject 
+BuildCookRun 
+-nop4 
+-utf8output 
+-nocompileeditor 
+-skipbuildeditor 
+-cook 
+-project=C:/Users/Mythical/Documents/GitHub/MythForce/MythForce.uproject 
+-unrealexe=D:\unreal_engine_installs\UE_5.1\Engine\Binaries\Win64\UnrealEditor-Cmd.exe 
+-platform=Win64 
+-installed 
+-stage 
+-archive 
+-package 
+-pak 
+-iostore 
+-compressed 
+-prereqs 
+-archivedirectory=C:/Users/Mythical/Downloads/Output 
+-manifests 
+-nocompile 
+-nocompileuat
+
+
+Found 2 scripts to execute:
+  Turnkey(
+command=
+VerifySdk, 
+platform=Win64, 
+UpdateIfNeeded, 
+EditorIO, 
+EditorIOPort=55789, 
+project=C:/Users/Mythical/Documents/GitHub/MythForce/MythForce.uproject)
+  
+  
+BuildCookRun(
+	nop4, 
+	utf8output, 
+	nocompileeditor, 
+	skipbuildeditor, 
+	cook, 
+	project=C:/Users/Mythical/Documents/GitHub/MythForce/MythForce.uproject, 
+	unrealexe=D:\unreal_engine_installs\UE_5.1\Engine\Binaries\Win64\UnrealEditor-Cmd.exe, 
+	platform=Win64, 
+	installed, 
+	stage, 
+	archive, 
+	package, 
+	pak, 
+	iostore, 
+	compressed, 
+	prereqs, 
+	archivedirectory=C:/Users/Mythical/Downloads/Output, 
+	manifests, 
+	nocompile, 
+	nocompileuat)
+
+
+Running: 
+D:\unreal_engine_installs\UE_5.1\Engine\Binaries\Win64\UnrealEditor-Cmd.exe 
+C:\Users\Mythical\Documents\GitHub\MythForce\MythForce.uproject 
+-run=Cook  
+-TargetPlatform=Windows  
+-unversioned 
+-fileopenlog 
+-manifests 
+-abslog=D:\unreal_engine_installs\UE_5.1\Engine\Programs\AutomationTool\Saved\Cook-2024.12.10-15.22.25.txt 
+-stdout 
+-CrashForUAT 
+-unattended 
+-NoLogTimes 
+-UTF8Output
+
+
+Running: 
+D:\unreal_engine_installs\UE_5.1\Engine\Binaries\Win64\UnrealPak.exe 
+C:\Users\Mythical\Documents\GitHub\MythForce\MythForce.uproject  
+-cryptokeys=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Metadata\Crypto.json 
+-patchpaddingalign=2048 
+-compressionformats=Oodle 
+-compressmethod=Kraken 
+-compresslevel=4  
+-platform=Windows  
+-CreateMultiple="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_5.1\PakCommands.txt"
+
+
+Running UnrealPak with arguments: 
+-CreateGlobalContainer=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\StagedBuilds\Windows\MythForce\Content\Paks\global.utoc 
+-CookedDirectory=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows 
+-PackageStoreManifest=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Metadata\packagestore.manifest 
+-Commands="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_5.1\IoStoreCommands.txt" 
+-ScriptObjects=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Metadata\scriptobjects.bin 
+-patchpaddingalign=2048 
+-compressionformats=Oodle 
+-compressmethod=Kraken 
+-compresslevel=4 
+-cryptokeys=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Metadata\Crypto.json 
+-compressionMinBytesSaved=1024 
+-compressionMinPercentSaved=5 
+-WriteBackMetadataToAssetRegistry=Disabled
+
+
+Running: 
+D:\unreal_engine_installs\UE_5.1\Engine\Binaries\Win64\UnrealPak.exe 
+-CreateGlobalContainer=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\StagedBuilds\Windows\MythForce\Content\Paks\global.utoc 
+-CookedDirectory=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows 
+-PackageStoreManifest=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Metadata\packagestore.manifest 
+-Commands="C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_5.1\IoStoreCommands.txt" 
+-ScriptObjects=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Metadata\scriptobjects.bin 
+-patchpaddingalign=2048 
+-compressionformats=Oodle 
+-compressmethod=Kraken 
+-compresslevel=4 
+-cryptokeys=C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Metadata\Crypto.json 
+-compressionMinBytesSaved=1024 
+-compressionMinPercentSaved=5 
+-WriteBackMetadataToAssetRegistry=Disabled
+

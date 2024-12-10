@@ -1,0 +1,97 @@
+LogIoStore: Display: ==================== IoStore Utils ====================
+LogIoStore: Display: Parsing crypto keys from a crypto key cache file 'C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Metadata\Crypto.json'
+LogIoStore: Display: Container signing - DISABLED
+LogIoStore: Display: Directory index - ENABLED
+LogIoStore: Display: Using compression format 'Oodle'
+LogIoStore: Display: Using memory mapping alignment '16384'
+LogIoStore: Display: Using compression block size '65536'
+LogIoStore: Display: Using compression block alignment '2048'
+LogIoStore: Display: Using compression min bytes saved '1024'
+LogIoStore: Display: Using compression min percent saved '5'
+LogIoStore: Display: Using max partition size '0'
+LogIoStore: Display: Not using DDC for compression
+LogIoStore: Display: Using command list file: 'C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_5.1\IoStoreCommands.txt'
+LogIoStore: Display: Searching for cooked assets in folder 'C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows'
+LogIoStore: Display: Found '986' files
+LogIoStore: Display: Creating container targets...
+LogDerivedDataCache: Display: ../../../Engine/DerivedDataCache/Compressed.ddp: Opened pak cache for reading. (1363 MiB)
+LogDerivedDataCache: Display: Performance to C:/Users/Mythical/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.00ms. RandomReadSpeed=999.00MBs, RandomWriteSpeed=999.00MBs. Assigned SpeedClass 'Local'
+OodleDataCompression: Display: Oodle v2.9.8 format for pak/iostore with method=Kraken, level=4=Normal
+LogIoStore: Display: Parsing packages...
+LogIoStore: Display: Reading package assets...
+LogIoStore: Display: Processing shader libraries...
+LogIoStore: Display: Processing redirects...
+LogIoStore: Display: Optimizing packages...
+LogIoStore: Display: Finalizing packages...
+LogIoStore: Display: Creating disk layout...
+LogIoStore: Display: Ordered 412 packages using fallback bundle order
+LogIoStore: Display: Serializing container(s)...
+LogIoStore: Display: Writing chunks (191/577)... [337 compressed] [3087 compression tasks scheduled]
+LogIoStore: Display: Writing chunks (191/577)... [487 compressed] [156 compression tasks scheduled]
+LogIoStore: Display: global: Found perfect hashmap for 1 items.
+LogIoStore: Display: pakchunk0-Windows: Found perfect hashmap for 573 items.
+LogIoStore: Display: pakchunk1-Windows: Found perfect hashmap for 3 items.
+LogIoStore: Display: Calculating stats...
+LogIoStore: Display: --------------------------------------------------- IoDispatcher --------------------------------------------------------
+LogIoStore: Display: 
+LogIoStore: Display: Container                           Flags   TOC Size (KB)     TOC Entries       Size (MB)           Compressed (MB)
+LogIoStore: Display: -------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: global                            -/-/-/-            0.54               1            1.76                         -
+LogIoStore: Display: pakchunk0-Windows                 C/-/-/I          127.01             573          342.90     132.84 (61.26% Oodle)
+LogIoStore: Display: pakchunk1-Windows                 C/-/-/I            0.52               3            0.00       0.00 (37.45% Oodle)
+LogIoStore: Display: TOTAL                                              128.06             577          344.66                         -
+LogIoStore: Display: 
+LogIoStore: Display: ** Flags: (C)ompressed / (E)ncrypted / (S)igned) / (I)ndexed) **
+LogIoStore: Display: 
+LogIoStore: Display: Compression block padding:     0.36 MB
+LogIoStore: Display: 
+LogIoStore: Display: -------------------------------------------- Container Directory Index --------------------------------------------------
+LogIoStore: Display: Container                            Size (KB)
+LogIoStore: Display: global                                    0.00
+LogIoStore: Display: pakchunk0-Windows                        26.22
+LogIoStore: Display: pakchunk1-Windows                         0.14
+LogIoStore: Display: 
+LogIoStore: Display: ---------------------------------------------- Container Patch Report ---------------------------------------------------
+LogIoStore: Display: Container                         Total (count) Modified (count)    Added (count)    Modified (MB)       Added (MB)
+LogIoStore: Display: global                                        1                0                0             0.00             0.00
+LogIoStore: Display: pakchunk0-Windows                           573                0              573             0.00           132.49
+LogIoStore: Display: pakchunk1-Windows                             3                0                3             0.00             0.00
+LogIoStore: Display: 
+LogIoStore: Display: 
+LogIoStore: Display: --------------------------------------------------- PackageStore (KB) ---------------------------------------------------
+LogIoStore: Display: 
+LogIoStore: Display: Container                                Store Size             Packages            Localized
+LogIoStore: Display: -------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: pakchunk0-Windows                                14                  410                    0
+LogIoStore: Display: pakchunk1-Windows                                 0                    2                    0
+LogIoStore: Display: TOTAL                                            14                  412                    0
+LogIoStore: Display: 
+LogIoStore: Display: 
+LogIoStore: Display: --------------------------------------------------- PackageHeader (KB) --------------------------------------------------
+LogIoStore: Display: 
+LogIoStore: Display: Container                             Header         Graph ExportBundleEntries     ImportMap     ExportMap       NameMap
+LogIoStore: Display: -------------------------------------------------------------------------------------------------------------------------
+LogIoStore: Display: pakchunk0-Windows                        475            15            44            33           197           165
+LogIoStore: Display: pakchunk1-Windows                          2             0             0             0             1             1
+LogIoStore: Display: TOTAL                                    477            15            44            33           198           166
+LogIoStore: Display: 
+LogIoStore: Display: 
+LogIoStore: Display: Input:    200.59 MB UExp
+LogIoStore: Display: Input:      0.83 MB UAsset
+LogIoStore: Display: Input:       412 Packages
+LogIoStore: Display: Input:      0.00 MB for 0 Global shaders
+LogIoStore: Display: Input:      0.00 MB for 0 Shared shaders
+LogIoStore: Display: Input:      0.00 MB for 0 Unique shaders
+LogIoStore: Display: Input:      0.00 MB for 0 Inline shaders
+LogIoStore: Display: 
+LogIoStore: Display: Output:     5620 Export bundle entries
+LogIoStore: Display: Output:      414 Export bundles
+LogIoStore: Display: Output:        2 Internal export bundle arcs
+LogIoStore: Display: Output:      513 External export bundle arcs
+LogIoStore: Display: Output:     4145 Name map entries
+LogIoStore: Display: Output:      512 Imported package entries
+LogIoStore: Display: Output:      192 Packages without imports
+LogIoStore: Display: Output:        0 Public runtime script objects
+LogIoStore: Display: Output:     1.76 MB InitialLoadData
+LogPakFile: Display: UnrealPak executed in 4.387518 seconds
+

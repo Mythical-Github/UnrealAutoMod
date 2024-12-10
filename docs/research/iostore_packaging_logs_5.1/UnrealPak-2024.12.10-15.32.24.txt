@@ -1,0 +1,39 @@
+LogPakFile: Display: Parsing crypto keys from a crypto key cache file
+LogPakFile: Display: CompressionFormats in priority order: Oodle, Zlib
+LogPakFile: Display: Oodle enabled on 'NoPluginCompression' files
+LogPakFile: Display: Loading response file C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_5.1\PakList_pakchunk0-Windows.txt
+LogPakFile: Display: Added 1470 entries to add to pak file.
+LogPakFile: Display: Collecting files to add to pak file...
+LogPakFile: Display: Collected 1470 files in 0.01s.
+LogPakFile: Display: Creating pak C:\Users\Mythical\Documents\GitHub\MythForce\Saved\StagedBuilds\Windows\MythForce\Content\Paks\pakchunk0-Windows.pak.
+LogPakFile: Display: Loading response file C:\Users\Mythical\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+unreal_engine_installs+UE_5.1\PakList_pakchunk1-Windows.txt
+LogPakFile: Display: Added 0 entries to add to pak file.
+LogPakFile: Display: Collecting files to add to pak file...
+LogPakFile: Display: Collected 0 files in 0.00s.
+LogPakFile: Display: Creating pak C:\Users\Mythical\Documents\GitHub\MythForce\Saved\StagedBuilds\Windows\MythForce\Content\Paks\pakchunk1-Windows.pak.
+OodleDataCompression: Display: Oodle v2.9.8 format for pak/iostore with method=Kraken, level=4=Normal
+LogPakFile: Display: Writing entries (1337/1470)...
+LogPakFile: Display: Created pak file: C:\Users\Mythical\Documents\GitHub\MythForce\Saved\StagedBuilds\Windows\MythForce\Content\Paks\pakchunk0-Windows.pak
+LogPakFile: Display: CompressionFormat 0 [Oodle] : 297 files, 60797581 -> 37000300 bytes
+LogPakFile: Display: CompressionFormat 1 [Zlib] : 0 files, 0 -> 0 bytes
+LogPakFile: Display: CompressionFormat 2 [None] : 1173 files, 1100766 -> 1100766 bytes
+LogPakFile: Display: Added 1470 files, 38822947 bytes total
+LogPakFile: Display: PrimaryIndex size: 22578 bytes
+LogPakFile: Display: PathHashIndex size: 42716 bytes
+LogPakFile: Display: FullDirectoryIndex size: 45363 bytes
+LogPakFile: Display: Compression summary: 60.86% of original size. Compressed Size 37000300 bytes, Original Size 60797581 bytes. 
+LogPakFile: Display: Encryption - DISABLED
+LogPakFile: Display: 
+LogPakFile: Display: Created pak file: C:\Users\Mythical\Documents\GitHub\MythForce\Saved\StagedBuilds\Windows\MythForce\Content\Paks\pakchunk1-Windows.pak
+LogPakFile: Display: CompressionFormat 0 [Oodle] : 0 files, 0 -> 0 bytes
+LogPakFile: Display: CompressionFormat 1 [Zlib] : 0 files, 0 -> 0 bytes
+LogPakFile: Display: CompressionFormat 2 [None] : 0 files, 0 -> 0 bytes
+LogPakFile: Display: Added 0 files, 339 bytes total
+LogPakFile: Display: PrimaryIndex size: 106 bytes
+LogPakFile: Display: PathHashIndex size: 8 bytes
+LogPakFile: Display: FullDirectoryIndex size: 4 bytes
+LogPakFile: Display: Encryption - DISABLED
+LogPakFile: Display: 
+LogPakFile: Display: Writer and Compression Threads exited.
+LogPakFile: Display: UnrealPak executed in 2.140510 seconds
+

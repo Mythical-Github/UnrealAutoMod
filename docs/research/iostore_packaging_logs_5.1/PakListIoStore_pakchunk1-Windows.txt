@@ -1,0 +1,2 @@
+﻿"C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Content\Mods\Z_Testing_P\DA_Testing.uasset" "../../../MythForce/Content/Mods/Z_Testing_P/DA_Testing.uasset" -compress
+"C:\Users\Mythical\Documents\GitHub\MythForce\Saved\Cooked\Windows\MythForce\Content\Mods\Z_Testing_P\ModActor.uasset" "../../../MythForce/Content/Mods/Z_Testing_P/ModActor.uasset" -compress

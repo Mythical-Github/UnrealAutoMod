@@ -1,0 +1,7 @@
+"D:\unreal_engine_installs\UE_5.1\Engine\Binaries\Win64\UnrealGame.pdb" "Engine/Binaries/Win64/UnrealGame.pdb"
+"D:\unreal_engine_installs\UE_5.1\Engine\Binaries\Win64\tbb.pdb" "Engine/Binaries/Win64/tbb.pdb"
+"D:\unreal_engine_installs\UE_5.1\Engine\Content\SlateDebug\Fonts\LastResort.tps" "Engine/Content/SlateDebug/Fonts/LastResort.tps"
+"D:\unreal_engine_installs\UE_5.1\Engine\Content\SlateDebug\Fonts\LastResort.ttf" "Engine/Content/SlateDebug/Fonts/LastResort.ttf"
+"D:\unreal_engine_installs\UE_5.1\Engine\Extras\GPUDumpViewer\GPUDumpViewer.html" "Engine/Extras/GPUDumpViewer/GPUDumpViewer.html"
+"D:\unreal_engine_installs\UE_5.1\Engine\Extras\GPUDumpViewer\OpenGPUDumpViewer.bat" "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.bat"
+"D:\unreal_engine_installs\UE_5.1\Engine\Extras\GPUDumpViewer\OpenGPUDumpViewer.sh" "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.sh"

@@ -511,6 +511,11 @@ def run_app(
         #     command = f'"{working_dir}/{command}"'
         for arg in args:
             command = f'{command} {arg}'
+        log.log_message(f'----------------------------------------------------')
+        log.log_message(f'Command: main executable: {exe_path}')
+        for arg in args:
+            log.log_message(f'Command: arg: {arg}')
+        log.log_message(f'----------------------------------------------------')
         log.log_message(f'Command: {command} running with the {exec_mode} enum')
         if working_dir:
             if os.path.isdir(working_dir):

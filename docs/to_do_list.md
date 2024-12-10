@@ -7,8 +7,8 @@
  
 
 ## To Do:
-- [ ] workspace, env vars, similar, similar to vscode
-- [ ] commands that can be used for string formatting, similar to hatch pyprojecttoml
+- [ ] workspace, env vars, similar
+- [ ] commands that can be used for string formatting
 - [ ] make presets commands
 - [ ] look into shebang magic like vscode launch json
 - [ ] diff game and file list, and backup diff, so later on can cleanup game list and restore from backup

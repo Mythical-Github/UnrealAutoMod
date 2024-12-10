@@ -5,12 +5,12 @@
       "window_title": "unreal_auto_mod automation script"
   },
   "git_info": {
-      "repo_path": "C:/Users/Mythical/Documents/GitHub/RoboQuest",
+      "repo_path": "C:/Users/Mythical/Documents/GitHub/MythForce",
       "repo_branch": "main"
   },
   "engine_info": {
-      "unreal_engine_dir": "D:/unreal_engine_installs/UE_4.26",
-      "unreal_project_file": "C:/Users/Mythical/Documents/GitHub/RoboQuest/RoboQuest.uproject",
+      "unreal_engine_dir": "D:/unreal_engine_installs/UE_5.1",
+      "unreal_project_file": "C:/Users/Mythical/Documents/GitHub/MythForce/MythForce.uproject",
       "engine_launch_args": [
       ],
       "engine_cooking_command": "BuildCookRun",
@@ -44,13 +44,13 @@
       "unreal_engine_minor_version": null
   },
   "game_info": {
-      "game_exe_path": "D:/SteamLibrary/steamapps/common/RoboQuest/RoboQuest/Binaries/Win64/RoboQuest-Win64-Shipping.exe",
+      "game_exe_path": "D:/SteamLibrary/steamapps/common/MythForce/MythForce/Binaries/Win64/MythForce-Win64-Shipping.exe",
       "launch_type": "exe",
       "override_automatic_launcher_exe_finding": false,
       "game_launcher_exe": null,
       "game_id": null,
       "override_automatic_window_title_finding": true,
-      "window_title_override": "RoboQuest",
+      "window_title_override": "MythForce",
       "launch_params": [
           "-fileopenlog",
           "-NOSPLASH"
@@ -98,13 +98,13 @@
   ],
   "mods_info": [
       {
-          "mod_name": "TestMod",
+          "mod_name": "Testing",
           "pak_dir_structure": "LogicMods",
           "mod_name_dir_type": "Mods",
           "use_mod_name_dir_name_override": false,
           "mod_name_dir_name_override": null,
           "pak_chunk_num": 1,
-          "packing_type": "unreal_pak",
+          "packing_type": "engine",
           "compression_type": "Zlib",
           "is_enabled": true,
           "manually_specified_assets": {

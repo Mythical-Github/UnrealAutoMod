@@ -113,7 +113,7 @@ def handle_uninstall_logic(packing_type: PackingType):
                 uninstall_mod(packing_type, mod_info['mod_name'])
 
 
-def handle_install_logic(packing_type: PackingType):
+def handle_install_logic(packing_type: PackingType, use_symlinks: bool):
     hook_states.set_hook_state(HookStateType.PRE_PAK_DIR_SETUP)
     for mod_info in utilities.get_mods_info_from_json():
         if mod_info['is_enabled'] and mod_info['mod_name'] in main_logic.mod_names:
@@ -121,14 +121,15 @@ def handle_install_logic(packing_type: PackingType):
                 install_mod(
                     packing_type,
                     mod_info['mod_name'],
-                    get_enum_from_val(CompressionType, mod_info['compression_type'])
+                    get_enum_from_val(CompressionType, mod_info['compression_type']),
+                    use_symlinks
                 )
     hook_states.set_hook_state(HookStateType.POST_PAK_DIR_SETUP)
     for command in command_queue:
         utilities.run_app(command)
 
 
-def generate_mods():
+def generate_mods(use_symlinks: bool):
     populate_queue()
     global uninstall_queue_types
     hook_states.set_hook_state(HookStateType.PRE_MODS_UNINSTALL)
@@ -139,7 +140,7 @@ def generate_mods():
     hook_states.set_hook_state(HookStateType.PRE_MODS_INSTALL)
     global install_queue_types
     for install_queue_type in install_queue_types:
-        handle_install_logic(install_queue_type)
+        handle_install_logic(install_queue_type, use_symlinks)
     hook_states.set_hook_state(HookStateType.POST_MODS_INSTALL)
 
 
@@ -173,7 +174,7 @@ def uninstall_mod(packing_type: PackingType, mod_name: str):
         uninstall_pak_mod(mod_name)
 
 
-def install_loose_mod(mod_name: str):
+def install_loose_mod(mod_name: str, use_symlinks: bool):
     mod_files = get_mod_paths_for_loose_mods(mod_name)
     dict_keys = mod_files.keys()
     for key in dict_keys:
@@ -186,10 +187,14 @@ def install_loose_mod(mod_name: str):
             if os.path.isfile(after_file):
                 os.remove(after_file)
         if os.path.isfile(before_file):
-            os.symlink(before_file, after_file)
+            if use_symlinks == True:
+                os.symlink(before_file, after_file)
+            else:
+                shutil.copyfile(before_file, after_file)
 
 
-def install_engine_mod(mod_name: str):
+def install_engine_mod(mod_name: str, use_symlinks: bool):
+    print(use_symlinks)
     mod_files = []
     info = utilities.get_mods_info_dict(mod_name)
     pak_chunk_num = info['pak_chunk_num']
@@ -214,10 +219,13 @@ def install_engine_mod(mod_name: str):
                 os.unlink(after_file)
             if os.path.isfile(after_file):
                 os.remove(after_file)
-            os.symlink(before_file, after_file)
+            if use_symlinks == True:
+                os.symlink(before_file, after_file)
+            else:
+                shutil.copyfile(before_file, after_file)
 
 
-def make_pak_repak(mod_name: str):
+def make_pak_repak(mod_name: str, use_symlinks: bool):
     pak_dir = f'{utilities.custom_get_game_paks_dir()}/{utilities.get_pak_dir_structure(mod_name)}'
     if not os.path.isdir(pak_dir):
         os.makedirs(pak_dir)
@@ -246,10 +254,13 @@ def make_pak_repak(mod_name: str):
     if os.path.isfile(final_pak_location):
         os.remove(final_pak_location)
     utilities.run_app(command)
-    os.symlink(intermediate_pak_file, final_pak_location)
+    if use_symlinks == True:
+        os.symlink(intermediate_pak_file, final_pak_location)
+    else:
+        shutil.copyfile(intermediate_pak_file, final_pak_location)
 
 
-def install_repak_mod(mod_name: str):
+def install_repak_mod(mod_name: str, use_symlinks: bool):
     mod_files_dict = get_mod_file_paths_for_manually_made_pak_mods(mod_name)
     mod_files_dict = utilities.filter_file_paths(mod_files_dict)
 
@@ -265,18 +276,18 @@ def install_repak_mod(mod_name: str):
                 shutil.copy2(before_file, after_file)
 
             progress.update(task, advance=1)
-    make_pak_repak(mod_name)
+    make_pak_repak(mod_name, use_symlinks)
 
 
-def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType):
+def install_mod(packing_type: PackingType, mod_name: str, compression_type: CompressionType, use_symlinks: bool):
     if packing_type == PackingType.LOOSE:
-        install_loose_mod(mod_name)
+        install_loose_mod(mod_name, use_symlinks)
     if packing_type == PackingType.ENGINE:
-        install_engine_mod(mod_name)
+        install_engine_mod(mod_name, use_symlinks)
     if packing_type == PackingType.REPAK:
-        install_repak_mod(mod_name)
+        install_repak_mod(mod_name, use_symlinks)
     if packing_type == PackingType.UNREAL_PAK:
-        unreal_pak.install_unreal_pak_mod(mod_name, compression_type)
+        unreal_pak.install_unreal_pak_mod(mod_name, compression_type, use_symlinks)
 
 
 def package_project_iostore():

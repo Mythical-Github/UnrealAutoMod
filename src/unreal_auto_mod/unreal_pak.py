@@ -64,7 +64,7 @@ def make_iostore_unreal_pak_mod_checks(
         gen_py_utils.check_file_exists(commands_txt_path)
 
 
-def make_iostore_unreal_pak_mod(mod_name: str, final_pak_file: str):
+def make_iostore_unreal_pak_mod(mod_name: str, final_pak_file: str, use_symlinks: bool):
         unreal_engine_dir = utilities.get_unreal_engine_dir()
         exe = unreal_dev_utils.get_editor_cmd_path(unreal_engine_dir)
         ue_win_dir_str = unreal_dev_utils.get_win_dir_str(unreal_engine_dir)
@@ -112,7 +112,8 @@ def make_non_iostore_unreal_pak_mod(
         intermediate_pak_file: str, 
         mod_name: str,
         compression_str: str,
-        final_pak_file: str
+        final_pak_file: str,
+        use_symlinks: bool
     ):
     command = f'{exe_path} "{intermediate_pak_file}" -Create="{make_response_file(mod_name)}"'
     if compression_str != 'None':
@@ -122,10 +123,13 @@ def make_non_iostore_unreal_pak_mod(
         os.unlink(final_pak_file)
     if os.path.isfile(final_pak_file):
         os.remove(final_pak_file)
-    os.symlink(intermediate_pak_file, final_pak_file)
+    if use_symlinks == True:
+        os.symlink(intermediate_pak_file, final_pak_file)
+    else:
+        shutil.copyfile(intermediate_pak_file, final_pak_file)
 
 
-def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
+def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType, use_symlinks: bool):
     move_files_for_packing(mod_name)
     compression_str = CompressionType(compression_type).value
     from unreal_auto_mod import utilities
@@ -139,14 +143,15 @@ def install_unreal_pak_mod(mod_name: str, compression_type: CompressionType):
     is_game_iostore = ue_dev_py_utils.get_is_game_iostore(utilities.get_uproject_file(), utilities.custom_get_game_dir())
 
     if is_game_iostore:
-        make_iostore_unreal_pak_mod(mod_name, final_pak_file)
+        make_iostore_unreal_pak_mod(mod_name, final_pak_file, use_symlinks)
     else:
         make_non_iostore_unreal_pak_mod(
             exe_path, 
             intermediate_pak_file, 
             mod_name, 
             compression_str, 
-            final_pak_file
+            final_pak_file,
+            use_symlinks
         )
 
 

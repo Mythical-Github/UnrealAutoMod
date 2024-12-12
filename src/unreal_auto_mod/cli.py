@@ -42,15 +42,18 @@ def cli_logic():
     package_parser = sub_parser.add_parser('package', help='package content for the uproject specified within the settings JSON', formatter_class=RichHelpFormatter)
     package_parser.add_argument('settings_json', help='Path to the settings JSON file')
     package_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
+    package_parser.add_argument('--use_symlinks', help='wether or not to use symlinks to save time with file operations')
 
     test_mods_parser = sub_parser.add_parser('test_mods', help='Run tests for specific mods', formatter_class=RichHelpFormatter)
     test_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
     test_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
     test_mods_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
+    test_mods_parser.add_argument('--use_symlinks', help='wether or not to use symlinks to save time with file operations')
 
     test_mods_all_parser = sub_parser.add_parser('test_mods_all', help='Run tests for all mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     test_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
     test_mods_all_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
+    test_mods_all_parser.add_argument('--use_symlinks', help='wether or not to use symlinks to save time with file operations')
 
     full_run_parser = sub_parser.add_parser('full_run', help='Builds, Cooks, Packages, Generates Mods, and Generates Mod Releases for the specified mod names.', formatter_class=RichHelpFormatter)
     full_run_parser.add_argument('settings_json', help='Path to the settings JSON file')
@@ -58,19 +61,23 @@ def cli_logic():
     full_run_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
     full_run_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
     full_run_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
+    full_run_parser.add_argument('--use_symlinks', help='wether or not to use symlinks to save time with file operations')
 
     full_run_all_parser = sub_parser.add_parser('full_run_all', help='Builds, Cooks, Packages, Generates Mods, and Generates Mod Releases for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     full_run_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
     full_run_all_parser.add_argument('--toggle_engine', help='Will close engine instances at the start and open at the end of the command process', default=False)
     full_run_all_parser.add_argument('--base_files_directory', help="Path to dir tree who's content to pack alongside the mod for release", default=default_releases_dir)
     full_run_all_parser.add_argument('--output_directory', help='Path to the output directory', default=default_output_releases_dir)
+    full_run_all_parser.add_argument('--use_symlinks', help='wether or not to use symlinks to save time with file operations')
 
     generate_mods_parser = sub_parser.add_parser('generate_mods', help='Generates mods for the specified mod names', formatter_class=RichHelpFormatter)
     generate_mods_parser.add_argument('settings_json', help='Path to the settings JSON file')
     generate_mods_parser.add_argument('mod_names', nargs='+', help='List of mod names')
+    generate_mods_parser.add_argument('--use_symlinks', help='wether or not to use symlinks to save time with file operations')
 
     generate_mods_all_parser = sub_parser.add_parser('generate_mods_all', help='Generates mods for all enabled mods within the specified settings JSON', formatter_class=RichHelpFormatter)
     generate_mods_all_parser.add_argument('settings_json', help='Path to the settings JSON file')
+    generate_mods_all_parser.add_argument('--use_symlinks', help='wether or not to use symlinks to save time with file operations')
 
     generate_mod_releases_parser = sub_parser.add_parser('generate_mod_releases', help='Generate one or more mod releases', formatter_class=RichHelpFormatter)
     generate_mod_releases_parser.add_argument('settings_json', help='Path to the settings JSON file')
@@ -350,15 +357,12 @@ def cli_logic():
             'open_latest_log',
             'close_game',
             'resave_packages_and_fix_up_redirectors',
-            'resync_dir_with_repo',
-            'generate_mods_all'
+            'resync_dir_with_repo'
         ]
         settings_and_toggle_commands = [
             'build',
             'cook',
-            'package',
-            'run_game',
-            'test_mods_all'
+            'run_game'
         ]
 
         if args.command in installer_commands:
@@ -366,6 +370,9 @@ def cli_logic():
 
         elif args.command in settings_json_commands:
             command_function_map[args.command](args.settings_json)
+
+        elif args.command == 'generate_mods_all':
+            command_function_map[args.command](args.settings_json, args.use_symlinks)
 
         elif args.command in settings_and_toggle_commands:
             command_function_map[args.command](args.settings_json, args.toggle_engine)
@@ -376,7 +383,8 @@ def cli_logic():
                 args.mod_names, 
                 args.toggle_engine, 
                 args.base_files_directory, 
-                args.output_directory
+                args.output_directory,
+                args.use_symlinks
             )
             
         if args.command == 'full_run_all':
@@ -384,7 +392,8 @@ def cli_logic():
                 args.settings_json, 
                 args.toggle_engine, 
                 args.base_files_directory, 
-                args.output_directory
+                args.output_directory,
+                args.use_symlinks
             )
 
         elif args.command == 'cleanup_from_file_list':
@@ -396,11 +405,20 @@ def cli_logic():
         elif args.command == 'close_programs':
             command_function_map[args.command](args.exe_names)
 
-        elif args.command == 'enable_mods' or args.command == 'disable_mods' or args.command == 'remove_mods' or args.command == 'generate_mods':
+        elif args.command == 'enable_mods' or args.command == 'disable_mods' or args.command == 'remove_mods':
             command_function_map[args.command](args.settings_json, args.mod_names)
 
         elif args.command == 'test_mods':
-            command_function_map[args.command](args.settings_json, args.mod_names, args.toggle_engine)
+            command_function_map[args.command](args.settings_json, args.mod_names, args.toggle_engine, args.use_symlinks)
+
+        elif args.command == 'test_mods_all':
+            command_function_map[args.command](args.settings_json, args.toggle_engine, args.use_symlinks)
+
+        elif args.command == 'generate_mods':
+            command_function_map[args.command](args.settings_json, args.toggle_engine, args.use_symlinks)
+
+        elif args.command == 'package':
+            command_function_map[args.command](args.settings_json, args.toggle_engine, args.use_symlinks)
 
         elif args.command == 'add_mod':
             command_function_map[args.command](

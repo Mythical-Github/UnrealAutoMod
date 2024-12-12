@@ -42,7 +42,9 @@
             "module": "unreal_auto_mod",
             "args": [
                 "package",
-                "${workspaceFolder}/assets/base/presets/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
+                "--use_symlinks",
+                "false"
             ]
         },
         {
@@ -248,7 +250,9 @@
                 "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "ModLoader_P",
                 "MapKit",
-                "ExampleLevel"
+                "ExampleLevel",
+                "--use_symlinks",
+                "false"
             ]
         },
         {
@@ -258,7 +262,9 @@
             "module": "unreal_auto_mod",
             "args": [
                 "test_mods_all",
-                "${workspaceFolder}/assets/base/presets/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
+                "--use_symlinks",
+                "false"
             ]
         },
         {
@@ -275,7 +281,9 @@
                 "--base_files_directory",
                 "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
                 "--output_directory",
-                "${workspaceFolder}/dist/releases"
+                "${workspaceFolder}/dist/releases",
+                "--use_symlinks",
+                "false"
             ]
         },
         {
@@ -289,7 +297,9 @@
                 "--base_files_directory",
                 "${workspaceFolder}/assets/base/presets/default/mod_packaging/releases",
                 "--output_directory",
-                "${workspaceFolder}/dist/releases"
+                "${workspaceFolder}/dist/releases",
+                "--use_symlinks",
+                "false"
             ]
         },
         {
@@ -302,7 +312,9 @@
                 "${workspaceFolder}/assets/base/presets/default/settings.json",
                 "ModLoader_P",
                 "MapKit",
-                "ExampleLevel"
+                "ExampleLevel",
+                "--use_symlinks",
+                "false"
             ]
         },
         {
@@ -312,7 +324,9 @@
             "module": "unreal_auto_mod",
             "args": [
                 "generate_mods_all",
-                "${workspaceFolder}/assets/base/presets/default/settings.json"
+                "${workspaceFolder}/assets/base/presets/default/settings.json",
+                "--use_symlinks",
+                "false"
             ]
         },
         {

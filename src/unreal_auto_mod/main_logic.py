@@ -161,7 +161,7 @@ def close_thread_system():
 # all things below this should be functions that correspond to cli logic
 
 
-def test_mods(settings_json: str, input_mod_names: str, toggle_engine: bool):
+def test_mods(settings_json: str, input_mod_names: str, toggle_engine: bool, use_symlinks: bool):
     load_settings(settings_json)
     from unreal_auto_mod import engine
     if toggle_engine:
@@ -169,12 +169,12 @@ def test_mods(settings_json: str, input_mod_names: str, toggle_engine: bool):
     global mod_names
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
-    mods.generate_mods()
+    mods.generate_mods(use_symlinks)
     if toggle_engine:
         engine.toggle_engine_on()
 
 
-def test_mods_all(settings_json: str, toggle_engine: bool):
+def test_mods_all(settings_json: str, toggle_engine: bool, use_symlinks: bool):
     load_settings(settings_json)
     from unreal_auto_mod import engine
     if toggle_engine:
@@ -182,12 +182,12 @@ def test_mods_all(settings_json: str, toggle_engine: bool):
     global mod_names
     for entry in settings['mods_info']:
         mod_names.append(entry['mod_name'])
-    mods.generate_mods()
+    mods.generate_mods(use_symlinks)
     if toggle_engine:
         engine.toggle_engine_on()
 
 
-def full_run(settings_json: str, input_mod_names: str, toggle_engine: bool, base_files_directory: str, output_directory: str):
+def full_run(settings_json: str, input_mod_names: str, toggle_engine: bool, base_files_directory: str, output_directory: str, use_symlinks: bool):
     load_settings(settings_json)
     from unreal_auto_mod import engine, packing
     if toggle_engine:
@@ -196,13 +196,13 @@ def full_run(settings_json: str, input_mod_names: str, toggle_engine: bool, base
     for mod_name in input_mod_names:
         mod_names.append(mod_name)
     packing.cooking()
-    generate_mods(settings_json, input_mod_names)
+    generate_mods(settings_json, input_mod_names, use_symlinks)
     generate_mod_releases(settings_json, input_mod_names, base_files_directory, output_directory)
     if toggle_engine:
         engine.toggle_engine_on()
 
 
-def full_run_all(settings_json: str, toggle_engine: bool, base_files_directory: str, output_directory: str):
+def full_run_all(settings_json: str, toggle_engine: bool, base_files_directory: str, output_directory: str, use_symlinks: bool):
     load_settings(settings_json)
     from unreal_auto_mod import engine, packing
     if toggle_engine:
@@ -211,7 +211,7 @@ def full_run_all(settings_json: str, toggle_engine: bool, base_files_directory: 
     for entry in settings['mods_info']:
         mod_names.append(entry['mod_name'])
     packing.cooking()
-    generate_mods_all(settings_json)
+    generate_mods_all(settings_json, use_symlinks)
     generate_mod_releases_all(settings_json, base_files_directory, output_directory)
     if toggle_engine:
         engine.toggle_engine_on()
@@ -572,7 +572,7 @@ def get_solo_package_command() -> str:
     return command
 
 
-def package(settings_json: str, toggle_engine: bool):
+def package(settings_json: str, toggle_engine: bool, use_symlinks: bool):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
     from unreal_auto_mod.packing import generate_mods
@@ -585,7 +585,7 @@ def package(settings_json: str, toggle_engine: bool):
         mod_names.append(entry['mod_name'])
     log_message('Packaging Starting')
     run_proj_build_command(get_solo_package_command())
-    generate_mods()
+    generate_mods(use_symlinks)
     log_message('Packaging Complete')
     if toggle_engine:
         engine.toggle_engine_on()
@@ -707,7 +707,7 @@ def generate_file_list(directory: str, file_list: str):
     generate_file_paths_json(directory, file_list)
 
 
-def generate_mods(settings_json: str, input_mod_names: str):
+def generate_mods(settings_json: str, input_mod_names: str, use_symlinks:bool):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
     from unreal_auto_mod.packing import generate_mods
@@ -717,10 +717,10 @@ def generate_mods(settings_json: str, input_mod_names: str):
         mod_names.append(mod_name)
     for entry in get_mods_info_from_json():
         mod_names.append(entry['mod_name'])
-    generate_mods()
+    generate_mods(use_symlinks)
 
 
-def generate_mods_all(settings_json: str):
+def generate_mods_all(settings_json: str, use_symlinks: bool):
     load_settings(settings_json)
     from unreal_auto_mod.main_logic import mod_names
     from unreal_auto_mod.packing import generate_mods
@@ -729,7 +729,7 @@ def generate_mods_all(settings_json: str):
     for entry in get_mods_info_from_json():
         mod_names.append(entry['mod_name'])
         log_message(entry['mod_name'])
-    generate_mods()
+    generate_mods(use_symlinks)
 
 
 def zip_directory_tree(input_dir, output_dir, zip_name="archive.zip"):

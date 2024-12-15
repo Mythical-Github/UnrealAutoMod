@@ -1036,7 +1036,6 @@ def add_module_to_descriptor(descriptor_file: str, module_name: str, host_type: 
 
 
 def add_plugin_to_descriptor(descriptor_file: str, plugin_name: str, is_enabled: bool):
-    print('test')
     if not os.path.isfile(descriptor_file):
         raise FileNotFoundError(f"The file '{descriptor_file}' does not exist.")
 

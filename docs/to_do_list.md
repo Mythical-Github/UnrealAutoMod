@@ -3,10 +3,12 @@
 
 ## Current To Do:
 - [ ] non engine iostore
+- [ ] sig logic, should copy existing and create if not exist on file placement option, or show warning
 - [ ] clean up hook states and add any missing states
  
 
 ## To Do:
+- [ ] compile all blueprints commandlet usage
 - [ ] workspace, env vars, similar
 - [ ] commands that can be used for string formatting
 - [ ] make presets commands
